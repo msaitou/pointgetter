@@ -6,8 +6,6 @@ import java.util.Properties;
 
 import lombok.val;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,66 +20,54 @@ import pointGet.mission.PexMissionSearch;
  * @author 雅人
  *
  */
-public class WebClicker {
+public class WebClicker extends PointGet {
 
 	private static final String loadFilePath = "pGetWeb.properties";
-	// log class
-	private static Logger log = null;
 
 	private static String[] wordList = null;
 
 	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
 
-	/**
-	 * 設定ファイルをローカル変数に展開する
-	 */
-	private static void _getPointGetWebConf() {
-
+	protected static void init() {
+		PointGet.init();
+		_setLogger("log4jweb.properties", WebClicker.class);
+		// 設定ファイルをローカル変数に展開する
 		Properties loadProps = Utille.getProp(loadFilePath);
 		if (loadProps.isEmpty()) {
 			return;
 		}
 		wordList = loadProps.getProperty("wordList").split(",");
 	}
-
-	/**
-	 * ログクラスの設定
-	 */
-	private static void _setLogger() {
-		PropertyConfigurator.configure("log4jweb.properties");
-		log = Utille.setLogger(WebClicker.class);
-	}
-
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		_setLogger();
-		log.info("Start!!");
-		_getPointGetWebConf();
+		init();
+		logg.info("Start!!");
+		// ecサイト
+		goToClickSite(Define.PSITE_CODE_ECN);
+		// pex
+		goToClickSite(Define.PSITE_CODE_PEX);
 		// GetMoney 
 		goToClickSite(Define.PSITE_CODE_GMY);
 		// mop
 		goToClickSite(Define.PSITE_CODE_MOP);
 		// げん玉
 		goToClickSite(Define.PSITE_CODE_GEN);
-		// ecサイト
-		goToClickSite(Define.PSITE_CODE_ECN);
-		// pex
-		goToClickSite(Define.PSITE_CODE_PEX);
 		//		// OSA
 		//		goToClickSite(Define.PSITE_CODE_OSA);
 		// RIN
 		goToClickSite(Define.PSITE_CODE_RIN);
 
 		if (missionList.size() > 0) {
-			log.info("roopStart!!");
-			WebDriver driver = Utille.getWebDriver();
+			logg.info("roopStart!!");
+			WebDriver driver = getWebDriver();
 			int CompCnt = 0;
 			while (true) {
 				for (Mission mission : missionList) {
 					if (mission.isCompFlag()) {
-						log.info("Complete!!");
+						logg.info("Complete!!");
 						CompCnt++;
 						continue;
 					}
@@ -90,14 +76,13 @@ public class WebClicker {
 				if (CompCnt == missionList.size()) {
 					break;
 				}
-				log.info("again!!");
+				logg.info("again!!");
 				Utille.sleep(306000);
 			}
 			driver.quit();
-			log.info("roopEnd!!");
+			logg.info("roopEnd!!");
 		}
-
-		log.info("can not read properties!!");
+		logg.info("can not read properties!!");
 	}
 
 	/**
@@ -105,9 +90,7 @@ public class WebClicker {
 	 * @param siteType
 	 */
 	private static void goToClickSite(String siteType) {
-
-		WebDriver driver = Utille.getWebDriver();
-		//		Wait<WebDriver> wait = new WebDriverWait(driver, 30);
+		WebDriver driver = getWebDriver();
 		switch (siteType) {
 		case Define.PSITE_CODE_GMY:
 			goToClickGMY(driver);
@@ -139,18 +122,21 @@ public class WebClicker {
 	 * @param driver
 	 */
 	private static void goToClickRIN(WebDriver driver) {
-
 		driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml");
 		String selector = "li#loginId>input#u";
 		// ログイン画面であれば
 		if (isExistEle(driver, selector)) {
+			if (!pGetProps.containsKey("rin") || !pGetProps.get("rin").containsKey("loginid")
+					|| !pGetProps.get("rin").containsKey("loginpass")) {
+				return;
+			}
 			WebElement ele = driver.findElement(By.cssSelector(selector));
 			ele.clear();
-			ele.sendKeys("peterpansymdromer@gmail.com");
+			ele.sendKeys(pGetProps.get("rin").get("loginid"));
 			selector = "li#loginPw>input#p";
 			ele = driver.findElement(By.cssSelector(selector));
 			ele.clear();
-			ele.sendKeys("koiseyoseiko");
+			ele.sendKeys(pGetProps.get("rin").get("loginpass"));
 			driver.findElement(By.cssSelector("input#loginButton")).click();
 			Utille.sleep(5000);
 		}
@@ -238,7 +224,6 @@ public class WebClicker {
 					}
 				}
 			}
-
 			String selector2 = "[alt='Check']";
 			int size = driver.findElements(By.cssSelector(selector)).size();
 			for (int i = 0; i < size; i++) {
@@ -307,11 +292,11 @@ public class WebClicker {
 		if (true) {
 
 			// ■ポイント検索
-			Mission PexMissionSearch = new PexMissionSearch(log, wordList);
+			Mission PexMissionSearch = new PexMissionSearch(logg, wordList);
 			PexMissionSearch.roopMisstion(driver);
 			missionList.add(PexMissionSearch);
 			// ■ぺく単
-			Mission PexMissionPectan = new PexMissionPectan(log);
+			Mission PexMissionPectan = new PexMissionPectan(logg);
 			PexMissionPectan.roopMisstion(driver);
 			missionList.add(PexMissionPectan);
 
@@ -325,7 +310,7 @@ public class WebClicker {
 				}
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				String newsUrl = eleList.get(i).getAttribute("href");
-				log.info("newsUrl:" + newsUrl);
+				logg.info("newsUrl:" + newsUrl);
 				driver.get(newsUrl);
 				Utille.sleep(3000);
 
@@ -371,11 +356,7 @@ public class WebClicker {
 	}
 
 	private static boolean isExistEle(WebElement wEle, String selector) {
-		return Utille.isExistEle(wEle, selector, log);
-	}
-
-	private static boolean isExistEle(WebDriver driver, String selector) {
-		return Utille.isExistEle(driver.findElements(By.cssSelector(selector)), log);
+		return Utille.isExistEle(wEle, selector, logg);
 	}
 
 	private static void goToClickECN(WebDriver driver) {
@@ -401,7 +382,7 @@ public class WebClicker {
 				if (isExistEle(driver, selector)) {
 					WebElement ele = driver.findElement(By.cssSelector(selector));
 					ele.clear();
-					log.info("検索keyword[" + wordSearchList[i]);
+					logg.info("検索keyword[" + wordSearchList[i]);
 					ele.sendKeys(wordSearchList[i]);
 					driver.findElement(By.cssSelector("button[type='submit']")).click();
 					Utille.sleep(3000);
@@ -417,7 +398,7 @@ public class WebClicker {
 				if (isExistEle(driver, selector)) {
 					WebElement ele = driver.findElement(By.cssSelector("input[name='Keywords']"));
 					ele.clear();
-					log.info("検索keyword[" + wordSearchList[i]);
+					logg.info("検索keyword[" + wordSearchList[i]);
 					ele.sendKeys(wordSearchList[i]);
 					driver.findElement(By.cssSelector("button[type='submit']")).click();
 					Utille.sleep(3000);
@@ -496,7 +477,7 @@ public class WebClicker {
 			}
 
 			// ■珍獣先生
-			Mission EcnMissionChinjyu = new EcnMissionChinjyu(log);
+			Mission EcnMissionChinjyu = new EcnMissionChinjyu(logg);
 			EcnMissionChinjyu.roopMisstion(driver);
 			missionList.add(EcnMissionChinjyu);
 		}
@@ -550,17 +531,17 @@ public class WebClicker {
 			// ポイントの森
 			driver.get("http://www.gendama.jp/forest/");
 			String currentWindowId = driver.getWindowHandle();
-			log.info("currentWindowId: " + currentWindowId);
+			logg.info("currentWindowId: " + currentWindowId);
 			String selecter[] = { "#forestBox a[href^='/cl/?id=']", "#downBox a[href^='/cl/?id=']",
 					"#sponsor a[href^='/cl/?id=']" };
 			for (int j = 0; j < selecter.length; j++) {
 				String selector = selecter[j];
-				log.info("selector: " + selector);
+				logg.info("selector: " + selector);
 				if (isExistEle(driver, selector)) {
 					List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 					int size = eleList.size();
 					for (int i = 0; i < size; i++) {
-						log.info("text: " + driver.findElements(By.cssSelector(selector)).get(i).getText());
+						logg.info("text: " + driver.findElements(By.cssSelector(selector)).get(i).getText());
 						driver.findElements(By.cssSelector(selector)).get(i).click();
 					}
 				}
@@ -575,7 +556,7 @@ public class WebClicker {
 					Utille.sleep(2000);
 				}
 			}
-			log.info("selector: end");
+			logg.info("selector: end");
 		}
 	}
 }

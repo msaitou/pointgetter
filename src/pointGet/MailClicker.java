@@ -27,8 +27,6 @@ import javax.mail.Store;
 import javax.mail.search.ComparisonTerm;
 import javax.mail.search.ReceivedDateTerm;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -37,14 +35,8 @@ import org.openqa.selenium.WebDriver;
  * @author 雅人
  *
  */
-public class MailClicker {
-	// メールの内容の種類
-	final static String CONTENT_TYPE_TEXT = "text/plain";
-	final static String CONTENT_TYPE_HTML = "text/html";
-	final static String CONTENT_TYPE_MULTI = "multipart/";
+public class MailClicker extends PointGet {
 
-	// log class
-	private static Logger log = null;
 	// config file for PointGetMail path
 	private static final String loadFilePath = "pGetMail.properties";
 	// PointGetMail config variable
@@ -54,23 +46,52 @@ public class MailClicker {
 	// mail config variable
 	private static Map<String, String> mailConf = new HashMap<String, String>();
 
+	protected static void init() {
+		PointGet.init();
+		_setLogger("log4jmail.properties", MailClicker.class);
+		// properties をローカル変数に展開
+		Properties loadProps = Utille.getProp(loadFilePath);
+		if (loadProps.isEmpty()) {
+			return;
+		}
+		// メールのクリックポイントを獲得する対象のサイトを取得
+		siteCodes = loadProps.getProperty("targetSiteCode").split(",");
+		// PointGetMail config variable
+		for (int i = 0; i < siteCodes.length; i++) {
+			String key = siteCodes[i];
+			if (key != null && !key.equals("")) {
+				HashMap<String, String> siteConf = new HashMap<String, String>();
+				siteConf.put("dir", loadProps.getProperty(key + ".dir"));
+				siteConf.put("subjectKey", loadProps.getProperty(key + ".subjectKey"));
+				if (loadProps.containsKey(key + ".subjectKey2")) {
+					siteConf.put("subjectKey2", loadProps.getProperty(key + ".subjectKey2"));
+				}
+				targetSites.put(key, siteConf);
+			}
+		}
+		// mail's conf
+		mailConf.put("host", loadProps.getProperty("mail.host"));
+		mailConf.put("user", loadProps.getProperty("mail.user"));
+		mailConf.put("password", loadProps.getProperty("mail.password"));
+		mailConf.put("port", loadProps.getProperty("mail.port"));
+		mailConf.put("before", loadProps.getProperty("mail.beforeDate"));
+	}
+
 	/**
 	 * Entry point!!!
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		_setLogger();
-		log.info("■■■Starting my application...");
-		log.info("■■-Starting get Mail...");
+		init();
+		logg.info("■■■Starting my application...");
+		logg.info("■■-Starting get Mail...");
 		// 設定ファイルを読み込む
-		// properties をローカル変数に展開
-		_getPointGetMailConf();
 		if (mailConf.isEmpty() || siteCodes.length < 1 || targetSites.isEmpty()) {
-			log.info("can not read properties!!");
-			log.info("mailConf: " + mailConf.toString());
-			log.info("siteCodes: " + siteCodes.toString());
-			log.info("targetSites: " + targetSites.toString());
+			logg.info("can not read properties!!");
+			logg.info("mailConf: " + mailConf.toString());
+			logg.info("siteCodes: " + siteCodes.toString());
+			logg.info("targetSites: " + targetSites.toString());
 			return;
 		}
 		Properties props = new Properties();
@@ -96,11 +117,11 @@ public class MailClicker {
 			int getMailMonth = cal.get(Calendar.MONTH); // 1月が0で12月は11らしい
 			int getMailDate = cal.get(Calendar.DATE);
 
-			log.info(getMailYear + "/" + String.valueOf(getMailMonth + 1) + "/" + getMailDate + " 以降のmailを取得");
+			logg.info(getMailYear + "/" + String.valueOf(getMailMonth + 1) + "/" + getMailDate + " 以降のmailを取得");
 			// loop for folder size
 			for (Map.Entry<String, HashMap<String, String>> e : targetSites.entrySet()) {
 				String folderName = e.getValue().get("dir");
-				log.info("■getMail site[" + folderName + "] START");
+				logg.info("■getMail site[" + folderName + "] START");
 
 				// IMAPの場合はラベル名を指定すればそのラベルのメールが取得出来る
 				// (POP3の場合はエラーが発生します)
@@ -111,18 +132,18 @@ public class MailClicker {
 				// メッセージ件数分
 				for (Message message : messages) {
 					// 件名
-					//					log.debug("Subject: " + message.getSubject());
+					//					logg.debug("Subject: " + message.getSubject());
 					String keyWord = e.getValue().get("subjectKey");
 					String keyWord2 = e.getValue().get("subjectKey2");
 					if (!keyWord.isEmpty()) {
 						if (message.getSubject().indexOf(keyWord) >= 0) {
-							log.info("Subject: " + message.getSubject());
+							logg.info("Subject: " + message.getSubject());
 						}
 						else {
 							if (keyWord2 != null && !keyWord2.isEmpty()) {
 								// Subject2
 								if (message.getSubject().indexOf(keyWord2) >= 0) {
-									log.info("Subject: " + message.getSubject());
+									logg.info("Subject: " + message.getSubject());
 								}
 								else {
 									continue;
@@ -135,21 +156,21 @@ public class MailClicker {
 					}
 					else {
 						// keyWordが空なら無条件
-						log.info("Received: " + message.getReceivedDate() + " Subject: " + message.getSubject());
+						logg.info("Received: " + message.getReceivedDate() + " Subject: " + message.getSubject());
 					}
 					String contentType = "";
 					// コンテンツタイプ取得
 					String[] headers = message.getHeader("Content-Type");
 					for (String header : headers) {
-						log.info("Content-Type: " + header);
-						if (header.indexOf(CONTENT_TYPE_TEXT) >= 0) {
-							contentType = CONTENT_TYPE_TEXT;
+						logg.info("Content-Type: " + header);
+						if (header.indexOf(Define.CONTENT_TYPE_TEXT) >= 0) {
+							contentType = Define.CONTENT_TYPE_TEXT;
 						}
-						else if (header.indexOf(CONTENT_TYPE_HTML) >= 0) {
-							contentType = CONTENT_TYPE_HTML;
+						else if (header.indexOf(Define.CONTENT_TYPE_HTML) >= 0) {
+							contentType = Define.CONTENT_TYPE_HTML;
 						}
-						else if (header.indexOf(CONTENT_TYPE_MULTI) >= 0) {
-							contentType = CONTENT_TYPE_MULTI;
+						else if (header.indexOf(Define.CONTENT_TYPE_MULTI) >= 0) {
+							contentType = Define.CONTENT_TYPE_MULTI;
 						}
 						break;
 					}
@@ -158,7 +179,7 @@ public class MailClicker {
 					getText(contentType, message.getContent(), urlMap, e.getKey());
 				}
 				folder.close(false);
-				log.info("■getMail site[" + folderName + "] END");
+				logg.info("■getMail site[" + folderName + "] END");
 			}
 			System.out.println(urlMap.toString());
 		} catch (Exception e) {
@@ -171,7 +192,7 @@ public class MailClicker {
 			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
-			log.info("■■-finished get Mail...");
+			logg.info("■■-finished get Mail...");
 		}
 
 		if (false) {
@@ -186,20 +207,20 @@ public class MailClicker {
 			//			//			t.add("http://top.tsite.jp/entertainment/celebrity/i/28110493/");
 			//						urlMap.get(PSITE_CODE_RIN).addAll(t);
 			// URLに対してリクエストをする
-			log.info("■■-Starting request URL...");
+			logg.info("■■-Starting request URL...");
 			//			System.setProperty("webdriver.chrome.driver",
 			//					"C:\\pleiades\\eclipse\\jre\\lib\\myjar\\chromedriver_win32\\chromedriver.exe");
 			for (Map.Entry<String, ArrayList<String>> e : urlMap.entrySet()) {
-				log.info("■request site[" + e.getKey() + "] START");
+				logg.info("■request site[" + e.getKey() + "] START");
 				try {
 					if (e.getKey().equals(Define.PSITE_CODE_OSA) || e.getKey().equals(Define.PSITE_CODE_ECN)
 							|| e.getKey().equals(Define.PSITE_CODE_RIN)) {
-						WebDriver driver = Utille.getWebDriver();
+						WebDriver driver = getWebDriver();
 						boolean rinLoginFlag = false;
 						for (String url : e.getValue()) {
 							System.out.println("kiiiiii222");
 							String uriString = url; // 開くURL
-							log.info("■request url[" + uriString + "] START");
+							logg.info("■request url[" + uriString + "] START");
 							System.out.println("kiiiiii");
 							if (e.getKey().equals(Define.PSITE_CODE_RIN) && !rinLoginFlag) {
 								rinLoginFlag = true;
@@ -226,8 +247,8 @@ public class MailClicker {
 							while ((line = reader.readLine()) != null) {
 								out.append(line).append("\n\r");
 							}
-							log.info("request url[" + url + "]");
-							//							log.info("response[" + out.toString() + "]");
+							logg.info("request url[" + url + "]");
+							//							logg.info("response[" + out.toString() + "]");
 							Utille.sleep(2000);
 							reader.close();
 						}
@@ -235,22 +256,22 @@ public class MailClicker {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				log.info("■request site[" + e.getKey() + "] END");
+				logg.info("■request site[" + e.getKey() + "] END");
 			}
-			log.info("■■-finished request URL...");
+			logg.info("■■-finished request URL...");
 		}
-		log.info("■■■finished my application...");
+		logg.info("■■■finished my application...");
 	}
 
 	private static void getText(String contentType, Object content, Map<String, ArrayList<String>> urlMap,
 			String folederKind)
 			throws IOException, MessagingException {
 		if (content instanceof String) {
-			log.info("■■-getContent [" + content);
+			logg.info("■■-getContent [" + content);
 			String[] contentLow = content.toString().split("\\r\\n", 0);
 			ArrayList<String> urlList = new ArrayList<String>();
 			for (int i = 0; i < contentLow.length; i++) {
-				//								log.info("■■-getContent [" + contentLow[i]);
+				//								logg.info("■■-getContent [" + contentLow[i]);
 				switch (folederKind) {
 				case Define.PSITE_CODE_GMY: // GET MONEY
 					if (contentLow[i].indexOf("click.php") > 0) {
@@ -267,14 +288,14 @@ public class MailClicker {
 					}
 					break;
 				case Define.PSITE_CODE_PTO: // PointTown
-					if (CONTENT_TYPE_TEXT.equals(contentType)) {
+					if (Define.CONTENT_TYPE_TEXT.equals(contentType)) {
 						if (contentLow[i].indexOf("[Point] http") >= 0) {
 							String url = contentLow[i].substring(contentLow[i].indexOf("http"));
 							//							urlList = new ArrayList<String>();
 							urlList.add(Utille.trimWhitespace(url));
 						}
 					}
-					else if (CONTENT_TYPE_HTML.equals(contentType)) {
+					else if (Define.CONTENT_TYPE_HTML.equals(contentType)) {
 						int matchCnt = 0;
 						for (String indexKey : new String[] { "a href", "/ptu/" }) {
 							if (contentLow[i].indexOf(indexKey) >= 0) {
@@ -314,14 +335,14 @@ public class MailClicker {
 					}
 					break;
 				case Define.PSITE_CODE_RIN: // 楽天infoseek
-					if (CONTENT_TYPE_TEXT.equals(contentType)) {
+					if (Define.CONTENT_TYPE_TEXT.equals(contentType)) {
 						if (contentLow[i].indexOf("pmrd.rakuten.co.jp/?r=") >= 0) {
 							String url = contentLow[i].substring(contentLow[i].indexOf("http"));
 							//							urlList = new ArrayList<String>();
 							urlList.add(Utille.trimWhitespace(url));
 						}
 					}
-					else if (CONTENT_TYPE_HTML.equals(contentType)) {
+					else if (Define.CONTENT_TYPE_HTML.equals(contentType)) {
 						for (String indexKey : new String[] { "pmrd.rakuten.co.jp/?r=" }) {
 							String url = "";
 							if (contentLow[i].indexOf(indexKey) >= 0) {
@@ -343,13 +364,13 @@ public class MailClicker {
 					break;
 				// テスト用
 				case "test":
-					if (CONTENT_TYPE_TEXT.equals(contentType)) {
+					if (Define.CONTENT_TYPE_TEXT.equals(contentType)) {
 						if (contentLow[i].indexOf("[Point] http") >= 0) {
 							String url = contentLow[i].substring(contentLow[i].indexOf("http"));
 							urlList.add(Utille.trimWhitespace(url));
 						}
 					}
-					else if (CONTENT_TYPE_HTML.equals(contentType)) {
+					else if (Define.CONTENT_TYPE_HTML.equals(contentType)) {
 						if (contentLow[i].indexOf("a href") >= 0
 								&& contentLow[i].indexOf("/ptu/") >= 0) {
 							String url = contentLow[i].substring(contentLow[i].indexOf("http"),
@@ -381,19 +402,19 @@ public class MailClicker {
 				// コンテンツタイプ取得
 				String[] headers = bp.getHeader("Content-Type");
 				for (String header : headers) {
-					log.info("Content-Type: " + header);
-					if (header.indexOf(CONTENT_TYPE_TEXT) >= 0) {
-						mContentType = CONTENT_TYPE_TEXT;
+					logg.info("Content-Type: " + header);
+					if (header.indexOf(Define.CONTENT_TYPE_TEXT) >= 0) {
+						mContentType = Define.CONTENT_TYPE_TEXT;
 					}
-					else if (header.indexOf(CONTENT_TYPE_HTML) >= 0) {
-						mContentType = CONTENT_TYPE_HTML;
+					else if (header.indexOf(Define.CONTENT_TYPE_HTML) >= 0) {
+						mContentType = Define.CONTENT_TYPE_HTML;
 					}
-					else if (header.indexOf(CONTENT_TYPE_MULTI) >= 0) {
-						mContentType = CONTENT_TYPE_MULTI;
+					else if (header.indexOf(Define.CONTENT_TYPE_MULTI) >= 0) {
+						mContentType = Define.CONTENT_TYPE_MULTI;
 					}
 					break;
 				}
-				if (CONTENT_TYPE_TEXT.indexOf(mContentType) >= 0) {
+				if (Define.CONTENT_TYPE_TEXT.indexOf(mContentType) >= 0) {
 					continue;
 				}
 
@@ -401,45 +422,5 @@ public class MailClicker {
 				getText(mContentType, bp.getContent(), urlMap, folederKind);
 			}
 		}
-	}
-
-	/**
-	 * 設定ファイルをローカル変数に展開する
-	 */
-	private static void _getPointGetMailConf() {
-
-		Properties loadProps = Utille.getProp(loadFilePath);
-		if (loadProps.isEmpty()) {
-			return;
-		}
-		// メールのクリックポイントを獲得する対象のサイトを取得
-		siteCodes = loadProps.getProperty("targetSiteCode").split(",");
-		// PointGetMail config variable
-		for (int i = 0; i < siteCodes.length; i++) {
-			String key = siteCodes[i];
-			if (key != null && !key.equals("")) {
-				HashMap<String, String> siteConf = new HashMap<String, String>();
-				siteConf.put("dir", loadProps.getProperty(key + ".dir"));
-				siteConf.put("subjectKey", loadProps.getProperty(key + ".subjectKey"));
-				if (loadProps.containsKey(key + ".subjectKey2")) {
-					siteConf.put("subjectKey2", loadProps.getProperty(key + ".subjectKey2"));
-				}
-				targetSites.put(key, siteConf);
-			}
-		}
-		// mail's conf
-		mailConf.put("host", loadProps.getProperty("mail.host"));
-		mailConf.put("user", loadProps.getProperty("mail.user"));
-		mailConf.put("password", loadProps.getProperty("mail.password"));
-		mailConf.put("port", loadProps.getProperty("mail.port"));
-		mailConf.put("before", loadProps.getProperty("mail.beforeDate"));
-	}
-	
-	/**
-	 * ログクラスの設定
-	 */
-	private static void _setLogger() {
-		PropertyConfigurator.configure("log4jmail.properties");
-		log = Utille.setLogger(MailClicker.class);
 	}
 }

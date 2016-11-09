@@ -1,7 +1,5 @@
 package pointGet;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,9 +9,7 @@ import org.openqa.selenium.WebElement;
  * @author 雅人
  *
  */
-public class Points {
-	// log
-	private static Logger log = null;
+public class Points extends PointGet {
 
 	private static String[] pointSitelist = {
 			Define.PSITE_CODE_GMY,
@@ -25,15 +21,20 @@ public class Points {
 			Define.PSITE_CODE_GEN,
 			Define.PSITE_CODE_MOP
 	};
-
+	
+	protected static void init() {
+		PointGet.init();
+		_setLogger("log4jPoints.properties", Points.class);
+	}
+	
 	/**
 	 * entry point
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		_setLogger();
+		init();
 		StringBuffer sb = new StringBuffer();
-		WebDriver driver = Utille.getWebDriver();
+		WebDriver driver = getWebDriver();
 		for (String siteCode : pointSitelist) {
 			String selector = "";
 			String outPut = "";
@@ -100,16 +101,20 @@ public class Points {
 				selector = "li.point>a>strong";
 				driver.get("https://www.pointtown.com/ptu/index.do");
 				if (!isExistEle(driver, selector)) {
+					if (!pGetProps.containsKey("pto") || !pGetProps.get("pto").containsKey("loginid")
+							|| !pGetProps.get("pto").containsKey("loginpass")) {
+						break;
+					}
 					// ログイン画面
 					driver.get("https://www.pointtown.com/ptu/show_login.do?nextPath=%2Fptu%2Findex.do");
 					String selector2 = "input.auth_input[name=uid]";
 					if (isExistEle(driver, selector2)) {
 						WebElement ele = driver.findElement(By.cssSelector(selector2));
 						ele.clear();
-						ele.sendKeys("clonecopyfake@gmail.com");
+						ele.sendKeys(pGetProps.get("pto").get("loginid"));
 						ele = driver.findElement(By.cssSelector("input.auth_input[name=pass]"));
 						ele.clear();
-						ele.sendKeys("clonecopy5");
+						ele.sendKeys(pGetProps.get("pto").get("loginpass"));
 						driver.findElement(By.cssSelector("div.login-btn>input")).click();
 						Utille.sleep(3000);
 					}
@@ -136,22 +141,10 @@ public class Points {
 			}
 			else {
 				// 取得できなかった
-				log.warn("missed site:" + siteCode);
+				logg.warn("missed site:" + siteCode);
 			}
 		}
-		log.info(sb.toString());
+		logg.info(sb.toString());
 		driver.quit();
-	}
-
-	/**
-	 * ログクラスの設定
-	 */
-	private static void _setLogger() {
-		PropertyConfigurator.configure("log4jPoints.properties");
-		log = Utille.setLogger(Points.class);
-	}
-
-	private static boolean isExistEle(WebDriver driver, String selector) {
-		return Utille.isExistEle(driver, selector, log);
 	}
 }

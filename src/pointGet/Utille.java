@@ -27,11 +27,10 @@ public class Utille {
 	 * instance webdriver
 	 * @return webdriver object
 	 */
-	public static WebDriver getWebDriver() {
+	public static WebDriver getWebDriver(String geckoPath, String ffProfile) {
 		// firefox
-		System.setProperty("webdriver.gecko.driver",
-				"C:/pleiades/eclipse/jre/lib/myjar/geckodriver-v0.11.1-win64/geckodriver.exe");
-		System.setProperty("webdriver.firefox.profile", "webdrive");
+		System.setProperty("webdriver.gecko.driver", geckoPath);
+		System.setProperty("webdriver.firefox.profile", ffProfile);
 
 		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		capabilities.setCapability("marionette", true);
@@ -133,10 +132,10 @@ public class Utille {
 	/**
 	 * 
 	 * @param wEle
-	 * @param log
+	 * @param logg
 	 * @return boolean
 	 */
-	public static boolean isExistEle(List<WebElement> wEle, Logger log) {
+	public static boolean isExistEle(List<WebElement> wEle, Logger logg) {
 		Eventually.eventually(() -> wEle);
 		return wEle.size() != 0;
 	}
@@ -145,24 +144,24 @@ public class Utille {
 	 * 
 	 * @param wEle
 	 * @param selector
-	 * @param log
+	 * @param logg
 	 * @return boolean
 	 */
-	public static boolean isExistEle(WebElement wEle, String selector, Logger log) {
-		boolean is = isExistEle(wEle.findElements(By.cssSelector(selector)), log);
-		log.debug(selector + ":[" + is + "]");
+	public static boolean isExistEle(WebElement wEle, String selector, Logger logg) {
+		boolean is = isExistEle(wEle.findElements(By.cssSelector(selector)), logg);
+		logg.debug(selector + ":[" + is + "]");
 		return is;
 	}
 
 	/**
 	 * @param driver
 	 * @param selector
-	 * @param log
+	 * @param logg
 	 * @return boolean
 	 */
-	public static boolean isExistEle(WebDriver driver, String selector, Logger log) {
-		boolean is = isExistEle(driver.findElements(By.cssSelector(selector)), log);
-		log.debug(selector + ":[" + is + "]");
+	public static boolean isExistEle(WebDriver driver, String selector, Logger logg) {
+		boolean is = isExistEle(driver.findElements(By.cssSelector(selector)), logg);
+		logg.debug(selector + ":[" + is + "]");
 		return is;
 	}
 
