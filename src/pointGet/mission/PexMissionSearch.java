@@ -32,7 +32,8 @@ public class PexMissionSearch extends Mission {
 
 	@Override
 	public void roopMisstion(WebDriver driver) {
-		log.info("kimasu");
+		String mName = "■ポイント検索";
+		log.info(mName+"]roop");
 		for (int i = this.cnt; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis()); i++) {
 			driver.get("http://pex.jp/search/index");
 			String selector = "input#keyword";
@@ -49,7 +50,7 @@ public class PexMissionSearch extends Mission {
 		}
 		log.info("this.cnt:"+this.cnt+" this.limit:"+this.limit);
 		if (this.cnt == this.limit) {
-			log.info("end");
+			log.info(mName+"]roop end");
 			this.compFlag = true;
 		}
 	}

@@ -22,9 +22,9 @@ public class PexMissionPectan extends Mission {
 
 	@Override
 	public void roopMisstion(WebDriver driver) {
-		log.info("kimasu");
+		String mName = "■ぺく単";
+		log.info(mName+"]roop");
 		for (; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis());) {
-			log.info("forrrrrr");
 			driver.get("http://pex.jp/pekutan/words/current");
 			String selector = "section.question ul";
 //			section.question があったらクリア！　TODO
@@ -41,7 +41,7 @@ public class PexMissionPectan extends Mission {
 				}
 				if (isExistEle(driver, selectVal)) {
 					driver.findElement(By.cssSelector(selectVal)).click();
-					log.info("kimasita");
+					log.info("clicked!!");
 				}
 			}
 			this.cnt++;
@@ -49,7 +49,7 @@ public class PexMissionPectan extends Mission {
 		}
 		log.info("this.cnt:" + this.cnt + " this.limit:" + this.limit);
 		if (this.cnt >= this.limit) {
-			log.info("end");
+			log.info(mName+"]roop end");
 			this.compFlag = true;
 		}
 	}

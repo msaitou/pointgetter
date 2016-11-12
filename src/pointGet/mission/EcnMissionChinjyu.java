@@ -23,9 +23,9 @@ public class EcnMissionChinjyu extends Mission {
 
 	@Override
 	public void roopMisstion(WebDriver driver) {
-		log.info("kimasu");
+		String mName = "■珍獣先生";
+		log.info(mName+"]roop");
 		for (; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis());) {
-			log.info("forrrrrr");
 			driver.get("http://ecnavi.jp/research/chinju_lesson/");
 			if (!isExistEle(driver, "div.button_area.clear_fix")) {
 				endFlag = true;
@@ -44,14 +44,14 @@ public class EcnMissionChinjyu extends Mission {
 			if (isExistEle(driver, selector1)) {
 				String AnsUrl = driver.findElement(By.cssSelector(selector1)).getAttribute("href");
 				driver.get(AnsUrl);
-				log.info("kimasita");
+				log.info("clicked!!");
 			}
 			this.cnt++;
 			this.lastDoneTime = System.currentTimeMillis();
 		}
 		log.info("this.cnt:"+this.cnt+" this.limit:"+this.limit);
 		if (endFlag || this.cnt >= this.limit) {
-			log.info("end");
+			log.info(mName+"]roop end");
 			this.compFlag = true;
 		}
 	}
