@@ -39,6 +39,9 @@ public abstract class PointGet {
 		return Utille.isExistEle(driver, selector, logg);
 	}
 
+	/**
+	 * @return
+	 */
 	public static WebDriver getWebDriver() {
 		return Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 	}

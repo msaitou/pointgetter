@@ -25,6 +25,8 @@ public class Utille {
 
 	/**
 	 * instance webdriver
+	 * @param geckoPath 
+	 * @param ffProfile 
 	 * @return webdriver object
 	 */
 	public static WebDriver getWebDriver(String geckoPath, String ffProfile) {
@@ -149,7 +151,7 @@ public class Utille {
 	 */
 	public static boolean isExistEle(WebElement wEle, String selector, Logger logg) {
 		boolean is = isExistEle(wEle.findElements(By.cssSelector(selector)), logg);
-		logg.debug(selector + ":[" + is + "]");
+		logg.info(selector + ":[" + is + "]");
 		return is;
 	}
 
@@ -161,7 +163,7 @@ public class Utille {
 	 */
 	public static boolean isExistEle(WebDriver driver, String selector, Logger logg) {
 		boolean is = isExistEle(driver.findElements(By.cssSelector(selector)), logg);
-		logg.debug(selector + ":[" + is + "]");
+		logg.info(selector + ":[" + is + "]");
 		return is;
 	}
 

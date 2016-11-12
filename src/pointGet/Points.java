@@ -21,12 +21,12 @@ public class Points extends PointGet {
 			Define.PSITE_CODE_GEN,
 			Define.PSITE_CODE_MOP
 	};
-	
+
 	protected static void init() {
 		PointGet.init();
 		_setLogger("log4jPoints.properties", Points.class);
 	}
-	
+
 	/**
 	 * entry point
 	 * @param args
@@ -144,7 +144,7 @@ public class Points extends PointGet {
 				logg.warn("missed site:" + siteCode);
 			}
 		}
-		logg.info(sb.toString());
+		logg.warn(sb.toString());
 		driver.quit();
 	}
 }

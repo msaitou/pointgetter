@@ -26,9 +26,11 @@ public class WebClicker extends PointGet {
 
 	private static String[] wordList = null;
 
+	private static boolean secondFlg = false;
+
 	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
 
-	protected static void init() {
+	protected static void init(String[] args) {
 		PointGet.init();
 		_setLogger("log4jweb.properties", WebClicker.class);
 		// 設定ファイルをローカル変数に展開する
@@ -37,28 +39,36 @@ public class WebClicker extends PointGet {
 			return;
 		}
 		wordList = loadProps.getProperty("wordList").split(",");
+		if (args.length > 0) {
+			String strFlg = args[0];
+			if (strFlg.equals("1")) {
+				secondFlg = true;
+			}
+		}
 	}
-	
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		init();
+		init(args);
 		logg.info("Start!!");
 		// ecサイト
 		goToClickSite(Define.PSITE_CODE_ECN);
 		// pex
 		goToClickSite(Define.PSITE_CODE_PEX);
-		// GetMoney 
-		goToClickSite(Define.PSITE_CODE_GMY);
-		// mop
-		goToClickSite(Define.PSITE_CODE_MOP);
 		// げん玉
 		goToClickSite(Define.PSITE_CODE_GEN);
-		//		// OSA
-		//		goToClickSite(Define.PSITE_CODE_OSA);
-		// RIN
-		goToClickSite(Define.PSITE_CODE_RIN);
+		if (!secondFlg) {
+			// GetMoney 
+			goToClickSite(Define.PSITE_CODE_GMY);
+			// mop
+			goToClickSite(Define.PSITE_CODE_MOP);
+			// RIN
+			goToClickSite(Define.PSITE_CODE_RIN);
+		}
+		//				// OSA
+		//				goToClickSite(Define.PSITE_CODE_OSA);
 
 		if (missionList.size() > 0) {
 			logg.info("roopStart!!");
@@ -202,7 +212,7 @@ public class WebClicker extends PointGet {
 							selectId += "4']";
 						}
 						// 8kai roop
-						String selector2 = "input.[name='submit']";
+						String selector2 = "input[name='submit']";
 						if (isExistEle(driver, selectId)) {
 							driver.findElement(By.cssSelector(selectId)).click();
 							Utille.sleep(3000);
@@ -211,7 +221,7 @@ public class WebClicker extends PointGet {
 						}
 					}
 				}
-				selector = "input.[name='submit']";
+				selector = "input[name='submit']";
 				if (isExistEle(driver, selector)) {
 					driver.findElement(By.cssSelector(selector)).click();
 					Utille.sleep(3000);
@@ -224,16 +234,16 @@ public class WebClicker extends PointGet {
 					}
 				}
 			}
-			String selector2 = "[alt='Check']";
-			int size = driver.findElements(By.cssSelector(selector)).size();
-			for (int i = 0; i < size; i++) {
-				// document.querySelectorAll('[alt="Check"] ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox img')[0];
-				WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-				if (isExistEle(e, selector2)) {
-					Utille.sleep(2000);
-				}
-			}
-			selector = "";
+			//			String selector2 = "[alt='Check']";
+			//			int size = driver.findElements(By.cssSelector(selector)).size();
+			//			for (int i = 0; i < size; i++) {
+			//				// document.querySelectorAll('[alt="Check"] ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox img')[0];
+			//				WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
+			//				if (isExistEle(e, selector2)) {
+			//					Utille.sleep(2000);
+			//				}
+			//			}
+			//			selector = "";
 		}
 	}
 
@@ -269,7 +279,6 @@ public class WebClicker extends PointGet {
 				val alert = driver.switchTo().alert();
 				alert.accept();
 			}
-
 			driver.get("http://pex.jp/point_quiz");
 			// ■ポイントクイズ
 			int ran1 = Utille.getIntRand(4);
@@ -279,7 +288,6 @@ public class WebClicker extends PointGet {
 				val alert2 = driver.switchTo().alert();
 				alert2.accept();
 			}
-
 			// ■オリチラ
 			driver.get("http://pex.jp/chirashi");
 			selector = "section.list li figure>a";
@@ -289,8 +297,7 @@ public class WebClicker extends PointGet {
 			}
 		}
 		// 以下1日回
-		if (true) {
-
+		if (!secondFlg) {
 			// ■ポイント検索
 			Mission PexMissionSearch = new PexMissionSearch(logg, wordList);
 			PexMissionSearch.roopMisstion(driver);
@@ -300,9 +307,10 @@ public class WebClicker extends PointGet {
 			PexMissionPectan.roopMisstion(driver);
 			missionList.add(PexMissionPectan);
 
-			// ■毎日ニュース　7:00～
+			// ■毎日ニュース　午前7：00～翌日午前6：59
 			int pexNewsNum = 5;
-			for (int i = 0; i < pexNewsNum; i++) {
+			int pexNewsClick = 0;
+			for (int i = 0; pexNewsClick < pexNewsNum; i++) {
 				driver.get("http://pex.jp/point_news");
 				String selector = "ul#news-list>li>figure>a";
 				if (!isExistEle(driver, selector)) {
@@ -331,25 +339,29 @@ public class WebClicker extends PointGet {
 				if (isExistEle(driver, selectId)) {
 					driver.findElement(By.cssSelector(selectId)).click();
 					Utille.sleep(3000);
+					pexNewsClick++;
 				}
 				else if (isExistEle(driver, "p.got_maxpoints")) {
 					break;
 				}
 			}
 
-			// ■クリックポイント
+			String mName = "■クリックポイント";
 			driver.get("http://pex.jp/point_actions#clickpoint");
 			String selector = "div.clickpoint_innner li>a>p.title";
 			if (isExistEle(driver, selector)) {
-				int size = driver.findElements(By.cssSelector(selector)).size();
-				for (int i = 0; i < size; i++) {
-					if (isExistEle(driver, selector)) {
-						//						String AnsUrl = driver.findElement(By.cssSelector(selector)).getAttribute("href");
-						//						driver.get(AnsUrl);
-						driver.findElements(By.cssSelector(selector)).get(i).click();
-						Utille.sleep(2000);
-						driver.get("http://pex.jp/point_actions#clickpoint");
+				if (!isExistEle(driver, "p.get_massage")) { // 獲得済みか
+					int size = driver.findElements(By.cssSelector(selector)).size();
+					for (int i = 0; i < size; i++) {
+						if (isExistEle(driver, selector)) {
+							driver.findElements(By.cssSelector(selector)).get(i).click();
+							Utille.sleep(2000);
+							driver.get("http://pex.jp/point_actions#clickpoint");
+						}
 					}
+				}
+				else {
+					logg.warn(mName+"]獲得済み");
 				}
 			}
 		}
@@ -360,7 +372,6 @@ public class WebClicker extends PointGet {
 	}
 
 	private static void goToClickECN(WebDriver driver) {
-
 		// 1日2回
 		if (true) {
 			// ■チラシ
@@ -371,7 +382,7 @@ public class WebClicker extends PointGet {
 			}
 		}
 		// 以下1日回
-		if (true) {
+		if (!secondFlg) {
 			// ■web検索
 			// propertiesファイルから単語リストを抽出して、ランダムで5つ（数は指定可能）
 			String[] wordSearchList = Utille.getWordSearchList(wordList, 5);
@@ -442,9 +453,9 @@ public class WebClicker extends PointGet {
 			}
 
 			// ■毎日ニュース
-			int ecnNewsClickCnt = 0;
 			int ecnNewsClickNorma = 5;
-			for (int i = 0; ecnNewsClickCnt != ecnNewsClickNorma; i++) {
+			int ecnNewsClick = 0;
+			for (int i = 0; ecnNewsClick < ecnNewsClickNorma; i++) {
 				driver.get("http://ecnavi.jp/mainichi_news/");
 				if (!isExistEle(driver, "div.article_list li>a")) {
 					break;
@@ -468,8 +479,8 @@ public class WebClicker extends PointGet {
 				}
 				if (isExistEle(driver, selector1)) {
 					driver.findElement(By.cssSelector(selector1)).click();
-					ecnNewsClickCnt++;
 					Utille.sleep(3000);
+					ecnNewsClick++;
 				}
 				else if (isExistEle(driver, "p.got_maxpoints")) {
 					break;
@@ -521,6 +532,7 @@ public class WebClicker extends PointGet {
 	private static void goToClickGEN(WebDriver driver) {
 
 		if (true) {
+			driver.get("http://www.gendama.jp/forest/");
 			String selector = "a img[src$='star.gif']";
 			if (isExistEle(driver, selector)) {
 				driver.findElement(By.cssSelector(selector)).click();
