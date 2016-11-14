@@ -29,6 +29,8 @@ public class WebClicker extends PointGet {
 
 	private static boolean secondFlg = false;
 
+	private static boolean thirdFlg = false;
+
 	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
 
 	protected static void init(String[] args) {
@@ -45,6 +47,9 @@ public class WebClicker extends PointGet {
 			if (strFlg.equals("1")) {
 				secondFlg = true;
 			}
+			else if (strFlg.equals("2")) {
+				thirdFlg = true;
+			}
 		}
 	}
 
@@ -54,22 +59,25 @@ public class WebClicker extends PointGet {
 	public static void main(String[] args) {
 		init(args);
 		logg.info("Start!!");
-		// ecサイト
-		goToClickSite(Define.PSITE_CODE_ECN);
-		// pex
-		goToClickSite(Define.PSITE_CODE_PEX);
-		// げん玉
-		goToClickSite(Define.PSITE_CODE_GEN);
-		if (!secondFlg) {
+		if (!thirdFlg) {
+			// ecサイト
+			goToClickSite(Define.PSITE_CODE_ECN);
+			// pex
+			goToClickSite(Define.PSITE_CODE_PEX);
+			// げん玉
+			goToClickSite(Define.PSITE_CODE_GEN);
+		}
+		if (!secondFlg && !thirdFlg) {
 			// GetMoney
 			goToClickSite(Define.PSITE_CODE_GMY);
-			// mop
-			goToClickSite(Define.PSITE_CODE_MOP);
 			// RIN
 			goToClickSite(Define.PSITE_CODE_RIN);
 		}
-		// // OSA
-		// goToClickSite(Define.PSITE_CODE_OSA);
+		
+		// OSA
+		goToClickSite(Define.PSITE_CODE_OSA);
+		// mop
+		goToClickSite(Define.PSITE_CODE_MOP);
 
 		if (missionList.size() > 0) {
 			logg.info("roopStart!!");
@@ -102,7 +110,9 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickSite(String siteType) {
 		WebDriver driver = getWebDriver();
-		String mName = "■■missionSite[" + siteType + "]START■■";
+		logg.info("■■■■");
+		logg.info("■■missionSite[" + siteType + "]START■■");
+		logg.info("■■■■");
 		switch (siteType) {
 		case Define.PSITE_CODE_GMY:
 			goToClickGMY(driver);
@@ -126,7 +136,9 @@ public class WebClicker extends PointGet {
 			goToClickRIN(driver);
 			break;
 		}
-		mName = "■■missionSite[" + siteType + "]END■■";
+		logg.info("■■■■");
+		logg.info("■■missionSite[" + siteType + "]END■■");
+		logg.info("■■■■");
 		driver.quit();
 	}
 
@@ -136,110 +148,140 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickRIN(WebDriver driver) {
-		driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml");
-		String selector = "li#loginId>input#u";
-		// ログイン画面であれば
-		if (isExistEle(driver, selector)) {
-			if (!pGetProps.containsKey("rin") || !pGetProps.get("rin").containsKey("loginid")
-					|| !pGetProps.get("rin").containsKey("loginpass")) {
-				return;
+		if (!secondFlg && !thirdFlg) { // 1日1回
+			driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml");
+			String selector = "li#loginId>input#u";
+			// ログイン画面であれば
+			if (isExistEle(driver, selector)) {
+				if (!pGetProps.containsKey("rin") || !pGetProps.get("rin").containsKey("loginid")
+						|| !pGetProps.get("rin").containsKey("loginpass")) {
+					return;
+				}
+				WebElement ele = driver.findElement(By.cssSelector(selector));
+				ele.clear();
+				ele.sendKeys(pGetProps.get("rin").get("loginid"));
+				selector = "li#loginPw>input#p";
+				ele = driver.findElement(By.cssSelector(selector));
+				ele.clear();
+				ele.sendKeys(pGetProps.get("rin").get("loginpass"));
+				driver.findElement(By.cssSelector("input#loginButton")).click();
+				Utille.sleep(5000);
 			}
-			WebElement ele = driver.findElement(By.cssSelector(selector));
-			ele.clear();
-			ele.sendKeys(pGetProps.get("rin").get("loginid"));
-			selector = "li#loginPw>input#p";
-			ele = driver.findElement(By.cssSelector(selector));
-			ele.clear();
-			ele.sendKeys(pGetProps.get("rin").get("loginpass"));
-			driver.findElement(By.cssSelector("input#loginButton")).click();
+			driver.get(
+					"https://www.rakuten-card.co.jp/e-navi/members/point/click-point/index.xhtml?l-id=enavi_all_submenu_clickpoint");
 			Utille.sleep(5000);
-		}
-		driver.get(
-				"https://www.rakuten-card.co.jp/e-navi/members/point/click-point/index.xhtml?l-id=enavi_all_submenu_clickpoint");
-		Utille.sleep(5000);
-		selector = "div.topArea.clearfix";
-		if (isExistEle(driver, selector)) {
-			String selector2 = "[alt='Check']";
-			int size = driver.findElements(By.cssSelector(selector)).size();
-			for (int i = 0; i < size; i++) {
-				// document.querySelectorAll('[alt="Check"]
-				// ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox
-				// img')[0];
-				WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-				if (isExistEle(e, selector2)) {
-					e.findElement(By.cssSelector("a>img")).click();
-					Utille.sleep(2000);
+			selector = "div.topArea.clearfix";
+			if (isExistEle(driver, selector)) {
+				String selector2 = "[alt='Check']";
+				int size = driver.findElements(By.cssSelector(selector)).size();
+				for (int i = 0; i < size; i++) {
+					// document.querySelectorAll('[alt="Check"]
+					// ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox
+					// img')[0];
+					WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
+					if (isExistEle(e, selector2)) {
+						e.findElement(By.cssSelector("a>img")).click();
+						Utille.sleep(2000);
+					}
 				}
 			}
-		}
-		selector = "span#middleArea>ul>li";
-		if (isExistEle(driver, selector)) {
-			String selector2 = "[alt='Check']";
-			int size = driver.findElements(By.cssSelector(selector)).size();
-			for (int i = 0; i < size; i++) {
-				// document.querySelectorAll('[alt="Check"]
-				// ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox
-				// img')[0];
-				WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-				if (isExistEle(e, selector2)) {
-					e.findElement(By.cssSelector("a>img")).click();
-					Utille.sleep(2000);
+			selector = "span#middleArea>ul>li";
+			if (isExistEle(driver, selector)) {
+				String selector2 = "[alt='Check']";
+				int size = driver.findElements(By.cssSelector(selector)).size();
+				for (int i = 0; i < size; i++) {
+					// document.querySelectorAll('[alt="Check"]
+					// ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox
+					// img')[0];
+					WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
+					if (isExistEle(e, selector2)) {
+						e.findElement(By.cssSelector("a>img")).click();
+						Utille.sleep(2000);
+					}
 				}
 			}
 		}
 	}
 
-	// div.game_btn>div.icon>img[alt='モッピークイズ']
+	private static void checkOverlay(WebDriver driver, String selector) {
+		if (isExistEle(driver, selector)) {
+			driver.findElement(By.cssSelector(selector)).click(); // 広告消す
+			Utille.sleep(2000);
+		}
+	}
 
 	private static void goToClickOSA(WebDriver driver) {
-		// ui-button ui-button-start
-		String mName = "■daily quiz";
+		String mName = "■daily quiz"; //  0時、8時、16時開催
 		String selector = "li.long img[alt='デイリークイズ']";
 		driver.get("http://osaifu.com/contents/coinland/");
 		Utille.sleep(2000);
 		if (isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click();
-			selector = "input[name='submit']";
+			logg.warn(mName + "]" + selector + " is EXIST");
+			driver.findElement(By.cssSelector(selector)).click(); // 遷移
 			Utille.sleep(2000);
+			checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
+			selector = "input[name='submit']";
+			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {
+				logg.warn(mName + "]" + selector + " is EXIST");
 				driver.findElement(By.cssSelector(selector)).click();
 				for (int i = 0; i < 8; i++) {
+					Utille.sleep(4000);
 					selector = "ul.ui-item-body";
 					if (isExistEle(driver, selector)) {
+						logg.warn(mName + "]" + selector + " is EXIST");
 						int ran = Utille.getIntRand(4);
 						String selectId = "label[for='radio-";
 						if (ran == 0) {
 							selectId += "1']";
-						} else if (ran == 1) {
+						}
+						else if (ran == 1) {
 							selectId += "2']";
-						} else if (ran == 2) {
+						}
+						else if (ran == 2) {
 							selectId += "3']";
-						} else {
+						}
+						else {
 							selectId += "4']";
 						}
 						// 8kai roop
 						String selector2 = "input[name='submit']";
 						if (isExistEle(driver, selectId)) {
-							driver.findElement(By.cssSelector(selectId)).click();
-							Utille.sleep(3000);
-							driver.findElement(By.cssSelector(selector2)).click();
-							Utille.sleep(3000);
+							logg.warn(mName + "]" + selectId + " is EXIST");
+							driver.findElement(By.cssSelector(selectId)).click(); // 選択
+							Utille.sleep(2000);
+							driver.findElement(By.cssSelector(selector2)).click(); // 遷移
+							Utille.sleep(4000);
+							checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
+							if (isExistEle(driver, selector2)) {
+								logg.warn(mName + "]" + selector2 + " is EXIST");
+								driver.findElement(By.cssSelector(selector2)).click(); // 遷移
+								Utille.sleep(3000);
+								checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
+							}
 						}
 					}
 				}
+				logg.warn(mName + "]kuria?");
 				selector = "input[name='submit']";
 				if (isExistEle(driver, selector)) {
 					driver.findElement(By.cssSelector(selector)).click();
 					Utille.sleep(3000);
-					selector = "$('a.ui-button').attr('href')";
-					if (isExistEle(driver, selector)) {
-						driver.findElement(By.cssSelector(selector)).click();
-						String url = driver.findElement(By.cssSelector(selector)).getAttribute("href");
-						driver.get(url);
-						Utille.sleep(3000);
-					}
 				}
 			}
+			//			checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
+			//			selector = "a.ui-button.ui-button-close";
+			//			if (isExistEle(driver, selector)) {
+			//				String url = driver.findElement(By.cssSelector(selector)).getAttribute("href");
+			//				driver.get(url);
+			//				Utille.sleep(3000);
+			//			}
+			//			// 閉じるボタン（既にゲット済み）
+			//			if (isExistEle(driver, "a.ui-button.ui-button-close")) {
+			//				driver.findElement(By.cssSelector("a.ui-button.ui-button-close")).click();
+			//				Utille.sleep(2000);
+			//			}
+
 			// String selector2 = "[alt='Check']";
 			// int size = driver.findElements(By.cssSelector(selector)).size();
 			// for (int i = 0; i < size; i++) {
@@ -261,7 +303,7 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickMOP(WebDriver driver) {
-		if (true) {
+		if (!secondFlg && !thirdFlg) { // 1日1回
 			// クリックで貯める
 			driver.get("http://pc.moppy.jp/cc/");
 			String selector = "p.click>a.cc-btn";
@@ -273,11 +315,124 @@ public class WebClicker extends PointGet {
 				}
 			}
 		}
+		if (true) {
+			String mName = "モッピークイズ"; //  0時、8時、16時開催
+			driver.get("http://pc.moppy.jp/gamecontents/");
+			String selector = "div.game_btn>div.icon>img[alt='モッピークイズ']";
+			if (isExistEle(driver, selector)) {
+				logg.warn(mName + "]" + selector + " is EXIST");
+				driver.findElement(By.cssSelector(selector)).click(); // 遷移
+				Utille.sleep(2000);
+				String wid = driver.getWindowHandle();
+				java.util.Set<String> widSet = driver.getWindowHandles();
+				widSet.remove(wid);
+				driver.switchTo().window(widSet.iterator().next());
+				checkOverlay(driver, "div.overlay-popup a.button-close");
+				selector = "form>input[name='submit']";
+				if (isExistEle(driver, selector)) {
+					logg.warn(mName + "]" + selector + " is EXIST");
+					driver.findElement(By.cssSelector(selector)).click();
+					for (int i = 0; i < 8; i++) {
+						Utille.sleep(4000);
+						selector = "ul.ui-item-body";
+						if (isExistEle(driver, selector)) {
+							logg.warn(mName + "]" + selector + " is EXIST");
+							int ran = Utille.getIntRand(4);
+							String selectId = "label[for='radio-";
+							if (ran == 0) {
+								selectId += "1']";
+							}
+							else if (ran == 1) {
+								selectId += "2']";
+							}
+							else if (ran == 2) {
+								selectId += "3']";
+							}
+							else {
+								selectId += "4']";
+							}
+							// 8kai roop
+							String selector2 = "input[name='submit']";
+							if (isExistEle(driver, selectId)) {
+								logg.warn(mName + "]" + selectId + " is EXIST");
+								driver.findElement(By.cssSelector(selectId)).click(); // 選択
+								Utille.sleep(2000);
+								driver.findElement(By.cssSelector(selector2)).click(); // 遷移
+								Utille.sleep(4000);
+								checkOverlay(driver, "div.overlay-popup a.button-close");
+								if (isExistEle(driver, selector2)) {
+									logg.warn(mName + "]" + selector2 + " is EXIST");
+									driver.findElement(By.cssSelector(selector2)).click(); // 遷移
+									Utille.sleep(3000);
+									checkOverlay(driver, "div.overlay-popup a.button-close");
+								}
+							}
+						}
+					}
+					logg.warn(mName + "]kuria?");
+					selector = "input[name='submit']";
+					if (isExistEle(driver, selector)) {
+						driver.findElement(By.cssSelector(selector)).click();
+						Utille.sleep(3000);
+					}
+				}
+				//				checkOverlay(driver, "div.overlay-popup a.button-close");
+				//				selector = "a.ui-button.ui-button-close";
+				//				logg.warn(mName + "]来たよ" + " is EXIST");
+				////				if (isExistEle(driver, selector)) {
+				////					String url = driver.findElement(By.cssSelector(selector)).getAttribute("href");
+				////					driver.get(url);
+				////					Utille.sleep(3000);
+				////				}
+				//				// 閉じるボタン（既にゲット済み）
+				//				if (isExistEle(driver, "a.ui-button.ui-button-close")) {
+				//					driver.findElement(By.cssSelector("a.ui-button.ui-button-close")).click();
+				//					Utille.sleep(2000);
+				//				}
+			}
+
+			// 調整中　TODO
+//			mName = "トキメキ調査隊"; //  4時更新
+//			for (int j = 0; j < 3; j++) {
+//				driver.get("http://pc.moppy.jp/gamecontents/");
+//				selector = "div.game_btn>div.icon>img[alt='トキメキ調査隊']";
+//				if (isExistEle(driver, selector)) {
+//					driver.findElement(By.cssSelector(selector)).click(); // 遷移
+//					Utille.sleep(4000);
+//					String wid = driver.getWindowHandle();
+//					java.util.Set<String> widSet = driver.getWindowHandles();
+//					widSet.remove(wid);
+//					driver.switchTo().window(widSet.iterator().next());
+//
+//					checkOverlay(driver, "div#popup a.modal_close");
+//					selector = "div.thumbnail span.icon-noentry";
+//					if (isExistEle(driver, selector)) {
+//						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+//						eleList.get(0).click(); // 遷移
+//						Utille.sleep(3000);
+//						selector = "div.thumb-start div.btn>a";
+//						if (isExistEle(driver, selector)) {
+//							driver.findElement(By.cssSelector(selector)).click(); // 遷移
+//							Utille.sleep(4000);
+//							for (int i = 0; i < 10; i++) {
+//								int ran = Utille.getIntRand(2);
+//								selector = "span.icon-arrow";
+//								if (isExistEle(driver, selector)) {
+//									checkOverlay(driver, "div#popup a.modal_close");
+//									driver.findElements(By.cssSelector(selector)).get(ran).click();
+//									Utille.sleep(3000);
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+		}
 	}
 
 	private static void goToClickPEX(WebDriver driver) {
 		// 1日2回
-		if (true) {
+		if (!thirdFlg) {
 			String mName = "■みんなのアンサー";
 			driver.get("http://pex.jp/minna_no_answer/questions/current");
 			// ランダムで1,2を選ぶ
@@ -287,7 +442,8 @@ public class WebClicker extends PointGet {
 				driver.findElements(By.cssSelector(selector)).get(ran).click();
 				val alert = driver.switchTo().alert();
 				alert.accept();
-			} else {
+			}
+			else {
 				logg.warn(mName + "]獲得済み");
 			}
 
@@ -299,7 +455,8 @@ public class WebClicker extends PointGet {
 				driver.findElements(By.cssSelector(selector)).get(ran1).click();
 				val alert2 = driver.switchTo().alert();
 				alert2.accept();
-			} else {
+			}
+			else {
 				logg.warn(mName + "]獲得済み");
 			}
 			mName = "■オリチラ";
@@ -308,12 +465,13 @@ public class WebClicker extends PointGet {
 			if (isExistEle(driver, selector)) {
 				driver.findElement(By.cssSelector(selector)).click();
 				Utille.sleep(3000);
-			} else {
+			}
+			else {
 				logg.warn(mName + "]獲得済み");
 			}
 		}
 		// 以下1日回
-		if (!secondFlg) {
+		if (!secondFlg && !thirdFlg) {
 			// ■ポイント検索
 			Mission PexMissionSearch = new PexMissionSearch(logg, wordList);
 			PexMissionSearch.roopMisstion(driver);
@@ -342,18 +500,22 @@ public class WebClicker extends PointGet {
 				String selectId = "table.you_say input";
 				if (ran == 0) {
 					selectId += "#submit-like";
-				} else if (ran == 1) {
+				}
+				else if (ran == 1) {
 					selectId += "#submit-angry";
-				} else if (ran == 2) {
+				}
+				else if (ran == 2) {
 					selectId += "#submit-sad";
-				} else {
+				}
+				else {
 					selectId += "#submit-cool";
 				}
 				if (isExistEle(driver, selectId)) {
 					driver.findElement(By.cssSelector(selectId)).click();
 					Utille.sleep(3000);
 					pexNewsClick++;
-				} else if (isExistEle(driver, "p.got_maxpoints")) {
+				}
+				else if (isExistEle(driver, "p.got_maxpoints")) {
 					break;
 				}
 			}
@@ -371,7 +533,8 @@ public class WebClicker extends PointGet {
 							driver.get("http://pex.jp/point_actions#clickpoint");
 						}
 					}
-				} else {
+				}
+				else {
 					logg.warn(mName + "]獲得済み");
 				}
 			}
@@ -384,18 +547,19 @@ public class WebClicker extends PointGet {
 
 	private static void goToClickECN(WebDriver driver) {
 		// 1日2回
-		if (true) {
+		if (!thirdFlg) {
 			String mName = "■チラシ";
 			String selector = "a.chirashi_link";
 			driver.get("http://ecnavi.jp/contents/chirashi/");
 			if (isExistEle(driver, selector)) {
 				driver.findElement(By.cssSelector(selector)).click();
-			} else {
+			}
+			else {
 				logg.warn(mName + "]獲得済み");
 			}
 		}
 		// 以下1日回
-		if (!secondFlg) {
+		if (!secondFlg && !thirdFlg) {
 			String mName = "■web検索";
 			// propertiesファイルから単語リストを抽出して、ランダムで5つ（数は指定可能）
 			String[] wordSearchList = Utille.getWordSearchList(wordList, 5);
@@ -460,12 +624,14 @@ public class WebClicker extends PointGet {
 			String selector = "button";
 			if (ran1 == 1) {
 				selector += "#btnA";
-			} else {
+			}
+			else {
 				selector += "#btnB";
 			}
 			if (isExistEle(driver, selector)) {
 				driver.findElement(By.cssSelector(selector)).click();
-			} else {
+			}
+			else {
 				logg.warn(mName + "]獲得済み");
 			}
 
@@ -484,18 +650,22 @@ public class WebClicker extends PointGet {
 				String selector1 = "div.feeling_buttons button";
 				if (ran == 0) {
 					selector1 += ".btn_feeling_good";
-				} else if (ran == 1) {
+				}
+				else if (ran == 1) {
 					selector1 += ".btn_feeling_bad";
-				} else if (ran == 2) {
+				}
+				else if (ran == 2) {
 					selector1 += ".btn_feeling_sad";
-				} else if (ran == 3) {
+				}
+				else if (ran == 3) {
 					selector1 += ".btn_feeling_glad";
 				}
 				if (isExistEle(driver, selector1)) {
 					driver.findElement(By.cssSelector(selector1)).click();
 					Utille.sleep(3000);
 					ecnNewsClick++;
-				} else if (isExistEle(driver, "p.got_maxpoints")) {
+				}
+				else if (isExistEle(driver, "p.got_maxpoints")) {
 					logg.warn(mName + "]獲得済み");
 					break;
 				}
@@ -509,8 +679,7 @@ public class WebClicker extends PointGet {
 	}
 
 	private static void goToClickGMY(WebDriver driver) {
-
-		if (true) {
+		if (!secondFlg && !thirdFlg) {
 			String mName = "■clipoバナーtop";
 			driver.get("http://dietnavi.com/pc/");
 			String selector = "a span.clickpt";
@@ -545,18 +714,19 @@ public class WebClicker extends PointGet {
 
 	private static void goToClickGEN(WebDriver driver) {
 
-		if (true) {
+		if (!thirdFlg) {
 			String mName = "■ポイントの森";
 			driver.get("http://www.gendama.jp/forest/");
 			String selector = "a img[src$='star.gif']";
 			if (isExistEle(driver, selector)) {
 				driver.findElement(By.cssSelector(selector)).click();
-			} else {
+			}
+			else {
 				logg.warn(mName + "]獲得済み");
 			}
 		}
 
-		if (true) {
+		if (!secondFlg && !thirdFlg) {
 			String mName = "■ポイントの森";
 			driver.get("http://www.gendama.jp/forest/");
 			String currentWindowId = driver.getWindowHandle();
