@@ -73,7 +73,7 @@ public class WebClicker extends PointGet {
 			// RIN
 			goToClickSite(Define.PSITE_CODE_RIN);
 		}
-		
+
 		// OSA
 		goToClickSite(Define.PSITE_CODE_OSA);
 		// mop
@@ -314,8 +314,54 @@ public class WebClicker extends PointGet {
 					Utille.sleep(2000);
 				}
 			}
+			String mName = "モッピークイズ";
+			mName = "トキメキ調査隊"; //  4時更新
+			for (int j = 0; j < 3; j++) {
+				driver.get("http://pc.moppy.jp/gamecontents/");
+				selector = "div.game_btn>div.icon>img[alt='トキメキ調査隊']";
+				if (isExistEle(driver, selector)) {
+					driver.findElement(By.cssSelector(selector)).click(); // 遷移
+					Utille.sleep(4000);
+					String wid = driver.getWindowHandle();
+					java.util.Set<String> widSet = driver.getWindowHandles();
+					String new_window_id = null;
+					for (String id : widSet) {
+						if (!id.equals(wid)) {
+							//現在のウインドウIDと違っていたら格納  
+							//最後に格納されたIDが一番新しく開かれたウインドウと判定  
+							new_window_id = id;
+						}
+					}
+					driver.close();
+					//最後に格納したウインドウIDにスイッチ  
+					driver.switchTo().window(new_window_id);
+					checkOverlay(driver, "div#popup a.modal_close");
+					selector = "div.thumbnail span.icon-noentry";
+					if (isExistEle(driver, selector)) {
+						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+						eleList.get(0).click(); // 遷移
+						Utille.sleep(3000);
+						selector = "div.thumb-start div.btn>a";
+						if (isExistEle(driver, selector)) {
+							driver.findElement(By.cssSelector(selector)).click(); // 遷移
+							Utille.sleep(4000);
+							for (int i = 0; i < 10; i++) {
+								int ran = Utille.getIntRand(2);
+								selector = "span.icon-arrow";
+								if (isExistEle(driver, selector)) {
+									checkOverlay(driver, "div#popup a.modal_close");
+									driver.findElements(By.cssSelector(selector)).get(ran).click();
+									Utille.sleep(3000);
+								}
+							}
+						}
+					}
+				}
+			}
 		}
+
 		if (true) {
+			//		if (false) {
 			String mName = "モッピークイズ"; //  0時、8時、16時開催
 			driver.get("http://pc.moppy.jp/gamecontents/");
 			String selector = "div.game_btn>div.icon>img[alt='モッピークイズ']";
@@ -390,43 +436,6 @@ public class WebClicker extends PointGet {
 				//					Utille.sleep(2000);
 				//				}
 			}
-
-			// 調整中　TODO
-//			mName = "トキメキ調査隊"; //  4時更新
-//			for (int j = 0; j < 3; j++) {
-//				driver.get("http://pc.moppy.jp/gamecontents/");
-//				selector = "div.game_btn>div.icon>img[alt='トキメキ調査隊']";
-//				if (isExistEle(driver, selector)) {
-//					driver.findElement(By.cssSelector(selector)).click(); // 遷移
-//					Utille.sleep(4000);
-//					String wid = driver.getWindowHandle();
-//					java.util.Set<String> widSet = driver.getWindowHandles();
-//					widSet.remove(wid);
-//					driver.switchTo().window(widSet.iterator().next());
-//
-//					checkOverlay(driver, "div#popup a.modal_close");
-//					selector = "div.thumbnail span.icon-noentry";
-//					if (isExistEle(driver, selector)) {
-//						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-//						eleList.get(0).click(); // 遷移
-//						Utille.sleep(3000);
-//						selector = "div.thumb-start div.btn>a";
-//						if (isExistEle(driver, selector)) {
-//							driver.findElement(By.cssSelector(selector)).click(); // 遷移
-//							Utille.sleep(4000);
-//							for (int i = 0; i < 10; i++) {
-//								int ran = Utille.getIntRand(2);
-//								selector = "span.icon-arrow";
-//								if (isExistEle(driver, selector)) {
-//									checkOverlay(driver, "div#popup a.modal_close");
-//									driver.findElements(By.cssSelector(selector)).get(ran).click();
-//									Utille.sleep(3000);
-//								}
-//							}
-//						}
-//					}
-//				}
-//			}
 		}
 	}
 
@@ -611,8 +620,8 @@ public class WebClicker extends PointGet {
 				String selector = "div#doron a.item";
 				if (isExistEle(driver, selector)) {
 					driver.findElement(By.cssSelector(selector)).click();
-					val alert = driver.switchTo().alert();
-					alert.accept();
+					//					val alert = driver.switchTo().alert();
+					//					alert.accept();
 					// alert.accept();
 				}
 			}
