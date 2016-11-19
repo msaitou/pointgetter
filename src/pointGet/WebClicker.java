@@ -31,6 +31,8 @@ public class WebClicker extends PointGet {
 
 	private static boolean thirdFlg = false;
 
+	private static String mName = "";
+
 	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
 
 	protected static void init(String[] args) {
@@ -113,28 +115,43 @@ public class WebClicker extends PointGet {
 		logg.info("■■■■");
 		logg.info("■■missionSite[" + siteType + "]START■■");
 		logg.info("■■■■");
-		switch (siteType) {
-		case Define.PSITE_CODE_GMY:
-			goToClickGMY(driver);
-			break;
-		case Define.PSITE_CODE_GEN:
-			goToClickGEN(driver);
-			break;
-		case Define.PSITE_CODE_ECN:
-			goToClickECN(driver);
-			break;
-		case Define.PSITE_CODE_MOP:
-			goToClickMOP(driver);
-			break;
-		case Define.PSITE_CODE_PEX:
-			goToClickPEX(driver);
-			break;
-		case Define.PSITE_CODE_OSA:
-			goToClickOSA(driver);
-			break;
-		case Define.PSITE_CODE_RIN:
-			goToClickRIN(driver);
-			break;
+		try {
+			switch (siteType) {
+			case Define.PSITE_CODE_GMY:
+				goToClickGMY(driver);
+				break;
+			case Define.PSITE_CODE_GEN:
+				goToClickGEN(driver);
+				break;
+			case Define.PSITE_CODE_ECN:
+				goToClickECN(driver);
+				break;
+			case Define.PSITE_CODE_MOP:
+				goToClickMOP(driver);
+				break;
+			case Define.PSITE_CODE_PEX:
+				goToClickPEX(driver);
+				break;
+			case Define.PSITE_CODE_OSA:
+				goToClickOSA(driver);
+				break;
+			case Define.PSITE_CODE_RIN:
+				goToClickRIN(driver);
+				break;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			logg.error("-Exception-------------------");
+			logg.error(e.getMessage());
+			logg.error(e.getLocalizedMessage());
+			logg.error(e.getStackTrace().toString());
+			logg.error("-Exception-------------------");
+		} catch (Throwable e) {
+			e.printStackTrace();
+			logg.error("-Throwable-------------------");
+			logg.error(e.getMessage());
+			logg.error(e.getStackTrace());
+			logg.error("-Throwable-------------------");
 		}
 		logg.info("■■■■");
 		logg.info("■■missionSite[" + siteType + "]END■■");
@@ -440,13 +457,14 @@ public class WebClicker extends PointGet {
 	}
 
 	private static void goToClickPEX(WebDriver driver) {
+		String selector = "";
 		// 1日2回
 		if (!thirdFlg) {
 			String mName = "■みんなのアンサー";
 			driver.get("http://pex.jp/minna_no_answer/questions/current");
 			// ランダムで1,2を選ぶ
 			int ran = Utille.getIntRand(2);
-			String selector = "section.question_area input[type='submit']";
+			selector = "section.question_area input[type='submit']";
 			if (isExistEle(driver, selector)) {
 				driver.findElements(By.cssSelector(selector)).get(ran).click();
 				val alert = driver.switchTo().alert();
@@ -481,6 +499,17 @@ public class WebClicker extends PointGet {
 		}
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
+			mName = "■rakutenバナー";
+			driver.get("http://pex.jp");
+			selector = "div>div>div>a>img[src*='image.infoseek.rakuten.co.jp']";
+			if (isExistEle(driver, selector)) {
+				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+				eleList.get(0).click();
+				Utille.sleep(3000);
+			}
+			else {
+				logg.warn(mName + "]なかったよ...");
+			}
 			// ■ポイント検索
 			Mission PexMissionSearch = new PexMissionSearch(logg, wordList);
 			PexMissionSearch.roopMisstion(driver);
@@ -490,12 +519,17 @@ public class WebClicker extends PointGet {
 			PexMissionPectan.roopMisstion(driver);
 			missionList.add(PexMissionPectan);
 
-			String mName = "■毎日ニュース　午前7：00～翌日午前6：59";
+			mName = "■毎日ニュース　午前7：00～翌日午前6：59";
 			int pexNewsNum = 5;
 			int pexNewsClick = 0;
 			for (int i = 0; pexNewsClick < pexNewsNum; i++) {
 				driver.get("http://pex.jp/point_news");
-				String selector = "ul#news-list>li>figure>a";
+				// 未獲得印3つが確認できない場合ノルマ達成とみなしブレイク
+				selector = "li.pt.ungained";
+				if (!isExistEle(driver, selector)) {
+					break;
+				}
+				selector = "ul#news-list>li>figure>a";
 				if (!isExistEle(driver, selector)) {
 					break;
 				}
@@ -531,7 +565,7 @@ public class WebClicker extends PointGet {
 
 			mName = "■クリックポイント";
 			driver.get("http://pex.jp/point_actions#clickpoint");
-			String selector = "div.clickpoint_innner li>a>p.title";
+			selector = "div.clickpoint_innner li>a>p.title";
 			if (isExistEle(driver, selector)) {
 				if (!isExistEle(driver, "p.get_massage")) { // 獲得済みか
 					int size = driver.findElements(By.cssSelector(selector)).size();
@@ -569,7 +603,7 @@ public class WebClicker extends PointGet {
 		}
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
-			String mName = "■web検索";
+			mName = "■web検索";
 			// propertiesファイルから単語リストを抽出して、ランダムで5つ（数は指定可能）
 			String[] wordSearchList = Utille.getWordSearchList(wordList, 5);
 			driver.get("http://ecnavi.jp/search/web/?Keywords=");
@@ -726,6 +760,7 @@ public class WebClicker extends PointGet {
 		if (!thirdFlg) {
 			String mName = "■ポイントの森";
 			driver.get("http://www.gendama.jp/forest/");
+			Utille.sleep(2000);
 			String selector = "a img[src$='star.gif']";
 			if (isExistEle(driver, selector)) {
 				driver.findElement(By.cssSelector(selector)).click();
@@ -738,10 +773,10 @@ public class WebClicker extends PointGet {
 		if (!secondFlg && !thirdFlg) {
 			String mName = "■ポイントの森";
 			driver.get("http://www.gendama.jp/forest/");
-			String currentWindowId = driver.getWindowHandle();
-			logg.info("currentWindowId: " + currentWindowId);
-			String selecter[] = { "#forestBox a[href^='/cl/?id=']", "#downBox a[href^='/cl/?id=']",
-					"#sponsor a[href^='/cl/?id=']" };
+			Utille.sleep(2000);
+			String selecter[] = { "div#forestBox a img", "div#downBox a.all p.bnrImg"
+					//					, "div#sponsor a[href^='/cl/?id='] img"  // ここにバッチ起動時のみバグってる
+			};
 			for (int j = 0; j < selecter.length; j++) {
 				String selector = selecter[j];
 				logg.info("selector: " + selector);
@@ -749,14 +784,15 @@ public class WebClicker extends PointGet {
 					List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 					int size = eleList.size();
 					for (int i = 0; i < size; i++) {
-						logg.info("text: " + driver.findElements(By.cssSelector(selector)).get(i).getText());
-						driver.findElements(By.cssSelector(selector)).get(i).click();
+						//						logg.info("text: " + eleList.get(i).getText());
+						eleList.get(i).click();
+						Utille.sleep(2000);
 					}
 				}
 			}
 			// ポイントの森
-			driver.get("http://www.gendama.jp/forest/");
-			String selector = "#reach a[href^='/cl/?id=']";
+			//			driver.get("http://www.gendama.jp/forest/");
+			String selector = "section#reach a.clearfix dt";
 			if (isExistEle(driver, selector)) {
 				int size = driver.findElements(By.cssSelector(selector)).size();
 				for (int i = 0; i < size; i++) {
