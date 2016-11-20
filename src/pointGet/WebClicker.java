@@ -10,10 +10,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.mission.EcnMissionChinjyu;
 import pointGet.mission.Mission;
-import pointGet.mission.PexMissionPectan;
-import pointGet.mission.PexMissionSearch;
+import pointGet.mission.ECN.ECNChinjyu;
+import pointGet.mission.PEX.PEXMekutte;
+import pointGet.mission.PEX.PEXPectan;
+import pointGet.mission.PEX.PEXSearch;
+import pointGet.mission.mop.MOPChyosatai;
+import pointGet.mission.mop.MOPClickBanner;
+import pointGet.mission.mop.MOPQuiz;
+import pointGet.mission.osa.OSAClickBanner;
+import pointGet.mission.osa.OSAQuiz;
 
 /**
  * get point from the point site
@@ -75,12 +81,12 @@ public class WebClicker extends PointGet {
 			// RIN
 			goToClickSite(Define.PSITE_CODE_RIN);
 		}
-
 		// OSA
 		goToClickSite(Define.PSITE_CODE_OSA);
 		// mop
 		goToClickSite(Define.PSITE_CODE_MOP);
 
+		// roop
 		if (missionList.size() > 0) {
 			logg.info("roopStart!!");
 			WebDriver driver = getWebDriver();
@@ -92,7 +98,7 @@ public class WebClicker extends PointGet {
 						CompCnt++;
 						continue;
 					}
-					mission.roopMisstion(driver);
+					mission.roopMission(driver);
 				}
 				if (CompCnt == missionList.size()) {
 					break;
@@ -103,6 +109,7 @@ public class WebClicker extends PointGet {
 			driver.quit();
 			logg.info("roopEnd!!");
 		}
+
 		logg.info("can not read properties!!");
 	}
 
@@ -220,99 +227,48 @@ public class WebClicker extends PointGet {
 		}
 	}
 
-	private static void checkOverlay(WebDriver driver, String selector) {
-		if (isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click(); // 広告消す
-			Utille.sleep(2000);
-		}
-	}
-
+	/**
+	 * 
+	 * @param driver
+	 */
 	private static void goToClickOSA(WebDriver driver) {
-		String mName = "■daily quiz"; //  0時、8時、16時開催
-		String selector = "li.long img[alt='デイリークイズ']";
-		driver.get("http://osaifu.com/contents/coinland/");
-		Utille.sleep(2000);
-		if (isExistEle(driver, selector)) {
-			logg.warn(mName + "]" + selector + " is EXIST");
-			driver.findElement(By.cssSelector(selector)).click(); // 遷移
-			Utille.sleep(2000);
-			checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
-			selector = "input[name='submit']";
-			Utille.sleep(4000);
-			if (isExistEle(driver, selector)) {
-				logg.warn(mName + "]" + selector + " is EXIST");
-				driver.findElement(By.cssSelector(selector)).click();
-				for (int i = 0; i < 8; i++) {
-					Utille.sleep(4000);
-					selector = "ul.ui-item-body";
-					if (isExistEle(driver, selector)) {
-						logg.warn(mName + "]" + selector + " is EXIST");
-						int ran = Utille.getIntRand(4);
-						String selectId = "label[for='radio-";
-						if (ran == 0) {
-							selectId += "1']";
-						}
-						else if (ran == 1) {
-							selectId += "2']";
-						}
-						else if (ran == 2) {
-							selectId += "3']";
-						}
-						else {
-							selectId += "4']";
-						}
-						// 8kai roop
-						String selector2 = "input[name='submit']";
-						if (isExistEle(driver, selectId)) {
-							logg.warn(mName + "]" + selectId + " is EXIST");
-							driver.findElement(By.cssSelector(selectId)).click(); // 選択
-							Utille.sleep(2000);
-							driver.findElement(By.cssSelector(selector2)).click(); // 遷移
-							Utille.sleep(4000);
-							checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
-							if (isExistEle(driver, selector2)) {
-								logg.warn(mName + "]" + selector2 + " is EXIST");
-								driver.findElement(By.cssSelector(selector2)).click(); // 遷移
-								Utille.sleep(3000);
-								checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
-							}
-						}
-					}
-				}
-				logg.warn(mName + "]kuria?");
-				selector = "input[name='submit']";
-				if (isExistEle(driver, selector)) {
-					driver.findElement(By.cssSelector(selector)).click();
-					Utille.sleep(3000);
-				}
-			}
-			//			checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
-			//			selector = "a.ui-button.ui-button-close";
-			//			if (isExistEle(driver, selector)) {
-			//				String url = driver.findElement(By.cssSelector(selector)).getAttribute("href");
-			//				driver.get(url);
-			//				Utille.sleep(3000);
-			//			}
-			//			// 閉じるボタン（既にゲット済み）
-			//			if (isExistEle(driver, "a.ui-button.ui-button-close")) {
-			//				driver.findElement(By.cssSelector("a.ui-button.ui-button-close")).click();
-			//				Utille.sleep(2000);
-			//			}
-
-			// String selector2 = "[alt='Check']";
-			// int size = driver.findElements(By.cssSelector(selector)).size();
-			// for (int i = 0; i < size; i++) {
-			// // document.querySelectorAll('[alt="Check"]
-			// ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox
-			// img')[0];
-			// WebElement e =
-			// driver.findElements(By.cssSelector(selector)).get(i);
-			// if (isExistEle(e, selector2)) {
-			// Utille.sleep(2000);
-			// }
-			// }
-			// selector = "";
+		if (true) {
+			// ■モッピークイズ
+			Mission OSAQuiz = new OSAQuiz(logg);
+			OSAQuiz.exePrivateMission(driver);
 		}
+		if (!secondFlg && !thirdFlg) { // 1日1回
+			// ■クリックゴールド
+
+			Mission OSAClickBanner = new OSAClickBanner(logg);
+			OSAClickBanner.exePrivateMission(driver);
+		}
+		//			checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
+		//			selector = "a.ui-button.ui-button-close";
+		//			if (isExistEle(driver, selector)) {
+		//				String url = driver.findElement(By.cssSelector(selector)).getAttribute("href");
+		//				driver.get(url);
+		//				Utille.sleep(3000);
+		//			}
+		//			// 閉じるボタン（既にゲット済み）
+		//			if (isExistEle(driver, "a.ui-button.ui-button-close")) {
+		//				driver.findElement(By.cssSelector("a.ui-button.ui-button-close")).click();
+		//				Utille.sleep(2000);
+		//			}
+
+		// String selector2 = "[alt='Check']";
+		// int size = driver.findElements(By.cssSelector(selector)).size();
+		// for (int i = 0; i < size; i++) {
+		// // document.querySelectorAll('[alt="Check"]
+		// ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox
+		// img')[0];
+		// WebElement e =
+		// driver.findElements(By.cssSelector(selector)).get(i);
+		// if (isExistEle(e, selector2)) {
+		// Utille.sleep(2000);
+		// }
+		// }
+		// selector = "";
 	}
 
 	/**
@@ -321,138 +277,17 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickMOP(WebDriver driver) {
 		if (!secondFlg && !thirdFlg) { // 1日1回
-			// クリックで貯める
-			driver.get("http://pc.moppy.jp/cc/");
-			String selector = "p.click>a.cc-btn";
-			if (isExistEle(driver, selector)) {
-				int size = driver.findElements(By.cssSelector(selector)).size();
-				for (int i = 0; i < size; i++) {
-					driver.findElements(By.cssSelector(selector)).get(i).click();
-					Utille.sleep(2000);
-				}
-			}
-			String mName = "モッピークイズ";
-			mName = "トキメキ調査隊"; //  4時更新
-			for (int j = 0; j < 3; j++) {
-				driver.get("http://pc.moppy.jp/gamecontents/");
-				selector = "div.game_btn>div.icon>img[alt='トキメキ調査隊']";
-				if (isExistEle(driver, selector)) {
-					driver.findElement(By.cssSelector(selector)).click(); // 遷移
-					Utille.sleep(4000);
-					String wid = driver.getWindowHandle();
-					java.util.Set<String> widSet = driver.getWindowHandles();
-					String new_window_id = null;
-					for (String id : widSet) {
-						if (!id.equals(wid)) {
-							//現在のウインドウIDと違っていたら格納  
-							//最後に格納されたIDが一番新しく開かれたウインドウと判定  
-							new_window_id = id;
-						}
-					}
-					driver.close();
-					//最後に格納したウインドウIDにスイッチ  
-					driver.switchTo().window(new_window_id);
-					checkOverlay(driver, "div#popup a.modal_close");
-					selector = "div.thumbnail span.icon-noentry";
-					if (isExistEle(driver, selector)) {
-						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-						eleList.get(0).click(); // 遷移
-						Utille.sleep(3000);
-						selector = "div.thumb-start div.btn>a";
-						if (isExistEle(driver, selector)) {
-							driver.findElement(By.cssSelector(selector)).click(); // 遷移
-							Utille.sleep(4000);
-							for (int i = 0; i < 10; i++) {
-								int ran = Utille.getIntRand(2);
-								selector = "span.icon-arrow";
-								if (isExistEle(driver, selector)) {
-									checkOverlay(driver, "div#popup a.modal_close");
-									driver.findElements(By.cssSelector(selector)).get(ran).click();
-									Utille.sleep(3000);
-								}
-							}
-						}
-					}
-				}
-			}
+			// ■クリックで貯める
+			Mission MOPClickBanner = new MOPClickBanner(logg);
+			MOPClickBanner.exePrivateMission(driver);
+			// ■トキメキ調査隊
+			Mission MOPChyosatai = new MOPChyosatai(logg);
+			MOPChyosatai.exePrivateMission(driver);
 		}
-
 		if (true) {
-			//		if (false) {
-			String mName = "モッピークイズ"; //  0時、8時、16時開催
-			driver.get("http://pc.moppy.jp/gamecontents/");
-			String selector = "div.game_btn>div.icon>img[alt='モッピークイズ']";
-			if (isExistEle(driver, selector)) {
-				logg.warn(mName + "]" + selector + " is EXIST");
-				driver.findElement(By.cssSelector(selector)).click(); // 遷移
-				Utille.sleep(2000);
-				String wid = driver.getWindowHandle();
-				java.util.Set<String> widSet = driver.getWindowHandles();
-				widSet.remove(wid);
-				driver.switchTo().window(widSet.iterator().next());
-				checkOverlay(driver, "div.overlay-popup a.button-close");
-				selector = "form>input[name='submit']";
-				if (isExistEle(driver, selector)) {
-					logg.warn(mName + "]" + selector + " is EXIST");
-					driver.findElement(By.cssSelector(selector)).click();
-					for (int i = 0; i < 8; i++) {
-						Utille.sleep(4000);
-						selector = "ul.ui-item-body";
-						if (isExistEle(driver, selector)) {
-							logg.warn(mName + "]" + selector + " is EXIST");
-							int ran = Utille.getIntRand(4);
-							String selectId = "label[for='radio-";
-							if (ran == 0) {
-								selectId += "1']";
-							}
-							else if (ran == 1) {
-								selectId += "2']";
-							}
-							else if (ran == 2) {
-								selectId += "3']";
-							}
-							else {
-								selectId += "4']";
-							}
-							// 8kai roop
-							String selector2 = "input[name='submit']";
-							if (isExistEle(driver, selectId)) {
-								logg.warn(mName + "]" + selectId + " is EXIST");
-								driver.findElement(By.cssSelector(selectId)).click(); // 選択
-								Utille.sleep(2000);
-								driver.findElement(By.cssSelector(selector2)).click(); // 遷移
-								Utille.sleep(4000);
-								checkOverlay(driver, "div.overlay-popup a.button-close");
-								if (isExistEle(driver, selector2)) {
-									logg.warn(mName + "]" + selector2 + " is EXIST");
-									driver.findElement(By.cssSelector(selector2)).click(); // 遷移
-									Utille.sleep(3000);
-									checkOverlay(driver, "div.overlay-popup a.button-close");
-								}
-							}
-						}
-					}
-					logg.warn(mName + "]kuria?");
-					selector = "input[name='submit']";
-					if (isExistEle(driver, selector)) {
-						driver.findElement(By.cssSelector(selector)).click();
-						Utille.sleep(3000);
-					}
-				}
-				//				checkOverlay(driver, "div.overlay-popup a.button-close");
-				//				selector = "a.ui-button.ui-button-close";
-				//				logg.warn(mName + "]来たよ" + " is EXIST");
-				////				if (isExistEle(driver, selector)) {
-				////					String url = driver.findElement(By.cssSelector(selector)).getAttribute("href");
-				////					driver.get(url);
-				////					Utille.sleep(3000);
-				////				}
-				//				// 閉じるボタン（既にゲット済み）
-				//				if (isExistEle(driver, "a.ui-button.ui-button-close")) {
-				//					driver.findElement(By.cssSelector("a.ui-button.ui-button-close")).click();
-				//					Utille.sleep(2000);
-				//				}
-			}
+			// ■モッピークイズ
+			Mission MOPQuiz = new MOPQuiz(logg);
+			MOPQuiz.exePrivateMission(driver);
 		}
 	}
 
@@ -511,12 +346,12 @@ public class WebClicker extends PointGet {
 				logg.warn(mName + "]なかったよ...");
 			}
 			// ■ポイント検索
-			Mission PexMissionSearch = new PexMissionSearch(logg, wordList);
-			PexMissionSearch.roopMisstion(driver);
+			Mission PexMissionSearch = new PEXSearch(logg, wordList);
+			PexMissionSearch.exeRoopMission(driver);
 			missionList.add(PexMissionSearch);
 			// ■ぺく単
-			Mission PexMissionPectan = new PexMissionPectan(logg);
-			PexMissionPectan.roopMisstion(driver);
+			Mission PexMissionPectan = new PEXPectan(logg);
+			PexMissionPectan.exeRoopMission(driver);
 			missionList.add(PexMissionPectan);
 
 			mName = "■毎日ニュース　午前7：00～翌日午前6：59";
@@ -581,7 +416,14 @@ public class WebClicker extends PointGet {
 					logg.warn(mName + "]獲得済み");
 				}
 			}
+			// ■めくってシール
+			Mission PEXMekutte = new PEXMekutte(logg);
+			PEXMekutte.exePrivateMission(driver);
 		}
+		// テスト中
+		//		PEXMitukete PEXMitukete = new PEXMitukete(logg);
+		//		PEXMitukete.exePrivateMission(driver);
+
 	}
 
 	private static boolean isExistEle(WebElement wEle, String selector) {
@@ -715,8 +557,8 @@ public class WebClicker extends PointGet {
 			}
 
 			// ■珍獣先生
-			Mission EcnMissionChinjyu = new EcnMissionChinjyu(logg);
-			EcnMissionChinjyu.roopMisstion(driver);
+			Mission EcnMissionChinjyu = new ECNChinjyu(logg);
+			EcnMissionChinjyu.roopMission(driver);
 			missionList.add(EcnMissionChinjyu);
 		}
 	}

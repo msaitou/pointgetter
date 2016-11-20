@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -223,5 +225,28 @@ public class Utille {
 			return "";
 		}
 		return unitTime + unitStr;
+	}
+
+	/**
+	 * 
+	 * @param regex
+	 * @param word
+	 * @param index 
+	 * @return 
+	 */
+	public static String getPatternWord(String regex, String word, int index) {
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(word);
+		if (m.find()) {
+			String matchstr = m.group();
+			System.out.println(matchstr + "の部分にマッチしました");
+			for (int i = 0; i <= m.groupCount(); i++) {
+				System.out.println("group" + i + ":" + m.group(i));
+				if (index == i) {
+					return m.group(i);
+				}
+			}
+		}
+		return "";
 	}
 }

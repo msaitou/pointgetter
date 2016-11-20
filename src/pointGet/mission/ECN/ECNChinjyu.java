@@ -1,35 +1,37 @@
-package pointGet.mission;
+package pointGet.mission.ECN;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
+import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class EcnMissionChinjyu extends Mission {
-
+public class ECNChinjyu extends Mission {
+	final String url = "http://ecnavi.jp/research/chinju_lesson/";
 	private boolean endFlag = false;
+
 	/**
-	 * @param log
+	 * @param logg
 	 */
-	public EcnMissionChinjyu(Logger log) {
-		super(log);
+	public ECNChinjyu(Logger logg) {
+		super(logg);
+		this.mName = "■珍獣先生";
 		this.limit = 5;
 	}
 
 	@Override
-	public void roopMisstion(WebDriver driver) {
-		String mName = "■珍獣先生";
-		log.info(mName+"]roop");
+	public void roopMission(WebDriver driver) {
+		logg.info(this.mName+"]roop");
 		for (; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis());) {
-			driver.get("http://ecnavi.jp/research/chinju_lesson/");
+			driver.get(url);
 			if (!isExistEle(driver, "div.button_area.clear_fix")) {
 				endFlag = true;
-				log.info("break");
+				logg.info("break");
 				break;
 			}
 			// ランダムで1,2を選ぶ
@@ -44,15 +46,19 @@ public class EcnMissionChinjyu extends Mission {
 			if (isExistEle(driver, selector1)) {
 				String AnsUrl = driver.findElement(By.cssSelector(selector1)).getAttribute("href");
 				driver.get(AnsUrl);
-				log.info("clicked!!");
+				logg.info("clicked!!");
 			}
 			this.cnt++;
 			this.lastDoneTime = System.currentTimeMillis();
 		}
-		log.info("this.cnt:"+this.cnt+" this.limit:"+this.limit);
+		logg.info("this.cnt:"+this.cnt+" this.limit:"+this.limit);
 		if (endFlag || this.cnt >= this.limit) {
-			log.info(mName+"]roop end");
+			logg.info(this.mName+"]roop end");
 			this.compFlag = true;
 		}
+	}
+
+	@Override
+	public void privateMission(WebDriver driver) {
 	}
 }
