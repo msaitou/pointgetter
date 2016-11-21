@@ -44,7 +44,7 @@ public class Points extends PointGet {
 				driver.get("http://dietnavi.com/pc");
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
-					outPut = Define.PSITE_CODE_GMY + " [point:" + point + "] ";
+					outPut = "[" + Define.PSITE_CODE_GMY + ":" + point + "] ";
 				}
 				break;
 			case Define.PSITE_CODE_GEN:
@@ -52,7 +52,7 @@ public class Points extends PointGet {
 				driver.get("http://www.gendama.jp/");
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
-					outPut = Define.PSITE_CODE_GEN + " [point:" + point + "] ";
+					outPut = "[" + Define.PSITE_CODE_GEN + ":" + point + "] ";
 				}
 				break;
 			case Define.PSITE_CODE_ECN:
@@ -60,7 +60,7 @@ public class Points extends PointGet {
 				driver.get("https://ecnavi.jp/mypage/point_history/");
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
-					outPut = Define.PSITE_CODE_ECN + " [point:" + point + "] ";
+					outPut = "[" + Define.PSITE_CODE_ECN + ":" + point + "] ";
 				}
 				break;
 			case Define.PSITE_CODE_MOP:
@@ -68,7 +68,7 @@ public class Points extends PointGet {
 				selector = "div#point_blinking strong";
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
-					outPut = Define.PSITE_CODE_MOP + " [point:" + point + " ";
+					outPut = "[" + Define.PSITE_CODE_MOP + ":" + point + " ";
 				}
 				selector = "div#point_blinking em";
 				if (isExistEle(driver, selector)) {
@@ -81,7 +81,7 @@ public class Points extends PointGet {
 				driver.get("https://pex.jp/user/point_passbook/all");
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
-					outPut = Define.PSITE_CODE_PEX + " [point:" + point + "] ";
+					outPut = "[" + Define.PSITE_CODE_PEX + ":" + point + "] ";
 				}
 				break;
 			case Define.PSITE_CODE_OSA:
@@ -89,7 +89,7 @@ public class Points extends PointGet {
 				driver.get("https://osaifu.com/contents/bankbook/top/");
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
-					outPut = Define.PSITE_CODE_OSA + " [point:" + point + " ";
+					outPut = "[" + Define.PSITE_CODE_OSA + ":" + point + " ";
 				}
 				selector = "dl.bankbook-total>dd.gold.coin>span";
 				if (isExistEle(driver, selector)) {
@@ -121,7 +121,7 @@ public class Points extends PointGet {
 				}
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
-					outPut = Define.PSITE_CODE_PTO + " [point:" + point + "] ";
+					outPut = "[" + Define.PSITE_CODE_PTO + ":" + point + "] ";
 				}
 				else {
 					// ログインができていない可能性がある
@@ -132,7 +132,7 @@ public class Points extends PointGet {
 				driver.get("https://point.i2i.jp/account/");
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
-					outPut = Define.PSITE_CODE_I2I + " [point:" + point + "] ";
+					outPut = "[" + Define.PSITE_CODE_I2I + ":" + point + "] ";
 				}
 				break;
 			}

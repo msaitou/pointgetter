@@ -32,12 +32,12 @@ public class GMYClickBanner extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 		selector = "a span.clickpt";
-        String[] urls = {
-            // ■clipoバナーtop
-            "http://dietnavi.com/pc/", 
-            // clipoバナーページ
-            "http://dietnavi.com/pc/daily_click.php"};
-        for (int j = 0; j< urls.length;j++) {
+		String[] urls = {
+				// ■clipoバナーtop
+				"http://dietnavi.com/pc/",
+				// clipoバナーページ
+				"http://dietnavi.com/pc/daily_click.php" };
+		for (int j = 0; j < urls.length; j++) {
 			driver.get(urls[j]);
 			if (super.isExistEle(driver, selector)) {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -48,6 +48,6 @@ public class GMYClickBanner extends Mission {
 					Utille.sleep(2000);
 				}
 			}
-        }
+		}
 	}
 }

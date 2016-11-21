@@ -81,10 +81,10 @@ public class WebClicker extends PointGet {
 			// RIN
 			goToClickSite(Define.PSITE_CODE_RIN);
 		}
-		// OSA
-		goToClickSite(Define.PSITE_CODE_OSA);
 		// mop
 		goToClickSite(Define.PSITE_CODE_MOP);
+		// OSA
+		goToClickSite(Define.PSITE_CODE_OSA);
 
 		// roop
 		if (missionList.size() > 0) {
@@ -232,43 +232,16 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickOSA(WebDriver driver) {
-		if (true) {
-			// ■モッピークイズ
-			Mission OSAQuiz = new OSAQuiz(logg);
-			OSAQuiz.exePrivateMission(driver);
-		}
 		if (!secondFlg && !thirdFlg) { // 1日1回
 			// ■クリックゴールド
-
 			Mission OSAClickBanner = new OSAClickBanner(logg);
 			OSAClickBanner.exePrivateMission(driver);
 		}
-		//			checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
-		//			selector = "a.ui-button.ui-button-close";
-		//			if (isExistEle(driver, selector)) {
-		//				String url = driver.findElement(By.cssSelector(selector)).getAttribute("href");
-		//				driver.get(url);
-		//				Utille.sleep(3000);
-		//			}
-		//			// 閉じるボタン（既にゲット済み）
-		//			if (isExistEle(driver, "a.ui-button.ui-button-close")) {
-		//				driver.findElement(By.cssSelector("a.ui-button.ui-button-close")).click();
-		//				Utille.sleep(2000);
-		//			}
-
-		// String selector2 = "[alt='Check']";
-		// int size = driver.findElements(By.cssSelector(selector)).size();
-		// for (int i = 0; i < size; i++) {
-		// // document.querySelectorAll('[alt="Check"]
-		// ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox
-		// img')[0];
-		// WebElement e =
-		// driver.findElements(By.cssSelector(selector)).get(i);
-		// if (isExistEle(e, selector2)) {
-		// Utille.sleep(2000);
-		// }
-		// }
-		// selector = "";
+		if (true) {
+			// ■daily quiz
+			Mission OSAQuiz = new OSAQuiz(logg);
+			OSAQuiz.exePrivateMission(driver);
+		}
 	}
 
 	/**
@@ -420,9 +393,9 @@ public class WebClicker extends PointGet {
 			Mission PEXMekutte = new PEXMekutte(logg);
 			PEXMekutte.exePrivateMission(driver);
 		}
-		// テスト中
-		//		PEXMitukete PEXMitukete = new PEXMitukete(logg);
-		//		PEXMitukete.exePrivateMission(driver);
+//		// テスト中
+//				PEXMitukete PEXMitukete = new PEXMitukete(logg);
+//				PEXMitukete.exePrivateMission(driver);
 
 	}
 

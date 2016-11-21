@@ -45,13 +45,14 @@ public class PEXMekutte extends Mission {
 	 * @param driver
 	 */
 	public void mekutteSeal(WebDriver driver) {
-		// this mission was finished sign.
-		if (isExistEle(driver, "section#end")) {
-			logg.warn(this.mName + "]獲得済み");
-			return;
-		}
-		// this mission was finished sign.
-		else if (isExistEle(driver, "div#end")) {
+//		// this mission was finished sign.
+//		if (isExistEle(driver, "div.link.display-none>section#end")) {
+//			logg.warn(this.mName + "]獲得済み");
+//			return;
+//		}
+//		// this mission was finished sign.
+//		else 
+			if (isExistEle(driver, "div#end")) {
 			return;
 		}
 

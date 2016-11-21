@@ -95,7 +95,7 @@ public abstract class Mission {
 				}
 				Utille.sleep(2000);
 				++i;
-			} catch (Exception e) {
+			} catch (Throwable e) {
 				this.logg.error("広告消えない[" + ++i + "回目]");
 				e.printStackTrace();
 				Utille.sleep(2000);

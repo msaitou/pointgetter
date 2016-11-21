@@ -69,6 +69,9 @@ public class PEXMitukete extends Mission {
 		//			PEXMekutte PEXMekutte = new PEXMekutte(logg);
 		//			PEXMekutte.mekutteSeal(driver);
 
+		// 終了サイン 以下が存在しないこと
+		// div.mitsukete_game_bg.geme_cnt.mitsukete_seal.display-none
+		
 	}
 
 	/**

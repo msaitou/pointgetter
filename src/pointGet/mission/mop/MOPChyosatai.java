@@ -42,24 +42,44 @@ public class MOPChyosatai extends Mission {
 				super.changeWindow(driver);
 				super.checkOverlay(driver, "div#popup a.modal_close");
 
-				selector = "div.thumbnail span.icon-noentry";
-				if (super.isExistEle(driver, selector)) {
+				boolean noEntry = super.isExistEle(driver, "div.thumbnail span.icon-noentry");
+				boolean entry = super.isExistEle(driver, "div.thumbnail span.icon-entry");
+				if (noEntry) {
+					selector = "div.thumbnail span.icon-noentry";
 					List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 					eleList.get(0).click(); // 遷移
 					Utille.sleep(3000);
+					super.checkOverlay(driver, "div#popup a.modal_close");
 
 					selector = "div.thumb-start div.btn>a";
 					if (super.isExistEle(driver, selector)) {
 						driver.findElement(By.cssSelector(selector)).click(); // 遷移
 						Utille.sleep(4000);
+						super.checkOverlay(driver, "div#popup a.modal_close");
 						for (int i = 0; i < 10; i++) {
 							int ran = Utille.getIntRand(2);
 							selector = "span.icon-arrow";
 							if (super.isExistEle(driver, selector)) {
-								super.checkOverlay(driver, "div#popup a.modal_close");
 								driver.findElements(By.cssSelector(selector)).get(ran).click();
 								Utille.sleep(3000);
+								super.checkOverlay(driver, "div#popup a.modal_close");
 							}
+						}
+					}
+				}
+				else if (entry) {
+					selector = "div.thumbnail span.icon-entry";
+					List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+					eleList.get(0).click(); // 遷移
+					Utille.sleep(3000);
+					super.checkOverlay(driver, "div#popup a.modal_close");
+					for (int i = 0; i < 10; i++) {
+						int ran = Utille.getIntRand(2);
+						selector = "span.icon-arrow";
+						if (super.isExistEle(driver, selector)) {
+							driver.findElements(By.cssSelector(selector)).get(ran).click();
+							Utille.sleep(3000);
+							super.checkOverlay(driver, "div#popup a.modal_close");
 						}
 					}
 				}
