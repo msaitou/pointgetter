@@ -12,9 +12,14 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.mission.Mission;
 import pointGet.mission.ECN.ECNChinjyu;
+import pointGet.mission.ECN.ECNChirachi;
+import pointGet.mission.PEX.PEXChirachi;
+import pointGet.mission.PEX.PEXClickBanner;
 import pointGet.mission.PEX.PEXMekutte;
 import pointGet.mission.PEX.PEXPectan;
 import pointGet.mission.PEX.PEXSearch;
+import pointGet.mission.gmy.GMYChirachi;
+import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPQuiz;
@@ -294,6 +299,10 @@ public class WebClicker extends PointGet {
 			else {
 				logg.warn(mName + "]獲得済み");
 			}
+			// ■ぺく単
+			Mission PEXChirachi = new PEXChirachi(logg);
+			PEXChirachi.exePrivateMission(driver);
+/**         
 			mName = "■オリチラ";
 			driver.get("http://pex.jp/chirashi");
 			selector = "section.list li figure>a";
@@ -304,6 +313,7 @@ public class WebClicker extends PointGet {
 			else {
 				logg.warn(mName + "]獲得済み");
 			}
+**/
 		}
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
@@ -371,6 +381,11 @@ public class WebClicker extends PointGet {
 				}
 			}
 
+            // ■クリックポイント
+            Mission PEXClickBanner = new PEXClickBanner(logg);
+            PEXClickBanner.exePrivateMission(driver);
+    
+/*
 			mName = "■クリックポイント";
 			driver.get("http://pex.jp/point_actions#clickpoint");
 			selector = "div.clickpoint_innner li>a>p.title";
@@ -389,6 +404,7 @@ public class WebClicker extends PointGet {
 					logg.warn(mName + "]獲得済み");
 				}
 			}
+**/
 			// ■めくってシール
 			Mission PEXMekutte = new PEXMekutte(logg);
 			PEXMekutte.exePrivateMission(driver);
@@ -406,6 +422,9 @@ public class WebClicker extends PointGet {
 	private static void goToClickECN(WebDriver driver) {
 		// 1日2回
 		if (!thirdFlg) {
+			Mission ECNChirachi = new ECNChirachi(logg);
+			ECNChirachi.exePrivateMission(driver);
+/**
 			String mName = "■チラシ";
 			String selector = "a.chirashi_link";
 			driver.get("http://ecnavi.jp/contents/chirashi/");
@@ -415,6 +434,7 @@ public class WebClicker extends PointGet {
 			else {
 				logg.warn(mName + "]獲得済み");
 			}
+**/
 		}
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
@@ -536,8 +556,12 @@ public class WebClicker extends PointGet {
 		}
 	}
 
+	// gone
 	private static void goToClickGMY(WebDriver driver) {
 		if (!secondFlg && !thirdFlg) {
+			Mission GMYClickBanner = new GMYClickBanner(logg);
+			GMYClickBanner.exePrivateMission(driver);
+/**
 			String mName = "■clipoバナーtop";
 			driver.get("http://dietnavi.com/pc/");
 			String selector = "a span.clickpt";
@@ -560,6 +584,10 @@ public class WebClicker extends PointGet {
 					Utille.sleep(2000);
 				}
 			}
+**/
+			Mission GMYChirachi = new GMYChirachi(logg);
+			GMYChirachi.exePrivateMission(driver);
+/**		
 			mName = "■チラシ";
 			driver.get("http://dietnavi.com/pc/");
 			selector = "#chirashi_check";
@@ -567,6 +595,7 @@ public class WebClicker extends PointGet {
 				driver.findElement(By.cssSelector(selector)).click();
 				Utille.sleep(2000);
 			}
+**/
 		}
 	}
 
@@ -586,7 +615,7 @@ public class WebClicker extends PointGet {
 		}
 
 		if (!secondFlg && !thirdFlg) {
-			String mName = "■ポイントの森";
+			mName = "■ポイントの森";
 			driver.get("http://www.gendama.jp/forest/");
 			Utille.sleep(2000);
 			String selecter[] = { "div#forestBox a img", "div#downBox a.all p.bnrImg"
