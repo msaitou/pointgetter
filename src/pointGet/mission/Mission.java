@@ -1,8 +1,12 @@
 package pointGet.mission;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 
@@ -79,6 +83,16 @@ public abstract class Mission {
 		return Utille.isExistEle(driver, selector, this.logg);
 	}
 
+	protected boolean isExistEle(List<WebElement> ele) {
+		return Utille.isExistEle(ele, this.logg);
+	}
+	
+	protected boolean isExistEle(WebElement ele) {
+		List<WebElement> eleL = new ArrayList<WebElement>();
+		eleL.add(ele);
+		return Utille.isExistEle(eleL, this.logg);
+	}
+	
 	/**
 	 * 
 	 * @param driver

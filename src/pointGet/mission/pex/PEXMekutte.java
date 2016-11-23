@@ -1,9 +1,13 @@
-package pointGet.mission.PEX;
+package pointGet.mission.pex;
+
+import static org.junit.Assert.*;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.Eventually;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -45,14 +49,14 @@ public class PEXMekutte extends Mission {
 	 * @param driver
 	 */
 	public void mekutteSeal(WebDriver driver) {
-//		// this mission was finished sign.
-//		if (isExistEle(driver, "div.link.display-none>section#end")) {
-//			logg.warn(this.mName + "]獲得済み");
-//			return;
-//		}
-//		// this mission was finished sign.
-//		else 
-			if (isExistEle(driver, "div#end")) {
+		waitTilReady(driver);
+		// this mission was finished sign.
+		if (isExistEle(driver, "div.link[style*='display: block'].display-none>section#end")) {
+			logg.warn(this.mName + "]獲得済み");
+			return;
+		}
+		// this mission was finished sign.
+		else if (isExistEle(driver, "div#end")) { // 見つけての終了かも。
 			return;
 		}
 
@@ -75,6 +79,14 @@ public class PEXMekutte extends Mission {
 			Utille.sleep(3000);
 			this.mekutteClick++;
 		}
+	}
+
+	/**
+	 * @param driver
+	 */
+	public void waitTilReady(WebDriver driver) {
+		Eventually.eventually(() -> assertEquals(
+				((JavascriptExecutor) driver).executeScript("return document.readyState"), "complete"));
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package pointGet.mission.ECN;
+package pointGet.mission.pex;
 
 import java.util.List;
 
@@ -14,15 +14,15 @@ import pointGet.mission.Mission;
  * @author saitou
  *
  */
-public class ECNChirachi extends Mission {
-	final String url = "http://ecnavi.jp/contents/chirashi/";
+public class PEXChirachi extends Mission {
+	final String url = "http://pex.jp/chirashi";
 
 	/**
 	 * @param log
 	 */
-	public ECNChirachi(Logger log) {
+	public PEXChirachi(Logger log) {
 		super(log);
-		this.mName = "■チラシ";
+		this.mName = "■オリチラ";
 	}
 
 	@Override
@@ -31,15 +31,14 @@ public class ECNChirachi extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		mName = "■チラシ";
 		driver.get(this.url);
-		selector = "a.chirashi_link";
+		selector = "section.list li figure>a";
 		if (super.isExistEle(driver, selector)) {
 			driver.findElement(By.cssSelector(selector)).click();
 			Utille.sleep(2000);
-		}
-		else {
+		} else {
 			logg.warn(mName + "]獲得済み");
 		}
 	}
+
 }

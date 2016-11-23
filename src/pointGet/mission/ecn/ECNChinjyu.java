@@ -1,4 +1,4 @@
-package pointGet.mission.ECN;
+package pointGet.mission.ecn;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;

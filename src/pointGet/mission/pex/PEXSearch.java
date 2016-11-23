@@ -1,7 +1,7 @@
 /**
  * 
  */
-package pointGet.mission.PEX;
+package pointGet.mission.pex;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;

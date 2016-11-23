@@ -1,4 +1,4 @@
-package pointGet.mission.PEX;
+package pointGet.mission.pex;
 
 import java.util.HashMap;
 

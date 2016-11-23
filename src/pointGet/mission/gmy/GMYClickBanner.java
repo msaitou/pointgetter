@@ -32,6 +32,8 @@ public class GMYClickBanner extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 		selector = "a span.clickpt";
+//		http://dietnavi.com/pc/mypage/point_rule.php
+		// alt='クリポ付' TODO
 		String[] urls = {
 				// ■clipoバナーtop
 				"http://dietnavi.com/pc/",

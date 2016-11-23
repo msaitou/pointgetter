@@ -4,20 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import lombok.val;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.mission.Mission;
-import pointGet.mission.ECN.ECNChinjyu;
-import pointGet.mission.ECN.ECNChirachi;
-import pointGet.mission.PEX.PEXChirachi;
-import pointGet.mission.PEX.PEXClickBanner;
-import pointGet.mission.PEX.PEXMekutte;
-import pointGet.mission.PEX.PEXPectan;
-import pointGet.mission.PEX.PEXSearch;
+import pointGet.mission.ecn.ECNChinjyu;
+import pointGet.mission.ecn.ECNChirachi;
 import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.mop.MOPChyosatai;
@@ -25,6 +18,7 @@ import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSAQuiz;
+import pointGet.mission.pex.PEXMekutte;
 
 /**
  * get point from the point site
@@ -72,24 +66,24 @@ public class WebClicker extends PointGet {
 	public static void main(String[] args) {
 		init(args);
 		logg.info("Start!!");
-		if (!thirdFlg) {
-			// ecサイト
-			goToClickSite(Define.PSITE_CODE_ECN);
-			// pex
-			goToClickSite(Define.PSITE_CODE_PEX);
-			// げん玉
-			goToClickSite(Define.PSITE_CODE_GEN);
-		}
-		if (!secondFlg && !thirdFlg) {
-			// GetMoney
-			goToClickSite(Define.PSITE_CODE_GMY);
-			// RIN
-			goToClickSite(Define.PSITE_CODE_RIN);
-		}
-		// mop
-		goToClickSite(Define.PSITE_CODE_MOP);
-		// OSA
-		goToClickSite(Define.PSITE_CODE_OSA);
+		//		if (!thirdFlg) {
+//		// ecサイト
+//		goToClickSite(Define.PSITE_CODE_ECN);
+					// pex
+					goToClickSite(Define.PSITE_CODE_PEX);
+		//			// げん玉
+		//			goToClickSite(Define.PSITE_CODE_GEN);
+		//		}
+		//		if (!secondFlg && !thirdFlg) {
+		//			// GetMoney
+		//			goToClickSite(Define.PSITE_CODE_GMY);
+		//			// RIN
+		//			goToClickSite(Define.PSITE_CODE_RIN);
+		//		}
+		//		// mop
+		//		goToClickSite(Define.PSITE_CODE_MOP);
+		//		// OSA
+		//		goToClickSite(Define.PSITE_CODE_OSA);
 
 		// roop
 		if (missionList.size() > 0) {
@@ -271,147 +265,115 @@ public class WebClicker extends PointGet {
 
 	private static void goToClickPEX(WebDriver driver) {
 		String selector = "";
-		// 1日2回
-		if (!thirdFlg) {
-			String mName = "■みんなのアンサー";
-			driver.get("http://pex.jp/minna_no_answer/questions/current");
-			// ランダムで1,2を選ぶ
-			int ran = Utille.getIntRand(2);
-			selector = "section.question_area input[type='submit']";
-			if (isExistEle(driver, selector)) {
-				driver.findElements(By.cssSelector(selector)).get(ran).click();
-				val alert = driver.switchTo().alert();
-				alert.accept();
-			}
-			else {
-				logg.warn(mName + "]獲得済み");
-			}
+//		// 1日2回
+//		if (!thirdFlg) {
+//			String mName = "■みんなのアンサー";
+//			driver.get("http://pex.jp/minna_no_answer/questions/current");
+//			// ランダムで1,2を選ぶ
+//			int ran = Utille.getIntRand(2);
+//			selector = "section.question_area input[type='submit']";
+//			if (isExistEle(driver, selector)) {
+//				driver.findElements(By.cssSelector(selector)).get(ran).click();
+//				val alert = driver.switchTo().alert();
+//				alert.accept();
+//			}
+//			else {
+//				logg.warn(mName + "]獲得済み");
+//			}
+//
+//			mName = "■ポイントクイズ";
+//			driver.get("http://pex.jp/point_quiz");
+//			int ran1 = Utille.getIntRand(4);
+//			selector = "ul.answer_select a";
+//			if (isExistEle(driver, selector)) {
+//				driver.findElements(By.cssSelector(selector)).get(ran1).click();
+//				val alert2 = driver.switchTo().alert();
+//				alert2.accept();
+//			}
+//			else {
+//				logg.warn(mName + "]獲得済み");
+//			}
+//			// ■オリチラ
+//			Mission PEXChirachi = new PEXChirachi(logg);
+//			PEXChirachi.exePrivateMission(driver);
+//		}
+//		// 以下1日回
+//		if (!secondFlg && !thirdFlg) {
+//			mName = "■rakutenバナー";
+//			driver.get("http://pex.jp");
+//			selector = "div>div>div>a>img[src*='image.infoseek.rakuten.co.jp']";
+//			if (isExistEle(driver, selector)) {
+//				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+//				eleList.get(0).click();
+//				Utille.sleep(3000);
+//			}
+//			else {
+//				logg.warn(mName + "]なかったよ...");
+//			}
+//			// ■ポイント検索
+//			Mission PexMissionSearch = new PEXSearch(logg, wordList);
+//			PexMissionSearch.exeRoopMission(driver);
+//			missionList.add(PexMissionSearch);
+//			// ■ぺく単
+//			Mission PexMissionPectan = new PEXPectan(logg);
+//			PexMissionPectan.exeRoopMission(driver);
+//			missionList.add(PexMissionPectan);
+//
+//			mName = "■毎日ニュース　午前7：00～翌日午前6：59";
+//			int pexNewsNum = 5;
+//			int pexNewsClick = 0;
+//			for (int i = 0; pexNewsClick < pexNewsNum; i++) {
+//				driver.get("http://pex.jp/point_news");
+//				// 未獲得印3つが確認できない場合ノルマ達成とみなしブレイク
+//				selector = "li.pt.ungained";
+//				if (!isExistEle(driver, selector)) {
+//					break;
+//				}
+//				selector = "ul#news-list>li>figure>a";
+//				if (!isExistEle(driver, selector)) {
+//					break;
+//				}
+//				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+//				String newsUrl = eleList.get(i).getAttribute("href");
+//				logg.info("newsUrl:" + newsUrl);
+//				driver.get(newsUrl);
+//				Utille.sleep(3000);
+//
+//				int ran = Utille.getIntRand(4);
+//				String selectId = "table.you_say input";
+//				if (ran == 0) {
+//					selectId += "#submit-like";
+//				}
+//				else if (ran == 1) {
+//					selectId += "#submit-angry";
+//				}
+//				else if (ran == 2) {
+//					selectId += "#submit-sad";
+//				}
+//				else {
+//					selectId += "#submit-cool";
+//				}
+//				if (isExistEle(driver, selectId)) {
+//					driver.findElement(By.cssSelector(selectId)).click();
+//					Utille.sleep(3000);
+//					pexNewsClick++;
+//				}
+//				else if (isExistEle(driver, "p.got_maxpoints")) {
+//					break;
+//				}
+//			}
+//
+//			// ■クリックポイント
+//			Mission PEXClickBanner = new PEXClickBanner(logg);
+//			PEXClickBanner.exePrivateMission(driver);
 
-			mName = "■ポイントクイズ";
-			driver.get("http://pex.jp/point_quiz");
-			int ran1 = Utille.getIntRand(4);
-			selector = "ul.answer_select a";
-			if (isExistEle(driver, selector)) {
-				driver.findElements(By.cssSelector(selector)).get(ran1).click();
-				val alert2 = driver.switchTo().alert();
-				alert2.accept();
-			}
-			else {
-				logg.warn(mName + "]獲得済み");
-			}
-			// ■ぺく単
-			Mission PEXChirachi = new PEXChirachi(logg);
-			PEXChirachi.exePrivateMission(driver);
-/**         
-			mName = "■オリチラ";
-			driver.get("http://pex.jp/chirashi");
-			selector = "section.list li figure>a";
-			if (isExistEle(driver, selector)) {
-				driver.findElement(By.cssSelector(selector)).click();
-				Utille.sleep(3000);
-			}
-			else {
-				logg.warn(mName + "]獲得済み");
-			}
-**/
-		}
-		// 以下1日回
-		if (!secondFlg && !thirdFlg) {
-			mName = "■rakutenバナー";
-			driver.get("http://pex.jp");
-			selector = "div>div>div>a>img[src*='image.infoseek.rakuten.co.jp']";
-			if (isExistEle(driver, selector)) {
-				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-				eleList.get(0).click();
-				Utille.sleep(3000);
-			}
-			else {
-				logg.warn(mName + "]なかったよ...");
-			}
-			// ■ポイント検索
-			Mission PexMissionSearch = new PEXSearch(logg, wordList);
-			PexMissionSearch.exeRoopMission(driver);
-			missionList.add(PexMissionSearch);
-			// ■ぺく単
-			Mission PexMissionPectan = new PEXPectan(logg);
-			PexMissionPectan.exeRoopMission(driver);
-			missionList.add(PexMissionPectan);
-
-			mName = "■毎日ニュース　午前7：00～翌日午前6：59";
-			int pexNewsNum = 5;
-			int pexNewsClick = 0;
-			for (int i = 0; pexNewsClick < pexNewsNum; i++) {
-				driver.get("http://pex.jp/point_news");
-				// 未獲得印3つが確認できない場合ノルマ達成とみなしブレイク
-				selector = "li.pt.ungained";
-				if (!isExistEle(driver, selector)) {
-					break;
-				}
-				selector = "ul#news-list>li>figure>a";
-				if (!isExistEle(driver, selector)) {
-					break;
-				}
-				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-				String newsUrl = eleList.get(i).getAttribute("href");
-				logg.info("newsUrl:" + newsUrl);
-				driver.get(newsUrl);
-				Utille.sleep(3000);
-
-				int ran = Utille.getIntRand(4);
-				String selectId = "table.you_say input";
-				if (ran == 0) {
-					selectId += "#submit-like";
-				}
-				else if (ran == 1) {
-					selectId += "#submit-angry";
-				}
-				else if (ran == 2) {
-					selectId += "#submit-sad";
-				}
-				else {
-					selectId += "#submit-cool";
-				}
-				if (isExistEle(driver, selectId)) {
-					driver.findElement(By.cssSelector(selectId)).click();
-					Utille.sleep(3000);
-					pexNewsClick++;
-				}
-				else if (isExistEle(driver, "p.got_maxpoints")) {
-					break;
-				}
-			}
-
-            // ■クリックポイント
-            Mission PEXClickBanner = new PEXClickBanner(logg);
-            PEXClickBanner.exePrivateMission(driver);
-    
-/*
-			mName = "■クリックポイント";
-			driver.get("http://pex.jp/point_actions#clickpoint");
-			selector = "div.clickpoint_innner li>a>p.title";
-			if (isExistEle(driver, selector)) {
-				if (!isExistEle(driver, "p.get_massage")) { // 獲得済みか
-					int size = driver.findElements(By.cssSelector(selector)).size();
-					for (int i = 0; i < size; i++) {
-						if (isExistEle(driver, selector)) {
-							driver.findElements(By.cssSelector(selector)).get(i).click();
-							Utille.sleep(2000);
-							driver.get("http://pex.jp/point_actions#clickpoint");
-						}
-					}
-				}
-				else {
-					logg.warn(mName + "]獲得済み");
-				}
-			}
-**/
 			// ■めくってシール
 			Mission PEXMekutte = new PEXMekutte(logg);
 			PEXMekutte.exePrivateMission(driver);
-		}
-//		// テスト中
-//				PEXMitukete PEXMitukete = new PEXMitukete(logg);
-//				PEXMitukete.exePrivateMission(driver);
+//		}
+		//		// テスト中
+		//				PEXMitukete PEXMitukete = new PEXMitukete(logg);
+		//				PEXMitukete.exePrivateMission(driver);
 
 	}
 
@@ -422,22 +384,17 @@ public class WebClicker extends PointGet {
 	private static void goToClickECN(WebDriver driver) {
 		// 1日2回
 		if (!thirdFlg) {
+			// ■チラシ
 			Mission ECNChirachi = new ECNChirachi(logg);
 			ECNChirachi.exePrivateMission(driver);
-/**
-			String mName = "■チラシ";
-			String selector = "a.chirashi_link";
-			driver.get("http://ecnavi.jp/contents/chirashi/");
-			if (isExistEle(driver, selector)) {
-				driver.findElement(By.cssSelector(selector)).click();
-			}
-			else {
-				logg.warn(mName + "]獲得済み");
-			}
-**/
 		}
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
+			// ■珍獣先生
+			Mission EcnMissionChinjyu = new ECNChinjyu(logg);
+			EcnMissionChinjyu.roopMission(driver);
+			missionList.add(EcnMissionChinjyu);
+
 			mName = "■web検索";
 			// propertiesファイルから単語リストを抽出して、ランダムで5つ（数は指定可能）
 			String[] wordSearchList = Utille.getWordSearchList(wordList, 5);
@@ -486,12 +443,14 @@ public class WebClicker extends PointGet {
 			String[] dronUrlList = { "http://ecnavi.jp/", "http://ecnavi.jp/pointboard/#doron" };
 			for (int i = 0; i < dronUrlList.length; i++) {
 				driver.get(dronUrlList[i]);
+				Utille.sleep(1000);
 				String selector = "div#doron a.item";
-				if (isExistEle(driver, selector)) {
+				if (isExistEle(driver, "div.js_anime.got")) {
+					logg.warn(mName + i + "]獲得済み");
+					continue;
+				}
+				else if (isExistEle(driver, selector)) {
 					driver.findElement(By.cssSelector(selector)).click();
-					//					val alert = driver.switchTo().alert();
-					//					alert.accept();
-					// alert.accept();
 				}
 			}
 
@@ -548,54 +507,21 @@ public class WebClicker extends PointGet {
 					break;
 				}
 			}
-
-			// ■珍獣先生
-			Mission EcnMissionChinjyu = new ECNChinjyu(logg);
-			EcnMissionChinjyu.roopMission(driver);
-			missionList.add(EcnMissionChinjyu);
 		}
 	}
 
-	// gone
+	/**
+	 * 
+	 * @param driver
+	 */
 	private static void goToClickGMY(WebDriver driver) {
 		if (!secondFlg && !thirdFlg) {
+			// ■clipoバナー
 			Mission GMYClickBanner = new GMYClickBanner(logg);
 			GMYClickBanner.exePrivateMission(driver);
-/**
-			String mName = "■clipoバナーtop";
-			driver.get("http://dietnavi.com/pc/");
-			String selector = "a span.clickpt";
-			if (isExistEle(driver, selector)) {
-				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-				// clipoバナー
-				int size = eleList.size();
-				for (int i = 0; i < size; i++) {
-					eleList.get(i).click();
-					Utille.sleep(2000);
-				}
-			}
-			mName = "■clipoバナーページ";
-			driver.get("http://dietnavi.com/pc/daily_click.php");
-			if (isExistEle(driver, selector)) {
-				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-				int size = eleList.size();
-				for (int i = 0; i < size; i++) {
-					eleList.get(i).click();
-					Utille.sleep(2000);
-				}
-			}
-**/
+			// ■チラシ
 			Mission GMYChirachi = new GMYChirachi(logg);
 			GMYChirachi.exePrivateMission(driver);
-/**		
-			mName = "■チラシ";
-			driver.get("http://dietnavi.com/pc/");
-			selector = "#chirashi_check";
-			if (isExistEle(driver, selector)) {
-				driver.findElement(By.cssSelector(selector)).click();
-				Utille.sleep(2000);
-			}
-**/
 		}
 	}
 

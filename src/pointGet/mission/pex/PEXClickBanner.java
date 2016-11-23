@@ -1,11 +1,8 @@
-package pointGet.mission.PEX;
-
-import java.util.List;
+package pointGet.mission.pex;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 import pointGet.mission.Mission;
@@ -36,16 +33,18 @@ public class PEXClickBanner extends Mission {
 		if (isExistEle(driver, selector)) {
 			if (!isExistEle(driver, "p.get_massage")) { // 獲得済みか
 				if (super.isExistEle(driver, selector)) {
-					List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 					// clipoバナー
-					int size = eleList.size();
+					int size = driver.findElements(By.cssSelector(selector)).size();
 					for (int i = 0; i < size; i++) {
-						eleList.get(i).click();// ここでももう一度存在するかを確認した方がいいんじゃ。。。TODO
-						Utille.sleep(2000);
-						driver.get(this.url); // 元のページに戻る
+						if (super.isExistEle(driver.findElements(By.cssSelector(selector)).get(i))) {
+							driver.findElements(By.cssSelector(selector)).get(i).click();
+							Utille.sleep(2000);
+							driver.get("http://pex.jp/point_actions#clickpoint");
+						}
 					}
 				}
-			} else {
+			}
+			else {
 				logg.warn(mName + "]獲得済み");
 			}
 		}
