@@ -528,6 +528,9 @@ public class WebClicker extends PointGet {
 	private static void goToClickGEN(WebDriver driver) {
 
 		if (!thirdFlg) {
+// 			Mission GENPointStar = new GENPointStar(logg);
+// 			GENPointStar.exePrivateMission(driver);
+
 			String mName = "■ポイントの森";
 			driver.get("http://www.gendama.jp/forest/");
 			Utille.sleep(2000);
@@ -541,6 +544,10 @@ public class WebClicker extends PointGet {
 		}
 
 		if (!secondFlg && !thirdFlg) {
+
+// 			Mission GENClickBanner = new GENClickBanner(logg);
+// 			GENClickBanner.exePrivateMission(driver);
+
 			mName = "■ポイントの森";
 			driver.get("http://www.gendama.jp/forest/");
 			Utille.sleep(2000);

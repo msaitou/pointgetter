@@ -14,14 +14,14 @@ import pointGet.mission.Mission;
  * @author saitou 途中TODO
  */
 public class GENClickBanner extends Mission {
-	final String url = "";
+	final String url = "http://www.gendama.jp/forest/";
 
 	/**
 	 * @param log
 	 */
 	public GENClickBanner(Logger log) {
 		super(log);
-		this.mName = "■clipoバナー";
+		this.mName = "■ポイントの森";
 	}
 
 	@Override
@@ -30,17 +30,15 @@ public class GENClickBanner extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		selector = "a span.clickpt";
-		String[] urls = {
-				// ■clipoバナーtop
-				"http://dietnavi.com/pc/",
-				// clipoバナーページ
-				"http://dietnavi.com/pc/daily_click.php" };
-		for (int j = 0; j < urls.length; j++) {
-			driver.get(urls[j]);
+		driver.get(url);
+		Utille.sleep(2000);
+		String selecter[] = { "div#forestBox a img", "div#downBox a.all p.bnrImg","section#reach a.clearfix dt"
+				//					, "div#sponsor a[href^='/cl/?id='] img"  // ここにバッチ起動時のみバグってる
+		};
+		for (int j = 0; j < selecter.length; j++) {
+			String selector = selecter[j];
 			if (super.isExistEle(driver, selector)) {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-				// clipoバナー
 				int size = eleList.size();
 				for (int i = 0; i < size; i++) {
 					eleList.get(i).click();
@@ -48,5 +46,6 @@ public class GENClickBanner extends Mission {
 				}
 			}
 		}
+		logg.info("selector: end");
 	}
 }
