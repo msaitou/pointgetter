@@ -83,6 +83,7 @@ public class MOPQuiz extends Mission {
 				selector = "input[name='submit']";
 				if (super.isExistEle(driver, selector)) {
 					driver.findElement(By.cssSelector(selector)).click();
+					super.waitTilReady(driver);
 					Utille.sleep(3000);
 				}
 			}

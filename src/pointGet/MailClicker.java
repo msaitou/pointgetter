@@ -27,7 +27,6 @@ import javax.mail.Store;
 import javax.mail.search.ComparisonTerm;
 import javax.mail.search.ReceivedDateTerm;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -214,7 +213,9 @@ public class MailClicker extends PointGet {
 				logg.info("■request site[" + e.getKey() + "] START");
 				try {
 					if (e.getKey().equals(Define.PSITE_CODE_OSA) || e.getKey().equals(Define.PSITE_CODE_ECN)
-							|| e.getKey().equals(Define.PSITE_CODE_RIN)) {
+							|| e.getKey().equals(Define.PSITE_CODE_RIN)
+							|| e.getKey().equals(Define.PSITE_CODE_PEX)
+							|| e.getKey().equals(Define.PSITE_CODE_R01)) {
 						WebDriver driver = getWebDriver();
 						boolean rinLoginFlag = false;
 						for (String url : e.getValue()) {
@@ -222,15 +223,15 @@ public class MailClicker extends PointGet {
 							String uriString = url; // 開くURL
 							logg.info("■request url[" + uriString + "] START");
 							System.out.println("kiiiiii");
-							if (e.getKey().equals(Define.PSITE_CODE_RIN) && !rinLoginFlag) {
-								rinLoginFlag = true;
-								driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml;jsessionid=zwX8hs2NdWJil1182pFwJ3IfqTYrUB4kiOFctVfxtxRyTWdo0moH!1940822195!1432150385");
-								Eventually.eventually(() -> driver.findElement(By
-										.cssSelector("#loginButton")));
-								driver.findElement(By
-										.cssSelector("#loginButton")).click();
-								Utille.sleep(3000);
-							}
+							//							if (e.getKey().equals(Define.PSITE_CODE_RIN) && !rinLoginFlag) {
+							//								rinLoginFlag = true;
+							//								driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml;jsessionid=zwX8hs2NdWJil1182pFwJ3IfqTYrUB4kiOFctVfxtxRyTWdo0moH!1940822195!1432150385");
+							//								Eventually.eventually(() -> driver.findElement(By
+							//										.cssSelector("#loginButton")));
+							//								driver.findElement(By
+							//										.cssSelector("#loginButton")).click();
+							//								Utille.sleep(3000);
+							//							}
 							driver.get(uriString);
 							Utille.sleep(1000);
 						}
@@ -271,7 +272,7 @@ public class MailClicker extends PointGet {
 			String[] contentLow = content.toString().split("\\r\\n", 0);
 			ArrayList<String> urlList = new ArrayList<String>();
 			for (int i = 0; i < contentLow.length; i++) {
-				//								logg.info("■■-getContent [" + contentLow[i]);
+				//												logg.info("■■-getContent [" + contentLow[i]);
 				switch (folederKind) {
 				case Define.PSITE_CODE_GMY: // GET MONEY
 					if (contentLow[i].indexOf("click.php") > 0) {
@@ -343,7 +344,7 @@ public class MailClicker extends PointGet {
 						}
 					}
 					else if (Define.CONTENT_TYPE_HTML.equals(contentType)) {
-						for (String indexKey : new String[] { "pmrd.rakuten.co.jp/?r=" }) {
+						for (String indexKey : new String[] { "http://pmrd.rakuten.co.jp/?r=" }) {
 							String url = "";
 							if (contentLow[i].indexOf(indexKey) >= 0) {
 								if (contentLow[i].indexOf("\"", contentLow[i].indexOf("http://pmrd.rakuten.co.jp/?r=")) > 0) {
@@ -362,27 +363,39 @@ public class MailClicker extends PointGet {
 						}
 					}
 					break;
-				// テスト用
-				case "test":
-					if (Define.CONTENT_TYPE_TEXT.equals(contentType)) {
-						if (contentLow[i].indexOf("[Point] http") >= 0) {
-							String url = contentLow[i].substring(contentLow[i].indexOf("http"));
-							urlList.add(Utille.trimWhitespace(url));
-						}
-					}
-					else if (Define.CONTENT_TYPE_HTML.equals(contentType)) {
-						if (contentLow[i].indexOf("a href") >= 0
-								&& contentLow[i].indexOf("/ptu/") >= 0) {
-							String url = contentLow[i].substring(contentLow[i].indexOf("http"),
-									contentLow[i].indexOf("\"", contentLow[i].indexOf("/ptu/")));
-							urlList = new ArrayList<String>();
-							urlList.add(Utille.trimWhitespace(url));
+				case Define.PSITE_CODE_R01: // 楽天infoseek以外
+					if (Define.CONTENT_TYPE_HTML.equals(contentType)) {
+						for (String indexKey : new String[] { "https://r.rakuten.co.jp/",
+								"http://ac.rakuten-card.co.jp/s.p",
+								"http://ac.rakuten-card.co.jp/c.p" }) {
+							String url = "";
+							if (contentLow[i].indexOf(indexKey) >= 0) {
+								if (contentLow[i].indexOf("\"", contentLow[i].indexOf(indexKey)) > 0) {
+									url = contentLow[i].substring(
+											contentLow[i].indexOf(indexKey),
+											contentLow[i].indexOf("\"",
+													contentLow[i].indexOf(indexKey)));
+								}
+								else {
+									System.out.println(contentLow[i]);
+									url = contentLow[i].substring(contentLow[i]
+											.indexOf(indexKey));
+								}
+								urlList.add(Utille.trimWhitespace(url));
+							}
 						}
 					}
 					break;
 				case Define.PSITE_CODE_PEX: // PEX
+					if (contentLow[i].indexOf("pex.jp/redirector/") >= 0) {
+						String url = contentLow[i].substring(contentLow[i].indexOf("https"));
+						urlList.add(Utille.trimWhitespace(url));
+					}
 					break;
 				case Define.PSITE_CODE_I2I: // ポイントメールなし
+					break;
+				// テスト用
+				case "test":
 					break;
 				}
 			}

@@ -1,13 +1,17 @@
 package pointGet.mission;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.Eventually;
 import pointGet.Utille;
 
 /**
@@ -61,7 +65,7 @@ public abstract class Mission {
 	public void exeRoopMission(WebDriver driver) {
 		exeMission(driver, 1);
 	}
-
+	
 	/**
 	 * roop mission execute
 	 * @param driver 
@@ -72,6 +76,14 @@ public abstract class Mission {
 	 * @param driver
 	 */
 	public abstract void privateMission(WebDriver driver);
+
+	/**
+	 * @param driver
+	 */
+	protected void waitTilReady(WebDriver driver) {
+		Eventually.eventually(() -> assertEquals(
+				((JavascriptExecutor) driver).executeScript("return document.readyState"), "complete"));
+	}
 
 	/**
 	 * 
@@ -100,22 +112,24 @@ public abstract class Mission {
 	 */
 	protected void checkOverlay(WebDriver driver, String selector) {
 		int i = 0;
-//		while (i < 10) {
+		while (i < 10) {
 			try {
+				this.waitTilReady(driver);
 				if (this.isExistEle(driver, selector)) {
 					driver.findElement(By.cssSelector(selector)).click(); // 広告消す
+					logg.info("広告消してやったぜ");
 					Utille.sleep(2000);
-//					break;
 				}
-				Utille.sleep(2000);
-				++i;
+				break;
+//				Utille.sleep(2000);
 			} catch (Throwable e) {
 				this.logg.error("広告消えない[" + ++i + "回目]");
 				e.printStackTrace();
 				Utille.sleep(2000);
+				continue;
 			}
-			logg.info("check roop[" + i + "]");
-//		}
+//			logg.info("check roop[" + i + "]");
+		}
 	}
 
 	/**

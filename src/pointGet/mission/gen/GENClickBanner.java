@@ -21,7 +21,7 @@ public class GENClickBanner extends Mission {
 	 */
 	public GENClickBanner(Logger log) {
 		super(log);
-		this.mName = "■ポイントの森";
+		this.mName = "■ポイントの森(クリック)";
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class GENClickBanner extends Mission {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		Utille.sleep(2000);
-		String selecter[] = { "div#forestBox a img", "div#downBox a.all p.bnrImg","section#reach a.clearfix dt"
+		String selecter[] = { "div#forestBox a img", "div#downBox a.all p.bnrImg", "section#reach a.clearfix dt"
 				//					, "div#sponsor a[href^='/cl/?id='] img"  // ここにバッチ起動時のみバグってる
 		};
 		for (int j = 0; j < selecter.length; j++) {
@@ -41,8 +41,10 @@ public class GENClickBanner extends Mission {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size = eleList.size();
 				for (int i = 0; i < size; i++) {
-					eleList.get(i).click();
-					Utille.sleep(2000);
+					if (super.isExistEle(eleList)) {
+						eleList.get(i).click();
+						Utille.sleep(2000);
+					}
 				}
 			}
 		}

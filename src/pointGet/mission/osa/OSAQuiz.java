@@ -36,7 +36,8 @@ public class OSAQuiz extends Mission {
 			logg.info(this.mName + "]" + selector + " is EXIST");
 			driver.findElement(By.cssSelector(selector)).click(); // 遷移
 			Utille.sleep(2000);
-			super.checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
+			String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
+			super.checkOverlay(driver, overlaySelector);
 			selector = "input[name='submit']";
 			Utille.sleep(4000);
 			if (super.isExistEle(driver, selector)) {
@@ -69,13 +70,12 @@ public class OSAQuiz extends Mission {
 							Utille.sleep(2000);
 							driver.findElement(By.cssSelector(selector2)).click(); // 遷移
 							Utille.sleep(4000);
-							super.checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
-							super.checkOverlay(driver, "div.overlay.overlay-timer a.button-close");
+							super.checkOverlay(driver, overlaySelector);
 							if (super.isExistEle(driver, selector2)) {
 								logg.info(this.mName + "]" + selector2 + " is EXIST");
 								driver.findElement(By.cssSelector(selector2)).click(); // 遷移
 								Utille.sleep(3000);
-								super.checkOverlay(driver, "div.overlay-item a.button-close");
+								super.checkOverlay(driver, overlaySelector);
 							}
 						}
 					}
