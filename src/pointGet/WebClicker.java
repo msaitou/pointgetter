@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import lombok.val;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import pointGet.mission.Mission;
 import pointGet.mission.ecn.ECNChinjyu;
 import pointGet.mission.ecn.ECNChirachi;
+import pointGet.mission.ecn.ECNGaragara;
 import pointGet.mission.gen.GENClickBanner;
 import pointGet.mission.gen.GENPointStar;
 import pointGet.mission.gmy.GMYChirachi;
@@ -64,7 +63,8 @@ public class WebClicker extends PointGet {
 			String strFlg = args[0];
 			if (strFlg.equals("1")) {
 				secondFlg = true;
-			} else if (strFlg.equals("2")) {
+			}
+			else if (strFlg.equals("2")) {
 				thirdFlg = true;
 			}
 		}
@@ -311,7 +311,8 @@ public class WebClicker extends PointGet {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				eleList.get(0).click();
 				Utille.sleep(3000);
-			} else {
+			}
+			else {
 				logg.warn(mName + "]なかったよ...");
 			}
 			// ■ポイント検索
@@ -432,7 +433,8 @@ public class WebClicker extends PointGet {
 				if (isExistEle(driver, "div.js_anime.got")) {
 					logg.warn(mName + i + "]獲得済み");
 					continue;
-				} else if (isExistEle(driver, selector)) {
+				}
+				else if (isExistEle(driver, selector)) {
 					driver.findElement(By.cssSelector(selector)).click();
 				}
 			}
@@ -444,12 +446,14 @@ public class WebClicker extends PointGet {
 			String selector = "button";
 			if (ran1 == 1) {
 				selector += "#btnA";
-			} else {
+			}
+			else {
 				selector += "#btnB";
 			}
 			if (isExistEle(driver, selector)) {
 				driver.findElement(By.cssSelector(selector)).click();
-			} else {
+			}
+			else {
 				logg.warn(mName + "]獲得済み");
 			}
 
@@ -468,22 +472,29 @@ public class WebClicker extends PointGet {
 				String selector1 = "div.feeling_buttons button";
 				if (ran == 0) {
 					selector1 += ".btn_feeling_good";
-				} else if (ran == 1) {
+				}
+				else if (ran == 1) {
 					selector1 += ".btn_feeling_bad";
-				} else if (ran == 2) {
+				}
+				else if (ran == 2) {
 					selector1 += ".btn_feeling_sad";
-				} else if (ran == 3) {
+				}
+				else if (ran == 3) {
 					selector1 += ".btn_feeling_glad";
 				}
 				if (isExistEle(driver, selector1)) {
 					driver.findElement(By.cssSelector(selector1)).click();
 					Utille.sleep(3000);
 					ecnNewsClick++;
-				} else if (isExistEle(driver, "p.got_maxpoints")) {
+				}
+				else if (isExistEle(driver, "p.got_maxpoints")) {
 					logg.warn(mName + "]獲得済み");
 					break;
 				}
 			}
+			// ■ガラガラ
+			Mission ECNGaragara = new ECNGaragara(logg);
+			ECNGaragara.exePrivateMission(driver);
 		}
 	}
 
