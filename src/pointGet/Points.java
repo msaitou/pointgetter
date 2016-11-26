@@ -135,6 +135,7 @@ public class Points extends PointGet {
 					outPut = "[" + Define.PSITE_CODE_I2I + ":" + point + "] ";
 				}
 				break;
+			default:
 			}
 			if (outPut.length() > 0) {
 				sb.append(outPut);

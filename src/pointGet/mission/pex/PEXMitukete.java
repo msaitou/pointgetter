@@ -35,8 +35,7 @@ public class PEXMitukete extends Mission {
 		driver.get(url);
 		selector = "section#mitsukete_seal>a.game_btn img";
 		if (this.isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click(); // move
-			Utille.sleep(6000);
+			clickSleepSelector(driver, selector, 6000);// move
 
 			selector = "h3.h-lv3.fw_b>strong.h-lv2.fw_b.red";
 			if (this.isExistEle(driver, selector)) {
@@ -49,14 +48,13 @@ public class PEXMitukete extends Mission {
 					// その他の時に、どうしようTODO
 					selector = "section.vertical-menu.box-deco_orange a:contains('"+hint.get("condition")+"')";
 					if (this.isExistEle(driver, selector)) {
-						driver.findElement(By.cssSelector(selector)).click(); // move
-						
+						clickSelector(driver, selector);// move
 					}
 					
 					
 //					selector = "section.vertical-menu.box-deco_orange a";
 //					if (this.isExistEle(driver, selector)) {
-//						int size =driver.findElements(By.cssSelector(selector)).size();
+//						int size =getSelectorSize(driver, selector);;
 //						for (int i = 0;i<size;i++) {
 //							driver.findElement(By.cssSelector(selector)).getText();
 //						}

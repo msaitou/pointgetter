@@ -1,13 +1,8 @@
 package pointGet.mission.pex;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
@@ -33,10 +28,10 @@ public class PEXChirachi extends Mission {
 	public void privateMission(WebDriver driver) {
 		driver.get(this.url);
 		selector = "section.list li figure>a";
-		if (super.isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click();
-			Utille.sleep(2000);
-		} else {
+		if (isExistEle(driver, selector)) {
+			clickSleepSelector(driver, selector, 2000);
+		}
+		else {
 			logg.warn(mName + "]獲得済み");
 		}
 	}

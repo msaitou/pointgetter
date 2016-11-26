@@ -44,7 +44,7 @@ public class PEXSearch extends Mission {
 				ele.clear();
 				logg.info("検索keyword[" + wordSearchList[i]);
 				ele.sendKeys(wordSearchList[i]);
-				driver.findElement(By.cssSelector("input[name='commit']")).click();
+				clickSelector(driver, "input[name='commit']");
 				logg.info("kimasita");
 			}
 			this.cnt++;

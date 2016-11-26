@@ -37,11 +37,11 @@ public class PEXNews extends Mission {
 			driver.get(this.url);
 			// 未獲得印3つが確認できない場合ノルマ達成とみなしブレイク
 			selector = "li.pt.ungained";
-			if (!super.isExistEle(driver, selector)) {
+			if (!isExistEle(driver, selector)) {
 				break;
 			}
 			selector = "ul#news-list>li>figure>a";
-			if (!super.isExistEle(driver, selector)) {
+			if (!isExistEle(driver, selector)) {
 				break;
 			}
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -64,12 +64,11 @@ public class PEXNews extends Mission {
 			else {
 				selectId += "#submit-cool";
 			}
-			if (super.isExistEle(driver, selectId)) {
-				driver.findElement(By.cssSelector(selectId)).click();
-				Utille.sleep(3000);
+			if (isExistEle(driver, selectId)) {
+				clickSleepSelector(driver, selectId, 3000);
 				pexNewsClick++;
 			}
-			else if (super.isExistEle(driver, "p.got_maxpoints")) {
+			else if (isExistEle(driver, "p.got_maxpoints")) {
 				break;
 			}
 		}

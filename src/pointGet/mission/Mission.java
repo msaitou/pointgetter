@@ -65,7 +65,7 @@ public abstract class Mission {
 	public void exeRoopMission(WebDriver driver) {
 		exeMission(driver, 1);
 	}
-	
+
 	/**
 	 * roop mission execute
 	 * @param driver 
@@ -98,38 +98,93 @@ public abstract class Mission {
 	protected boolean isExistEle(List<WebElement> ele) {
 		return Utille.isExistEle(ele, this.logg);
 	}
-	
+
+	/**
+	 * 
+	 * @param ele
+	 * @return
+	 */
 	protected boolean isExistEle(WebElement ele) {
 		List<WebElement> eleL = new ArrayList<WebElement>();
 		eleL.add(ele);
-		return Utille.isExistEle(eleL, this.logg);
+		return this.isExistEle(eleL);
 	}
-	
+
+	/**
+	 * 
+	 * @param wEle
+	 * @param selector
+	 * @return
+	 */
+	protected boolean isExistEle(WebElement wEle, String selector) {
+		return Utille.isExistEle(wEle, selector, this.logg);
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 * @param selector
+	 * @return
+	 */
+	protected int getSelectorSize(WebDriver driver, String selector) {
+		return driver.findElements(By.cssSelector(selector)).size();
+	}
+
 	/**
 	 * 
 	 * @param driver
 	 * @param selector
 	 */
-	protected void checkOverlay(WebDriver driver, String selector) {
+	protected void clickSelector(WebDriver driver, String selector) {
+		driver.findElement(By.cssSelector(selector)).click();
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 * @param selector
+	 * @param milliSeconds
+	 */
+	protected void clickSleepSelector(WebDriver driver, String selector, int milliSeconds) {
+		this.clickSelector(driver, selector);
+		Utille.sleep(milliSeconds);
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 * @param selector
+	 * @param waitFlag
+	 */
+	protected void checkOverlay(WebDriver driver, String selector, boolean isWait) {
 		int i = 0;
 		while (i < 10) {
 			try {
-				this.waitTilReady(driver);
+				if (isWait) {
+					this.waitTilReady(driver);
+				}
 				if (this.isExistEle(driver, selector)) {
-					driver.findElement(By.cssSelector(selector)).click(); // 広告消す
+					this.clickSleepSelector(driver, selector, 2000); // 広告消す
 					logg.info("広告消してやったぜ");
-					Utille.sleep(2000);
 				}
 				break;
-//				Utille.sleep(2000);
 			} catch (Throwable e) {
 				this.logg.error("広告消えない[" + ++i + "回目]");
 				e.printStackTrace();
 				Utille.sleep(2000);
 				continue;
 			}
-//			logg.info("check roop[" + i + "]");
+			//			logg.info("check roop[" + i + "]");
 		}
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 * @param selector
+	 */
+	protected void checkOverlay(WebDriver driver, String selector) {
+		this.checkOverlay(driver, selector, true);
 	}
 
 	/**
@@ -169,9 +224,10 @@ public abstract class Mission {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			driver.quit();
 			logg.error("##Exception##################");
 			logg.error(e.getLocalizedMessage());
-			logg.error(e.getStackTrace().toString());
+			logg.error(Utille.parseStringFromStackTrace(e));
 			logg.error("##Exception##################");
 		}
 		logg.info("[[[" + mName + "]]] END-");

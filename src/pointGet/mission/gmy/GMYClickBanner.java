@@ -41,7 +41,7 @@ public class GMYClickBanner extends Mission {
 				"http://dietnavi.com/pc/daily_click.php" };
 		for (int j = 0; j < urls.length; j++) {
 			driver.get(urls[j]);
-			if (super.isExistEle(driver, selector)) {
+			if (isExistEle(driver, selector)) {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				// clipoバナー
 				int size = eleList.size();

@@ -28,10 +28,17 @@ public class MOPClickBanner extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
+		// TOPバナー
+		driver.get("http://pc.moppy.jp/");
+		selector = "div#site-jack a img";
+		if (isExistEle(driver, selector)) {
+			clickSleepSelector(driver, selector, 2000);
+		}
+
 		driver.get(url);
 		selector = "p.click>a.cc-btn";
 		if (isExistEle(driver, selector)) {
-			int size = driver.findElements(By.cssSelector(selector)).size();
+			int size = getSelectorSize(driver, selector);;
 			for (int i = 0; i < size; i++) {
 				driver.findElements(By.cssSelector(selector)).get(i).click();
 				Utille.sleep(2000);

@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -248,5 +250,19 @@ public class Utille {
 			}
 		}
 		return "";
+	}
+	
+	/**
+	 * 
+	 * @param e
+	 * @return
+	 */
+	public static String parseStringFromStackTrace(Throwable e) {
+		// エラーのスタックトレースを表示
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		e.printStackTrace(pw);
+		pw.flush();
+		return sw.toString();
 	}
 }

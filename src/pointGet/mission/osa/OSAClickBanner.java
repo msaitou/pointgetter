@@ -31,10 +31,10 @@ public class OSAClickBanner extends Mission {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		selector = "section.recommend-area.item-block img.item-name";
-		if (super.isExistEle(driver, selector)) {
-			int size = driver.findElements(By.cssSelector(selector)).size();
+		if (isExistEle(driver, selector)) {
+			int size = getSelectorSize(driver, selector);;
 			for (int i = 0; i < size; i++) {
-				if (super.isExistEle(driver, selector)) {
+				if (isExistEle(driver, selector)) {
 					driver.findElements(By.cssSelector(selector)).get(i).click();
 					Utille.sleep(2000);
 					driver.get(url);

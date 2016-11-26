@@ -37,11 +37,11 @@ public class GENClickBanner extends Mission {
 		};
 		for (int j = 0; j < selecter.length; j++) {
 			String selector = selecter[j];
-			if (super.isExistEle(driver, selector)) {
+			if (isExistEle(driver, selector)) {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size = eleList.size();
 				for (int i = 0; i < size; i++) {
-					if (super.isExistEle(eleList)) {
+					if (isExistEle(eleList)) {
 						eleList.get(i).click();
 						Utille.sleep(2000);
 					}

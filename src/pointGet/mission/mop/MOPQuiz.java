@@ -1,7 +1,6 @@
 package pointGet.mission.mop;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
@@ -32,21 +31,18 @@ public class MOPQuiz extends Mission {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		selector = "div.game_btn>div.icon>img[alt='モッピークイズ']";
-		if (super.isExistEle(driver, selector)) {
-			logg.info(this.mName + "]" + selector + " is EXIST");
-			driver.findElement(By.cssSelector(selector)).click(); // 遷移
-			Utille.sleep(2000);
-			super.changeWindow(driver);
-			super.checkOverlay(driver, "div.overlay-popup a.button-close");
+		if (isExistEle(driver, selector)) {
+			clickSleepSelector(driver, selector, 2000); // 遷移
+
+			changeWindow(driver);
+			checkOverlay(driver, "div.overlay-popup a.button-close");
 			selector = "form>input[name='submit']";
-			if (super.isExistEle(driver, selector)) {
-				logg.info(this.mName + "]" + selector + " is EXIST");
-				driver.findElement(By.cssSelector(selector)).click();
+			if (isExistEle(driver, selector)) {
+				clickSelector(driver, selector);
 				for (int i = 0; i < 8; i++) {
 					Utille.sleep(4000);
 					selector = "ul.ui-item-body";
-					if (super.isExistEle(driver, selector)) {
-						logg.info(this.mName + "]" + selector + " is EXIST");
+					if (isExistEle(driver, selector)) {
 						int ran = Utille.getIntRand(4);
 						String selectId = "label[for='radio-";
 						if (ran == 0) {
@@ -63,28 +59,22 @@ public class MOPQuiz extends Mission {
 						}
 						// 8kai roop
 						String selector2 = "input[name='submit']";
-						if (super.isExistEle(driver, selectId)) {
-							logg.info(this.mName + "]" + selectId + " is EXIST");
-							driver.findElement(By.cssSelector(selectId)).click(); // 選択
-							Utille.sleep(2000);
-							driver.findElement(By.cssSelector(selector2)).click(); // 遷移
-							Utille.sleep(4000);
-							super.checkOverlay(driver, "div.overlay-popup a.button-close");
-							if (super.isExistEle(driver, selector2)) {
-								logg.info(this.mName + "]" + selector2 + " is EXIST");
-								driver.findElement(By.cssSelector(selector2)).click(); // 遷移
-								Utille.sleep(3000);
-								super.checkOverlay(driver, "div.overlay-popup a.button-close");
+						if (isExistEle(driver, selectId)) {
+							clickSleepSelector(driver, selectId, 2000); // 遷移
+							clickSleepSelector(driver, selector2, 4000); // 遷移
+							checkOverlay(driver, "div.overlay-popup a.button-close");
+							if (isExistEle(driver, selector2)) {
+								clickSleepSelector(driver, selector2, 3000); // 遷移
+								checkOverlay(driver, "div.overlay-popup a.button-close");
 							}
 						}
 					}
 				}
 				logg.info(this.mName + "]kuria?");
 				selector = "input[name='submit']";
-				if (super.isExistEle(driver, selector)) {
-					driver.findElement(By.cssSelector(selector)).click();
-					super.waitTilReady(driver);
-					Utille.sleep(3000);
+				if (isExistEle(driver, selector)) {
+					clickSleepSelector(driver, selector, 3000);
+					waitTilReady(driver);
 				}
 			}
 			else {

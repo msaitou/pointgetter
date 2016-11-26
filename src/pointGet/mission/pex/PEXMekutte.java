@@ -1,7 +1,6 @@
 package pointGet.mission.pex;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
@@ -33,8 +32,7 @@ public class PEXMekutte extends Mission {
 		driver.get(url);
 		selector = "section#mekutte_seal>a.game_btn img";
 		if (isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click();
-			Utille.sleep(2000);
+			clickSleepSelector(driver, selector, 2000);
 			this.mekutteSeal(driver);
 		}
 		//		img.bounce
@@ -45,7 +43,7 @@ public class PEXMekutte extends Mission {
 	 * @param driver
 	 */
 	public void mekutteSeal(WebDriver driver) {
-		super.waitTilReady(driver);
+		waitTilReady(driver);
 		// this mission was finished sign.
 		if (isExistEle(driver, "div.link[style*='display: block'].display-none>section#end")) {
 			logg.warn(this.mName + "]獲得済み");
@@ -71,8 +69,7 @@ public class PEXMekutte extends Mission {
 			selectId += "4";
 		}
 		if (isExistEle(driver, selectId)) {
-			driver.findElement(By.cssSelector(selectId)).click();
-			Utille.sleep(3000);
+			clickSleepSelector(driver, selectId, 3000);
 			this.mekutteClick++;
 		}
 	}

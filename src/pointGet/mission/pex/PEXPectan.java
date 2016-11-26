@@ -1,7 +1,6 @@
 package pointGet.mission.pex;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
@@ -48,7 +47,7 @@ public class PEXPectan extends Mission {
 					selectVal += "[value='いいえ']";
 				}
 				if (isExistEle(driver, selectVal)) {
-					driver.findElement(By.cssSelector(selectVal)).click();
+					clickSelector(driver, selectVal);
 					logg.info("clicked!!");
 				}
 			}

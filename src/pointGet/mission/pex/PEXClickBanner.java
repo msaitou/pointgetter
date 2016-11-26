@@ -32,14 +32,14 @@ public class PEXClickBanner extends Mission {
 		driver.get(this.url);
 		if (isExistEle(driver, selector)) {
 			if (!isExistEle(driver, "p.get_massage")) { // 獲得済みか
-				if (super.isExistEle(driver, selector)) {
+				if (isExistEle(driver, selector)) {
 					// clipoバナー
-					int size = driver.findElements(By.cssSelector(selector)).size();
+					int size = getSelectorSize(driver, selector);
 					for (int i = 0; i < size; i++) {
-						if (super.isExistEle(driver.findElements(By.cssSelector(selector)).get(i))) {
+						if (isExistEle(driver.findElements(By.cssSelector(selector)).get(i))) {
 							driver.findElements(By.cssSelector(selector)).get(i).click();
 							Utille.sleep(2000);
-							driver.get("http://pex.jp/point_actions#clickpoint");
+							driver.get(this.url);
 						}
 					}
 				}

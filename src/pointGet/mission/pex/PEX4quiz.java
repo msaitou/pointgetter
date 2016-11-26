@@ -1,13 +1,11 @@
 package pointGet.mission.pex;
 
-import java.util.List;
+import lombok.val;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -35,10 +33,10 @@ public class PEX4quiz extends Mission {
 		driver.get(this.url);
 		int ran1 = Utille.getIntRand(4);
 		selector = "ul.answer_select a";
-		if (super.isExistEle(driver, selector)) {
+		if (isExistEle(driver, selector)) {
 			driver.findElements(By.cssSelector(selector)).get(ran1).click();
-			val alert2 = driver.switchTo().alert();
-			alert2.accept();
+			val alert = driver.switchTo().alert();
+			alert.accept();
 		}
 		else {
 			logg.warn(mName + "]獲得済み");

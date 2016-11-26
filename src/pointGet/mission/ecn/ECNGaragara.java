@@ -34,13 +34,13 @@ public class ECNGaragara extends Mission {
 	public void privateMission(WebDriver driver) {
 		driver.get(this.url);
 		selector = "p.bnr>a>img";
-		if (super.isExistEle(driver, selector)) {
+		if (isExistEle(driver, selector)) {
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 			// clipoバナー
 			int size = eleList.size();
 			for (int i = 0; i < size; i++) {
 				// TODO
-//				if (super.isExistEle(driver.findElements(By.cssSelector("div.frame>p.tama>img")).get(i))) {
+//				if (isExistEle(driver.findElements(By.cssSelector("div.frame>p.tama>img")).get(i))) {
 //					logg.warn(mName + " " + i + "]獲得済み");
 //					continue;
 //				}

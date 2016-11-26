@@ -1,13 +1,11 @@
 package pointGet.mission.pex;
 
-import java.util.List;
+import lombok.val;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -36,7 +34,7 @@ public class PEXAnswer extends Mission {
 		// ランダムで1,2を選ぶ
 		int ran = Utille.getIntRand(2);
 		selector = "section.question_area input[type='submit']";
-		if (super.isExistEle(driver, selector)) {
+		if (isExistEle(driver, selector)) {
 			driver.findElements(By.cssSelector(selector)).get(ran).click();
 			val alert = driver.switchTo().alert();
 			alert.accept();

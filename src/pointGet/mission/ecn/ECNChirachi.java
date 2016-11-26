@@ -1,13 +1,8 @@
 package pointGet.mission.ecn;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
@@ -34,9 +29,8 @@ public class ECNChirachi extends Mission {
 		mName = "■チラシ";
 		driver.get(this.url);
 		selector = "a.chirashi_link";
-		if (super.isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click();
-			Utille.sleep(2000);
+		if (isExistEle(driver, selector)) {
+			clickSleepSelector(driver, selector, 2000);
 		}
 		else {
 			logg.warn(mName + "]獲得済み");

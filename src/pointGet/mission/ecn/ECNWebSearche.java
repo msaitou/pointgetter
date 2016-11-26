@@ -1,7 +1,5 @@
 package pointGet.mission.ecn;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,13 +37,12 @@ public class ECNWebSearche extends Mission {
 		int ecnSearchNum = 4;
 		for (int i = 0; i < ecnSearchNum; i++) {
 			String selector = "input[name='Keywords']";
-			if (super.isExistEle(driver, selector)) {
+			if (isExistEle(driver, selector)) {
 				WebElement ele = driver.findElement(By.cssSelector(selector));
 				ele.clear();
 				logg.info("検索keyword[" + wordSearchList[i]);
 				ele.sendKeys(wordSearchList[i]);
-				driver.findElement(By.cssSelector("button[type='submit']")).click();
-				Utille.sleep(3000);
+				clickSleepSelector(driver, "button[type='submit']", 3000);
 			}
 		}
 	}

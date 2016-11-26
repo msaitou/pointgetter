@@ -1,6 +1,7 @@
 package pointGet;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -16,9 +17,11 @@ import pointGet.mission.gen.GENClickBanner;
 import pointGet.mission.gen.GENPointStar;
 import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
+import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPQuiz;
+import pointGet.mission.mop.MOPShindan;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSAQuiz;
 import pointGet.mission.pex.PEX4quiz;
@@ -60,11 +63,10 @@ public class WebClicker extends PointGet {
 		}
 		wordList = loadProps.getProperty("wordList").split(",");
 		if (args.length > 0) {
-			String strFlg = args[0];
-			if (strFlg.equals("1")) {
+			if (args[0].equals("1")) {
 				secondFlg = true;
 			}
-			else if (strFlg.equals("2")) {
+			else if (args[0].equals("2")) {
 				thirdFlg = true;
 			}
 		}
@@ -76,24 +78,53 @@ public class WebClicker extends PointGet {
 	public static void main(String[] args) {
 		init(args);
 		logg.info("Start!!");
-		if (!thirdFlg) {
-			// ecサイト
-			goToClickSite(Define.PSITE_CODE_ECN);
-			// pex
-			goToClickSite(Define.PSITE_CODE_PEX);
-			// げん玉
-			goToClickSite(Define.PSITE_CODE_GEN);
+		for (String site : new String[] {
+				Define.PSITE_CODE_ECN,// ecnavi
+				Define.PSITE_CODE_PEX,// pex
+				Define.PSITE_CODE_GEN,// gendama
+				Define.PSITE_CODE_GMY,// GetMoney
+				Define.PSITE_CODE_RIN,// raktuten
+				Define.PSITE_CODE_I2I,// i2i
+				Define.PSITE_CODE_MOP,// moppi
+				Define.PSITE_CODE_OSA,// osaifu
+				Define.PSITE_CODE_PTO,// pointtown
+		}) {
+			if (thirdFlg && Arrays.asList(new String[] {
+					Define.PSITE_CODE_ECN,// ecnavi
+					Define.PSITE_CODE_PEX,// pex
+					Define.PSITE_CODE_GEN,// gendama
+			}).contains(site)) {
+				continue;
+			}
+			else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] {
+					Define.PSITE_CODE_GMY,// GetMoney
+					Define.PSITE_CODE_RIN,// raktuten
+					Define.PSITE_CODE_I2I,// i2i
+			}).contains(site)) {
+				continue;
+			}
+			goToClickSite(site);
 		}
-		if (!secondFlg && !thirdFlg) {
-			// GetMoney
-			goToClickSite(Define.PSITE_CODE_GMY);
-			// RIN
-			goToClickSite(Define.PSITE_CODE_RIN);
-		}
-		// mop
-		goToClickSite(Define.PSITE_CODE_MOP);
-		// OSA
-		goToClickSite(Define.PSITE_CODE_OSA);
+		//		if (!thirdFlg) {
+		//			// ecサイト
+		//			goToClickSite(Define.PSITE_CODE_ECN);
+		//			// pex
+		//			goToClickSite(Define.PSITE_CODE_PEX);
+		//			// げん玉
+		//			goToClickSite(Define.PSITE_CODE_GEN);
+		//		}
+		//		if (!secondFlg && !thirdFlg) {
+		//			// GetMoney
+		//			goToClickSite(Define.PSITE_CODE_GMY);
+		//			// RIN
+		//			goToClickSite(Define.PSITE_CODE_RIN);
+		//		}
+		//		// mop
+		//		goToClickSite(Define.PSITE_CODE_MOP);
+		//		// OSA
+		//		goToClickSite(Define.PSITE_CODE_OSA);
+		//		// i2i
+		//		goToClickSite(Define.PSITE_CODE_I2I);
 
 		// roop
 		if (missionList.size() > 0) {
@@ -118,7 +149,6 @@ public class WebClicker extends PointGet {
 			driver.quit();
 			logg.info("roopEnd!!");
 		}
-
 		logg.info("can not read properties!!");
 	}
 
@@ -128,9 +158,7 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickSite(String siteType) {
 		WebDriver driver = getWebDriver();
-		logg.info("■■■■");
-		logg.info("■■missionSite[" + siteType + "]START■■");
-		logg.info("■■■■");
+		logg.info("■■■■\\r\\n■■missionSite[" + siteType + "]START■■\\r\\n■■■■");
 		try {
 			switch (siteType) {
 			case Define.PSITE_CODE_GMY:
@@ -154,24 +182,19 @@ public class WebClicker extends PointGet {
 			case Define.PSITE_CODE_RIN:
 				goToClickRIN(driver);
 				break;
+			case Define.PSITE_CODE_I2I:
+				goToClickI2I(driver);
+				break;
+			default:
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			logg.error("-Exception-------------------");
-			logg.error(e.getMessage());
-			logg.error(e.getLocalizedMessage());
-			logg.error(e.getStackTrace().toString());
-			logg.error("-Exception-------------------");
 		} catch (Throwable e) {
 			e.printStackTrace();
 			logg.error("-Throwable-------------------");
-			logg.error(e.getMessage());
-			logg.error(e.getStackTrace());
+			logg.error(e.getLocalizedMessage());
+			logg.error(Utille.parseStringFromStackTrace(e));
 			logg.error("-Throwable-------------------");
 		}
-		logg.info("■■■■");
-		logg.info("■■missionSite[" + siteType + "]END■■");
-		logg.info("■■■■");
+		logg.info("■■■■\\r\\n■■missionSite[" + siteType + "]END■■\\r\\n■■■■");
 		driver.quit();
 	}
 
@@ -208,9 +231,7 @@ public class WebClicker extends PointGet {
 				String selector2 = "[alt='Check']";
 				int size = driver.findElements(By.cssSelector(selector)).size();
 				for (int i = 0; i < size; i++) {
-					// document.querySelectorAll('[alt="Check"]
-					// ')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox
-					// img')[0];
+					// document.querySelectorAll('[alt="Check"]')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox img')[0];
 					WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
 					if (isExistEle(e, selector2)) {
 						e.findElement(By.cssSelector("a>img")).click();
@@ -230,6 +251,18 @@ public class WebClicker extends PointGet {
 					}
 				}
 			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 */
+	private static void goToClickI2I(WebDriver driver) {
+		if (!secondFlg && !thirdFlg) { // 1日1回
+			// ■星座占い
+			Mission I2ISeiza = new I2ISeiza(logg);
+			I2ISeiza.exePrivateMission(driver);
 		}
 	}
 
@@ -262,46 +295,20 @@ public class WebClicker extends PointGet {
 			// ■トキメキ調査隊
 			Mission MOPChyosatai = new MOPChyosatai(logg);
 			MOPChyosatai.exePrivateMission(driver);
+			// ■毎日診断
+			Mission MOPShindan = new MOPShindan(logg);
+			MOPShindan.exePrivateMission(driver);
 		}
 		if (true) {
 			// ■モッピークイズ
 			Mission MOPQuiz = new MOPQuiz(logg);
 			MOPQuiz.exePrivateMission(driver);
 		}
+
 	}
 
 	private static void goToClickPEX(WebDriver driver) {
 		String selector = "";
-		// 1日2回
-		if (!thirdFlg) {
-			// ■みんなのアンサー
-			Mission PEXAnswer = new PEXAnswer(logg);
-			PEXAnswer.exePrivateMission(driver);
-			/**
-			 * String mName = "■みんなのアンサー";
-			 * driver.get("http://pex.jp/minna_no_answer/questions/current"); //
-			 * ランダムで1,2を選ぶ int ran = Utille.getIntRand(2); selector =
-			 * "section.question_area input[type='submit']"; if
-			 * (isExistEle(driver, selector)) {
-			 * driver.findElements(By.cssSelector(selector)).get(ran).click();
-			 * val alert = driver.switchTo().alert(); alert.accept(); } else {
-			 * logg.warn(mName + "]獲得済み"); }
-			 **/
-			// ■ポイントクイズ
-			Mission PEX4quiz = new PEX4quiz(logg);
-			PEX4quiz.exePrivateMission(driver);
-			/**
-			 * mName = "■ポイントクイズ"; driver.get("http://pex.jp/point_quiz"); int
-			 * ran1 = Utille.getIntRand(4); selector = "ul.answer_select a"; if
-			 * (isExistEle(driver, selector)) {
-			 * driver.findElements(By.cssSelector(selector)).get(ran1).click();
-			 * val alert2 = driver.switchTo().alert(); alert2.accept(); } else {
-			 * logg.warn(mName + "]獲得済み"); }
-			 **/
-			// ■オリチラ
-			Mission PEXChirachi = new PEXChirachi(logg);
-			PEXChirachi.exePrivateMission(driver);
-		}
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
 			mName = "■rakutenバナー";
@@ -323,38 +330,27 @@ public class WebClicker extends PointGet {
 			Mission PexMissionPectan = new PEXPectan(logg);
 			PexMissionPectan.exeRoopMission(driver);
 			missionList.add(PexMissionPectan);
-
 			// ■毎日ニュース
 			Mission PEXNews = new PEXNews(logg);
 			PEXNews.exePrivateMission(driver);
-			/**
-			 * mName = "■毎日ニュース 午前7：00～翌日午前6：59"; int pexNewsNum = 5; int
-			 * pexNewsClick = 0; for (int i = 0; pexNewsClick < pexNewsNum; i++)
-			 * { driver.get("http://pex.jp/point_news"); //
-			 * 未獲得印3つが確認できない場合ノルマ達成とみなしブレイク selector = "li.pt.ungained"; if
-			 * (!isExistEle(driver, selector)) { break; } selector =
-			 * "ul#news-list>li>figure>a"; if (!isExistEle(driver, selector)) {
-			 * break; } List<WebElement> eleList =
-			 * driver.findElements(By.cssSelector(selector)); String newsUrl =
-			 * eleList.get(i).getAttribute("href"); logg.info("newsUrl:" +
-			 * newsUrl); driver.get(newsUrl); Utille.sleep(3000);
-			 * 
-			 * int ran = Utille.getIntRand(4); String selectId = "table.you_say
-			 * input"; if (ran == 0) { selectId += "#submit-like"; } else if
-			 * (ran == 1) { selectId += "#submit-angry"; } else if (ran == 2) {
-			 * selectId += "#submit-sad"; } else { selectId += "#submit-cool"; }
-			 * if (isExistEle(driver, selectId)) {
-			 * driver.findElement(By.cssSelector(selectId)).click();
-			 * Utille.sleep(3000); pexNewsClick++; } else if (isExistEle(driver,
-			 * "p.got_maxpoints")) { break; } }
-			 **/
 			// ■クリックポイント
 			Mission PEXClickBanner = new PEXClickBanner(logg);
 			PEXClickBanner.exePrivateMission(driver);
-
 			// ■めくってシール
 			Mission PEXMekutte = new PEXMekutte(logg);
 			PEXMekutte.exePrivateMission(driver);
+		}
+		// 1日2回
+		if (!thirdFlg) {
+			// ■みんなのアンサー
+			Mission PEXAnswer = new PEXAnswer(logg);
+			PEXAnswer.exePrivateMission(driver);
+			// ■ポイントクイズ
+			Mission PEX4quiz = new PEX4quiz(logg);
+			PEX4quiz.exePrivateMission(driver);
+			// ■オリチラ
+			Mission PEXChirachi = new PEXChirachi(logg);
+			PEXChirachi.exePrivateMission(driver);
 		}
 		// // テスト中
 		// PEXMitukete PEXMitukete = new PEXMitukete(logg);

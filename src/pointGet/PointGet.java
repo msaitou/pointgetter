@@ -16,7 +16,7 @@ public abstract class PointGet {
 
 	private static String propPath = "pointGet.properties";
 	private static String[] siteCodeList = null;
-	
+
 	// log
 	protected static Logger logg = null;
 	// PointGet common properties
@@ -45,7 +45,7 @@ public abstract class PointGet {
 	public static WebDriver getWebDriver() {
 		return Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 	}
-	
+
 	/**
 	 * 設定ファイルをローカル変数に展開する
 	 */
