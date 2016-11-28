@@ -15,14 +15,17 @@ import pointGet.mission.Mission;
  *
  */
 public class ECNSearchBokin extends Mission {
-	final String url = "http://ecnavi.jp/contents/chirashi/";
+	final String url = "http://ecnavi.jp/smile_project/search_fund/";
+
+	private String[] wordSearchList = null;
 
 	/**
 	 * @param log
 	 */
-	public ECNSearchBokin(Logger log) {
+	public ECNSearchBokin(Logger log, String[] wordList) {
 		super(log);
-		this.mName = "■チラシ";
+		this.mName = "■検索募金";
+		this.wordSearchList = Utille.getWordSearchList(wordList, 2);
 	}
 
 	@Override
@@ -31,15 +34,18 @@ public class ECNSearchBokin extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		mName = "■チラシ";
-		driver.get(this.url);
-		selector = "a.chirashi_link";
-		if (super.isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click();
-			Utille.sleep(2000);
-		}
-		else {
-			logg.warn(mName + "]獲得済み");
+		int ecnSearchBokinNum = 2;
+		for (int i = 0; i < ecnSearchBokinNum; i++) {
+			driver.get(this.url);
+			selector = "input[name='Keywords']";
+			if (isExistEle(driver, selector)) {
+				WebElement ele = driver.findElement(By.cssSelector("input[name='Keywords']"));
+				ele.clear();
+				logg.info("検索keyword[" + wordSearchList[i]);
+				ele.sendKeys(this.wordSearchList[i]);
+				selector = "button[type='submit']";
+				clickSleepSelector(driver, selector, 3000);
+			}
 		}
 	}
 }

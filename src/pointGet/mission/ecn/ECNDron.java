@@ -15,14 +15,14 @@ import pointGet.mission.Mission;
  *
  */
 public class ECNDron extends Mission {
-	final String url = "http://ecnavi.jp/contents/chirashi/";
+	final String url = "";
 
 	/**
 	 * @param log
 	 */
 	public ECNDron(Logger log) {
 		super(log);
-		this.mName = "■チラシ";
+		this.mName = "■ドロンバナークリック2種";
 	}
 
 	@Override
@@ -31,15 +31,18 @@ public class ECNDron extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		mName = "■チラシ";
-		driver.get(this.url);
-		selector = "a.chirashi_link";
-		if (super.isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click();
-			Utille.sleep(2000);
-		}
-		else {
-			logg.warn(mName + "]獲得済み");
+		String[] dronUrlList = { "http://ecnavi.jp/", "http://ecnavi.jp/pointboard/#doron" };
+		selector = "div#doron a.item";
+		for (int i = 0; i < dronUrlList.length; i++) {
+			driver.get(dronUrlList[i]);
+			Utille.sleep(1000);
+			if (isExistEle(driver, "div.js_anime.got")) {
+				logg.warn(mName + i + "]獲得済み");
+				continue;
+			}
+			else if (isExistEle(driver, selector)) {
+				clickSleepSelector(driver, selector, 1000);
+			}
 		}
 	}
 }

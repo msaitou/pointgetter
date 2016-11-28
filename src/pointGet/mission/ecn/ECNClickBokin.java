@@ -15,14 +15,14 @@ import pointGet.mission.Mission;
  *
  */
 public class ECNClickBokin extends Mission {
-	final String url = "http://ecnavi.jp/contents/chirashi/";
+	final String url = "http://point.ecnavi.jp/fund/bc/";
 
 	/**
 	 * @param log
 	 */
 	public ECNClickBokin(Logger log) {
 		super(log);
-		this.mName = "■チラシ";
+		this.mName = "■クリック募金";
 	}
 
 	@Override
@@ -31,15 +31,17 @@ public class ECNClickBokin extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		mName = "■チラシ";
 		driver.get(this.url);
-		selector = "a.chirashi_link";
-		if (super.isExistEle(driver, selector)) {
-			driver.findElement(By.cssSelector(selector)).click();
-			Utille.sleep(2000);
+		selector = "div.bnr_box";
+		if (isExistEle(driver, selector)) {
+			List<WebElement> eleList1 = driver.findElements(By.cssSelector(selector));
+			for (WebElement ele : eleList1) {
+				WebElement eleTarget = ele.findElement(By.cssSelector("a"));
+				eleTarget.click();
+				Utille.sleep(3000);
+			}
 		}
-		else {
-			logg.warn(mName + "]獲得済み");
-		}
+
+
 	}
 }
