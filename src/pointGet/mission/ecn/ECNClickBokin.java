@@ -36,12 +36,9 @@ public class ECNClickBokin extends Mission {
 		if (isExistEle(driver, selector)) {
 			List<WebElement> eleList1 = driver.findElements(By.cssSelector(selector));
 			for (WebElement ele : eleList1) {
-				WebElement eleTarget = ele.findElement(By.cssSelector("a"));
-				eleTarget.click();
+				ele.findElement(By.cssSelector("a")).click();
 				Utille.sleep(3000);
 			}
 		}
-
-
 	}
 }

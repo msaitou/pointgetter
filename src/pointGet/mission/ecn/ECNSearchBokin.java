@@ -1,7 +1,5 @@
 package pointGet.mission.ecn;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +19,7 @@ public class ECNSearchBokin extends Mission {
 
 	/**
 	 * @param log
+	 * @param wordList 
 	 */
 	public ECNSearchBokin(Logger log, String[] wordList) {
 		super(log);

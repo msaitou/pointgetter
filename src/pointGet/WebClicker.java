@@ -12,7 +12,11 @@ import org.openqa.selenium.WebElement;
 import pointGet.mission.Mission;
 import pointGet.mission.ecn.ECNChinjyu;
 import pointGet.mission.ecn.ECNChirachi;
+import pointGet.mission.ecn.ECNClickBokin;
+import pointGet.mission.ecn.ECNDron;
 import pointGet.mission.ecn.ECNGaragara;
+import pointGet.mission.ecn.ECNSearchBokin;
+import pointGet.mission.ecn.ECNWebSearche;
 import pointGet.mission.gen.GENClickBanner;
 import pointGet.mission.gen.GENPointStar;
 import pointGet.mission.gmy.GMYChirachi;
@@ -21,7 +25,6 @@ import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPQuiz;
-import pointGet.mission.mop.MOPShindan;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSAQuiz;
 import pointGet.mission.pex.PEX4quiz;
@@ -105,26 +108,6 @@ public class WebClicker extends PointGet {
 			}
 			goToClickSite(site);
 		}
-		//		if (!thirdFlg) {
-		//			// ecサイト
-		//			goToClickSite(Define.PSITE_CODE_ECN);
-		//			// pex
-		//			goToClickSite(Define.PSITE_CODE_PEX);
-		//			// げん玉
-		//			goToClickSite(Define.PSITE_CODE_GEN);
-		//		}
-		//		if (!secondFlg && !thirdFlg) {
-		//			// GetMoney
-		//			goToClickSite(Define.PSITE_CODE_GMY);
-		//			// RIN
-		//			goToClickSite(Define.PSITE_CODE_RIN);
-		//		}
-		//		// mop
-		//		goToClickSite(Define.PSITE_CODE_MOP);
-		//		// OSA
-		//		goToClickSite(Define.PSITE_CODE_OSA);
-		//		// i2i
-		//		goToClickSite(Define.PSITE_CODE_I2I);
 
 		// roop
 		if (missionList.size() > 0) {
@@ -295,20 +278,39 @@ public class WebClicker extends PointGet {
 			// ■トキメキ調査隊
 			Mission MOPChyosatai = new MOPChyosatai(logg);
 			MOPChyosatai.exePrivateMission(driver);
-			// ■毎日診断
-			Mission MOPShindan = new MOPShindan(logg);
-			MOPShindan.exePrivateMission(driver);
+//			// ■毎日診断
+//			Mission MOPShindan = new MOPShindan(logg);
+//			MOPShindan.exePrivateMission(driver);
 		}
 		if (true) {
 			// ■モッピークイズ
 			Mission MOPQuiz = new MOPQuiz(logg);
 			MOPQuiz.exePrivateMission(driver);
 		}
-
 	}
 
 	private static void goToClickPEX(WebDriver driver) {
-		String selector = "";
+		String selector = "dd.user_pt.fw_b>span.fw_b";
+		driver.get("https://pex.jp/user/point_passbook/all");
+		if (!isExistEle(driver, selector)) {
+			if (!pGetProps.containsKey("pex") || !pGetProps.get("pex").containsKey("loginid")
+					|| !pGetProps.get("pex").containsKey("loginpass")) {
+				logg.warn("2");
+			}
+			// ログイン画面
+			String selector2 = "input#pex_user_login_email";
+			if (isExistEle(driver, selector2)) {
+				logg.warn("3");
+				WebElement ele = driver.findElement(By.cssSelector(selector2));
+				ele.clear();
+				ele.sendKeys(pGetProps.get("pex").get("loginid"));
+				ele = driver.findElement(By.cssSelector("input#pex_user_login_password"));
+				ele.clear();
+				ele.sendKeys(pGetProps.get("pex").get("loginpass"));
+				driver.findElement(By.cssSelector("input.form-submit")).click();
+				Utille.sleep(3000);
+			}
+		}
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
 			mName = "■rakutenバナー";
@@ -376,64 +378,21 @@ public class WebClicker extends PointGet {
 			EcnMissionChinjyu.roopMission(driver);
 			missionList.add(EcnMissionChinjyu);
 
-			mName = "■web検索";
-			// propertiesファイルから単語リストを抽出して、ランダムで5つ（数は指定可能）
-			String[] wordSearchList = Utille.getWordSearchList(wordList, 5);
-			driver.get("http://ecnavi.jp/search/web/?Keywords=");
-			int ecnSearchNum = 4;
-			for (int i = 0; i < ecnSearchNum; i++) {
-				String selector = "input[name='Keywords']";
-				if (isExistEle(driver, selector)) {
-					WebElement ele = driver.findElement(By.cssSelector(selector));
-					ele.clear();
-					logg.info("検索keyword[" + wordSearchList[i]);
-					ele.sendKeys(wordSearchList[i]);
-					driver.findElement(By.cssSelector("button[type='submit']")).click();
-					Utille.sleep(3000);
-				}
-			}
+			// ■検索募金
+			Mission ECNWebSearche = new ECNWebSearche(logg, wordList);
+			ECNWebSearche.exePrivateMission(driver);
 
-			mName = "■検索募金";
-			wordSearchList = Utille.getWordSearchList(wordList, 2);
-			int ecnSearchBokinNum = 2;
-			for (int i = 0; i < ecnSearchBokinNum; i++) {
-				driver.get("http://ecnavi.jp/smile_project/search_fund/");
-				String selector = "input[name='Keywords']";
-				if (isExistEle(driver, selector)) {
-					WebElement ele = driver.findElement(By.cssSelector("input[name='Keywords']"));
-					ele.clear();
-					logg.info("検索keyword[" + wordSearchList[i]);
-					ele.sendKeys(wordSearchList[i]);
-					driver.findElement(By.cssSelector("button[type='submit']")).click();
-					Utille.sleep(3000);
-				}
-			}
+			// ■検索募金
+			Mission ECNSearchBokin = new ECNSearchBokin(logg, wordList);
+			ECNSearchBokin.exePrivateMission(driver);
 
-			mName = "■クリック募金";
-			driver.get("http://point.ecnavi.jp/fund/bc/");
-			if (isExistEle(driver, "div.bnr_box")) {
-				List<WebElement> eleList1 = driver.findElements(By.cssSelector("div.bnr_box"));
-				for (WebElement ele : eleList1) {
-					WebElement eleTarget = ele.findElement(By.cssSelector("a"));
-					eleTarget.click();
-					Utille.sleep(3000);
-				}
-			}
+			// ■クリック募金
+			Mission ECNClickBokin = new ECNClickBokin(logg);
+			ECNClickBokin.exePrivateMission(driver);
 
-			mName = "■ドロンバナークリック2種";
-			String[] dronUrlList = { "http://ecnavi.jp/", "http://ecnavi.jp/pointboard/#doron" };
-			for (int i = 0; i < dronUrlList.length; i++) {
-				driver.get(dronUrlList[i]);
-				Utille.sleep(1000);
-				String selector = "div#doron a.item";
-				if (isExistEle(driver, "div.js_anime.got")) {
-					logg.warn(mName + i + "]獲得済み");
-					continue;
-				}
-				else if (isExistEle(driver, selector)) {
-					driver.findElement(By.cssSelector(selector)).click();
-				}
-			}
+			// ■ドロンバナークリック2種
+			Mission ECNDron = new ECNDron(logg);
+			ECNDron.exePrivateMission(driver);
 
 			mName = "■教えてどっち";
 			driver.get("http://ecnavi.jp/vote/choice/");

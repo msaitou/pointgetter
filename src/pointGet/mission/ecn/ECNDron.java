@@ -1,11 +1,7 @@
 package pointGet.mission.ecn;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 import pointGet.mission.Mission;
@@ -38,7 +34,6 @@ public class ECNDron extends Mission {
 			Utille.sleep(1000);
 			if (isExistEle(driver, "div.js_anime.got")) {
 				logg.warn(mName + i + "]獲得済み");
-				continue;
 			}
 			else if (isExistEle(driver, selector)) {
 				clickSleepSelector(driver, selector, 1000);

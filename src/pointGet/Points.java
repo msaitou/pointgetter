@@ -79,6 +79,27 @@ public class Points extends PointGet {
 			case Define.PSITE_CODE_PEX:
 				selector = "dd.user_pt.fw_b>span.fw_b";
 				driver.get("https://pex.jp/user/point_passbook/all");
+				if (!isExistEle(driver, selector)) {
+					if (!pGetProps.containsKey("pex") || !pGetProps.get("pex").containsKey("loginid")
+							|| !pGetProps.get("pex").containsKey("loginpass")) {
+						logg.warn("2");
+						break;
+					}
+					// ログイン画面
+					String selector2 = "input#pex_user_login_email";
+					if (isExistEle(driver, selector2)) {
+						logg.warn("3");
+						WebElement ele = driver.findElement(By.cssSelector(selector2));
+						ele.clear();
+						ele.sendKeys(pGetProps.get("pex").get("loginid"));
+						ele = driver.findElement(By.cssSelector("input#pex_user_login_password"));
+						ele.clear();
+						ele.sendKeys(pGetProps.get("pex").get("loginpass"));
+						driver.findElement(By.cssSelector("input.form-submit")).click();
+						Utille.sleep(3000);
+					}
+				}
+
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
 					outPut = "[" + Define.PSITE_CODE_PEX + ":" + point + "] ";
