@@ -15,7 +15,9 @@ import pointGet.mission.ecn.ECNChirachi;
 import pointGet.mission.ecn.ECNClickBokin;
 import pointGet.mission.ecn.ECNDron;
 import pointGet.mission.ecn.ECNGaragara;
+import pointGet.mission.ecn.ECNNews;
 import pointGet.mission.ecn.ECNSearchBokin;
+import pointGet.mission.ecn.ECNTellmeWhich;
 import pointGet.mission.ecn.ECNWebSearche;
 import pointGet.mission.gen.GENClickBanner;
 import pointGet.mission.gen.GENPointStar;
@@ -35,6 +37,7 @@ import pointGet.mission.pex.PEXMekutte;
 import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
+import pointGet.mission.rin.RINClickBanner;
 
 /**
  * get point from the point site
@@ -68,8 +71,7 @@ public class WebClicker extends PointGet {
 		if (args.length > 0) {
 			if (args[0].equals("1")) {
 				secondFlg = true;
-			}
-			else if (args[0].equals("2")) {
+			} else if (args[0].equals("2")) {
 				thirdFlg = true;
 			}
 		}
@@ -81,27 +83,23 @@ public class WebClicker extends PointGet {
 	public static void main(String[] args) {
 		init(args);
 		logg.info("Start!!");
-		for (String site : new String[] {
-				Define.PSITE_CODE_ECN,// ecnavi
-				Define.PSITE_CODE_PEX,// pex
-				Define.PSITE_CODE_GEN,// gendama
-				Define.PSITE_CODE_GMY,// GetMoney
-				Define.PSITE_CODE_RIN,// raktuten
-				Define.PSITE_CODE_I2I,// i2i
-				Define.PSITE_CODE_MOP,// moppi
-				Define.PSITE_CODE_OSA,// osaifu
+		for (String site : new String[] { Define.PSITE_CODE_ECN, // ecnavi
+				Define.PSITE_CODE_PEX, // pex
+				Define.PSITE_CODE_GEN, // gendama
+				Define.PSITE_CODE_GMY, // GetMoney
+				Define.PSITE_CODE_RIN, // raktuten
+				Define.PSITE_CODE_I2I, // i2i
+				Define.PSITE_CODE_MOP, // moppi
+				Define.PSITE_CODE_OSA, // osaifu
 				Define.PSITE_CODE_PTO,// pointtown
 		}) {
-			if (thirdFlg && Arrays.asList(new String[] {
-					Define.PSITE_CODE_ECN,// ecnavi
-					Define.PSITE_CODE_PEX,// pex
+			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
+					Define.PSITE_CODE_PEX, // pex
 					Define.PSITE_CODE_GEN,// gendama
 			}).contains(site)) {
 				continue;
-			}
-			else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] {
-					Define.PSITE_CODE_GMY,// GetMoney
-					Define.PSITE_CODE_RIN,// raktuten
+			} else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
+					Define.PSITE_CODE_RIN, // raktuten
 					Define.PSITE_CODE_I2I,// i2i
 			}).contains(site)) {
 				continue;
@@ -188,52 +186,9 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickRIN(WebDriver driver) {
 		if (!secondFlg && !thirdFlg) { // 1日1回
-			driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml");
-			String selector = "li#loginId>input#u";
-			// ログイン画面であれば
-			if (isExistEle(driver, selector)) {
-				if (!pGetProps.containsKey("rin") || !pGetProps.get("rin").containsKey("loginid")
-						|| !pGetProps.get("rin").containsKey("loginpass")) {
-					return;
-				}
-				WebElement ele = driver.findElement(By.cssSelector(selector));
-				ele.clear();
-				ele.sendKeys(pGetProps.get("rin").get("loginid"));
-				selector = "li#loginPw>input#p";
-				ele = driver.findElement(By.cssSelector(selector));
-				ele.clear();
-				ele.sendKeys(pGetProps.get("rin").get("loginpass"));
-				driver.findElement(By.cssSelector("input#loginButton")).click();
-				Utille.sleep(5000);
-			}
-			driver.get(
-					"https://www.rakuten-card.co.jp/e-navi/members/point/click-point/index.xhtml?l-id=enavi_all_submenu_clickpoint");
-			Utille.sleep(5000);
-			selector = "div.topArea.clearfix";
-			if (isExistEle(driver, selector)) {
-				String selector2 = "[alt='Check']";
-				int size = driver.findElements(By.cssSelector(selector)).size();
-				for (int i = 0; i < size; i++) {
-					// document.querySelectorAll('[alt="Check"]')[1].parentNode.parentNode.parentNode.querySelectorAll('div.bnrBox img')[0];
-					WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-					if (isExistEle(e, selector2)) {
-						e.findElement(By.cssSelector("a>img")).click();
-						Utille.sleep(2000);
-					}
-				}
-			}
-			selector = "span#middleArea>ul>li";
-			if (isExistEle(driver, selector)) {
-				String selector2 = "[alt='Check']";
-				int size = driver.findElements(By.cssSelector(selector)).size();
-				for (int i = 0; i < size; i++) {
-					WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-					if (isExistEle(e, selector2)) {
-						e.findElement(By.cssSelector("a>img")).click();
-						Utille.sleep(2000);
-					}
-				}
-			}
+			// ■クリックバナー(楽天)
+			Mission RINClickBanner = new RINClickBanner(logg);
+			RINClickBanner.exePrivateMission(driver);
 		}
 	}
 
@@ -278,9 +233,9 @@ public class WebClicker extends PointGet {
 			// ■トキメキ調査隊
 			Mission MOPChyosatai = new MOPChyosatai(logg);
 			MOPChyosatai.exePrivateMission(driver);
-//			// ■毎日診断
-//			Mission MOPShindan = new MOPShindan(logg);
-//			MOPShindan.exePrivateMission(driver);
+			// // ■毎日診断
+			// Mission MOPShindan = new MOPShindan(logg);
+			// MOPShindan.exePrivateMission(driver);
 		}
 		if (true) {
 			// ■モッピークイズ
@@ -320,8 +275,7 @@ public class WebClicker extends PointGet {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				eleList.get(0).click();
 				Utille.sleep(3000);
-			}
-			else {
+			} else {
 				logg.warn(mName + "]なかったよ...");
 			}
 			// ■ポイント検索
@@ -377,76 +331,24 @@ public class WebClicker extends PointGet {
 			Mission EcnMissionChinjyu = new ECNChinjyu(logg);
 			EcnMissionChinjyu.roopMission(driver);
 			missionList.add(EcnMissionChinjyu);
-
 			// ■検索募金
 			Mission ECNWebSearche = new ECNWebSearche(logg, wordList);
 			ECNWebSearche.exePrivateMission(driver);
-
 			// ■検索募金
 			Mission ECNSearchBokin = new ECNSearchBokin(logg, wordList);
 			ECNSearchBokin.exePrivateMission(driver);
-
 			// ■クリック募金
 			Mission ECNClickBokin = new ECNClickBokin(logg);
 			ECNClickBokin.exePrivateMission(driver);
-
 			// ■ドロンバナークリック2種
 			Mission ECNDron = new ECNDron(logg);
 			ECNDron.exePrivateMission(driver);
-
-			mName = "■教えてどっち";
-			driver.get("http://ecnavi.jp/vote/choice/");
-			// ランダムで1,2を選ぶ
-			int ran1 = Utille.getIntRand(2);
-			String selector = "button";
-			if (ran1 == 1) {
-				selector += "#btnA";
-			}
-			else {
-				selector += "#btnB";
-			}
-			if (isExistEle(driver, selector)) {
-				driver.findElement(By.cssSelector(selector)).click();
-			}
-			else {
-				logg.warn(mName + "]獲得済み");
-			}
-
-			mName = "■毎日ニュース";
-			int ecnNewsClickNorma = 5;
-			int ecnNewsClick = 0;
-			for (int i = 0; ecnNewsClick < ecnNewsClickNorma; i++) {
-				driver.get("http://ecnavi.jp/mainichi_news/");
-				if (!isExistEle(driver, "div.article_list li>a")) {
-					break;
-				}
-				List<WebElement> eleList = driver.findElements(By.cssSelector("div.article_list li>a"));
-				eleList.get(i).click();
-				Utille.sleep(3000);
-				int ran = Utille.getIntRand(4);
-				String selector1 = "div.feeling_buttons button";
-				if (ran == 0) {
-					selector1 += ".btn_feeling_good";
-				}
-				else if (ran == 1) {
-					selector1 += ".btn_feeling_bad";
-				}
-				else if (ran == 2) {
-					selector1 += ".btn_feeling_sad";
-				}
-				else if (ran == 3) {
-					selector1 += ".btn_feeling_glad";
-				}
-				if (isExistEle(driver, selector1)) {
-					driver.findElement(By.cssSelector(selector1)).click();
-					Utille.sleep(3000);
-					ecnNewsClick++;
-				}
-				else if (isExistEle(driver, "p.got_maxpoints")) {
-					logg.warn(mName + "]獲得済み");
-					break;
-				}
-			}
+			// ■教えてどっち
+			Mission ECNTellmeWhich = new ECNTellmeWhich(logg);
+			ECNTellmeWhich.exePrivateMission(driver);
+			// ■毎日ニュース
+			Mission ECNNews = new ECNNews(logg);
+			ECNNews.exePrivateMission(driver);
 			// ■ガラガラ
 			Mission ECNGaragara = new ECNGaragara(logg);
 			ECNGaragara.exePrivateMission(driver);
