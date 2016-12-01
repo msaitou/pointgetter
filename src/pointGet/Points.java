@@ -2,7 +2,6 @@ package pointGet;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 /**
  * write the current point 
@@ -79,27 +78,8 @@ public class Points extends PointGet {
 			case Define.PSITE_CODE_PEX:
 				selector = "dd.user_pt.fw_b>span.fw_b";
 				driver.get("https://pex.jp/user/point_passbook/all");
-				if (!isExistEle(driver, selector)) {
-					if (!pGetProps.containsKey("pex") || !pGetProps.get("pex").containsKey("loginid")
-							|| !pGetProps.get("pex").containsKey("loginpass")) {
-						logg.warn("2");
-						break;
-					}
-					// ログイン画面
-					String selector2 = "input#pex_user_login_email";
-					if (isExistEle(driver, selector2)) {
-						logg.warn("3");
-						WebElement ele = driver.findElement(By.cssSelector(selector2));
-						ele.clear();
-						ele.sendKeys(pGetProps.get("pex").get("loginid"));
-						ele = driver.findElement(By.cssSelector("input#pex_user_login_password"));
-						ele.clear();
-						ele.sendKeys(pGetProps.get("pex").get("loginpass"));
-						driver.findElement(By.cssSelector("input.form-submit")).click();
-						Utille.sleep(3000);
-					}
-				}
-
+				// login!!
+				LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
 					outPut = "[" + Define.PSITE_CODE_PEX + ":" + point + "] ";
@@ -121,25 +101,8 @@ public class Points extends PointGet {
 			case Define.PSITE_CODE_PTO:
 				selector = "li.point>a>strong";
 				driver.get("https://www.pointtown.com/ptu/index.do");
-				if (!isExistEle(driver, selector)) {
-					if (!pGetProps.containsKey("pto") || !pGetProps.get("pto").containsKey("loginid")
-							|| !pGetProps.get("pto").containsKey("loginpass")) {
-						break;
-					}
-					// ログイン画面
-					driver.get("https://www.pointtown.com/ptu/show_login.do?nextPath=%2Fptu%2Findex.do");
-					String selector2 = "input.auth_input[name=uid]";
-					if (isExistEle(driver, selector2)) {
-						WebElement ele = driver.findElement(By.cssSelector(selector2));
-						ele.clear();
-						ele.sendKeys(pGetProps.get("pto").get("loginid"));
-						ele = driver.findElement(By.cssSelector("input.auth_input[name=pass]"));
-						ele.clear();
-						ele.sendKeys(pGetProps.get("pto").get("loginpass"));
-						driver.findElement(By.cssSelector("div.login-btn>input")).click();
-						Utille.sleep(3000);
-					}
-				}
+				// login!!
+				LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
 				if (isExistEle(driver, selector)) {
 					String point = driver.findElement(By.cssSelector(selector)).getText();
 					outPut = "[" + Define.PSITE_CODE_PTO + ":" + point + "] ";

@@ -3,6 +3,8 @@ package pointGet.mission.pex;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.Define;
+import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -25,6 +27,8 @@ public class PEXPectan extends Mission {
 
 	@Override
 	public void roopMission(WebDriver driver) {
+		LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
+
 		logg.info(this.mName + "]roop");
 		for (; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis());) {
 			driver.get(url);

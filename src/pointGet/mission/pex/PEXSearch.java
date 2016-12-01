@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.Define;
+import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -35,6 +37,8 @@ public class PEXSearch extends Mission {
 
 	@Override
 	public void roopMission(WebDriver driver) {
+		LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
+
 		logg.info(this.mName + "]roop");
 		for (int i = this.cnt; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis()); i++) {
 			driver.get("http://pex.jp/search/index");

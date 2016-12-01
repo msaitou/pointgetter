@@ -13,6 +13,11 @@ public class LoginSite extends PointGet {
 
 	private static String selector = "";
 
+	/**
+	 * @param siteCode
+	 * @param driver
+	 * @param logg
+	 */
 	public static void login(String siteCode, WebDriver driver, Logger logg) {
 		switch (siteCode) {
 		case Define.PSITE_CODE_RIN:
@@ -20,6 +25,9 @@ public class LoginSite extends PointGet {
 			break;
 		case Define.PSITE_CODE_PEX:
 			loginPex(driver, logg);
+			break;
+		case Define.PSITE_CODE_PTO:
+			loginPto(driver, logg);
 			break;
 		case Define.PSITE_CODE_GMY:
 		case Define.PSITE_CODE_GEN:
@@ -33,8 +41,8 @@ public class LoginSite extends PointGet {
 	}
 
 	/**
-	 *
-	 *
+	 * @param driver 
+	 * @param logg 
 	 */
 	public static void loginRin(WebDriver driver, Logger logg) {
 		driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml");
@@ -58,8 +66,8 @@ public class LoginSite extends PointGet {
 	}
 
 	/**
-	 *
-	 *
+	 * @param driver 
+	 * @param logg 
 	 */
 	public static void loginPex(WebDriver driver, Logger logg) {
 		String selector = "dd.user_pt.fw_b>span.fw_b";
@@ -80,6 +88,34 @@ public class LoginSite extends PointGet {
 				ele.clear();
 				ele.sendKeys(pGetProps.get("pex").get("loginpass"));
 				driver.findElement(By.cssSelector("input.form-submit")).click();
+				Utille.sleep(3000);
+			}
+		}
+	}
+	
+	/**
+	 * @param driver 
+	 * @param logg 
+	 */
+	public static void loginPto(WebDriver driver, Logger logg) {
+		selector = "li.point>a>strong";
+		driver.get("https://www.pointtown.com/ptu/index.do");
+		if (!isExistEle(driver, selector)) {
+			if (!pGetProps.containsKey("pto") || !pGetProps.get("pto").containsKey("loginid")
+					|| !pGetProps.get("pto").containsKey("loginpass")) {
+				return;
+			}
+			// ログイン画面
+			driver.get("https://www.pointtown.com/ptu/show_login.do?nextPath=%2Fptu%2Findex.do");
+			String selector2 = "input.auth_input[name=uid]";
+			if (isExistEle(driver, selector2)) {
+				WebElement ele = driver.findElement(By.cssSelector(selector2));
+				ele.clear();
+				ele.sendKeys(pGetProps.get("pto").get("loginid"));
+				ele = driver.findElement(By.cssSelector("input.auth_input[name=pass]"));
+				ele.clear();
+				ele.sendKeys(pGetProps.get("pto").get("loginpass"));
+				driver.findElement(By.cssSelector("div.login-btn>input")).click();
 				Utille.sleep(3000);
 			}
 		}

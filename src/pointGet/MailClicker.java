@@ -194,29 +194,28 @@ public class MailClicker extends PointGet {
 			logg.info("■■-finished get Mail...");
 		}
 
-		if (false) {
-			return;
-		}
+		//		if (false) {
+		//			return;
+		//		}
 		if (!urlMap.isEmpty()) {
-			//			urlMap = null;
-			//			urlMap = new HashMap<String, ArrayList<String>>();
-			//						urlMap.put(PSITE_CODE_RIN, new ArrayList<String>());
-			//						ArrayList<String> t = new ArrayList<String>();
-			//						t.add("http://pmrd.rakuten.co.jp/?r=MjQ1ODk2fDg%3D&p=D1DE137&u=BAB68078");
-			//			//			t.add("http://top.tsite.jp/entertainment/celebrity/i/28110493/");
-			//						urlMap.get(PSITE_CODE_RIN).addAll(t);
 			// URLに対してリクエストをする
 			logg.info("■■-Starting request URL...");
-			//			System.setProperty("webdriver.chrome.driver",
-			//					"C:\\pleiades\\eclipse\\jre\\lib\\myjar\\chromedriver_win32\\chromedriver.exe");
 			for (Map.Entry<String, ArrayList<String>> e : urlMap.entrySet()) {
 				logg.info("■request site[" + e.getKey() + "] START");
 				try {
 					if (e.getKey().equals(Define.PSITE_CODE_OSA) || e.getKey().equals(Define.PSITE_CODE_ECN)
 							|| e.getKey().equals(Define.PSITE_CODE_RIN)
 							|| e.getKey().equals(Define.PSITE_CODE_PEX)
-							|| e.getKey().equals(Define.PSITE_CODE_R01)) {
+							|| e.getKey().equals(Define.PSITE_CODE_R01)
+							|| e.getKey().equals(Define.PSITE_CODE_PTO
+									)) {
 						WebDriver driver = getWebDriver();
+						if (Define.PSITE_CODE_PTO.equals(e.getKey())) {
+							driver.get("https://www.pointtown.com/ptu/index.do");
+							// login!!
+							LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
+						}
+
 						boolean rinLoginFlag = false;
 						for (String url : e.getValue()) {
 							System.out.println("kiiiiii222");
@@ -292,14 +291,13 @@ public class MailClicker extends PointGet {
 					if (Define.CONTENT_TYPE_TEXT.equals(contentType)) {
 						if (contentLow[i].indexOf("[Point] http") >= 0) {
 							String url = contentLow[i].substring(contentLow[i].indexOf("http"));
-							//							urlList = new ArrayList<String>();
 							urlList.add(Utille.trimWhitespace(url));
 						}
 					}
 					else if (Define.CONTENT_TYPE_HTML.equals(contentType)) {
 						int matchCnt = 0;
 						for (String indexKey : new String[] { "a href", "/ptu/" }) {
-							if (contentLow[i].indexOf(indexKey) >= 0) {
+							if (contentLow[i].toLowerCase().indexOf(indexKey) >= 0) {
 								matchCnt++;
 							}
 							if (matchCnt == 2) {
@@ -430,7 +428,6 @@ public class MailClicker extends PointGet {
 				if (Define.CONTENT_TYPE_TEXT.indexOf(mContentType) >= 0) {
 					continue;
 				}
-
 				//				sb.append(getText(bp.getContent(), urlMap));
 				getText(mContentType, bp.getContent(), urlMap, folederKind);
 			}

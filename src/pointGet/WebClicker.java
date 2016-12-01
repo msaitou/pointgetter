@@ -71,7 +71,8 @@ public class WebClicker extends PointGet {
 		if (args.length > 0) {
 			if (args[0].equals("1")) {
 				secondFlg = true;
-			} else if (args[0].equals("2")) {
+			}
+			else if (args[0].equals("2")) {
 				thirdFlg = true;
 			}
 		}
@@ -91,14 +92,15 @@ public class WebClicker extends PointGet {
 				Define.PSITE_CODE_I2I, // i2i
 				Define.PSITE_CODE_MOP, // moppi
 				Define.PSITE_CODE_OSA, // osaifu
-				Define.PSITE_CODE_PTO,// pointtown
+				Define.PSITE_CODE_PTO, // pointtown
 		}) {
 			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
 					Define.PSITE_CODE_PEX, // pex
 					Define.PSITE_CODE_GEN,// gendama
 			}).contains(site)) {
 				continue;
-			} else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
+			}
+			else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
 					Define.PSITE_CODE_RIN, // raktuten
 					Define.PSITE_CODE_I2I,// i2i
 			}).contains(site)) {
@@ -245,37 +247,19 @@ public class WebClicker extends PointGet {
 	}
 
 	private static void goToClickPEX(WebDriver driver) {
-		String selector = "dd.user_pt.fw_b>span.fw_b";
-		driver.get("https://pex.jp/user/point_passbook/all");
-		if (!isExistEle(driver, selector)) {
-			if (!pGetProps.containsKey("pex") || !pGetProps.get("pex").containsKey("loginid")
-					|| !pGetProps.get("pex").containsKey("loginpass")) {
-				logg.warn("2");
-			}
-			// ログイン画面
-			String selector2 = "input#pex_user_login_email";
-			if (isExistEle(driver, selector2)) {
-				logg.warn("3");
-				WebElement ele = driver.findElement(By.cssSelector(selector2));
-				ele.clear();
-				ele.sendKeys(pGetProps.get("pex").get("loginid"));
-				ele = driver.findElement(By.cssSelector("input#pex_user_login_password"));
-				ele.clear();
-				ele.sendKeys(pGetProps.get("pex").get("loginpass"));
-				driver.findElement(By.cssSelector("input.form-submit")).click();
-				Utille.sleep(3000);
-			}
-		}
+
+		LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
 			mName = "■rakutenバナー";
 			driver.get("http://pex.jp");
-			selector = "div>div>div>a>img[src*='image.infoseek.rakuten.co.jp']";
+			String selector = "div>div>div>a>img[src*='image.infoseek.rakuten.co.jp']";
 			if (isExistEle(driver, selector)) {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				eleList.get(0).click();
 				Utille.sleep(3000);
-			} else {
+			}
+			else {
 				logg.warn(mName + "]なかったよ...");
 			}
 			// ■ポイント検索
@@ -312,10 +296,6 @@ public class WebClicker extends PointGet {
 		// PEXMitukete PEXMitukete = new PEXMitukete(logg);
 		// PEXMitukete.exePrivateMission(driver);
 
-	}
-
-	private static boolean isExistEle(WebElement wEle, String selector) {
-		return Utille.isExistEle(wEle, selector, logg);
 	}
 
 	private static void goToClickECN(WebDriver driver) {
