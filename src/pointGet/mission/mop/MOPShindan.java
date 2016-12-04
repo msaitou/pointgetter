@@ -63,20 +63,18 @@ public class MOPShindan extends Mission {
 											String none = "[style*='display: none']";
 											String nextSelector = "div.actionBar>a.next-btn";
 											String endSelector = "div.actionBar>a.end-btn";
-											if (isExistEle(driver.findElements(By.cssSelector(nextSelector)))
-													&& isExistEle(driver.findElements(By.cssSelector(endSelector
-															+ none)))) {
+											if (isExistEle(driver, nextSelector)
+													&& isExistEle(driver, endSelector + none)) {
 												clickSleepSelector(driver, nextSelector, 2000); // 遷移
 											}
-											else if (isExistEle(driver.findElements(By.cssSelector(endSelector)))
-													&& isExistEle(driver.findElements(By.cssSelector(nextSelector
-															+ none)))) {
+											else if (isExistEle(driver, endSelector)
+													&& isExistEle(driver, nextSelector + none)) {
 												this.waitTilReady(driver);
 												clickSleepSelector(driver, endSelector, 2000); // 遷移
 												// 抜けたら　span#end-btn-area>a.end-btn　	をクリック
 												selector = "span#end-btn-area>a.end-btn";
 												if (isExistEle(driver.findElements(By.cssSelector(selector)))) {
-													clickSleepSelector(driver, endSelector, 2000); // 遷移
+													clickSleepSelector(driver, selector, 2000); // 遷移
 													// アラートをけして
 													val alert = driver.switchTo().alert();
 													alert.accept();
@@ -109,6 +107,7 @@ public class MOPShindan extends Mission {
 		}
 	}
 	// 済み
+	// あなたに最も合う武器は？
 	//	ピュア度診断
 	//	ネコ科動物診断
 	//	少女漫画であなたはどのキャラクター？

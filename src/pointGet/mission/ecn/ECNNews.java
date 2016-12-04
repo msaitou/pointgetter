@@ -40,25 +40,27 @@ public class ECNNews extends Mission {
 				break;
 			}
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-			eleList.get(i).click();
-			Utille.sleep(3000);
-			int ran = Utille.getIntRand(4);
-			String selector1 = "div.feeling_buttons button";
-			if (ran == 0) {
-				selector1 += ".btn_feeling_good";
-			} else if (ran == 1) {
-				selector1 += ".btn_feeling_bad";
-			} else if (ran == 2) {
-				selector1 += ".btn_feeling_sad";
-			} else if (ran == 3) {
-				selector1 += ".btn_feeling_glad";
-			}
-			if (isExistEle(driver, selector1)) {
-				clickSleepSelector(driver, selector1, 3000);
-				ecnNewsClick++;
-			} else if (isExistEle(driver, "p.got_maxpoints")) {
-				logg.warn(mName + "]獲得済み");
-				break;
+			if (isExistEle(eleList, i)) {
+				clickSleepSelector(eleList, i, 3000);
+
+				String selector1 = "div.feeling_buttons button";
+				int ran = Utille.getIntRand(4);
+				if (ran == 0) {
+					selector1 += ".btn_feeling_good";
+				} else if (ran == 1) {
+					selector1 += ".btn_feeling_bad";
+				} else if (ran == 2) {
+					selector1 += ".btn_feeling_sad";
+				} else if (ran == 3) {
+					selector1 += ".btn_feeling_glad";
+				}
+				if (isExistEle(driver, selector1)) {
+					clickSleepSelector(driver, selector1, 3000);
+					ecnNewsClick++;
+				} else if (isExistEle(driver, "p.got_maxpoints")) {
+					logg.warn(mName + "]獲得済み");
+					break;
+				}
 			}
 		}
 	}

@@ -53,12 +53,11 @@ public class MOPChyosatai extends Mission {
 						clickSleepSelector(driver, selector, 4000); // 遷移
 						checkOverlay(driver, overlaySelector);
 						checkOverlay(driver, footBnrSelector);
+						selector = "span.icon-arrow";
 						for (int i = 0; i < 10; i++) {
 							int ran = Utille.getIntRand(2);
-							selector = "span.icon-arrow";
-							if (isExistEle(driver, selector)) {
-								driver.findElements(By.cssSelector(selector)).get(ran).click();
-								Utille.sleep(3000);
+							if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
+								clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
 								checkOverlay(driver, overlaySelector);
 							}
 						}
@@ -68,13 +67,12 @@ public class MOPChyosatai extends Mission {
 					clickSleepSelector(driver, entrySele, 3000); // 遷移
 					checkOverlay(driver, overlaySelector);
 					checkOverlay(driver, footBnrSelector);
+					selector = "div.btn>a";
 					for (int i = 0; i < 10; i++) {
 						int ran = Utille.getIntRand(2);
-						selector = "div.btn>a";
 						//							selector = "span.icon-arrow";
-						if (isExistEle(driver, selector)) {
-							driver.findElements(By.cssSelector(selector)).get(ran).click();
-							Utille.sleep(3000);
+						if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
+							clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
 							checkOverlay(driver, overlaySelector);
 							checkOverlay(driver, footBnrSelector);
 						}

@@ -78,13 +78,15 @@ public class WebClicker extends PointGet {
 		}
 	}
 
+	// garagarahhクリックするものをログに出したほうが良い
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		init(args);
 		logg.info("Start!!");
-		for (String site : new String[] { Define.PSITE_CODE_ECN, // ecnavi
+		for (String site : new String[] {
+				Define.PSITE_CODE_ECN, // ecnavi
 				Define.PSITE_CODE_PEX, // pex
 				Define.PSITE_CODE_GEN, // gendama
 				Define.PSITE_CODE_GMY, // GetMoney
@@ -141,7 +143,7 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickSite(String siteType) {
 		WebDriver driver = getWebDriver();
-		logg.info("■■■■\\r\\n■■missionSite[" + siteType + "]START■■\\r\\n■■■■");
+		logg.info("■■■■\r\n■■missionSite[" + siteType + "]START■■\r\n■■■■");
 		try {
 			switch (siteType) {
 			case Define.PSITE_CODE_GMY:
@@ -177,7 +179,7 @@ public class WebClicker extends PointGet {
 			logg.error(Utille.parseStringFromStackTrace(e));
 			logg.error("-Throwable-------------------");
 		}
-		logg.info("■■■■\\r\\n■■missionSite[" + siteType + "]END■■\\r\\n■■■■");
+		logg.info("■■■■\r\n■■missionSite[" + siteType + "]END■■\r\n■■■■");
 		driver.quit();
 	}
 
@@ -244,8 +246,15 @@ public class WebClicker extends PointGet {
 			Mission MOPQuiz = new MOPQuiz(logg);
 			MOPQuiz.exePrivateMission(driver);
 		}
+		//		 // ■毎日診断
+		//		 Mission MOPShindan = new MOPShindan(logg);
+		//		 MOPShindan.exePrivateMission(driver);
 	}
 
+	/**
+	 * 
+	 * @param driver
+	 */
 	private static void goToClickPEX(WebDriver driver) {
 
 		LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
@@ -298,6 +307,10 @@ public class WebClicker extends PointGet {
 
 	}
 
+	/**
+	 * 
+	 * @param driver
+	 */
 	private static void goToClickECN(WebDriver driver) {
 		// 1日2回
 		if (!thirdFlg) {
@@ -355,6 +368,10 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickGEN(WebDriver driver) {
+		//		// ■もりもり囲め
+		//		Mission GENMorimoriKakome = new GENMorimoriKakome(logg);
+		//		GENMorimoriKakome.exePrivateMission(driver);
+
 		if (!thirdFlg) {
 			// ■ポイントの森(star)
 			Mission GENPointStar = new GENPointStar(logg);

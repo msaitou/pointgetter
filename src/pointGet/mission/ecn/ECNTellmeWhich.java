@@ -1,11 +1,7 @@
 package pointGet.mission.ecn;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 import pointGet.mission.Mission;
@@ -32,9 +28,9 @@ public class ECNTellmeWhich extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(this.url);
+		selector = "button";
 		// ランダムで1,2を選ぶ
 		int ran1 = Utille.getIntRand(2);
-		selector = "button";
 		if (ran1 == 1) {
 			selector += "#btnA";
 		}

@@ -38,10 +38,10 @@ public abstract class Mission {
 
 	/**
 	 * constracter
-	 * @param logg	log4j object
+	 * @param log 	log4j object
 	 */
-	public Mission(Logger logg) {
-		this.logg = logg;
+	public Mission(Logger log) {
+		logg = log;
 	}
 
 	/**
@@ -92,11 +92,28 @@ public abstract class Mission {
 	 * @return
 	 */
 	protected boolean isExistEle(WebDriver driver, String selector) {
-		return Utille.isExistEle(driver, selector, this.logg);
+		return Utille.isExistEle(driver, selector, logg);
 	}
 
+	/**
+	 * 
+	 * @param ele
+	 * @return
+	 */
 	protected boolean isExistEle(List<WebElement> ele) {
-		return Utille.isExistEle(ele, this.logg);
+		return Utille.isExistEle(ele, logg);
+	}
+
+	/**
+	 * 
+	 * @param ele
+	 * @param index
+	 * @return
+	 */
+	protected boolean isExistEle(List<WebElement> ele, int index) {
+		boolean is = isExistEle(ele.get(index));
+		logg.info(index + ":[" + is + "]");
+		return is;
 	}
 
 	/**
@@ -107,7 +124,7 @@ public abstract class Mission {
 	protected boolean isExistEle(WebElement ele) {
 		List<WebElement> eleL = new ArrayList<WebElement>();
 		eleL.add(ele);
-		return this.isExistEle(eleL);
+		return isExistEle(eleL);
 	}
 
 	/**
@@ -117,7 +134,7 @@ public abstract class Mission {
 	 * @return
 	 */
 	protected boolean isExistEle(WebElement wEle, String selector) {
-		return Utille.isExistEle(wEle, selector, this.logg);
+		return Utille.isExistEle(wEle, selector, logg);
 	}
 
 	/**
@@ -141,12 +158,52 @@ public abstract class Mission {
 
 	/**
 	 * 
+	 * @param eleList
+	 * @param index
+	 */
+	protected void clickSelector(List<WebElement> eleList, int index) {
+		eleList.get(index).click();
+	}
+
+	/**
+	 * 
+	 * @param ele
+	 * @param selector
+	 */
+	protected void clickSelector(WebElement ele, String selector) {
+		ele.findElement(By.cssSelector(selector)).click();
+	}
+
+	/**
+	 * 
 	 * @param driver
 	 * @param selector
 	 * @param milliSeconds
 	 */
 	protected void clickSleepSelector(WebDriver driver, String selector, int milliSeconds) {
-		this.clickSelector(driver, selector);
+		clickSelector(driver, selector);
+		Utille.sleep(milliSeconds);
+	}
+
+	/**
+	 * 
+	 * @param eleList
+	 * @param index
+	 * @param milliSeconds
+	 */
+	protected void clickSleepSelector(List<WebElement> eleList, int index, int milliSeconds) {
+		clickSelector(eleList, index);
+		Utille.sleep(milliSeconds);
+	}
+
+	/**
+	 * 
+	 * @param ele
+	 * @param selector
+	 * @param milliSeconds
+	 */
+	protected void clickSleepSelector(WebElement ele, String selector, int milliSeconds) {
+		clickSelector(ele, selector);
 		Utille.sleep(milliSeconds);
 	}
 
@@ -161,15 +218,15 @@ public abstract class Mission {
 		while (i < 10) {
 			try {
 				if (isWait) {
-					this.waitTilReady(driver);
+					waitTilReady(driver);
 				}
-				if (this.isExistEle(driver, selector)) {
-					this.clickSleepSelector(driver, selector, 2000); // 広告消す
+				if (isExistEle(driver, selector)) {
+					clickSleepSelector(driver, selector, 2000); // 広告消す
 					logg.info("広告消してやったぜ");
 				}
 				break;
 			} catch (Throwable e) {
-				this.logg.error("広告消えない[" + ++i + "回目]");
+				logg.error("広告消えない[" + ++i + "回目]");
 				e.printStackTrace();
 				Utille.sleep(2000);
 				continue;
@@ -184,7 +241,7 @@ public abstract class Mission {
 	 * @param selector
 	 */
 	protected void checkOverlay(WebDriver driver, String selector) {
-		this.checkOverlay(driver, selector, true);
+		checkOverlay(driver, selector, true);
 	}
 
 	/**
@@ -216,11 +273,11 @@ public abstract class Mission {
 		logg.info("[[[" + mName + "]]] START-");
 		try {
 			if (i == 0) {
-				this.privateMission(driver);
+				privateMission(driver);
 
 			}
 			else {
-				this.roopMission(driver);
+				roopMission(driver);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

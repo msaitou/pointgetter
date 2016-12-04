@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
@@ -44,8 +43,9 @@ public class ECNGaragara extends Mission {
 //					logg.warn(mName + " " + i + "]獲得済み");
 //					continue;
 //				}
-				eleList.get(i).click();
-				Utille.sleep(2000);
+				if (isExistEle(eleList, i)) {
+					clickSleepSelector(eleList, i, 2000);
+				}
 			}
 		}
 	}

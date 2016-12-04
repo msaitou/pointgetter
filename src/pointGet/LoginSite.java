@@ -80,7 +80,6 @@ public class LoginSite extends PointGet {
 			// ログイン画面
 			String selector2 = "input#pex_user_login_email";
 			if (Utille.isExistEle(driver, selector2, logg)) {
-				logg.warn("3");
 				WebElement ele = driver.findElement(By.cssSelector(selector2));
 				ele.clear();
 				ele.sendKeys(pGetProps.get("pex").get("loginid"));
@@ -92,7 +91,7 @@ public class LoginSite extends PointGet {
 			}
 		}
 	}
-	
+
 	/**
 	 * @param driver 
 	 * @param logg 

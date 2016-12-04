@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
@@ -38,10 +37,11 @@ public class MOPClickBanner extends Mission {
 		driver.get(url);
 		selector = "p.click>a.cc-btn";
 		if (isExistEle(driver, selector)) {
-			int size = getSelectorSize(driver, selector);;
+			int size = getSelectorSize(driver, selector);
 			for (int i = 0; i < size; i++) {
-				driver.findElements(By.cssSelector(selector)).get(i).click();
-				Utille.sleep(2000);
+				if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
+					clickSleepSelector(driver.findElements(By.cssSelector(selector)), i, 2000);
+				}
 			}
 		}
 	}

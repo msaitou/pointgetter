@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
@@ -36,8 +35,9 @@ public class ECNClickBokin extends Mission {
 		if (isExistEle(driver, selector)) {
 			List<WebElement> eleList1 = driver.findElements(By.cssSelector(selector));
 			for (WebElement ele : eleList1) {
-				ele.findElement(By.cssSelector("a")).click();
-				Utille.sleep(3000);
+				if (isExistEle(ele, "a")) {
+					clickSleepSelector(ele, "a", 3000);
+				}
 			}
 		}
 	}

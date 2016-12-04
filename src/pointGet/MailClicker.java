@@ -211,9 +211,12 @@ public class MailClicker extends PointGet {
 									)) {
 						WebDriver driver = getWebDriver();
 						if (Define.PSITE_CODE_PTO.equals(e.getKey())) {
-							driver.get("https://www.pointtown.com/ptu/index.do");
 							// login!!
 							LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
+						}
+						else if (Define.PSITE_CODE_PEX.equals(e.getKey())) {
+							// login!!
+							LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
 						}
 
 						boolean rinLoginFlag = false;
@@ -222,15 +225,6 @@ public class MailClicker extends PointGet {
 							String uriString = url; // 開くURL
 							logg.info("■request url[" + uriString + "] START");
 							System.out.println("kiiiiii");
-							//							if (e.getKey().equals(Define.PSITE_CODE_RIN) && !rinLoginFlag) {
-							//								rinLoginFlag = true;
-							//								driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml;jsessionid=zwX8hs2NdWJil1182pFwJ3IfqTYrUB4kiOFctVfxtxRyTWdo0moH!1940822195!1432150385");
-							//								Eventually.eventually(() -> driver.findElement(By
-							//										.cssSelector("#loginButton")));
-							//								driver.findElement(By
-							//										.cssSelector("#loginButton")).click();
-							//								Utille.sleep(3000);
-							//							}
 							driver.get(uriString);
 							Utille.sleep(1000);
 						}
