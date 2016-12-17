@@ -251,17 +251,19 @@ public abstract class Mission {
 	protected void changeWindow(WebDriver driver) {
 		String wid = driver.getWindowHandle();
 		java.util.Set<String> widSet = driver.getWindowHandles();
-		String new_window_id = null;
-		for (String id : widSet) {
-			if (!id.equals(wid)) {
-				//現在のウインドウIDと違っていたら格納  
-				//最後に格納されたIDが一番新しく開かれたウインドウと判定  
-				new_window_id = id;
+		if (widSet.size() > 1) {
+			String new_window_id = null;
+			for (String id : widSet) {
+				if (!id.equals(wid)) {
+					//現在のウインドウIDと違っていたら格納  
+					//最後に格納されたIDが一番新しく開かれたウインドウと判定  
+					new_window_id = id;
+				}
 			}
+			driver.close();
+			//最後に格納したウインドウIDにスイッチ  
+			driver.switchTo().window(new_window_id);
 		}
-		driver.close();
-		//最後に格納したウインドウIDにスイッチ  
-		driver.switchTo().window(new_window_id);
 	}
 
 	/**

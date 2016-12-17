@@ -71,7 +71,8 @@ public class MOPChyosatai extends Mission {
 					for (int i = 0; i < 10; i++) {
 						int ran = Utille.getIntRand(2);
 						//							selector = "span.icon-arrow";
-						if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
+						if (isExistEle(driver.findElements(By.cssSelector(selector)))
+								&& isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
 							clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
 							checkOverlay(driver, overlaySelector);
 							checkOverlay(driver, footBnrSelector);

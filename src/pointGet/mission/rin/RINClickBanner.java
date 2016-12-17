@@ -33,6 +33,8 @@ public class RINClickBanner extends Mission {
 	public void privateMission(WebDriver driver) {
 		// login!!
 		LoginSite.login(Define.PSITE_CODE_RIN, driver, logg);
+		driver.get(url);
+		Utille.sleep(4000);
 		String[] selectorList = { "div.topArea.clearfix", "span#middleArea>ul>li" };
 		for (int j = 0; j < selectorList.length; j++) {
 			if (isExistEle(driver, selectorList[j])) {
@@ -47,6 +49,17 @@ public class RINClickBanner extends Mission {
 						Utille.sleep(2000);
 					}
 				}
+				String wid = driver.getWindowHandle();
+				java.util.Set<String> widSet = driver.getWindowHandles();
+				for (String id : widSet) {
+					if (!id.equals(wid)) {
+						//最後に格納したウインドウIDにスイッチ  
+						driver.switchTo().window(id);
+						driver.close();
+					}
+				}
+				//最後に格納したウインドウIDにスイッチ  
+				driver.switchTo().window(wid);
 			}
 		}
 	}

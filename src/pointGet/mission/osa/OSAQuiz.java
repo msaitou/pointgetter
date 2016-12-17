@@ -23,7 +23,9 @@ public class OSAQuiz extends Mission {
 
 	@Override
 	public void roopMission(WebDriver driver) {
-
+		for (int i=0;i<5;i++) {
+			privateMission(driver);
+		}
 	}
 
 	@Override
@@ -40,6 +42,7 @@ public class OSAQuiz extends Mission {
 			if (isExistEle(driver, selector)) {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 8; i++) {
+//					driver.navigate().refresh();
 					Utille.sleep(4000);
 					selector = "ul.ui-item-body";
 					if (isExistEle(driver, selector)) {
@@ -60,12 +63,15 @@ public class OSAQuiz extends Mission {
 						// 8kai roop
 						String selector2 = "input[name='submit']";
 						if (isExistEle(driver, selectId)) {
-							clickSleepSelector(driver, selectId, 2000); // 遷移
-							clickSleepSelector(driver, selector2, 4000); // 遷移
-							checkOverlay(driver, overlaySelector);
+							clickSleepSelector(driver, selectId, 4000); // 選択
+							waitTilReady(driver);
 							if (isExistEle(driver, selector2)) {
-								clickSleepSelector(driver, selector2, 3000); // 遷移
+								clickSleepSelector(driver, selector2, 4000); // 遷移
 								checkOverlay(driver, overlaySelector);
+								if (isExistEle(driver, selector2)) {
+									clickSleepSelector(driver, selector2, 3000); // 遷移
+									checkOverlay(driver, overlaySelector);
+								}
 							}
 						}
 					}

@@ -27,8 +27,10 @@ import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPQuiz;
+import pointGet.mission.mop.MOPShindan;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSAQuiz;
+import pointGet.mission.osa.OSAShindan;
 import pointGet.mission.pex.PEX4quiz;
 import pointGet.mission.pex.PEXAnswer;
 import pointGet.mission.pex.PEXChirachi;
@@ -54,6 +56,7 @@ public class WebClicker extends PointGet {
 	private static boolean secondFlg = false;
 
 	private static boolean thirdFlg = false;
+	private static boolean forthFlg = false;
 
 	private static String mName = "";
 
@@ -75,6 +78,9 @@ public class WebClicker extends PointGet {
 			else if (args[0].equals("2")) {
 				thirdFlg = true;
 			}
+			else if (args[0].equals("3")) {
+				forthFlg = true;
+			}
 		}
 	}
 
@@ -84,6 +90,7 @@ public class WebClicker extends PointGet {
 	 */
 	public static void main(String[] args) {
 		init(args);
+		args[0] = "3";
 		logg.info("Start!!");
 		for (String site : new String[] {
 				Define.PSITE_CODE_ECN, // ecnavi
@@ -221,7 +228,13 @@ public class WebClicker extends PointGet {
 		if (true) {
 			// ■daily quiz
 			Mission OSAQuiz = new OSAQuiz(logg);
-			OSAQuiz.exePrivateMission(driver);
+			//			OSAQuiz.exePrivateMission(driver);
+			OSAQuiz.exeRoopMission(driver);
+		}
+		if (forthFlg) {
+			// ■毎日診断
+			Mission OSAShindan = new OSAShindan(logg);
+			OSAShindan.exePrivateMission(driver);
 		}
 	}
 
@@ -230,6 +243,17 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickMOP(WebDriver driver) {
+		if (forthFlg) {
+			// ■毎日診断
+			Mission MOPShindan = new MOPShindan(logg);
+			MOPShindan.exePrivateMission(driver);
+		}
+		if (true) {
+			// ■モッピークイズ
+			Mission MOPQuiz = new MOPQuiz(logg);
+			//			MOPQuiz.exePrivateMission(driver);
+			MOPQuiz.exeRoopMission(driver);
+		}
 		if (!secondFlg && !thirdFlg) { // 1日1回
 			// ■クリックで貯める
 			Mission MOPClickBanner = new MOPClickBanner(logg);
@@ -237,18 +261,7 @@ public class WebClicker extends PointGet {
 			// ■トキメキ調査隊
 			Mission MOPChyosatai = new MOPChyosatai(logg);
 			MOPChyosatai.exePrivateMission(driver);
-			// // ■毎日診断
-			// Mission MOPShindan = new MOPShindan(logg);
-			// MOPShindan.exePrivateMission(driver);
 		}
-		if (true) {
-			// ■モッピークイズ
-			Mission MOPQuiz = new MOPQuiz(logg);
-			MOPQuiz.exePrivateMission(driver);
-		}
-		//		 // ■毎日診断
-		//		 Mission MOPShindan = new MOPShindan(logg);
-		//		 MOPShindan.exePrivateMission(driver);
 	}
 
 	/**
@@ -361,6 +374,9 @@ public class WebClicker extends PointGet {
 			Mission GMYChirachi = new GMYChirachi(logg);
 			GMYChirachi.exePrivateMission(driver);
 		}
+		//		 // ■毎日診断
+		//		 Mission GMYShindan = new GMYShindan(logg);
+		//		 GMYShindan.exePrivateMission(driver);
 	}
 
 	/**
