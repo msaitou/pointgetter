@@ -78,7 +78,7 @@ public class MailClicker extends PointGet {
 
 	/**
 	 * Entry point!!!
-	 * 
+	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -219,14 +219,25 @@ public class MailClicker extends PointGet {
 							LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
 						}
 
-						boolean rinLoginFlag = false;
 						for (String url : e.getValue()) {
 							System.out.println("kiiiiii222");
 							String uriString = url; // 開くURL
-							logg.info("■request url[" + uriString + "] START");
-							System.out.println("kiiiiii");
-							driver.get(uriString);
-							Utille.sleep(1000);
+							String logMess = "■request url[" + uriString + "] START";
+							try {
+								driver.get(uriString);
+								Utille.sleep(1000);
+								logMess += "-END";
+							}
+							catch (Throwable t) {
+								t.printStackTrace();
+								driver.quit();
+								logg.error("##Exception##################");
+								logg.error(t.getLocalizedMessage());
+								logg.error(Utille.parseStringFromStackTrace(t));
+								logg.error("##Exception##################");
+								driver = getWebDriver();
+							}
+							logg.info(logMess);
 						}
 						driver.quit();
 					}

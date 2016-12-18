@@ -7,11 +7,12 @@ import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
- * @author saitou
- * 0時、8時、16時開催
+ * @author saitou 0時、8時、16時開催
  */
 public class OSAQuiz extends Mission {
 	final String url = "http://osaifu.com/contents/coinland/";
+
+	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
@@ -23,7 +24,7 @@ public class OSAQuiz extends Mission {
 
 	@Override
 	public void roopMission(WebDriver driver) {
-		for (int i=0;i<5;i++) {
+		for (int i = 0; i < 5 && !finsishFlag; i++) {
 			privateMission(driver);
 		}
 	}
@@ -37,12 +38,17 @@ public class OSAQuiz extends Mission {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 			String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
 			checkOverlay(driver, overlaySelector);
+			// finish condition
+			String finishSelector = "p.ui-timer";
+			if (isExistEle(driver, finishSelector)) {
+				return;
+			}
 			selector = "input[name='submit']";
 			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 8; i++) {
-//					driver.navigate().refresh();
+					// driver.navigate().refresh();
 					Utille.sleep(4000);
 					selector = "ul.ui-item-body";
 					if (isExistEle(driver, selector)) {
@@ -50,14 +56,11 @@ public class OSAQuiz extends Mission {
 						String selectId = "label[for='radio-";
 						if (ran == 0) {
 							selectId += "1']";
-						}
-						else if (ran == 1) {
+						} else if (ran == 1) {
 							selectId += "2']";
-						}
-						else if (ran == 2) {
+						} else if (ran == 2) {
 							selectId += "3']";
-						}
-						else {
+						} else {
 							selectId += "4']";
 						}
 						// 8kai roop
@@ -79,11 +82,11 @@ public class OSAQuiz extends Mission {
 				logg.info(this.mName + "]kuria?");
 				selector = "input[name='submit']";
 				if (isExistEle(driver, selector)) {
+					checkOverlay(driver, overlaySelector);
 					clickSleepSelector(driver, selector, 3000); // 遷移
 				}
 			}
-		}
-		else {
+		} else {
 			logg.warn(this.mName + "]獲得済み");
 		}
 	}

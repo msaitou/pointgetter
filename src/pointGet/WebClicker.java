@@ -23,6 +23,7 @@ import pointGet.mission.gen.GENClickBanner;
 import pointGet.mission.gen.GENPointStar;
 import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
+import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
@@ -43,7 +44,7 @@ import pointGet.mission.rin.RINClickBanner;
 
 /**
  * get point from the point site
- * 
+ *
  * @author 雅人
  *
  */
@@ -90,18 +91,17 @@ public class WebClicker extends PointGet {
 	 */
 	public static void main(String[] args) {
 		init(args);
-		args[0] = "3";
 		logg.info("Start!!");
 		for (String site : new String[] {
-				Define.PSITE_CODE_ECN, // ecnavi
-				Define.PSITE_CODE_PEX, // pex
-				Define.PSITE_CODE_GEN, // gendama
+//				Define.PSITE_CODE_ECN, // ecnavi
+//				Define.PSITE_CODE_PEX, // pex
+//				Define.PSITE_CODE_GEN, // gendama
 				Define.PSITE_CODE_GMY, // GetMoney
-				Define.PSITE_CODE_RIN, // raktuten
-				Define.PSITE_CODE_I2I, // i2i
-				Define.PSITE_CODE_MOP, // moppi
-				Define.PSITE_CODE_OSA, // osaifu
-				Define.PSITE_CODE_PTO, // pointtown
+//				Define.PSITE_CODE_RIN, // raktuten
+//				Define.PSITE_CODE_I2I, // i2i
+//				Define.PSITE_CODE_MOP, // moppi
+//				Define.PSITE_CODE_OSA, // osaifu
+//				Define.PSITE_CODE_PTO, // pointtown
 		}) {
 			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
 					Define.PSITE_CODE_PEX, // pex
@@ -109,7 +109,8 @@ public class WebClicker extends PointGet {
 			}).contains(site)) {
 				continue;
 			}
-			else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
+			else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] {
+//					Define.PSITE_CODE_GMY, // GetMoney
 					Define.PSITE_CODE_RIN, // raktuten
 					Define.PSITE_CODE_I2I,// i2i
 			}).contains(site)) {
@@ -145,7 +146,7 @@ public class WebClicker extends PointGet {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param siteType
 	 */
 	private static void goToClickSite(String siteType) {
@@ -192,7 +193,7 @@ public class WebClicker extends PointGet {
 
 	/**
 	 * rakuten
-	 * 
+	 *
 	 * @param driver
 	 */
 	private static void goToClickRIN(WebDriver driver) {
@@ -204,7 +205,7 @@ public class WebClicker extends PointGet {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	private static void goToClickI2I(WebDriver driver) {
@@ -216,7 +217,7 @@ public class WebClicker extends PointGet {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	private static void goToClickOSA(WebDriver driver) {
@@ -239,7 +240,7 @@ public class WebClicker extends PointGet {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	private static void goToClickMOP(WebDriver driver) {
@@ -265,7 +266,7 @@ public class WebClicker extends PointGet {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	private static void goToClickPEX(WebDriver driver) {
@@ -321,7 +322,7 @@ public class WebClicker extends PointGet {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	private static void goToClickECN(WebDriver driver) {
@@ -362,7 +363,7 @@ public class WebClicker extends PointGet {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	private static void goToClickGMY(WebDriver driver) {
@@ -374,13 +375,13 @@ public class WebClicker extends PointGet {
 			Mission GMYChirachi = new GMYChirachi(logg);
 			GMYChirachi.exePrivateMission(driver);
 		}
-		//		 // ■毎日診断
-		//		 Mission GMYShindan = new GMYShindan(logg);
-		//		 GMYShindan.exePrivateMission(driver);
+				 // ■毎日診断
+				 Mission GMYShindan = new GMYShindan(logg);
+				 GMYShindan.exePrivateMission(driver);
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	private static void goToClickGEN(WebDriver driver) {

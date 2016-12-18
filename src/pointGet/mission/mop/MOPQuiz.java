@@ -7,12 +7,13 @@ import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
- * 
+ *
  * @author saitou
  * 0時、8時、16時開催
  */
 public class MOPQuiz extends Mission {
 	final String url = "http://pc.moppy.jp/gamecontents/";
+	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
@@ -25,7 +26,7 @@ public class MOPQuiz extends Mission {
 	@Override
 	public void roopMission(WebDriver driver) {
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5 && !finsishFlag; i++) {
 			privateMission(driver);
 		}
 	}
@@ -39,6 +40,11 @@ public class MOPQuiz extends Mission {
 
 			changeWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
+			// finish condition
+			String finishSelector = "p.ui-timer";
+			if (isExistEle(driver, finishSelector)) {
+				return;
+			}
 			selector = "form>input[name='submit']";
 			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {

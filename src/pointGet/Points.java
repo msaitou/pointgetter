@@ -4,9 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
- * write the current point 
- * @author 雅人
- *
+ * write the current point
+ * @author saito
  */
 public class Points extends PointGet {
 
@@ -75,7 +74,7 @@ public class Points extends PointGet {
 				selector = "div#point_blinking em";
 				if (isExistEle(driver, selector)) {
 					secondPoint = driver.findElement(By.cssSelector(selector)).getText();
-					outPut += " coin:" + secondPoint + "] ";
+					outPut += "coin:" + secondPoint + "] ";
 				}
 				break;
 			case Define.PSITE_CODE_PEX:
@@ -98,7 +97,7 @@ public class Points extends PointGet {
 				selector = "dl.bankbook-total>dd.gold.coin>span";
 				if (isExistEle(driver, selector)) {
 					secondPoint = driver.findElement(By.cssSelector(selector)).getText();
-					outPut += " gold:" + secondPoint + "] ";
+					outPut += "gold:" + secondPoint + "] ";
 				}
 				break;
 			case Define.PSITE_CODE_PTO:
@@ -164,7 +163,7 @@ public class Points extends PointGet {
 		}
 	}
 	/**
-	 * 
+	 *
 	 * @param points
 	 * @return
 	 */
