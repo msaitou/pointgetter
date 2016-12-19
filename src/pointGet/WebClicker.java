@@ -93,15 +93,15 @@ public class WebClicker extends PointGet {
 		init(args);
 		logg.info("Start!!");
 		for (String site : new String[] {
-//				Define.PSITE_CODE_ECN, // ecnavi
-//				Define.PSITE_CODE_PEX, // pex
-//				Define.PSITE_CODE_GEN, // gendama
+				Define.PSITE_CODE_ECN, // ecnavi
+				Define.PSITE_CODE_PEX, // pex
+				Define.PSITE_CODE_GEN, // gendama
 				Define.PSITE_CODE_GMY, // GetMoney
-//				Define.PSITE_CODE_RIN, // raktuten
-//				Define.PSITE_CODE_I2I, // i2i
-//				Define.PSITE_CODE_MOP, // moppi
-//				Define.PSITE_CODE_OSA, // osaifu
-//				Define.PSITE_CODE_PTO, // pointtown
+				Define.PSITE_CODE_RIN, // raktuten
+				Define.PSITE_CODE_I2I, // i2i
+				Define.PSITE_CODE_MOP, // moppi
+				Define.PSITE_CODE_OSA, // osaifu
+				Define.PSITE_CODE_PTO, // pointtown
 		}) {
 			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
 					Define.PSITE_CODE_PEX, // pex
