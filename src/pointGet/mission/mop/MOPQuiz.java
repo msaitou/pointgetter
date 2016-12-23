@@ -43,6 +43,7 @@ public class MOPQuiz extends Mission {
 			// finish condition
 			String finishSelector = "p.ui-timer";
 			if (isExistEle(driver, finishSelector)) {
+				finsishFlag = true;
 				return;
 			}
 			selector = "form>input[name='submit']";

@@ -41,6 +41,7 @@ public class OSAQuiz extends Mission {
 			// finish condition
 			String finishSelector = "p.ui-timer";
 			if (isExistEle(driver, finishSelector)) {
+				finsishFlag = true;
 				return;
 			}
 			selector = "input[name='submit']";

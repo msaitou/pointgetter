@@ -105,12 +105,12 @@ public class WebClicker extends PointGet {
 		}) {
 			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
 					Define.PSITE_CODE_PEX, // pex
-					Define.PSITE_CODE_GEN,// gendama
+//					Define.PSITE_CODE_GEN,// gendama
 			}).contains(site)) {
 				continue;
 			}
 			else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] {
-//					Define.PSITE_CODE_GMY, // GetMoney
+					Define.PSITE_CODE_GMY, // GetMoney
 					Define.PSITE_CODE_RIN, // raktuten
 					Define.PSITE_CODE_I2I,// i2i
 			}).contains(site)) {
@@ -388,6 +388,9 @@ public class WebClicker extends PointGet {
 		//		// ■もりもり囲め
 		//		Mission GENMorimoriKakome = new GENMorimoriKakome(logg);
 		//		GENMorimoriKakome.exePrivateMission(driver);
+//		 // ■毎日診断
+//		 Mission GENShindan = new GENShindan(logg);
+//		 GENShindan.exePrivateMission(driver);
 
 		if (!thirdFlg) {
 			// ■ポイントの森(star)

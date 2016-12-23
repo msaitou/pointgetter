@@ -1,11 +1,10 @@
 package pointGet.mission.osa;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -34,7 +33,7 @@ public class OSAShindan extends Mission {
 		selector = "li.long img[alt='毎日診断']";
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
-			clickSleepSelector(driver, selector, 4000); // 遷移
+			clickSleepSelector(driver, selector, 8000); // 遷移
 			changeWindow(driver);
 			while (true) {
 				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
@@ -69,15 +68,15 @@ public class OSAShindan extends Mission {
 											else if (isExistEle(driver, endSelector)
 													&& isExistEle(driver, nextSelector + none)) {
 												this.waitTilReady(driver);
-												clickSleepSelector(driver, endSelector, 2000); // 遷移
+												clickSleepSelector(driver, endSelector, 3000); // 遷移
 												// 抜けたら　span#end-btn-area>a.end-btn　	をクリック
 												selector = "span#end-btn-area>a.end-btn";
 												if (isExistEle(driver.findElements(By.cssSelector(selector)))) {
-													clickSleepSelector(driver, selector, 2000); // 遷移
+													clickSleepSelector(driver, selector, 4000); // 遷移
 													// アラートをけして
 													val alert = driver.switchTo().alert();
 													alert.accept();
-													// overlayを消して	
+													// overlayを消して
 													checkOverlay(driver, "div#overlay p#close>i");
 
 													selector = "div.col-xs-12>a.btn-warning";
