@@ -1,5 +1,7 @@
 package pointGet.mission.gen;
 
+import java.util.HashMap;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -58,7 +60,56 @@ public class GENMorimoriKakome extends Mission {
 			logg.warn(mName + "]獲得済み");
 		}
 	}
+	private static int topMaxLimit = 9;
+	private static int leftMaxLimit = 9;
+	private static int topMinLimit = 1;
+	private static int leftMinLimit = 1;
+	private void getNextMasuMain() {
+		// マスの位置変数
+		HashMap<String, Integer> masuMap = new HashMap<String, Integer>();
+		masuMap.put("tPosi", 5);
+		masuMap.put("lPosi", 5);
+//		HashMap<String, Integer> nextMasu = getNextMasu(masuMap);
+	}
+	
+	private void getNextMasu(HashMap<String, Integer> masuMap) {
+		
+		int cTop = masuMap.get("tPosi");
+		int cLeft = masuMap.get("lPosi");
+		// its over
+		if (topMaxLimit == cTop || topMinLimit == cTop
+			|| leftMaxLimit == cLeft || leftMinLimit == cLeft) {
+			return ;
+		}
+		else {
+			// 左上：1、右上：2、右：3、右下：4.左下:5、左：6
+			int rinsetuTop1 = 0;
+			int rinsetuTop2 = 0;
+			int rinsetuTop3 = 0;
+			int rinsetuTop4 = 0;
+			int rinsetuTop5 = 0;
+			int rinsetuTop6 = 0;
+			int rinsetuLeft1 = 0;
+			int rinsetuLeft2 = 0;
+			int rinsetuLeft3 = 0;
+			int rinsetuLeft4 = 0;
+			int rinsetuLeft5 = 0;
+			int rinsetuLeft6 = 0;
+			rinsetuTop1 = cTop + 1;
+			rinsetuTop2 = cTop + 1;
+			rinsetuTop3 = cTop;
+			rinsetuTop4 = cTop - 1;
+			rinsetuTop5 = cTop - 1;
+			rinsetuTop6 = cTop;
+				// 偶数
+			if (cTop%2 == 0) {
+		}
+			
+		}
+	}
 }
+
+	
 //<form method="post" action="/ssp/catch_the_pig/setblock">
 //<input id="set_block" type="hidden" name="setting" value=""/>
 //<ul id="cell_box">
