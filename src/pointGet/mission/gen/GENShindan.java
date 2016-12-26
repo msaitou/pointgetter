@@ -36,7 +36,8 @@ public class GENShindan extends Mission {
 		selector = "section#game ul>li>a[href='/shindan_content/']>img";
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
-			clickSleepSelector(driver, selector, 4000); // 遷移
+			driver.get("http://www.gendama.jp/shindan_content/");
+//			clickSleepSelector(driver, selector, 4000); // 遷移
 			changeWindow(driver);
 			while (true) {
 				selector = "div.entry";

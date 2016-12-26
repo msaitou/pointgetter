@@ -21,6 +21,7 @@ import pointGet.mission.ecn.ECNTellmeWhich;
 import pointGet.mission.ecn.ECNWebSearche;
 import pointGet.mission.gen.GENClickBanner;
 import pointGet.mission.gen.GENPointStar;
+import pointGet.mission.gen.GENShindan;
 import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.gmy.GMYShindan;
@@ -29,8 +30,6 @@ import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.mop.MOPShindan;
-import pointGet.mission.osa.OSAClickBanner;
-import pointGet.mission.osa.OSAQuiz;
 import pointGet.mission.osa.OSAShindan;
 import pointGet.mission.pex.PEX4quiz;
 import pointGet.mission.pex.PEXAnswer;
@@ -58,9 +57,9 @@ public class WebClicker extends PointGet {
 
 	private static boolean thirdFlg = false;
 	private static boolean forthFlg = false;
+	private static boolean testFlag = false;
 
 	private static String mName = "";
-
 	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
 
 	protected static void init(String[] args) {
@@ -83,6 +82,7 @@ public class WebClicker extends PointGet {
 				forthFlg = true;
 			}
 		}
+//		testFlag =true;
 	}
 
 	// garagarahhクリックするものをログに出したほうが良い
@@ -221,17 +221,17 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickOSA(WebDriver driver) {
-		if (!secondFlg && !thirdFlg) { // 1日1回
-			// ■クリックゴールド
-			Mission OSAClickBanner = new OSAClickBanner(logg);
-			OSAClickBanner.exePrivateMission(driver);
-		}
-		if (true) {
-			// ■daily quiz
-			Mission OSAQuiz = new OSAQuiz(logg);
-			//			OSAQuiz.exePrivateMission(driver);
-			OSAQuiz.exeRoopMission(driver);
-		}
+//		if (!secondFlg && !thirdFlg) { // 1日1回
+//			// ■クリックゴールド
+//			Mission OSAClickBanner = new OSAClickBanner(logg);
+//			OSAClickBanner.exePrivateMission(driver);
+//		}
+//		if (true) {
+//			// ■daily quiz
+//			Mission OSAQuiz = new OSAQuiz(logg);
+//			//			OSAQuiz.exePrivateMission(driver);
+//			OSAQuiz.exeRoopMission(driver);
+//		}
 		if (forthFlg) {
 			// ■毎日診断
 			Mission OSAShindan = new OSAShindan(logg);
@@ -245,9 +245,6 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickMOP(WebDriver driver) {
 		if (forthFlg) {
-			// ■毎日診断
-			Mission MOPShindan = new MOPShindan(logg);
-			MOPShindan.exePrivateMission(driver);
 		}
 		if (true) {
 			// ■モッピークイズ
@@ -259,6 +256,9 @@ public class WebClicker extends PointGet {
 			// ■クリックで貯める
 			Mission MOPClickBanner = new MOPClickBanner(logg);
 			MOPClickBanner.exePrivateMission(driver);
+			// ■毎日診断
+			Mission MOPShindan = new MOPShindan(logg);
+			MOPShindan.exePrivateMission(driver);
 			// ■トキメキ調査隊
 			Mission MOPChyosatai = new MOPChyosatai(logg);
 			MOPChyosatai.exePrivateMission(driver);
@@ -388,9 +388,9 @@ public class WebClicker extends PointGet {
 		//		// ■もりもり囲め
 		//		Mission GENMorimoriKakome = new GENMorimoriKakome(logg);
 		//		GENMorimoriKakome.exePrivateMission(driver);
-//		 // ■毎日診断
-//		 Mission GENShindan = new GENShindan(logg);
-//		 GENShindan.exePrivateMission(driver);
+		if (testFlag) {
+			 return;
+		}
 
 		if (!thirdFlg) {
 			// ■ポイントの森(star)
@@ -401,6 +401,9 @@ public class WebClicker extends PointGet {
 			// ■ポイントの森(クリック)
 			Mission GENClickBanner = new GENClickBanner(logg);
 			GENClickBanner.exePrivateMission(driver);
+			 // ■毎日診断
+			 Mission GENShindan = new GENShindan(logg);
+			 GENShindan.exePrivateMission(driver);
 		}
 	}
 }

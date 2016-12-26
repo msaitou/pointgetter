@@ -37,7 +37,19 @@ public class MOPShindan extends Mission {
 			changeWindow(driver);
 
 			while (true) {
-				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
+//				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
+				selector = "div[class='thumbnail'] span.button-new"; // NEWだけ実施
+				// label label-danger button-new
+//<div class="thumbnail">
+//	<a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M">
+//	 <div class="entryimg" style="background-image: url(/img/diagnose/25ebdc476e7a641b23422a80d02d60bd.jpg);"></div>
+//	 <span class="label label-danger button-new">NEW!</span>
+//	</a>
+//  <div class="caption">
+//	  <h3 class="entrytitle" style="height: 43px;"><a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M">あなたは四国地方のどの県？診断</a></h3>
+//	  <a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M" class="btn btn-primary btn-large btn-block" role="button">　診断　</a>
+//  </div>
+//</div>
 				if (isExistEle(driver, selector)) {
 					clickSleepSelector(driver, selector, 4000); // 遷移
 					selector = "a.submit-btn";// 次へ
