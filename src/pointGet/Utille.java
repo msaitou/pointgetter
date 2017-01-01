@@ -7,6 +7,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
+import java.nio.charset.CoderResult;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -22,15 +29,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
- * @author saitou
- * utillity class
+ * @author saitou utillity class
  */
 public class Utille {
 
+	public static final String APP_LOG_ERR  = "Error";
+	public static final Charset UTF_8 = StandardCharsets.UTF_8;
+	public static int logLimitByte = 500;
+
 	/**
 	 * instance webdriver
-	 * @param geckoPath 
-	 * @param ffProfile 
+	 *
+	 * @param geckoPath
+	 * @param ffProfile
 	 * @return webdriver object
 	 */
 	public static WebDriver getWebDriver(String geckoPath, String ffProfile) {
@@ -45,8 +56,8 @@ public class Utille {
 	}
 
 	/**
-	 * @param obj 
-	 * @return 
+	 * @param obj
+	 * @return
 	 */
 	public static Logger setLogger(Class<?> obj) {
 		return Logger.getLogger(obj);
@@ -75,8 +86,9 @@ public class Utille {
 
 	/**
 	 * 0以上引数未満の数値をランダムで返す
+	 *
 	 * @param scopLimit
-	 * @return 
+	 * @return
 	 */
 	public static int getIntRand(int scopLimit) {
 		Random rnd = new Random();
@@ -97,8 +109,7 @@ public class Utille {
 				int ran = getIntRand(wordNum);
 				if (!listIndex.contains(ran)) {
 					listIndex.add(ran);
-				}
-				else {
+				} else {
 					i--;
 				}
 			}
@@ -112,7 +123,7 @@ public class Utille {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param loadFilePath
 	 * @return
 	 */
@@ -136,7 +147,7 @@ public class Utille {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param wEle
 	 * @param logg
 	 * @return boolean
@@ -147,7 +158,7 @@ public class Utille {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param wEle
 	 * @param selector
 	 * @param logg
@@ -173,6 +184,7 @@ public class Utille {
 
 	/**
 	 * 空白除去
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -194,6 +206,7 @@ public class Utille {
 
 	/**
 	 * msのフォーマット
+	 *
 	 * @param period
 	 * @return
 	 */
@@ -230,11 +243,11 @@ public class Utille {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param regex
 	 * @param word
-	 * @param index 
-	 * @return 
+	 * @param index
+	 * @return
 	 */
 	public static String getPatternWord(String regex, String word, int index) {
 		Pattern p = Pattern.compile(regex);
@@ -251,9 +264,9 @@ public class Utille {
 		}
 		return "";
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param e
 	 * @return
 	 */
@@ -265,4 +278,26 @@ public class Utille {
 		pw.flush();
 		return sw.toString();
 	}
+
+	/**
+	 * 文字列を指定バイト数で切り捨てる
+	 *
+	 * @param s
+	 * @param charset
+	 * @param maxBytes
+	 * @return
+	 */
+	public static String truncateBytes(String s, Charset charset, int maxBytes) {
+		ByteBuffer bb = ByteBuffer.allocate(maxBytes);
+		CharBuffer cb = CharBuffer.wrap(s);
+		CharsetEncoder encoder = charset.newEncoder().onMalformedInput(CodingErrorAction.REPLACE)
+				.onUnmappableCharacter(CodingErrorAction.REPLACE).reset();
+		CoderResult cr = encoder.encode(cb, bb, true);
+		if (!cr.isOverflow()) {
+			return s;
+		}
+		encoder.flush(bb);
+		return cb.flip().toString();
+	}
+
 }

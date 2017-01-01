@@ -36,6 +36,7 @@ public class RINClickBanner extends Mission {
 		driver.get(url);
 		Utille.sleep(4000);
 		String[] selectorList = { "div.topArea.clearfix", "span#middleArea>ul>li" };
+		String wid = driver.getWindowHandle();
 		for (int j = 0; j < selectorList.length; j++) {
 			if (isExistEle(driver, selectorList[j])) {
 				String selector2 = "[alt='Check']";
@@ -47,19 +48,18 @@ public class RINClickBanner extends Mission {
 					if (isExistEle(e, selector2)) {
 						e.findElement(By.cssSelector("a>img")).click();
 						Utille.sleep(2000);
+						java.util.Set<String> widSet = driver.getWindowHandles();
+						for (String id : widSet) {
+							if (!id.equals(wid)) {
+								//最後に格納したウインドウIDにスイッチ
+								driver.switchTo().window(id);
+								driver.close();
+							}
+						}
+						// 元のウインドウIDにスイッチ
+						driver.switchTo().window(wid);
 					}
 				}
-				String wid = driver.getWindowHandle();
-				java.util.Set<String> widSet = driver.getWindowHandles();
-				for (String id : widSet) {
-					if (!id.equals(wid)) {
-						//最後に格納したウインドウIDにスイッチ  
-						driver.switchTo().window(id);
-						driver.close();
-					}
-				}
-				//最後に格納したウインドウIDにスイッチ  
-				driver.switchTo().window(wid);
 			}
 		}
 	}

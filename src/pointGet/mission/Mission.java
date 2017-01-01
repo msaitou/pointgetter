@@ -15,7 +15,7 @@ import pointGet.Eventually;
 import pointGet.Utille;
 
 /**
- * 
+ *
  * @author saitou
  *
  */
@@ -59,7 +59,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	public void exeRoopMission(WebDriver driver) {
@@ -68,7 +68,7 @@ public abstract class Mission {
 
 	/**
 	 * roop mission execute
-	 * @param driver 
+	 * @param driver
 	 */
 	public abstract void roopMission(WebDriver driver);
 
@@ -86,7 +86,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 * @param selector
 	 * @return
@@ -96,7 +96,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param ele
 	 * @return
 	 */
@@ -105,7 +105,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param ele
 	 * @param index
 	 * @return
@@ -117,7 +117,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param ele
 	 * @return
 	 */
@@ -128,7 +128,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param wEle
 	 * @param selector
 	 * @return
@@ -138,7 +138,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 * @param selector
 	 * @return
@@ -148,7 +148,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 * @param selector
 	 */
@@ -157,7 +157,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param eleList
 	 * @param index
 	 */
@@ -166,7 +166,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param ele
 	 * @param selector
 	 */
@@ -175,7 +175,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 * @param selector
 	 * @param milliSeconds
@@ -186,7 +186,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param eleList
 	 * @param index
 	 * @param milliSeconds
@@ -197,7 +197,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param ele
 	 * @param selector
 	 * @param milliSeconds
@@ -208,7 +208,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 * @param selector
 	 * @param waitFlag
@@ -236,7 +236,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 * @param selector
 	 */
@@ -245,7 +245,7 @@ public abstract class Mission {
 	}
 
 	/**
-	 * to active the new windows 
+	 * to active the new windows
 	 * @param driver
 	 */
 	protected void changeWindow(WebDriver driver) {
@@ -255,19 +255,19 @@ public abstract class Mission {
 			String new_window_id = null;
 			for (String id : widSet) {
 				if (!id.equals(wid)) {
-					//現在のウインドウIDと違っていたら格納  
-					//最後に格納されたIDが一番新しく開かれたウインドウと判定  
+					//現在のウインドウIDと違っていたら格納
+					//最後に格納されたIDが一番新しく開かれたウインドウと判定
 					new_window_id = id;
 				}
 			}
 			driver.close();
-			//最後に格納したウインドウIDにスイッチ  
+			//最後に格納したウインドウIDにスイッチ
 			driver.switchTo().window(new_window_id);
 		}
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 * @param i
 	 */

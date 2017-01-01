@@ -41,8 +41,8 @@ public class LoginSite extends PointGet {
 	}
 
 	/**
-	 * @param driver 
-	 * @param logg 
+	 * @param driver
+	 * @param logg
 	 */
 	public static void loginRin(WebDriver driver, Logger logg) {
 		driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml");
@@ -66,8 +66,8 @@ public class LoginSite extends PointGet {
 	}
 
 	/**
-	 * @param driver 
-	 * @param logg 
+	 * @param driver
+	 * @param logg
 	 */
 	public static void loginPex(WebDriver driver, Logger logg) {
 		String selector = "dd.user_pt.fw_b>span.fw_b";
@@ -93,8 +93,8 @@ public class LoginSite extends PointGet {
 	}
 
 	/**
-	 * @param driver 
-	 * @param logg 
+	 * @param driver
+	 * @param logg
 	 */
 	public static void loginPto(WebDriver driver, Logger logg) {
 		selector = "li.point>a>strong";
