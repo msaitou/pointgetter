@@ -1,6 +1,7 @@
 package pointGet.mission.ecn;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -19,8 +20,8 @@ public class ECNClickBokin extends Mission {
 	/**
 	 * @param log
 	 */
-	public ECNClickBokin(Logger log) {
-		super(log);
+	public ECNClickBokin(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■クリック募金";
 	}
 
@@ -37,6 +38,7 @@ public class ECNClickBokin extends Mission {
 			for (WebElement ele : eleList1) {
 				if (isExistEle(ele, "a")) {
 					clickSleepSelector(ele, "a", 3000);
+					closeOtherWindow(driver);
 				}
 			}
 		}

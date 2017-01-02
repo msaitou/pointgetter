@@ -1,7 +1,9 @@
 /**
- * 
+ *
  */
 package pointGet.mission.pex;
+
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -14,7 +16,7 @@ import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
- * 
+ *
  * @author saitou
  *
  */
@@ -25,11 +27,11 @@ public class PEXSearch extends Mission {
 
 	/**
 	 * constructer
-	 * @param logg 
-	 * @param wordList 
+	 * @param logg
+	 * @param wordList
 	 */
-	public PEXSearch(Logger logg, String[] wordList) {
-		super(logg);
+	public PEXSearch(Logger logg, Map<String, String> cProps, String[] wordList) {
+		super(logg, cProps);
 		this.mName = "■ポイント検索";
 		this.limit = 5;
 		this.wordSearchList = Utille.getWordSearchList(wordList, 7);

@@ -283,11 +283,11 @@ public class Utille {
 	 * 文字列を指定バイト数で切り捨てる
 	 *
 	 * @param s
-	 * @param charset
 	 * @param maxBytes
 	 * @return
 	 */
-	public static String truncateBytes(String s, Charset charset, int maxBytes) {
+	public static String truncateBytes(String s, int maxBytes) {
+		Charset charset = UTF_8;
 		ByteBuffer bb = ByteBuffer.allocate(maxBytes);
 		CharBuffer cb = CharBuffer.wrap(s);
 		CharsetEncoder encoder = charset.newEncoder().onMalformedInput(CodingErrorAction.REPLACE)

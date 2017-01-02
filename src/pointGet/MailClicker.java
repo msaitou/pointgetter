@@ -232,8 +232,8 @@ public class MailClicker extends PointGet {
 								t.printStackTrace();
 								driver.quit();
 								logg.error("##Exception##################");
-								logg.error(t.getLocalizedMessage());
-								logg.error(Utille.parseStringFromStackTrace(t));
+								logg.error(Utille.truncateBytes(t.getLocalizedMessage(), 500));
+								logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(t), 500));
 								logg.error("##Exception##################");
 								driver = getWebDriver();
 							}

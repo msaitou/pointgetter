@@ -42,8 +42,8 @@ public class PEXMitukete extends Mission {
 	/**
 	 * @param logg
 	 */
-	public PEXMitukete(Logger logg) {
-		super(logg);
+	public PEXMitukete(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■見つけて";
 	}
 
@@ -72,8 +72,8 @@ public class PEXMitukete extends Mission {
 					if (this.isExistEle(driver, selector)) {
 						clickSelector(driver, selector);// move
 					}
-					
-					
+
+
 //					selector = "section.vertical-menu.box-deco_orange a";
 //					if (this.isExistEle(driver, selector)) {
 //						int size =getSelectorSize(driver, selector);;
@@ -85,17 +85,17 @@ public class PEXMitukete extends Mission {
 			}
 		}
 		//		img.bounce
-		//		
+		//
 		//			PEXMekutte PEXMekutte = new PEXMekutte(logg);
 		//			PEXMekutte.mekutteSeal(driver);
 
 		// 終了サイン 以下が存在しないこと
 		// div.mitsukete_game_bg.geme_cnt.mitsukete_seal.display-none
-		
+
 	}
 
 	/**
-	 * 
+	 *
 	 * @param nativeWord
 	 * @return
 	 */
@@ -114,5 +114,5 @@ public class PEXMitukete extends Mission {
 		}
 		return hint;
 	}
-	
+
 }

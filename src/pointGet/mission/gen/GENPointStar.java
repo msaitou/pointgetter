@@ -1,5 +1,7 @@
 package pointGet.mission.gen;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -7,7 +9,7 @@ import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
- * @author saitou 
+ * @author saitou
  */
 public class GENPointStar extends Mission {
 	final String url = "http://www.gendama.jp/forest/";
@@ -15,8 +17,8 @@ public class GENPointStar extends Mission {
 	/**
 	 * @param log
 	 */
-	public GENPointStar(Logger log) {
-		super(log);
+	public GENPointStar(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■ポイントの森(star)";
 	}
 

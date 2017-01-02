@@ -1,5 +1,7 @@
 package pointGet.mission.ecn;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,10 +21,10 @@ public class ECNSearchBokin extends Mission {
 
 	/**
 	 * @param log
-	 * @param wordList 
+	 * @param wordList
 	 */
-	public ECNSearchBokin(Logger log, String[] wordList) {
-		super(log);
+	public ECNSearchBokin(Logger log, Map<String, String> cProps, String[] wordList) {
+		super(log, cProps);
 		this.mName = "■検索募金";
 		this.wordSearchList = Utille.getWordSearchList(wordList, 2);
 	}
@@ -44,6 +46,7 @@ public class ECNSearchBokin extends Mission {
 				ele.sendKeys(this.wordSearchList[i]);
 				selector = "button[type='submit']";
 				clickSleepSelector(driver, selector, 3000);
+				closeOtherWindow(driver);
 			}
 		}
 	}

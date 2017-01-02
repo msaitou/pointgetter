@@ -1,5 +1,7 @@
 package pointGet.mission.pex;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -19,8 +21,8 @@ public class PEXPectan extends Mission {
 	/**
 	 * @param logg
 	 */
-	public PEXPectan(Logger logg) {
-		super(logg);
+	public PEXPectan(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■ぺく単";
 		this.limit = 5;
 	}

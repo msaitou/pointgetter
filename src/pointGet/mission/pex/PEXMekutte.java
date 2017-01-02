@@ -1,5 +1,7 @@
 package pointGet.mission.pex;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -17,8 +19,8 @@ public class PEXMekutte extends Mission {
 	/**
 	 * @param logg
 	 */
-	public PEXMekutte(Logger logg) {
-		super(logg);
+	public PEXMekutte(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■めくってシール";
 	}
 
@@ -39,7 +41,7 @@ public class PEXMekutte extends Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 */
 	public void mekutteSeal(WebDriver driver) {
@@ -75,7 +77,7 @@ public class PEXMekutte extends Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public int getMekutteClick() {

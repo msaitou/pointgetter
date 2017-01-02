@@ -1,6 +1,7 @@
 package pointGet.mission.gmy;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -19,8 +20,8 @@ public class GMYClickBanner extends Mission {
 	/**
 	 * @param log
 	 */
-	public GMYClickBanner(Logger log) {
-		super(log);
+	public GMYClickBanner(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■clipoバナー";
 	}
 
@@ -31,7 +32,7 @@ public class GMYClickBanner extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 		selector = "a span.clickpt";
-//		http://dietnavi.com/pc/mypage/point_rule.php
+		// http://dietnavi.com/pc/mypage/point_rule.php
 		// alt='クリポ付' TODO
 		String[] urls = {
 				// ■clipoバナーtop
@@ -47,6 +48,7 @@ public class GMYClickBanner extends Mission {
 				for (int i = 0; i < size; i++) {
 					if (isExistEle(eleList, i)) {
 						clickSleepSelector(eleList, i, 2000);
+						closeOtherWindow(driver);
 					}
 				}
 			}

@@ -1,6 +1,7 @@
 package pointGet.mission.ecn;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -20,8 +21,8 @@ public class ECNNews extends Mission {
 	/**
 	 * @param log
 	 */
-	public ECNNews(Logger log) {
-		super(log);
+	public ECNNews(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■毎日ニュース";
 	}
 

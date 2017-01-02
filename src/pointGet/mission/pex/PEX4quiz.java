@@ -1,11 +1,12 @@
 package pointGet.mission.pex;
 
-import lombok.val;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -19,8 +20,8 @@ public class PEX4quiz extends Mission {
 	/**
 	 * @param log
 	 */
-	public PEX4quiz(Logger log) {
-		super(log);
+	public PEX4quiz(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■ポイントクイズ";
 	}
 

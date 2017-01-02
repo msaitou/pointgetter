@@ -1,5 +1,7 @@
 package pointGet.mission.pex;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -15,8 +17,8 @@ public class PEXChirachi extends Mission {
 	/**
 	 * @param log
 	 */
-	public PEXChirachi(Logger log) {
-		super(log);
+	public PEXChirachi(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■オリチラ";
 	}
 
@@ -30,6 +32,7 @@ public class PEXChirachi extends Mission {
 		selector = "section.list li figure>a";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000);
+			closeOtherWindow(driver);
 		}
 		else {
 			logg.warn(mName + "]獲得済み");

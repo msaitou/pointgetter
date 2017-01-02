@@ -1,12 +1,13 @@
 package pointGet.mission.i2i;
 
-import lombok.val;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -20,8 +21,8 @@ public class I2ISeiza extends Mission {
 	/**
 	 * @param logg
 	 */
-	public I2ISeiza(Logger logg) {
-		super(logg);
+	public I2ISeiza(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■星座";
 	}
 
@@ -61,7 +62,7 @@ public class I2ISeiza extends Mission {
 							String symbleSelector = "div#symbols-next-button a>img";
 							boolean endFlag = false;
 							for (int j = 0; j < 20; j++) { // 20に特に意味なし　エンドレスループを避けるため
-								// overlayを消して	
+								// overlayを消して
 								if (!isExistEle(driver, "div#inter-ad[style*='display: none'] div#inter-ad-close")) {
 									if (isExistEle(driver, "div#inter-ad div#inter-ad-close")) {
 										checkOverlay(driver, "div#inter-ad div#inter-ad-close", false);

@@ -1,6 +1,7 @@
 package pointGet.mission.gen;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,7 @@ import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
- * @author saitou 
+ * @author saitou
  */
 public class GENMorimoriKakome extends Mission {
 	final String url = "http://www.gendama.jp/";
@@ -17,8 +18,8 @@ public class GENMorimoriKakome extends Mission {
 	/**
 	 * @param log
 	 */
-	public GENMorimoriKakome(Logger log) {
-		super(log);
+	public GENMorimoriKakome(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■もりもり囲め";
 	}
 
@@ -71,9 +72,9 @@ public class GENMorimoriKakome extends Mission {
 		masuMap.put("lPosi", 5);
 //		HashMap<String, Integer> nextMasu = getNextMasu(masuMap);
 	}
-	
+
 	private void getNextMasu(HashMap<String, Integer> masuMap) {
-		
+
 		int cTop = masuMap.get("tPosi");
 		int cLeft = masuMap.get("lPosi");
 		// its over
@@ -104,12 +105,12 @@ public class GENMorimoriKakome extends Mission {
 				// 偶数
 			if (cTop%2 == 0) {
 		}
-			
+
 		}
 	}
 }
 
-	
+
 //<form method="post" action="/ssp/catch_the_pig/setblock">
 //<input id="set_block" type="hidden" name="setting" value=""/>
 //<ul id="cell_box">

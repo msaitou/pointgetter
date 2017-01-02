@@ -1,5 +1,7 @@
 package pointGet.mission.ecn;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,10 +21,10 @@ public class ECNWebSearche extends Mission {
 
 	/**
 	 * @param log
-	 * @param wordlist 
+	 * @param wordlist
 	 */
-	public ECNWebSearche(Logger log, String[] wordlist) {
-		super(log);
+	public ECNWebSearche(Logger log, Map<String, String> cProps, String[] wordlist) {
+		super(log, cProps);
 		this.mName = "■web検索";
 		this.wordSearchList = Utille.getWordSearchList(wordlist, 5);
 	}

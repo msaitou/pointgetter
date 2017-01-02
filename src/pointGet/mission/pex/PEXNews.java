@@ -1,6 +1,7 @@
 package pointGet.mission.pex;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -20,8 +21,8 @@ public class PEXNews extends Mission {
 	/**
 	 * @param log
 	 */
-	public PEXNews(Logger log) {
-		super(log);
+	public PEXNews(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■毎日ニュース";
 	}
 
@@ -49,7 +50,7 @@ public class PEXNews extends Mission {
 			logg.info("newsUrl:" + newsUrl);
 			driver.get(newsUrl);
 			Utille.sleep(3000);
-	
+
 			int ran = Utille.getIntRand(4);
 			String selectId = "table.you_say input";
 			if (ran == 0) {

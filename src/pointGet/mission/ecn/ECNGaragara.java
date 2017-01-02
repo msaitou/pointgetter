@@ -1,6 +1,7 @@
 package pointGet.mission.ecn;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -19,8 +20,8 @@ public class ECNGaragara extends Mission {
 	/**
 	 * @param logg
 	 */
-	public ECNGaragara(Logger logg) {
-		super(logg);
+	public ECNGaragara(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■ガラガラ";
 	}
 
@@ -45,6 +46,7 @@ public class ECNGaragara extends Mission {
 //				}
 				if (isExistEle(eleList, i)) {
 					clickSleepSelector(eleList, i, 2000);
+					closeOtherWindow(driver);
 				}
 			}
 		}

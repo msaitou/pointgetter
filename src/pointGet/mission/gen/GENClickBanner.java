@@ -1,6 +1,7 @@
 package pointGet.mission.gen;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -11,7 +12,7 @@ import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
- * @author saitou 途中TODO
+ * @author saitou
  */
 public class GENClickBanner extends Mission {
 	final String url = "http://www.gendama.jp/forest/";
@@ -19,8 +20,8 @@ public class GENClickBanner extends Mission {
 	/**
 	 * @param log
 	 */
-	public GENClickBanner(Logger log) {
-		super(log);
+	public GENClickBanner(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■ポイントの森(クリック)";
 	}
 
@@ -32,26 +33,26 @@ public class GENClickBanner extends Mission {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		Utille.sleep(2000);
-		//		String selecter[] = { "div#forestBox a img", "div#downBox a.all p.bnrImg", "section#reach a.clearfix dt"
-		//									, "div#sponsor a[href*='/cl/?id=']"  // ここにバッチ起動時のみバグってる
-		//		};
-		//		for (int j = 0; j < selecter.length; j++) {
-		//			logg.info("selector: start");
-		//			String selector = selecter[j];
-		//			if (isExistEle(driver, selector)) {
-		//				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-		//				int size = eleList.size();
-		//				for (int i = 0; i < size; i++) {
-		//					if (isExistEle(eleList, i)) {
-		//						clickSleepSelector(eleList, i, 2000);
-		//					}
-		//				}
-		//			}
-		//			logg.info("selector: end");
-		//		}
-
-		String selecter[] = { "a.itx-listitem-link div",
-				"img[src='http://img.gendama.jp/img/forest/bt_day1.gif']",
+		// String selecter[] = { "div#forestBox a img", "div#downBox a.all
+		// p.bnrImg", "section#reach a.clearfix dt"
+		// , "div#sponsor a[href*='/cl/?id=']" // ここにバッチ起動時のみバグってる
+		// };
+		// for (int j = 0; j < selecter.length; j++) {
+		// logg.info("selector: start");
+		// String selector = selecter[j];
+		// if (isExistEle(driver, selector)) {
+		// List<WebElement> eleList =
+		// driver.findElements(By.cssSelector(selector));
+		// int size = eleList.size();
+		// for (int i = 0; i < size; i++) {
+		// if (isExistEle(eleList, i)) {
+		// clickSleepSelector(eleList, i, 2000);
+		// }
+		// }
+		// }
+		// logg.info("selector: end");
+		// }
+		String selecter[] = { "a.itx-listitem-link div", "img[src='http://img.gendama.jp/img/forest/bt_day1.gif']",
 				"img[src='//img.gendama.jp/img/neo/index/click_pt.png']",
 				"img[src='http://img.gendama.jp/img/forest/forest_bt1.gif']",
 				"img[src='//img.gendama.jp/img/renew/common/btn_detail.png']",
@@ -62,24 +63,23 @@ public class GENClickBanner extends Mission {
 			if (isExistEle(driver, selector)) {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size = eleList.size();
-				for (int i = 0; i < size; i++) {
-					if (isExistEle(eleList, i)) {
-						clickSleepSelector(eleList, i, 2000);
+				try {
+					for (int i = 0; i < size; i++) {
+						if (isExistEle(eleList, i)) {
+							clickSleepSelector(eleList, i, 2000);
+							closeOtherWindow(driver);
+						}
 					}
+				} catch (Exception e) {
+					driver.quit();
+					logg.error("##GENException##################");
+					logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
+					logg.error("####################");
+					logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
+					logg.error("##GENException##################");
+					driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 				}
 			}
-			String wid = driver.getWindowHandle();
-			java.util.Set<String> widSet = driver.getWindowHandles();
-			for (String id : widSet) {
-				if (!id.equals(wid)) {
-					//最後に格納したウインドウIDにスイッチ  
-					driver.switchTo().window(id);
-					driver.close();
-				}
-			}
-			//最後に格納したウインドウIDにスイッチ  
-			driver.switchTo().window(wid);
-
 			logg.info("selector: end");
 		}
 	}

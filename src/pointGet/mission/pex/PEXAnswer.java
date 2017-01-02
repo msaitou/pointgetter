@@ -1,6 +1,6 @@
 package pointGet.mission.pex;
 
-import lombok.val;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -19,8 +19,8 @@ public class PEXAnswer extends Mission {
 	/**
 	 * @param log
 	 */
-	public PEXAnswer(Logger log) {
-		super(log);
+	public PEXAnswer(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■みんなのアンサー";
 	}
 
@@ -36,8 +36,15 @@ public class PEXAnswer extends Mission {
 		selector = "section.question_area input[type='submit']";
 		if (isExistEle(driver, selector)) {
 			driver.findElements(By.cssSelector(selector)).get(ran).click();
-			val alert = driver.switchTo().alert();
-			alert.accept();
+//			AlertOverride alertOverride = new AlertOverride(true);
+//			alertOverride.replaceAlertMethod(driver);
+//			if(alertOverride.isAlertPresent(driver)){                                     //②
+//			    String alertMsg = alertOverride.getNextAlert(driver);               //③
+//			}
+//			if(alertOverride.isConfirmationPresent(driver)){                          //④
+//			val alert = driver.switchTo().alert();
+//			alert.accept();
+//			}
 		}
 		else {
 			logg.warn(mName + "]獲得済み");

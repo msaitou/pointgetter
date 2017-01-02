@@ -1,5 +1,7 @@
 package pointGet.mission.ecn;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,8 +20,8 @@ public class ECNChinjyu extends Mission {
 	/**
 	 * @param logg
 	 */
-	public ECNChinjyu(Logger logg) {
-		super(logg);
+	public ECNChinjyu(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■珍獣先生";
 		this.limit = 5;
 	}

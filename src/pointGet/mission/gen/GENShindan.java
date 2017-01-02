@@ -1,6 +1,7 @@
 package pointGet.mission.gen;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -21,8 +22,8 @@ public class GENShindan extends Mission {
 	/**
 	 * @param logg
 	 */
-	public GENShindan(Logger logg) {
-		super(logg);
+	public GENShindan(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■毎日診断";
 	}
 

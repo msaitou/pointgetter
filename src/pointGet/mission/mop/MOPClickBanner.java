@@ -1,5 +1,7 @@
 package pointGet.mission.mop;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,8 +18,8 @@ public class MOPClickBanner extends Mission {
 	/**
 	 * @param log
 	 */
-	public MOPClickBanner(Logger log) {
-		super(log);
+	public MOPClickBanner(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■クリックで貯める";
 	}
 

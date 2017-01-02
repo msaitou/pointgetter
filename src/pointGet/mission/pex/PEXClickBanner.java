@@ -1,5 +1,7 @@
 package pointGet.mission.pex;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,8 +19,8 @@ public class PEXClickBanner extends Mission {
 	/**
 	 * @param log
 	 */
-	public PEXClickBanner(Logger log) {
-		super(log);
+	public PEXClickBanner(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■クリックポイント";
 	}
 

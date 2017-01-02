@@ -3,7 +3,9 @@ package pointGet.mission;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -36,12 +38,17 @@ public abstract class Mission {
 	/* mission name */
 	protected String mName = "";
 
+	protected static Map<String, String> commonProps = new HashMap<String, String>();
+
 	/**
 	 * constracter
-	 * @param log 	log4j object
+	 *
+	 * @param log
+	 *            log4j object
 	 */
-	public Mission(Logger log) {
+	public Mission(Logger log, Map<String, String> cProps) {
 		logg = log;
+		commonProps = cProps;
 	}
 
 	/**
@@ -68,6 +75,7 @@ public abstract class Mission {
 
 	/**
 	 * roop mission execute
+	 *
 	 * @param driver
 	 */
 	public abstract void roopMission(WebDriver driver);
@@ -231,7 +239,7 @@ public abstract class Mission {
 				Utille.sleep(2000);
 				continue;
 			}
-			//			logg.info("check roop[" + i + "]");
+			// logg.info("check roop[" + i + "]");
 		}
 	}
 
@@ -246,6 +254,7 @@ public abstract class Mission {
 
 	/**
 	 * to active the new windows
+	 *
 	 * @param driver
 	 */
 	protected void changeWindow(WebDriver driver) {
@@ -255,15 +264,33 @@ public abstract class Mission {
 			String new_window_id = null;
 			for (String id : widSet) {
 				if (!id.equals(wid)) {
-					//現在のウインドウIDと違っていたら格納
-					//最後に格納されたIDが一番新しく開かれたウインドウと判定
+					// 現在のウインドウIDと違っていたら格納
+					// 最後に格納されたIDが一番新しく開かれたウインドウと判定
 					new_window_id = id;
 				}
 			}
 			driver.close();
-			//最後に格納したウインドウIDにスイッチ
+			// 最後に格納したウインドウIDにスイッチ
 			driver.switchTo().window(new_window_id);
 		}
+	}
+
+	/**
+	 *
+	 * @param driver
+	 */
+	protected void closeOtherWindow(WebDriver driver) {
+		String wid = driver.getWindowHandle();
+		java.util.Set<String> widSet = driver.getWindowHandles();
+		for (String id : widSet) {
+			if (!id.equals(wid)) {
+				// 最後に格納したウインドウIDにスイッチして閉じる
+				driver.switchTo().window(id);
+				driver.close();
+			}
+		}
+		// 元のウインドウIDにスイッチ
+		driver.switchTo().window(wid);
 	}
 
 	/**
@@ -277,16 +304,16 @@ public abstract class Mission {
 			if (i == 0) {
 				privateMission(driver);
 
-			}
-			else {
+			} else {
 				roopMission(driver);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
 			driver.quit();
 			logg.error("##Exception##################");
-			logg.error(e.getLocalizedMessage());
-			logg.error(Utille.parseStringFromStackTrace(e));
+			logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
+			logg.error("####################");
+			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
 			logg.error("##Exception##################");
 		}
 		logg.info("[[[" + mName + "]]] END-");

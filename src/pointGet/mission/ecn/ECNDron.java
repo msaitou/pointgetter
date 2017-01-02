@@ -1,5 +1,7 @@
 package pointGet.mission.ecn;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -16,8 +18,8 @@ public class ECNDron extends Mission {
 	/**
 	 * @param log
 	 */
-	public ECNDron(Logger log) {
-		super(log);
+	public ECNDron(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■ドロンバナークリック2種";
 	}
 

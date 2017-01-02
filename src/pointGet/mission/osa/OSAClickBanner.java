@@ -1,5 +1,7 @@
 package pointGet.mission.osa;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,14 +19,14 @@ public class OSAClickBanner extends Mission {
 	/**
 	 * @param logg
 	 */
-	public OSAClickBanner(Logger logg) {
-		super(logg);
+	public OSAClickBanner(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■クリックゴールド";
 	}
 
 	@Override
 	public void roopMission(WebDriver driver) {
-		
+
 	}
 
 	@Override

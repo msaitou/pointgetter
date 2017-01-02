@@ -1,5 +1,7 @@
 package pointGet.mission.mop;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -18,8 +20,8 @@ public class MOPQuiz extends Mission {
 	/**
 	 * @param logg
 	 */
-	public MOPQuiz(Logger logg) {
-		super(logg);
+	public MOPQuiz(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps);
 		this.mName = "■モッピークイズ";
 	}
 

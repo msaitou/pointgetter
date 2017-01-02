@@ -1,5 +1,7 @@
 package pointGet.mission.rin;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,8 +22,8 @@ public class RINClickBanner extends Mission {
 	/**
 	 * @param log
 	 */
-	public RINClickBanner(Logger log) {
-		super(log);
+	public RINClickBanner(Logger log, Map<String, String> cProps) {
+		super(log, cProps);
 		this.mName = "■クリックバナー(楽天)";
 	}
 
