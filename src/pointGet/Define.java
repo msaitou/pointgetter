@@ -64,6 +64,7 @@ public class Define {
 	final public static String strGENMorimoriKakome = "GENMorimoriKakome";
 	final public static String strGENPointStar = "GENPointStar";
 	final public static String strGENShindan = "GENShindan";
+	final public static String strGENUranai = "GENUranai";
 
 	// ■■■■■げっとま■■■■■
 	final public static String strGMYChirachi = "GMYChirachi";
@@ -78,11 +79,13 @@ public class Define {
 	final public static String strMOPClickBanner = "MOPClickBanner";
 	final public static String strMOPQuiz = "MOPQuiz";
 	final public static String strMOPShindan = "MOPShindan";
+	final public static String strMOPUranai = "MOPUranai";
 
 	// ■■■■■osaifu■■■■■
 	final public static String strOSAClickBanner = "OSAClickBanner";
 	final public static String strOSAQuiz = "OSAQuiz";
 	final public static String strOSAShindan = "OSAShindan";
+	final public static String strOSAUranai = "OSAUranai";
 
 	// ■■■■■PEX■■■■■
 	final public static String strPEX4quiz = "PEX4quiz";

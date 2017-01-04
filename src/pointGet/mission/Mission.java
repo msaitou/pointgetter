@@ -315,6 +315,7 @@ public abstract class Mission {
 			logg.error("####################");
 			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
 			logg.error("##Exception##################");
+			driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 		}
 		logg.info("[[[" + mName + "]]] END-");
 	}

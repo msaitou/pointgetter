@@ -36,6 +36,7 @@ public class PEXAnswer extends Mission {
 		selector = "section.question_area input[type='submit']";
 		if (isExistEle(driver, selector)) {
 			driver.findElements(By.cssSelector(selector)).get(ran).click();
+			Utille.sleep(2000);
 //			AlertOverride alertOverride = new AlertOverride(true);
 //			alertOverride.replaceAlertMethod(driver);
 //			if(alertOverride.isAlertPresent(driver)){                                     //②

@@ -47,7 +47,7 @@ public class OSAQuiz extends Mission {
 				return;
 			}
 			selector = "input[name='submit']";
-			Utille.sleep(4000);
+			Utille.sleep(5000);
 			if (isExistEle(driver, selector)) {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 8; i++) {

@@ -22,6 +22,7 @@ import pointGet.mission.ecn.ECNWebSearche;
 import pointGet.mission.gen.GENClickBanner;
 import pointGet.mission.gen.GENPointStar;
 import pointGet.mission.gen.GENShindan;
+import pointGet.mission.gen.GENUranai;
 import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.gmy.GMYShindan;
@@ -30,9 +31,11 @@ import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.mop.MOPShindan;
+import pointGet.mission.mop.MOPUranai;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSAQuiz;
 import pointGet.mission.osa.OSAShindan;
+import pointGet.mission.osa.OSAUranai;
 import pointGet.mission.pex.PEX4quiz;
 import pointGet.mission.pex.PEXAnswer;
 import pointGet.mission.pex.PEXChirachi;
@@ -124,8 +127,13 @@ public class WebClicker extends PointGet {
 				continue;
 			}
 			goToClickSite(site, missionArr);
+			missionArr.clear();
 		}
+		roopMisssion(missionList);
+		logg.info("can not read properties!!");
+	}
 
+	private static void roopMisssion(ArrayList<Mission> missionList) {
 		// roop
 		if (missionList.size() > 0) {
 			logg.info("roopStart!!");
@@ -149,7 +157,6 @@ public class WebClicker extends PointGet {
 			driver.quit();
 			logg.info("roopEnd!!");
 		}
-		logg.info("can not read properties!!");
 	}
 
 	/**
@@ -164,6 +171,7 @@ public class WebClicker extends PointGet {
 		ArrayList<String> missionArr = new ArrayList<String>();
 		missionArr.add(mission);
 		goToClickSite(site, missionArr);
+		roopMisssion(missionList);
 		logg.info("End!!");
 	}
 
@@ -219,10 +227,20 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickRIN(WebDriver driver, ArrayList<String> missions) {
-		if (!secondFlg && !thirdFlg) { // 1日1回
-			// ■クリックバナー(楽天)
-			Mission RINClickBanner = new RINClickBanner(logg, commonProps);
-			RINClickBanner.exePrivateMission(driver);
+		if (missions.size() == 0) {
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strRINClickBanner);
+			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+			case Define.strRINClickBanner:
+				// ■クリックバナー(楽天)
+				Mission RINClickBanner = new RINClickBanner(logg, commonProps);
+				RINClickBanner.exePrivateMission(driver);
+				break;
+			default:
+			}
 		}
 	}
 
@@ -231,10 +249,20 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickI2I(WebDriver driver, ArrayList<String> missions) {
-		if (!secondFlg && !thirdFlg) { // 1日1回
-			// ■星座占い
-			Mission I2ISeiza = new I2ISeiza(logg, commonProps);
-			I2ISeiza.exePrivateMission(driver);
+		if (missions.size() == 0) {
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strI2ISeiza);
+			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+			case Define.strI2ISeiza:
+				// ■星座占い
+				Mission I2ISeiza = new I2ISeiza(logg, commonProps);
+				I2ISeiza.exePrivateMission(driver);
+				break;
+			default:
+			}
 		}
 	}
 
@@ -243,21 +271,38 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickOSA(WebDriver driver, ArrayList<String> missions) {
-		if (!secondFlg && !thirdFlg) { // 1日1回
-			// ■クリックゴールド
-			Mission OSAClickBanner = new OSAClickBanner(logg, commonProps);
-			OSAClickBanner.exePrivateMission(driver);
-			// ■毎日診断
-			Mission OSAShindan = new OSAShindan(logg, commonProps);
-			OSAShindan.exePrivateMission(driver);
+		if (missions.size() == 0) {
+			missions.add(Define.strOSAQuiz);
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strOSAClickBanner);
+				missions.add(Define.strOSAShindan);
+				missions.add(Define.strOSAUranai);
+			}
 		}
-		if (true) {
-			// ■daily quiz
-			Mission OSAQuiz = new OSAQuiz(logg, commonProps);
-			// OSAQuiz.exePrivateMission(driver);
-			OSAQuiz.exeRoopMission(driver);
-		}
-		if (forthFlg) {
+		for (String mission : missions) {
+			switch (mission) {
+			case Define.strOSAQuiz:
+				// ■daily quiz
+				Mission OSAQuiz = new OSAQuiz(logg, commonProps);
+				OSAQuiz.exeRoopMission(driver);
+				break;
+			case Define.strOSAClickBanner:
+				// ■クリックゴールド
+				Mission OSAClickBanner = new OSAClickBanner(logg, commonProps);
+				OSAClickBanner.exePrivateMission(driver);
+				break;
+			case Define.strOSAShindan:
+				// ■毎日診断
+				Mission OSAShindan = new OSAShindan(logg, commonProps);
+				OSAShindan.exePrivateMission(driver);
+				break;
+			case Define.strOSAUranai:
+				// ■OSA星座
+				Mission OSAUranai = new OSAUranai(logg, commonProps);
+				OSAUranai.exePrivateMission(driver);
+				break;
+			default:
+			}
 		}
 	}
 
@@ -266,24 +311,44 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickMOP(WebDriver driver, ArrayList<String> missions) {
-		if (forthFlg) {
+		if (missions.size() == 0) {
+			missions.add(Define.strMOPQuiz);
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strMOPClickBanner);
+				missions.add(Define.strMOPShindan);
+				missions.add(Define.strMOPChyosatai);
+				missions.add(Define.strMOPUranai);
+			}
 		}
-		if (true) {
-			// ■モッピークイズ
-			Mission MOPQuiz = new MOPQuiz(logg, commonProps);
-			// MOPQuiz.exePrivateMission(driver);
-			MOPQuiz.exeRoopMission(driver);
-		}
-		if (!secondFlg && !thirdFlg) { // 1日1回
-			// ■クリックで貯める
-			Mission MOPClickBanner = new MOPClickBanner(logg, commonProps);
-			MOPClickBanner.exePrivateMission(driver);
-			// ■毎日診断
-			Mission MOPShindan = new MOPShindan(logg, commonProps);
-			MOPShindan.exePrivateMission(driver);
-			// ■トキメキ調査隊
-			Mission MOPChyosatai = new MOPChyosatai(logg, commonProps);
-			MOPChyosatai.exePrivateMission(driver);
+		for (String mission : missions) {
+			switch (mission) {
+			case Define.strMOPQuiz:
+				// ■モッピークイズ
+				Mission MOPQuiz = new MOPQuiz(logg, commonProps);
+				MOPQuiz.exeRoopMission(driver);
+				break;
+			case Define.strMOPClickBanner:
+				// ■クリックで貯める
+				Mission MOPClickBanner = new MOPClickBanner(logg, commonProps);
+				MOPClickBanner.exePrivateMission(driver);
+				break;
+			case Define.strMOPShindan:
+				// ■毎日診断
+				Mission MOPShindan = new MOPShindan(logg, commonProps);
+				MOPShindan.exePrivateMission(driver);
+				break;
+			case Define.strMOPChyosatai:
+				// ■トキメキ調査隊
+				Mission MOPChyosatai = new MOPChyosatai(logg, commonProps);
+				MOPChyosatai.exePrivateMission(driver);
+				break;
+			case Define.strMOPUranai:
+				// ■MOP星座
+				Mission MOPUranai = new MOPUranai(logg, commonProps);
+				MOPUranai.exePrivateMission(driver);
+				break;
+			default:
+			}
 		}
 	}
 
@@ -306,40 +371,65 @@ public class WebClicker extends PointGet {
 			} else {
 				logg.warn(mName + "]なかったよ...");
 			}
-			// ■ポイント検索
-			Mission PexMissionSearch = new PEXSearch(logg, commonProps, wordList);
-			PexMissionSearch.exeRoopMission(driver);
-			missionList.add(PexMissionSearch);
-			// ■ぺく単
-			Mission PexMissionPectan = new PEXPectan(logg, commonProps);
-			PexMissionPectan.exeRoopMission(driver);
-			missionList.add(PexMissionPectan);
-			// ■毎日ニュース
-			Mission PEXNews = new PEXNews(logg, commonProps);
-			PEXNews.exePrivateMission(driver);
-			// ■クリックポイント
-			Mission PEXClickBanner = new PEXClickBanner(logg, commonProps);
-			PEXClickBanner.exePrivateMission(driver);
-			// ■めくってシール
-			Mission PEXMekutte = new PEXMekutte(logg, commonProps);
-			PEXMekutte.exePrivateMission(driver);
 		}
-		// 1日2回
-		if (!thirdFlg) {
-			// ■ポイントクイズ
-			Mission PEX4quiz = new PEX4quiz(logg, commonProps);
-			PEX4quiz.exePrivateMission(driver);
-			// ■オリチラ
-			Mission PEXChirachi = new PEXChirachi(logg, commonProps);
-			PEXChirachi.exePrivateMission(driver);
-			// ■みんなのアンサー
-			Mission PEXAnswer = new PEXAnswer(logg, commonProps);
-			PEXAnswer.exePrivateMission(driver);
+		if (missions.size() == 0) {
+			logg.info("kitano");
+			missions.add(Define.strGMYShindan);
+			if (!thirdFlg) { // 1日2回
+				missions.add(Define.strPEX4quiz);
+				missions.add(Define.strPEXChirachi);
+				missions.add(Define.strPEXAnswer);
+			}
+			if (!secondFlg && !thirdFlg) {
+				missions.add(Define.strPEXMekutte);
+				missions.add(Define.strPEXClickBanner);
+				missions.add(Define.strPEXNews);
+				missions.add(Define.strPEXPectan);
+				missions.add(Define.strPEXSearch);
+			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+			case Define.strPEX4quiz: // ■ポイントクイズ
+				Mission PEX4quiz = new PEX4quiz(logg, commonProps);
+				PEX4quiz.exePrivateMission(driver);
+				break;
+			case Define.strPEXChirachi: // ■オリチラ
+				Mission PEXChirachi = new PEXChirachi(logg, commonProps);
+				PEXChirachi.exePrivateMission(driver);
+				break;
+			case Define.strPEXAnswer: // ■みんなのアンサー
+				Mission PEXAnswer = new PEXAnswer(logg, commonProps);
+				PEXAnswer.exePrivateMission(driver);
+				break;
+			case Define.strPEXMekutte: // ■めくってシール
+				Mission PEXMekutte = new PEXMekutte(logg, commonProps);
+				PEXMekutte.exePrivateMission(driver);
+				break;
+			case Define.strPEXClickBanner:// ■クリックポイント
+				Mission PEXClickBanner = new PEXClickBanner(logg, commonProps);
+				PEXClickBanner.exePrivateMission(driver);
+				break;
+			case Define.strPEXNews: // ■毎日ニュース
+				Mission PEXNews = new PEXNews(logg, commonProps);
+				PEXNews.exePrivateMission(driver);
+				break;
+			case Define.strPEXPectan: // ■ぺく単
+				Mission PexMissionPectan = new PEXPectan(logg, commonProps);
+				PexMissionPectan.exeRoopMission(driver);
+				missionList.add(PexMissionPectan);
+				break;
+			case Define.strPEXSearch: // ■ポイント検索
+				Mission PexMissionSearch = new PEXSearch(logg, commonProps, wordList);
+				PexMissionSearch.exeRoopMission(driver);
+				missionList.add(PexMissionSearch);
+				break;
+			default:
+			}
 		}
 		// // テスト中
 		// PEXMitukete PEXMitukete = new PEXMitukete(logg, commonProps);
 		// PEXMitukete.exePrivateMission(driver);
-
 	}
 
 	/**
@@ -347,66 +437,64 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickECN(WebDriver driver, ArrayList<String> missions) {
-		// 1日2回
-		if (!thirdFlg) {
-			// ■チラシ
-			Mission ECNChirachi = new ECNChirachi(logg, commonProps);
-			ECNChirachi.exePrivateMission(driver);
+		if (missions.size() == 0) {
+			// 1日2回
+			if (!thirdFlg) {
+				missions.add(Define.strECNChirachi);
+			}
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strECNGaragara);
+				missions.add(Define.strECNNews);
+				missions.add(Define.strECNTellmeWhich);
+				missions.add(Define.strECNDron);
+				missions.add(Define.strECNClickBokin);
+				missions.add(Define.strECNSearchBokin);
+				missions.add(Define.strECNWebSearche);
+				missions.add(Define.strECNChinjyu);
+			}
 		}
-		// 以下1日回
-		if (!secondFlg && !thirdFlg) {
-			// ■珍獣先生
-			Mission EcnMissionChinjyu = new ECNChinjyu(logg, commonProps);
-			EcnMissionChinjyu.roopMission(driver);
-			missionList.add(EcnMissionChinjyu);
-			// ■検索募金
-			Mission ECNWebSearche = new ECNWebSearche(logg, commonProps, wordList);
-			ECNWebSearche.exePrivateMission(driver);
-			// ■検索募金
-			Mission ECNSearchBokin = new ECNSearchBokin(logg, commonProps, wordList);
-			ECNSearchBokin.exePrivateMission(driver);
-			// ■クリック募金
-			Mission ECNClickBokin = new ECNClickBokin(logg, commonProps);
-			ECNClickBokin.exePrivateMission(driver);
-			// ■ドロンバナークリック2種
-			Mission ECNDron = new ECNDron(logg, commonProps);
-			ECNDron.exePrivateMission(driver);
-			// ■教えてどっち
-			Mission ECNTellmeWhich = new ECNTellmeWhich(logg, commonProps);
-			ECNTellmeWhich.exePrivateMission(driver);
-			// ■毎日ニュース
-			Mission ECNNews = new ECNNews(logg, commonProps);
-			ECNNews.exePrivateMission(driver);
-			// ■ガラガラ
-			Mission ECNGaragara = new ECNGaragara(logg, commonProps);
-			ECNGaragara.exePrivateMission(driver);
+		for (String mission : missions) {
+			switch (mission) {
+			case Define.strECNGaragara: // ■ガラガラ
+				Mission ECNGaragara = new ECNGaragara(logg, commonProps);
+				ECNGaragara.exePrivateMission(driver);
+				break;
+			case Define.strECNNews: // ■毎日ニュース
+				Mission ECNNews = new ECNNews(logg, commonProps);
+				ECNNews.exePrivateMission(driver);
+				break;
+			case Define.strECNTellmeWhich: // ■教えてどっち
+				Mission ECNTellmeWhich = new ECNTellmeWhich(logg, commonProps);
+				ECNTellmeWhich.exePrivateMission(driver);
+				break;
+			case Define.strECNDron: // ■ドロンバナークリック2種
+				Mission ECNDron = new ECNDron(logg, commonProps);
+				ECNDron.exePrivateMission(driver);
+				break;
+			case Define.strECNClickBokin: // ■クリック募金
+				Mission ECNClickBokin = new ECNClickBokin(logg, commonProps);
+				ECNClickBokin.exePrivateMission(driver);
+				break;
+			case Define.strECNSearchBokin: // ■検索募金
+				Mission ECNSearchBokin = new ECNSearchBokin(logg, commonProps, wordList);
+				ECNSearchBokin.exePrivateMission(driver);
+				break;
+			case Define.strECNWebSearche: // ■検索募金
+				Mission ECNWebSearche = new ECNWebSearche(logg, commonProps, wordList);
+				ECNWebSearche.exePrivateMission(driver);
+				break;
+			case Define.strECNChinjyu: // ■珍獣先生
+				Mission EcnMissionChinjyu = new ECNChinjyu(logg, commonProps);
+				EcnMissionChinjyu.roopMission(driver);
+				missionList.add(EcnMissionChinjyu);
+				break;
+			case Define.strECNChirachi: // ■チラシ
+				Mission ECNChirachi = new ECNChirachi(logg, commonProps);
+				ECNChirachi.exePrivateMission(driver);
+				break;
+			default:
+			}
 		}
-	}
-
-	/**
-	 *
-	 * @param driver
-	 */
-	private static void goToClickGMY(WebDriver driver) {
-		// if (!secondFlg && !thirdFlg) {
-		// // ■clipoバナー
-		// Mission GMYClickBanner = new GMYClickBanner(logg, commonProps);
-		// GMYClickBanner.exePrivateMission(driver);
-		// // ■チラシ
-		// Mission GMYChirachi = new GMYChirachi(logg, commonProps);
-		// GMYChirachi.exePrivateMission(driver);
-		// }
-		// // ■毎日診断
-		// Mission GMYShindan = new GMYShindan(logg, commonProps);
-		// GMYShindan.exePrivateMission(driver);
-
-		ArrayList<String> missionList = new ArrayList<String>();
-		missionList.add(Define.strGMYShindan);
-		if (!secondFlg && !thirdFlg) {
-			missionList.add(Define.strGMYClickBanner);
-			missionList.add(Define.strGMYChirachi);
-		}
-		goToClickGMY(driver, missionList);
 	}
 
 	/**
@@ -455,26 +543,12 @@ public class WebClicker extends PointGet {
 		// if (testFlag) {
 		// return;
 		// }
-		// if (!thirdFlg) {
-		// }
-		// // ■ポイントの森(star)
-		// Mission GENPointStar = new GENPointStar(logg, commonProps);
-		// GENPointStar.exePrivateMission(driver);
-		//
-		// if (!secondFlg && !thirdFlg) {
-		// // ■ポイントの森(クリック)
-		// Mission GENClickBanner = new GENClickBanner(logg, commonProps);
-		// GENClickBanner.exePrivateMission(driver);
-		// // ■毎日診断
-		// Mission GENShindan = new GENShindan(logg, commonProps);
-		// GENShindan.exePrivateMission(driver);
-		// }
-
 		if (missions.size() == 0) {
 			missions.add(Define.strGENPointStar);
 			if (!secondFlg && !thirdFlg) {
 				missions.add(Define.strGENClickBanner);
 				missions.add(Define.strGENShindan);
+				missions.add(Define.strGENUranai);
 			}
 		}
 		for (String mission : missions) {
@@ -494,9 +568,13 @@ public class WebClicker extends PointGet {
 				Mission GENShindan = new GENShindan(logg, commonProps);
 				GENShindan.exePrivateMission(driver);
 				break;
+			case Define.strGENUranai:
+				// ■毎日診断
+				Mission GENUranai = new GENUranai(logg, commonProps);
+				GENUranai.exePrivateMission(driver);
+				break;
 			default:
 			}
 		}
-
 	}
 }
