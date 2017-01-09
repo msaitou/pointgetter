@@ -82,6 +82,7 @@ public class MOPShindan extends Mission {
 											}
 											else if (isExistEle(driver, endSelector)
 													&& isExistEle(driver, nextSelector + none)) {
+												Utille.sleep(2000);
 												this.waitTilReady(driver);
 												clickSleepSelector(driver, endSelector, 5000); // 遷移
 												// 抜けたら　span#end-btn-area>a.end-btn　	をクリック

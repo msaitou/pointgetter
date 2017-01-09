@@ -8,6 +8,19 @@ public class exeBean {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		// String str = "今日の273日後は何曜日？";
+		// // String str = text;
+		// String regex = "今日の(\\d+)日後は何曜日？";
+		// Pattern p = Pattern.compile(regex);
+		// Matcher m = p.matcher(str);
+		// System.out.println("hajimari");
+		// if (m.find()) {
+		// String strAfterDayNum = m.group(1);
+		// String selectYoubi = Utille.getNanyoubi(strAfterDayNum);
+		// System.out.println("なんにちです [" + selectYoubi+"]");
+		//// logg.info("なんにちです [" + matchstr+"]");
+		// }
+		// System.out.println("owari");
 
 		// String[] params = new String[]{"0",
 		// Define.PSITE_CODE_ECN, // ecnavi
@@ -28,12 +41,12 @@ public class exeBean {
 		WebClicker.sub(
 				// Define.PSITE_CODE_ECN, // ecnavi
 				// Define.PSITE_CODE_PEX, // pex
-//				Define.PSITE_CODE_GEN, // gendama
+				// Define.PSITE_CODE_GEN, // gendama
 				// Define.PSITE_CODE_GMY, // GetMoney
 				// Define.PSITE_CODE_RIN, // raktuten
 				// Define.PSITE_CODE_I2I, // i2i
-				 Define.PSITE_CODE_MOP, // moppi
-//				 Define.PSITE_CODE_OSA, // osaifu
+//				Define.PSITE_CODE_MOP, // moppi
+				 Define.PSITE_CODE_OSA, // osaifu
 				// Define.PSITE_CODE_PTO, // pointtown
 				"0",
 				// ★★★★★★ECnavi★★★★★★
@@ -63,12 +76,14 @@ public class exeBean {
 				// Define.strMOPClickBanner
 				// Define.strMOPQuiz
 				// Define.strMOPShindan
-				 Define.strMOPUranai
-				// ★★★★★★OSAIFU★★★★★★
-				// Define.strOSAClickBanner
-				// Define.strOSAQuiz
-				// Define.strOSAShindan
-//				Define.strOSAUranai
+//				Define.strMOPNanyoubi
+		// Define.strMOPUranai
+		// ★★★★★★OSAIFU★★★★★★
+		// Define.strOSAClickBanner
+		// Define.strOSAQuiz
+		// Define.strOSAShindan
+		// Define.strOSAUranai
+				Define.strOSANanyoubi
 		// ★★★★★★PEX★★★★★★
 		// Define.strPEX4quiz
 		// Define.strPEXAnswer

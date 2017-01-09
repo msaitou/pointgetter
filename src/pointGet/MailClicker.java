@@ -203,7 +203,9 @@ public class MailClicker extends PointGet {
 			for (Map.Entry<String, ArrayList<String>> e : urlMap.entrySet()) {
 				logg.info("■request site[" + e.getKey() + "] START");
 				try {
-					if (e.getKey().equals(Define.PSITE_CODE_OSA) || e.getKey().equals(Define.PSITE_CODE_ECN)
+					if (e.getKey().equals(Define.PSITE_CODE_OSA)
+							|| e.getKey().equals(Define.PSITE_CODE_ECN)
+							|| e.getKey().equals(Define.PSITE_CODE_MOP)
 							|| e.getKey().equals(Define.PSITE_CODE_RIN)
 							|| e.getKey().equals(Define.PSITE_CODE_PEX)
 							|| e.getKey().equals(Define.PSITE_CODE_R01)
@@ -272,7 +274,7 @@ public class MailClicker extends PointGet {
 			String folederKind)
 			throws IOException, MessagingException {
 		if (content instanceof String) {
-			logg.info("■■-getContent [" + content);
+//			logg.info("■■-getContent [" + content);
 			String[] contentLow = content.toString().split("\\r\\n", 0);
 			ArrayList<String> urlList = new ArrayList<String>();
 			for (int i = 0; i < contentLow.length; i++) {
