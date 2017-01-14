@@ -38,9 +38,9 @@ public class OSAShindan extends Mission {
 			clickSleepSelector(driver, selector, 8000); // 遷移
 			changeWindow(driver);
 			while (true) {
-				Utille.sleep(2000);
-				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
-//				selector = "div[class='thumbnail'] span.button-new"; // NEWだけ実施
+				Utille.sleep(5000);
+//				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
+				selector = "div[class='thumbnail'] span.button-new"; // NEWだけ実施
 				if (isExistEle(driver, selector)) {
 					clickSleepSelector(driver, selector, 4000); // 遷移
 					selector = "a.submit-btn";// 次へ

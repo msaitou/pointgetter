@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class Points extends PointGet {
 
-	private static long total = 0;
+	private static double total = 0;
 	private static String[] pointSitelist = {
 			Define.PSITE_CODE_GMY,
 			Define.PSITE_CODE_OSA,
@@ -141,7 +141,7 @@ public class Points extends PointGet {
 	}
 
 	private static void sumTotal(String site, String points) {
-		long current = getNumber(points);
+		double current = getNumber(points);
 		switch (site) {
 		case Define.PSITE_CODE_OSA:
 		case Define.PSITE_CODE_MOP:
@@ -167,7 +167,7 @@ public class Points extends PointGet {
 	 * @param points
 	 * @return
 	 */
-	private static long getNumber(String points) {
+	private static Double getNumber(String points) {
 		String[] execlude = { ",", "Pt", " pt" , "pt"};
 		for (String s : execlude) {
 			if (points.indexOf(s) > 0) {
@@ -175,6 +175,6 @@ public class Points extends PointGet {
 				points = points.trim();
 			}
 		}
-		return Long.parseLong(points);
+		return Double.parseDouble(points);
 	}
 }

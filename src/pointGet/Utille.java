@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
@@ -22,6 +23,10 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -34,7 +39,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  */
 public class Utille {
 
-	public static final String APP_LOG_ERR  = "Error";
+	public static final String APP_LOG_ERR = "Error";
 	public static final Charset UTF_8 = StandardCharsets.UTF_8;
 	public static int logLimitByte = 500;
 
@@ -302,37 +307,105 @@ public class Utille {
 	}
 
 	/**
-	 * 現在の曜日を返します。
-	 * ※曜日は省略します。
-	 * @return	現在の曜日
+	 * 現在の曜日を返します。 ※曜日は省略します。
+	 *
+	 * @return 現在の曜日
 	 */
 	public static int getDayOfTheWeekShort() {
-	    Calendar cal = Calendar.getInstance();
-	    switch (cal.get(Calendar.DAY_OF_WEEK)) {
-	        case Calendar.MONDAY: return 1;
-	        case Calendar.TUESDAY: return 2;
-	        case Calendar.WEDNESDAY: return 3;
-	        case Calendar.THURSDAY: return 4;
-	        case Calendar.FRIDAY: return 5;
-	        case Calendar.SATURDAY: return 6;
-	        case Calendar.SUNDAY: return 7;
-	    }
-	    throw new IllegalStateException();
+		Calendar cal = Calendar.getInstance();
+		switch (cal.get(Calendar.DAY_OF_WEEK)) {
+		case Calendar.MONDAY:
+			return 1;
+		case Calendar.TUESDAY:
+			return 2;
+		case Calendar.WEDNESDAY:
+			return 3;
+		case Calendar.THURSDAY:
+			return 4;
+		case Calendar.FRIDAY:
+			return 5;
+		case Calendar.SATURDAY:
+			return 6;
+		case Calendar.SUNDAY:
+			return 7;
+		}
+		throw new IllegalStateException();
 	}
 
 	/**
 	 * 今日から何日後を受け取って曜日を返す
+	 *
 	 * @param strAfterDayNum
 	 * @return
 	 */
 	public static String getNanyoubi(String strAfterDayNum) {
 		int iAfterDayNum = Integer.parseInt(strAfterDayNum);
-		int amari = iAfterDayNum%7;
+		int amari = iAfterDayNum % 7;
 		int thisYoubi = getDayOfTheWeekShort();
-		int resYoubi = (thisYoubi+amari);
+		int resYoubi = (thisYoubi + amari);
 		if (resYoubi > 7) {
 			resYoubi -= 7;
 		}
 		return String.valueOf(resYoubi);
+	}
+
+	/**
+	 * 今日から何日後を受け取って曜日を返す
+	 *
+	 * @param strAfterDayNum
+	 * @return
+	 */
+	public static String calcAnzan(Matcher m) {
+		String strNum1 = m.group(1);
+		String strNum2 = m.group(3);
+		String strNum3 = m.group(5);
+		int i = 0;
+		String[] operator = new String[2];
+		for (String code : new String[] { m.group(2), m.group(4) }) {
+			String ope = "";
+			switch (code) {
+			case "+":
+				ope = "+";
+				break;
+			case "-":
+				ope = "-";
+				break;
+			case "×":
+				ope = "*";
+				break;
+			case "÷":
+				ope = "/";
+				break;
+			}
+			operator[i++] = ope;
+		}
+		ScriptEngineManager manager = new ScriptEngineManager();
+		ScriptEngine engine = manager.getEngineByName("JavaScript");
+		Object res = null;
+		try {
+			res = engine.eval(strNum1 + operator[0] + strNum2 + operator[1] + strNum3);
+			if (res instanceof Double) {
+				double val = (Double) res;
+				// 元データをBigDecimal型にする
+				BigDecimal bd = new BigDecimal(val);
+				// 四捨五入する
+				res = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+			}
+		} catch (ScriptException ex) {
+			ex.printStackTrace();
+		}
+		return res.toString();
+	}
+
+	/**
+	 * 数値として等しいことを確認
+	 * @param strA
+	 * @param strB
+	 * @return
+	 */
+	public static boolean numEqual(String strA, String strB) {
+		Double dA = Double.parseDouble(strA);
+		Double dB = Double.parseDouble(strB);
+		return dA.compareTo(dB) == 0;
 	}
 }

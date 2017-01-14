@@ -27,12 +27,14 @@ import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.i2i.I2ISeiza;
+import pointGet.mission.mop.MOPAnzan;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPNanyoubi;
 import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.mop.MOPShindan;
 import pointGet.mission.mop.MOPUranai;
+import pointGet.mission.osa.OSAAnzan;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSANanyoubi;
 import pointGet.mission.osa.OSAQuiz;
@@ -282,6 +284,7 @@ public class WebClicker extends PointGet {
 			}
 			if (!thirdFlg) {
 				missions.add(Define.strOSANanyoubi);
+				missions.add(Define.strOSAAnzan);
 			}
 		}
 		for (String mission : missions) {
@@ -311,6 +314,11 @@ public class WebClicker extends PointGet {
 				Mission OSANanyoubi = new OSANanyoubi(logg, commonProps);
 				OSANanyoubi.exePrivateMission(driver);
 				break;
+			case Define.strOSAAnzan:
+				// ■OSA暗算
+				Mission OSAAnzan = new OSAAnzan(logg, commonProps);
+				OSAAnzan.exePrivateMission(driver);
+				break;
 			default:
 			}
 		}
@@ -331,6 +339,7 @@ public class WebClicker extends PointGet {
 			}
 			if (!thirdFlg) {
 				missions.add(Define.strMOPNanyoubi);
+				missions.add(Define.strMOPAnzan);
 			}
 		}
 		for (String mission : missions) {
@@ -364,6 +373,11 @@ public class WebClicker extends PointGet {
 				// ■MOP何曜日
 				Mission MOPNanyoubi = new MOPNanyoubi(logg, commonProps);
 				MOPNanyoubi.exePrivateMission(driver);
+				break;
+			case Define.strMOPAnzan:
+				// ■MOP暗算
+				Mission MOPAnzan = new MOPAnzan(logg, commonProps);
+				MOPAnzan.exePrivateMission(driver);
 				break;
 			default:
 			}

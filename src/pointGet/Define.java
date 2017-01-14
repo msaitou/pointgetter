@@ -81,7 +81,7 @@ public class Define {
 	final public static String strMOPShindan = "MOPShindan";
 	final public static String strMOPUranai = "MOPUranai";
 	final public static String strMOPNanyoubi = "MOPNanyoubi";
-
+	final public static String strMOPAnzan = "MOPAnzan";
 
 	// ■■■■■osaifu■■■■■
 	final public static String strOSAClickBanner = "OSAClickBanner";
@@ -89,6 +89,7 @@ public class Define {
 	final public static String strOSAShindan = "OSAShindan";
 	final public static String strOSAUranai = "OSAUranai";
 	final public static String strOSANanyoubi = "OSANanyoubi";
+	final public static String strOSAAnzan = "OSAAnzan";
 
 	// ■■■■■PEX■■■■■
 	final public static String strPEX4quiz = "PEX4quiz";
