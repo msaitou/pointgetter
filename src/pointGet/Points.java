@@ -126,7 +126,7 @@ public class Points extends PointGet {
 			if (outPut.length() > 0) {
 				sumTotal(siteCode, point);
 				if (secondPoint.length() > 0) {
-					sumTotal("secondPoint", point);
+					sumTotal("secondPoint", secondPoint);
 				}
 				sb.append(outPut);
 			}
@@ -161,6 +161,9 @@ public class Points extends PointGet {
 		default:
 			break;
 		}
+//		logg.warn("total["+total+"]円");
+//		logg.warn("current["+current+"]円");
+//		logg.warn("points["+points+"]円");
 	}
 	/**
 	 *

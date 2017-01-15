@@ -81,16 +81,6 @@ public class Utille {
 	}
 
 	/**
-	 * @param microtime
-	 */
-	public static void sleep2(int microtime) {
-		int repeat = microtime / 2000;
-		for (int i = 0; i < repeat; i++) {
-			Utille.sleep(2000);
-		}
-	}
-
-	/**
 	 * 0以上引数未満の数値をランダムで返す
 	 *
 	 * @param scopLimit
@@ -314,20 +304,20 @@ public class Utille {
 	public static int getDayOfTheWeekShort() {
 		Calendar cal = Calendar.getInstance();
 		switch (cal.get(Calendar.DAY_OF_WEEK)) {
-		case Calendar.MONDAY:
-			return 1;
-		case Calendar.TUESDAY:
-			return 2;
-		case Calendar.WEDNESDAY:
-			return 3;
-		case Calendar.THURSDAY:
-			return 4;
-		case Calendar.FRIDAY:
-			return 5;
-		case Calendar.SATURDAY:
-			return 6;
-		case Calendar.SUNDAY:
-			return 7;
+			case Calendar.MONDAY:
+				return 1;
+			case Calendar.TUESDAY:
+				return 2;
+			case Calendar.WEDNESDAY:
+				return 3;
+			case Calendar.THURSDAY:
+				return 4;
+			case Calendar.FRIDAY:
+				return 5;
+			case Calendar.SATURDAY:
+				return 6;
+			case Calendar.SUNDAY:
+				return 7;
 		}
 		throw new IllegalStateException();
 	}
@@ -364,18 +354,18 @@ public class Utille {
 		for (String code : new String[] { m.group(2), m.group(4) }) {
 			String ope = "";
 			switch (code) {
-			case "+":
-				ope = "+";
-				break;
-			case "-":
-				ope = "-";
-				break;
-			case "×":
-				ope = "*";
-				break;
-			case "÷":
-				ope = "/";
-				break;
+				case "+":
+					ope = "+";
+					break;
+				case "-":
+					ope = "-";
+					break;
+				case "×":
+					ope = "*";
+					break;
+				case "÷":
+					ope = "/";
+					break;
 			}
 			operator[i++] = ope;
 		}

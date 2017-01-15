@@ -48,6 +48,9 @@ import pointGet.mission.pex.PEXMekutte;
 import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
+import pointGet.mission.pto.PTOClickCorner;
+import pointGet.mission.pto.PTOKuji;
+import pointGet.mission.pto.PTOUranai;
 import pointGet.mission.rin.RINClickBanner;
 
 /**
@@ -188,31 +191,34 @@ public class WebClicker extends PointGet {
 		logg.info("■■■■■■missionSite[" + siteType + "]START■■■■■■");
 		try {
 			switch (siteType) {
-			case Define.PSITE_CODE_GMY:
-				goToClickGMY(driver, missionArr);
-				break;
-			case Define.PSITE_CODE_GEN:
-				goToClickGEN(driver, missionArr);
-				break;
-			case Define.PSITE_CODE_ECN:
-				goToClickECN(driver, missionArr);
-				break;
-			case Define.PSITE_CODE_MOP:
-				goToClickMOP(driver, missionArr);
-				break;
-			case Define.PSITE_CODE_PEX:
-				goToClickPEX(driver, missionArr);
-				break;
-			case Define.PSITE_CODE_OSA:
-				goToClickOSA(driver, missionArr);
-				break;
-			case Define.PSITE_CODE_RIN:
-				goToClickRIN(driver, missionArr);
-				break;
-			case Define.PSITE_CODE_I2I:
-				goToClickI2I(driver, missionArr);
-				break;
-			default:
+				case Define.PSITE_CODE_GMY:
+					goToClickGMY(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_GEN:
+					goToClickGEN(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_ECN:
+					goToClickECN(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_MOP:
+					goToClickMOP(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_PEX:
+					goToClickPEX(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_OSA:
+					goToClickOSA(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_RIN:
+					goToClickRIN(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_I2I:
+					goToClickI2I(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_PTO:
+					goToClickPTO(driver, missionArr);
+					break;
+				default:
 			}
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -238,12 +244,12 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-			case Define.strRINClickBanner:
-				// ■クリックバナー(楽天)
-				Mission RINClickBanner = new RINClickBanner(logg, commonProps);
-				RINClickBanner.exePrivateMission(driver);
-				break;
-			default:
+				case Define.strRINClickBanner:
+					// ■クリックバナー(楽天)
+					Mission RINClickBanner = new RINClickBanner(logg, commonProps);
+					RINClickBanner.exePrivateMission(driver);
+					break;
+				default:
 			}
 		}
 	}
@@ -260,12 +266,12 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-			case Define.strI2ISeiza:
-				// ■星座占い
-				Mission I2ISeiza = new I2ISeiza(logg, commonProps);
-				I2ISeiza.exePrivateMission(driver);
-				break;
-			default:
+				case Define.strI2ISeiza:
+					// ■星座占い
+					Mission I2ISeiza = new I2ISeiza(logg, commonProps);
+					I2ISeiza.exePrivateMission(driver);
+					break;
+				default:
 			}
 		}
 	}
@@ -289,37 +295,37 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-			case Define.strOSAQuiz:
-				// ■daily quiz
-				Mission OSAQuiz = new OSAQuiz(logg, commonProps);
-				OSAQuiz.exeRoopMission(driver);
-				break;
-			case Define.strOSAClickBanner:
-				// ■クリックゴールド
-				Mission OSAClickBanner = new OSAClickBanner(logg, commonProps);
-				OSAClickBanner.exePrivateMission(driver);
-				break;
-			case Define.strOSAShindan:
-				// ■毎日診断
-				Mission OSAShindan = new OSAShindan(logg, commonProps);
-				OSAShindan.exePrivateMission(driver);
-				break;
-			case Define.strOSAUranai:
-				// ■OSA星座
-				Mission OSAUranai = new OSAUranai(logg, commonProps);
-				OSAUranai.exePrivateMission(driver);
-				break;
-			case Define.strOSANanyoubi:
-				// ■OSA何曜日
-				Mission OSANanyoubi = new OSANanyoubi(logg, commonProps);
-				OSANanyoubi.exePrivateMission(driver);
-				break;
-			case Define.strOSAAnzan:
-				// ■OSA暗算
-				Mission OSAAnzan = new OSAAnzan(logg, commonProps);
-				OSAAnzan.exePrivateMission(driver);
-				break;
-			default:
+				case Define.strOSAQuiz:
+					// ■daily quiz
+					Mission OSAQuiz = new OSAQuiz(logg, commonProps);
+					OSAQuiz.exeRoopMission(driver);
+					break;
+				case Define.strOSAClickBanner:
+					// ■クリックゴールド
+					Mission OSAClickBanner = new OSAClickBanner(logg, commonProps);
+					OSAClickBanner.exePrivateMission(driver);
+					break;
+				case Define.strOSAShindan:
+					// ■毎日診断
+					Mission OSAShindan = new OSAShindan(logg, commonProps);
+					OSAShindan.exePrivateMission(driver);
+					break;
+				case Define.strOSAUranai:
+					// ■OSA星座
+					Mission OSAUranai = new OSAUranai(logg, commonProps);
+					OSAUranai.exePrivateMission(driver);
+					break;
+				case Define.strOSANanyoubi:
+					// ■OSA何曜日
+					Mission OSANanyoubi = new OSANanyoubi(logg, commonProps);
+					OSANanyoubi.exePrivateMission(driver);
+					break;
+				case Define.strOSAAnzan:
+					// ■OSA暗算
+					Mission OSAAnzan = new OSAAnzan(logg, commonProps);
+					OSAAnzan.exePrivateMission(driver);
+					break;
+				default:
 			}
 		}
 	}
@@ -344,42 +350,42 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-			case Define.strMOPQuiz:
-				// ■モッピークイズ
-				Mission MOPQuiz = new MOPQuiz(logg, commonProps);
-				MOPQuiz.exeRoopMission(driver);
-				break;
-			case Define.strMOPClickBanner:
-				// ■クリックで貯める
-				Mission MOPClickBanner = new MOPClickBanner(logg, commonProps);
-				MOPClickBanner.exePrivateMission(driver);
-				break;
-			case Define.strMOPShindan:
-				// ■毎日診断
-				Mission MOPShindan = new MOPShindan(logg, commonProps);
-				MOPShindan.exePrivateMission(driver);
-				break;
-			case Define.strMOPChyosatai:
-				// ■トキメキ調査隊
-				Mission MOPChyosatai = new MOPChyosatai(logg, commonProps);
-				MOPChyosatai.exePrivateMission(driver);
-				break;
-			case Define.strMOPUranai:
-				// ■MOP星座
-				Mission MOPUranai = new MOPUranai(logg, commonProps);
-				MOPUranai.exePrivateMission(driver);
-				break;
-			case Define.strMOPNanyoubi:
-				// ■MOP何曜日
-				Mission MOPNanyoubi = new MOPNanyoubi(logg, commonProps);
-				MOPNanyoubi.exePrivateMission(driver);
-				break;
-			case Define.strMOPAnzan:
-				// ■MOP暗算
-				Mission MOPAnzan = new MOPAnzan(logg, commonProps);
-				MOPAnzan.exePrivateMission(driver);
-				break;
-			default:
+				case Define.strMOPQuiz:
+					// ■モッピークイズ
+					Mission MOPQuiz = new MOPQuiz(logg, commonProps);
+					MOPQuiz.exeRoopMission(driver);
+					break;
+				case Define.strMOPClickBanner:
+					// ■クリックで貯める
+					Mission MOPClickBanner = new MOPClickBanner(logg, commonProps);
+					MOPClickBanner.exePrivateMission(driver);
+					break;
+				case Define.strMOPShindan:
+					// ■毎日診断
+					Mission MOPShindan = new MOPShindan(logg, commonProps);
+					MOPShindan.exePrivateMission(driver);
+					break;
+				case Define.strMOPChyosatai:
+					// ■トキメキ調査隊
+					Mission MOPChyosatai = new MOPChyosatai(logg, commonProps);
+					MOPChyosatai.exePrivateMission(driver);
+					break;
+				case Define.strMOPUranai:
+					// ■MOP星座
+					Mission MOPUranai = new MOPUranai(logg, commonProps);
+					MOPUranai.exePrivateMission(driver);
+					break;
+				case Define.strMOPNanyoubi:
+					// ■MOP何曜日
+					Mission MOPNanyoubi = new MOPNanyoubi(logg, commonProps);
+					MOPNanyoubi.exePrivateMission(driver);
+					break;
+				case Define.strMOPAnzan:
+					// ■MOP暗算
+					Mission MOPAnzan = new MOPAnzan(logg, commonProps);
+					MOPAnzan.exePrivateMission(driver);
+					break;
+				default:
 			}
 		}
 	}
@@ -422,41 +428,41 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-			case Define.strPEX4quiz: // ■ポイントクイズ
-				Mission PEX4quiz = new PEX4quiz(logg, commonProps);
-				PEX4quiz.exePrivateMission(driver);
-				break;
-			case Define.strPEXChirachi: // ■オリチラ
-				Mission PEXChirachi = new PEXChirachi(logg, commonProps);
-				PEXChirachi.exePrivateMission(driver);
-				break;
-			case Define.strPEXAnswer: // ■みんなのアンサー
-				Mission PEXAnswer = new PEXAnswer(logg, commonProps);
-				PEXAnswer.exePrivateMission(driver);
-				break;
-			case Define.strPEXMekutte: // ■めくってシール
-				Mission PEXMekutte = new PEXMekutte(logg, commonProps);
-				PEXMekutte.exePrivateMission(driver);
-				break;
-			case Define.strPEXClickBanner:// ■クリックポイント
-				Mission PEXClickBanner = new PEXClickBanner(logg, commonProps);
-				PEXClickBanner.exePrivateMission(driver);
-				break;
-			case Define.strPEXNews: // ■毎日ニュース
-				Mission PEXNews = new PEXNews(logg, commonProps);
-				PEXNews.exePrivateMission(driver);
-				break;
-			case Define.strPEXPectan: // ■ぺく単
-				Mission PexMissionPectan = new PEXPectan(logg, commonProps);
-				PexMissionPectan.exeRoopMission(driver);
-				missionList.add(PexMissionPectan);
-				break;
-			case Define.strPEXSearch: // ■ポイント検索
-				Mission PexMissionSearch = new PEXSearch(logg, commonProps, wordList);
-				PexMissionSearch.exeRoopMission(driver);
-				missionList.add(PexMissionSearch);
-				break;
-			default:
+				case Define.strPEX4quiz: // ■ポイントクイズ
+					Mission PEX4quiz = new PEX4quiz(logg, commonProps);
+					PEX4quiz.exePrivateMission(driver);
+					break;
+				case Define.strPEXChirachi: // ■オリチラ
+					Mission PEXChirachi = new PEXChirachi(logg, commonProps);
+					PEXChirachi.exePrivateMission(driver);
+					break;
+				case Define.strPEXAnswer: // ■みんなのアンサー
+					Mission PEXAnswer = new PEXAnswer(logg, commonProps);
+					PEXAnswer.exePrivateMission(driver);
+					break;
+				case Define.strPEXMekutte: // ■めくってシール
+					Mission PEXMekutte = new PEXMekutte(logg, commonProps);
+					PEXMekutte.exePrivateMission(driver);
+					break;
+				case Define.strPEXClickBanner:// ■クリックポイント
+					Mission PEXClickBanner = new PEXClickBanner(logg, commonProps);
+					PEXClickBanner.exePrivateMission(driver);
+					break;
+				case Define.strPEXNews: // ■毎日ニュース
+					Mission PEXNews = new PEXNews(logg, commonProps);
+					PEXNews.exePrivateMission(driver);
+					break;
+				case Define.strPEXPectan: // ■ぺく単
+					Mission PexMissionPectan = new PEXPectan(logg, commonProps);
+					PexMissionPectan.exeRoopMission(driver);
+					missionList.add(PexMissionPectan);
+					break;
+				case Define.strPEXSearch: // ■ポイント検索
+					Mission PexMissionSearch = new PEXSearch(logg, commonProps, wordList);
+					PexMissionSearch.exeRoopMission(driver);
+					missionList.add(PexMissionSearch);
+					break;
+				default:
 			}
 		}
 		// // テスト中
@@ -487,44 +493,44 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-			case Define.strECNGaragara: // ■ガラガラ
-				Mission ECNGaragara = new ECNGaragara(logg, commonProps);
-				ECNGaragara.exePrivateMission(driver);
-				break;
-			case Define.strECNNews: // ■毎日ニュース
-				Mission ECNNews = new ECNNews(logg, commonProps);
-				ECNNews.exePrivateMission(driver);
-				break;
-			case Define.strECNTellmeWhich: // ■教えてどっち
-				Mission ECNTellmeWhich = new ECNTellmeWhich(logg, commonProps);
-				ECNTellmeWhich.exePrivateMission(driver);
-				break;
-			case Define.strECNDron: // ■ドロンバナークリック2種
-				Mission ECNDron = new ECNDron(logg, commonProps);
-				ECNDron.exePrivateMission(driver);
-				break;
-			case Define.strECNClickBokin: // ■クリック募金
-				Mission ECNClickBokin = new ECNClickBokin(logg, commonProps);
-				ECNClickBokin.exePrivateMission(driver);
-				break;
-			case Define.strECNSearchBokin: // ■検索募金
-				Mission ECNSearchBokin = new ECNSearchBokin(logg, commonProps, wordList);
-				ECNSearchBokin.exePrivateMission(driver);
-				break;
-			case Define.strECNWebSearche: // ■検索募金
-				Mission ECNWebSearche = new ECNWebSearche(logg, commonProps, wordList);
-				ECNWebSearche.exePrivateMission(driver);
-				break;
-			case Define.strECNChinjyu: // ■珍獣先生
-				Mission EcnMissionChinjyu = new ECNChinjyu(logg, commonProps);
-				EcnMissionChinjyu.roopMission(driver);
-				missionList.add(EcnMissionChinjyu);
-				break;
-			case Define.strECNChirachi: // ■チラシ
-				Mission ECNChirachi = new ECNChirachi(logg, commonProps);
-				ECNChirachi.exePrivateMission(driver);
-				break;
-			default:
+				case Define.strECNGaragara: // ■ガラガラ
+					Mission ECNGaragara = new ECNGaragara(logg, commonProps);
+					ECNGaragara.exePrivateMission(driver);
+					break;
+				case Define.strECNNews: // ■毎日ニュース
+					Mission ECNNews = new ECNNews(logg, commonProps);
+					ECNNews.exePrivateMission(driver);
+					break;
+				case Define.strECNTellmeWhich: // ■教えてどっち
+					Mission ECNTellmeWhich = new ECNTellmeWhich(logg, commonProps);
+					ECNTellmeWhich.exePrivateMission(driver);
+					break;
+				case Define.strECNDron: // ■ドロンバナークリック2種
+					Mission ECNDron = new ECNDron(logg, commonProps);
+					ECNDron.exePrivateMission(driver);
+					break;
+				case Define.strECNClickBokin: // ■クリック募金
+					Mission ECNClickBokin = new ECNClickBokin(logg, commonProps);
+					ECNClickBokin.exePrivateMission(driver);
+					break;
+				case Define.strECNSearchBokin: // ■検索募金
+					Mission ECNSearchBokin = new ECNSearchBokin(logg, commonProps, wordList);
+					ECNSearchBokin.exePrivateMission(driver);
+					break;
+				case Define.strECNWebSearche: // ■検索募金
+					Mission ECNWebSearche = new ECNWebSearche(logg, commonProps, wordList);
+					ECNWebSearche.exePrivateMission(driver);
+					break;
+				case Define.strECNChinjyu: // ■珍獣先生
+					Mission EcnMissionChinjyu = new ECNChinjyu(logg, commonProps);
+					EcnMissionChinjyu.roopMission(driver);
+					missionList.add(EcnMissionChinjyu);
+					break;
+				case Define.strECNChirachi: // ■チラシ
+					Mission ECNChirachi = new ECNChirachi(logg, commonProps);
+					ECNChirachi.exePrivateMission(driver);
+					break;
+				default:
 			}
 		}
 	}
@@ -544,22 +550,19 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-			case Define.strGMYShindan:
-				// ■毎日診断
-				Mission GMYShindan = new GMYShindan(logg, commonProps);
-				GMYShindan.exePrivateMission(driver);
-				break;
-			case Define.strGMYClickBanner:
-				// ■clipoバナー
-				Mission GMYClickBanner = new GMYClickBanner(logg, commonProps);
-				GMYClickBanner.exePrivateMission(driver);
-				break;
-			case Define.strGMYChirachi:
-				// ■チラシ
-				Mission GMYChirachi = new GMYChirachi(logg, commonProps);
-				GMYChirachi.exePrivateMission(driver);
-				break;
-			default:
+				case Define.strGMYShindan: // ■毎日診断
+					Mission GMYShindan = new GMYShindan(logg, commonProps);
+					GMYShindan.exePrivateMission(driver);
+					break;
+				case Define.strGMYClickBanner: // ■clipoバナー
+					Mission GMYClickBanner = new GMYClickBanner(logg, commonProps);
+					GMYClickBanner.exePrivateMission(driver);
+					break;
+				case Define.strGMYChirachi: // ■チラシ
+					Mission GMYChirachi = new GMYChirachi(logg, commonProps);
+					GMYChirachi.exePrivateMission(driver);
+					break;
+				default:
 			}
 		}
 	}
@@ -585,27 +588,55 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-			case Define.strGENPointStar:
-				// ■ポイントの森(star)
-				Mission GENPointStar = new GENPointStar(logg, commonProps);
-				GENPointStar.exePrivateMission(driver);
-				break;
-			case Define.strGENClickBanner:
-				// ■ポイントの森(クリック)
-				Mission GENClickBanner = new GENClickBanner(logg, commonProps);
-				GENClickBanner.exePrivateMission(driver);
-				break;
-			case Define.strGENShindan:
-				// ■毎日診断
-				Mission GENShindan = new GENShindan(logg, commonProps);
-				GENShindan.exePrivateMission(driver);
-				break;
-			case Define.strGENUranai:
-				// ■毎日診断
-				Mission GENUranai = new GENUranai(logg, commonProps);
-				GENUranai.exePrivateMission(driver);
-				break;
-			default:
+				case Define.strGENPointStar: // ■ポイントの森(star)
+					Mission GENPointStar = new GENPointStar(logg, commonProps);
+					GENPointStar.exePrivateMission(driver);
+					break;
+				case Define.strGENClickBanner: // ■ポイントの森(クリック)
+					Mission GENClickBanner = new GENClickBanner(logg, commonProps);
+					GENClickBanner.exePrivateMission(driver);
+					break;
+				case Define.strGENShindan: // ■毎日診断
+					Mission GENShindan = new GENShindan(logg, commonProps);
+					GENShindan.exePrivateMission(driver);
+					break;
+				case Define.strGENUranai: // ■占い
+					Mission GENUranai = new GENUranai(logg, commonProps);
+					GENUranai.exePrivateMission(driver);
+					break;
+				default:
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param driver
+	 * @param targetMission
+	 */
+	public static void goToClickPTO(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			if (!secondFlg && !thirdFlg) {
+				missions.add(Define.strPTOClickCorner);
+				missions.add(Define.strPTOUranai);
+				missions.add(Define.strPTOKuji);
+			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strPTOClickCorner: // ■クリックコーナー
+					Mission PTOClickCorner = new PTOClickCorner(logg, commonProps);
+					PTOClickCorner.exePrivateMission(driver);
+					break;
+				case Define.strPTOUranai: // ■占い
+					Mission PTOUranai = new PTOUranai(logg, commonProps);
+					PTOUranai.exePrivateMission(driver);
+					break;
+				case Define.strPTOKuji: // ■くじ
+					Mission PTOKuji = new PTOKuji(logg, commonProps);
+					PTOKuji.exePrivateMission(driver);
+					break;
+				default:
 			}
 		}
 	}

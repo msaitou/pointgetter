@@ -50,46 +50,37 @@ public class exeBean {
 				// Define.PSITE_CODE_GMY, // GetMoney
 				// Define.PSITE_CODE_RIN, // raktuten
 				// Define.PSITE_CODE_I2I, // i2i
-				 Define.PSITE_CODE_MOP, // moppi
-//				Define.PSITE_CODE_OSA, // osaifu
-				// Define.PSITE_CODE_PTO, // pointtown
+				// Define.PSITE_CODE_MOP, // moppi
+				// Define.PSITE_CODE_OSA, // osaifu
+				Define.PSITE_CODE_PTO, // pointtown
 				"0",
-				// ★★★★★★ECnavi★★★★★★
-				// Define.strECNChinjyu
-				// Define.strECNChirachi
-				// Define.strECNClickBokin
-				// Define.strECNDron
-				// Define.strECNGaragara
-				// Define.strECNNews
-				// Define.strECNSearchBokin
-				// Define.strECNTellmeWhich
-				// Define.strECNWebSearche
-				// ★★★★★★GENDAMA★★★★★★
-				// Define.strGENClickBanner
-				// Define.strGENMorimoriKakome
-				// Define.strGENPointStar
-				// Define.strGENShindan
-				// Define.strGENUranai
-				// ★★★★★★GetMoney★★★★★★
-				// Define.strGMYChirachi
-				// Define.strGMYClickBanner
-				// Define.strGMYShindan
-				// ★★★★★★I2I★★★★★★
-				// Define.strI2ISeiza
-				// ★★★★★★Moppy★★★★★★
-				// Define.strMOPChyosatai
-				// Define.strMOPClickBanner
-				// Define.strMOPQuiz
-				// Define.strMOPShindan
-				// Define.strMOPNanyoubi
-				// Define.strMOPUranai
-				 Define.strMOPAnzan
-				// ★★★★★★OSAIFU★★★★★★
-				// Define.strOSAClickBanner
-				// Define.strOSAQuiz
-				// Define.strOSAShindan
-				// Define.strOSAUranai
-//				Define.strOSAAnzan
+				// ★★★★★★PointTown★★★★★★
+				//				Define.strPTOClickCorner
+				Define.strPTOKuji
+		// Define.strPTODaily
+		//		 Define.strPTOUranai
+		// ★★★★★★GENDAMA★★★★★★
+		// Define.strGENClickBanner
+		// Define.strGENMorimoriKakome
+		// Define.strGENPointStar
+		// Define.strGENShindan
+		// Define.strGENUranai
+		// ★★★★★★I2I★★★★★★
+		// Define.strI2ISeiza
+		// ★★★★★★Moppy★★★★★★
+		// Define.strMOPChyosatai
+		// Define.strMOPClickBanner
+		// Define.strMOPQuiz
+		// Define.strMOPShindan
+		// Define.strMOPNanyoubi
+		// Define.strMOPUranai
+		// Define.strMOPAnzan
+		// ★★★★★★OSAIFU★★★★★★
+		// Define.strOSAClickBanner
+		// Define.strOSAQuiz
+		// Define.strOSAShindan
+		// Define.strOSAUranai
+		// Define.strOSAAnzan
 		// Define.strOSANanyoubi
 		// ★★★★★★PEX★★★★★★
 		// Define.strPEX4quiz
@@ -103,6 +94,21 @@ public class exeBean {
 		// Define.strPEXSearch
 		// ★★★★★★楽天★★★★★★
 		// Define.strRINClickBanner
+		// ★★★★★★GetMoney★★★★★★
+		// Define.strGMYChirachi
+		// Define.strGMYClickBanner
+		// Define.strGMYShindan
+		// ★★★★★★ECnavi★★★★★★
+		// Define.strECNChinjyu
+		// Define.strECNChirachi
+		// Define.strECNClickBokin
+		// Define.strECNDron
+		// Define.strECNGaragara
+		// Define.strECNNews
+		// Define.strECNSearchBokin
+		// Define.strECNTellmeWhich
+		// Define.strECNWebSearche
+
 		);
 	}
 }
