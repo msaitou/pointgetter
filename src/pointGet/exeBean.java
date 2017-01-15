@@ -56,8 +56,8 @@ public class exeBean {
 				"0",
 				// ★★★★★★PointTown★★★★★★
 				//				Define.strPTOClickCorner
-				Define.strPTOKuji
-		// Define.strPTODaily
+//				Define.strPTOKuji
+		 Define.strPTODaily
 		//		 Define.strPTOUranai
 		// ★★★★★★GENDAMA★★★★★★
 		// Define.strGENClickBanner

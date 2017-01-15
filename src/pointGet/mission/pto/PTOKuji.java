@@ -66,7 +66,7 @@ public class PTOKuji extends Mission {
 	 */
 	public PTOKuji(Logger log, Map<String, String> cProps) {
 		super(log, cProps);
-		this.mName = "■PTOクリックコーナー";
+		this.mName = "■PTOくじ";
 	}
 
 	@Override

@@ -49,6 +49,7 @@ import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
 import pointGet.mission.pto.PTOClickCorner;
+import pointGet.mission.pto.PTODaily;
 import pointGet.mission.pto.PTOKuji;
 import pointGet.mission.pto.PTOUranai;
 import pointGet.mission.rin.RINClickBanner;
@@ -635,6 +636,10 @@ public class WebClicker extends PointGet {
 				case Define.strPTOKuji: // ■くじ
 					Mission PTOKuji = new PTOKuji(logg, commonProps);
 					PTOKuji.exePrivateMission(driver);
+					break;
+				case Define.strPTODaily: // ■デイリー
+					Mission PTODaily = new PTODaily(logg, commonProps);
+					PTODaily.exePrivateMission(driver);
 					break;
 				default:
 			}
