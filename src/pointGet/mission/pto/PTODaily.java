@@ -28,12 +28,12 @@ public class PTODaily extends Mission {
 					put("sele", "a.btn-green");
 				}
 			});
-			//			put("ぽいっとアンケート", new HashMap<String, String>() {
-			//				{
-			//					put("url", "http://www.pointtown.com/ptu/vote/entry.do");
-			//					put("sele", "input[name='user_choice']");
-			//				}
-			//			});
+			put("ぽいっとアンケート", new HashMap<String, String>() {
+				{
+					put("url", "http://www.pointtown.com/ptu/vote/entry.do");
+					put("sele", "input[name='user_choice']");
+				}
+			});
 			put("べじもん", new HashMap<String, String>() {
 				{
 					put("url", "http://www.pointtown.com/ptu/collection/index.do");
@@ -46,6 +46,13 @@ public class PTODaily extends Mission {
 					put("sele", "input#answer");
 				}
 			});
+			put("ポイントチャンス", new HashMap<String, String>() {
+				{
+					put("url", "http://www.pointtown.com/ptu/monitor/top.do#pointChance");
+					put("sele", "li.pointchanceItem>a>img");
+				}
+			});
+
 		}
 	};
 
@@ -69,6 +76,7 @@ public class PTODaily extends Mission {
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
 			driver.get(clMap.getValue().get("url"));
 			String sele = "";
+			int size = 0;
 			List<WebElement> eleList = null;
 			switch (clMap.getKey()) {
 				case "ポイント争奪戦":
@@ -78,7 +86,7 @@ public class PTODaily extends Mission {
 					}
 					break;
 				case "ぽいっとアンケート":
-					sele = "input.over";
+					sele = "div>input.over";
 					eleList = driver.findElements(By.cssSelector(clMap.getValue().get("sele")));
 					Utille.sleep(3000);
 					if (eleList.size() > 0) {
@@ -88,17 +96,31 @@ public class PTODaily extends Mission {
 							clickSleepSelector(eleList, ran, 2000);
 							if (isExistEle(driver, sele)) {
 								clickSleepSelector(driver, sele, 2000);
+								logg.info(mName + " " + c + "." + sele + "click!");
 								//								clickSleepSelector(driver, sele, 2000);
 							}
 						}
 					}
 					break;
-				case "べじもん":
+				case "ポイントチャンス":
 					eleList = driver.findElements(By.cssSelector(clMap.getValue().get("sele")));
-					int size = eleList.size();
+					size = eleList.size();
+					++c;
 					for (int i = 0; i < size; i++) {
 						if (isExistEle(eleList, i)) {
-							logg.info(mName + " " + ++c + "." + clMap.getKey() + i + "個目!");
+							logg.info(mName + " " + c + "." + clMap.getKey() + i + "個目!");
+							clickSleepSelector(eleList, i, 2000);
+							closeOtherWindow(driver);
+						}
+					}
+					break;
+				case "べじもん":
+					eleList = driver.findElements(By.cssSelector(clMap.getValue().get("sele")));
+					size = eleList.size();
+					++c;
+					for (int i = 0; i < size; i++) {
+						if (isExistEle(eleList, i)) {
+							logg.info(mName + " " + c + "." + clMap.getKey() + i + "個目!");
 							clickSleepSelector(eleList, i, 2000);
 							closeOtherWindow(driver);
 						}
@@ -109,7 +131,7 @@ public class PTODaily extends Mission {
 					int size2 = eleList2.size();
 					for (int i = 0; i < size2; i++) {
 						if (isExistEle(eleList2, i)) {
-							logg.info(mName + " " + ++c + "." + clMap.getKey() + "　隠れ " + i + "個目!");
+							logg.info(mName + " " + c + "." + clMap.getKey() + "　隠れ " + i + "個目!");
 							clickSleepSelector(eleList2, i, 2000);
 							closeOtherWindow(driver);
 						}

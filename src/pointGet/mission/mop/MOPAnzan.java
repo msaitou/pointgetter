@@ -87,7 +87,7 @@ public class MOPAnzan extends Mission {
 										waitTilReady(driver);
 										if (isExistEle(driver, selector2)) {
 											waitTilReady(driver);
-											clickSleepSelector(driver, selector2, 5000); // 遷移
+											clickSleepSelector(driver, selector2, 5500); // 遷移
 											String selector3 = "div.fx-control>input[name='submit']";
 											String selector4 = "form.fx-control>input[name='submit']";
 											checkOverlay(driver, "div.overlay-popup a.button-close");

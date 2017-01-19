@@ -82,14 +82,13 @@ public class PTOClickCorner extends Mission {
 					java.util.Set<String> widSet = driver.getWindowHandles();
 					for (String id : widSet) {
 						if (!id.equals(wid)) {
-							// 最後に格納したウインドウIDにスイッチして閉じる
 							driver.switchTo().window(id);
 						}
 					}
 					String sele2 = "div.service-btn a";
 					if (isExistEle(driver, sele2)) {
 						logg.info(mName + " " + c + ".サービスページ下! " + i + " click!!");
-						clickSleepSelector(driver, sele2, 3000);
+						clickSleepSelector(driver, sele2, 5000);
 						driver.close();
 						// 元のウインドウIDにスイッチ
 						driver.switchTo().window(wid);

@@ -261,14 +261,13 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickI2I(WebDriver driver, ArrayList<String> missions) {
 		if (missions.size() == 0) {
-			if (!secondFlg && !thirdFlg) {// 1日1回
+			if (thirdFlg) {// 1日1回
 				missions.add(Define.strI2ISeiza);
 			}
 		}
 		for (String mission : missions) {
 			switch (mission) {
-				case Define.strI2ISeiza:
-					// ■星座占い
+				case Define.strI2ISeiza: // ■星座占い
 					Mission I2ISeiza = new I2ISeiza(logg, commonProps);
 					I2ISeiza.exePrivateMission(driver);
 					break;
@@ -289,42 +288,36 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strOSAShindan);
 				missions.add(Define.strOSAUranai);
 			}
-			if (!thirdFlg) {
+			if (secondFlg || thirdFlg) {
 				missions.add(Define.strOSANanyoubi);
 				missions.add(Define.strOSAAnzan);
 			}
 		}
 		for (String mission : missions) {
 			switch (mission) {
-				case Define.strOSAQuiz:
-					// ■daily quiz
+				case Define.strOSAQuiz: // ■daily quiz
 					Mission OSAQuiz = new OSAQuiz(logg, commonProps);
 					OSAQuiz.exeRoopMission(driver);
 					break;
-				case Define.strOSAClickBanner:
-					// ■クリックゴールド
+				case Define.strOSAClickBanner: // ■クリックゴールド
 					Mission OSAClickBanner = new OSAClickBanner(logg, commonProps);
 					OSAClickBanner.exePrivateMission(driver);
 					break;
-				case Define.strOSAShindan:
-					// ■毎日診断
+				case Define.strOSAShindan: // ■毎日診断
 					Mission OSAShindan = new OSAShindan(logg, commonProps);
 					OSAShindan.exePrivateMission(driver);
 					break;
-				case Define.strOSAUranai:
-					// ■OSA星座
+				case Define.strOSAUranai: // ■OSA星座
 					Mission OSAUranai = new OSAUranai(logg, commonProps);
 					OSAUranai.exePrivateMission(driver);
 					break;
-				case Define.strOSANanyoubi:
-					// ■OSA何曜日
+				case Define.strOSANanyoubi: // ■OSA何曜日
 					Mission OSANanyoubi = new OSANanyoubi(logg, commonProps);
-					OSANanyoubi.exePrivateMission(driver);
+					OSANanyoubi.exeRoopMission(driver);
 					break;
-				case Define.strOSAAnzan:
-					// ■OSA暗算
+				case Define.strOSAAnzan: // ■OSA暗算
 					Mission OSAAnzan = new OSAAnzan(logg, commonProps);
-					OSAAnzan.exePrivateMission(driver);
+					OSAAnzan.exeRoopMission(driver);
 					break;
 				default:
 			}
@@ -344,47 +337,40 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOPChyosatai);
 				missions.add(Define.strMOPUranai);
 			}
-			if (!thirdFlg) {
+			if (secondFlg || thirdFlg) {// 1日1回
 				missions.add(Define.strMOPNanyoubi);
 				missions.add(Define.strMOPAnzan);
 			}
 		}
 		for (String mission : missions) {
 			switch (mission) {
-				case Define.strMOPQuiz:
-					// ■モッピークイズ
+				case Define.strMOPQuiz: // ■モッピークイズ
 					Mission MOPQuiz = new MOPQuiz(logg, commonProps);
 					MOPQuiz.exeRoopMission(driver);
 					break;
-				case Define.strMOPClickBanner:
-					// ■クリックで貯める
+				case Define.strMOPClickBanner: // ■クリックで貯める
 					Mission MOPClickBanner = new MOPClickBanner(logg, commonProps);
 					MOPClickBanner.exePrivateMission(driver);
 					break;
-				case Define.strMOPShindan:
-					// ■毎日診断
+				case Define.strMOPShindan: // ■毎日診断
 					Mission MOPShindan = new MOPShindan(logg, commonProps);
 					MOPShindan.exePrivateMission(driver);
 					break;
-				case Define.strMOPChyosatai:
-					// ■トキメキ調査隊
+				case Define.strMOPChyosatai: // ■トキメキ調査隊
 					Mission MOPChyosatai = new MOPChyosatai(logg, commonProps);
 					MOPChyosatai.exePrivateMission(driver);
 					break;
-				case Define.strMOPUranai:
-					// ■MOP星座
+				case Define.strMOPUranai: // ■MOP星座
 					Mission MOPUranai = new MOPUranai(logg, commonProps);
 					MOPUranai.exePrivateMission(driver);
 					break;
-				case Define.strMOPNanyoubi:
-					// ■MOP何曜日
+				case Define.strMOPNanyoubi: // ■MOP何曜日
 					Mission MOPNanyoubi = new MOPNanyoubi(logg, commonProps);
-					MOPNanyoubi.exePrivateMission(driver);
+					MOPNanyoubi.exeRoopMission(driver);
 					break;
-				case Define.strMOPAnzan:
-					// ■MOP暗算
+				case Define.strMOPAnzan: // ■MOP暗算
 					Mission MOPAnzan = new MOPAnzan(logg, commonProps);
-					MOPAnzan.exePrivateMission(driver);
+					MOPAnzan.exeRoopMission(driver);
 					break;
 				default:
 			}
@@ -412,7 +398,6 @@ public class WebClicker extends PointGet {
 			}
 		}
 		if (missions.size() == 0) {
-			logg.info("kitano");
 			missions.add(Define.strGMYShindan);
 			if (!thirdFlg) { // 1日2回
 				missions.add(Define.strPEX4quiz);
@@ -621,6 +606,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strPTOClickCorner);
 				missions.add(Define.strPTOUranai);
 				missions.add(Define.strPTOKuji);
+				missions.add(Define.strPTODaily);
 			}
 		}
 		for (String mission : missions) {

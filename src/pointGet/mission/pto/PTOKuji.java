@@ -49,7 +49,7 @@ public class PTOKuji extends Mission {
 			put("くじ青", new HashMap<String, String>() {
 				{
 					put("url", "http://www.pointtown.com/ptu/poitto/top.do");
-					put("sele", "a#blue_kuji");
+					put("sele", "a#blue_kuji>img");
 				}
 			});
 			put("うさくじ", new HashMap<String, String>() {
@@ -106,7 +106,7 @@ public class PTOKuji extends Mission {
 							clickSleepSelector(eleList, 0, 4000);
 							closeOtherWindow(driver);
 							if (isExistEle(driver, clMap.getValue().get("sele"))) {
-								logg.info(mName + " " + ++c + "." + clMap.getKey() + "!");
+								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
 								clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
 								existFlag = true;
 							}
@@ -121,7 +121,7 @@ public class PTOKuji extends Mission {
 							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
 							clickSleepSelector(eleList, 0, 4000);
 							if (isExistEle(driver, clMap.getValue().get("sele"))) {
-								logg.info(mName + " " + ++c + "." + clMap.getKey() + "!");
+								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
 								clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
 								existFlag = true;
 							}

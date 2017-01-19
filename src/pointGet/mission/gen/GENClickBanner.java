@@ -33,25 +33,6 @@ public class GENClickBanner extends Mission {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		Utille.sleep(2000);
-		// String selecter[] = { "div#forestBox a img", "div#downBox a.all
-		// p.bnrImg", "section#reach a.clearfix dt"
-		// , "div#sponsor a[href*='/cl/?id=']" // ここにバッチ起動時のみバグってる
-		// };
-		// for (int j = 0; j < selecter.length; j++) {
-		// logg.info("selector: start");
-		// String selector = selecter[j];
-		// if (isExistEle(driver, selector)) {
-		// List<WebElement> eleList =
-		// driver.findElements(By.cssSelector(selector));
-		// int size = eleList.size();
-		// for (int i = 0; i < size; i++) {
-		// if (isExistEle(eleList, i)) {
-		// clickSleepSelector(eleList, i, 2000);
-		// }
-		// }
-		// }
-		// logg.info("selector: end");
-		// }
 		String selecter[] = { "a.itx-listitem-link div", "img[src='http://img.gendama.jp/img/forest/bt_day1.gif']",
 				"img[src='//img.gendama.jp/img/neo/index/click_pt.png']",
 				"img[src='http://img.gendama.jp/img/forest/forest_bt1.gif']",
@@ -66,7 +47,7 @@ public class GENClickBanner extends Mission {
 				try {
 					for (int i = 0; i < size; i++) {
 						if (isExistEle(eleList, i)) {
-							clickSleepSelector(eleList, i, 2000);
+							clickSleepSelector(eleList, i, 2500);
 							closeOtherWindow(driver);
 						}
 					}

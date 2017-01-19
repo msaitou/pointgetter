@@ -309,13 +309,12 @@ public abstract class Mission {
 			}
 		} catch (Exception e) {
 			// e.printStackTrace();
-			driver.quit();
+			driver.close();
 			logg.error("##Exception##################");
 			logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
 			logg.error("####################");
 			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
 			logg.error("##Exception##################");
-			driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 		}
 		logg.info("[[[" + mName + "]]] END-");
 	}

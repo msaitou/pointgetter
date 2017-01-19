@@ -44,7 +44,7 @@ public class exeBean {
 			//		// ■■■■■moppy■■■■■
 			//		mission = Define.strMOPChyosatai;
 			//		mission = Define.strMOPClickBanner;
-			mission = Define.strMOPQuiz;
+//			mission = Define.strMOPQuiz;
 			//		mission = Define.strMOPShindan;
 			//		mission = Define.strMOPUranai;
 			//		mission = Define.strMOPNanyoubi;
@@ -70,14 +70,15 @@ public class exeBean {
 			//		mission = Define.strRINClickBanner;
 			//		// ■■■■■PointTown■■■■■
 			//		mission = Define.strPTOClickCorner;
-			//		mission = Define.strPTOKuji;
-			//		mission = Define.strPTODaily;
+//					mission = Define.strPTOKuji;
+					mission = Define.strPTODaily;
 			//		mission = Define.strPTOUranai;
 			strFlag = "0";
 		}
 
 		site = getSiteCode(mission);
 		WebClicker.sub(site, strFlag, mission);
+//		WebClicker.main(new String[]{strFlag, "pto"});
 	}
 
 	private static String getSiteCode(String mission) {

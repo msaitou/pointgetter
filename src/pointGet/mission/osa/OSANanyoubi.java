@@ -64,13 +64,11 @@ public class OSANanyoubi extends Mission {
 						String regex = "今日の(\\d+)日後は何曜日？";
 						Pattern p = Pattern.compile(regex);
 						Matcher m = p.matcher(str);
-						System.out.println("hajimari");
 						if (m.find()) {
 							String strAfterDayNum = m.group(1);
 							selectYoubi = Utille.getNanyoubi(strAfterDayNum);
-							System.out.println("なんにちです　[" + selectYoubi + "]");
+							logg.info("答え [" + selectYoubi + "]");
 						}
-						System.out.println("owari");
 					} else {
 						logg.info("not get after days");
 						return;
@@ -87,7 +85,7 @@ public class OSANanyoubi extends Mission {
 							waitTilReady(driver);
 							if (isExistEle(driver, selector2)) {
 								waitTilReady(driver);
-								clickSleepSelector(driver, selector2, 5000); // 遷移
+								clickSleepSelector(driver, selector2, 5500); // 遷移
 								checkOverlay(driver, "div.overlay-popup a.button-close");
 								if (isExistEle(driver, selector2)) {
 									clickSleepSelector(driver, selector2, 3000); // 遷移
