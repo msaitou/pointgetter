@@ -32,6 +32,9 @@ public class LoginSite extends PointGet {
 			case Define.PSITE_CODE_PIL:
 				loginPil(driver, logg);
 				break;
+			case Define.PSITE_CODE_WAR:
+				loginWar(driver, logg);
+				break;
 			case Define.PSITE_CODE_GMY:
 			case Define.PSITE_CODE_GEN:
 			case Define.PSITE_CODE_ECN:
@@ -48,11 +51,26 @@ public class LoginSite extends PointGet {
 			case Define.PSITE_CODE_PMO:
 			case Define.PSITE_CODE_PNY:
 			case Define.PSITE_CODE_SUG:
-			case Define.PSITE_CODE_WAR:
-
 			default:
 				return;
 		}
+	}
+
+	/**
+	 * @param driver
+	 * @param logg
+	 */
+	public static void loginWar(WebDriver driver, Logger logg) {
+		driver.get("https://ssl.warau.jp/login?loopbackURL=http%3A%2F%2Fwww.warau.jp%2F");
+		Utille.sleep(2000);
+		WebElement ele = driver.findElement(By.cssSelector("input.mailForm"));
+		ele.clear();
+		ele.sendKeys(pGetProps.get(Define.PSITE_CODE_WAR).get("loginid"));
+		ele = driver.findElement(By.cssSelector("input.passwordForm"));
+		ele.clear();
+		ele.sendKeys(pGetProps.get(Define.PSITE_CODE_WAR).get("loginpass"));
+		driver.findElement(By.cssSelector("input.btn.btnlogin")).click();
+		Utille.sleep(4000);
 	}
 
 	/**

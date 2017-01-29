@@ -96,6 +96,15 @@ public class Define {
 	final public static String strMOBAnzan = "MOBAnzan";
 	final public static String strMOBNanyoubi = "MOBNanyoubi";
 	final public static String strMOBQuiz = "MOBQuiz";
+	final public static String strMOBClickBanner = "MOBClickBanner";
+
+	// ■■■■■PointInCome■■■■■
+	final public static String strPICUranai = "PICUranai";
+
+	// ■■■■■SUGUTAMA■■■■■
+	final public static String strSUGUranai = "SUGUranai";
+	final public static String strSUGQuiz = "SUGQuiz";
+
 
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";

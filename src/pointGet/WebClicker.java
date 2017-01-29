@@ -28,6 +28,7 @@ import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
+import pointGet.mission.mob.MOBClickBanner;
 import pointGet.mission.mob.MOBNanyoubi;
 import pointGet.mission.mob.MOBQuiz;
 import pointGet.mission.mop.MOPAnzan;
@@ -51,11 +52,14 @@ import pointGet.mission.pex.PEXMekutte;
 import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
+import pointGet.mission.pic.PICUranai;
 import pointGet.mission.pto.PTOClickCorner;
 import pointGet.mission.pto.PTODaily;
 import pointGet.mission.pto.PTOKuji;
 import pointGet.mission.pto.PTOUranai;
 import pointGet.mission.rin.RINClickBanner;
+import pointGet.mission.sug.SUGQuiz;
+import pointGet.mission.sug.SUGUranai;
 
 /**
  * get point from the point site
@@ -80,13 +84,16 @@ public class WebClicker extends PointGet {
 			Define.PSITE_CODE_GMY, // GetMoney
 			Define.PSITE_CODE_OSA, // osaifu
 			Define.PSITE_CODE_PTO, // pointtown
+			Define.PSITE_CODE_MOB, // MOBATOKU
+			Define.PSITE_CODE_PIC, // PointInCome
+			Define.PSITE_CODE_SUG, // SUGUTAMA
 	};
 	private static String[] visitSites = null;
 	private static String mName = "";
 	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
 
 	protected static void init(String[] args) {
-		PointGet.init(WebClicker.class.toString());
+		PointGet.init(WebClicker.class.getSimpleName());
 		_setLogger("log4jweb.properties", WebClicker.class);
 		// 設定ファイルをローカル変数に展開する
 		Properties loadProps = Utille.getProp(loadFilePath);
@@ -221,6 +228,12 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.PSITE_CODE_MOB:
 					goToClickMOB(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_PIC:
+					goToClickPIC(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_SUG:
+					goToClickSUG(driver, missionArr);
 					break;
 				default:
 			}
@@ -641,17 +654,14 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickMOB(WebDriver driver, ArrayList<String> missions) {
 		if (missions.size() == 0) {
-			//			missions.add(Define.strMOPQuiz);
-			//			if (!secondFlg && !thirdFlg) {// 1日1回
-			//				missions.add(Define.strMOPClickBanner);
-			//				missions.add(Define.strMOPShindan);
-			//				missions.add(Define.strMOPChyosatai);
-			//				missions.add(Define.strMOPUranai);
-			//			}
-			//			if (secondFlg || thirdFlg) {// 1日1回
-			//				missions.add(Define.strMOPNanyoubi);
-			//				missions.add(Define.strMOPAnzan);
-			//			}
+			missions.add(Define.strMOBQuiz);
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strMOBClickBanner);
+			}
+			if (secondFlg || thirdFlg) {
+				missions.add(Define.strMOBNanyoubi);
+				missions.add(Define.strMOBAnzan);
+			}
 		}
 		for (String mission : missions) {
 			switch (mission) {
@@ -659,22 +669,10 @@ public class WebClicker extends PointGet {
 					Mission MOBQuiz = new MOBQuiz(logg, commonProps);
 					MOBQuiz.exeRoopMission(driver);
 					break;
-				//				case Define.strMOPClickBanner: // ■クリックで貯める
-				//					Mission MOPClickBanner = new MOPClickBanner(logg, commonProps);
-				//					MOPClickBanner.exePrivateMission(driver);
-				//					break;
-				//				case Define.strMOPShindan: // ■毎日診断
-				//					Mission MOPShindan = new MOPShindan(logg, commonProps);
-				//					MOPShindan.exePrivateMission(driver);
-				//					break;
-				//				case Define.strMOPChyosatai: // ■トキメキ調査隊
-				//					Mission MOPChyosatai = new MOPChyosatai(logg, commonProps);
-				//					MOPChyosatai.exePrivateMission(driver);
-				//					break;
-				//				case Define.strMOPUranai: // ■MOP星座
-				//					Mission MOPUranai = new MOPUranai(logg, commonProps);
-				//					MOPUranai.exePrivateMission(driver);
-				//					break;
+				case Define.strMOBClickBanner: // ■クリックで貯める
+					Mission MOBClickBanner = new MOBClickBanner(logg, commonProps);
+					MOBClickBanner.exePrivateMission(driver);
+					break;
 				case Define.strMOBNanyoubi: // ■MOP何曜日
 					Mission MOBNanyoubi = new MOBNanyoubi(logg, commonProps);
 					MOBNanyoubi.exeRoopMission(driver);
@@ -688,4 +686,79 @@ public class WebClicker extends PointGet {
 		}
 	}
 
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickPIC(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			//			missions.add(Define.strMOBQuiz);
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strPICUranai);
+			}
+			//			if (secondFlg || thirdFlg) {
+			//				missions.add(Define.strMOBNanyoubi);
+			//				missions.add(Define.strMOBAnzan);
+			//			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				//				case Define.strMOBQuiz: // ■モッピークイズ
+				//					Mission MOBQuiz = new MOBQuiz(logg, commonProps);
+				//					MOBQuiz.exeRoopMission(driver);
+				//					break;
+				case Define.strPICUranai: // ■占い
+					Mission PICUranai = new PICUranai(logg, commonProps);
+					PICUranai.exePrivateMission(driver);
+					break;
+				//				case Define.strMOBNanyoubi: // ■MOP何曜日
+				//					Mission MOBNanyoubi = new MOBNanyoubi(logg, commonProps);
+				//					MOBNanyoubi.exeRoopMission(driver);
+				//					break;
+				//				case Define.strMOBAnzan: // ■MOP暗算
+				//					Mission MOBAnzan = new MOBAnzan(logg, commonProps);
+				//					MOBAnzan.exeRoopMission(driver);
+				//					break;
+				default:
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickSUG(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			missions.add(Define.strSUGQuiz);
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strSUGUranai);
+			}
+			//						if (secondFlg || thirdFlg) {
+			//							missions.add(Define.strMOBNanyoubi);
+			//							missions.add(Define.strMOBAnzan);
+			//						}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strSUGQuiz: // ■モッピークイズ
+					Mission SUGQuiz = new SUGQuiz(logg, commonProps);
+					SUGQuiz.exeRoopMission(driver);
+					break;
+				case Define.strSUGUranai: // ■占い
+					Mission SUGUranai = new SUGUranai(logg, commonProps);
+					SUGUranai.exePrivateMission(driver);
+					break;
+				//				case Define.strMOBNanyoubi: // ■MOP何曜日
+				//					Mission MOBNanyoubi = new MOBNanyoubi(logg, commonProps);
+				//					MOBNanyoubi.exeRoopMission(driver);
+				//					break;
+				//				case Define.strMOBAnzan: // ■MOP暗算
+				//					Mission MOBAnzan = new MOBAnzan(logg, commonProps);
+				//					MOBAnzan.exeRoopMission(driver);
+				//					break;
+				default:
+			}
+		}
+	}
 }

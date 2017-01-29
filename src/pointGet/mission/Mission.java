@@ -309,7 +309,7 @@ public abstract class Mission {
 			}
 		} catch (Exception e) {
 			// e.printStackTrace();
-			driver.close();
+			driver.quit();
 			logg.error("##Exception##################");
 			logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
 			logg.error("####################");

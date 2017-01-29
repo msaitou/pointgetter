@@ -31,23 +31,23 @@ public abstract class PointGet {
 		_loadProps();
 		System.out.println("[" + clsName + "]");
 		if ("Points".equals(clsName)) {
-			// 対象のサイトを取得
-			siteCodeList = loadProps.getProperty("pointTargetList").split(",");
-			String[] attrList = loadProps.getProperty("AttrList").split(",");
-			// PointGet config variable
-			for (int i = 0; i < siteCodeList.length; i++) {
-				String siteCode = siteCodeList[i];
-				if (siteCode != null && !siteCode.equals("")) {
-					HashMap<String, String> siteConf = new HashMap<String, String>();
-					for (int j = 0; j < attrList.length; j++) {
-						if (loadProps.containsKey(siteCode + "." + attrList[j])) {
-							siteConf.put(attrList[j], loadProps.getProperty(siteCode + "." + attrList[j]));
-						}
-					}
-					pGetProps.put(siteCode, siteConf);
-				}
-			}
 		} else if ("MailClicker".equals(clsName)) {
+		}
+		// 対象のサイトを取得
+		siteCodeList = loadProps.getProperty("pointTargetList").split(",");
+		String[] attrList = loadProps.getProperty("AttrList").split(",");
+		// PointGet config variable
+		for (int i = 0; i < siteCodeList.length; i++) {
+			String siteCode = siteCodeList[i];
+			if (siteCode != null && !siteCode.equals("")) {
+				HashMap<String, String> siteConf = new HashMap<String, String>();
+				for (int j = 0; j < attrList.length; j++) {
+					if (loadProps.containsKey(siteCode + "." + attrList[j])) {
+						siteConf.put(attrList[j], loadProps.getProperty(siteCode + "." + attrList[j]));
+					}
+				}
+				pGetProps.put(siteCode, siteConf);
+			}
 		}
 	}
 

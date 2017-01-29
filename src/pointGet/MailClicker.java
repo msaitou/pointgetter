@@ -46,7 +46,7 @@ public class MailClicker extends PointGet {
 	private static Map<String, String> mailConf = new HashMap<String, String>();
 
 	protected static void init() {
-		PointGet.init(MailClicker.class.toString());
+		PointGet.init(MailClicker.class.getSimpleName());
 		_setLogger("log4jmail.properties", MailClicker.class);
 		// properties をローカル変数に展開
 		Properties loadProps = Utille.getProp(loadFilePath);

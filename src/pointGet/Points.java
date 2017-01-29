@@ -128,6 +128,107 @@ public class Points extends PointGet {
 						}
 					}
 					break;
+				case Define.PSITE_CODE_PIC:
+					// login!!
+					//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+					selector = "p.text.point";
+					driver.get("http://pointi.jp/my/my_page.php"); // http://pointi.jp/
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_PIC + ":" + getNumber(point) + "]";
+					}
+					break;
+				case Define.PSITE_CODE_HAP:
+					// login!!
+					//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+					selector = "a.usernavi-point";
+					driver.get("http://hapitas.jp/");
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_HAP + ":" + getNumber(point) + "]";
+					}
+					break;
+				case Define.PSITE_CODE_MOB:
+					// login!!
+					//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+					selector = "div.bankbook_panel__point>em";
+					driver.get("http://pc.mtoku.jp/mypage/bankbook/");
+					if (isExistEle(driver, selector)) {
+						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+						if (isExistEle(eleList, 0)) {
+							point = eleList.get(0).getText();
+							outPut = "[" + Define.PSITE_CODE_MOB + ":" + getNumber(point) + "]";
+						}
+					}
+					break;
+				case Define.PSITE_CODE_CRI:
+					// login!!
+					//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+					selector = "li.p_menu.point>a";
+					driver.get("http://www.chobirich.com/");
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_CRI + ":" + getNumber(point) + "]";
+					}
+					break;
+				case Define.PSITE_CODE_PNY:
+					// login!!
+					//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+					selector = "p#user_get_point>em";
+					driver.get("https://www.poney.jp/");
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_PNY + ":" + getNumber(point) + "]";
+					}
+					break;
+				case Define.PSITE_CODE_SUG:
+					// login!!
+					//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+					selector = "span#user-mile-status-earn";
+					driver.get("http://www.sugutama.jp/passbook");
+					Utille.sleep(5000);
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_SUG + ":" + getNumber(point) + "]";
+					}
+					break;
+				case Define.PSITE_CODE_WAR:
+					selector = "span.item>span.PT3.marginRight5";
+					driver.get("http://www.warau.jp/");
+					if (!isExistEle(driver, selector)) {
+						// login!!
+						LoginSite.login(Define.PSITE_CODE_WAR, driver, logg);
+					}
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_WAR + ":" + getNumber(point) + "]";
+					}
+
+					break;
+				case Define.PSITE_CODE_CIT:
+					// login!!
+					//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+					selector = "li.user>a>span.user_pt";
+					driver.get("http://www.chance.com/");
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_CIT + ":" + getNumber(point) + "]";
+					}
+					break;
+				// pointstadium
+				//				case Define.PSITE_CODE_PIL:
+				//					// login!!
+				//					LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
+				//					selector = "table.memberinfo tr>td>strong";
+				//					//					driver.get("http://www.point-stadium.com/");
+				//					if (isExistEle(driver, selector)) {
+				//						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+				//						if (isExistEle(eleList, 1)) {
+				//							point = eleList.get(1).getText();
+				//							outPut = "[" + Define.PSITE_CODE_PIL + ":" + getNumber(point) + "]";
+				//						}
+				//					}
+				//					break;
 				default:
 			}
 			if (outPut.length() > 0) {
@@ -150,7 +251,12 @@ public class Points extends PointGet {
 		switch (site) {
 			case Define.PSITE_CODE_OSA:
 			case Define.PSITE_CODE_MOP:
+			case Define.PSITE_CODE_HAP:
 				total += current;
+				break;
+			case Define.PSITE_CODE_CRI:
+			case Define.PSITE_CODE_SUG:
+				total += current / 2;
 				break;
 			case Define.PSITE_CODE_GMY:
 			case Define.PSITE_CODE_PEX:
@@ -158,11 +264,18 @@ public class Points extends PointGet {
 			case Define.PSITE_CODE_I2I:
 			case Define.PSITE_CODE_GEN:
 			case Define.PSITE_CODE_PIL:
+			case Define.PSITE_CODE_PIC:
+			case Define.PSITE_CODE_MOB:
+			case Define.PSITE_CODE_WAR:
+			case Define.PSITE_CODE_CIT:
 			case "secondPoint":
 				total += current / 10;
 				break;
 			case Define.PSITE_CODE_PTO:
 				total += current / 20;
+				break;
+			case Define.PSITE_CODE_PNY:
+				total += current / 100;
 				break;
 			default:
 				break;
@@ -179,7 +292,7 @@ public class Points extends PointGet {
 	 * @return
 	 */
 	private static String getNumber(String points) {
-		String[] execlude = { ",", "Pt", " pt", "pt" };
+		String[] execlude = { ",", " pt", " pt", "Pt", "pt", "mile" };
 		for (String s : execlude) {
 			if (points.indexOf(s) > 0) {
 				points = points.replaceAll(s, "");

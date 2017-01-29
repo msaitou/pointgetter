@@ -44,7 +44,7 @@ public class exeBean {
 			//		mission = Define.strMOPChyosatai;
 			//		mission = Define.strMOPClickBanner;
 			//			mission = Define.strMOPQuiz;
-//					mission = Define.strMOPShindan;
+			//					mission = Define.strMOPShindan;
 			//		mission = Define.strMOPUranai;
 			//		mission = Define.strMOPNanyoubi;
 			//		mission = Define.strMOPAnzan;
@@ -69,25 +69,31 @@ public class exeBean {
 			//		mission = Define.strRINClickBanner;
 			//		// ■■■■■PointTown■■■■■
 			//		mission = Define.strPTOClickCorner;
-//						mission = Define.strPTOKuji;
-//						mission = Define.strPTODaily;
-			//		mission = Define.strPTOUranai;
+			//			mission = Define.strPTOKuji;
+			//			mission = Define.strPTODaily;
+			//			mission = Define.strPTOUranai;
 			//		// ■■■■■mobatoku■■■■■
-//						mission = Define.strMOBAnzan;
-//				mission = Define.strMOBNanyoubi;
-						mission = Define.strMOBQuiz;
+			//						mission = Define.strMOBAnzan;
+			//						mission = Define.strMOBNanyoubi;
+			//						mission = Define.strMOBQuiz;
+			//						mission = Define.strMOBClickBanner;
+			// ■■■■■PointInCome■■■■■
+//			mission = Define.strPICUranai;
+			// ■■■■■SUGUTAMA■■■■■
+//			mission = Define.strSUGUranai;
+			mission = Define.strSUGQuiz;
 
 			//					// サイト単位
-			//					mission = Define.PSITE_CODE_RIN;
-			//		mission = Define.PSITE_CODE_PEX;
-//							mission = Define.PSITE_CODE_PTO;
-			//mission = Define.PSITE_CODE_GMY;
+			//				mission = Define.PSITE_CODE_RIN;
+			//					mission = Define.PSITE_CODE_PEX;
+			//							mission = Define.PSITE_CODE_PTO;
+			//				mission = Define.PSITE_CODE_GMY;
 			//					mission = Define.PSITE_CODE_GEN;
 			//					mission = Define.PSITE_CODE_ECN;
 			//					mission = Define.PSITE_CODE_MOP;
-//								mission = Define.PSITE_CODE_OSA;
+			//								mission = Define.PSITE_CODE_OSA;
 			//					mission = Define.PSITE_CODE_I2I;
-			//			mission = Define.PSITE_CODE_MOB;
+			//						mission = Define.PSITE_CODE_MOB;
 			//								mission = Define.PSITE_CODE_CIT;
 			//								mission = Define.PSITE_CODE_CRI;
 			//								mission = Define.PSITE_CODE_HAP;
@@ -100,7 +106,7 @@ public class exeBean {
 			//								mission = Define.PSITE_CODE_SUG;
 			//								mission = Define.PSITE_CODE_WAR;
 
-			strFlag = "0";
+			strFlag = "1";
 		}
 		site = getSiteCode(mission);
 		if (site.equals(mission)) {
