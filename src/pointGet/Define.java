@@ -17,7 +17,18 @@ public class Define {
 	final public static String PSITE_CODE_MOP = "mop";
 	final public static String PSITE_CODE_RIN = "rin";
 	final public static String PSITE_CODE_R01 = "r01";
-
+	final public static String PSITE_CODE_MOB = "mob";
+	final public static String PSITE_CODE_CIT = "cit";
+	final public static String PSITE_CODE_CRI = "cri";
+	final public static String PSITE_CODE_HAP = "hap";
+	final public static String PSITE_CODE_KOZ = "koz";
+	final public static String PSITE_CODE_PIC = "pic";
+	final public static String PSITE_CODE_NTM = "ntm";
+	final public static String PSITE_CODE_PIL = "pil";
+	final public static String PSITE_CODE_PMO = "pmo";
+	final public static String PSITE_CODE_PNY = "pny";
+	final public static String PSITE_CODE_SUG = "sug";
+	final public static String PSITE_CODE_WAR = "war";
 	// ■■■■■ECnavi■■■■■
 	final public static String strECNChinjyu = "ECNChinjyu";
 	final public static String strECNChirachi = "ECNChirachi";
@@ -80,6 +91,11 @@ public class Define {
 	final public static String strPTOKuji = "PTOKuji";
 	final public static String strPTODaily = "PTODaily";
 	final public static String strPTOUranai = "PTOUranai";
+
+	// ■■■■■Mobatoku■■■■■
+	final public static String strMOBAnzan = "MOBAnzan";
+	final public static String strMOBNanyoubi = "MOBNanyoubi";
+	final public static String strMOBQuiz = "MOBQuiz";
 
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";

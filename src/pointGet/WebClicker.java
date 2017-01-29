@@ -27,6 +27,9 @@ import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.i2i.I2ISeiza;
+import pointGet.mission.mob.MOBAnzan;
+import pointGet.mission.mob.MOBNanyoubi;
+import pointGet.mission.mob.MOBQuiz;
 import pointGet.mission.mop.MOPAnzan;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
@@ -61,23 +64,20 @@ import pointGet.mission.rin.RINClickBanner;
  *
  */
 public class WebClicker extends PointGet {
-
 	private static final String loadFilePath = "pGetWeb.properties";
-
 	private static String[] wordList = null;
-
 	private static boolean secondFlg = false;
-
 	private static boolean thirdFlg = false;
 	private static boolean forthFlg = false;
 	private static boolean testFlag = false;
-	private static String[] defoSiteList = new String[] { Define.PSITE_CODE_ECN, // ecnavi
-			Define.PSITE_CODE_PEX, // pex
-			Define.PSITE_CODE_GEN, // gendama
-			Define.PSITE_CODE_GMY, // GetMoney
+	private static String[] defoSiteList = new String[] {
 			Define.PSITE_CODE_RIN, // raktuten
 			Define.PSITE_CODE_I2I, // i2i
 			Define.PSITE_CODE_MOP, // moppi
+			Define.PSITE_CODE_ECN, // ecnavi
+			Define.PSITE_CODE_PEX, // pex
+			Define.PSITE_CODE_GEN, // gendama
+			Define.PSITE_CODE_GMY, // GetMoney
 			Define.PSITE_CODE_OSA, // osaifu
 			Define.PSITE_CODE_PTO, // pointtown
 	};
@@ -86,7 +86,7 @@ public class WebClicker extends PointGet {
 	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
 
 	protected static void init(String[] args) {
-		PointGet.init();
+		PointGet.init(WebClicker.class.toString());
 		_setLogger("log4jweb.properties", WebClicker.class);
 		// 設定ファイルをローカル変数に展開する
 		Properties loadProps = Utille.getProp(loadFilePath);
@@ -219,6 +219,9 @@ public class WebClicker extends PointGet {
 				case Define.PSITE_CODE_PTO:
 					goToClickPTO(driver, missionArr);
 					break;
+				case Define.PSITE_CODE_MOB:
+					goToClickMOB(driver, missionArr);
+					break;
 				default:
 			}
 		} catch (Throwable e) {
@@ -261,7 +264,7 @@ public class WebClicker extends PointGet {
 	 */
 	private static void goToClickI2I(WebDriver driver, ArrayList<String> missions) {
 		if (missions.size() == 0) {
-			if (thirdFlg) {// 1日1回
+			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strI2ISeiza);
 			}
 		}
@@ -631,4 +634,58 @@ public class WebClicker extends PointGet {
 			}
 		}
 	}
+
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickMOB(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			//			missions.add(Define.strMOPQuiz);
+			//			if (!secondFlg && !thirdFlg) {// 1日1回
+			//				missions.add(Define.strMOPClickBanner);
+			//				missions.add(Define.strMOPShindan);
+			//				missions.add(Define.strMOPChyosatai);
+			//				missions.add(Define.strMOPUranai);
+			//			}
+			//			if (secondFlg || thirdFlg) {// 1日1回
+			//				missions.add(Define.strMOPNanyoubi);
+			//				missions.add(Define.strMOPAnzan);
+			//			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strMOBQuiz: // ■モッピークイズ
+					Mission MOBQuiz = new MOBQuiz(logg, commonProps);
+					MOBQuiz.exeRoopMission(driver);
+					break;
+				//				case Define.strMOPClickBanner: // ■クリックで貯める
+				//					Mission MOPClickBanner = new MOPClickBanner(logg, commonProps);
+				//					MOPClickBanner.exePrivateMission(driver);
+				//					break;
+				//				case Define.strMOPShindan: // ■毎日診断
+				//					Mission MOPShindan = new MOPShindan(logg, commonProps);
+				//					MOPShindan.exePrivateMission(driver);
+				//					break;
+				//				case Define.strMOPChyosatai: // ■トキメキ調査隊
+				//					Mission MOPChyosatai = new MOPChyosatai(logg, commonProps);
+				//					MOPChyosatai.exePrivateMission(driver);
+				//					break;
+				//				case Define.strMOPUranai: // ■MOP星座
+				//					Mission MOPUranai = new MOPUranai(logg, commonProps);
+				//					MOPUranai.exePrivateMission(driver);
+				//					break;
+				case Define.strMOBNanyoubi: // ■MOP何曜日
+					Mission MOBNanyoubi = new MOBNanyoubi(logg, commonProps);
+					MOBNanyoubi.exeRoopMission(driver);
+					break;
+				case Define.strMOBAnzan: // ■MOP暗算
+					Mission MOBAnzan = new MOBAnzan(logg, commonProps);
+					MOBAnzan.exeRoopMission(driver);
+					break;
+				default:
+			}
+		}
+	}
+
 }

@@ -59,7 +59,7 @@ public class OSAShindan extends Mission {
 										int ran1 = Utille.getIntRand(size);
 										if (isExistEle(driver.findElements(By.cssSelector(selector)).get(ran1))) {
 											driver.findElements(By.cssSelector(selector)).get(ran1).click(); // 選択
-											Utille.sleep(2000);
+											Utille.sleep(3000);
 
 											// end-btn が出たら終了
 											String none = "[style*='display: none']";
@@ -67,7 +67,7 @@ public class OSAShindan extends Mission {
 											String endSelector = "div.actionBar>a.end-btn";
 											if (isExistEle(driver, nextSelector)
 													&& isExistEle(driver, endSelector + none)) {
-												clickSleepSelector(driver, nextSelector, 2000); // 遷移
+												clickSleepSelector(driver, nextSelector, 2500); // 遷移
 											}
 											else if (isExistEle(driver, endSelector)
 													&& isExistEle(driver, nextSelector + none)) {

@@ -34,10 +34,10 @@ public class GMYShindan extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		selector = "a[href='http://dietnavi.com/pc/game/shindan/play.php']";
+		selector = "ul.check_list1 a[href='http://dietnavi.com/pc/game/shindan/play.php']";
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
-			clickSleepSelector(driver, selector, 4000); // 遷移
+			clickSleepSelector(driver, selector, 5000); // 遷移
 			changeWindow(driver);
 			while (true) {
 				selector = "div.entry";

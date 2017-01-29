@@ -51,7 +51,7 @@ public class GENClickBanner extends Mission {
 							closeOtherWindow(driver);
 						}
 					}
-				} catch (Exception e) {
+				} catch (Throwable e) {
 					driver.quit();
 					logg.error("##GENException##################");
 					logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
@@ -62,6 +62,27 @@ public class GENClickBanner extends Mission {
 				}
 			}
 			logg.info("selector: end");
+		}
+
+		driver.get("http://www.gendama.jp/mypage/");
+		selector = "img[src='http://img.gendama.jp/img/forest/forest_bt1.gif']";
+		List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+		int size = eleList.size();
+		try {
+			for (int i = 0; i < size; i++) {
+				if (isExistEle(eleList, i)) {
+					clickSleepSelector(eleList, i, 2500);
+					closeOtherWindow(driver);
+				}
+			}
+		} catch (Throwable e) {
+			driver.quit();
+			logg.error("##GENException##################");
+			logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
+			logg.error("####################");
+			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
+			logg.error("##GENException##################");
+			driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 		}
 	}
 }

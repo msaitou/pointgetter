@@ -122,7 +122,7 @@ public class PTOKuji extends Mission {
 							clickSleepSelector(eleList, 0, 4000);
 							if (isExistEle(driver, clMap.getValue().get("sele"))) {
 								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
-								clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
+								clickSleepSelector(driver, clMap.getValue().get("sele"), 5000);
 								existFlag = true;
 							}
 						}
@@ -131,7 +131,7 @@ public class PTOKuji extends Mission {
 				default:
 			}
 			if (existFlag) {
-				String sele2 = "a#clickDailyBanner"; //2つ目
+				String sele2 = "a#clickDailyBanner>img"; //2つ目
 				if (isExistEle(driver, sele2)) {
 					logg.info(mName + " " + c + " click!!");
 					clickSleepSelector(driver, sele2, 3000);

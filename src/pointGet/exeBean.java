@@ -8,7 +8,7 @@ public class exeBean {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//doTest();
+		//doTest();
 		String site = "";
 		String strFlag = "0";
 		String mission = "";
@@ -17,8 +17,7 @@ public class exeBean {
 			if (args.length > 1) {
 				strFlag = args[1];
 			}
-		}
-		else {
+		} else {
 			// ■■■■■ECnavi■■■■■
 			//		mission = Define.strECNChinjyu;
 			//		mission = Define.strECNChirachi;
@@ -44,15 +43,15 @@ public class exeBean {
 			//		// ■■■■■moppy■■■■■
 			//		mission = Define.strMOPChyosatai;
 			//		mission = Define.strMOPClickBanner;
-//			mission = Define.strMOPQuiz;
-			//		mission = Define.strMOPShindan;
+			//			mission = Define.strMOPQuiz;
+//					mission = Define.strMOPShindan;
 			//		mission = Define.strMOPUranai;
 			//		mission = Define.strMOPNanyoubi;
 			//		mission = Define.strMOPAnzan;
 			//		// ■■■■■osaifu■■■■■
 			//		mission = Define.strOSAClickBanner;
 			//		mission = Define.strOSAQuiz;
-			//		mission = Define.strOSAShindan;
+			mission = Define.strOSAShindan;
 			//		mission = Define.strOSAUranai;
 			//		mission = Define.strOSANanyoubi;
 			//		mission = Define.strOSAAnzan;
@@ -70,47 +69,52 @@ public class exeBean {
 			//		mission = Define.strRINClickBanner;
 			//		// ■■■■■PointTown■■■■■
 			//		mission = Define.strPTOClickCorner;
-//					mission = Define.strPTOKuji;
-					mission = Define.strPTODaily;
+//						mission = Define.strPTOKuji;
+//						mission = Define.strPTODaily;
 			//		mission = Define.strPTOUranai;
+			//		// ■■■■■mobatoku■■■■■
+//						mission = Define.strMOBAnzan;
+//				mission = Define.strMOBNanyoubi;
+						mission = Define.strMOBQuiz;
+
+			//					// サイト単位
+			//					mission = Define.PSITE_CODE_RIN;
+			//		mission = Define.PSITE_CODE_PEX;
+//							mission = Define.PSITE_CODE_PTO;
+			//mission = Define.PSITE_CODE_GMY;
+			//					mission = Define.PSITE_CODE_GEN;
+			//					mission = Define.PSITE_CODE_ECN;
+			//					mission = Define.PSITE_CODE_MOP;
+//								mission = Define.PSITE_CODE_OSA;
+			//					mission = Define.PSITE_CODE_I2I;
+			//			mission = Define.PSITE_CODE_MOB;
+			//								mission = Define.PSITE_CODE_CIT;
+			//								mission = Define.PSITE_CODE_CRI;
+			//								mission = Define.PSITE_CODE_HAP;
+			//								mission = Define.PSITE_CODE_KOZ;
+			//								mission = Define.PSITE_CODE_PIC;
+			//								mission = Define.PSITE_CODE_NTM;
+			//								mission = Define.PSITE_CODE_PIL;
+			//								mission = Define.PSITE_CODE_PMO;
+			//								mission = Define.PSITE_CODE_PNY;
+			//								mission = Define.PSITE_CODE_SUG;
+			//								mission = Define.PSITE_CODE_WAR;
+
 			strFlag = "0";
 		}
-
 		site = getSiteCode(mission);
-		WebClicker.sub(site, strFlag, mission);
-//		WebClicker.main(new String[]{strFlag, "pto"});
+		if (site.equals(mission)) {
+			WebClicker.main(new String[] { strFlag, site });
+		} else {
+			WebClicker.sub(site, strFlag, mission);
+		}
 	}
 
 	private static String getSiteCode(String mission) {
-		String site = "";
-		switch (mission.substring(0, 3).toLowerCase()) {
+		String site = mission.substring(0, 3).toLowerCase();
+		switch (site) {
 			case Define.PSITE_CODE_R01:
-			case Define.PSITE_CODE_RIN:
 				site = Define.PSITE_CODE_RIN;
-				break;
-			case Define.PSITE_CODE_PEX:
-				site = Define.PSITE_CODE_PEX;
-				break;
-			case Define.PSITE_CODE_PTO:
-				site = Define.PSITE_CODE_PTO;
-				break;
-			case Define.PSITE_CODE_GMY:
-				site = Define.PSITE_CODE_GMY;
-				break;
-			case Define.PSITE_CODE_GEN:
-				site = Define.PSITE_CODE_GEN;
-				break;
-			case Define.PSITE_CODE_ECN:
-				site = Define.PSITE_CODE_ECN;
-				break;
-			case Define.PSITE_CODE_MOP:
-				site = Define.PSITE_CODE_MOP;
-				break;
-			case Define.PSITE_CODE_OSA:
-				site = Define.PSITE_CODE_OSA;
-				break;
-			case Define.PSITE_CODE_I2I:
-				site = Define.PSITE_CODE_I2I;
 				break;
 		}
 		return site;

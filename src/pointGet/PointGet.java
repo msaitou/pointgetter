@@ -1,12 +1,15 @@
 package pointGet;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * @author saitou
@@ -14,7 +17,8 @@ import org.openqa.selenium.WebDriver;
  */
 public abstract class PointGet {
 
-	private static String propPath = "pointGet.properties";
+	protected static String propPath = "pointGet.properties";
+	protected static Properties loadProps = null;
 	private static String[] siteCodeList = null;
 
 	// log
@@ -23,8 +27,28 @@ public abstract class PointGet {
 	protected static Map<String, HashMap<String, String>> pGetProps = new HashMap<String, HashMap<String, String>>();
 	protected static Map<String, String> commonProps = new HashMap<String, String>();
 
-	protected static void init() {
+	protected static void init(String clsName) {
 		_loadProps();
+		System.out.println("[" + clsName + "]");
+		if ("Points".equals(clsName)) {
+			// 対象のサイトを取得
+			siteCodeList = loadProps.getProperty("pointTargetList").split(",");
+			String[] attrList = loadProps.getProperty("AttrList").split(",");
+			// PointGet config variable
+			for (int i = 0; i < siteCodeList.length; i++) {
+				String siteCode = siteCodeList[i];
+				if (siteCode != null && !siteCode.equals("")) {
+					HashMap<String, String> siteConf = new HashMap<String, String>();
+					for (int j = 0; j < attrList.length; j++) {
+						if (loadProps.containsKey(siteCode + "." + attrList[j])) {
+							siteConf.put(attrList[j], loadProps.getProperty(siteCode + "." + attrList[j]));
+						}
+					}
+					pGetProps.put(siteCode, siteConf);
+				}
+			}
+		} else if ("MailClicker".equals(clsName)) {
+		}
 	}
 
 	/**
@@ -40,6 +64,38 @@ public abstract class PointGet {
 	}
 
 	/**
+	 *
+	 * @param ele
+	 * @return
+	 */
+	protected static boolean isExistEle(List<WebElement> ele) {
+		return Utille.isExistEle(ele, logg);
+	}
+
+	/**
+	 *
+	 * @param ele
+	 * @param index
+	 * @return
+	 */
+	protected static boolean isExistEle(List<WebElement> ele, int index) {
+		boolean is = isExistEle(ele.get(index));
+		logg.info(index + ":[" + is + "]");
+		return is;
+	}
+
+	/**
+	 *
+	 * @param ele
+	 * @return
+	 */
+	protected static boolean isExistEle(WebElement ele) {
+		List<WebElement> eleL = new ArrayList<WebElement>();
+		eleL.add(ele);
+		return isExistEle(eleL);
+	}
+
+	/**
 	 * @return
 	 */
 	public static WebDriver getWebDriver() {
@@ -50,26 +106,9 @@ public abstract class PointGet {
 	 * 設定ファイルをローカル変数に展開する
 	 */
 	private static void _loadProps() {
-		Properties loadProps = Utille.getProp(propPath);
+		loadProps = Utille.getProp(propPath);
 		if (loadProps.isEmpty()) {
 			return;
-		}
-		// 対象のサイトを取得
-		siteCodeList = loadProps.getProperty("SiteCodeList").split(",");
-		String[] attrList = loadProps.getProperty("AttrList").split(",");
-
-		// PointGet config variable
-		for (int i = 0; i < siteCodeList.length; i++) {
-			String siteCode = siteCodeList[i];
-			if (siteCode != null && !siteCode.equals("")) {
-				HashMap<String, String> siteConf = new HashMap<String, String>();
-				for (int j = 0; j < attrList.length; j++) {
-					if (loadProps.containsKey(siteCode + "." + attrList[j])) {
-						siteConf.put(attrList[j], loadProps.getProperty(siteCode + "." + attrList[j]));
-					}
-				}
-				pGetProps.put(siteCode, siteConf);
-			}
 		}
 		if (loadProps.containsKey("geckopath")) {
 			commonProps.put("geckopath", loadProps.getProperty("geckopath"));

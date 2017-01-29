@@ -1,7 +1,10 @@
 package pointGet;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * write the current point
@@ -10,19 +13,11 @@ import org.openqa.selenium.WebDriver;
 public class Points extends PointGet {
 
 	private static double total = 0;
-	private static String[] pointSitelist = {
-			Define.PSITE_CODE_GMY,
-			Define.PSITE_CODE_OSA,
-			Define.PSITE_CODE_PTO,
-			Define.PSITE_CODE_PEX,
-			Define.PSITE_CODE_ECN,
-			Define.PSITE_CODE_I2I,
-			Define.PSITE_CODE_GEN,
-			Define.PSITE_CODE_MOP
-	};
+	private static String[] pointSitelist = null;
 
 	protected static void init() {
-		PointGet.init();
+		PointGet.init(Points.class.getSimpleName());
+		pointSitelist = loadProps.getProperty("pointTargetList").split(",");
 		_setLogger("log4jPoints.properties", Points.class);
 	}
 
@@ -45,7 +40,7 @@ public class Points extends PointGet {
 					driver.get("http://dietnavi.com/pc");
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
-						outPut = "[" + Define.PSITE_CODE_GMY + ":" + point + "] ";
+						outPut = "[" + Define.PSITE_CODE_GMY + ":" + getNumber(point) + "]";
 					}
 					break;
 				case Define.PSITE_CODE_GEN:
@@ -53,7 +48,7 @@ public class Points extends PointGet {
 					driver.get("http://www.gendama.jp/");
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
-						outPut = "[" + Define.PSITE_CODE_GEN + ":" + point + "] ";
+						outPut = "[" + Define.PSITE_CODE_GEN + ":" + getNumber(point) + "]";
 					}
 					break;
 				case Define.PSITE_CODE_ECN:
@@ -61,7 +56,7 @@ public class Points extends PointGet {
 					driver.get("https://ecnavi.jp/mypage/point_history/");
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
-						outPut = "[" + Define.PSITE_CODE_ECN + ":" + point + "] ";
+						outPut = "[" + Define.PSITE_CODE_ECN + ":" + getNumber(point) + "]";
 					}
 					break;
 				case Define.PSITE_CODE_MOP:
@@ -69,12 +64,12 @@ public class Points extends PointGet {
 					selector = "div#point_blinking strong";
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
-						outPut = "[" + Define.PSITE_CODE_MOP + ":" + point + " ";
+						outPut = "[" + Define.PSITE_CODE_MOP + ":" + getNumber(point);
 					}
 					selector = "div#point_blinking em";
 					if (isExistEle(driver, selector)) {
 						secondPoint = driver.findElement(By.cssSelector(selector)).getText();
-						outPut += "coin:" + secondPoint + "] ";
+						outPut += "." + getNumber(secondPoint) + "]";
 					}
 					break;
 				case Define.PSITE_CODE_PEX:
@@ -84,7 +79,7 @@ public class Points extends PointGet {
 					LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
-						outPut = "[" + Define.PSITE_CODE_PEX + ":" + point + "] ";
+						outPut = "[" + Define.PSITE_CODE_PEX + ":" + getNumber(point) + "]";
 					}
 					break;
 				case Define.PSITE_CODE_OSA:
@@ -92,12 +87,12 @@ public class Points extends PointGet {
 					driver.get("https://osaifu.com/contents/bankbook/top/");
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
-						outPut = "[" + Define.PSITE_CODE_OSA + ":" + point + " ";
+						outPut = "[" + Define.PSITE_CODE_OSA + ":" + getNumber(point);
 					}
 					selector = "dl.bankbook-total>dd.gold.coin>span";
 					if (isExistEle(driver, selector)) {
 						secondPoint = driver.findElement(By.cssSelector(selector)).getText();
-						outPut += "gold:" + secondPoint + "] ";
+						outPut += "." + getNumber(secondPoint) + "]";
 					}
 					break;
 				case Define.PSITE_CODE_PTO:
@@ -107,7 +102,7 @@ public class Points extends PointGet {
 					LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
-						outPut = "[" + Define.PSITE_CODE_PTO + ":" + point + "] ";
+						outPut = "[" + Define.PSITE_CODE_PTO + ":" + getNumber(point) + "]";
 					} else {
 						// ログインができていない可能性がある
 					}
@@ -117,7 +112,20 @@ public class Points extends PointGet {
 					driver.get("https://point.i2i.jp/account/");
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
-						outPut = "[" + Define.PSITE_CODE_I2I + ":" + point + "] ";
+						outPut = "[" + Define.PSITE_CODE_I2I + ":" + getNumber(point) + "]";
+					}
+					break;
+				case Define.PSITE_CODE_PIL:
+					// login!!
+					LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
+					selector = "table.memberinfo tr>td>strong";
+					//					driver.get("http://www.point-island.com/");
+					if (isExistEle(driver, selector)) {
+						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+						if (isExistEle(eleList, 1)) {
+							point = eleList.get(1).getText();
+							outPut = "[" + Define.PSITE_CODE_PIL + ":" + getNumber(point) + "]";
+						}
 					}
 					break;
 				default:
@@ -133,13 +141,12 @@ public class Points extends PointGet {
 				logg.warn("missed site:" + siteCode);
 			}
 		}
-
-		logg.warn(total + "円" + sb.toString());
+		logg.warn(total + sb.toString());
 		driver.quit();
 	}
 
 	private static void sumTotal(String site, String points) {
-		double current = getNumber(points);
+		double current = Double.parseDouble(getNumber(points));
 		switch (site) {
 			case Define.PSITE_CODE_OSA:
 			case Define.PSITE_CODE_MOP:
@@ -150,6 +157,7 @@ public class Points extends PointGet {
 			case Define.PSITE_CODE_ECN:
 			case Define.PSITE_CODE_I2I:
 			case Define.PSITE_CODE_GEN:
+			case Define.PSITE_CODE_PIL:
 			case "secondPoint":
 				total += current / 10;
 				break;
@@ -159,6 +167,7 @@ public class Points extends PointGet {
 			default:
 				break;
 		}
+		total = (double) Math.round(total * 10) / 10;
 		//		logg.warn("total["+total+"]円");
 		//		logg.warn("current["+current+"]円");
 		//		logg.warn("points["+points+"]円");
@@ -169,7 +178,7 @@ public class Points extends PointGet {
 	 * @param points
 	 * @return
 	 */
-	private static Double getNumber(String points) {
+	private static String getNumber(String points) {
 		String[] execlude = { ",", "Pt", " pt", "pt" };
 		for (String s : execlude) {
 			if (points.indexOf(s) > 0) {
@@ -177,6 +186,6 @@ public class Points extends PointGet {
 				points = points.trim();
 			}
 		}
-		return Double.parseDouble(points);
+		return points;
 	}
 }
