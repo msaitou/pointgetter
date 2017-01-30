@@ -53,6 +53,10 @@ import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
 import pointGet.mission.pic.PICUranai;
+import pointGet.mission.pil.PILQuiz;
+import pointGet.mission.pil.PILUranai;
+import pointGet.mission.pst.PSTQuiz;
+import pointGet.mission.pst.PSTUranai;
 import pointGet.mission.pto.PTOClickCorner;
 import pointGet.mission.pto.PTODaily;
 import pointGet.mission.pto.PTOKuji;
@@ -75,6 +79,8 @@ public class WebClicker extends PointGet {
 	private static boolean forthFlg = false;
 	private static boolean testFlag = false;
 	private static String[] defoSiteList = new String[] {
+			Define.PSITE_CODE_PIL, // PointIsland
+			Define.PSITE_CODE_PST, // PointStudium
 			Define.PSITE_CODE_RIN, // raktuten
 			Define.PSITE_CODE_I2I, // i2i
 			Define.PSITE_CODE_MOP, // moppi
@@ -234,6 +240,12 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.PSITE_CODE_SUG:
 					goToClickSUG(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_PST:
+					goToClickPST(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_PIL:
+					goToClickPIL(driver, missionArr);
 					break;
 				default:
 			}
@@ -711,14 +723,6 @@ public class WebClicker extends PointGet {
 					Mission PICUranai = new PICUranai(logg, commonProps);
 					PICUranai.exePrivateMission(driver);
 					break;
-				//				case Define.strMOBNanyoubi: // ■MOP何曜日
-				//					Mission MOBNanyoubi = new MOBNanyoubi(logg, commonProps);
-				//					MOBNanyoubi.exeRoopMission(driver);
-				//					break;
-				//				case Define.strMOBAnzan: // ■MOP暗算
-				//					Mission MOBAnzan = new MOBAnzan(logg, commonProps);
-				//					MOBAnzan.exeRoopMission(driver);
-				//					break;
 				default:
 			}
 		}
@@ -749,14 +753,66 @@ public class WebClicker extends PointGet {
 					Mission SUGUranai = new SUGUranai(logg, commonProps);
 					SUGUranai.exePrivateMission(driver);
 					break;
-				//				case Define.strMOBNanyoubi: // ■MOP何曜日
-				//					Mission MOBNanyoubi = new MOBNanyoubi(logg, commonProps);
-				//					MOBNanyoubi.exeRoopMission(driver);
-				//					break;
-				//				case Define.strMOBAnzan: // ■MOP暗算
-				//					Mission MOBAnzan = new MOBAnzan(logg, commonProps);
-				//					MOBAnzan.exeRoopMission(driver);
-				//					break;
+				default:
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickPST(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			missions.add(Define.strPSTQuiz);
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strPSTUranai);
+			}
+			//						if (secondFlg || thirdFlg) {
+			//							missions.add(Define.strMOBNanyoubi);
+			//							missions.add(Define.strMOBAnzan);
+			//						}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strPSTQuiz: // ■PSTクイズ
+					Mission PSTQuiz = new PSTQuiz(logg, commonProps);
+					PSTQuiz.exeRoopMission(driver);
+					break;
+				case Define.strPSTUranai: // ■占い
+					Mission PSTUranai = new PSTUranai(logg, commonProps);
+					PSTUranai.exePrivateMission(driver);
+					break;
+				default:
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickPIL(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			missions.add(Define.strPILQuiz);
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strPILUranai);
+			}
+			//						if (secondFlg || thirdFlg) {
+			//							missions.add(Define.strMOBNanyoubi);
+			//							missions.add(Define.strMOBAnzan);
+			//						}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strPILQuiz: // ■PILクイズ
+					Mission PILQuiz = new PILQuiz(logg, commonProps);
+					PILQuiz.exeRoopMission(driver);
+					break;
+				case Define.strPILUranai: // ■PIL占い
+					Mission PILUranai = new PILUranai(logg, commonProps);
+					PILUranai.exePrivateMission(driver);
+					break;
 				default:
 			}
 		}

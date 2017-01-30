@@ -29,6 +29,8 @@ public class Define {
 	final public static String PSITE_CODE_PNY = "pny";
 	final public static String PSITE_CODE_SUG = "sug";
 	final public static String PSITE_CODE_WAR = "war";
+	final public static String PSITE_CODE_PST = "pst";
+
 	// ■■■■■ECnavi■■■■■
 	final public static String strECNChinjyu = "ECNChinjyu";
 	final public static String strECNChirachi = "ECNChirachi";
@@ -104,7 +106,12 @@ public class Define {
 	// ■■■■■SUGUTAMA■■■■■
 	final public static String strSUGUranai = "SUGUranai";
 	final public static String strSUGQuiz = "SUGQuiz";
-
+	// ■■■■■pointStadium■■■■■
+	final public static String strPSTUranai = "PSTUranai";
+	final public static String strPSTQuiz = "PSTQuiz";
+	// ■■■■■pointisland■■■■■
+	final public static String strPILUranai = "PILUranai";
+	final public static String strPILQuiz = "PILQuiz";
 
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";

@@ -81,7 +81,13 @@ public class exeBean {
 //			mission = Define.strPICUranai;
 			// ■■■■■SUGUTAMA■■■■■
 //			mission = Define.strSUGUranai;
-			mission = Define.strSUGQuiz;
+//			mission = Define.strSUGQuiz;
+			// ■■■■■SUGUTAMA■■■■■
+//			mission = Define.strPSTUranai;
+//			mission = Define.strPSTQuiz;
+			// ■■■■■SUGUTAMA■■■■■
+//			mission = Define.strPILUranai;
+			mission = Define.strPILQuiz;
 
 			//					// サイト単位
 			//				mission = Define.PSITE_CODE_RIN;
