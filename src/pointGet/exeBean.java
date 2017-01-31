@@ -78,16 +78,17 @@ public class exeBean {
 			//						mission = Define.strMOBQuiz;
 			//						mission = Define.strMOBClickBanner;
 			// ■■■■■PointInCome■■■■■
-//			mission = Define.strPICUranai;
+			//			mission = Define.strPICUranai;
 			// ■■■■■SUGUTAMA■■■■■
-//			mission = Define.strSUGUranai;
-//			mission = Define.strSUGQuiz;
+			//			mission = Define.strSUGUranai;
+			//			mission = Define.strSUGQuiz;
 			// ■■■■■SUGUTAMA■■■■■
-//			mission = Define.strPSTUranai;
-//			mission = Define.strPSTQuiz;
+			//			mission = Define.strPSTUranai;
+			//			mission = Define.strPSTQuiz;
 			// ■■■■■SUGUTAMA■■■■■
-//			mission = Define.strPILUranai;
-			mission = Define.strPILQuiz;
+			//			mission = Define.strPILUranai;
+			//			mission = Define.strPILQuiz;
+			mission = Define.strPILClickBanner;
 
 			//					// サイト単位
 			//				mission = Define.PSITE_CODE_RIN;
@@ -97,9 +98,9 @@ public class exeBean {
 			//					mission = Define.PSITE_CODE_GEN;
 			//					mission = Define.PSITE_CODE_ECN;
 			//					mission = Define.PSITE_CODE_MOP;
-			//								mission = Define.PSITE_CODE_OSA;
+			//											mission = Define.PSITE_CODE_OSA;
 			//					mission = Define.PSITE_CODE_I2I;
-			//						mission = Define.PSITE_CODE_MOB;
+			//									mission = Define.PSITE_CODE_MOB;
 			//								mission = Define.PSITE_CODE_CIT;
 			//								mission = Define.PSITE_CODE_CRI;
 			//								mission = Define.PSITE_CODE_HAP;
@@ -111,6 +112,7 @@ public class exeBean {
 			//								mission = Define.PSITE_CODE_PNY;
 			//								mission = Define.PSITE_CODE_SUG;
 			//								mission = Define.PSITE_CODE_WAR;
+			//			mission = Define.PSITE_CODE_PST;
 
 			strFlag = "1";
 		}

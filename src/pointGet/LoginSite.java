@@ -79,14 +79,16 @@ public class LoginSite extends PointGet {
 	 */
 	public static void loginPil(WebDriver driver, Logger logg) {
 		driver.get("http://www.point-island.com/");
-		WebElement ele = driver.findElement(By.cssSelector("input#mailadr"));
-		ele.clear();
-		ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIL).get("loginid"));
-		ele = driver.findElement(By.cssSelector("input#pwd"));
-		ele.clear();
-		ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIL).get("loginpass"));
-		driver.findElement(By.cssSelector("input[name='btnlogin']")).click();
-		Utille.sleep(4000);
+		if (Utille.isExistEle(driver, "input#mailadr", logg)) {
+			WebElement ele = driver.findElement(By.cssSelector("input#mailadr"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIL).get("loginid"));
+			ele = driver.findElement(By.cssSelector("input#pwd"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIL).get("loginpass"));
+			driver.findElement(By.cssSelector("input[name='btnlogin']")).click();
+			Utille.sleep(8000);
+		}
 	}
 
 	/**

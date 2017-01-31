@@ -53,6 +53,7 @@ import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
 import pointGet.mission.pic.PICUranai;
+import pointGet.mission.pil.PILClickBanner;
 import pointGet.mission.pil.PILQuiz;
 import pointGet.mission.pil.PILUranai;
 import pointGet.mission.pst.PSTQuiz;
@@ -797,6 +798,7 @@ public class WebClicker extends PointGet {
 			missions.add(Define.strPILQuiz);
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strPILUranai);
+				missions.add(Define.strPILClickBanner);
 			}
 			//						if (secondFlg || thirdFlg) {
 			//							missions.add(Define.strMOBNanyoubi);
@@ -805,6 +807,11 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
+
+				case Define.strPILClickBanner: // ■PILクリック
+					Mission PILClickBanner = new PILClickBanner(logg, commonProps);
+					PILClickBanner.exePrivateMission(driver);
+					break;
 				case Define.strPILQuiz: // ■PILクイズ
 					Mission PILQuiz = new PILQuiz(logg, commonProps);
 					PILQuiz.exeRoopMission(driver);

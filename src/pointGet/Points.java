@@ -216,19 +216,14 @@ public class Points extends PointGet {
 					}
 					break;
 				// pointstadium
-				//				case Define.PSITE_CODE_PIL:
-				//					// login!!
-				//					LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
-				//					selector = "table.memberinfo tr>td>strong";
-				//					//					driver.get("http://www.point-stadium.com/");
-				//					if (isExistEle(driver, selector)) {
-				//						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-				//						if (isExistEle(eleList, 1)) {
-				//							point = eleList.get(1).getText();
-				//							outPut = "[" + Define.PSITE_CODE_PIL + ":" + getNumber(point) + "]";
-				//						}
-				//					}
-				//					break;
+				case Define.PSITE_CODE_PST:
+					selector = "div.login>p.point>strong";
+					driver.get("http://www.point-stadium.com/");
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_PST + ":" + getNumber(point) + "]";
+					}
+					break;
 				default:
 			}
 			if (outPut.length() > 0) {
@@ -268,6 +263,7 @@ public class Points extends PointGet {
 			case Define.PSITE_CODE_MOB:
 			case Define.PSITE_CODE_WAR:
 			case Define.PSITE_CODE_CIT:
+			case Define.PSITE_CODE_PST:
 			case "secondPoint":
 				total += current / 10;
 				break;
@@ -292,7 +288,7 @@ public class Points extends PointGet {
 	 * @return
 	 */
 	private static String getNumber(String points) {
-		String[] execlude = { ",", " pt", " pt", "Pt", "pt", "mile" };
+		String[] execlude = { ",", " pt", " pt", "Pt", "pt", "mile","ポイント" };
 		for (String s : execlude) {
 			if (points.indexOf(s) > 0) {
 				points = points.replaceAll(s, "");

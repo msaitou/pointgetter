@@ -112,6 +112,7 @@ public class Define {
 	// ■■■■■pointisland■■■■■
 	final public static String strPILUranai = "PILUranai";
 	final public static String strPILQuiz = "PILQuiz";
+	final public static String strPILClickBanner = "PILClickBanner";
 
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";
