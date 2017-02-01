@@ -102,6 +102,8 @@ public class Define {
 
 	// ■■■■■PointInCome■■■■■
 	final public static String strPICUranai = "PICUranai";
+	final public static String strPICClickBanner = "PICClickBanner";
+
 
 	// ■■■■■SUGUTAMA■■■■■
 	final public static String strSUGUranai = "SUGUranai";

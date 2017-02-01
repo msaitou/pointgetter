@@ -109,7 +109,7 @@ public class OSAAnzan extends Mission {
 						}
 					}
 					logg.info(this.mName + "]kuria?");
-					checkOverlay(driver, "div.overlay-popup a.button-close");
+				//	checkOverlay(driver, "div.overlay-popup a.button-close");
 				} else {
 					String endSelector = "input[name='submit']";
 					if (isExistEle(driver, endSelector)) {

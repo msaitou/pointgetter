@@ -79,6 +79,8 @@ public class exeBean {
 			//						mission = Define.strMOBClickBanner;
 			// ■■■■■PointInCome■■■■■
 			//			mission = Define.strPICUranai;
+						mission = Define.strPICClickBanner;
+
 			// ■■■■■SUGUTAMA■■■■■
 			//			mission = Define.strSUGUranai;
 			//			mission = Define.strSUGQuiz;
@@ -88,7 +90,7 @@ public class exeBean {
 			// ■■■■■SUGUTAMA■■■■■
 			//			mission = Define.strPILUranai;
 			//			mission = Define.strPILQuiz;
-			mission = Define.strPILClickBanner;
+//			mission = Define.strPILClickBanner;
 
 			//					// サイト単位
 			//				mission = Define.PSITE_CODE_RIN;

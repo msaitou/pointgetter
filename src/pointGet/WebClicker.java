@@ -52,6 +52,7 @@ import pointGet.mission.pex.PEXMekutte;
 import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
+import pointGet.mission.pic.PICClickBanner;
 import pointGet.mission.pic.PICUranai;
 import pointGet.mission.pil.PILClickBanner;
 import pointGet.mission.pil.PILQuiz;
@@ -716,10 +717,10 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-				//				case Define.strMOBQuiz: // ■モッピークイズ
-				//					Mission MOBQuiz = new MOBQuiz(logg, commonProps);
-				//					MOBQuiz.exeRoopMission(driver);
-				//					break;
+				case Define.strPICClickBanner: // ■PICクリックバナー
+					Mission PICClickBanner = new PICClickBanner(logg, commonProps);
+					PICClickBanner.exePrivateMission(driver);
+					break;
 				case Define.strPICUranai: // ■占い
 					Mission PICUranai = new PICUranai(logg, commonProps);
 					PICUranai.exePrivateMission(driver);
