@@ -50,7 +50,7 @@ public class exeBean {
 			//		mission = Define.strMOPUranai;
 			//		mission = Define.strMOPNanyoubi;
 			//		mission = Define.strMOPAnzan;
-			mission = Define.strMOPChirachi;
+			//			mission = Define.strMOPChirachi;	//XMLiretenai
 
 			//		// ■■■■■osaifu■■■■■
 			//		mission = Define.strOSAClickBanner;
@@ -70,7 +70,7 @@ public class exeBean {
 			//		mission = Define.strPEXPectan;
 			//		mission = Define.strPEXSearch;
 			//		// ■■■■■rakuten■■■■■
-//					mission = Define.strRINClickBanner;
+			//					mission = Define.strRINClickBanner;
 			//		// ■■■■■PointTown■■■■■
 			//		mission = Define.strPTOClickCorner;
 			//			mission = Define.strPTOKuji;
@@ -83,7 +83,8 @@ public class exeBean {
 			//						mission = Define.strMOBClickBanner;
 			// ■■■■■PointInCome■■■■■
 			//			mission = Define.strPICUranai;
-			//						mission = Define.strPICClickBanner;
+//									mission = Define.strPICClickBanner;
+			mission = Define.strPICPriceChyosatai;
 
 			// ■■■■■SUGUTAMA■■■■■
 			//			mission = Define.strSUGUranai;

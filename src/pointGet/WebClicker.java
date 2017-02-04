@@ -55,6 +55,7 @@ import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
 import pointGet.mission.pic.PICClickBanner;
+import pointGet.mission.pic.PICPriceChyosatai;
 import pointGet.mission.pic.PICUranai;
 import pointGet.mission.pil.PILClickBanner;
 import pointGet.mission.pil.PILQuiz;
@@ -569,6 +570,7 @@ public class WebClicker extends PointGet {
 			if (!secondFlg && !thirdFlg) {
 				missions.add(Define.strGMYClickBanner);
 				missions.add(Define.strGMYChirachi);
+				missions.add(Define.strGMYPriceChyosatai);
 			}
 		}
 		for (String mission : missions) {
@@ -720,6 +722,8 @@ public class WebClicker extends PointGet {
 			//			missions.add(Define.strMOBQuiz);
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strPICUranai);
+				missions.add(Define.strPICClickBanner);
+				missions.add(Define.strPICPriceChyosatai);
 			}
 			//			if (secondFlg || thirdFlg) {
 			//				missions.add(Define.strMOBNanyoubi);
@@ -735,6 +739,10 @@ public class WebClicker extends PointGet {
 				case Define.strPICUranai: // ■占い
 					Mission PICUranai = new PICUranai(logg, commonProps);
 					PICUranai.exePrivateMission(driver);
+					break;
+				case Define.strPICPriceChyosatai: // ■PICPrice調査隊
+					Mission PICPriceChyosatai = new PICPriceChyosatai(logg, commonProps);
+					PICPriceChyosatai.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -819,7 +827,6 @@ public class WebClicker extends PointGet {
 		}
 		for (String mission : missions) {
 			switch (mission) {
-
 				case Define.strPILClickBanner: // ■PILクリック
 					Mission PILClickBanner = new PILClickBanner(logg, commonProps);
 					PILClickBanner.exePrivateMission(driver);

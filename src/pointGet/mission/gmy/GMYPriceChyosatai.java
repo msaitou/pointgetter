@@ -39,7 +39,6 @@ public class GMYPriceChyosatai extends Mission {
 			if (isExistEle(driver, selector)) {
 				driver.get("http://dietnavi.com/pc/game/price/play.php");
 				Utille.sleep(2000);
-//				changeWindow(driver);
 				checkOverlay(driver, overlaySelector);
 				if (isExistEle(driver, footBnrSelector)
 						&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
@@ -67,14 +66,21 @@ public class GMYPriceChyosatai extends Mission {
 							break;
 						}
 						selector = "span.icon-arrow";
-						for (int i = 0; i < 10; i++) {
+						for (int i = 0; i < 5; i++) {
 							int ran = Utille.getIntRand(2);
 							if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-								clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
-								checkOverlay(driver, overlaySelector);
-								if (isExistEle(driver, footBnrSelector)
-										&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
-									checkOverlay(driver, footBnrSelector);
+								clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3500);
+								String sele2 ="div#popup div.btn.mrg-t5.mrg-b5";
+								if (isExistEle(driver, sele2)) {
+									clickSleepSelector(driver, sele2, 3000);
+									checkOverlay(driver, overlaySelector);
+									if (isExistEle(driver, footBnrSelector)
+											&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+										checkOverlay(driver, footBnrSelector);
+									}
+									if (isExistEle(driver, selector)) {
+										clickSleepSelector(driver, selector, 3000);
+									}
 								}
 							}
 						}
@@ -89,21 +95,26 @@ public class GMYPriceChyosatai extends Mission {
 					}
 //					selector = "div.btn>a";
 					selector = "span.icon-arrow";
-					for (int i = 0; i < 10; i++) {
+					for (int i = 0; i < 5; i++) {
 						String finshSele = "div.finish-area";
 						// otukare!
 						if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
 							break;
 						}
 						int ran = Utille.getIntRand(2);
-						Utille.sleep(2000);
-						if (isExistEle(driver.findElements(By.cssSelector(selector)))
-								&& isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-							clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
-							checkOverlay(driver, overlaySelector);
-							if (isExistEle(driver, footBnrSelector)
-									&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
-								checkOverlay(driver, footBnrSelector);
+						if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
+							clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3500);
+							String sele2 ="div#popup div.btn.mrg-t5.mrg-b5";
+							if (isExistEle(driver, sele2)) {
+								clickSleepSelector(driver, sele2, 3000);
+								checkOverlay(driver, overlaySelector);
+								if (isExistEle(driver, footBnrSelector)
+										&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+									checkOverlay(driver, footBnrSelector);
+								}
+								if (isExistEle(driver, selector)) {
+									clickSleepSelector(driver, selector, 3000);
+								}
 							}
 						}
 					}
