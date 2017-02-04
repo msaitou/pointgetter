@@ -101,14 +101,19 @@ public class PTOKuji extends Mission {
 					}
 					if (isExistEle(driver, sele)) {
 						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
-						if (isExistEle(eleList, 0)) { // 最初のリンクをクリック
-							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
-							clickSleepSelector(eleList, 0, 4000);
-							closeOtherWindow(driver);
-							if (isExistEle(driver, clMap.getValue().get("sele"))) {
-								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
-								clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
-								existFlag = true;
+						for (int i = 0; i < 2; i++) {
+							if (isExistEle(eleList, i)) { // 最初のリンクをクリック
+								logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
+								clickSleepSelector(eleList, i, 4000);
+								closeOtherWindow(driver);
+								if (isExistEle(driver, clMap.getValue().get("sele"))) {
+									logg.info(mName + " " + c + "." + clMap.getKey() + "!");
+									clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
+									existFlag = true;
+									if ("くじ桃".equals(clMap.getKey())) {
+										break;
+									}
+								}
 							}
 						}
 					}

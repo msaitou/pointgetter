@@ -22,7 +22,7 @@ public class PSTQuiz extends Mission {
 	 */
 	public PSTQuiz(Logger logg, Map<String, String> cProps) {
 		super(logg, cProps);
-		this.mName = "■SUGクイズ";
+		this.mName = "■PSTクイズ";
 	}
 
 	@Override

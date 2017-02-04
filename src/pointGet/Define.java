@@ -53,6 +53,7 @@ public class Define {
 	final public static String strGMYChirachi = "GMYChirachi";
 	final public static String strGMYClickBanner = "GMYClickBanner";
 	final public static String strGMYShindan = "GMYShindan";
+	final public static String strGMYPriceChyosatai = "GMYPriceChyosatai";
 
 	// ■■■■■i2i■■■■■
 	final public static String strI2ISeiza = "I2ISeiza";
@@ -65,6 +66,7 @@ public class Define {
 	final public static String strMOPUranai = "MOPUranai";
 	final public static String strMOPNanyoubi = "MOPNanyoubi";
 	final public static String strMOPAnzan = "MOPAnzan";
+	final public static String strMOPChirachi = "MOPChirachi";
 
 	// ■■■■■osaifu■■■■■
 	final public static String strOSAClickBanner = "OSAClickBanner";

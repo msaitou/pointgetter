@@ -38,6 +38,8 @@ public class exeBean {
 			//		mission = Define.strGMYChirachi;
 			//		mission = Define.strGMYClickBanner;
 			//		mission = Define.strGMYShindan;
+//			mission = Define.strGMYPriceChyosatai;
+
 			//		// ■■■■■i2i■■■■■
 			//		mission = Define.strI2ISeiza;
 			//		// ■■■■■moppy■■■■■
@@ -48,10 +50,12 @@ public class exeBean {
 			//		mission = Define.strMOPUranai;
 			//		mission = Define.strMOPNanyoubi;
 			//		mission = Define.strMOPAnzan;
+			mission = Define.strMOPChirachi;
+
 			//		// ■■■■■osaifu■■■■■
 			//		mission = Define.strOSAClickBanner;
 			//		mission = Define.strOSAQuiz;
-			mission = Define.strOSAShindan;
+			//			mission = Define.strOSAShindan;
 			//		mission = Define.strOSAUranai;
 			//		mission = Define.strOSANanyoubi;
 			//		mission = Define.strOSAAnzan;
@@ -66,7 +70,7 @@ public class exeBean {
 			//		mission = Define.strPEXPectan;
 			//		mission = Define.strPEXSearch;
 			//		// ■■■■■rakuten■■■■■
-			//		mission = Define.strRINClickBanner;
+//					mission = Define.strRINClickBanner;
 			//		// ■■■■■PointTown■■■■■
 			//		mission = Define.strPTOClickCorner;
 			//			mission = Define.strPTOKuji;
@@ -79,7 +83,7 @@ public class exeBean {
 			//						mission = Define.strMOBClickBanner;
 			// ■■■■■PointInCome■■■■■
 			//			mission = Define.strPICUranai;
-						mission = Define.strPICClickBanner;
+			//						mission = Define.strPICClickBanner;
 
 			// ■■■■■SUGUTAMA■■■■■
 			//			mission = Define.strSUGUranai;
@@ -90,7 +94,7 @@ public class exeBean {
 			// ■■■■■SUGUTAMA■■■■■
 			//			mission = Define.strPILUranai;
 			//			mission = Define.strPILQuiz;
-//			mission = Define.strPILClickBanner;
+			//			mission = Define.strPILClickBanner;
 
 			//					// サイト単位
 			//				mission = Define.PSITE_CODE_RIN;

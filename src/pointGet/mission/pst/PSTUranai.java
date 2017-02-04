@@ -16,7 +16,7 @@ public class PSTUranai extends Mission {
 	 */
 	public PSTUranai(Logger logg, Map<String, String> cProps) {
 		super(logg, cProps);
-		this.mName = "■SUG星座";
+		this.mName = "■PST星座";
 	}
 
 	@Override

@@ -25,6 +25,7 @@ import pointGet.mission.gen.GENShindan;
 import pointGet.mission.gen.GENUranai;
 import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
+import pointGet.mission.gmy.GMYPriceChyosatai;
 import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
@@ -32,6 +33,7 @@ import pointGet.mission.mob.MOBClickBanner;
 import pointGet.mission.mob.MOBNanyoubi;
 import pointGet.mission.mob.MOBQuiz;
 import pointGet.mission.mop.MOPAnzan;
+import pointGet.mission.mop.MOPChirachi;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPNanyoubi;
@@ -367,7 +369,8 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOPChyosatai);
 				missions.add(Define.strMOPUranai);
 			}
-			if (secondFlg || thirdFlg) {// 1日1回
+			if (secondFlg || thirdFlg) {
+				missions.add(Define.strMOPChirachi);
 				missions.add(Define.strMOPNanyoubi);
 				missions.add(Define.strMOPAnzan);
 			}
@@ -393,6 +396,10 @@ public class WebClicker extends PointGet {
 				case Define.strMOPUranai: // ■MOP星座
 					Mission MOPUranai = new MOPUranai(logg, commonProps);
 					MOPUranai.exePrivateMission(driver);
+					break;
+				case Define.strMOPChirachi: // ■MOPチラシ
+					Mission MOPChirachi = new MOPChirachi(logg, commonProps);
+					MOPChirachi.exePrivateMission(driver);
 					break;
 				case Define.strMOPNanyoubi: // ■MOP何曜日
 					Mission MOPNanyoubi = new MOPNanyoubi(logg, commonProps);
@@ -577,6 +584,10 @@ public class WebClicker extends PointGet {
 				case Define.strGMYChirachi: // ■チラシ
 					Mission GMYChirachi = new GMYChirachi(logg, commonProps);
 					GMYChirachi.exePrivateMission(driver);
+					break;
+				case Define.strGMYPriceChyosatai: // ■プライス調査隊
+					Mission GMYPriceChyosatai = new GMYPriceChyosatai(logg, commonProps);
+					GMYPriceChyosatai.exePrivateMission(driver);
 					break;
 				default:
 			}

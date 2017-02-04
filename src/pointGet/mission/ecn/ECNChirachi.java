@@ -28,8 +28,7 @@ public class ECNChirachi extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		mName = "■チラシ";
-		driver.get(this.url);
+		driver.get(url);
 		selector = "a.chirashi_link";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000);

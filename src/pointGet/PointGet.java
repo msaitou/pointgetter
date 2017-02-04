@@ -34,7 +34,7 @@ public abstract class PointGet {
 		} else if ("MailClicker".equals(clsName)) {
 		}
 		// 対象のサイトを取得
-		siteCodeList = loadProps.getProperty("pointTargetList").split(",");
+		siteCodeList = loadProps.getProperty("SiteCodeList").split(",");
 		String[] attrList = loadProps.getProperty("AttrList").split(",");
 		// PointGet config variable
 		for (int i = 0; i < siteCodeList.length; i++) {
