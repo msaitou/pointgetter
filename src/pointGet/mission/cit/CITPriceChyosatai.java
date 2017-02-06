@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.cit;
 
 import java.util.Map;
 
@@ -13,17 +13,17 @@ import pointGet.mission.Mission;
  * @author saitou
  * 4時更新
  */
-public class GMYPriceChyosatai extends Mission {
-	final String url = "http://dietnavi.com/pc/";
+public class CITPriceChyosatai extends Mission {
+	final String url = "http://www.chance.com/game/";
 	private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
 	private String footBnrSelector = "div.foot-bnr a.close>span";
 
 	/**
 	 * @param log
 	 */
-	public GMYPriceChyosatai(Logger log, Map<String, String> cProps) {
+	public CITPriceChyosatai(Logger log, Map<String, String> cProps) {
 		super(log, cProps);
-		this.mName = "■GMYPrice調査隊";
+		this.mName = "■CITPrice調査隊";
 	}
 
 	@Override
@@ -35,10 +35,11 @@ public class GMYPriceChyosatai extends Mission {
 	public void privateMission(WebDriver driver) {
 		for (int j = 0; j < 6; j++) {
 			driver.get(url);
-			selector = "ul a[href='http://dietnavi.com/pc/game/price/play.php']";
+			selector = "a[href='http://www.chance.com/game/price/play.jsp']>img[alt='プライス調査隊']";
 			if (isExistEle(driver, selector)) {
-				driver.get("http://dietnavi.com/pc/game/price/play.php");
-				Utille.sleep(2000);
+				clickSleepSelector(driver, selector, 4000); // 遷移
+				changeWindow(driver);
+				Utille.sleep(1000);
 				checkOverlay(driver, overlaySelector);
 				if (isExistEle(driver, footBnrSelector)
 						&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {

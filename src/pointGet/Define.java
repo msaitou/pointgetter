@@ -107,7 +107,6 @@ public class Define {
 	final public static String strPICClickBanner = "PICClickBanner";
 	final public static String strPICPriceChyosatai = "PICPriceChyosatai";
 
-
 	// ■■■■■SUGUTAMA■■■■■
 	final public static String strSUGUranai = "SUGUranai";
 	final public static String strSUGQuiz = "SUGQuiz";
@@ -118,6 +117,11 @@ public class Define {
 	final public static String strPILUranai = "PILUranai";
 	final public static String strPILQuiz = "PILQuiz";
 	final public static String strPILClickBanner = "PILClickBanner";
+	// ■■■■■chanceIt■■■■■
+	final public static String strCITPriceChyosatai = "CITPriceChyosatai";
+
+	// ■■■■■PointMonkey■■■■■
+	final public static String strPMOChyosatai = "PMOChyosatai";
 
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";

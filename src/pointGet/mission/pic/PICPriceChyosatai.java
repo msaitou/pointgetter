@@ -117,7 +117,13 @@ public class PICPriceChyosatai extends Mission {
 						checkOverlay(driver, footBnrSelector);
 					}
 					if (isExistEle(driver, selector)) {
-						clickSleepSelector(driver, selector, 4000);
+						clickSleepSelector(driver, selector, 4500);
+						waitTilReady(driver);
+						if (isExistEle(driver, footBnrSelector)
+								&& !isExistEle(driver,
+										"div.foot-bnr[style*='display :none'] a.close>span")) {
+							checkOverlay(driver, footBnrSelector);
+						}
 					}
 				}
 			}

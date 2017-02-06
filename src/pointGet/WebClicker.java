@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.mission.Mission;
+import pointGet.mission.cit.CITPriceChyosatai;
 import pointGet.mission.ecn.ECNChinjyu;
 import pointGet.mission.ecn.ECNChirachi;
 import pointGet.mission.ecn.ECNClickBokin;
@@ -60,6 +61,7 @@ import pointGet.mission.pic.PICUranai;
 import pointGet.mission.pil.PILClickBanner;
 import pointGet.mission.pil.PILQuiz;
 import pointGet.mission.pil.PILUranai;
+import pointGet.mission.pmo.PMOChyosatai;
 import pointGet.mission.pst.PSTQuiz;
 import pointGet.mission.pst.PSTUranai;
 import pointGet.mission.pto.PTOClickCorner;
@@ -84,6 +86,10 @@ public class WebClicker extends PointGet {
 	private static boolean forthFlg = false;
 	private static boolean testFlag = false;
 	private static String[] defoSiteList = new String[] {
+			Define.PSITE_CODE_PIC, // PointInCome
+			Define.PSITE_CODE_SUG, // SUGUTAMA
+			Define.PSITE_CODE_CIT, // CHANCEIT
+			Define.PSITE_CODE_PMO, // PointMonkey
 			Define.PSITE_CODE_PIL, // PointIsland
 			Define.PSITE_CODE_PST, // PointStudium
 			Define.PSITE_CODE_RIN, // raktuten
@@ -96,8 +102,6 @@ public class WebClicker extends PointGet {
 			Define.PSITE_CODE_OSA, // osaifu
 			Define.PSITE_CODE_PTO, // pointtown
 			Define.PSITE_CODE_MOB, // MOBATOKU
-			Define.PSITE_CODE_PIC, // PointInCome
-			Define.PSITE_CODE_SUG, // SUGUTAMA
 	};
 	private static String[] visitSites = null;
 	private static String mName = "";
@@ -251,6 +255,12 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.PSITE_CODE_PIL:
 					goToClickPIL(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_CIT:
+					goToClickCIT(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_PMO:
+					goToClickPMO(driver, missionArr);
 					break;
 				default:
 			}
@@ -838,6 +848,48 @@ public class WebClicker extends PointGet {
 				case Define.strPILUranai: // ■PIL占い
 					Mission PILUranai = new PILUranai(logg, commonProps);
 					PILUranai.exePrivateMission(driver);
+					break;
+				default:
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickCIT(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strCITPriceChyosatai);
+			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strCITPriceChyosatai: // ■CITPrice調査隊
+					Mission CITPriceChyosatai = new CITPriceChyosatai(logg, commonProps);
+					CITPriceChyosatai.exePrivateMission(driver);
+					break;
+				default:
+			}
+		}
+	}
+
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickPMO(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strPMOChyosatai);
+			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strPMOChyosatai: // ■PMOPrice調査隊
+					Mission PMOChyosatai = new PMOChyosatai(logg, commonProps);
+					PMOChyosatai.exePrivateMission(driver);
 					break;
 				default:
 			}

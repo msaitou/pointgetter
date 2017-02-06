@@ -215,6 +215,18 @@ public class Points extends PointGet {
 						outPut = "[" + Define.PSITE_CODE_CIT + ":" + getNumber(point) + "]";
 					}
 					break;
+				case Define.PSITE_CODE_PMO:
+					selector = "span#ygps>span.pointEmphasis";
+					driver.get("http://poimon.jp/");
+					if (!isExistEle(driver, selector)) {
+						// login!!
+						LoginSite.login(Define.PSITE_CODE_PMO, driver, logg);
+					}
+					if (isExistEle(driver, selector)) {
+						point = driver.findElement(By.cssSelector(selector)).getText();
+						outPut = "[" + Define.PSITE_CODE_PMO + ":" + getNumber(point) + "]";
+					}
+					break;
 				// pointstadium
 				case Define.PSITE_CODE_PST:
 					selector = "div.login>p.point>strong";
@@ -246,6 +258,7 @@ public class Points extends PointGet {
 		switch (site) {
 			case Define.PSITE_CODE_OSA:
 			case Define.PSITE_CODE_MOP:
+			case Define.PSITE_CODE_PMO:
 			case Define.PSITE_CODE_HAP:
 				total += current;
 				break;
@@ -288,7 +301,7 @@ public class Points extends PointGet {
 	 * @return
 	 */
 	private static String getNumber(String points) {
-		String[] execlude = { ",", " pt", " pt", "Pt", "pt", "mile","ポイント" };
+		String[] execlude = { ",", " pt", " pt", "Pt", "pt", "mile", "ポイント" };
 		for (String s : execlude) {
 			if (points.indexOf(s) > 0) {
 				points = points.replaceAll(s, "");

@@ -28,7 +28,7 @@ public class PTOUranai extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 		LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
-		selector = "a.panel__bnr-wrap>img.bnr";
+		selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移
 			driver.switchTo().frame(0);

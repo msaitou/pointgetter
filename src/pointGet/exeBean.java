@@ -38,7 +38,7 @@ public class exeBean {
 			//		mission = Define.strGMYChirachi;
 			//		mission = Define.strGMYClickBanner;
 			//		mission = Define.strGMYShindan;
-//			mission = Define.strGMYPriceChyosatai;
+			//			mission = Define.strGMYPriceChyosatai;
 
 			//		// ■■■■■i2i■■■■■
 			//		mission = Define.strI2ISeiza;
@@ -73,9 +73,9 @@ public class exeBean {
 			//					mission = Define.strRINClickBanner;
 			//		// ■■■■■PointTown■■■■■
 			//		mission = Define.strPTOClickCorner;
-			//			mission = Define.strPTOKuji;
+			mission = Define.strPTOKuji;
 			//			mission = Define.strPTODaily;
-			//			mission = Define.strPTOUranai;
+			//						mission = Define.strPTOUranai;
 			//		// ■■■■■mobatoku■■■■■
 			//						mission = Define.strMOBAnzan;
 			//						mission = Define.strMOBNanyoubi;
@@ -83,8 +83,8 @@ public class exeBean {
 			//						mission = Define.strMOBClickBanner;
 			// ■■■■■PointInCome■■■■■
 			//			mission = Define.strPICUranai;
-//									mission = Define.strPICClickBanner;
-			mission = Define.strPICPriceChyosatai;
+			//									mission = Define.strPICClickBanner;
+			//			mission = Define.strPICPriceChyosatai;
 
 			// ■■■■■SUGUTAMA■■■■■
 			//			mission = Define.strSUGUranai;
@@ -97,10 +97,15 @@ public class exeBean {
 			//			mission = Define.strPILQuiz;
 			//			mission = Define.strPILClickBanner;
 
+			// ■■■■■CHANCEIT■■■■■
+//			mission = Define.strCITPriceChyosatai;
+			// ■■■■■PointMonkey■■■■■
+					mission = Define.strPMOChyosatai;
+
 			//					// サイト単位
 			//				mission = Define.PSITE_CODE_RIN;
 			//					mission = Define.PSITE_CODE_PEX;
-			//							mission = Define.PSITE_CODE_PTO;
+			//										mission = Define.PSITE_CODE_PTO;
 			//				mission = Define.PSITE_CODE_GMY;
 			//					mission = Define.PSITE_CODE_GEN;
 			//					mission = Define.PSITE_CODE_ECN;
@@ -121,7 +126,7 @@ public class exeBean {
 			//								mission = Define.PSITE_CODE_WAR;
 			//			mission = Define.PSITE_CODE_PST;
 
-			strFlag = "1";
+			strFlag = "0";
 		}
 		site = getSiteCode(mission);
 		if (site.equals(mission)) {

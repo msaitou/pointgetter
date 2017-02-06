@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.Define;
 import pointGet.LoginSite;
+import pointGet.Utille;
 import pointGet.mission.Mission;
 
 /**
@@ -100,20 +101,22 @@ public class PTOKuji extends Mission {
 						sele = "div.ptpc-search-box__hotword>a";
 					}
 					if (isExistEle(driver, sele)) {
-						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
 						for (int i = 0; i < 2; i++) {
+							List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
 							if (isExistEle(eleList, i)) { // 最初のリンクをクリック
 								logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
 								clickSleepSelector(eleList, i, 4000);
-								closeOtherWindow(driver);
+								if ("くじ桃".equals(clMap.getKey())) {
+									closeOtherWindow(driver);
+								}
 								if (isExistEle(driver, clMap.getValue().get("sele"))) {
 									logg.info(mName + " " + c + "." + clMap.getKey() + "!");
 									clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
 									existFlag = true;
-									if ("くじ桃".equals(clMap.getKey())) {
-										break;
-									}
+									break;
 								}
+								driver.get(clMap.getValue().get("url"));
+								Utille.sleep(4000);
 							}
 						}
 					}
