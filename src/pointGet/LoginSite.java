@@ -38,6 +38,9 @@ public class LoginSite extends PointGet {
 			case Define.PSITE_CODE_PMO:
 				loginPmo(driver, logg);
 				break;
+			case Define.PSITE_CODE_PIC:
+				loginPic(driver, logg);
+				break;
 			case Define.PSITE_CODE_GMY:
 			case Define.PSITE_CODE_GEN:
 			case Define.PSITE_CODE_ECN:
@@ -49,12 +52,30 @@ public class LoginSite extends PointGet {
 			case Define.PSITE_CODE_CRI:
 			case Define.PSITE_CODE_HAP:
 			case Define.PSITE_CODE_KOZ:
-			case Define.PSITE_CODE_PIC:
 			case Define.PSITE_CODE_NTM:
 			case Define.PSITE_CODE_PNY:
 			case Define.PSITE_CODE_SUG:
 			default:
 				return;
+		}
+	}
+
+	/**
+	 * @param driver
+	 * @param logg
+	 */
+	public static void loginPic(WebDriver driver, Logger logg) {
+		driver.get("https://pointi.jp/entrance.php");
+		Utille.sleep(2000);
+		if (Utille.isExistEle(driver, "input.entrance_input[name='email_address']", logg)) {
+			WebElement ele = driver.findElement(By.cssSelector("input.entrance_input[name='email_address']"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginid"));
+			ele = driver.findElement(By.cssSelector("input.entrance_input[name='password']"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginpass"));
+			driver.findElement(By.cssSelector("div.btn_submit>input[name='Submit']")).click();
+			Utille.sleep(4000);
 		}
 	}
 
@@ -145,26 +166,18 @@ public class LoginSite extends PointGet {
 	 * @param logg
 	 */
 	public static void loginPex(WebDriver driver, Logger logg) {
-		String selector = "dd.user_pt.fw_b>span.fw_b";
 		driver.get("https://pex.jp/user/point_passbook/all");
-		if (!Utille.isExistEle(driver, selector, logg)) {
-			if (!pGetProps.containsKey(Define.PSITE_CODE_PEX)
-					|| !pGetProps.get(Define.PSITE_CODE_PEX).containsKey("loginid")
-					|| !pGetProps.get(Define.PSITE_CODE_PEX).containsKey("loginpass")) {
-				logg.warn("2");
-			}
-			// ログイン画面
-			String selector2 = "input#pex_user_login_email";
-			if (Utille.isExistEle(driver, selector2, logg)) {
-				WebElement ele = driver.findElement(By.cssSelector(selector2));
-				ele.clear();
-				ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PEX).get("loginid"));
-				ele = driver.findElement(By.cssSelector("input#pex_user_login_password"));
-				ele.clear();
-				ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PEX).get("loginpass"));
-				driver.findElement(By.cssSelector("input.form-submit")).click();
-				Utille.sleep(3000);
-			}
+		// ログイン画面
+		String selector2 = "input#pex_user_login_email";
+		if (Utille.isExistEle(driver, selector2, logg)) {
+			WebElement ele = driver.findElement(By.cssSelector(selector2));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PEX).get("loginid"));
+			ele = driver.findElement(By.cssSelector("input#pex_user_login_password"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PEX).get("loginpass"));
+			driver.findElement(By.cssSelector("input.form-submit")).click();
+			Utille.sleep(3000);
 		}
 	}
 
@@ -173,27 +186,18 @@ public class LoginSite extends PointGet {
 	 * @param logg
 	 */
 	public static void loginPto(WebDriver driver, Logger logg) {
-		selector = "li.point>a>strong";
-		driver.get("https://www.pointtown.com/ptu/index.do");
-		if (!isExistEle(driver, selector)) {
-			if (!pGetProps.containsKey(Define.PSITE_CODE_PTO)
-					|| !pGetProps.get(Define.PSITE_CODE_PTO).containsKey("loginid")
-					|| !pGetProps.get(Define.PSITE_CODE_PTO).containsKey("loginpass")) {
-				return;
-			}
-			// ログイン画面
-			driver.get("https://www.pointtown.com/ptu/show_login.do?nextPath=%2Fptu%2Findex.do");
-			String selector2 = "input.auth_input[name=uid]";
-			if (isExistEle(driver, selector2)) {
-				WebElement ele = driver.findElement(By.cssSelector(selector2));
-				ele.clear();
-				ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PTO).get("loginid"));
-				ele = driver.findElement(By.cssSelector("input.auth_input[name=pass]"));
-				ele.clear();
-				ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PTO).get("loginpass"));
-				driver.findElement(By.cssSelector("div.login-btn>input")).click();
-				Utille.sleep(3000);
-			}
+		// ログイン画面
+		driver.get("https://www.pointtown.com/ptu/show_login.do?nextPath=%2Fptu%2Findex.do");
+		String selector2 = "input.auth_input[name=uid]";
+		if (isExistEle(driver, selector2)) {
+			WebElement ele = driver.findElement(By.cssSelector(selector2));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PTO).get("loginid"));
+			ele = driver.findElement(By.cssSelector("input.auth_input[name=pass]"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PTO).get("loginpass"));
+			driver.findElement(By.cssSelector("div.login-btn>input")).click();
+			Utille.sleep(3000);
 		}
 	}
 }

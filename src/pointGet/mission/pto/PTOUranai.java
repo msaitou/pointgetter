@@ -5,8 +5,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Define;
-import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -27,7 +25,7 @@ public class PTOUranai extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
+		driver.get(url);
 		selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移

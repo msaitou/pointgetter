@@ -5,8 +5,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Define;
-import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -27,7 +25,6 @@ public class PILUranai extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
 		driver.get(url);
 		selector = "form#wcmpoint>input.style8";
 		if (isExistEle(driver, selector)) {

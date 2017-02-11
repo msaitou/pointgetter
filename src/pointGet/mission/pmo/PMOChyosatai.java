@@ -6,8 +6,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Define;
-import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -33,7 +31,6 @@ public class PMOChyosatai extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		LoginSite.login(Define.PSITE_CODE_PMO, driver, logg);
 		String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
 		String footBnrSelector = "div.foot-bnr a.close>span";
 		for (int j = 0; j < 6; j++) {

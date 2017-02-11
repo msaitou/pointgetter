@@ -9,8 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.Define;
-import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -49,8 +47,8 @@ public class PTOKuji extends Mission {
 			});
 			put("くじ青", new HashMap<String, String>() {
 				{
-					put("url", "http://www.pointtown.com/ptu/poitto/top.do");
-					put("sele", "a#blue_kuji>img");
+					put("url", "http://www.pointtown.com/");
+					put("sele", "a>img[alt='三角くじ青']");
 				}
 			});
 			put("うさくじ", new HashMap<String, String>() {
@@ -76,7 +74,6 @@ public class PTOKuji extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
 		// 1．ログイン直後のTOP画面で
 		int c = 0;
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
@@ -87,6 +84,7 @@ public class PTOKuji extends Mission {
 				case "うさくじ":
 				case "くじ紫":
 				case "くじ赤":
+				case "くじ青":
 					if (isExistEle(driver, clMap.getValue().get("sele"))) {
 						logg.info(mName + " " + ++c + "." + clMap.getKey() + "!");
 						clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
@@ -121,21 +119,21 @@ public class PTOKuji extends Mission {
 						}
 					}
 					break;
-				case "くじ青":
-					sele = "ul.list li.tit_topic strong>a";
-					if (isExistEle(driver, sele)) {
-						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
-						if (isExistEle(eleList, 0)) { // 最初のリンクをクリック
-							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
-							clickSleepSelector(eleList, 0, 4000);
-							if (isExistEle(driver, clMap.getValue().get("sele"))) {
-								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
-								clickSleepSelector(driver, clMap.getValue().get("sele"), 5000);
-								existFlag = true;
-							}
-						}
-					}
-					break;
+//				case "くじ青":
+//					sele = "ul.list li.tit_topic strong>a";
+//					if (isExistEle(driver, sele)) {
+//						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
+//						if (isExistEle(eleList, 0)) { // 最初のリンクをクリック
+//							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
+//							clickSleepSelector(eleList, 0, 4000);
+//							if (isExistEle(driver, clMap.getValue().get("sele"))) {
+//								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
+//								clickSleepSelector(driver, clMap.getValue().get("sele"), 5000);
+//								existFlag = true;
+//							}
+//						}
+//					}
+//					break;
 				default:
 			}
 			if (existFlag) {

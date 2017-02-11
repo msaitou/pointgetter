@@ -9,8 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.Define;
-import pointGet.LoginSite;
 import pointGet.mission.Mission;
 
 /**
@@ -24,7 +22,7 @@ public class PTOClickCorner extends Mission {
 			put("topページ上click", new HashMap<String, String>() {
 				{
 					put("url", "https://www.pointtown.com/ptu/index.do");
-					put("sele", "section.panel.panel--click img");
+					put("sele", "a.ptpc-panel--click-corner__main-link>img");
 				}
 			});
 			put("マイページ", new HashMap<String, String>() {
@@ -56,7 +54,7 @@ public class PTOClickCorner extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
+		driver.get("https://www.pointtown.com/ptu/index.do");
 		// 1．ログイン直後のTOP画面で
 		int c = 0;
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
@@ -78,7 +76,7 @@ public class PTOClickCorner extends Mission {
 			for (int i = 0; i < size; i++) {
 				if (isExistEle(eleList, i)) {
 					logg.info(mName + " " + c + ".サービスページ下! " + i);
-					clickSleepSelector(eleList, i, 4000);
+					clickSleepSelector(eleList, i, 5000);
 					java.util.Set<String> widSet = driver.getWindowHandles();
 					for (String id : widSet) {
 						if (!id.equals(wid)) {
@@ -88,11 +86,11 @@ public class PTOClickCorner extends Mission {
 					String sele2 = "div.service-btn a";
 					if (isExistEle(driver, sele2)) {
 						logg.info(mName + " " + c + ".サービスページ下! " + i + " click!!");
-						clickSleepSelector(driver, sele2, 5000);
-						driver.close();
-						// 元のウインドウIDにスイッチ
-						driver.switchTo().window(wid);
+						clickSleepSelector(driver, sele2, 4000);
 					}
+					driver.close();
+					// 元のウインドウIDにスイッチ
+					driver.switchTo().window(wid);
 				}
 			}
 		}

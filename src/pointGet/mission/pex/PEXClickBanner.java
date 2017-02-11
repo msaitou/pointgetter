@@ -1,10 +1,12 @@
 package pointGet.mission.pex;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 import pointGet.mission.Mission;
@@ -31,23 +33,21 @@ public class PEXClickBanner extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 		selector = "div.clickpoint_innner li>a>p.title";
-		driver.get(this.url);
+		driver.get(url);
 		if (isExistEle(driver, selector)) {
-			if (!isExistEle(driver, "p.get_massage")) { // 獲得済みか
-				if (isExistEle(driver, selector)) {
-					// clipoバナー
-					int size = getSelectorSize(driver, selector);
-					for (int i = 0; i < size; i++) {
-						if (isExistEle(driver.findElements(By.cssSelector(selector)).get(i))) {
-							driver.findElements(By.cssSelector(selector)).get(i).click();
-							Utille.sleep(2000);
-							driver.get(this.url);
-						}
-					}
+			int size = getSelectorSize(driver, selector);
+			// clipoバナー
+			for (int i = 0; i < size; i++) {
+				if (isExistEle(driver, "p.get_massage")) { // 獲得済みか
+					logg.warn(mName + "]獲得済み");
+					break;
 				}
-			}
-			else {
-				logg.warn(mName + "]獲得済み");
+				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+				if (isExistEle(eleList, i)) {
+					clickSleepSelector(eleList, i, 3000);// 選択
+					driver.get(url);
+					Utille.sleep(1000);
+				}
 			}
 		}
 	}

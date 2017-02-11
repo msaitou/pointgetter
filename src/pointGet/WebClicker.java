@@ -106,6 +106,8 @@ public class WebClicker extends PointGet {
 	private static String[] visitSites = null;
 	private static String mName = "";
 	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
+	public static long lastRoopTime = 0;
+	public static boolean isDoingFlag = false;
 
 	protected static void init(String[] args) {
 		PointGet.init(WebClicker.class.getSimpleName());
@@ -129,12 +131,37 @@ public class WebClicker extends PointGet {
 			if (Arrays.asList(defoSiteList).contains(args[1])) {
 				visitSites = new String[] { args[1] };
 			} else {
-				visitSites = defoSiteList;
+				visitSites = new String[0];
 			}
 		} else {
 			visitSites = defoSiteList;
 		}
 		// testFlag =true;
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void exeSite(String[] args, ArrayList<String> missionArr) {
+		init(args);
+		logg.info("◆◆◆◆◆◆Start!!◆◆◆◆◆◆◆");
+		for (String site : visitSites) {
+			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
+					Define.PSITE_CODE_PEX, // pex
+					// Define.PSITE_CODE_GEN,// gendama
+			}).contains(site)) {
+				continue;
+			} else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
+					Define.PSITE_CODE_RIN, // raktuten
+					Define.PSITE_CODE_I2I,// i2i
+			}).contains(site)) {
+				continue;
+			}
+			goToClickSite(site, missionArr);
+			missionArr.clear();
+		}
+		roopMisssion(missionList);
+		logg.info("◆◆◆◆◆◆◆End!!!!◆◆◆◆◆◆◆");
 	}
 
 	/**
@@ -169,6 +196,7 @@ public class WebClicker extends PointGet {
 			logg.info("roopStart!!");
 			WebDriver driver = getWebDriver();
 			int CompCnt = 0;
+			int limitCnt = 0;
 			while (true) {
 				for (Mission mission : missionList) {
 					if (mission.isCompFlag()) {
@@ -178,14 +206,21 @@ public class WebClicker extends PointGet {
 					}
 					mission.roopMission(driver);
 				}
-				if (CompCnt == missionList.size()) {
+				if (isDoingFlag) {
+					logg.info("roopEnd!! isDoingFlag:true");
 					break;
 				}
+				else {
+					if (CompCnt >= missionList.size()) {
+						logg.info("roopEnd!! isDoingFlag:false");
+						break;
+					}
+					logg.info("CompCnt:" + CompCnt + "  missionList.size():" + missionList.size());
+					Utille.sleep(306000);
+				}
 				logg.info("again!!");
-				Utille.sleep(306000);
 			}
 			driver.quit();
-			logg.info("roopEnd!!");
 		}
 	}
 
@@ -430,8 +465,27 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickPEX(WebDriver driver, ArrayList<String> missions) {
-
-		LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
+		if (missions.size() == 0) {
+			missions.add(Define.strGMYShindan);
+			if (!thirdFlg) { // 1日2回
+				missions.add(Define.strPEX4quiz);
+				missions.add(Define.strPEXChirachi);
+				missions.add(Define.strPEXAnswer);
+			}
+			if (!secondFlg && !thirdFlg) {
+				missions.add(Define.strPEXNews);
+				missions.add(Define.strPEXClickBanner);
+				missions.add(Define.strPEXMekutte);
+				missions.add(Define.strPEXPectan);
+				missions.add(Define.strPEXSearch);
+			}
+		}
+		driver.get("http://pex.jp");
+		String sel = "dd.user_pt.fw_b>span.fw_b";
+		if (!isExistEle(driver, sel)) {
+			// Login
+			LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
+		}
 		// 以下1日回
 		if (!secondFlg && !thirdFlg) {
 			mName = "■rakutenバナー";
@@ -445,21 +499,7 @@ public class WebClicker extends PointGet {
 				logg.warn(mName + "]なかったよ...");
 			}
 		}
-		if (missions.size() == 0) {
-			missions.add(Define.strGMYShindan);
-			if (!thirdFlg) { // 1日2回
-				missions.add(Define.strPEX4quiz);
-				missions.add(Define.strPEXChirachi);
-				missions.add(Define.strPEXAnswer);
-			}
-			if (!secondFlg && !thirdFlg) {
-				missions.add(Define.strPEXMekutte);
-				missions.add(Define.strPEXClickBanner);
-				missions.add(Define.strPEXNews);
-				missions.add(Define.strPEXPectan);
-				missions.add(Define.strPEXSearch);
-			}
-		}
+
 		for (String mission : missions) {
 			switch (mission) {
 				case Define.strPEX4quiz: // ■ポイントクイズ
@@ -662,6 +702,12 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strPTODaily);
 			}
 		}
+		String sel = "li.point>a>strong";
+		driver.get("https://www.pointtown.com/ptu/index.do");
+		if (!isExistEle(driver, sel)) {
+			// login!!
+			LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
+		}
 		for (String mission : missions) {
 			switch (mission) {
 				case Define.strPTOClickCorner: // ■クリックコーナー
@@ -739,6 +785,12 @@ public class WebClicker extends PointGet {
 			//				missions.add(Define.strMOBNanyoubi);
 			//				missions.add(Define.strMOBAnzan);
 			//			}
+		}
+		String sel = "ul.header_wrap.clearfix>li.right>span.name";
+		driver.get("http://pointi.jp/"); // http://pointi.jp/
+		if (!isExistEle(driver, sel)) {
+			// login!!
+			LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
 		}
 		for (String mission : missions) {
 			switch (mission) {
@@ -835,6 +887,8 @@ public class WebClicker extends PointGet {
 			//							missions.add(Define.strMOBAnzan);
 			//						}
 		}
+		// login!!
+		LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
 		for (String mission : missions) {
 			switch (mission) {
 				case Define.strPILClickBanner: // ■PILクリック
@@ -884,6 +938,12 @@ public class WebClicker extends PointGet {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strPMOChyosatai);
 			}
+		}
+		String sel = "span#ygps>span.pointEmphasis";
+		driver.get("http://poimon.jp/");
+		if (!isExistEle(driver, sel)) {
+			// login!!
+			LoginSite.login(Define.PSITE_CODE_PMO, driver, logg);
 		}
 		for (String mission : missions) {
 			switch (mission) {

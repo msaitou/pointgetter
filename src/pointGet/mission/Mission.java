@@ -40,6 +40,7 @@ public abstract class Mission {
 
 	protected static Map<String, String> commonProps = new HashMap<String, String>();
 
+	protected WebDriver driver = null;
 	/**
 	 * constracter
 	 *
@@ -309,12 +310,12 @@ public abstract class Mission {
 			}
 		} catch (Exception e) {
 			// e.printStackTrace();
-			driver.quit();
 			logg.error("##Exception##################");
 			logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
 			logg.error("####################");
 			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
 			logg.error("##Exception##################");
+			driver.quit();
 		}
 		logg.info("[[[" + mName + "]]] END-");
 	}

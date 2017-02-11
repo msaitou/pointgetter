@@ -8,8 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.Define;
-import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -33,7 +31,6 @@ public class PILClickBanner extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
 		driver.get(url);
 		Utille.sleep(2000);
 		String selecter[] = { "table.msg001 table table td>a>img" };

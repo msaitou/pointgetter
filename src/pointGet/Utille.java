@@ -398,4 +398,15 @@ public class Utille {
 		Double dB = Double.parseDouble(strB);
 		return dA.compareTo(dB) == 0;
 	}
+
+	public static String getSiteCode(String mission) {
+		String site = mission.substring(0, 3).toLowerCase();
+		switch (site) {
+			case Define.PSITE_CODE_R01:
+				site = Define.PSITE_CODE_RIN;
+				break;
+		}
+		return site;
+	}
+
 }

@@ -75,8 +75,10 @@ public class Points extends PointGet {
 				case Define.PSITE_CODE_PEX:
 					selector = "dd.user_pt.fw_b>span.fw_b";
 					driver.get("https://pex.jp/user/point_passbook/all");
-					// login!!
-					LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
+					if (!isExistEle(driver, selector)) {
+						// login!!
+						LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
+					}
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
 						outPut = "[" + Define.PSITE_CODE_PEX + ":" + getNumber(point) + "]";
@@ -98,8 +100,10 @@ public class Points extends PointGet {
 				case Define.PSITE_CODE_PTO:
 					selector = "li.point>a>strong";
 					driver.get("https://www.pointtown.com/ptu/index.do");
-					// login!!
-					LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
+					if (!isExistEle(driver, selector)) {
+						// login!!
+						LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
+					}
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
 						outPut = "[" + Define.PSITE_CODE_PTO + ":" + getNumber(point) + "]";
@@ -129,10 +133,12 @@ public class Points extends PointGet {
 					}
 					break;
 				case Define.PSITE_CODE_PIC:
-					// login!!
-					//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
 					selector = "p.text.point";
 					driver.get("http://pointi.jp/my/my_page.php"); // http://pointi.jp/
+					if (!isExistEle(driver, selector)) {
+						// login!!
+						LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+					}
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
 						outPut = "[" + Define.PSITE_CODE_PIC + ":" + getNumber(point) + "]";

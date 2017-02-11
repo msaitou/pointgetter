@@ -9,8 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.Define;
-import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -70,7 +68,6 @@ public class PTODaily extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
 		driver.get(url);
 		int c = 0;
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
