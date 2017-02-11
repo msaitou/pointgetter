@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.mission.Mission;
 import pointGet.mission.cit.CITPriceChyosatai;
+import pointGet.mission.cit.CITShindan;
 import pointGet.mission.ecn.ECNChinjyu;
 import pointGet.mission.ecn.ECNChirachi;
 import pointGet.mission.ecn.ECNClickBokin;
@@ -209,8 +210,7 @@ public class WebClicker extends PointGet {
 				if (isDoingFlag) {
 					logg.info("roopEnd!! isDoingFlag:true");
 					break;
-				}
-				else {
+				} else {
 					if (CompCnt >= missionList.size()) {
 						logg.info("roopEnd!! isDoingFlag:false");
 						break;
@@ -916,6 +916,7 @@ public class WebClicker extends PointGet {
 		if (missions.size() == 0) {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strCITPriceChyosatai);
+				missions.add(Define.strCITShindan);
 			}
 		}
 		for (String mission : missions) {
@@ -923,6 +924,10 @@ public class WebClicker extends PointGet {
 				case Define.strCITPriceChyosatai: // ■CITPrice調査隊
 					Mission CITPriceChyosatai = new CITPriceChyosatai(logg, commonProps);
 					CITPriceChyosatai.exePrivateMission(driver);
+					break;
+				case Define.strCITShindan: // ■CIT毎日診断
+					Mission CITShindan = new CITShindan(logg, commonProps);
+					CITShindan.exePrivateMission(driver);
 					break;
 				default:
 			}

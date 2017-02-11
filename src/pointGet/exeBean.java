@@ -38,7 +38,7 @@ public class exeBean {
 			//		mission = Define.strGMYChirachi;
 			//		mission = Define.strGMYClickBanner;
 			//		mission = Define.strGMYShindan;
-						mission = Define.strGMYPriceChyosatai;
+			mission = Define.strGMYPriceChyosatai;
 
 			//		// ■■■■■i2i■■■■■
 			//		mission = Define.strI2ISeiza;
@@ -78,27 +78,28 @@ public class exeBean {
 			//						mission = Define.strPTOUranai;
 			//		// ■■■■■mobatoku■■■■■
 			//						mission = Define.strMOBAnzan;
-//									mission = Define.strMOBNanyoubi;
+			//									mission = Define.strMOBNanyoubi;
 			//						mission = Define.strMOBQuiz;
 			//						mission = Define.strMOBClickBanner;
 			// ■■■■■PointInCome■■■■■
 			//			mission = Define.strPICUranai;
 			//									mission = Define.strPICClickBanner;
-									mission = Define.strPICPriceChyosatai;
+			//									mission = Define.strPICPriceChyosatai;
 
 			// ■■■■■SUGUTAMA■■■■■
 			//			mission = Define.strSUGUranai;
 			//			mission = Define.strSUGQuiz;
 			// ■■■■■PointStadium■■■■■
 			//			mission = Define.strPSTUranai;
-//						mission = Define.strPSTQuiz;
+			//						mission = Define.strPSTQuiz;
 			// ■■■■■PointIsland■■■■■
 			//			mission = Define.strPILUranai;
-//						mission = Define.strPILQuiz;
+			//						mission = Define.strPILQuiz;
 			//			mission = Define.strPILClickBanner;
 
 			// ■■■■■CHANCEIT■■■■■
 			//			mission = Define.strCITPriceChyosatai;
+			mission = Define.strCITShindan;
 			// ■■■■■PointMonkey■■■■■
 			//					mission = Define.strPMOChyosatai;
 
@@ -112,14 +113,14 @@ public class exeBean {
 			//					mission = Define.PSITE_CODE_MOP;
 			//											mission = Define.PSITE_CODE_OSA;
 			//					mission = Define.PSITE_CODE_I2I;
-//												mission = Define.PSITE_CODE_MOB;
+			//												mission = Define.PSITE_CODE_MOB;
 			//								mission = Define.PSITE_CODE_CIT;
 			//								mission = Define.PSITE_CODE_CRI;
 			//								mission = Define.PSITE_CODE_HAP;
 			//								mission = Define.PSITE_CODE_KOZ;
 			//								mission = Define.PSITE_CODE_PIC;
 			//								mission = Define.PSITE_CODE_NTM;
-//											mission = Define.PSITE_CODE_PIL;
+			//											mission = Define.PSITE_CODE_PIL;
 			//								mission = Define.PSITE_CODE_PMO;
 			//								mission = Define.PSITE_CODE_PNY;
 			//								mission = Define.PSITE_CODE_SUG;

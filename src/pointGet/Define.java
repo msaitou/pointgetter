@@ -119,6 +119,7 @@ public class Define {
 	final public static String strPILClickBanner = "PILClickBanner";
 	// ■■■■■chanceIt■■■■■
 	final public static String strCITPriceChyosatai = "CITPriceChyosatai";
+	final public static String strCITShindan = "CITShindan";
 
 	// ■■■■■PointMonkey■■■■■
 	final public static String strPMOChyosatai = "PMOChyosatai";
