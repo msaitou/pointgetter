@@ -138,6 +138,7 @@ public class Points extends PointGet {
 					if (!isExistEle(driver, selector)) {
 						// login!!
 						LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+						driver.get("http://pointi.jp/my/my_page.php"); // http://pointi.jp/
 					}
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();

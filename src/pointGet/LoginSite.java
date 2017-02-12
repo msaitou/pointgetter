@@ -75,7 +75,7 @@ public class LoginSite extends PointGet {
 			ele.clear();
 			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginpass"));
 			driver.findElement(By.cssSelector("div.btn_submit>input[name='Submit']")).click();
-			Utille.sleep(4000);
+			Utille.sleep(5000);
 		}
 	}
 

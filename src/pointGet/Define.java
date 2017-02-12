@@ -54,6 +54,7 @@ public class Define {
 	final public static String strGMYClickBanner = "GMYClickBanner";
 	final public static String strGMYShindan = "GMYShindan";
 	final public static String strGMYPriceChyosatai = "GMYPriceChyosatai";
+	final public static String strGMYToidas = "GMYToidas";
 
 	// ■■■■■i2i■■■■■
 	final public static String strI2ISeiza = "I2ISeiza";

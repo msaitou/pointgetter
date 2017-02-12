@@ -29,6 +29,7 @@ import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.gmy.GMYPriceChyosatai;
 import pointGet.mission.gmy.GMYShindan;
+import pointGet.mission.gmy.GMYToidas;
 import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
 import pointGet.mission.mob.MOBClickBanner;
@@ -621,6 +622,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strGMYClickBanner);
 				missions.add(Define.strGMYChirachi);
 				missions.add(Define.strGMYPriceChyosatai);
+				missions.add(Define.strGMYToidas);
 			}
 		}
 		for (String mission : missions) {
@@ -641,6 +643,10 @@ public class WebClicker extends PointGet {
 					Mission GMYPriceChyosatai = new GMYPriceChyosatai(logg, commonProps);
 					GMYPriceChyosatai.exePrivateMission(driver);
 					break;
+				case Define.strGMYToidas: // ■GMYトイダス
+					Mission GMYToidas = new GMYToidas(logg, commonProps);
+					GMYToidas.exePrivateMission(driver);
+
 				default:
 			}
 		}

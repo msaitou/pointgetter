@@ -1,4 +1,4 @@
-package pointGet.mission.pic;
+package pointGet.mission.cit;
 
 import java.util.List;
 import java.util.Map;
@@ -15,15 +15,15 @@ import pointGet.mission.Mission;
  * @author saitou
  *
  */
-public class PICToidas extends Mission {
-	final String url = "http://dietnavi.com/pc/";
+public class CITToidas extends Mission {
+	final String url = "http://www.chance.com/game/";
 
 	/**
 	 * @param logg
 	 */
-	public PICToidas(Logger logg, Map<String, String> cProps) {
+	public CITToidas(Logger logg, Map<String, String> cProps) {
 		super(logg, cProps);
-		this.mName = "■GMYトイダス";
+		this.mName = "■CITトイダス";
 	}
 
 	@Override
@@ -33,13 +33,13 @@ public class PICToidas extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		selector = "div.everyday_list1 ul>li>a[href='http://dietnavi.com/pc/ad_jump.php?id=42431']";
+		selector = "img[src='/img/game/game_toidasu.png']";
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 5500); // 遷移
 			changeWindow(driver);
 			while (true) {
-//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み
+				//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み
 				selector = "li[class='col-md-4 col-sm-6 entry-item category-trivia ']";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size1 = eleList.size();
@@ -55,7 +55,7 @@ public class PICToidas extends Mission {
 				}
 				selector = "div.entry-text-wrap a";
 				if (isExistEle(wEle, selector)) {
-					clickSleepSelector(wEle, selector, 4500); // 遷移
+					clickSleepSelector(wEle, selector, 8000); // 遷移
 					selector = "div#pager";// 始める
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 5000); // 遷移
@@ -76,8 +76,8 @@ public class PICToidas extends Mission {
 										String nextSelector = "div#pager";
 										String endSelector = "div.actionBar>a.end-btn";
 										if (isExistEle(driver, nextSelector)
-//												&& isExistEle(driver, endSelector + none)
-												) {
+										//												&& isExistEle(driver, endSelector + none)
+										) {
 											clickSleepSelector(driver, nextSelector, 2000); // 遷移
 											if (isExistEle(driver, nextSelector)) {
 												clickSleepSelector(driver, nextSelector, 2000); // 遷移
@@ -90,8 +90,7 @@ public class PICToidas extends Mission {
 							clickSleepSelector(driver, nextSelector, 2000); // 一覧に戻る
 						}
 					}
-				}
-				else {
+				} else {
 					logg.warn(mName + "]all済み");
 					break;
 				}

@@ -38,7 +38,8 @@ public class exeBean {
 			//		mission = Define.strGMYChirachi;
 			//		mission = Define.strGMYClickBanner;
 			//		mission = Define.strGMYShindan;
-			mission = Define.strGMYPriceChyosatai;
+			//			mission = Define.strGMYPriceChyosatai;
+			mission = Define.strGMYToidas;
 
 			//		// ■■■■■i2i■■■■■
 			//		mission = Define.strI2ISeiza;
@@ -57,8 +58,8 @@ public class exeBean {
 			//		mission = Define.strOSAQuiz;
 			//			mission = Define.strOSAShindan;
 			//		mission = Define.strOSAUranai;
-			//		mission = Define.strOSANanyoubi;
-			//					mission = Define.strOSAAnzan;
+			//			mission = Define.strOSANanyoubi;
+			//			mission = Define.strOSAAnzan;
 			//		// ■■■■■PEX■■■■■
 			//		mission = Define.strPEX4quiz;
 			//		mission = Define.strPEXAnswer;
@@ -99,7 +100,7 @@ public class exeBean {
 
 			// ■■■■■CHANCEIT■■■■■
 			//			mission = Define.strCITPriceChyosatai;
-			mission = Define.strCITShindan;
+//									mission = Define.strCITShindan;
 			// ■■■■■PointMonkey■■■■■
 			//					mission = Define.strPMOChyosatai;
 
