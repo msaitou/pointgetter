@@ -121,7 +121,8 @@ public class Define {
 	// ■■■■■chanceIt■■■■■
 	final public static String strCITPriceChyosatai = "CITPriceChyosatai";
 	final public static String strCITShindan = "CITShindan";
-
+	final public static String strCITToidas = "CITToidas";
+	
 	// ■■■■■PointMonkey■■■■■
 	final public static String strPMOChyosatai = "PMOChyosatai";
 

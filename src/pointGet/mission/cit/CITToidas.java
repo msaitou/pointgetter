@@ -39,6 +39,7 @@ public class CITToidas extends Mission {
 			clickSleepSelector(driver, selector, 5500); // 遷移
 			changeWindow(driver);
 			while (true) {
+				driver.switchTo().defaultContent();
 				//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み
 				selector = "li[class='col-md-4 col-sm-6 entry-item category-trivia ']";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -55,29 +56,24 @@ public class CITToidas extends Mission {
 				}
 				selector = "div.entry-text-wrap a";
 				if (isExistEle(wEle, selector)) {
-					clickSleepSelector(wEle, selector, 8000); // 遷移
+					clickSleepSelector(wEle, selector, 7000); // 遷移
+					this.waitTilReady(driver);
+					driver.switchTo().frame(0);
 					selector = "div#pager";// 始める
 					if (isExistEle(driver, selector)) {
-						clickSleepSelector(driver, selector, 5000); // 遷移
-
+						clickSleepSelector(driver, selector, 10000); // 遷移
+						//						this.waitTilReady(driver);
 						String sele2 = "div.toidas-question-answer.fade-transition[style='opacity: 1;'] div.toidas-question-answer-checkbox-img";
 						if (isExistEle(driver, sele2)) {
 							for (int i = 0; i < 10; i++) {
-								selector = sele2;
-								if (isExistEle(driver, selector)) {
-									int size = getSelectorSize(driver, selector); // 選択肢の数を数える
+								if (isExistEle(driver, sele2)) {
+									List<WebElement> eleList2 = driver.findElements(By.cssSelector(sele2));
+									int size = eleList2.size();
 									int ran1 = Utille.getIntRand(size);
-									if (isExistEle(driver.findElements(By.cssSelector(selector)).get(ran1))) {
-										driver.findElements(By.cssSelector(selector)).get(ran1).click(); // 選択
-										Utille.sleep(2000);
-
-										// end-btn が出たら終了
-										String none = "[style*='display: none']";
-										String nextSelector = "div#pager";
-										String endSelector = "div.actionBar>a.end-btn";
-										if (isExistEle(driver, nextSelector)
-										//												&& isExistEle(driver, endSelector + none)
-										) {
+									if (isExistEle(eleList2, ran1)) {
+										clickSleepSelector(eleList2, ran1, 2000);// 選択
+										String nextSelector = selector;
+										if (isExistEle(driver, nextSelector)) {
 											clickSleepSelector(driver, nextSelector, 2000); // 遷移
 											if (isExistEle(driver, nextSelector)) {
 												clickSleepSelector(driver, nextSelector, 2000); // 遷移
@@ -86,14 +82,24 @@ public class CITToidas extends Mission {
 									}
 								}
 							}
-							String nextSelector = "div#pager";
-							clickSleepSelector(driver, nextSelector, 2000); // 一覧に戻る
+							Utille.sleep(3000);
+							clickSleepSelector(driver, selector, 5000); // pointgett
+							logg.warn(mName + "]1つクリア！！");
+							clickSleepSelector(driver, selector, 5000); // 一覧に戻る
+						}
+						else {
+							logg.warn(mName + "]sele2なし");
 						}
 					}
-				} else {
+					else {
+						logg.warn(mName + "]始められない？");
+					}
+				}
+				else {
 					logg.warn(mName + "]all済み");
 					break;
 				}
+				logg.warn(mName + "]roopします");
 			}
 		}
 	}
