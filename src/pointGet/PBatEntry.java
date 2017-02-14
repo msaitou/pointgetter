@@ -5,10 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +24,10 @@ public class PBatEntry {
 	private static final String xmlFile = "pgBatFileProp.xml";
 
 	public static void main(String[] args) {
+//		_setLogger("log4jweb.properties", WebClicker.class);
+//		logg.info("◆◆◆◆◆◆Start!!◆◆◆◆◆◆◆");
 		// 現在日時を取得して、その時間(24形式)を利用
-		String nowHour = getNowTimeStr("HH");
+		String nowHour = Utille.getNowTimeStr("HH");
 		System.out.println("nowHour:" + nowHour);
 		String key = "H" + nowHour;
 		// XMLを変数に展開して、時間をキーに値を抽出
@@ -79,18 +78,6 @@ public class PBatEntry {
 			System.out.println("no planed mission ;-<");
 		}
 
-	}
-
-	/**
-	 * 現在の日付を指定されたフォーマットの文字列にして返す
-	 *
-	 * @param formatStr 変換するフォーマット文字列
-	 * @return 変換されたフォーマットの日付文字列
-	 */
-	public static String getNowTimeStr(String formatStr) {
-		Date date = new Date();
-		DateFormat updateTimeForm = new SimpleDateFormat(formatStr);
-		return updateTimeForm.format(date);
 	}
 
 	/**

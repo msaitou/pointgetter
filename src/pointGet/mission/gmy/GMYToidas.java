@@ -47,8 +47,17 @@ public class GMYToidas extends Mission {
 				WebElement wEle = null;
 				for (int i = 0; i < size1; i++) {
 					if (isExistEle(eleList, i)) {
-						wEle = eleList.get(i);
-						break;
+						if (isExistEle(eleList.get(i), "div.entry-date")) {
+							String entryDate = eleList.get(i).findElement(By.cssSelector("div.entry-date")).getText();
+							String nowDate = Utille.getNowTimeStr("yyyy/MM/dd");
+							logg.warn("entryDate:" + entryDate + " nowDate:" + nowDate);
+
+							if (entryDate.equals(nowDate)) {
+								wEle = eleList.get(i);
+								break;
+							}
+							break;
+						}
 					}
 				}
 				if (wEle == null) {

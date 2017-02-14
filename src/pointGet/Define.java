@@ -122,7 +122,9 @@ public class Define {
 	final public static String strCITPriceChyosatai = "CITPriceChyosatai";
 	final public static String strCITShindan = "CITShindan";
 	final public static String strCITToidas = "CITToidas";
-	
+	final public static String strCITChirachi = "CITChirachi";
+	final public static String strCITClickBanner = "CITClickBanner";
+
 	// ■■■■■PointMonkey■■■■■
 	final public static String strPMOChyosatai = "PMOChyosatai";
 

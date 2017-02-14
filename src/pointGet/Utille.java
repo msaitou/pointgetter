@@ -15,8 +15,11 @@ import java.nio.charset.CharsetEncoder;
 import java.nio.charset.CoderResult;
 import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -409,4 +412,15 @@ public class Utille {
 		return site;
 	}
 
+	/**
+	 * 現在の日付を指定されたフォーマットの文字列にして返す
+	 *
+	 * @param formatStr 変換するフォーマット文字列
+	 * @return 変換されたフォーマットの日付文字列
+	 */
+	public static String getNowTimeStr(String formatStr) {
+		Date date = new Date();
+		DateFormat updateTimeForm = new SimpleDateFormat(formatStr);
+		return updateTimeForm.format(date);
+	}
 }

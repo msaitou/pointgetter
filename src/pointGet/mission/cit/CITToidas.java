@@ -46,8 +46,13 @@ public class CITToidas extends Mission {
 				int size1 = eleList.size();
 				WebElement wEle = null;
 				for (int i = 0; i < size1; i++) {
-					if (isExistEle(eleList, i)) {
-						wEle = eleList.get(i);
+					if (isExistEle(eleList.get(i), "div.entry-date")) {
+						String entryDate = eleList.get(i).findElement(By.cssSelector("div.entry-date")).getText();
+						String nowDate = Utille.getNowTimeStr("yyyy/MM/dd");
+						if (entryDate.equals(nowDate)) {
+							wEle = eleList.get(i);
+							break;
+						}
 						break;
 					}
 				}
@@ -74,9 +79,9 @@ public class CITToidas extends Mission {
 										clickSleepSelector(eleList2, ran1, 2000);// 選択
 										String nextSelector = selector;
 										if (isExistEle(driver, nextSelector)) {
-											clickSleepSelector(driver, nextSelector, 2000); // 遷移
+											clickSleepSelector(driver, nextSelector, 2500); // 遷移
 											if (isExistEle(driver, nextSelector)) {
-												clickSleepSelector(driver, nextSelector, 2000); // 遷移
+												clickSleepSelector(driver, nextSelector, 2500); // 遷移
 											}
 										}
 									}
@@ -86,16 +91,13 @@ public class CITToidas extends Mission {
 							clickSleepSelector(driver, selector, 5000); // pointgett
 							logg.warn(mName + "]1つクリア！！");
 							clickSleepSelector(driver, selector, 5000); // 一覧に戻る
-						}
-						else {
+						} else {
 							logg.warn(mName + "]sele2なし");
 						}
-					}
-					else {
+					} else {
 						logg.warn(mName + "]始められない？");
 					}
-				}
-				else {
+				} else {
 					logg.warn(mName + "]all済み");
 					break;
 				}

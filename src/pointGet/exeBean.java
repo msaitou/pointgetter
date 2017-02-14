@@ -39,7 +39,7 @@ public class exeBean {
 //			mission = Define.strGMYChirachi;
 //			mission = Define.strGMYClickBanner;
 //			mission = Define.strGMYShindan;
-//			mission = Define.strGMYPriceChyosatai;
+			mission = Define.strGMYPriceChyosatai;
 //			mission = Define.strGMYToidas;
 //			// ■■■■■i2i■■■■■
 //			mission = Define.strI2ISeiza;
@@ -98,7 +98,7 @@ public class exeBean {
 //			// ■■■■■CHANCEIT■■■■■
 //			mission = Define.strCITPriceChyosatai;
 //			mission = Define.strCITShindan;
-			mission = Define.strCITToidas;
+//			mission = Define.strCITToidas;
 //			// ■■■■■PointMonkey■■■■■
 //			mission = Define.strPMOChyosatai;
 //			// サイト単位
