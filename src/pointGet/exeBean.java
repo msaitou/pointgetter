@@ -39,10 +39,10 @@ public class exeBean {
 //			mission = Define.strGMYChirachi;
 //			mission = Define.strGMYClickBanner;
 //			mission = Define.strGMYShindan;
-			mission = Define.strGMYPriceChyosatai;
+//			mission = Define.strGMYPriceChyosatai;
 //			mission = Define.strGMYToidas;
 //			// ■■■■■i2i■■■■■
-//			mission = Define.strI2ISeiza;
+			mission = Define.strI2ISeiza;
 //			// ■■■■■moppy■■■■■
 //			mission = Define.strMOPChyosatai;
 //			mission = Define.strMOPClickBanner;
@@ -51,7 +51,7 @@ public class exeBean {
 //			mission = Define.strMOPUranai;
 //			mission = Define.strMOPNanyoubi;
 //			mission = Define.strMOPAnzan;
-//			mission = Define.strMOPChirachi; //XMLiretenai
+//			mission = Define.strMOPChirachi;
 //			// ■■■■■osaifu■■■■■
 //			mission = Define.strOSAClickBanner;
 //			mission = Define.strOSAQuiz;
@@ -85,6 +85,7 @@ public class exeBean {
 //			mission = Define.strPICUranai;
 //			mission = Define.strPICClickBanner;
 //			mission = Define.strPICPriceChyosatai;
+			mission = Define.strPICShindan;
 //			// ■■■■■SUGUTAMA■■■■■
 //			mission = Define.strSUGUranai;
 //			mission = Define.strSUGQuiz;
@@ -99,6 +100,8 @@ public class exeBean {
 //			mission = Define.strCITPriceChyosatai;
 //			mission = Define.strCITShindan;
 //			mission = Define.strCITToidas;
+//			mission = Define.strCITChirachi;
+//			mission = Define.strCITClickBanner;
 //			// ■■■■■PointMonkey■■■■■
 //			mission = Define.strPMOChyosatai;
 //			// サイト単位

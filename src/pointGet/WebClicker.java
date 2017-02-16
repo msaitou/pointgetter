@@ -60,6 +60,7 @@ import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
 import pointGet.mission.pic.PICClickBanner;
 import pointGet.mission.pic.PICPriceChyosatai;
+import pointGet.mission.pic.PICShindan;
 import pointGet.mission.pic.PICUranai;
 import pointGet.mission.pil.PILClickBanner;
 import pointGet.mission.pil.PILQuiz;
@@ -147,7 +148,7 @@ public class WebClicker extends PointGet {
 	 */
 	public static void exeSite(String[] args, ArrayList<String> missionArr) {
 		init(args);
-		logg.info("◆◆◆◆◆◆Start!!◆◆◆◆◆◆◆");
+		logg.info("======exeSiteStart======");
 		for (String site : visitSites) {
 			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
 					Define.PSITE_CODE_PEX, // pex
@@ -164,7 +165,7 @@ public class WebClicker extends PointGet {
 			missionArr.clear();
 		}
 		roopMisssion(missionList);
-		logg.info("◆◆◆◆◆◆◆End!!!!◆◆◆◆◆◆◆");
+		logg.info("======exeSite End ======");
 	}
 
 	/**
@@ -172,7 +173,7 @@ public class WebClicker extends PointGet {
 	 */
 	public static void main(String[] args) {
 		init(args);
-		logg.info("Start!!");
+		logg.info("======mainStart======");
 		ArrayList<String> missionArr = new ArrayList<String>();
 		for (String site : visitSites) {
 			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
@@ -190,7 +191,7 @@ public class WebClicker extends PointGet {
 			missionArr.clear();
 		}
 		roopMisssion(missionList);
-		logg.info("can not read properties!!");
+		logg.info("======mainEND======");
 	}
 
 	private static void roopMisssion(ArrayList<Mission> missionList) {
@@ -199,7 +200,6 @@ public class WebClicker extends PointGet {
 			logg.info("roopStart!!");
 			WebDriver driver = getWebDriver();
 			int CompCnt = 0;
-			int limitCnt = 0;
 			while (true) {
 				for (Mission mission : missionList) {
 					if (mission.isCompFlag()) {
@@ -234,12 +234,12 @@ public class WebClicker extends PointGet {
 	 */
 	public static void sub(String site, String strFlag, String mission) {
 		init(new String[] { strFlag });
-		logg.info("Start!!");
+		logg.info("======subStart======");
 		ArrayList<String> missionArr = new ArrayList<String>();
 		missionArr.add(mission);
 		goToClickSite(site, missionArr);
 		roopMisssion(missionList);
-		logg.info("End!!");
+		logg.info("======subEnd======");
 	}
 
 	/**
@@ -787,6 +787,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strPICUranai);
 				missions.add(Define.strPICClickBanner);
 				missions.add(Define.strPICPriceChyosatai);
+				missions.add(Define.strPICShindan);
 			}
 			//			if (secondFlg || thirdFlg) {
 			//				missions.add(Define.strMOBNanyoubi);
@@ -812,6 +813,10 @@ public class WebClicker extends PointGet {
 				case Define.strPICPriceChyosatai: // ■PICPrice調査隊
 					Mission PICPriceChyosatai = new PICPriceChyosatai(logg, commonProps);
 					PICPriceChyosatai.exePrivateMission(driver);
+					break;
+				case Define.strPICShindan: // ■PIC毎日診断
+					Mission PICShindan = new PICShindan(logg, commonProps);
+					PICShindan.exePrivateMission(driver);
 					break;
 				default:
 			}

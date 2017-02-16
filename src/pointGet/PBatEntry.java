@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,13 +20,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class PBatEntry {
+public class PBatEntry extends PointGet {
 
 	private static final String xmlFile = "pgBatFileProp.xml";
 
 	public static void main(String[] args) {
-//		_setLogger("log4jweb.properties", WebClicker.class);
-//		logg.info("◆◆◆◆◆◆Start!!◆◆◆◆◆◆◆");
+		_setLogger("log4jweb.properties", WebClicker.class);
 		// 現在日時を取得して、その時間(24形式)を利用
 		String nowHour = Utille.getNowTimeStr("HH");
 		System.out.println("nowHour:" + nowHour);
@@ -41,9 +41,9 @@ public class PBatEntry {
 		}
 		System.out.println("m:" + m.toString());
 
-		HashMap<String, ArrayList<String>> missionMap = new HashMap<String, ArrayList<String>>();
+		LinkedHashMap<String, ArrayList<String>> missionMap = new LinkedHashMap<String, ArrayList<String>>();
 		if (m.get(key).size() > 0) {
-
+			logg.info("◆◆◆◆◆◆Start!!◆◆◆◆◆◆◆");
 			// 抽出した値に対応するMissionを順次(順番)に直列に実行
 			for (String strMission : m.get(key)) {
 				// mail,point以外なら
@@ -64,7 +64,6 @@ public class PBatEntry {
 			}
 			// カテゴリーごとにmain関数をコール
 			for (Map.Entry<String, ArrayList<String>> map : missionMap.entrySet()) {
-
 				if (map.getValue() != null) {
 					WebClicker.isDoingFlag = true;
 					WebClicker.exeSite(new String[] { "0", map.getKey() }, map.getValue());
@@ -74,10 +73,10 @@ public class PBatEntry {
 			}
 			WebClicker.isDoingFlag = false;
 			WebClicker.exeSite(new String[] { "0", "000" }, new ArrayList<String>());
+			logg.info("◆◆◆◆◆◆END!!◆◆◆◆◆◆◆");
 		} else {
 			System.out.println("no planed mission ;-<");
 		}
-
 	}
 
 	/**

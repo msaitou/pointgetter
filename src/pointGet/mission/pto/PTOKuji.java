@@ -22,7 +22,7 @@ public class PTOKuji extends Mission {
 		{
 			put("くじ赤", new HashMap<String, String>() {
 				{
-					put("url", "http://www.pointtown.com/ptu/shopping/top.do	");
+					put("url", "http://www.pointtown.com/ptu/shopping/top.do");
 					put("sele", "a#red_kuji>img");
 				}
 			});
@@ -99,7 +99,7 @@ public class PTOKuji extends Mission {
 						sele = "div.ptpc-search-box__hotword>a";
 					}
 					if (isExistEle(driver, sele)) {
-						for (int i = 0; i < 2; i++) {
+						for (int i = 0; i < 4; i++) {
 							List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
 							if (isExistEle(eleList, i)) { // 最初のリンクをクリック
 								logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
@@ -119,21 +119,21 @@ public class PTOKuji extends Mission {
 						}
 					}
 					break;
-//				case "くじ青":
-//					sele = "ul.list li.tit_topic strong>a";
-//					if (isExistEle(driver, sele)) {
-//						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
-//						if (isExistEle(eleList, 0)) { // 最初のリンクをクリック
-//							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
-//							clickSleepSelector(eleList, 0, 4000);
-//							if (isExistEle(driver, clMap.getValue().get("sele"))) {
-//								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
-//								clickSleepSelector(driver, clMap.getValue().get("sele"), 5000);
-//								existFlag = true;
-//							}
-//						}
-//					}
-//					break;
+				//				case "くじ青":
+				//					sele = "ul.list li.tit_topic strong>a";
+				//					if (isExistEle(driver, sele)) {
+				//						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
+				//						if (isExistEle(eleList, 0)) { // 最初のリンクをクリック
+				//							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
+				//							clickSleepSelector(eleList, 0, 4000);
+				//							if (isExistEle(driver, clMap.getValue().get("sele"))) {
+				//								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
+				//								clickSleepSelector(driver, clMap.getValue().get("sele"), 5000);
+				//								existFlag = true;
+				//							}
+				//						}
+				//					}
+				//					break;
 				default:
 			}
 			if (existFlag) {
