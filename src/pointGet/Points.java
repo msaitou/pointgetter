@@ -60,8 +60,14 @@ public class Points extends PointGet {
 					}
 					break;
 				case Define.PSITE_CODE_MOP:
-					driver.get("http://pc.moppy.jp/bankbook/");
+					driver.get("http://pc.moppy.jp/");
+					selector = "div#preface>ul.pre__login__inner";
+					if (!isExistEle(driver, selector)) {
+						// login!!
+						LoginSite.login(Define.PSITE_CODE_MOP, driver, logg);
+					}
 					selector = "div#point_blinking strong";
+					driver.get("http://pc.moppy.jp/bankbook/");
 					if (isExistEle(driver, selector)) {
 						point = driver.findElement(By.cssSelector(selector)).getText();
 						outPut = "[" + Define.PSITE_CODE_MOP + ":" + getNumber(point);
@@ -85,6 +91,12 @@ public class Points extends PointGet {
 					}
 					break;
 				case Define.PSITE_CODE_OSA:
+					selector = "ul.userinfo";
+					driver.get("http://osaifu.com/");
+					if (!isExistEle(driver, selector)) {
+						// login!!
+						LoginSite.login(Define.PSITE_CODE_OSA, driver, logg);
+					}
 					selector = "dl.bankbook-total>dd.current.coin>span";
 					driver.get("https://osaifu.com/contents/bankbook/top/");
 					if (isExistEle(driver, selector)) {

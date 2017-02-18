@@ -41,11 +41,15 @@ public class LoginSite extends PointGet {
 			case Define.PSITE_CODE_PIC:
 				loginPic(driver, logg);
 				break;
+			case Define.PSITE_CODE_MOP:
+				loginMop(driver, logg);
+				break;
+			case Define.PSITE_CODE_OSA:
+				loginOsa(driver, logg);
+				break;
 			case Define.PSITE_CODE_GMY:
 			case Define.PSITE_CODE_GEN:
 			case Define.PSITE_CODE_ECN:
-			case Define.PSITE_CODE_MOP:
-			case Define.PSITE_CODE_OSA:
 			case Define.PSITE_CODE_I2I:
 			case Define.PSITE_CODE_MOB:
 			case Define.PSITE_CODE_CIT:
@@ -57,6 +61,44 @@ public class LoginSite extends PointGet {
 			case Define.PSITE_CODE_SUG:
 			default:
 				return;
+		}
+	}
+
+	/**
+	 * @param driver
+	 * @param logg
+	 */
+	public static void loginOsa(WebDriver driver, Logger logg) {
+		driver.get("https://osaifu.com/contents/login/");
+		Utille.sleep(2000);
+		if (Utille.isExistEle(driver, "input[name='tel_or_email']", logg)) {
+			WebElement ele = driver.findElement(By.cssSelector("input[name='tel_or_email']"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_OSA).get("loginid"));
+			ele = driver.findElement(By.cssSelector("input[name='passwd']"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_OSA).get("loginpass"));
+			driver.findElement(By.cssSelector("input[name='submit']")).click();
+			Utille.sleep(5000);
+		}
+	}
+
+	/**
+	 * @param driver
+	 * @param logg
+	 */
+	public static void loginMop(WebDriver driver, Logger logg) {
+		driver.get("https://ssl.pc.moppy.jp/login/");
+		Utille.sleep(2000);
+		if (Utille.isExistEle(driver, "input[name='mail']", logg)) {
+			WebElement ele = driver.findElement(By.cssSelector("input[name='mail']"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_MOP).get("loginid"));
+			ele = driver.findElement(By.cssSelector("input[name='pass']"));
+			ele.clear();
+			ele.sendKeys(pGetProps.get(Define.PSITE_CODE_MOP).get("loginpass"));
+			driver.findElement(By.cssSelector("div.login-btn>button")).click();
+			Utille.sleep(5000);
 		}
 	}
 

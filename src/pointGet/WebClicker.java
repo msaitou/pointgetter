@@ -374,6 +374,12 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strOSAAnzan);
 			}
 		}
+		String se = "ul.userinfo";
+		driver.get("http://osaifu.com/");
+		if (!isExistEle(driver, se)) {
+			// login!!
+			LoginSite.login(Define.PSITE_CODE_OSA, driver, logg);
+		}
 		for (String mission : missions) {
 			switch (mission) {
 				case Define.strOSAQuiz: // ■daily quiz
@@ -423,6 +429,12 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOPNanyoubi);
 				missions.add(Define.strMOPAnzan);
 			}
+		}
+		driver.get("http://pc.moppy.jp/");
+		String se = "div#preface>ul.pre__login__inner";
+		if (!isExistEle(driver, se)) {
+			// login!!
+			LoginSite.login(Define.PSITE_CODE_MOP, driver, logg);
 		}
 		for (String mission : missions) {
 			switch (mission) {

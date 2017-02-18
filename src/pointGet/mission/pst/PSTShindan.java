@@ -16,13 +16,13 @@ import pointGet.mission.Mission;
  * @author saitou
  *
  */
-public class CITShindan extends Mission {
+public class PSTShindan extends Mission {
 	final String url = "http://www.chance.com/research/";
 
 	/**
 	 * @param logg
 	 */
-	public CITShindan(Logger logg, Map<String, String> cProps) {
+	public PSTShindan(Logger logg, Map<String, String> cProps) {
 		super(logg, cProps);
 		this.mName = "■CIT毎日診断";
 	}
