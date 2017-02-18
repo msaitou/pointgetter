@@ -162,7 +162,7 @@ public abstract class Mission {
 	 * @param selector
 	 */
 	protected void clickSelector(WebDriver driver, String selector) {
-		driver.findElement(By.cssSelector(selector)).click();
+		clickSelector(driver.findElement(By.cssSelector(selector)));
 	}
 
 	/**
@@ -171,7 +171,7 @@ public abstract class Mission {
 	 * @param index
 	 */
 	protected void clickSelector(List<WebElement> eleList, int index) {
-		eleList.get(index).click();
+		clickSelector(eleList.get(index));
 	}
 
 	/**
@@ -180,7 +180,16 @@ public abstract class Mission {
 	 * @param selector
 	 */
 	protected void clickSelector(WebElement ele, String selector) {
-		ele.findElement(By.cssSelector(selector)).click();
+		clickSelector(ele.findElement(By.cssSelector(selector)));
+	}
+
+	/**
+	 *
+	 * @param ele
+	 * @param selector
+	 */
+	protected void clickSelector(WebElement ele) {
+		ele.click();
 	}
 
 	/**
@@ -190,8 +199,7 @@ public abstract class Mission {
 	 * @param milliSeconds
 	 */
 	protected void clickSleepSelector(WebDriver driver, String selector, int milliSeconds) {
-		clickSelector(driver, selector);
-		Utille.sleep(milliSeconds);
+		clickSleepSelector(driver.findElement(By.cssSelector(selector)), milliSeconds);
 	}
 
 	/**
@@ -201,8 +209,7 @@ public abstract class Mission {
 	 * @param milliSeconds
 	 */
 	protected void clickSleepSelector(List<WebElement> eleList, int index, int milliSeconds) {
-		clickSelector(eleList, index);
-		Utille.sleep(milliSeconds);
+		clickSleepSelector(eleList.get(index), milliSeconds);
 	}
 
 	/**
@@ -212,7 +219,17 @@ public abstract class Mission {
 	 * @param milliSeconds
 	 */
 	protected void clickSleepSelector(WebElement ele, String selector, int milliSeconds) {
-		clickSelector(ele, selector);
+		clickSleepSelector(ele.findElement(By.cssSelector(selector)), milliSeconds);
+	}
+
+	/**
+	 *
+	 * @param ele
+	 * @param selector
+	 * @param milliSeconds
+	 */
+	protected void clickSleepSelector(WebElement ele, int milliSeconds) {
+		clickSelector(ele);
 		Utille.sleep(milliSeconds);
 	}
 

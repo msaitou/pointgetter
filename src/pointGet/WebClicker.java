@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.mission.Mission;
+import pointGet.mission.cit.CITClickBanner;
 import pointGet.mission.cit.CITPriceChyosatai;
 import pointGet.mission.cit.CITShindan;
 import pointGet.mission.cit.CITToidas;
@@ -930,6 +931,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strCITPriceChyosatai);
 				missions.add(Define.strCITShindan);
 				missions.add(Define.strCITToidas);
+				missions.add(Define.strCITClickBanner);
 			}
 		}
 		for (String mission : missions) {
@@ -945,6 +947,10 @@ public class WebClicker extends PointGet {
 				case Define.strCITToidas: // ■CITトイダス
 					Mission CITToidas = new CITToidas(logg, commonProps);
 					CITToidas.exePrivateMission(driver);
+					break;
+				case Define.strCITClickBanner: // ■CITクリックバナー
+					Mission CITClickBanner = new CITClickBanner(logg, commonProps);
+					CITClickBanner.exePrivateMission(driver);
 					break;
 				default:
 			}

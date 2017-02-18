@@ -42,7 +42,7 @@ public class exeBean {
 //			mission = Define.strGMYPriceChyosatai;
 //			mission = Define.strGMYToidas;
 //			// ■■■■■i2i■■■■■
-			mission = Define.strI2ISeiza;
+//			mission = Define.strI2ISeiza;
 //			// ■■■■■moppy■■■■■
 //			mission = Define.strMOPChyosatai;
 //			mission = Define.strMOPClickBanner;
@@ -70,7 +70,7 @@ public class exeBean {
 //			mission = Define.strPEXPectan;
 //			mission = Define.strPEXSearch;
 //			// ■■■■■rakuten■■■■■
-//			mission = Define.strRINClickBanner;
+			mission = Define.strRINClickBanner;
 //			// ■■■■■PointTown■■■■■
 //			mission = Define.strPTOClickCorner;
 //			mission = Define.strPTOKuji;
