@@ -38,7 +38,7 @@ public class PICShindan extends Mission {
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 8000); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			while (true) {
 				selector = "div.entry";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));

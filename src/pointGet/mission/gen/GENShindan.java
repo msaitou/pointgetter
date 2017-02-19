@@ -39,7 +39,7 @@ public class GENShindan extends Mission {
 		if (isExistEle(driver, selector)) {
 			driver.get("http://www.gendama.jp/shindan_content/");
 //			clickSleepSelector(driver, selector, 4000); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			while (true) {
 				selector = "div.entry";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));

@@ -47,12 +47,12 @@ public class GENUranai extends Mission {
 						break;
 					}
 					clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
-					changeWindow(driver);
+					changeCloseWindow(driver);
 					// // アラートをけして
 					// val alert = driver.switchTo().alert();
 					// alert.accept();
 					Utille.sleep(4000);
-					// changeWindow(driver);
+					// changeCloseWindow(driver);
 
 					selector = "div#parts-slide-button__action a>img"; // 占い始める
 																		// 全体へ

@@ -1,4 +1,4 @@
-package pointGet.mission.mop;
+package pointGet.mission.sug;
 
 import java.util.Map;
 
@@ -11,18 +11,17 @@ import pointGet.mission.Mission;
 /**
  *
  * @author saitou
- * 0時、8時、16時開催
  */
-public class MOPQuiz extends Mission {
-	final String url = "http://pc.moppy.jp/gamecontents/";
+public class SUGQuiz2 extends Mission {
+	final String url = "http://www.sugutama.jp/survey";
 	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
-	public MOPQuiz(Logger logg, Map<String, String> cProps) {
+	public SUGQuiz2(Logger logg, Map<String, String> cProps) {
 		super(logg, cProps);
-		this.mName = "■モッピークイズ";
+		this.mName = "■SUGクイズ2";
 	}
 
 	@Override
@@ -36,10 +35,9 @@ public class MOPQuiz extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "div.game_btn>div.icon>img[alt='モッピークイズ']";
+		selector = "img[src='//static.sugutama.jp/ssp_site/2fb22acc41c35e4d518394cc1988b282.png']";
 		if (isExistEle(driver, selector)) {
-			clickSleepSelector(driver, selector, 2000); // 遷移
-
+			clickSleepSelector(driver, selector, 3000); // 遷移 全体へ
 			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
 			// finish condition
@@ -60,14 +58,11 @@ public class MOPQuiz extends Mission {
 						String selectId = "label[for='radio-";
 						if (ran == 0) {
 							selectId += "1']";
-						}
-						else if (ran == 1) {
+						} else if (ran == 1) {
 							selectId += "2']";
-						}
-						else if (ran == 2) {
+						} else if (ran == 2) {
 							selectId += "3']";
-						}
-						else {
+						} else {
 							selectId += "4']";
 						}
 						// 8kai roop
@@ -75,7 +70,7 @@ public class MOPQuiz extends Mission {
 						if (isExistEle(driver, selectId)) {
 							clickSleepSelector(driver, selectId, 4000); // 遷移
 							int ranSleep = Utille.getIntRand(9);
-							Utille.sleep(ranSleep*1000);
+							Utille.sleep(ranSleep * 1000);
 							waitTilReady(driver);
 							if (isExistEle(driver, selector2)) {
 								waitTilReady(driver);
@@ -84,10 +79,6 @@ public class MOPQuiz extends Mission {
 								if (isExistEle(driver, selector2)) {
 									clickSleepSelector(driver, selector2, 3000); // 遷移
 									checkOverlay(driver, "div.overlay-popup a.button-close");
-
-									//									driver.navigate().refresh();
-									//									val alert = driver.switchTo().alert();
-									//									alert.accept();
 								}
 							}
 						}
@@ -99,8 +90,7 @@ public class MOPQuiz extends Mission {
 					clickSleepSelector(driver, selector, 3000);
 					waitTilReady(driver);
 				}
-			}
-			else {
+			} else {
 				logg.warn(this.mName + "]獲得済み");
 			}
 		}

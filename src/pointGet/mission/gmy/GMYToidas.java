@@ -37,7 +37,7 @@ public class GMYToidas extends Mission {
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 7500); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			while (true) {
 				driver.switchTo().defaultContent();
 				//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み

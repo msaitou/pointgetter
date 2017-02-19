@@ -43,7 +43,7 @@ public class MOBNanyoubi extends Mission {
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
 			// finish condition
 			String finishSelector = "p.ui-timer";

@@ -37,7 +37,7 @@ public class CITToidas extends Mission {
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 5500); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			while (true) {
 				driver.switchTo().defaultContent();
 				//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み

@@ -38,7 +38,7 @@ public class PICPriceChyosatai extends Mission {
 			selector = "a[href='http://pointi.jp/api/prices.php']>img[alt='プライス調査隊']";
 			if (isExistEle(driver, selector)) {
 				clickSleepSelector(driver, selector, 4000); // 遷移
-				changeWindow(driver);
+				changeCloseWindow(driver);
 				Utille.sleep(1000);
 				checkOverlay(driver, overlaySelector);
 				if (isExistEle(driver, footBnrSelector)

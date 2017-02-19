@@ -58,7 +58,7 @@ public class exeBean {
 //			mission = Define.strOSAShindan;
 //			mission = Define.strOSAUranai;
 //			mission = Define.strOSANanyoubi;
-//			mission = Define.strOSAAnzan;
+			mission = Define.strOSAAnzan;
 //			// ■■■■■PEX■■■■■
 //			mission = Define.strPEX4quiz;
 //			mission = Define.strPEXAnswer;
@@ -70,7 +70,7 @@ public class exeBean {
 //			mission = Define.strPEXPectan;
 //			mission = Define.strPEXSearch;
 //			// ■■■■■rakuten■■■■■
-			mission = Define.strRINClickBanner;
+//			mission = Define.strRINClickBanner;
 //			// ■■■■■PointTown■■■■■
 //			mission = Define.strPTOClickCorner;
 //			mission = Define.strPTOKuji;
@@ -85,17 +85,19 @@ public class exeBean {
 //			mission = Define.strPICUranai;
 //			mission = Define.strPICClickBanner;
 //			mission = Define.strPICPriceChyosatai;
-			mission = Define.strPICShindan;
+//			mission = Define.strPICShindan;
 //			// ■■■■■SUGUTAMA■■■■■
 //			mission = Define.strSUGUranai;
 //			mission = Define.strSUGQuiz;
 //			// ■■■■■PointStadium■■■■■
 //			mission = Define.strPSTUranai;
 //			mission = Define.strPSTQuiz;
+			mission = Define.strPSTShindanAnk;
 //			// ■■■■■PointIsland■■■■■
 //			mission = Define.strPILUranai;
 //			mission = Define.strPILQuiz;
 //			mission = Define.strPILClickBanner;
+//			mission = Define.strPILShindanAnk;
 //			// ■■■■■CHANCEIT■■■■■
 //			mission = Define.strCITPriceChyosatai;
 //			mission = Define.strCITShindan;

@@ -36,7 +36,7 @@ public class OSAShindan extends Mission {
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 8000); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			while (true) {
 				Utille.sleep(5000);
 //				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため

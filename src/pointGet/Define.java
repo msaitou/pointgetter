@@ -112,20 +112,23 @@ public class Define {
 	// ■■■■■SUGUTAMA■■■■■
 	final public static String strSUGUranai = "SUGUranai";
 	final public static String strSUGQuiz = "SUGQuiz";
+	final public static String strSUGQuiz2 = "SUGQuiz2";
+
 	// ■■■■■pointStadium■■■■■
 	final public static String strPSTUranai = "PSTUranai";
 	final public static String strPSTQuiz = "PSTQuiz";
+	final public static String strPSTShindanAnk = "PSTShindanAnk";
 	// ■■■■■pointisland■■■■■
 	final public static String strPILUranai = "PILUranai";
 	final public static String strPILQuiz = "PILQuiz";
 	final public static String strPILClickBanner = "PILClickBanner";
+	final public static String strPILShindanAnk = "PILShindanAnk";
 	// ■■■■■chanceIt■■■■■
 	final public static String strCITPriceChyosatai = "CITPriceChyosatai";
 	final public static String strCITShindan = "CITShindan";
 	final public static String strCITToidas = "CITToidas";
 	final public static String strCITChirachi = "CITChirachi";
 	final public static String strCITClickBanner = "CITClickBanner";
-
 	// ■■■■■PointMonkey■■■■■
 	final public static String strPMOChyosatai = "PMOChyosatai";
 

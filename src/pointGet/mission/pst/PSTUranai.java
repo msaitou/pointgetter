@@ -29,12 +29,12 @@ public class PSTUranai extends Mission {
 		selector = "form[name='ItemList']>p>input[name='entry']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			Utille.sleep(3000);
 			String uranaiSelector = "a>img[alt='uranai']";
 			if (isExistEle(driver, uranaiSelector)) {
 				clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
-				changeWindow(driver);
+				changeCloseWindow(driver);
 				Utille.sleep(4000);
 				selector = "div#parts-slide-button__action a>img"; // 占い始める
 				String selector1 = "section>div>form>input[type=image]";

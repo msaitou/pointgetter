@@ -65,9 +65,11 @@ import pointGet.mission.pic.PICShindan;
 import pointGet.mission.pic.PICUranai;
 import pointGet.mission.pil.PILClickBanner;
 import pointGet.mission.pil.PILQuiz;
+import pointGet.mission.pil.PILShindanAnk;
 import pointGet.mission.pil.PILUranai;
 import pointGet.mission.pmo.PMOChyosatai;
 import pointGet.mission.pst.PSTQuiz;
+import pointGet.mission.pst.PSTShindanAnk;
 import pointGet.mission.pst.PSTUranai;
 import pointGet.mission.pto.PTOClickCorner;
 import pointGet.mission.pto.PTODaily;
@@ -75,6 +77,7 @@ import pointGet.mission.pto.PTOKuji;
 import pointGet.mission.pto.PTOUranai;
 import pointGet.mission.rin.RINClickBanner;
 import pointGet.mission.sug.SUGQuiz;
+import pointGet.mission.sug.SUGQuiz2;
 import pointGet.mission.sug.SUGUranai;
 
 /**
@@ -843,19 +846,20 @@ public class WebClicker extends PointGet {
 	private static void goToClickSUG(WebDriver driver, ArrayList<String> missions) {
 		if (missions.size() == 0) {
 			missions.add(Define.strSUGQuiz);
+			missions.add(Define.strSUGQuiz2);
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strSUGUranai);
 			}
-			//						if (secondFlg || thirdFlg) {
-			//							missions.add(Define.strMOBNanyoubi);
-			//							missions.add(Define.strMOBAnzan);
-			//						}
 		}
 		for (String mission : missions) {
 			switch (mission) {
-				case Define.strSUGQuiz: // ■モッピークイズ
+				case Define.strSUGQuiz: // ■SUGクイズ
 					Mission SUGQuiz = new SUGQuiz(logg, commonProps);
 					SUGQuiz.exeRoopMission(driver);
+					break;
+				case Define.strSUGQuiz2: // ■SUGクイズ2
+					Mission SUGQuiz2 = new SUGQuiz2(logg, commonProps);
+					SUGQuiz2.exeRoopMission(driver);
 					break;
 				case Define.strSUGUranai: // ■占い
 					Mission SUGUranai = new SUGUranai(logg, commonProps);
@@ -875,11 +879,8 @@ public class WebClicker extends PointGet {
 			missions.add(Define.strPSTQuiz);
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strPSTUranai);
+				missions.add(Define.strPSTShindanAnk);
 			}
-			//						if (secondFlg || thirdFlg) {
-			//							missions.add(Define.strMOBNanyoubi);
-			//							missions.add(Define.strMOBAnzan);
-			//						}
 		}
 		for (String mission : missions) {
 			switch (mission) {
@@ -890,6 +891,10 @@ public class WebClicker extends PointGet {
 				case Define.strPSTUranai: // ■占い
 					Mission PSTUranai = new PSTUranai(logg, commonProps);
 					PSTUranai.exePrivateMission(driver);
+					break;
+				case Define.strPSTShindanAnk: // ■PST診断＆アンケート
+					Mission PSTShindanAnk = new PSTShindanAnk(logg, commonProps);
+					PSTShindanAnk.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -906,11 +911,8 @@ public class WebClicker extends PointGet {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strPILUranai);
 				missions.add(Define.strPILClickBanner);
+				missions.add(Define.strPILShindanAnk);
 			}
-			//						if (secondFlg || thirdFlg) {
-			//							missions.add(Define.strMOBNanyoubi);
-			//							missions.add(Define.strMOBAnzan);
-			//						}
 		}
 		// login!!
 		LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
@@ -927,6 +929,10 @@ public class WebClicker extends PointGet {
 				case Define.strPILUranai: // ■PIL占い
 					Mission PILUranai = new PILUranai(logg, commonProps);
 					PILUranai.exePrivateMission(driver);
+					break;
+				case Define.strPILShindanAnk: // ■PIL診断＆アンケート
+					Mission PILShindanAnk = new PILShindanAnk(logg, commonProps);
+					PILShindanAnk.exePrivateMission(driver);
 					break;
 				default:
 			}

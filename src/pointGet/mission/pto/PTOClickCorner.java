@@ -77,12 +77,13 @@ public class PTOClickCorner extends Mission {
 				if (isExistEle(eleList, i)) {
 					logg.info(mName + " " + c + ".サービスページ下! " + i);
 					clickSleepSelector(eleList, i, 5000);
-					java.util.Set<String> widSet = driver.getWindowHandles();
-					for (String id : widSet) {
-						if (!id.equals(wid)) {
-							driver.switchTo().window(id);
-						}
-					}
+					changeWindow(driver, wid);
+//					java.util.Set<String> widSet = driver.getWindowHandles();
+//					for (String id : widSet) {
+//						if (!id.equals(wid)) {
+//							driver.switchTo().window(id);
+//						}
+//					}
 					String sele2 = "div.service-btn a";
 					if (isExistEle(driver, sele2)) {
 						logg.info(mName + " " + c + ".サービスページ下! " + i + " click!!");

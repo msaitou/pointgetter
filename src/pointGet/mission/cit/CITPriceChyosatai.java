@@ -38,7 +38,7 @@ public class CITPriceChyosatai extends Mission {
 			selector = "a[href='http://www.chance.com/game/price/play.jsp']>img[alt='プライス調査隊']";
 			if (isExistEle(driver, selector)) {
 				clickSleepSelector(driver, selector, 4000); // 遷移
-				changeWindow(driver);
+				changeCloseWindow(driver);
 				Utille.sleep(1000);
 				checkOverlay(driver, overlaySelector);
 				if (isExistEle(driver, footBnrSelector)

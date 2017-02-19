@@ -36,7 +36,7 @@ public class MOPShindan extends Mission {
 		selector = "div.game_btn>div.icon>img[alt='毎日診断']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 
 			while (true) {
 //				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため

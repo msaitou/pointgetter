@@ -39,12 +39,12 @@ public class PILQuiz extends Mission {
 		selector = "form#wcmpoint>input.style8";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			Utille.sleep(3000);
 			String uranaiSelector = "a>img[alt='ceres']";
 			if (isExistEle(driver, uranaiSelector)) {
 				clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
-				changeWindow(driver);
+				changeCloseWindow(driver);
 				checkOverlay(driver, "div.overlay-popup a.button-close");
 				// finish condition
 				String finishSelector = "p.ui-timer";

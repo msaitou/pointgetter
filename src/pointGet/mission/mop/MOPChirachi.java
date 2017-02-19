@@ -33,7 +33,7 @@ public class MOPChirachi extends Mission {
 		selector = "div.icon>img[alt='モッピーチラシ']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 4000); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			selector = "figure.flyer__item__thumbnail>img";
 			int size = getSelectorSize(driver, selector);
 			for (int i = 0; i < size; i++) {

@@ -41,6 +41,7 @@ public abstract class Mission {
 	protected static Map<String, String> commonProps = new HashMap<String, String>();
 
 	protected WebDriver driver = null;
+
 	/**
 	 * constracter
 	 *
@@ -275,7 +276,7 @@ public abstract class Mission {
 	 *
 	 * @param driver
 	 */
-	protected void changeWindow(WebDriver driver) {
+	protected void changeCloseWindow(WebDriver driver) {
 		String wid = driver.getWindowHandle();
 		java.util.Set<String> widSet = driver.getWindowHandles();
 		if (widSet.size() > 1) {
@@ -290,6 +291,21 @@ public abstract class Mission {
 			driver.close();
 			// 最後に格納したウインドウIDにスイッチ
 			driver.switchTo().window(new_window_id);
+		}
+	}
+
+	/**
+	 * to active the new windows
+	 *
+	 * @param driver
+	 * @param wid
+	 */
+	protected void changeWindow(WebDriver driver, String wid) {
+		java.util.Set<String> widSet = driver.getWindowHandles();
+		for (String id : widSet) {
+			if (!id.equals(wid)) {
+				driver.switchTo().window(id);
+			}
 		}
 	}
 

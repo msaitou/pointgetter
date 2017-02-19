@@ -38,7 +38,7 @@ public class PMOChyosatai extends Mission {
 			selector = "img[alt='トキメキ調査隊']";
 			if (isExistEle(driver, selector)) {
 				clickSleepSelector(driver, selector, 4000); // 遷移
-				changeWindow(driver);
+				changeCloseWindow(driver);
 				checkOverlay(driver, overlaySelector);
 				if (isExistEle(driver, footBnrSelector)
 						&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {

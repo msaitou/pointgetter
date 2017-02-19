@@ -38,7 +38,7 @@ public class MOPAnzan extends Mission {
 		selector = "div.game_btn>div.icon>img[alt='ANZANmental arithmetic']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
-			changeWindow(driver);
+			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
 			// finish condition
 			String finishSelector = "p.ui-timer";

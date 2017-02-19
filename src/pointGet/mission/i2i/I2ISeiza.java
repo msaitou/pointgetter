@@ -44,12 +44,12 @@ public class I2ISeiza extends Mission {
 						break;
 					}
 					clickSleepSelector(e, selector2, 4000);
-//					changeWindow(driver);
+//					changeCloseWindow(driver);
 					// アラートをけして
 					val alert = driver.switchTo().alert();
 					alert.accept();
 					Utille.sleep(5000);
-					changeWindow(driver);
+					changeCloseWindow(driver);
 
 					selector = "div#parts-slide-button__action a>img"; // 占い始める　全体へ
 					String selector1 = "section>div>form>input[type=image]";
