@@ -43,7 +43,7 @@ public class I2ISeiza extends Mission {
 					if (!isExistEle(e, selector2)) {
 						break;
 					}
-					clickSleepSelector(e, selector2, 4000);
+					clickSleepSelector(e, selector2, 5000);
 //					changeCloseWindow(driver);
 					// アラートをけして
 					val alert = driver.switchTo().alert();

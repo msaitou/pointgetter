@@ -42,7 +42,7 @@ public class exeBean {
 //			mission = Define.strGMYPriceChyosatai;
 //			mission = Define.strGMYToidas;
 //			// ■■■■■i2i■■■■■
-//			mission = Define.strI2ISeiza;
+			mission = Define.strI2ISeiza;
 //			// ■■■■■moppy■■■■■
 //			mission = Define.strMOPChyosatai;
 //			mission = Define.strMOPClickBanner;
@@ -50,7 +50,7 @@ public class exeBean {
 //			mission = Define.strMOPShindan;
 //			mission = Define.strMOPUranai;
 //			mission = Define.strMOPNanyoubi;
-//			mission = Define.strMOPAnzan;
+			mission = Define.strMOPAnzan;
 //			mission = Define.strMOPChirachi;
 //			// ■■■■■osaifu■■■■■
 //			mission = Define.strOSAClickBanner;
@@ -58,7 +58,7 @@ public class exeBean {
 //			mission = Define.strOSAShindan;
 //			mission = Define.strOSAUranai;
 //			mission = Define.strOSANanyoubi;
-			mission = Define.strOSAAnzan;
+//			mission = Define.strOSAAnzan;
 //			// ■■■■■PEX■■■■■
 //			mission = Define.strPEX4quiz;
 //			mission = Define.strPEXAnswer;
@@ -92,7 +92,7 @@ public class exeBean {
 //			// ■■■■■PointStadium■■■■■
 //			mission = Define.strPSTUranai;
 //			mission = Define.strPSTQuiz;
-			mission = Define.strPSTShindanAnk;
+//			mission = Define.strPSTShindanAnk;
 //			// ■■■■■PointIsland■■■■■
 //			mission = Define.strPILUranai;
 //			mission = Define.strPILQuiz;

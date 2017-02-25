@@ -17,7 +17,7 @@ import pointGet.mission.Mission;
  *
  */
 public class CITShindan extends Mission {
-	final String url = "http://www.chance.com/research/";
+	final String url = "http://www.chance.com/game/";
 
 	/**
 	 * @param logg
@@ -34,7 +34,7 @@ public class CITShindan extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		selector = "img[src='/img/research/bnr_shindantest.png']";
+		selector = "a[href='http://www.chance.com/research/shindan/play.jsp']>img[alt='診断テスト']";
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 5000); // 遷移
