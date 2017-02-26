@@ -19,14 +19,29 @@ import pointGet.mission.Mission;
 public class PTOKuji extends Mission {
 	final String url = "";
 	private static HashMap<String, HashMap<String, String>> clickMap = new HashMap<String, HashMap<String, String>>() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		{
 			put("くじ赤", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/shopping/top.do");
 					put("sele", "a#red_kuji>img");
 				}
 			});
 			put("くじ黄", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/shopping/top.do");
 					put("sele", "a#yellow_kuji");
@@ -34,24 +49,44 @@ public class PTOKuji extends Mission {
 				}
 			});
 			put("くじ紫", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/pointpark/comparison/creditcardsearch.do");
 					put("sele", "a>img[alt='三角くじ紫']");
 				}
 			});
 			put("くじ桃", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/coupon/top.do");
 					put("sele", "a>img[alt='三角くじ桃']");
 				}
 			});
 			put("くじ青", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/");
 					put("sele", "a>img[alt='三角くじ青']");
 				}
 			});
 			put("うさくじ", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/odekake/top.do");
 					put("sele", "a#red_kuji>img");

@@ -76,6 +76,7 @@ public class Define {
 	final public static String strOSAUranai = "OSAUranai";
 	final public static String strOSANanyoubi = "OSANanyoubi";
 	final public static String strOSAAnzan = "OSAAnzan";
+	final public static String strOSAChirachi = "OSAChirachi";
 
 	// ■■■■■PEX■■■■■
 	final public static String strPEX4quiz = "PEX4quiz";
@@ -102,6 +103,7 @@ public class Define {
 	final public static String strMOBNanyoubi = "MOBNanyoubi";
 	final public static String strMOBQuiz = "MOBQuiz";
 	final public static String strMOBClickBanner = "MOBClickBanner";
+	final public static String strMOBChirachi = "MOBChirachi";
 
 	// ■■■■■PointInCome■■■■■
 	final public static String strPICUranai = "PICUranai";
@@ -132,6 +134,9 @@ public class Define {
 	// ■■■■■PointMonkey■■■■■
 	final public static String strPMOChyosatai = "PMOChyosatai";
 
+	// ■■■■■ちょびリッチ■■■■■
+	final public static String strCRIChirachi = "CRIChirachi";
+	
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";
 	final public static String CONTENT_TYPE_HTML = "text/html";

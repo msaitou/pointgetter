@@ -18,20 +18,40 @@ import pointGet.mission.Mission;
 public class PTOClickCorner extends Mission {
 	final String url = "";
 	private static HashMap<String, HashMap<String, String>> clickMap = new HashMap<String, HashMap<String, String>>() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		{
 			put("topページ上click", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "https://www.pointtown.com/ptu/index.do");
 					put("sele", "a.ptpc-panel--click-corner__main-link>img");
 				}
 			});
 			put("マイページ", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/mypage/top.do");
 					put("sele", "div.click-bnr img");
 				}
 			});
 			put("メールボックス", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/mail_box/list.do");
 					put("sele", "div#clickBx3 img");
@@ -78,12 +98,12 @@ public class PTOClickCorner extends Mission {
 					logg.info(mName + " " + c + ".サービスページ下! " + i);
 					clickSleepSelector(eleList, i, 5000);
 					changeWindow(driver, wid);
-//					java.util.Set<String> widSet = driver.getWindowHandles();
-//					for (String id : widSet) {
-//						if (!id.equals(wid)) {
-//							driver.switchTo().window(id);
-//						}
-//					}
+					//					java.util.Set<String> widSet = driver.getWindowHandles();
+					//					for (String id : widSet) {
+					//						if (!id.equals(wid)) {
+					//							driver.switchTo().window(id);
+					//						}
+					//					}
 					String sele2 = "div.service-btn a";
 					if (isExistEle(driver, sele2)) {
 						logg.info(mName + " " + c + ".サービスページ下! " + i + " click!!");

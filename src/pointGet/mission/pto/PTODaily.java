@@ -19,32 +19,62 @@ import pointGet.mission.Mission;
 public class PTODaily extends Mission {
 	final String url = "http://www.pointtown.com/ptu/mypage/top.do";
 	private static HashMap<String, HashMap<String, String>> clickMap = new HashMap<String, HashMap<String, String>>() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		{
 			put("ポイント争奪戦", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/competition/entry.do");
 					put("sele", "a.btn-green");
 				}
 			});
 			put("ぽいっとアンケート", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/vote/entry.do");
 					put("sele", "input[name='user_choice']");
 				}
 			});
 			put("べじもん", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/collection/index.do");
 					put("sele", "div.bnArea dt>a>img");
 				}
 			});
 			put("ポイントQ", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/quiz/input.do");
 					put("sele", "input#answer");
 				}
 			});
 			put("ポイントチャンス", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
 				{
 					put("url", "http://www.pointtown.com/ptu/monitor/top.do#pointChance");
 					put("sele", "li.pointchanceItem>a>img");

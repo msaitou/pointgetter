@@ -59,6 +59,7 @@ public class exeBean {
 //			mission = Define.strOSAUranai;
 //			mission = Define.strOSANanyoubi;
 //			mission = Define.strOSAAnzan;
+			mission = Define.strOSAChirachi;
 //			// ■■■■■PEX■■■■■
 //			mission = Define.strPEX4quiz;
 //			mission = Define.strPEXAnswer;
@@ -81,6 +82,7 @@ public class exeBean {
 //			mission = Define.strMOBNanyoubi;
 //			mission = Define.strMOBQuiz;
 //			mission = Define.strMOBClickBanner;
+//			mission = Define.strMOBChirachi;
 //			// ■■■■■PointInCome■■■■■
 //			mission = Define.strPICUranai;
 //			mission = Define.strPICClickBanner;
@@ -106,6 +108,9 @@ public class exeBean {
 //			mission = Define.strCITClickBanner;
 //			// ■■■■■PointMonkey■■■■■
 //			mission = Define.strPMOChyosatai;
+//			// ■■■■■ちょびリッチ■■■■■
+			mission = Define.strCRIChirachi;
+			
 //			// サイト単位
 //			mission = Define.PSITE_CODE_RIN;
 //			mission = Define.PSITE_CODE_PEX;
@@ -141,6 +146,7 @@ public class exeBean {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void doTest() {
 		// // TODO 数値の比較
 		// String str = "5 - 8 ÷ 7";

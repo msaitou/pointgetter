@@ -14,6 +14,7 @@ import pointGet.mission.cit.CITClickBanner;
 import pointGet.mission.cit.CITPriceChyosatai;
 import pointGet.mission.cit.CITShindan;
 import pointGet.mission.cit.CITToidas;
+import pointGet.mission.cri.CRIChirachi;
 import pointGet.mission.ecn.ECNChinjyu;
 import pointGet.mission.ecn.ECNChirachi;
 import pointGet.mission.ecn.ECNClickBokin;
@@ -34,6 +35,7 @@ import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.gmy.GMYToidas;
 import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
+import pointGet.mission.mob.MOBChirachi;
 import pointGet.mission.mob.MOBClickBanner;
 import pointGet.mission.mob.MOBNanyoubi;
 import pointGet.mission.mob.MOBQuiz;
@@ -46,6 +48,7 @@ import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.mop.MOPShindan;
 import pointGet.mission.mop.MOPUranai;
 import pointGet.mission.osa.OSAAnzan;
+import pointGet.mission.osa.OSAChirachi;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSANanyoubi;
 import pointGet.mission.osa.OSAQuiz;
@@ -91,7 +94,9 @@ public class WebClicker extends PointGet {
 	private static String[] wordList = null;
 	private static boolean secondFlg = false;
 	private static boolean thirdFlg = false;
+	@SuppressWarnings("unused")
 	private static boolean forthFlg = false;
+	@SuppressWarnings("unused")
 	private static boolean testFlag = false;
 	private static String[] defoSiteList = new String[] {
 			Define.PSITE_CODE_PIC, // PointInCome
@@ -110,6 +115,7 @@ public class WebClicker extends PointGet {
 			Define.PSITE_CODE_OSA, // osaifu
 			Define.PSITE_CODE_PTO, // pointtown
 			Define.PSITE_CODE_MOB, // MOBATOKU
+			Define.PSITE_CODE_CRI, // ちょびリッチ
 	};
 	private static String[] visitSites = null;
 	private static String mName = "";
@@ -303,6 +309,9 @@ public class WebClicker extends PointGet {
 				case Define.PSITE_CODE_PMO:
 					goToClickPMO(driver, missionArr);
 					break;
+				case Define.PSITE_CODE_CRI:
+					goToClickCRI(driver, missionArr);
+					break;
 				default:
 			}
 		} catch (Throwable e) {
@@ -375,6 +384,7 @@ public class WebClicker extends PointGet {
 			if (secondFlg || thirdFlg) {
 				missions.add(Define.strOSANanyoubi);
 				missions.add(Define.strOSAAnzan);
+				missions.add(Define.strOSAChirachi);
 			}
 		}
 		String se = "ul.userinfo";
@@ -408,6 +418,10 @@ public class WebClicker extends PointGet {
 				case Define.strOSAAnzan: // ■OSA暗算
 					Mission OSAAnzan = new OSAAnzan(logg, commonProps);
 					OSAAnzan.exeRoopMission(driver);
+					break;
+				case Define.strOSAChirachi: // ■チラシ
+					Mission OSAChirachi = new OSAChirachi(logg, commonProps);
+					OSAChirachi.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -765,13 +779,14 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOBClickBanner);
 			}
 			if (secondFlg || thirdFlg) {
+				missions.add(Define.strMOBChirachi);
 				missions.add(Define.strMOBNanyoubi);
 				missions.add(Define.strMOBAnzan);
 			}
 		}
 		for (String mission : missions) {
 			switch (mission) {
-				case Define.strMOBQuiz: // ■モッピークイズ
+				case Define.strMOBQuiz: // ■モブクイズ
 					Mission MOBQuiz = new MOBQuiz(logg, commonProps);
 					MOBQuiz.exeRoopMission(driver);
 					break;
@@ -779,13 +794,17 @@ public class WebClicker extends PointGet {
 					Mission MOBClickBanner = new MOBClickBanner(logg, commonProps);
 					MOBClickBanner.exePrivateMission(driver);
 					break;
-				case Define.strMOBNanyoubi: // ■MOP何曜日
+				case Define.strMOBNanyoubi: // ■何曜日
 					Mission MOBNanyoubi = new MOBNanyoubi(logg, commonProps);
 					MOBNanyoubi.exeRoopMission(driver);
 					break;
-				case Define.strMOBAnzan: // ■MOP暗算
+				case Define.strMOBAnzan: // ■暗算
 					Mission MOBAnzan = new MOBAnzan(logg, commonProps);
 					MOBAnzan.exeRoopMission(driver);
+					break;
+				case Define.strMOBChirachi: // ■チラシ
+					Mission MOBChirachi = new MOBChirachi(logg, commonProps);
+					MOBChirachi.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -996,6 +1015,27 @@ public class WebClicker extends PointGet {
 				case Define.strPMOChyosatai: // ■PMOPrice調査隊
 					Mission PMOChyosatai = new PMOChyosatai(logg, commonProps);
 					PMOChyosatai.exePrivateMission(driver);
+					break;
+				default:
+			}
+		}
+	}
+	
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickCRI(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strCRIChirachi);
+			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strCRIChirachi: // ■アンケート
+					Mission CRIChirachi = new CRIChirachi(logg, commonProps);
+					CRIChirachi.exePrivateMission(driver);
 					break;
 				default:
 			}
