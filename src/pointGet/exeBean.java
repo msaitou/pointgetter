@@ -42,7 +42,7 @@ public class exeBean {
 //			mission = Define.strGMYPriceChyosatai;
 //			mission = Define.strGMYToidas;
 //			// ■■■■■i2i■■■■■
-			mission = Define.strI2ISeiza;
+//			mission = Define.strI2ISeiza;
 //			// ■■■■■moppy■■■■■
 //			mission = Define.strMOPChyosatai;
 //			mission = Define.strMOPClickBanner;
@@ -50,7 +50,7 @@ public class exeBean {
 //			mission = Define.strMOPShindan;
 //			mission = Define.strMOPUranai;
 //			mission = Define.strMOPNanyoubi;
-			mission = Define.strMOPAnzan;
+//			mission = Define.strMOPAnzan;
 //			mission = Define.strMOPChirachi;
 //			// ■■■■■osaifu■■■■■
 //			mission = Define.strOSAClickBanner;
@@ -59,7 +59,7 @@ public class exeBean {
 //			mission = Define.strOSAUranai;
 //			mission = Define.strOSANanyoubi;
 //			mission = Define.strOSAAnzan;
-			mission = Define.strOSAChirachi;
+//			mission = Define.strOSAChirachi;
 //			// ■■■■■PEX■■■■■
 //			mission = Define.strPEX4quiz;
 //			mission = Define.strPEXAnswer;
@@ -110,7 +110,7 @@ public class exeBean {
 //			mission = Define.strPMOChyosatai;
 //			// ■■■■■ちょびリッチ■■■■■
 			mission = Define.strCRIChirachi;
-			
+
 //			// サイト単位
 //			mission = Define.PSITE_CODE_RIN;
 //			mission = Define.PSITE_CODE_PEX;

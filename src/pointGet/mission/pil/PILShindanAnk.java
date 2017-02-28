@@ -68,7 +68,7 @@ public class PILShindanAnk extends Mission {
 											int ran1 = Utille.getIntRand(size);
 											if (isExistEle(driver.findElements(By.cssSelector(selector)).get(ran1))) {
 												driver.findElements(By.cssSelector(selector)).get(ran1).click(); // 選択
-												Utille.sleep(2000);
+												Utille.sleep(4000);
 
 												// end-btn が出たら終了
 												String none = "[style*='display: none']";
