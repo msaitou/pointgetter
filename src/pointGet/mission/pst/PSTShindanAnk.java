@@ -19,6 +19,7 @@ import pointGet.mission.Mission;
 public class PSTShindanAnk extends Mission {
 	final String url = "http://www.point-stadium.com/wap_enq.asp";
 	//	final String url = "http://www.point-stadium.com/wap_enq.asp?qt=1&p=2";
+	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
@@ -30,7 +31,9 @@ public class PSTShindanAnk extends Mission {
 
 	@Override
 	public void roopMission(WebDriver driver) {
-
+		for (int i = 0; i < 5 && !finsishFlag; i++) {
+			privateMission(driver);
+		}
 	}
 
 	@Override

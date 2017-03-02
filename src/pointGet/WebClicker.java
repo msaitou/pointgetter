@@ -913,7 +913,7 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.strPSTShindanAnk: // ■PST診断＆アンケート
 					Mission PSTShindanAnk = new PSTShindanAnk(logg, commonProps);
-					PSTShindanAnk.exePrivateMission(driver);
+					PSTShindanAnk.exeRoopMission(driver);
 					break;
 				default:
 			}
@@ -951,7 +951,7 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.strPILShindanAnk: // ■PIL診断＆アンケート
 					Mission PILShindanAnk = new PILShindanAnk(logg, commonProps);
-					PILShindanAnk.exePrivateMission(driver);
+					PILShindanAnk.exeRoopMission(driver);
 					break;
 				default:
 			}
@@ -1020,7 +1020,7 @@ public class WebClicker extends PointGet {
 			}
 		}
 	}
-	
+
 	/**
 	 *
 	 * @param driver
