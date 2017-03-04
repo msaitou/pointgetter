@@ -8,32 +8,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.mission.Mission;
-
 /**
  * @author saitou
  *
  */
-public class GMYClickBanner extends Mission {
+public class GMYClickBanner extends GMYBase {
 	final String url = "";
 
 	/**
 	 * @param log
 	 */
 	public GMYClickBanner(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■clipoバナー";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "clipoバナー");
 	}
 
 	@Override
 	public void privateMission(WebDriver driver) {
 		selector = "a span.clickpt";
-		// http://dietnavi.com/pc/mypage/point_rule.php
-		// alt='クリポ付' TODO
 		String[] urls = {
 				// ■clipoバナーtop
 				"http://dietnavi.com/pc/",

@@ -3,33 +3,27 @@ package pointGet.mission.gmy;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class GMYShindan extends Mission {
+public class GMYShindan extends GMYBase {
 	final String url = "http://dietnavi.com/pc/";
 
 	/**
 	 * @param logg
 	 */
 	public GMYShindan(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■毎日診断";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "毎日診断");
 	}
 
 	@Override
@@ -53,7 +47,6 @@ public class GMYShindan extends Mission {
 						selector = "div.entry";
 						wEle = eleList.get(i);
 						break;
-
 					}
 				}
 				if (wEle == null) {
@@ -87,7 +80,8 @@ public class GMYShindan extends Mission {
 											if (isExistEle(driver, nextSelector)
 													&& isExistEle(driver, endSelector + none)) {
 												clickSleepSelector(driver, nextSelector, 2000); // 遷移
-											} else if (isExistEle(driver, endSelector)
+											}
+											else if (isExistEle(driver, endSelector)
 													&& isExistEle(driver, nextSelector + none)) {
 												this.waitTilReady(driver);
 												clickSleepSelector(driver, endSelector, 4000); // 遷移
@@ -120,7 +114,8 @@ public class GMYShindan extends Mission {
 							}
 						}
 					}
-				} else {
+				}
+				else {
 					logg.warn(mName + "]all済み");
 					break;
 				}

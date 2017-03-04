@@ -9,26 +9,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class GMYToidas extends Mission {
+public class GMYToidas extends GMYBase {
 	final String url = "http://dietnavi.com/pc/";
 
 	/**
 	 * @param logg
 	 */
 	public GMYToidas(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■GMYトイダス";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "トイダス");
 	}
 
 	@Override
