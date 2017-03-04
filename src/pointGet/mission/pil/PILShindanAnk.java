@@ -127,20 +127,20 @@ public class PILShindanAnk extends Mission {
 							// 別ウィンドウがさらに開く
 							changeWindow(driver, ｃid);
 							// 問、選択肢、選択結果をメモリにためて、終了後にまとめてログ出力
-							String dialogCloseSele = "div#popmodal img[src='../images/close.png']";
-							String dialogCloseSeleNone = "div#popmodal[style*='display: none'] img[src='../images/close.png']";
+							String dialogCloseSele = "body>div#popmodal img[src='../images/close.png']";
+							String dialogCloseSeleNone = "body>div#popmodal[style*='display: none'] img[src='../images/close.png']";
 							// 以下セレクタのヒット数で選択数を判断
 							String choiceSele = "input.selq";
 							String nextSele = "img[src='../images/bt_next.png']";
 							String endSele = "img[src='../images/bt_end.png']";
-							for (int k = 1; k <= 11; k++) {
+							for (int k = 1; k <= 13; k++) {
 								if (isExistEle(driver, footBannerSele)) {
-									checkOverlay(driver, footBannerSele);
+									checkOverlay(driver, footBannerSele, false);
 								}
 								if (!isExistEle(driver, dialogCloseSeleNone)
 										&& !isExistEle(driver, "section.timemodal.modal1>div#popmodal img[src='../images/close.png']")
 										&& isExistEle(driver, dialogCloseSele)) {
-									checkOverlay(driver, dialogCloseSele);
+									checkOverlay(driver, dialogCloseSele, false);
 								}
 								if (isExistEle(driver, choiceSele)) {
 									int choiceies = getSelectorSize(driver, choiceSele);
@@ -169,6 +169,9 @@ public class PILShindanAnk extends Mission {
 											clickSleepSelector(driver, nextSele, 4000);
 										}
 									}
+								}
+								else {
+									break;
 								}
 							}
 							if (isExistEle(driver, endSele)) {
