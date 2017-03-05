@@ -25,10 +25,6 @@ public class MOPNanyoubi extends MOPBase {
 	}
 
 	@Override
-	public void roopMission(WebDriver driver) {
-	}
-
-	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		selector = "div.game_btn>div.icon>img[alt='この日何曜日？']";
