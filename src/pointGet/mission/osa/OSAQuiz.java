@@ -6,29 +6,18 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou 0時、8時、16時開催
  */
-public class OSAQuiz extends Mission {
+public class OSAQuiz extends OSABase {
 	final String url = "http://osaifu.com/contents/coinland/";
-
-	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public OSAQuiz(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■daily quiz";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(logg, cProps, "daily quiz");
 	}
 
 	@Override

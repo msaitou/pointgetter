@@ -1,7 +1,7 @@
 /**
- * 
+ *
  */
-package pointGet.mission.osa;
+package pointGet.mission.mop;
 
 import java.util.Map;
 
@@ -15,16 +15,16 @@ import pointGet.mission.Mission;
  * @author saitou
  *
  */
-public abstract class OSABase extends Mission {
+public abstract class MOPBase extends Mission {
 	/* current site code */
-	public final static String sCode = Define.PSITE_CODE_OSA;
+	public final static String sCode = Define.PSITE_CODE_MOP;
 	boolean finsishFlag = false;
 
 	/**
 	 * @param log
 	 * @param cProps
 	 */
-	public OSABase(Logger log, Map<String, String> cProps, String name) {
+	public MOPBase(Logger log, Map<String, String> cProps, String name) {
 		super(log, cProps);
 		this.mName = "■" + sCode + name;
 	}

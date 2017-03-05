@@ -6,31 +6,20 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  *
  * @author saitou
  * 0時、8時、16時開催
  */
-public class MOBQuiz extends Mission {
+public class MOBQuiz extends MOBBase {
 	final String url = "http://pc.mtoku.jp/contents/";
-	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public MOBQuiz(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■MOBクイズ";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(logg, cProps, "クイズ");
 	}
 
 	@Override

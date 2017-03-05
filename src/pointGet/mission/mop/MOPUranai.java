@@ -6,21 +6,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class MOPUranai extends Mission {
+public class MOPUranai extends MOPBase {
 	final String url = "http://pc.moppy.jp/gamecontents/";
 
 	/**
 	 * @param logg
 	 */
 	public MOPUranai(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■MOP星座";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(logg, cProps, "星座");
 	}
 
 	@Override

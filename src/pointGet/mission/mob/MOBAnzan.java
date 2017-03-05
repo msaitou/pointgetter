@@ -11,25 +11,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class MOBAnzan extends Mission {
+public class MOBAnzan extends MOBBase {
 	final String url = "http://pc.mtoku.jp/contents/";
-	boolean finsishFlag = false;
 
 	/**
 	 * @author saitou 0時、12時開催
 	 */
 	public MOBAnzan(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■MOB暗算";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(log, cProps, "暗算");
 	}
 
 	@Override

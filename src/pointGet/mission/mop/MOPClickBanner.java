@@ -6,25 +6,18 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.mission.Mission;
-
 /**
  * @author saitou
  *
  */
-public class MOPClickBanner extends Mission {
+public class MOPClickBanner extends MOPBase {
 	final String url = "http://pc.moppy.jp/cc/";
 
 	/**
 	 * @param log
 	 */
 	public MOPClickBanner(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■クリックで貯める";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "クリックで貯める");
 	}
 
 	@Override

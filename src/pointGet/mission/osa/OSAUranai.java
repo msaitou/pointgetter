@@ -6,21 +6,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class OSAUranai extends Mission {
+public class OSAUranai extends OSABase {
 	final String url = "http://osaifu.com/contents/coinland/";
 
 	/**
 	 * @param logg
 	 */
 	public OSAUranai(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■OSA星座";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(logg, cProps, "星座");
 	}
 
 	@Override

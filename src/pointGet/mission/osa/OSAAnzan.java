@@ -11,25 +11,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class OSAAnzan extends Mission {
+public class OSAAnzan extends OSABase {
 	final String url = "http://osaifu.com/contents/coinland/";
-	boolean finsishFlag = false;
 
 	/**
 	 * @author saitou 0時、12時開催
 	 */
 	public OSAAnzan(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■OSA暗算";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(log, cProps, "暗算");
 	}
 
 	@Override

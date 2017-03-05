@@ -9,29 +9,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou 0時、8時、16時開催
  */
-public class OSANanyoubi extends Mission {
+public class OSANanyoubi extends OSABase {
 	final String url = "http://osaifu.com/contents/coinland/";
-
-	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public OSANanyoubi(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■OSA何曜日";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(logg, cProps, "何曜日");
 	}
 
 	@Override
@@ -59,7 +48,7 @@ public class OSANanyoubi extends Mission {
 					String selectYoubi = "";
 					if (isExistEle(driver, selectorDay)) {
 						String text = driver.findElement(By.cssSelector(selectorDay)).getText();
-						logg.info("testです　" + text);
+						logg.info("Question[" + text + "]");
 						String str = text;
 						String regex = "今日の(\\d+)日後は何曜日？";
 						Pattern p = Pattern.compile(regex);
@@ -69,7 +58,8 @@ public class OSANanyoubi extends Mission {
 							selectYoubi = Utille.getNanyoubi(strAfterDayNum);
 							logg.info("答え [" + selectYoubi + "]");
 						}
-					} else {
+					}
+					else {
 						logg.info("not get after days");
 						return;
 					}
@@ -88,8 +78,8 @@ public class OSANanyoubi extends Mission {
 								clickSleepSelector(driver, selector2, 5500); // 遷移
 								checkOverlay(driver, "div.overlay-popup a.button-close");
 								if (isExistEle(driver, selector2)) {
-									clickSleepSelector(driver, selector2, 3000); // 遷移
-									checkOverlay(driver, "div.overlay-popup a.button-close");
+									clickSleepSelector(driver, selector2, 5000); // 遷移
+									checkOverlay(driver, "div.overlay-popup a.button-close", false);
 								}
 							}
 						}
@@ -101,7 +91,8 @@ public class OSANanyoubi extends Mission {
 					clickSleepSelector(driver, selector, 3000);
 					waitTilReady(driver);
 				}
-			} else {
+			}
+			else {
 				logg.warn(this.mName + "]獲得済み");
 			}
 		}

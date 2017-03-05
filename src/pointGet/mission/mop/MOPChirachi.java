@@ -6,25 +6,18 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.mission.Mission;
-
 /**
  * @author saitou
  *
  */
-public class MOPChirachi extends Mission {
+public class MOPChirachi extends MOPBase {
 	final String url = "http://pc.moppy.jp/gamecontents/";
 
 	/**
 	 * @param log
 	 */
 	public MOPChirachi(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■MOPチラシ";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "チラシ");
 	}
 
 	@Override

@@ -11,25 +11,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class MOPAnzan extends Mission {
+public class MOPAnzan extends MOPBase {
 	final String url = "http://pc.moppy.jp/gamecontents/";
-	boolean finsishFlag = false;
 
 	/**
 	 * @author saitou 0時、12時開催
 	 */
 	public MOPAnzan(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■MOP暗算";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(log, cProps, "暗算");
 	}
 
 	@Override
@@ -69,7 +59,8 @@ public class MOPAnzan extends Mission {
 								logg.info("答え [" + ans + "]");
 								selectAns = ans;
 							}
-						} else {
+						}
+						else {
 							logg.info("not get after days");
 							return;
 						}
@@ -97,7 +88,8 @@ public class MOPAnzan extends Mission {
 											if (isExistEle(driver, selector3)) {
 												clickSleepSelector(driver, selector3, 3000); // 遷移
 												checkOverlay(driver, "div.overlay-popup a.button-close");
-											} else if (isExistEle(driver, selector4)) {
+											}
+											else if (isExistEle(driver, selector4)) {
 												clickSleepSelector(driver, selector4, 5000); // 遷移
 												checkOverlay(driver, "div.overlay-popup a.button-close");
 											}
@@ -109,8 +101,9 @@ public class MOPAnzan extends Mission {
 						}
 					}
 					logg.info(this.mName + "]kuria?");
-				//	checkOverlay(driver, "div.overlay-popup a.button-close");
-				} else {
+					//	checkOverlay(driver, "div.overlay-popup a.button-close");
+				}
+				else {
 					String endSelector = "input[name='submit']";
 					if (isExistEle(driver, endSelector)) {
 						clickSleepSelector(driver, endSelector, 3000);

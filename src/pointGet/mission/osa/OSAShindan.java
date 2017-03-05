@@ -2,34 +2,27 @@ package pointGet.mission.osa;
 
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import lombok.val;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class OSAShindan extends Mission {
+public class OSAShindan extends OSABase {
 	final String url = "http://osaifu.com/contents/coinland/";
 
 	/**
 	 * @param logg
 	 */
 	public OSAShindan(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■毎日診断";
+		super(logg, cProps, "毎日診断");
 	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
-	}
-
 	@Override
 	public void privateMission(WebDriver driver) {
 		selector = "li.long img[alt='毎日診断']";

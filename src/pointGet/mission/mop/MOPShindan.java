@@ -2,32 +2,26 @@ package pointGet.mission.mop;
 
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import lombok.val;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class MOPShindan extends Mission {
+public class MOPShindan extends MOPBase {
 	final String url = "http://pc.moppy.jp/gamecontents/";
 
 	/**
 	 * @param logg
 	 */
 	public MOPShindan(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■毎日診断";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "毎日診断");
 	}
 
 	@Override
@@ -39,19 +33,19 @@ public class MOPShindan extends Mission {
 			changeCloseWindow(driver);
 
 			while (true) {
-//				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
+				//				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
 				selector = "div[class='thumbnail'] span.button-new"; // NEWだけ実施
 				// label label-danger button-new
-//<div class="thumbnail">
-//	<a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M">
-//	 <div class="entryimg" style="background-image: url(/img/diagnose/25ebdc476e7a641b23422a80d02d60bd.jpg);"></div>
-//	 <span class="label label-danger button-new">NEW!</span>
-//	</a>
-//  <div class="caption">
-//	  <h3 class="entrytitle" style="height: 43px;"><a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M">あなたは四国地方のどの県？診断</a></h3>
-//	  <a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M" class="btn btn-primary btn-large btn-block" role="button">　診断　</a>
-//  </div>
-//</div>
+				//<div class="thumbnail">
+				//	<a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M">
+				//	 <div class="entryimg" style="background-image: url(/img/diagnose/25ebdc476e7a641b23422a80d02d60bd.jpg);"></div>
+				//	 <span class="label label-danger button-new">NEW!</span>
+				//	</a>
+				//  <div class="caption">
+				//	  <h3 class="entrytitle" style="height: 43px;"><a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M">あなたは四国地方のどの県？診断</a></h3>
+				//	  <a href="/fanmedia-2/220/start?&amp;uid=MB000029114826815914707WOb3M" class="btn btn-primary btn-large btn-block" role="button">　診断　</a>
+				//  </div>
+				//</div>
 				if (isExistEle(driver, selector)) {
 					clickSleepSelector(driver, selector, 4000); // 遷移
 					selector = "a.submit-btn";// 次へ

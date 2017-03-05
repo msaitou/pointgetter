@@ -38,12 +38,14 @@ import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
 import pointGet.mission.mob.MOBChirachi;
 import pointGet.mission.mob.MOBClickBanner;
+import pointGet.mission.mob.MOBEnglishTest;
 import pointGet.mission.mob.MOBNanyoubi;
 import pointGet.mission.mob.MOBQuiz;
 import pointGet.mission.mop.MOPAnzan;
 import pointGet.mission.mop.MOPChirachi;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
+import pointGet.mission.mop.MOPEnglishTest;
 import pointGet.mission.mop.MOPNanyoubi;
 import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.mop.MOPShindan;
@@ -51,6 +53,7 @@ import pointGet.mission.mop.MOPUranai;
 import pointGet.mission.osa.OSAAnzan;
 import pointGet.mission.osa.OSAChirachi;
 import pointGet.mission.osa.OSAClickBanner;
+import pointGet.mission.osa.OSAEnglishTest;
 import pointGet.mission.osa.OSANanyoubi;
 import pointGet.mission.osa.OSAQuiz;
 import pointGet.mission.osa.OSAShindan;
@@ -386,6 +389,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strOSANanyoubi);
 				missions.add(Define.strOSAAnzan);
 				missions.add(Define.strOSAChirachi);
+				missions.add(Define.strOSAEnglishTest);
 			}
 		}
 		String se = "ul.userinfo";
@@ -424,6 +428,10 @@ public class WebClicker extends PointGet {
 					Mission OSAChirachi = new OSAChirachi(logg, commonProps);
 					OSAChirachi.exePrivateMission(driver);
 					break;
+				case Define.strOSAEnglishTest: // ■英単語TEST
+					Mission OSAEnglishTest = new OSAEnglishTest(logg, commonProps);
+					OSAEnglishTest.exeRoopMission(driver);
+					break;
 				default:
 			}
 		}
@@ -446,6 +454,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOPChirachi);
 				missions.add(Define.strMOPNanyoubi);
 				missions.add(Define.strMOPAnzan);
+				missions.add(Define.strMOPEnglishTest);
 			}
 		}
 		driver.get("http://pc.moppy.jp/");
@@ -487,6 +496,10 @@ public class WebClicker extends PointGet {
 				case Define.strMOPAnzan: // ■MOP暗算
 					Mission MOPAnzan = new MOPAnzan(logg, commonProps);
 					MOPAnzan.exeRoopMission(driver);
+					break;
+				case Define.strMOPEnglishTest: // ■英単語TEST
+					Mission MOPEnglishTest = new MOPEnglishTest(logg, commonProps);
+					MOPEnglishTest.exeRoopMission(driver);
 					break;
 				default:
 			}
@@ -788,6 +801,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOBChirachi);
 				missions.add(Define.strMOBNanyoubi);
 				missions.add(Define.strMOBAnzan);
+				missions.add(Define.strMOBEnglishTest);
 			}
 		}
 		for (String mission : missions) {
@@ -811,6 +825,10 @@ public class WebClicker extends PointGet {
 				case Define.strMOBChirachi: // ■チラシ
 					Mission MOBChirachi = new MOBChirachi(logg, commonProps);
 					MOBChirachi.exePrivateMission(driver);
+					break;
+				case Define.strMOBEnglishTest: // ■英単語TEST
+					Mission MOBEnglishTest = new MOBEnglishTest(logg, commonProps);
+					MOBEnglishTest.exeRoopMission(driver);
 					break;
 				default:
 			}

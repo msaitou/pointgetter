@@ -18,6 +18,7 @@ import pointGet.mission.Mission;
 public abstract class MOBBase extends Mission {
 	/* current site code */
 	public final static String sCode = Define.PSITE_CODE_MOB;
+	boolean finsishFlag = false;
 
 	/**
 	 * @param log
@@ -30,6 +31,9 @@ public abstract class MOBBase extends Mission {
 
 	@Override
 	public void roopMission(WebDriver driver) {
+		for (int i = 0; i < 5 && !finsishFlag; i++) {
+			privateMission(driver);
+		}
 	}
 
 	@Override

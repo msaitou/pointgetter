@@ -7,26 +7,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  * 4時更新
  */
-public class MOPChyosatai extends Mission {
+public class MOPChyosatai extends MOPBase {
 	final String url = "http://pc.moppy.jp/gamecontents/";
 
 	/**
 	 * @param log
 	 */
 	public MOPChyosatai(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■トキメキ調査隊";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(log, cProps, "トキメキ調査隊");
 	}
 
 	@Override
@@ -87,7 +80,7 @@ public class MOPChyosatai extends Mission {
 							&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
 						checkOverlay(driver, footBnrSelector);
 					}
-//					selector = "div.btn>a";
+					//					selector = "div.btn>a";
 					selector = "span.icon-arrow";
 					for (int i = 0; i < 10; i++) {
 						String finshSele = "div.finish-area";

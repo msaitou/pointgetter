@@ -7,26 +7,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  * 1日1回
  */
-public class OSAClickBanner extends Mission {
+public class OSAClickBanner extends OSABase {
 	final String url = "http://osaifu.com/";
 
 	/**
 	 * @param logg
 	 */
 	public OSAClickBanner(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■クリックゴールド";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "クリックゴールド");
 	}
 
 	@Override

@@ -9,30 +9,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  *
  * @author saitou 0時、12時開催
  */
-public class MOPNanyoubi extends Mission {
+public class MOPNanyoubi extends MOPBase {
 	final String url = "http://pc.moppy.jp/gamecontents/";
-	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public MOPNanyoubi(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■MOP何曜日";
+		super(logg, cProps, "何曜日");
 	}
 
 	@Override
 	public void roopMission(WebDriver driver) {
-
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
 	}
 
 	@Override
