@@ -26,6 +26,7 @@ import pointGet.mission.ecn.ECNTellmeWhich;
 import pointGet.mission.ecn.ECNWebSearche;
 import pointGet.mission.gen.GENChirachi;
 import pointGet.mission.gen.GENClickBanner;
+import pointGet.mission.gen.GENManga;
 import pointGet.mission.gen.GENPointStar;
 import pointGet.mission.gen.GENShindan;
 import pointGet.mission.gen.GENUranai;
@@ -722,6 +723,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strGENShindan);
 				missions.add(Define.strGENUranai);
 				missions.add(Define.strGENChirachi);
+				missions.add(Define.strGENManga);
 			}
 		}
 		for (String mission : missions) {
@@ -745,6 +747,10 @@ public class WebClicker extends PointGet {
 				case Define.strGENChirachi: // ■チラシ
 					Mission GENChirachi = new GENChirachi(logg, commonProps);
 					GENChirachi.exePrivateMission(driver);
+					break;
+				case Define.strGENManga: // ■漫画
+					Mission GENManga = new GENManga(logg, commonProps);
+					GENManga.exePrivateMission(driver);
 					break;
 				default:
 			}
