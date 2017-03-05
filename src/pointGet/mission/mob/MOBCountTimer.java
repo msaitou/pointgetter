@@ -1,4 +1,4 @@
-package pointGet.mission.mop;
+package pointGet.mission.mob;
 
 import java.util.Map;
 
@@ -8,23 +8,23 @@ import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
 
-public class MOPCountTimer extends MOPBase {
-	final String url = "http://pc.moppy.jp/gamecontents/";
+public class MOBCountTimer extends MOBBase {
+	final String url = "http://pc.mtoku.jp/contents/";
 
 	/**
 	 * @author saitou 0時、12時開催
 	 */
-	public MOPCountTimer(Logger log, Map<String, String> cProps) {
+	public MOBCountTimer(Logger log, Map<String, String> cProps) {
 		super(log, cProps, "CountTimer");
 	}
 
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "div.game_btn>div.icon>img[alt='CountTimer']";
+		selector = "div.c-box.game-item>a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_timer.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
-			changeCloseWindow(driver);
+//			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
 			// finish condition
 			String finishSelector = "p.ui-timer";
@@ -58,7 +58,6 @@ public class MOPCountTimer extends MOPBase {
 					String selectId = "div.fx-control>input#js-timer_btn_start";
 					String selectStop = "div.fx-control>input#js-timer_btn_stop";
 					String selectRes = "input#timer_btn_stop";
-					String selector2 = "input[name='submit']";
 					if (isExistEle(driver, selectId)) {
 						clickSleepSelector(driver, selectId, 0); // START!!
 						long s = System.currentTimeMillis();
@@ -118,7 +117,6 @@ public class MOPCountTimer extends MOPBase {
 					String selectId = "div.fx-control>input#js-timer_btn_start";
 					String selectStop = "div.fx-control>input#js-timer_btn_stop";
 					String selectRes = "input#timer_btn_stop";
-					String selector2 = "input[name='submit']";
 					if (isExistEle(driver, selectId)) {
 						clickSleepSelector(driver, selectId, 0); // START!!
 						long s = System.currentTimeMillis();

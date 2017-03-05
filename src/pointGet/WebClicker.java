@@ -38,6 +38,7 @@ import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
 import pointGet.mission.mob.MOBChirachi;
 import pointGet.mission.mob.MOBClickBanner;
+import pointGet.mission.mob.MOBCountTimer;
 import pointGet.mission.mob.MOBEnglishTest;
 import pointGet.mission.mob.MOBNanyoubi;
 import pointGet.mission.mob.MOBQuiz;
@@ -45,6 +46,7 @@ import pointGet.mission.mop.MOPAnzan;
 import pointGet.mission.mop.MOPChirachi;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
+import pointGet.mission.mop.MOPCountTimer;
 import pointGet.mission.mop.MOPEnglishTest;
 import pointGet.mission.mop.MOPNanyoubi;
 import pointGet.mission.mop.MOPQuiz;
@@ -455,6 +457,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOPNanyoubi);
 				missions.add(Define.strMOPAnzan);
 				missions.add(Define.strMOPEnglishTest);
+				missions.add(Define.strMOPCountTimer);
 			}
 		}
 		driver.get("http://pc.moppy.jp/");
@@ -500,6 +503,10 @@ public class WebClicker extends PointGet {
 				case Define.strMOPEnglishTest: // ■英単語TEST
 					Mission MOPEnglishTest = new MOPEnglishTest(logg, commonProps);
 					MOPEnglishTest.exeRoopMission(driver);
+					break;
+				case Define.strMOPCountTimer: // ■CountTimer
+					Mission MOPCountTimer = new MOPCountTimer(logg, commonProps);
+					MOPCountTimer.exeRoopMission(driver);
 					break;
 				default:
 			}
@@ -802,6 +809,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOBNanyoubi);
 				missions.add(Define.strMOBAnzan);
 				missions.add(Define.strMOBEnglishTest);
+				missions.add(Define.strMOBCountTimer);
 			}
 		}
 		for (String mission : missions) {
@@ -829,6 +837,10 @@ public class WebClicker extends PointGet {
 				case Define.strMOBEnglishTest: // ■英単語TEST
 					Mission MOBEnglishTest = new MOBEnglishTest(logg, commonProps);
 					MOBEnglishTest.exeRoopMission(driver);
+					break;
+				case Define.strMOBCountTimer: // ■CountTimer
+					Mission MOBCountTimer = new MOBCountTimer(logg, commonProps);
+					MOBCountTimer.exeRoopMission(driver);
 					break;
 				default:
 			}
