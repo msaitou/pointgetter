@@ -77,21 +77,21 @@ public class MOPEnglishTest extends MOPBase {
 								clickSleepSelector(driver, selector2, 4000); // 遷移
 								checkOverlay(driver, "div.overlay-popup a.button-close");
 								String selector3 = "input[name='submit'].ui-button.ui-button-b.ui-button-result.quake";
-								String selector4 = "input[name='submit'].ui-button ui-button-b ui-button-end quake";
+								String selector4 = "input[name='submit'].ui-button.ui-button-b.ui-button-end.quake";
 								if (isExistEle(driver, selector3)) {
 									clickSleepSelector(driver, selector3, 5000); // 遷移
 									checkOverlay(driver, "div.overlay-popup a.button-close");
-								}
-								else if (isExistEle(driver, selector4)) {
-									clickSleepSelector(driver, selector3, 5000); // 遷移
-									checkOverlay(driver, "div.overlay-popup a.button-close");
+									if (isExistEle(driver, selector4)) {
+										clickSleepSelector(driver, selector4, 5000); // 遷移
+										checkOverlay(driver, "div.overlay-popup a.button-close");
+									}
 								}
 							}
 						}
 					}
 				}
 				logg.info(this.mName + "]kuria?");
-				selector = "ui-button ui-button-a ui-button-close quake";
+				selector = "div.fx-control>a.ui-button.ui-button-a.ui-button-close.quake";
 				if (isExistEle(driver, selector)) {
 					clickSleepSelector(driver, selector, 3000);
 					waitTilReady(driver);
