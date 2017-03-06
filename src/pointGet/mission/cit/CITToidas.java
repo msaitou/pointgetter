@@ -62,7 +62,7 @@ public class CITToidas extends Mission {
 				selector = "div.entry-text-wrap a";
 				if (isExistEle(wEle, selector)) {
 					clickSleepSelector(wEle, selector, 7000); // 遷移
-					this.waitTilReady(driver);
+//					this.waitTilReady(driver);
 					driver.switchTo().frame(0);
 					selector = "div#pager";// 始める
 					if (isExistEle(driver, selector)) {

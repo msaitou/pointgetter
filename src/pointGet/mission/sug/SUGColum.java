@@ -56,14 +56,14 @@ public class SUGColum extends SUGBase {
 						// 6page
 						for (int g = 0; g < 6; g++) {
 							if (isExistEle(driver, seleNextb3)) {
-								clickSleepSelector(driver, seleNextb3, 4000); // 遷移　問開始するよ
+								clickSleepSelector(driver, seleNextb3, 7000); // 遷移　問開始するよ
 							}
 						}
 						if (isExistEle(driver, overLay)) {
-							checkOverlay(driver, overLay);
+							checkOverlay(driver, overLay, false);
 						}
 						if (isExistEle(driver, seleNextb2)) {
-							clickSleepSelector(driver, seleNextb2, 3000); // 遷移　問開始するよ
+							clickSleepSelector(driver, seleNextb2, 5000); // 遷移　問開始するよ
 						}
 						String choiceSele = "input[type='radio']";
 						String seleNext2 = "div>input.enquete_nextbt";
@@ -72,7 +72,7 @@ public class SUGColum extends SUGBase {
 						// 6問
 						for (int k = 1; k <= 6; k++) {
 							if (isExistEle(driver, overLay)) {
-								checkOverlay(driver, overLay);
+								checkOverlay(driver, overLay, false);
 							}
 							int choiceNum = 0;
 							if (isExistEle(driver, choiceSele)) {
@@ -95,7 +95,7 @@ public class SUGColum extends SUGBase {
 								List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 								if (isExistEle(eleList2, choiceNum)) {
 									// 選択
-									clickSleepSelector(eleList2.get(choiceNum), 2500);
+									clickSleepSelector(eleList2.get(choiceNum), 3500);
 									if (isExistEle(driver, seleNext2)) {
 										// 次へ
 										clickSleepSelector(driver, seleNext2, 4000);
@@ -120,14 +120,14 @@ public class SUGColum extends SUGBase {
 							}
 						}
 						if (isExistEle(driver, overLay)) {
-							checkOverlay(driver, overLay);
+							checkOverlay(driver, overLay, false);
 						}
 						if (isExistEle(driver, seleNextb2)) {
 							clickSleepSelector(driver, seleNextb2, 4000); // 遷移　問開始するよ
 						}
 						String finishSele = "div#again_bt>a>img";
 						if (isExistEle(driver, overLay)) {
-							checkOverlay(driver, overLay);
+							checkOverlay(driver, overLay, false);
 						}
 						if (isExistEle(driver, finishSele)) {
 							clickSleepSelector(driver, finishSele, 5000); // 遷移
