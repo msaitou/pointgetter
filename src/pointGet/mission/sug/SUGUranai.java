@@ -6,21 +6,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class SUGUranai extends Mission {
+public class SUGUranai extends SUGBase {
 	final String url = "http://www.sugutama.jp/game";
 
 	/**
 	 * @param logg
 	 */
 	public SUGUranai(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■SUG星座";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(logg, cProps, "星座");
 	}
 
 	@Override

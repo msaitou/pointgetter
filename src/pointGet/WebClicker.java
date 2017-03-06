@@ -36,6 +36,7 @@ import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.gmy.GMYPriceChyosatai;
 import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.gmy.GMYToidas;
+import pointGet.mission.hap.HAPManga;
 import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
 import pointGet.mission.mob.MOBChirachi;
@@ -92,6 +93,7 @@ import pointGet.mission.pto.PTOKuji;
 import pointGet.mission.pto.PTOManga;
 import pointGet.mission.pto.PTOUranai;
 import pointGet.mission.rin.RINClickBanner;
+import pointGet.mission.sug.SUGManga;
 import pointGet.mission.sug.SUGQuiz;
 import pointGet.mission.sug.SUGQuiz2;
 import pointGet.mission.sug.SUGUranai;
@@ -129,6 +131,7 @@ public class WebClicker extends PointGet {
 			Define.PSITE_CODE_PTO, // pointtown
 			Define.PSITE_CODE_MOB, // MOBATOKU
 			Define.PSITE_CODE_CRI, // ちょびリッチ
+			Define.PSITE_CODE_HAP, // ハピタス
 	};
 	private static String[] visitSites = null;
 	private static String mName = "";
@@ -324,6 +327,9 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.PSITE_CODE_CRI:
 					goToClickCRI(driver, missionArr);
+					break;
+				case Define.PSITE_CODE_HAP:
+					goToClickHAP(driver, missionArr);
 					break;
 				default:
 			}
@@ -928,9 +934,10 @@ public class WebClicker extends PointGet {
 	private static void goToClickSUG(WebDriver driver, ArrayList<String> missions) {
 		if (missions.size() == 0) {
 			missions.add(Define.strSUGQuiz);
-			missions.add(Define.strSUGQuiz2);
 			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strSUGQuiz2);
 				missions.add(Define.strSUGUranai);
+				missions.add(Define.strSUGManga);
 			}
 		}
 		for (String mission : missions) {
@@ -946,6 +953,10 @@ public class WebClicker extends PointGet {
 				case Define.strSUGUranai: // ■占い
 					Mission SUGUranai = new SUGUranai(logg, commonProps);
 					SUGUranai.exePrivateMission(driver);
+					break;
+				case Define.strSUGManga: // ■漫画
+					Mission SUGManga = new SUGManga(logg, commonProps);
+					SUGManga.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -982,7 +993,7 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.strPSTManga: // ■PSTまんが　
 					Mission PSTManga = new PSTManga(logg, commonProps);
-					PSTManga.exeRoopMission(driver);
+					PSTManga.exePrivateMission(driver);
 					break;
 
 				default:
@@ -1026,7 +1037,7 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.strPILManga: // ■まんが
 					Mission PILManga = new PILManga(logg, commonProps);
-					PILManga.exeRoopMission(driver);
+					PILManga.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -1116,6 +1127,27 @@ public class WebClicker extends PointGet {
 				case Define.strCRIManga: // ■漫画
 					Mission CRIManga = new CRIManga(logg, commonProps);
 					CRIManga.exePrivateMission(driver);
+					break;
+				default:
+			}
+		}
+	}
+	
+	/**
+	 *
+	 * @param driver
+	 */
+	private static void goToClickHAP(WebDriver driver, ArrayList<String> missions) {
+		if (missions.size() == 0) {
+			if (!secondFlg && !thirdFlg) {// 1日1回
+				missions.add(Define.strHAPManga);
+			}
+		}
+		for (String mission : missions) {
+			switch (mission) {
+				case Define.strHAPManga: // ■漫画
+					Mission HAPManga = new HAPManga(logg, commonProps);
+					HAPManga.exePrivateMission(driver);
 					break;
 				default:
 			}

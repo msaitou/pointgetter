@@ -6,30 +6,19 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  *
  * @author saitou
  */
-public class SUGQuiz2 extends Mission {
+public class SUGQuiz2 extends SUGBase {
 	final String url = "http://www.sugutama.jp/survey";
-	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public SUGQuiz2(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■SUGクイズ2";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(logg, cProps, "クイズ2");
 	}
 
 	@Override
