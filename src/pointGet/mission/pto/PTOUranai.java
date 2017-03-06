@@ -6,21 +6,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class PTOUranai extends Mission {
+public class PTOUranai extends PTOBase {
 	final String url = "http://www.pointtown.com/";
 
 	/**
 	 * @param logg
 	 */
 	public PTOUranai(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PTO星座";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(logg, cProps, "星座");
 	}
 
 	@Override

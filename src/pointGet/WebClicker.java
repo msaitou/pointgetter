@@ -14,7 +14,8 @@ import pointGet.mission.cit.CITClickBanner;
 import pointGet.mission.cit.CITPriceChyosatai;
 import pointGet.mission.cit.CITShindan;
 import pointGet.mission.cit.CITToidas;
-import pointGet.mission.cri.CRIChirachi;
+import pointGet.mission.cri.CRIAnk;
+import pointGet.mission.cri.CRIManga;
 import pointGet.mission.ecn.ECNChinjyu;
 import pointGet.mission.ecn.ECNChirachi;
 import pointGet.mission.ecn.ECNClickBokin;
@@ -49,6 +50,7 @@ import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
 import pointGet.mission.mop.MOPCountTimer;
 import pointGet.mission.mop.MOPEnglishTest;
+import pointGet.mission.mop.MOPManga;
 import pointGet.mission.mop.MOPNanyoubi;
 import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.mop.MOPShindan;
@@ -57,6 +59,7 @@ import pointGet.mission.osa.OSAAnzan;
 import pointGet.mission.osa.OSAChirachi;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSAEnglishTest;
+import pointGet.mission.osa.OSAManga;
 import pointGet.mission.osa.OSANanyoubi;
 import pointGet.mission.osa.OSAQuiz;
 import pointGet.mission.osa.OSAShindan;
@@ -84,6 +87,7 @@ import pointGet.mission.pst.PSTUranai;
 import pointGet.mission.pto.PTOClickCorner;
 import pointGet.mission.pto.PTODaily;
 import pointGet.mission.pto.PTOKuji;
+import pointGet.mission.pto.PTOManga;
 import pointGet.mission.pto.PTOUranai;
 import pointGet.mission.rin.RINClickBanner;
 import pointGet.mission.sug.SUGQuiz;
@@ -387,6 +391,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strOSAClickBanner);
 				missions.add(Define.strOSAShindan);
 				missions.add(Define.strOSAUranai);
+				missions.add(Define.strOSAManga);
 			}
 			if (secondFlg || thirdFlg) {
 				missions.add(Define.strOSANanyoubi);
@@ -435,6 +440,10 @@ public class WebClicker extends PointGet {
 					Mission OSAEnglishTest = new OSAEnglishTest(logg, commonProps);
 					OSAEnglishTest.exeRoopMission(driver);
 					break;
+				case Define.strOSAManga: // ■漫画
+					Mission OSAManga = new OSAManga(logg, commonProps);
+					OSAManga.exePrivateMission(driver);
+					break;
 				default:
 			}
 		}
@@ -452,6 +461,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOPShindan);
 				missions.add(Define.strMOPChyosatai);
 				missions.add(Define.strMOPUranai);
+				missions.add(Define.strMOPManga);
 			}
 			if (secondFlg || thirdFlg) {
 				missions.add(Define.strMOPChirachi);
@@ -508,6 +518,10 @@ public class WebClicker extends PointGet {
 				case Define.strMOPCountTimer: // ■CountTimer
 					Mission MOPCountTimer = new MOPCountTimer(logg, commonProps);
 					MOPCountTimer.exeRoopMission(driver);
+					break;
+				case Define.strMOPManga: // ■漫画
+					Mission MOPManga = new MOPManga(logg, commonProps);
+					MOPManga.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -769,6 +783,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strPTOUranai);
 				missions.add(Define.strPTOKuji);
 				missions.add(Define.strPTODaily);
+				missions.add(Define.strPTOManga);
 			}
 		}
 		String sel = "li.point>a>strong";
@@ -794,6 +809,10 @@ public class WebClicker extends PointGet {
 				case Define.strPTODaily: // ■デイリー
 					Mission PTODaily = new PTODaily(logg, commonProps);
 					PTODaily.exePrivateMission(driver);
+					break;
+				case Define.strPTOManga: // ■漫画
+					Mission PTOManga = new PTOManga(logg, commonProps);
+					PTOManga.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -1071,13 +1090,18 @@ public class WebClicker extends PointGet {
 		if (missions.size() == 0) {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strCRIChirachi);
+				missions.add(Define.strCRIManga);
 			}
 		}
 		for (String mission : missions) {
 			switch (mission) {
 				case Define.strCRIChirachi: // ■アンケート
-					Mission CRIChirachi = new CRIChirachi(logg, commonProps);
-					CRIChirachi.exePrivateMission(driver);
+					Mission CRIAnk = new CRIAnk(logg, commonProps);
+					CRIAnk.exePrivateMission(driver);
+					break;
+				case Define.strCRIManga: // ■漫画
+					Mission CRIManga = new CRIManga(logg, commonProps);
+					CRIManga.exePrivateMission(driver);
 					break;
 				default:
 			}

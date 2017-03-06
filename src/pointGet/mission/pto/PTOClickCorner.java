@@ -9,13 +9,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.mission.Mission;
-
 /**
  * @author saitou
  *
  */
-public class PTOClickCorner extends Mission {
+public class PTOClickCorner extends PTOBase {
 	final String url = "";
 	private static HashMap<String, HashMap<String, String>> clickMap = new HashMap<String, HashMap<String, String>>() {
 		/**
@@ -64,12 +62,7 @@ public class PTOClickCorner extends Mission {
 	 * @param log
 	 */
 	public PTOClickCorner(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■PTOクリックコーナー";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "クリックコーナー");
 	}
 
 	@Override

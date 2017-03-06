@@ -72,7 +72,8 @@ public class Define {
 	final public static String strMOPChirachi = "MOPChirachi";
 	final public static String strMOPEnglishTest = "MOPEnglishTest";
 	final public static String strMOPCountTimer = "MOPCountTimer";
-	
+	final public static String strMOPManga = "MOPManga";
+
 	// ■■■■■osaifu■■■■■
 	final public static String strOSAClickBanner = "OSAClickBanner";
 	final public static String strOSAQuiz = "OSAQuiz";
@@ -82,6 +83,7 @@ public class Define {
 	final public static String strOSAAnzan = "OSAAnzan";
 	final public static String strOSAChirachi = "OSAChirachi";
 	final public static String strOSAEnglishTest = "OSAEnglishTest";
+	final public static String strOSAManga = "OSAManga";
 
 	// ■■■■■PEX■■■■■
 	final public static String strPEX4quiz = "PEX4quiz";
@@ -102,6 +104,7 @@ public class Define {
 	final public static String strPTOKuji = "PTOKuji";
 	final public static String strPTODaily = "PTODaily";
 	final public static String strPTOUranai = "PTOUranai";
+	final public static String strPTOManga = "PTOManga";
 
 	// ■■■■■Mobatoku■■■■■
 	final public static String strMOBAnzan = "MOBAnzan";
@@ -122,16 +125,19 @@ public class Define {
 	final public static String strSUGUranai = "SUGUranai";
 	final public static String strSUGQuiz = "SUGQuiz";
 	final public static String strSUGQuiz2 = "SUGQuiz2";
+	final public static String strSUGManga = "SUGManga";
 
 	// ■■■■■pointStadium■■■■■
 	final public static String strPSTUranai = "PSTUranai";
 	final public static String strPSTQuiz = "PSTQuiz";
 	final public static String strPSTShindanAnk = "PSTShindanAnk";
+	final public static String strPSTManga = "PSTManga";
 	// ■■■■■pointisland■■■■■
 	final public static String strPILUranai = "PILUranai";
 	final public static String strPILQuiz = "PILQuiz";
 	final public static String strPILClickBanner = "PILClickBanner";
 	final public static String strPILShindanAnk = "PILShindanAnk";
+	final public static String strPILManga = "PILManga";
 	// ■■■■■chanceIt■■■■■
 	final public static String strCITPriceChyosatai = "CITPriceChyosatai";
 	final public static String strCITShindan = "CITShindan";
@@ -140,10 +146,12 @@ public class Define {
 	final public static String strCITClickBanner = "CITClickBanner";
 	// ■■■■■PointMonkey■■■■■
 	final public static String strPMOChyosatai = "PMOChyosatai";
-
 	// ■■■■■ちょびリッチ■■■■■
 	final public static String strCRIChirachi = "CRIChirachi";
-	
+	final public static String strCRIManga = "CRIManga";
+	// ■■■■■ハピタス■■■■■
+	final public static String strHAPManga = "HAPManga";
+
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";
 	final public static String CONTENT_TYPE_HTML = "text/html";

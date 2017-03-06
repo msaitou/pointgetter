@@ -10,13 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class PTODaily extends Mission {
+public class PTODaily extends PTOBase {
 	final String url = "http://www.pointtown.com/ptu/mypage/top.do";
 	private static HashMap<String, HashMap<String, String>> clickMap = new HashMap<String, HashMap<String, String>>() {
 		/**
@@ -88,12 +87,7 @@ public class PTODaily extends Mission {
 	 * @param log
 	 */
 	public PTODaily(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■PTODaily";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "Daily");
 	}
 
 	@Override

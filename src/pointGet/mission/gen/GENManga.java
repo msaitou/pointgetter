@@ -56,18 +56,26 @@ public class GENManga extends GENBase {
 							List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 							if (isExistEle(eleList, 0)) {
 								clickSleepSelector(eleList, 0, 3000); // 遷移
+								String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
 								String seleNext = "form>input[type='image']";
-								for (int g = 0; g < 8; g++) {
+								for (int g = 0; g < 9; g++) {
 									if (isExistEle(driver, seleNext)) {
+										if (isExistEle(driver, overLay)) {
+											checkOverlay(driver, overLay);
+										}
 										clickSleepSelector(driver, seleNext, 3000); // 遷移
 									}
 								}
+								Utille.sleep(3000);
 								String choiceSele = "input[type='radio']";
 								String seleNext2 = "div>input.enquete_nextbt";
 								String seleNext3 = "div>input.enquete_nextbt_2";
 								String seleSele = "form.menu>select";
 								// 8問
 								for (int k = 1; k <= 8; k++) {
+									if (isExistEle(driver, overLay)) {
+										checkOverlay(driver, overLay);
+									}
 									int choiceNum = 0;
 									if (isExistEle(driver, choiceSele)) {
 										int choiceies = getSelectorSize(driver, choiceSele);
@@ -98,9 +106,11 @@ public class GENManga extends GENBase {
 									}
 									else if (isExistEle(driver, seleSele)) {
 										int size3 = getSelectorSize(driver, seleSele + ">option");
-										choiceNum = Utille.getIntRand(size3) + 1;
+										choiceNum = Utille.getIntRand(size3);
+										String value = driver.findElements(By.cssSelector(seleSele + ">option")).get(choiceNum).getAttribute("value");
 										Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
-										selectList.deselectByIndex(choiceNum);
+//										selectList.deselectByIndex(choiceNum);
+										selectList.selectByValue(value);
 										if (isExistEle(driver, seleNext3)) {
 											// 次へ
 											clickSleepSelector(driver, seleNext3, 4000);
@@ -110,7 +120,6 @@ public class GENManga extends GENBase {
 										break;
 									}
 								}
-								String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
 								if (isExistEle(driver, overLay)) {
 									checkOverlay(driver, overLay);
 								}

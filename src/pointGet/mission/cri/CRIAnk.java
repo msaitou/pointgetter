@@ -14,13 +14,13 @@ import pointGet.Utille;
  * @author saitou
  *
  */
-public class CRIChirachi extends CRIBase {
+public class CRIAnk extends CRIBase {
 	final String url = "http://www.chobirich.com/mypage/research/";
 
 	/**
 	 * @param log
 	 */
-	public CRIChirachi(Logger log, Map<String, String> cProps) {
+	public CRIAnk(Logger log, Map<String, String> cProps) {
 		super(log, cProps, "アンケート");
 	}
 

@@ -10,13 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class PTOKuji extends Mission {
+public class PTOKuji extends PTOBase {
 	final String url = "";
 	private static HashMap<String, HashMap<String, String>> clickMap = new HashMap<String, HashMap<String, String>>() {
 		/**
@@ -99,12 +98,7 @@ public class PTOKuji extends Mission {
 	 * @param log
 	 */
 	public PTOKuji(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■PTOくじ";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "くじ");
 	}
 
 	@Override
