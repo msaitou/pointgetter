@@ -423,4 +423,31 @@ public class Utille {
 		DateFormat updateTimeForm = new SimpleDateFormat(formatStr);
 		return updateTimeForm.format(date);
 	}
+	
+	/**
+	 * 
+	 * @param formatStr
+	 * @return
+	 */
+	public static int getWaitTimeRan(String text) {
+		int waitTime = getWaitTime(text);
+		int ranDiff = Utille.getIntRand(300);
+		int ranSign = Utille.getIntRand(2);
+		if (ranSign == 0) {
+			return waitTime + ranDiff;
+		}
+		else {
+			return waitTime - ranDiff;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param formatStr
+	 * @return
+	 */
+	public static int getWaitTime(String text) {
+		Double dA = Double.parseDouble(text) * 1000;
+		return dA.intValue();
+	}
 }

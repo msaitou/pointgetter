@@ -47,8 +47,7 @@ public class MOBCountTimer extends MOBBase {
 					if (isExistEle(driver, selectorExpression)) {
 						String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
 						logg.info("お題　" + text);
-						Double dA = Double.parseDouble(text) * 1000;
-						waitTime = dA.intValue();
+						waitTime = Utille.getWaitTimeRan(text);
 					}
 					else {
 						logg.info("not get odai");
@@ -106,8 +105,7 @@ public class MOBCountTimer extends MOBBase {
 					if (isExistEle(driver, selectorExpression)) {
 						String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
 						logg.info("お題　" + text);
-						Double dA = Double.parseDouble(text) * 1000;
-						waitTime = dA.intValue();
+						waitTime = Utille.getWaitTime(text);
 					}
 					else {
 						logg.info("not get odai");
