@@ -60,6 +60,7 @@ public class Define {
 
 	// ■■■■■i2i■■■■■
 	final public static String strI2ISeiza = "I2ISeiza";
+	final public static String strI2IColum = "I2IColum";
 
 	// ■■■■■moppy■■■■■
 	final public static String strMOPChyosatai = "MOPChyosatai";
@@ -126,7 +127,8 @@ public class Define {
 	final public static String strSUGQuiz = "SUGQuiz";
 	final public static String strSUGQuiz2 = "SUGQuiz2";
 	final public static String strSUGManga = "SUGManga";
-
+	final public static String strSUGColum = "SUGColum";
+	
 	// ■■■■■pointStadium■■■■■
 	final public static String strPSTUranai = "PSTUranai";
 	final public static String strPSTQuiz = "PSTQuiz";

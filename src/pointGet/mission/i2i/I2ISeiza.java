@@ -2,32 +2,27 @@ package pointGet.mission.i2i;
 
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class I2ISeiza extends Mission {
+public class I2ISeiza extends I2IBase {
 	final String url = "https://point.i2i.jp/special/freepoint/";
 
 	/**
 	 * @param logg
 	 */
 	public I2ISeiza(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■星座";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(logg, cProps, "星座");
 	}
 
 	@Override

@@ -37,6 +37,7 @@ import pointGet.mission.gmy.GMYPriceChyosatai;
 import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.gmy.GMYToidas;
 import pointGet.mission.hap.HAPManga;
+import pointGet.mission.i2i.I2IColum;
 import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
 import pointGet.mission.mob.MOBChirachi;
@@ -93,6 +94,7 @@ import pointGet.mission.pto.PTOKuji;
 import pointGet.mission.pto.PTOManga;
 import pointGet.mission.pto.PTOUranai;
 import pointGet.mission.rin.RINClickBanner;
+import pointGet.mission.sug.SUGColum;
 import pointGet.mission.sug.SUGManga;
 import pointGet.mission.sug.SUGQuiz;
 import pointGet.mission.sug.SUGQuiz2;
@@ -375,6 +377,7 @@ public class WebClicker extends PointGet {
 		if (missions.size() == 0) {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strI2ISeiza);
+				missions.add(Define.strI2IColum);
 			}
 		}
 		for (String mission : missions) {
@@ -382,6 +385,10 @@ public class WebClicker extends PointGet {
 				case Define.strI2ISeiza: // ■星座占い
 					Mission I2ISeiza = new I2ISeiza(logg, commonProps);
 					I2ISeiza.exePrivateMission(driver);
+					break;
+				case Define.strI2IColum: // ■コラム
+					Mission I2IColum = new I2IColum(logg, commonProps);
+					I2IColum.exePrivateMission(driver);
 					break;
 				default:
 			}
@@ -938,6 +945,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strSUGQuiz2);
 				missions.add(Define.strSUGUranai);
 				missions.add(Define.strSUGManga);
+				missions.add(Define.strSUGColum);
 			}
 		}
 		for (String mission : missions) {
@@ -957,6 +965,10 @@ public class WebClicker extends PointGet {
 				case Define.strSUGManga: // ■漫画
 					Mission SUGManga = new SUGManga(logg, commonProps);
 					SUGManga.exePrivateMission(driver);
+					break;
+				case Define.strSUGColum: // ■コラム
+					Mission SUGColum = new SUGColum(logg, commonProps);
+					SUGColum.exePrivateMission(driver);
 					break;
 				default:
 			}
