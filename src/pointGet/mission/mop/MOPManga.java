@@ -50,7 +50,7 @@ public class MOPManga extends MOPBase {
 							for (int g = 0; g < 9; g++) {
 								if (isExistEle(driver, seleNext)) {
 									if (isExistEle(driver, overLay)) {
-										checkOverlay(driver, overLay);
+										checkOverlay(driver, overLay, false);
 									}
 									clickSleepSelector(driver, seleNext, 3000); // 遷移
 								}
@@ -63,7 +63,7 @@ public class MOPManga extends MOPBase {
 							// 8問
 							for (int k = 1; k <= 8; k++) {
 								if (isExistEle(driver, overLay)) {
-									checkOverlay(driver, overLay);
+									checkOverlay(driver, overLay, false);
 								}
 								int choiceNum = 0;
 								if (isExistEle(driver, choiceSele)) {
@@ -111,14 +111,14 @@ public class MOPManga extends MOPBase {
 								}
 							}
 							if (isExistEle(driver, overLay)) {
-								checkOverlay(driver, overLay);
+								checkOverlay(driver, overLay, false);
 							}
 							if (isExistEle(driver, seleNext)) {
 								clickSleepSelector(driver, seleNext, 3000); // 遷移
 							}
 							String finishSele = "div#again_bt>a>img";
 							if (isExistEle(driver, overLay)) {
-								checkOverlay(driver, overLay);
+								checkOverlay(driver, overLay, false);
 							}
 							if (isExistEle(driver, finishSele)) {
 								clickSleepSelector(driver, finishSele, 3000); // 遷移
