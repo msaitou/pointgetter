@@ -82,6 +82,7 @@ import pointGet.mission.pil.PILQuiz;
 import pointGet.mission.pil.PILShindanAnk;
 import pointGet.mission.pil.PILUranai;
 import pointGet.mission.pmo.PMOChyosatai;
+import pointGet.mission.pst.PSTManga;
 import pointGet.mission.pst.PSTQuiz;
 import pointGet.mission.pst.PSTShindanAnk;
 import pointGet.mission.pst.PSTUranai;
@@ -961,6 +962,8 @@ public class WebClicker extends PointGet {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strPSTUranai);
 				missions.add(Define.strPSTShindanAnk);
+				missions.add(Define.strPSTManga);
+
 			}
 		}
 		for (String mission : missions) {
@@ -977,6 +980,11 @@ public class WebClicker extends PointGet {
 					Mission PSTShindanAnk = new PSTShindanAnk(logg, commonProps);
 					PSTShindanAnk.exeRoopMission(driver);
 					break;
+				case Define.strPSTManga: // ■PSTまんが　
+					Mission PSTManga = new PSTManga(logg, commonProps);
+					PSTManga.exeRoopMission(driver);
+					break;
+
 				default:
 			}
 		}

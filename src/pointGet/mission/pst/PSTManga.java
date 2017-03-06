@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import pointGet.Utille;
 
 public class PSTManga extends PSTBase {
-	final String url = "http://www.point-island.com/wcmpoint.asp";
+	final String url = "http://www.point-stadium.com/wcmpoint.asp";
 
 	/**
 	 * @param logg
