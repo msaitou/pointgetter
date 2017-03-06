@@ -28,11 +28,14 @@ public class MOBCountTimer extends MOBBase {
 			checkOverlay(driver, "div.overlay-popup a.button-close");
 			// finish condition
 			String finishSelector = "p.ui-timer";
+			selector = "form.fx-control>input[name='submit']";
 			if (isExistEle(driver, finishSelector)) {
+				
+			}
+			else if (isExistEle(driver, finishSelector)) {
 				finsishFlag = true;
 				return;
 			}
-			selector = "form.fx-control>input[name='submit']";
 			//			while (true) { // 最大２回
 			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {
@@ -51,7 +54,7 @@ public class MOBCountTimer extends MOBBase {
 					}
 					else {
 						logg.info("not get odai");
-						return;
+						break;
 					}
 					// label.ui-label-radio.ui-circle-button[for='radio-1']
 					String selectId = "div.fx-control>input#js-timer_btn_start";
@@ -96,7 +99,7 @@ public class MOBCountTimer extends MOBBase {
 				String bounusGo = "input.ui-button.ui-button-b.ui-button-start";
 				selector = "div.fx-control>a.ui-button.ui-button-a.ui-button-close.quake";
 				if (isExistEle(driver, bounusGo)) {
-					clickSleepSelector(driver, bounusGo, 3000); // 次
+					clickSleepSelector(driver, bounusGo, 5000); // 次
 					if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
 						checkOverlay(driver, "div.overlay-popup a.button-close");
 					}
