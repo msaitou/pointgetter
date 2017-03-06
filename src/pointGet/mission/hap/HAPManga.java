@@ -24,6 +24,7 @@ public class HAPManga extends HAPBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
+		Utille.sleep(5000);
 		selector = "img[alt='ハピタス動画']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移
@@ -36,7 +37,7 @@ public class HAPManga extends HAPBase {
 				// // アラートをけして
 				// val alert = driver.switchTo().alert();
 				// alert.accept();
-				Utille.sleep(4000);
+				Utille.sleep(6000);
 				// changeCloseWindow(driver);
 
 				selector = "a.ui-btn.ui-btn-a"; // 回答する
