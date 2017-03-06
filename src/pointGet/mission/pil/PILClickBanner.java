@@ -9,24 +9,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  */
-public class PILClickBanner extends Mission {
+public class PILClickBanner extends PILBase {
 	final String url = "http://www.point-island.com/mincp.asp";
 
 	/**
 	 * @param log
 	 */
 	public PILClickBanner(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■PILクリックポイント";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "クリックポイント");
 	}
 
 	@Override

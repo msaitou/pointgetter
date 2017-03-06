@@ -16,24 +16,15 @@ import pointGet.mission.Mission;
  * @author saitou
  *
  */
-public class PSTShindanAnk extends Mission {
+public class PSTShindanAnk extends PSTBase {
 	final String url = "http://www.point-stadium.com/wap_enq.asp";
 	//	final String url = "http://www.point-stadium.com/wap_enq.asp?qt=1&p=2";
-	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public PSTShindanAnk(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PST診断＆アンケート";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(logg, cProps, "診断＆アンケート");
 	}
 
 	@Override

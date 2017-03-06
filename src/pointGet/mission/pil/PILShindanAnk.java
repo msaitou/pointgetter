@@ -3,37 +3,28 @@ package pointGet.mission.pil;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class PILShindanAnk extends Mission {
+public class PILShindanAnk extends PILBase {
 		final String url = "http://www.point-island.com/wap_enq.asp";
 //	final String url = "http://www.point-island.com/wap_enq.asp?qt=1&p=2";
-		boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public PILShindanAnk(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PIL診断＆アンケート";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(logg, cProps, "診断＆アンケート");
 	}
 
 	@Override

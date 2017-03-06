@@ -6,21 +6,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class PILUranai extends Mission {
+public class PILUranai extends PILBase {
 	final String url = "http://www.point-island.com/wcmpoint.asp";
 
 	/**
 	 * @param logg
 	 */
 	public PILUranai(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PIL星座";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(logg, cProps, "星座");
 	}
 
 	@Override

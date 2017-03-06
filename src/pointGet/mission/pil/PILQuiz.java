@@ -6,31 +6,20 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  *
  * @author saitou
  * 0時、8時、16時開催
  */
-public class PILQuiz extends Mission {
+public class PILQuiz extends PILBase {
 	final String url = "http://www.point-island.com/wcmpoint.asp";
-	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public PILQuiz(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PILクイズ";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(logg, cProps, "クイズ");
 	}
 
 	@Override

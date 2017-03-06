@@ -6,31 +6,20 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  *
  * @author saitou
  * 0時、8時、16時開催
  */
-public class PSTQuiz extends Mission {
+public class PSTQuiz extends PSTBase {
 	final String url = "http://www.point-stadium.com/wcmpoint.asp";
-	boolean finsishFlag = false;
 
 	/**
 	 * @param logg
 	 */
 	public PSTQuiz(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PSTクイズ";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
+		super(logg, cProps, "クイズ");
 	}
 
 	@Override

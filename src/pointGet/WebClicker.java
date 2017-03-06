@@ -77,6 +77,7 @@ import pointGet.mission.pic.PICPriceChyosatai;
 import pointGet.mission.pic.PICShindan;
 import pointGet.mission.pic.PICUranai;
 import pointGet.mission.pil.PILClickBanner;
+import pointGet.mission.pil.PILManga;
 import pointGet.mission.pil.PILQuiz;
 import pointGet.mission.pil.PILShindanAnk;
 import pointGet.mission.pil.PILUranai;
@@ -992,6 +993,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strPILUranai);
 				missions.add(Define.strPILClickBanner);
 				missions.add(Define.strPILShindanAnk);
+				missions.add(Define.strPILManga);
 			}
 		}
 		// login!!
@@ -1013,6 +1015,10 @@ public class WebClicker extends PointGet {
 				case Define.strPILShindanAnk: // ■PIL診断＆アンケート
 					Mission PILShindanAnk = new PILShindanAnk(logg, commonProps);
 					PILShindanAnk.exeRoopMission(driver);
+					break;
+				case Define.strPILManga: // ■まんが
+					Mission PILManga = new PILManga(logg, commonProps);
+					PILManga.exeRoopMission(driver);
 					break;
 				default:
 			}

@@ -6,21 +6,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class PSTUranai extends Mission {
+public class PSTUranai extends PSTBase {
 	final String url = "http://www.point-stadium.com/wcmpoint.asp";
 
 	/**
 	 * @param logg
 	 */
 	public PSTUranai(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PST星座";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(logg, cProps, "星座");
 	}
 
 	@Override
