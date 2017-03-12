@@ -93,6 +93,7 @@ public class MOBQuiz extends MOBBase {
 			else {
 				logg.warn(this.mName + "]獲得済み");
 			}
+			finsishFlag = true;
 		}
 	}
 }

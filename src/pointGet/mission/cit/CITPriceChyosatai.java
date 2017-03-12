@@ -7,13 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  * 4時更新
  */
-public class CITPriceChyosatai extends Mission {
+public class CITPriceChyosatai extends CITBase {
 	final String url = "http://www.chance.com/game/";
 	private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
 	private String footBnrSelector = "div.foot-bnr a.close>span";
@@ -22,13 +21,7 @@ public class CITPriceChyosatai extends Mission {
 	 * @param log
 	 */
 	public CITPriceChyosatai(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■CITPrice調査隊";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(log, cProps, "Price調査隊");
 	}
 
 	@Override
@@ -68,7 +61,8 @@ public class CITPriceChyosatai extends Mission {
 						}
 						localRoop1(driver);
 					}
-				} else if (isExistEle(driver, entrySele)) {
+				}
+				else if (isExistEle(driver, entrySele)) {
 					clickSleepSelector(driver, entrySele, 3000); // 遷移
 					checkOverlay(driver, overlaySelector);
 					if (isExistEle(driver, footBnrSelector)
@@ -77,7 +71,8 @@ public class CITPriceChyosatai extends Mission {
 					}
 					//					selector = "div.btn>a";
 					localRoop1(driver);
-				} else {
+				}
+				else {
 					j = 6;
 				}
 			}

@@ -5,13 +5,11 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.mission.Mission;
-
 /**
  * @author saitou
  *
  */
-public class CITChirachi extends Mission {
+public class CITChirachi extends CITBase {
 	final String url = "http://www.chance.com/";
 
 	/**
@@ -20,10 +18,6 @@ public class CITChirachi extends Mission {
 	public CITChirachi(Logger log, Map<String, String> cProps) {
 		super(log, cProps);
 		this.mName = "■CITチラシ";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
 	}
 
 	@Override

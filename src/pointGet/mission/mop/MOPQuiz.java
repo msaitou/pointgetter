@@ -92,6 +92,7 @@ public class MOPQuiz extends MOPBase {
 			else {
 				logg.warn(this.mName + "]獲得済み");
 			}
+			finsishFlag = true;
 		}
 	}
 }

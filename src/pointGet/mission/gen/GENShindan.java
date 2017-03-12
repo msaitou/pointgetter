@@ -3,12 +3,13 @@ package pointGet.mission.gen;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -40,6 +41,7 @@ public class GENShindan extends Mission {
 			driver.get("http://www.gendama.jp/shindan_content/");
 //			clickSleepSelector(driver, selector, 4000); // 遷移
 			changeCloseWindow(driver);
+			int zumiCnt = 0;
 			while (true) {
 				selector = "div.entry";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -56,6 +58,9 @@ public class GENShindan extends Mission {
 						break;
 
 					}
+				}
+				if (++zumiCnt > 3) {	// 新規ミッション追加時はコメント
+					break;
 				}
 				if (wEle == null) {
 					break;

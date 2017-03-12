@@ -41,7 +41,6 @@ public class MOBEnglishTest extends MOBBase {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 8; i++) {
 					Utille.sleep(4000);
-					String selectorDay = "div.ui-item-header>h2.ui-item-title";
 					String selectYoubi = "";
 					//					if (isExistEle(driver, selectorDay)) {
 					//						String text = driver.findElement(By.cssSelector(selectorDay)).getText();
@@ -100,6 +99,7 @@ public class MOBEnglishTest extends MOBBase {
 			else {
 				logg.warn(this.mName + "]獲得済み");
 			}
+			finsishFlag = true;
 		}
 	}
 }

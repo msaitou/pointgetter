@@ -9,26 +9,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class CITToidas extends Mission {
+public class CITToidas extends CITBase {
 	final String url = "http://www.chance.com/game/";
 
 	/**
 	 * @param logg
 	 */
 	public CITToidas(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■CITトイダス";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "トイダス");
 	}
 
 	@Override

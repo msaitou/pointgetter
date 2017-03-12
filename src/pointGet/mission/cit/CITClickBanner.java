@@ -9,26 +9,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class CITClickBanner extends Mission {
+public class CITClickBanner extends CITBase {
 	final String url = "http://www.chance.com/";
 
-	//　途中TODO
 	/**
 	 * @param log
 	 */
 	public CITClickBanner(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■CITクリックバナー";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "クリックバナー");
 	}
 
 	@Override
@@ -116,7 +109,7 @@ public class CITClickBanner extends Mission {
 		selector = "dl.clearfix>dt>a>img";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 4000);
-//			closeOtherWindow(driver);
+			//			closeOtherWindow(driver);
 		}
 		selector = "div#ichioshi-corner dt>a>img";
 		if (isExistEle(driver, selector)) {
@@ -125,7 +118,7 @@ public class CITClickBanner extends Mission {
 			for (int i = 0; i < size1; i++) {
 				if (isExistEle(eleList, i)) {
 					clickSleepSelector(eleList, i, 4000);
-//					closeOtherWindow(driver);
+					//					closeOtherWindow(driver);
 				}
 			}
 		}
@@ -134,7 +127,7 @@ public class CITClickBanner extends Mission {
 		selector = "div#potitto-chance dt>a>img";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 4000);
-//			closeOtherWindow(driver);
+			//			closeOtherWindow(driver);
 		}
 	}
 }

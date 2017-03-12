@@ -3,33 +3,27 @@ package pointGet.mission.cit;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class CITShindan extends Mission {
+public class CITShindan extends CITBase {
 	final String url = "http://www.chance.com/game/";
 
 	/**
 	 * @param logg
 	 */
 	public CITShindan(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■CIT毎日診断";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "毎日診断");
 	}
 
 	@Override
@@ -39,6 +33,7 @@ public class CITShindan extends Mission {
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 5000); // 遷移
 			changeCloseWindow(driver);
+			int zumiCnt = 0;
 			while (true) {
 				selector = "div.entry";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -56,7 +51,11 @@ public class CITShindan extends Mission {
 
 					}
 				}
+				if (++zumiCnt > 3) {	// 新規ミッション追加時はコメント
+					break;
+				}
 				if (wEle == null) {
+					logg.warn(mName + "]all済み");
 					break;
 				}
 				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
@@ -87,7 +86,8 @@ public class CITShindan extends Mission {
 											if (isExistEle(driver, nextSelector)
 													&& isExistEle(driver, endSelector + none)) {
 												clickSleepSelector(driver, nextSelector, 2000); // 遷移
-											} else if (isExistEle(driver, endSelector)
+											}
+											else if (isExistEle(driver, endSelector)
 													&& isExistEle(driver, nextSelector + none)) {
 												this.waitTilReady(driver);
 												clickSleepSelector(driver, endSelector, 4000); // 遷移
@@ -120,8 +120,8 @@ public class CITShindan extends Mission {
 							}
 						}
 					}
-				} else {
-					logg.warn(mName + "]all済み");
+				}
+				else {
 					break;
 				}
 			}

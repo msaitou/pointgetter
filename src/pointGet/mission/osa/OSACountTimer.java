@@ -137,7 +137,7 @@ public class OSACountTimer extends OSABase {
 					clickSleepSelector(driver, selectorEnd, 3000); // 終了
 				}
 				logg.info(this.mName + "]kuria?");
-				//	checkOverlay(driver, "div.overlay-popup a.button-close");
+				finsishFlag = true;
 			}
 			else {
 				String endSelector = "input[name='submit']";

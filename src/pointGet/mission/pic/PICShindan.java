@@ -3,12 +3,13 @@ package pointGet.mission.pic;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.Mission;
 
@@ -39,6 +40,7 @@ public class PICShindan extends Mission {
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 8000); // 遷移
 			changeCloseWindow(driver);
+			int zumiCnt = 0;
 			while (true) {
 				selector = "div.entry";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -54,6 +56,9 @@ public class PICShindan extends Mission {
 						wEle = eleList.get(i);
 						break;
 					}
+				}
+				if (++zumiCnt > 3) {	// 新規ミッション追加時はコメント
+					break;
 				}
 				if (wEle == null) {
 					break;

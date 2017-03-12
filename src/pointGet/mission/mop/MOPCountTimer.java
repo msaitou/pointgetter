@@ -141,9 +141,8 @@ public class MOPCountTimer extends MOPBase {
 				if (isExistEle(driver, selectorEnd)) {
 					clickSleepSelector(driver, selectorEnd, 3000); // 終了
 				}
-
 				logg.info(this.mName + "]kuria?");
-				//	checkOverlay(driver, "div.overlay-popup a.button-close");
+				finsishFlag = true;
 			}
 			else {
 				String endSelector = "input[name='submit']";

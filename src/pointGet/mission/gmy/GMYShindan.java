@@ -33,6 +33,7 @@ public class GMYShindan extends GMYBase {
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 5000); // 遷移
 			changeCloseWindow(driver);
+			int zumiCnt = 0;
 			while (true) {
 				selector = "div.entry";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -48,6 +49,9 @@ public class GMYShindan extends GMYBase {
 						wEle = eleList.get(i);
 						break;
 					}
+				}
+				if (++zumiCnt > 3) {	// 新規ミッション追加時はコメント
+					break;
 				}
 				if (wEle == null) {
 					break;
