@@ -16,8 +16,7 @@ public class CITChirachi extends CITBase {
 	 * @param log
 	 */
 	public CITChirachi(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■CITチラシ";
+		super(log, cProps, "チラシ");
 	}
 
 	@Override
