@@ -60,6 +60,7 @@ import pointGet.mission.mop.MOPUranai;
 import pointGet.mission.osa.OSAAnzan;
 import pointGet.mission.osa.OSAChirachi;
 import pointGet.mission.osa.OSAClickBanner;
+import pointGet.mission.osa.OSACountTimer;
 import pointGet.mission.osa.OSAEnglishTest;
 import pointGet.mission.osa.OSAManga;
 import pointGet.mission.osa.OSANanyoubi;
@@ -413,6 +414,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strOSAAnzan);
 				missions.add(Define.strOSAChirachi);
 				missions.add(Define.strOSAEnglishTest);
+				missions.add(Define.strOSACountTimer);
 			}
 		}
 		String se = "ul.userinfo";
@@ -458,6 +460,10 @@ public class WebClicker extends PointGet {
 				case Define.strOSAManga: // ■漫画
 					Mission OSAManga = new OSAManga(logg, commonProps);
 					OSAManga.exePrivateMission(driver);
+					break;
+				case Define.strOSACountTimer: // ■CountTimer
+					Mission OSACountTimer = new OSACountTimer(logg, commonProps);
+					OSACountTimer.exeRoopMission(driver);
 					break;
 				default:
 			}

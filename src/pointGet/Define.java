@@ -85,6 +85,7 @@ public class Define {
 	final public static String strOSAChirachi = "OSAChirachi";
 	final public static String strOSAEnglishTest = "OSAEnglishTest";
 	final public static String strOSAManga = "OSAManga";
+	final public static String strOSACountTimer = "OSACountTimer";
 
 	// ■■■■■PEX■■■■■
 	final public static String strPEX4quiz = "PEX4quiz";

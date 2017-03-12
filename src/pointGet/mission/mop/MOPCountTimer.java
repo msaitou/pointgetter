@@ -21,22 +21,17 @@ public class MOPCountTimer extends MOPBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
+		String wrapSele = "div.modal__wrap[style*='display: block;'] a.modal__closebtn";
+		if (isExistEle(driver, wrapSele)) {
+			Utille.sleep(2000);
+			clickSleepSelector(driver, selector, 2000);
+		}
 		selector = "div.game_btn>div.icon>img[alt='CountTimer']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
-			// finish condition
-			String finishSelector = "p.ui-timer";
 			selector = "form.fx-control>input[name='submit']";
-			if (isExistEle(driver, finishSelector)) {
-				
-			}
-			else if (isExistEle(driver, finishSelector)) {
-				finsishFlag = true;
-				return;
-			}
-			//			while (true) { // 最大２回
 			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {
 				clickSelector(driver, selector);
@@ -60,13 +55,12 @@ public class MOPCountTimer extends MOPBase {
 					String selectId = "div.fx-control>input#js-timer_btn_start";
 					String selectStop = "div.fx-control>input#js-timer_btn_stop";
 					String selectRes = "input#timer_btn_stop";
-					String selector2 = "input[name='submit']";
 					if (isExistEle(driver, selectId)) {
 						clickSleepSelector(driver, selectId, 0); // START!!
 						long s = System.currentTimeMillis();
 						Utille.sleep(waitTime);
 						long e = System.currentTimeMillis();
-						System.out.println("sleep " + (s-e));
+						System.out.println("sleep " + (s - e));
 						if (isExistEle(driver, selectStop)) {
 							clickSleepSelector(driver, selectStop, 1000); // END
 							if (isExistEle(driver, selectRes)) {
@@ -85,7 +79,7 @@ public class MOPCountTimer extends MOPBase {
 						}
 					}
 				}
-				
+
 				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
 					checkOverlay(driver, "div.overlay-popup a.button-close");
 				}
@@ -119,13 +113,12 @@ public class MOPCountTimer extends MOPBase {
 					String selectId = "div.fx-control>input#js-timer_btn_start";
 					String selectStop = "div.fx-control>input#js-timer_btn_stop";
 					String selectRes = "input#timer_btn_stop";
-					String selector2 = "input[name='submit']";
 					if (isExistEle(driver, selectId)) {
 						clickSleepSelector(driver, selectId, 0); // START!!
 						long s = System.currentTimeMillis();
 						Utille.sleep(waitTime);
 						long e = System.currentTimeMillis();
-						System.out.println("sleep " + (s-e));
+						System.out.println("sleep " + (s - e));
 						if (isExistEle(driver, selectStop)) {
 							clickSleepSelector(driver, selectStop, 1000); // END
 							if (isExistEle(driver, selectRes)) {
@@ -159,9 +152,8 @@ public class MOPCountTimer extends MOPBase {
 					waitTilReady(driver);
 				}
 				logg.warn(this.mName + "]獲得済み");
-				//					break;
+				finsishFlag = true;
 			}
-			//			}
 		}
 	}
 }

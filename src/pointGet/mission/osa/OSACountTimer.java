@@ -1,4 +1,4 @@
-package pointGet.mission.mob;
+package pointGet.mission.osa;
 
 import java.util.Map;
 
@@ -8,23 +8,24 @@ import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
 
-public class MOBCountTimer extends MOBBase {
-	final String url = "http://pc.mtoku.jp/contents/";
+public class OSACountTimer extends OSABase {
+	final String url = "http://osaifu.com/contents/coinland/";
 
 	/**
 	 * @author saitou 0時、12時開催
 	 */
-	public MOBCountTimer(Logger log, Map<String, String> cProps) {
+	public OSACountTimer(Logger log, Map<String, String> cProps) {
 		super(log, cProps, "CountTimer");
 	}
 
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "div.c-box.game-item>a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_timer.png']";
+		selector = "li.long img[alt='Count Timer']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
-			checkOverlay(driver, "div.overlay-popup a.button-close");
+			String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
+			checkOverlay(driver, overlaySelector);
 			selector = "form.fx-control>input[name='submit']";
 			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {
@@ -54,7 +55,7 @@ public class MOBCountTimer extends MOBBase {
 						long s = System.currentTimeMillis();
 						Utille.sleep(waitTime);
 						long e = System.currentTimeMillis();
-						System.out.println("sleep " + (s - e));
+						System.out.println("sleep " + (s-e));
 						if (isExistEle(driver, selectStop)) {
 							clickSleepSelector(driver, selectStop, 1000); // END
 							if (isExistEle(driver, selectRes)) {
@@ -73,7 +74,7 @@ public class MOBCountTimer extends MOBBase {
 						}
 					}
 				}
-
+				
 				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
 					checkOverlay(driver, "div.overlay-popup a.button-close");
 				}
@@ -112,7 +113,7 @@ public class MOBCountTimer extends MOBBase {
 						long s = System.currentTimeMillis();
 						Utille.sleep(waitTime);
 						long e = System.currentTimeMillis();
-						System.out.println("sleep " + (s - e));
+						System.out.println("sleep " + (s-e));
 						if (isExistEle(driver, selectStop)) {
 							clickSleepSelector(driver, selectStop, 1000); // END
 							if (isExistEle(driver, selectRes)) {
@@ -135,7 +136,6 @@ public class MOBCountTimer extends MOBBase {
 				if (isExistEle(driver, selectorEnd)) {
 					clickSleepSelector(driver, selectorEnd, 3000); // 終了
 				}
-
 				logg.info(this.mName + "]kuria?");
 				//	checkOverlay(driver, "div.overlay-popup a.button-close");
 			}
@@ -148,7 +148,6 @@ public class MOBCountTimer extends MOBBase {
 				logg.warn(this.mName + "]獲得済み");
 				finsishFlag = true;
 			}
-			//			}
 		}
 	}
 }
