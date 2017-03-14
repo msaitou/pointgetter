@@ -17,14 +17,14 @@ import pointGet.Utille;
  * @author saitou
  *
  */
-public class I2IColum extends I2IBase {
+public class I2ImangaVer2 extends I2IBase {
 	final String url = "https://point.i2i.jp/special/freepoint/";
 
 	/**
 	 * @param logg
 	 */
-	public I2IColum(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps, "コラム");
+	public I2ImangaVer2(Logger logg, Map<String, String> cProps) {
+		super(logg, cProps, "漫画Ver2");
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class I2IColum extends I2IBase {
 			int size = getSelectorSize(driver, selector);
 			for (int i = 0; i < size; i++) {
 				WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-				String selector2 = "img[src='/img/special/freepoint/column_340_120.png']";
+				String selector2 = "img[src='/img/special/freepoint/manga_340_120.png']";
 				if (isExistEle(e, selector2)) {
 					if (!isExistEle(e, selector2)) {
 						break;
@@ -47,44 +47,35 @@ public class I2IColum extends I2IBase {
 					Utille.sleep(5000);
 					changeCloseWindow(driver);
 
-					selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
-					String seleNext = "form>input.next_bt";
-					String seleNextb2 = "form>input[type='image']";
-					String seleNextb3 = "form>input[alt='next']";
-					String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
+					selector = "a.ui-btn.ui-btn-a"; // 回答する
 					while (true) {
 						if (isExistEle(driver, selector)) {
-							clickSleepSelector(driver, selector, 3000); // 遷移　問開始
-							if (isExistEle(driver, seleNext)) {
-								clickSleepSelector(driver, seleNext, 3000); // 遷移　問開始
-								for (int g = 0 ;g < 2 ;g++) {
-									if (isExistEle(driver, seleNextb2)) {
-										clickSleepSelector(driver, seleNextb2, 3000); // 遷移　問開始するよ
-									}
-								}
-								// 6page
-								for (int g = 0 ;g < 6 ;g++) {
+							List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+							if (isExistEle(eleList, 0)) {
+								clickSleepSelector(eleList, 0, 3000); // 遷移
+								String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
+								String seleNext = "form>input[type='image']";
+								String seleNexttugi = seleNext + "[src='common/image/9999/manga_next_bt.png']";
+								for (int g = 0; g < 8; g++) {
 									if (isExistEle(driver, overLay)) {
-										checkOverlay(driver, overLay);
+										checkOverlay(driver, overLay, false);
 									}
-									if (isExistEle(driver, seleNextb3)) {
-										clickSleepSelector(driver, seleNextb3, 3000); // 遷移　問開始するよ
+									if (isExistEle(driver, seleNexttugi)) {
+										clickSleepSelector(driver, seleNexttugi, 3000); // 遷移
+									}
+									else if (isExistEle(driver, seleNext)) {
+										clickSleepSelector(driver, seleNext, 3000); // 遷移
 									}
 								}
-								if (isExistEle(driver, overLay)) {
-									checkOverlay(driver, overLay);
-								}
-								if (isExistEle(driver, seleNextb2)) {
-									clickSleepSelector(driver, seleNextb2, 3000); // 遷移　問開始するよ
-								}
+								Utille.sleep(3000);
 								String choiceSele = "input[type='radio']";
 								String seleNext2 = "div>input.enquete_nextbt";
 								String seleNext3 = "div>input.enquete_nextbt_2";
 								String seleSele = "form.menu>select";
-								// 6問
-								for (int k = 1; k <= 6; k++) {
+								// 8問
+								for (int k = 1; k <= 8; k++) {
 									if (isExistEle(driver, overLay)) {
-										checkOverlay(driver, overLay);
+										checkOverlay(driver, overLay, false);
 									}
 									int choiceNum = 0;
 									if (isExistEle(driver, choiceSele)) {
@@ -132,27 +123,25 @@ public class I2IColum extends I2IBase {
 									}
 								}
 								if (isExistEle(driver, overLay)) {
-									checkOverlay(driver, overLay);
+									checkOverlay(driver, overLay, false);
 								}
-								if (isExistEle(driver, seleNextb2)) {
-									clickSleepSelector(driver, seleNextb2, 3000); // 遷移　問開始するよ
+								if (isExistEle(driver, seleNext)) {
+									clickSleepSelector(driver, seleNext, 3000); // 遷移
 								}
 								String finishSele = "div#again_bt>a>img";
 								if (isExistEle(driver, overLay)) {
-									checkOverlay(driver, overLay);
+									checkOverlay(driver, overLay, false);
 								}
 								if (isExistEle(driver, finishSele)) {
 									clickSleepSelector(driver, finishSele, 3000); // 遷移
 									// 一覧に戻るはず
 								}
 							}
-
 						}
 						else {
 							break;
 						}
 					}
-					break; // 星座はこれで終了
 				}
 			}
 		}

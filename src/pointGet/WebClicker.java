@@ -39,6 +39,7 @@ import pointGet.mission.gmy.GMYToidas;
 import pointGet.mission.hap.HAPManga;
 import pointGet.mission.i2i.I2IColum;
 import pointGet.mission.i2i.I2ISeiza;
+import pointGet.mission.i2i.I2ImangaVer2;
 import pointGet.mission.mob.MOBAnzan;
 import pointGet.mission.mob.MOBChirachi;
 import pointGet.mission.mob.MOBClickBanner;
@@ -379,6 +380,7 @@ public class WebClicker extends PointGet {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strI2ISeiza);
 				missions.add(Define.strI2IColum);
+				missions.add(Define.strI2ImangaVer2);
 			}
 		}
 		for (String mission : missions) {
@@ -390,6 +392,10 @@ public class WebClicker extends PointGet {
 				case Define.strI2IColum: // ■コラム
 					Mission I2IColum = new I2IColum(logg, commonProps);
 					I2IColum.exePrivateMission(driver);
+					break;
+				case Define.strI2ImangaVer2: // ■漫画
+					Mission I2ImangaVer2 = new I2ImangaVer2(logg, commonProps);
+					I2ImangaVer2.exePrivateMission(driver);
 					break;
 				default:
 			}
