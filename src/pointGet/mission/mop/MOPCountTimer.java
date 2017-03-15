@@ -36,7 +36,7 @@ public class MOPCountTimer extends MOPBase {
 			if (isExistEle(driver, selector)) {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 5; i++) {
-					Utille.sleep(4000);
+					Utille.sleep(6000);
 					if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
 						checkOverlay(driver, "div.overlay-popup a.button-close");
 					}
