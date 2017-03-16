@@ -109,14 +109,14 @@ import pointGet.mission.sug.SUGUranai;
  *
  */
 public class WebClicker extends PointGet {
+	public static boolean isDoingFlag = false;
+	public static long lastRoopTime = 0;
 	private static final String loadFilePath = "pGetWeb.properties";
-	private static String[] wordList = null;
-	private static boolean secondFlg = false;
-	private static boolean thirdFlg = false;
 	@SuppressWarnings("unused")
-	private static boolean forthFlg = false;
-	@SuppressWarnings("unused")
-	private static boolean testFlag = false;
+	private static boolean secondFlg = false, thirdFlg = false, forthFlg = false, testFlag = false;
+	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
+	private static String mName = "";
+	private static String[] wordList = null, visitSites = null;
 	private static String[] defoSiteList = new String[] {
 			Define.PSITE_CODE_PIC, // PointInCome
 			Define.PSITE_CODE_SUG, // SUGUTAMA
@@ -137,11 +137,6 @@ public class WebClicker extends PointGet {
 			Define.PSITE_CODE_CRI, // ちょびリッチ
 			Define.PSITE_CODE_HAP, // ハピタス
 	};
-	private static String[] visitSites = null;
-	private static String mName = "";
-	private static ArrayList<Mission> missionList = new ArrayList<Mission>();
-	public static long lastRoopTime = 0;
-	public static boolean isDoingFlag = false;
 
 	protected static void init(String[] args) {
 		PointGet.init(WebClicker.class.getSimpleName());
@@ -155,19 +150,23 @@ public class WebClicker extends PointGet {
 		if (args.length > 0) {
 			if (args[0].equals("1")) {
 				secondFlg = true;
-			} else if (args[0].equals("2")) {
+			}
+			else if (args[0].equals("2")) {
 				thirdFlg = true;
-			} else if (args[0].equals("3")) {
+			}
+			else if (args[0].equals("3")) {
 				forthFlg = true;
 			}
 		}
 		if (args.length > 1) {
 			if (Arrays.asList(defoSiteList).contains(args[1])) {
 				visitSites = new String[] { args[1] };
-			} else {
+			}
+			else {
 				visitSites = new String[0];
 			}
-		} else {
+		}
+		else {
 			visitSites = defoSiteList;
 		}
 		// testFlag =true;
@@ -182,10 +181,11 @@ public class WebClicker extends PointGet {
 		for (String site : visitSites) {
 			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
 					Define.PSITE_CODE_PEX, // pex
-					// Define.PSITE_CODE_GEN,// gendama
+			// Define.PSITE_CODE_GEN,// gendama
 			}).contains(site)) {
 				continue;
-			} else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
+			}
+			else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
 					Define.PSITE_CODE_RIN, // raktuten
 					Define.PSITE_CODE_I2I,// i2i
 			}).contains(site)) {
@@ -208,10 +208,11 @@ public class WebClicker extends PointGet {
 		for (String site : visitSites) {
 			if (thirdFlg && Arrays.asList(new String[] { Define.PSITE_CODE_ECN, // ecnavi
 					Define.PSITE_CODE_PEX, // pex
-					// Define.PSITE_CODE_GEN,// gendama
+			// Define.PSITE_CODE_GEN,// gendama
 			}).contains(site)) {
 				continue;
-			} else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
+			}
+			else if ((secondFlg || thirdFlg) && Arrays.asList(new String[] { Define.PSITE_CODE_GMY, // GetMoney
 					Define.PSITE_CODE_RIN, // raktuten
 					Define.PSITE_CODE_I2I,// i2i
 			}).contains(site)) {
@@ -242,7 +243,8 @@ public class WebClicker extends PointGet {
 				if (isDoingFlag) {
 					logg.info("roopEnd!! isDoingFlag:true");
 					break;
-				} else {
+				}
+				else {
 					if (CompCnt >= missionList.size()) {
 						logg.info("roopEnd!! isDoingFlag:false");
 						break;
@@ -590,7 +592,8 @@ public class WebClicker extends PointGet {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				eleList.get(0).click();
 				Utille.sleep(3000);
-			} else {
+			}
+			else {
 				logg.warn(mName + "]なかったよ...");
 			}
 		}
@@ -1156,7 +1159,7 @@ public class WebClicker extends PointGet {
 			}
 		}
 	}
-	
+
 	/**
 	 *
 	 * @param driver

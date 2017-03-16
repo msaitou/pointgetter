@@ -32,6 +32,7 @@ public class MOBChirachi extends MOBBase {
 			for (int i = 0; i < size; i++) {
 				if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
 					clickSleepSelector(driver.findElements(By.cssSelector(selector)), i, 4000);
+					closeOtherWindow(driver);
 					break;
 				}
 			}
