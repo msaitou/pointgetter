@@ -52,7 +52,7 @@ public class PEXSearch extends PEXBase {
 				ele.clear();
 				logg.info("検索keyword[" + wordSearchList[i]);
 				ele.sendKeys(wordSearchList[i]);
-				clickSelector(driver, "input[name='commit']");
+				clickSleepSelector(driver, "input[name='commit']", 3000);
 				logg.info("kimasita");
 			}
 			this.cnt++;

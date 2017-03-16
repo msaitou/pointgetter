@@ -31,7 +31,7 @@ public abstract class PEXBase extends Mission {
 
 	@Override
 	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
+		for (int i = 0; i < 1 && !finsishFlag; i++) {
 			privateMission(driver);
 		}
 	}
