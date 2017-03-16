@@ -252,7 +252,7 @@ public class WebClicker extends PointGet {
 				}
 				logg.info("again!!");
 			}
-			driver.quit();
+			driver.quit();// if not null then execute Quit!
 		}
 	}
 
@@ -282,7 +282,7 @@ public class WebClicker extends PointGet {
 		try {
 			switch (siteType) {
 				case Define.PSITE_CODE_GMY:
-					goToClickGMY(driver, missionArr);
+					goToClickGMY(driver, missionArr);// この中身をmかくmissionのbaseに移植してdriverのインスタンス化はmissionのスーパークラスで実装ｓと例外発生時に再生
 					break;
 				case Define.PSITE_CODE_GEN:
 					goToClickGEN(driver, missionArr);

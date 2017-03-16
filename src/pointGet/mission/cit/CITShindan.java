@@ -43,7 +43,9 @@ public class CITShindan extends CITBase {
 					if (isExistEle(eleList, i)) {
 						String sumiSelector = "img[src='/images/icons/sumi.png']";
 						if (isExistEle(eleList.get(i), sumiSelector)) {
-							++zumiCnt;
+							if (++zumiCnt > 3) {	// 新規ミッション追加時はコメント
+								break;
+							}
 							continue;
 						}
 						selector = "div.entry";

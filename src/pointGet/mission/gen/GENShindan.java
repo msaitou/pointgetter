@@ -41,8 +41,8 @@ public class GENShindan extends Mission {
 			driver.get("http://www.gendama.jp/shindan_content/");
 //			clickSleepSelector(driver, selector, 4000); // 遷移
 			changeCloseWindow(driver);
-			int zumiCnt = 0;
 			while (true) {
+				int zumiCnt = 0;
 				selector = "div.entry";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size1 = eleList.size();
@@ -51,6 +51,9 @@ public class GENShindan extends Mission {
 					if (isExistEle(eleList, i)) {
 						String sumiSelector = "img[src='/images/icons/sumi.png']";
 						if (isExistEle(eleList.get(i), sumiSelector)) {
+							if (++zumiCnt > 3) {	// 新規ミッション追加時はコメント
+								break;
+							}
 							continue;
 						}
 						selector = "div.entry";
@@ -59,7 +62,7 @@ public class GENShindan extends Mission {
 
 					}
 				}
-				if (++zumiCnt > 3) {	// 新規ミッション追加時はコメント
+				if (zumiCnt > 3) {	// 新規ミッション追加時はコメント
 					break;
 				}
 				if (wEle == null) {
