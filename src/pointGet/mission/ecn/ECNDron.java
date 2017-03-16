@@ -6,25 +6,19 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class ECNDron extends Mission {
+public class ECNDron extends ECNBase {
 	final String url = "";
 
 	/**
 	 * @param log
 	 */
 	public ECNDron(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■ドロンバナークリック2種";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "ドロンバナークリック2種");
 	}
 
 	@Override
@@ -33,12 +27,12 @@ public class ECNDron extends Mission {
 		selector = "div#doron a.item";
 		for (int i = 0; i < dronUrlList.length; i++) {
 			driver.get(dronUrlList[i]);
-			Utille.sleep(1000);
+			Utille.sleep(2000);
 			if (isExistEle(driver, "div.js_anime.got")) {
 				logg.warn(mName + i + "]獲得済み");
 			}
 			else if (isExistEle(driver, selector)) {
-				clickSleepSelector(driver, selector, 1000);
+				clickSleepSelector(driver, selector, 2000);
 			}
 		}
 	}

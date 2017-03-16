@@ -6,13 +6,12 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class PEXMekutte extends Mission {
+public class PEXMekutte extends PEXBase {
 	final String url = "http://pex.jp/seal";
 	private int mekutteClick = 0;
 
@@ -20,13 +19,7 @@ public class PEXMekutte extends Mission {
 	 * @param logg
 	 */
 	public PEXMekutte(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■めくってシール";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "めくってシール");
 	}
 
 	@Override

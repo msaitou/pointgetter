@@ -8,13 +8,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class ECNWebSearche extends Mission {
+public class ECNWebSearche extends ECNBase {
 	final String url = "http://ecnavi.jp/search/web/?Keywords=";
 
 	private String[] wordSearchList = null;
@@ -24,13 +23,8 @@ public class ECNWebSearche extends Mission {
 	 * @param wordlist
 	 */
 	public ECNWebSearche(Logger log, Map<String, String> cProps, String[] wordlist) {
-		super(log, cProps);
-		this.mName = "■web検索";
+		super(log, cProps, "web検索");
 		this.wordSearchList = Utille.getWordSearchList(wordlist, 5);
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
 	}
 
 	@Override

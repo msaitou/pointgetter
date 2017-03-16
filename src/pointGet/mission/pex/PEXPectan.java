@@ -8,13 +8,12 @@ import org.openqa.selenium.WebDriver;
 import pointGet.Define;
 import pointGet.LoginSite;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  * 14時更新
  */
-public class PEXPectan extends Mission {
+public class PEXPectan extends PEXBase {
 	final String url = "http://pex.jp/pekutan/words/current";
 	private boolean endFlag = false;
 
@@ -22,15 +21,18 @@ public class PEXPectan extends Mission {
 	 * @param logg
 	 */
 	public PEXPectan(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■ぺく単";
+		super(logg, cProps, "ぺく単");
 		this.limit = 5;
 	}
 
 	@Override
-	public void roopMission(WebDriver driver) {
-		LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
-
+	public void privateMission(WebDriver driver) {
+		driver.get("http://pex.jp");
+		String sel = "dd.user_pt.fw_b>span.fw_b";
+		if (!isExistEle(driver, sel)) {
+			// Login
+			LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
+		}
 		logg.info(this.mName + "]roop");
 		for (; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis());) {
 			driver.get(url);
@@ -65,10 +67,5 @@ public class PEXPectan extends Mission {
 			logg.info(this.mName + "]roop end");
 			this.compFlag = true;
 		}
-	}
-
-	@Override
-	public void privateMission(WebDriver driver) {
-
 	}
 }

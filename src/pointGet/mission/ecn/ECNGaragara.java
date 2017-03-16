@@ -8,26 +8,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.mission.Mission;
-
 /**
  * @author saitou
  *
  */
-public class ECNGaragara extends Mission {
+public class ECNGaragara extends ECNBase {
 	final String url = "http://ecnavi.jp/game/lottery/garapon/";
 
 	/**
 	 * @param logg
 	 */
 	public ECNGaragara(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■ガラガラ";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "ガラガラ");
 	}
 
 	@Override

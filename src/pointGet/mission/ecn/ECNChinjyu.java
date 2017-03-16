@@ -7,13 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class ECNChinjyu extends Mission {
+public class ECNChinjyu extends ECNBase {
 	final String url = "http://ecnavi.jp/research/chinju_lesson/";
 	private boolean endFlag = false;
 
@@ -21,13 +20,12 @@ public class ECNChinjyu extends Mission {
 	 * @param logg
 	 */
 	public ECNChinjyu(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■珍獣先生";
+		super(logg, cProps, "珍獣先生");
 		this.limit = 5;
 	}
 
 	@Override
-	public void roopMission(WebDriver driver) {
+	public void privateMission(WebDriver driver) {
 		logg.info(this.mName+"]roop");
 		for (; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis());) {
 			driver.get(url);
@@ -58,9 +56,5 @@ public class ECNChinjyu extends Mission {
 			logg.info(this.mName+"]roop end");
 			this.compFlag = true;
 		}
-	}
-
-	@Override
-	public void privateMission(WebDriver driver) {
 	}
 }

@@ -6,25 +6,19 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class ECNTellmeWhich extends Mission {
+public class ECNTellmeWhich extends ECNBase {
 	final String url = "http://ecnavi.jp/vote/choice/";
 
 	/**
 	 * @param log
 	 */
 	public ECNTellmeWhich(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■教えてどっち";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "教えてどっち");
 	}
 
 	@Override

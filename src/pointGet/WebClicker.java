@@ -623,12 +623,12 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.strPEXPectan: // ■ぺく単
 					Mission PexMissionPectan = new PEXPectan(logg, commonProps);
-					PexMissionPectan.exeRoopMission(driver);
+					PexMissionPectan.exePrivateMission(driver);
 					missionList.add(PexMissionPectan);
 					break;
 				case Define.strPEXSearch: // ■ポイント検索
 					Mission PexMissionSearch = new PEXSearch(logg, commonProps, wordList);
-					PexMissionSearch.exeRoopMission(driver);
+					PexMissionSearch.exePrivateMission(driver);
 					missionList.add(PexMissionSearch);
 					break;
 				default:
@@ -692,7 +692,7 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.strECNChinjyu: // ■珍獣先生
 					Mission EcnMissionChinjyu = new ECNChinjyu(logg, commonProps);
-					EcnMissionChinjyu.roopMission(driver);
+					EcnMissionChinjyu.exePrivateMission(driver);
 					missionList.add(EcnMissionChinjyu);
 					break;
 				case Define.strECNChirachi: // ■チラシ

@@ -9,25 +9,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  * 午前7：00～翌日午前6：59
  */
-public class PEXNews extends Mission {
+public class PEXNews extends PEXBase {
 	final String url = "http://pex.jp/point_news";
 
 	/**
 	 * @param log
 	 */
 	public PEXNews(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■毎日ニュース";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "毎日ニュース");
 	}
 
 	@Override
@@ -74,5 +68,4 @@ public class PEXNews extends Mission {
 			}
 		}
 	}
-
 }

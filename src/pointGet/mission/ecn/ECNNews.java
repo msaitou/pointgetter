@@ -9,25 +9,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class ECNNews extends Mission {
+public class ECNNews extends ECNBase {
 	final String url = "http://ecnavi.jp/mainichi_news/";
 
 	/**
 	 * @param log
 	 */
 	public ECNNews(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■毎日ニュース";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "毎日ニュース");
 	}
 
 	@Override

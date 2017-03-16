@@ -8,25 +8,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.mission.Mission;
-
 /**
  * @author saitou
  *
  */
-public class ECNClickBokin extends Mission {
+public class ECNClickBokin extends ECNBase {
 	final String url = "http://point.ecnavi.jp/fund/bc/";
 
 	/**
 	 * @param log
 	 */
 	public ECNClickBokin(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■クリック募金";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "クリック募金");
 	}
 
 	@Override

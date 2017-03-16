@@ -9,25 +9,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class PEXClickBanner extends Mission {
+public class PEXClickBanner extends PEXBase {
 	final String url = "http://pex.jp/point_actions#clickpoint";
 
 	/**
 	 * @param log
 	 */
 	public PEXClickBanner(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■クリックポイント";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "クリックポイント");
 	}
 
 	@Override
