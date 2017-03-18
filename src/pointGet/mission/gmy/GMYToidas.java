@@ -46,6 +46,7 @@ public class GMYToidas extends GMYBase {
 							logg.warn("entryDate:" + entryDate + " nowDate:" + nowDate);
 
 							if (entryDate.equals(nowDate)) {
+								//							if (true) {
 								wEle = eleList.get(i);
 								break;
 							}
@@ -59,9 +60,10 @@ public class GMYToidas extends GMYBase {
 				selector = "div.entry-text-wrap a";
 				if (isExistEle(wEle, selector)) {
 					clickSleepSelector(wEle, selector, 7000); // 遷移
-//					this.waitTilReady(driver);
+					//					this.waitTilReady(driver);
 					driver.switchTo().frame(0);
 					selector = "div#pager";// 始める
+					Utille.sleep(20000);
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 10000); // 遷移
 						//						this.waitTilReady(driver);
@@ -78,7 +80,7 @@ public class GMYToidas extends GMYBase {
 										if (isExistEle(driver, nextSelector)) {
 											clickSleepSelector(driver, nextSelector, 2000); // 遷移
 											if (isExistEle(driver, nextSelector)) {
-												clickSleepSelector(driver, nextSelector, 2000); // 遷移
+												clickSleepSelector(driver, nextSelector, 6000); // 遷移
 											}
 										}
 									}

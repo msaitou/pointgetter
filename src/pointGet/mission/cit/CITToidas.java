@@ -43,6 +43,7 @@ public class CITToidas extends CITBase {
 						String entryDate = eleList.get(i).findElement(By.cssSelector("div.entry-date")).getText();
 						String nowDate = Utille.getNowTimeStr("yyyy/MM/dd");
 						if (entryDate.equals(nowDate)) {
+//						if (true) {
 							wEle = eleList.get(i);
 							break;
 						}
@@ -58,6 +59,7 @@ public class CITToidas extends CITBase {
 //					this.waitTilReady(driver);
 					driver.switchTo().frame(0);
 					selector = "div#pager";// 始める
+					Utille.sleep(10000);
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 10000); // 遷移
 						//						this.waitTilReady(driver);
@@ -74,7 +76,7 @@ public class CITToidas extends CITBase {
 										if (isExistEle(driver, nextSelector)) {
 											clickSleepSelector(driver, nextSelector, 2500); // 遷移
 											if (isExistEle(driver, nextSelector)) {
-												clickSleepSelector(driver, nextSelector, 2500); // 遷移
+												clickSleepSelector(driver, nextSelector, 4000); // 遷移
 											}
 										}
 									}
