@@ -15,6 +15,7 @@ import pointGet.mission.cit.CITPriceChyosatai;
 import pointGet.mission.cit.CITShindan;
 import pointGet.mission.cit.CITToidas;
 import pointGet.mission.cri.CRIAnk;
+import pointGet.mission.cri.CRIClickBananer;
 import pointGet.mission.cri.CRIManga;
 import pointGet.mission.ecn.ECNChinjyu;
 import pointGet.mission.ecn.ECNChirachi;
@@ -1144,6 +1145,8 @@ public class WebClicker extends PointGet {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strCRIChirachi);
 				missions.add(Define.strCRIManga);
+				missions.add(Define.strCRIClickBananer);
+
 			}
 		}
 		for (String mission : missions) {
@@ -1155,6 +1158,10 @@ public class WebClicker extends PointGet {
 				case Define.strCRIManga: // ■漫画
 					Mission CRIManga = new CRIManga(logg, commonProps);
 					CRIManga.exePrivateMission(driver);
+					break;
+				case Define.strCRIClickBananer: // ■クリックバナー
+					Mission CRIClickBananer = new CRIClickBananer(logg, commonProps);
+					CRIClickBananer.exePrivateMission(driver);
 					break;
 				default:
 			}

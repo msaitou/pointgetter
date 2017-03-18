@@ -153,6 +153,7 @@ public class Define {
 	// ■■■■■ちょびリッチ■■■■■
 	final public static String strCRIChirachi = "CRIChirachi";
 	final public static String strCRIManga = "CRIManga";
+	final public static String strCRIClickBananer = "CRIClickBananer";
 	// ■■■■■ハピタス■■■■■
 	final public static String strHAPManga = "HAPManga";
 
