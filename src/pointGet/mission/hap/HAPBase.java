@@ -42,7 +42,7 @@ public abstract class HAPBase extends Mission {
 	 * @param driver
 	 */
 	private static void goToClickHAP(Logger log, Map<String, String> cProps, ArrayList<String> missions) {
-		for (String mission : missions) {
+		for (String mission : missions) {// driverは各mission実体化時にスーパークラス側で用意して
 			switch (mission) {
 				case Define.strHAPManga: // ■漫画
 					Mission HAPManga = new HAPManga(log, commonProps);

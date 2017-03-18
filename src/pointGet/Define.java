@@ -61,7 +61,7 @@ public class Define {
 	// ■■■■■i2i■■■■■
 	final public static String strI2ISeiza = "I2ISeiza";
 	final public static String strI2IColum = "I2IColum";
-	final public static String strI2ImangaVer2 = "I2ImangaVer2";
+	final public static String strI2IMangaVer2 = "I2IMangaVer2";
 	
 	// ■■■■■moppy■■■■■
 	final public static String strMOPChyosatai = "MOPChyosatai";

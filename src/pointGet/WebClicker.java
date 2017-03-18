@@ -38,8 +38,8 @@ import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.gmy.GMYToidas;
 import pointGet.mission.hap.HAPManga;
 import pointGet.mission.i2i.I2IColum;
+import pointGet.mission.i2i.I2IMangaVer2;
 import pointGet.mission.i2i.I2ISeiza;
-import pointGet.mission.i2i.I2ImangaVer2;
 import pointGet.mission.mob.MOBAnzan;
 import pointGet.mission.mob.MOBChirachi;
 import pointGet.mission.mob.MOBClickBanner;
@@ -335,6 +335,7 @@ public class WebClicker extends PointGet {
 					goToClickCRI(driver, missionArr);
 					break;
 				case Define.PSITE_CODE_HAP:
+					// siteの親クラスを実体化して、missionに実装する共通に例外処理とリカバリーをする
 					goToClickHAP(driver, missionArr);
 					break;
 				default:
@@ -382,7 +383,7 @@ public class WebClicker extends PointGet {
 			if (!secondFlg && !thirdFlg) {// 1日1回
 				missions.add(Define.strI2ISeiza);
 				missions.add(Define.strI2IColum);
-				missions.add(Define.strI2ImangaVer2);
+				missions.add(Define.strI2IMangaVer2);
 			}
 		}
 		for (String mission : missions) {
@@ -395,8 +396,8 @@ public class WebClicker extends PointGet {
 					Mission I2IColum = new I2IColum(logg, commonProps);
 					I2IColum.exePrivateMission(driver);
 					break;
-				case Define.strI2ImangaVer2: // ■漫画
-					Mission I2ImangaVer2 = new I2ImangaVer2(logg, commonProps);
+				case Define.strI2IMangaVer2: // ■漫画
+					Mission I2ImangaVer2 = new I2IMangaVer2(logg, commonProps);
 					I2ImangaVer2.exePrivateMission(driver);
 					break;
 				default:

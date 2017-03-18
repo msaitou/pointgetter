@@ -17,13 +17,13 @@ import pointGet.Utille;
  * @author saitou
  *
  */
-public class I2ImangaVer2 extends I2IBase {
+public class I2IMangaVer2 extends I2IBase {
 	final String url = "https://point.i2i.jp/special/freepoint/";
 
 	/**
 	 * @param logg
 	 */
-	public I2ImangaVer2(Logger logg, Map<String, String> cProps) {
+	public I2IMangaVer2(Logger logg, Map<String, String> cProps) {
 		super(logg, cProps, "漫画Ver2");
 	}
 
