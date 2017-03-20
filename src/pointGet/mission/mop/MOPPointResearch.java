@@ -41,7 +41,8 @@ public class MOPPointResearch extends MOPBase {
 						String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button.quake", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
 						// 12問
 						for (int k = 1; k <= 13; k++) {
-							if (isExistEle(driver, overLay)) {
+							if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
+									&& isExistEle(driver, overLay)) {
 								checkOverlay(driver, overLay, false);
 							}
 							if (isExistEle(driver, noSele)) {
@@ -108,7 +109,8 @@ public class MOPPointResearch extends MOPBase {
 							}
 						}
 						Utille.sleep(2000);
-						if (isExistEle(driver, overLay)) {
+						if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
+								&& isExistEle(driver, overLay)) {
 							checkOverlay(driver, overLay, false);
 						}
 						if (isExistEle(driver, selector)) {

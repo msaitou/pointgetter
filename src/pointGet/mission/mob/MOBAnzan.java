@@ -52,7 +52,8 @@ public class MOBAnzan extends MOBBase {
 						String selectAns = "";
 						if (isExistEle(driver, selectorExpression)) {
 							String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
-							logg.info("testです　" + text);
+							String quest = driver.findElement(By.cssSelector("div.ui-item-no")).getText();
+							logg.info(quest+" :" + text);
 							String regex = "(\\d) ([-×+÷]) (\\d) ([-×+÷]) (\\d)";
 							Pattern p = Pattern.compile(regex);
 							Matcher m = p.matcher(text);

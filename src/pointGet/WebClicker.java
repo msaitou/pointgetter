@@ -67,6 +67,7 @@ import pointGet.mission.osa.OSACountTimer;
 import pointGet.mission.osa.OSAEnglishTest;
 import pointGet.mission.osa.OSAManga;
 import pointGet.mission.osa.OSANanyoubi;
+import pointGet.mission.osa.OSAPointResearch;
 import pointGet.mission.osa.OSAQuiz;
 import pointGet.mission.osa.OSAShindan;
 import pointGet.mission.osa.OSAUranai;
@@ -419,6 +420,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strOSAShindan);
 				missions.add(Define.strOSAUranai);
 				missions.add(Define.strOSAManga);
+				missions.add(Define.strOSAPointResearch);
 			}
 			if (secondFlg || thirdFlg) {
 				missions.add(Define.strOSANanyoubi);
@@ -475,6 +477,10 @@ public class WebClicker extends PointGet {
 				case Define.strOSACountTimer: // ■CountTimer
 					Mission OSACountTimer = new OSACountTimer(logg, commonProps);
 					OSACountTimer.exeRoopMission(driver);
+					break;
+				case Define.strOSAPointResearch: // ■CountTimer
+					Mission OSAPointResearch = new OSAPointResearch(logg, commonProps);
+					OSAPointResearch.exePrivateMission(driver);
 					break;
 				default:
 			}
