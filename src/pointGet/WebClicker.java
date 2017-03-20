@@ -97,6 +97,7 @@ import pointGet.mission.pto.PTOClickCorner;
 import pointGet.mission.pto.PTODaily;
 import pointGet.mission.pto.PTOKuji;
 import pointGet.mission.pto.PTOManga;
+import pointGet.mission.pto.PTOPointResearch;
 import pointGet.mission.pto.PTOUranai;
 import pointGet.mission.rin.RINClickBanner;
 import pointGet.mission.sug.SUGColum;
@@ -828,6 +829,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strPTOKuji);
 				missions.add(Define.strPTODaily);
 				missions.add(Define.strPTOManga);
+				missions.add(Define.strPTOPointResearch);
 			}
 		}
 		String sel = "li.point>a>strong";
@@ -857,6 +859,10 @@ public class WebClicker extends PointGet {
 				case Define.strPTOManga: // ■漫画
 					Mission PTOManga = new PTOManga(logg, commonProps);
 					PTOManga.exePrivateMission(driver);
+					break;
+				case Define.strPTOPointResearch: // ■アンケート
+					Mission PTOPointResearch = new PTOPointResearch(logg, commonProps);
+					PTOPointResearch.exePrivateMission(driver);
 					break;
 				default:
 			}

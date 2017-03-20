@@ -109,6 +109,8 @@ public class Define {
 	final public static String strPTODaily = "PTODaily";
 	final public static String strPTOUranai = "PTOUranai";
 	final public static String strPTOManga = "PTOManga";
+	final public static String strPTOPointResearch = "PTOPointResearch";
+	
 
 	// ■■■■■Mobatoku■■■■■
 	final public static String strMOBAnzan = "MOBAnzan";
