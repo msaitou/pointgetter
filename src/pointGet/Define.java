@@ -75,7 +75,7 @@ public class Define {
 	final public static String strMOPEnglishTest = "MOPEnglishTest";
 	final public static String strMOPCountTimer = "MOPCountTimer";
 	final public static String strMOPManga = "MOPManga";
-
+	final public static String strMOPPointResearch = "MOPPointResearch";
 	// ■■■■■osaifu■■■■■
 	final public static String strOSAClickBanner = "OSAClickBanner";
 	final public static String strOSAQuiz = "OSAQuiz";

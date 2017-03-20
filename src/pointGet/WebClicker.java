@@ -56,6 +56,7 @@ import pointGet.mission.mop.MOPCountTimer;
 import pointGet.mission.mop.MOPEnglishTest;
 import pointGet.mission.mop.MOPManga;
 import pointGet.mission.mop.MOPNanyoubi;
+import pointGet.mission.mop.MOPPointResearch;
 import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.mop.MOPShindan;
 import pointGet.mission.mop.MOPUranai;
@@ -493,6 +494,7 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strMOPChyosatai);
 				missions.add(Define.strMOPUranai);
 				missions.add(Define.strMOPManga);
+				missions.add(Define.strMOPPointResearch);
 			}
 			if (secondFlg || thirdFlg) {
 				missions.add(Define.strMOPChirachi);
@@ -553,6 +555,10 @@ public class WebClicker extends PointGet {
 				case Define.strMOPManga: // ■漫画
 					Mission MOPManga = new MOPManga(logg, commonProps);
 					MOPManga.exePrivateMission(driver);
+					break;
+				case Define.strMOPPointResearch: // ■ポイントリサーチ
+					Mission MOPPointResearch = new MOPPointResearch(logg, commonProps);
+					MOPPointResearch.exePrivateMission(driver);
 					break;
 				default:
 			}
