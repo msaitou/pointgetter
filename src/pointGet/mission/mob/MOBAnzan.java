@@ -50,7 +50,8 @@ public class MOBAnzan extends MOBBase {
 						}
 						String selectorExpression = "div.ui-item-header>h2.ui-item-title";
 						String selectAns = "";
-						if (isExistEle(driver, selectorExpression)) {
+						if (isExistEle(driver, selectorExpression)
+								&& isExistEle(driver, "div.ui-item-no")) {
 							String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
 							String quest = driver.findElement(By.cssSelector("div.ui-item-no")).getText();
 							logg.info(quest+" :" + text);
