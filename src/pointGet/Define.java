@@ -62,7 +62,7 @@ public class Define {
 	final public static String strI2ISeiza = "I2ISeiza";
 	final public static String strI2IColum = "I2IColum";
 	final public static String strI2IMangaVer2 = "I2IMangaVer2";
-	
+
 	// ■■■■■moppy■■■■■
 	final public static String strMOPChyosatai = "MOPChyosatai";
 	final public static String strMOPClickBanner = "MOPClickBanner";
@@ -88,7 +88,7 @@ public class Define {
 	final public static String strOSAManga = "OSAManga";
 	final public static String strOSACountTimer = "OSACountTimer";
 	final public static String strOSAPointResearch = "OSAPointResearch";
-	
+
 	// ■■■■■PEX■■■■■
 	final public static String strPEX4quiz = "PEX4quiz";
 	final public static String strPEXAnswer = "PEXAnswer";
@@ -110,7 +110,7 @@ public class Define {
 	final public static String strPTOUranai = "PTOUranai";
 	final public static String strPTOManga = "PTOManga";
 	final public static String strPTOPointResearch = "PTOPointResearch";
-	
+
 
 	// ■■■■■Mobatoku■■■■■
 	final public static String strMOBAnzan = "MOBAnzan";
@@ -133,7 +133,8 @@ public class Define {
 	final public static String strSUGQuiz2 = "SUGQuiz2";
 	final public static String strSUGManga = "SUGManga";
 	final public static String strSUGColum = "SUGColum";
-	
+	final public static String strSUGPointResearch = "SUGPointResearch";
+
 	// ■■■■■pointStadium■■■■■
 	final public static String strPSTUranai = "PSTUranai";
 	final public static String strPSTQuiz = "PSTQuiz";

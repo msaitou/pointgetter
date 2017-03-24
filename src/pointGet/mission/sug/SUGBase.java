@@ -43,7 +43,7 @@ public abstract class SUGBase extends Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param loggg
 	 * @param cProps
 	 * @param missions
@@ -68,14 +68,17 @@ public abstract class SUGBase extends Mission {
 				case Define.strSUGColum: // ■コラム
 					MisIns = new SUGColum(loggg, cProps);
 					break;
+				case Define.strSUGPointResearch: // ■コラム
+					MisIns = new SUGPointResearch(loggg, cProps);
+					break;
 				default:
 			}
 			if (Arrays.asList(new String[] { Define.strSUGQuiz,
-					Define.strSUGQuiz2
-					}).contains(mission)) {
+					Define.strSUGQuiz2,
+					Define.strSUGPointResearch
+			}).contains(mission)) {
 				driver = MisIns.exeRoopMission(driver);
-			}
-			else {
+			} else {
 				driver = MisIns.exePrivateMission(driver);
 			}
 		}

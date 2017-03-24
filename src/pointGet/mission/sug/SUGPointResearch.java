@@ -26,16 +26,17 @@ public class SUGPointResearch extends SUGBase {
 		driver.get(url);
 		selector = "img[src='//static.sugutama.jp/ssp_site/67078ba450f1dc8ab98f75613b67a50f.png']";
 		if (isExistEle(driver, selector)) {
-			clickSleepSelector(driver, selector, 3000); // アンケート一覧ページ
-			
+			clickSleepSelector(driver, selector, 6000); // アンケート一覧ページ
+			changeCloseWindow(driver);
 			while (true) {
 				selector = "td>a[href*='ad-research.jp']";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size = eleList.size();
-				if (size > 0 
+				if (size > 0
 						&& isExistEle(eleList, 0)) {
-					clickSleepSelector(eleList, 0, 3000); // アンケートスタートページ
-					changeCloseWindow(driver);
+					clickSleepSelector(eleList, 0, 6000); // アンケートスタートページ
+					String wid = driver.getWindowHandle();
+					changeWindow(driver, wid);
 					selector = "div.ui-control.type-fixed>a.ui-button.quake";
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 3000);
@@ -113,14 +114,14 @@ public class SUGPointResearch extends SUGBase {
 									clickSleepSelector(driver, seleNext2, 4000);
 								}
 							}
-							Utille.sleep(2000);
+							Utille.sleep(3000);
 							if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
 									&& isExistEle(driver, overLay)) {
 								checkOverlay(driver, overLay, false);
 							}
 							if (isExistEle(driver, selector)) {
 								// ポイント獲得
-								clickSleepSelector(driver, selector, 3000);
+								clickSleepSelector(driver, selector, 6000);
 							}
 							if (isExistEle(driver, overLay)) {
 								checkOverlay(driver, overLay, false);
@@ -128,8 +129,13 @@ public class SUGPointResearch extends SUGBase {
 							String closeSele = "div.ui-control>a";
 							if (isExistEle(driver, closeSele)) {
 								// 閉じる
-								clickSleepSelector(driver, closeSele, 3000);
+								clickSleepSelector(driver, closeSele, 5000);
 							}
+							driver.close();
+							// 最後に格納したウインドウIDにスイッチ
+							driver.switchTo().window(wid);
+							driver.navigate().refresh();
+							Utille.sleep(5000);
 							// point一覧に戻る
 						}
 					}
