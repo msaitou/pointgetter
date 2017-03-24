@@ -6,21 +6,15 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
-public class PICUranai extends Mission {
+public class PICUranai extends PICBase {
 	final String url = "http://pointi.jp/";
 
 	/**
 	 * @param logg
 	 */
 	public PICUranai(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PIC星座";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(logg, cProps, "星座");
 	}
 
 	@Override
@@ -35,12 +29,7 @@ public class PICUranai extends Mission {
 			if (isExistEle(driver, uranaiSelector)) {
 				clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
 				changeCloseWindow(driver);
-				// // アラートをけして
-				// val alert = driver.switchTo().alert();
-				// alert.accept();
 				Utille.sleep(4000);
-				// changeCloseWindow(driver);
-
 				selector = "div#parts-slide-button__action a>img"; // 占い始める
 																	// 全体へ
 				String selector1 = "section>div>form>input[type=image]";
@@ -66,11 +55,14 @@ public class PICUranai extends Mission {
 
 							if (isExistEle(driver, nextSelector)) {
 								clickSleepSelector(driver, nextSelector, 3000); // 遷移
-							} else if (isExistEle(driver, selector)) {
+							}
+							else if (isExistEle(driver, selector)) {
 								clickSleepSelector(driver, selector, 3000); // 遷移
-							} else if (isExistEle(driver, symbleSelector)) {
+							}
+							else if (isExistEle(driver, symbleSelector)) {
 								clickSleepSelector(driver, symbleSelector, 3000); // 遷移
-							} else if (isExistEle(driver, selector1)) {
+							}
+							else if (isExistEle(driver, selector1)) {
 								clickSleepSelector(driver, selector1, 3000); // 遷移
 							}
 							Utille.sleep(3000);

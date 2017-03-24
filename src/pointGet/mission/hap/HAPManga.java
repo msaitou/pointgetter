@@ -34,12 +34,7 @@ public class HAPManga extends HAPBase {
 			if (isExistEle(driver, uranaiSelector)) {
 				clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
 				changeCloseWindow(driver);
-				// // アラートをけして
-				// val alert = driver.switchTo().alert();
-				// alert.accept();
 				Utille.sleep(6000);
-				// changeCloseWindow(driver);
-
 				selector = "a.ui-btn.ui-btn-a"; // 回答する
 				while (true) {
 					if (isExistEle(driver, selector)) {
@@ -70,19 +65,19 @@ public class HAPManga extends HAPBase {
 								if (isExistEle(driver, choiceSele)) {
 									int choiceies = getSelectorSize(driver, choiceSele);
 									switch (k) {
-									case 1:
-										// 1問目は1：男
-										break;
-									case 2:
-									case 3:
-										// 2問目は3：30代
-										// 3問目は3：会社員
-										if (choiceies > 2) {// 一応選択可能な範囲かをチェック
-											choiceNum = 2;
-										}
-										break;
-									default:
-										choiceNum = Utille.getIntRand(choiceies);
+										case 1:
+											// 1問目は1：男
+											break;
+										case 2:
+										case 3:
+											// 2問目は3：30代
+											// 3問目は3：会社員
+											if (choiceies > 2) {// 一応選択可能な範囲かをチェック
+												choiceNum = 2;
+											}
+											break;
+										default:
+											choiceNum = Utille.getIntRand(choiceies);
 									}
 									List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 									if (isExistEle(eleList2, choiceNum)) {

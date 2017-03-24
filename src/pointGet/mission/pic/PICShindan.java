@@ -11,26 +11,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class PICShindan extends Mission {
+public class PICShindan extends PICBase {
 	final String url = "http://pointi.jp/contents/research/";
 
 	/**
 	 * @param logg
 	 */
 	public PICShindan(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■PIC毎日診断";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(logg, cProps, "毎日診断");
 	}
 
 	@Override

@@ -7,13 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  * 4時更新
  */
-public class PICPriceChyosatai extends Mission {
+public class PICPriceChyosatai extends PICBase {
 	final String url = "http://pointi.jp/game/index.php";
 	private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
 	private String footBnrSelector = "div.foot-bnr a.close>span";
@@ -22,13 +21,7 @@ public class PICPriceChyosatai extends Mission {
 	 * @param log
 	 */
 	public PICPriceChyosatai(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■PICPrice調査隊";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
-
+		super(log, cProps, "Price調査隊");
 	}
 
 	@Override

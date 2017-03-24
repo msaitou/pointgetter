@@ -3,6 +3,8 @@
  */
 package pointGet.mission.sug;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -38,5 +40,45 @@ public abstract class SUGBase extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
+	}
+
+	/**
+	 * 
+	 * @param loggg
+	 * @param cProps
+	 * @param missions
+	 */
+	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions) {
+		WebDriver driver = getWebDriver(cProps);
+		for (String mission : missions) {
+			Mission MisIns = null;
+			switch (mission) {
+				case Define.strSUGQuiz: // ■SUGクイズ
+					MisIns = new SUGQuiz(loggg, cProps);
+					break;
+				case Define.strSUGQuiz2: // ■SUGクイズ2
+					MisIns = new SUGQuiz2(loggg, cProps);
+					break;
+				case Define.strSUGUranai: // ■占い
+					MisIns = new SUGUranai(loggg, cProps);
+					break;
+				case Define.strSUGManga: // ■漫画
+					MisIns = new SUGManga(loggg, cProps);
+					break;
+				case Define.strSUGColum: // ■コラム
+					MisIns = new SUGColum(loggg, cProps);
+					break;
+				default:
+			}
+			if (Arrays.asList(new String[] { Define.strSUGQuiz,
+					Define.strSUGQuiz2
+					}).contains(mission)) {
+				driver = MisIns.exeRoopMission(driver);
+			}
+			else {
+				driver = MisIns.exePrivateMission(driver);
+			}
+		}
+		driver.quit();
 	}
 }

@@ -7,34 +7,24 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.Define;
-import pointGet.LoginSite;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  *
  */
-public class RINClickBanner extends Mission {
+public class RINClickBanner extends RINBase {
 	final String url = "https://www.rakuten-card.co.jp/e-navi/members/point/click-point/index.xhtml?l-id=enavi_all_submenu_clickpoint";
 
 	/**
 	 * @param log
 	 */
 	public RINClickBanner(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■クリックバナー(楽天)";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "クリックバナー(楽天)");
 	}
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		// login!!
-		LoginSite.login(Define.PSITE_CODE_RIN, driver, logg);
 		driver.get(url);
 		Utille.sleep(4000);
 		String[] selectorList = { "div.topArea.clearfix", "span#middleArea>ul>li" };

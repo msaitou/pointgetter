@@ -10,13 +10,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.mission.Mission;
+import pointGet.mission.cit.CITBase;
 import pointGet.mission.cit.CITClickBanner;
 import pointGet.mission.cit.CITPriceChyosatai;
 import pointGet.mission.cit.CITShindan;
 import pointGet.mission.cit.CITToidas;
 import pointGet.mission.cri.CRIAnk;
+import pointGet.mission.cri.CRIBase;
 import pointGet.mission.cri.CRIClickBananer;
 import pointGet.mission.cri.CRIManga;
+import pointGet.mission.ecn.ECNBase;
 import pointGet.mission.ecn.ECNChinjyu;
 import pointGet.mission.ecn.ECNChirachi;
 import pointGet.mission.ecn.ECNClickBokin;
@@ -26,22 +29,27 @@ import pointGet.mission.ecn.ECNNews;
 import pointGet.mission.ecn.ECNSearchBokin;
 import pointGet.mission.ecn.ECNTellmeWhich;
 import pointGet.mission.ecn.ECNWebSearche;
+import pointGet.mission.gen.GENBase;
 import pointGet.mission.gen.GENChirachi;
 import pointGet.mission.gen.GENClickBanner;
 import pointGet.mission.gen.GENManga;
 import pointGet.mission.gen.GENPointStar;
 import pointGet.mission.gen.GENShindan;
 import pointGet.mission.gen.GENUranai;
+import pointGet.mission.gmy.GMYBase;
 import pointGet.mission.gmy.GMYChirachi;
 import pointGet.mission.gmy.GMYClickBanner;
 import pointGet.mission.gmy.GMYPriceChyosatai;
 import pointGet.mission.gmy.GMYShindan;
 import pointGet.mission.gmy.GMYToidas;
+import pointGet.mission.hap.HAPBase;
 import pointGet.mission.hap.HAPManga;
+import pointGet.mission.i2i.I2IBase;
 import pointGet.mission.i2i.I2IColum;
 import pointGet.mission.i2i.I2IMangaVer2;
 import pointGet.mission.i2i.I2ISeiza;
 import pointGet.mission.mob.MOBAnzan;
+import pointGet.mission.mob.MOBBase;
 import pointGet.mission.mob.MOBChirachi;
 import pointGet.mission.mob.MOBClickBanner;
 import pointGet.mission.mob.MOBCountTimer;
@@ -49,6 +57,7 @@ import pointGet.mission.mob.MOBEnglishTest;
 import pointGet.mission.mob.MOBNanyoubi;
 import pointGet.mission.mob.MOBQuiz;
 import pointGet.mission.mop.MOPAnzan;
+import pointGet.mission.mop.MOPBase;
 import pointGet.mission.mop.MOPChirachi;
 import pointGet.mission.mop.MOPChyosatai;
 import pointGet.mission.mop.MOPClickBanner;
@@ -61,6 +70,7 @@ import pointGet.mission.mop.MOPQuiz;
 import pointGet.mission.mop.MOPShindan;
 import pointGet.mission.mop.MOPUranai;
 import pointGet.mission.osa.OSAAnzan;
+import pointGet.mission.osa.OSABase;
 import pointGet.mission.osa.OSAChirachi;
 import pointGet.mission.osa.OSAClickBanner;
 import pointGet.mission.osa.OSACountTimer;
@@ -73,33 +83,41 @@ import pointGet.mission.osa.OSAShindan;
 import pointGet.mission.osa.OSAUranai;
 import pointGet.mission.pex.PEX4quiz;
 import pointGet.mission.pex.PEXAnswer;
+import pointGet.mission.pex.PEXBase;
 import pointGet.mission.pex.PEXChirachi;
 import pointGet.mission.pex.PEXClickBanner;
 import pointGet.mission.pex.PEXMekutte;
 import pointGet.mission.pex.PEXNews;
 import pointGet.mission.pex.PEXPectan;
 import pointGet.mission.pex.PEXSearch;
+import pointGet.mission.pic.PICBase;
 import pointGet.mission.pic.PICClickBanner;
 import pointGet.mission.pic.PICPriceChyosatai;
 import pointGet.mission.pic.PICShindan;
 import pointGet.mission.pic.PICUranai;
+import pointGet.mission.pil.PILBase;
 import pointGet.mission.pil.PILClickBanner;
 import pointGet.mission.pil.PILManga;
 import pointGet.mission.pil.PILQuiz;
 import pointGet.mission.pil.PILShindanAnk;
 import pointGet.mission.pil.PILUranai;
+import pointGet.mission.pmo.PMOBase;
 import pointGet.mission.pmo.PMOChyosatai;
+import pointGet.mission.pst.PSTBase;
 import pointGet.mission.pst.PSTManga;
 import pointGet.mission.pst.PSTQuiz;
 import pointGet.mission.pst.PSTShindanAnk;
 import pointGet.mission.pst.PSTUranai;
+import pointGet.mission.pto.PTOBase;
 import pointGet.mission.pto.PTOClickCorner;
 import pointGet.mission.pto.PTODaily;
 import pointGet.mission.pto.PTOKuji;
 import pointGet.mission.pto.PTOManga;
 import pointGet.mission.pto.PTOPointResearch;
 import pointGet.mission.pto.PTOUranai;
+import pointGet.mission.rin.RINBase;
 import pointGet.mission.rin.RINClickBanner;
+import pointGet.mission.sug.SUGBase;
 import pointGet.mission.sug.SUGColum;
 import pointGet.mission.sug.SUGManga;
 import pointGet.mission.sug.SUGQuiz;
@@ -195,7 +213,12 @@ public class WebClicker extends PointGet {
 			}).contains(site)) {
 				continue;
 			}
-			goToClickSite(site, missionArr);
+			if (Define.PSITE_CODE_HAP.equals(site)) {
+				goToClickSite2(site, missionArr);
+			}
+			else {
+				goToClickSite(site, missionArr);
+			}
 			missionArr.clear();
 		}
 		roopMisssion(missionList);
@@ -222,7 +245,7 @@ public class WebClicker extends PointGet {
 			}).contains(site)) {
 				continue;
 			}
-			goToClickSite(site, missionArr);
+			goToClickSite2(site, missionArr);
 			missionArr.clear();
 		}
 		roopMisssion(missionList);
@@ -278,6 +301,80 @@ public class WebClicker extends PointGet {
 		logg.info("======subEnd======");
 	}
 
+	/**
+	 *
+	 * @param siteType
+	 */
+	private static void goToClickSite2(String siteType, ArrayList<String> missionArr) {
+		logg.info("■■■■■■missionSite[" + siteType + "]START■■■■■■");
+		try {
+			Mission MisBase = null;
+			switch (siteType) {
+				case Define.PSITE_CODE_GMY:
+					GMYBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_GEN:
+					GENBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_ECN:
+					ECNBase.goToClick(logg, commonProps, missionArr, missionList, wordList);
+					break;
+				case Define.PSITE_CODE_MOP:
+					MOPBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_PEX:
+					PEXBase.goToClick(logg, commonProps, missionArr, missionList, wordList);
+					break;
+				case Define.PSITE_CODE_OSA:
+					OSABase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_RIN:
+					RINBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_I2I:
+					I2IBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_PTO:
+					PTOBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_MOB:
+					MOBBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_PIC:
+					PICBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_SUG:
+					SUGBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_PST:
+					PSTBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_PIL:
+					PILBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_CIT:
+					CITBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_PMO:
+					PMOBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_CRI:
+					CRIBase.goToClick(logg, commonProps, missionArr);
+					break;
+				case Define.PSITE_CODE_HAP:
+					HAPBase.goToClick(logg, commonProps, missionArr);
+					break;
+				default:
+			}
+		} catch (Throwable e) {
+			e.printStackTrace();
+			logg.error("-Throwable-------------------");
+			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
+			logg.error("-Throwable-------------------");
+		}
+		logg.info("■■■■■■missionSite[" + siteType + "]END■■■■■■");
+
+	}
 	/**
 	 *
 	 * @param siteType
@@ -769,12 +866,6 @@ public class WebClicker extends PointGet {
 	 * @param driver
 	 */
 	private static void goToClickGEN(WebDriver driver, ArrayList<String> missions) {
-		// // ■もりもり囲め
-		// Mission GENMorimoriKakome = new GENMorimoriKakome(logg, commonProps);
-		// GENMorimoriKakome.exePrivateMission(driver);
-		// if (testFlag) {
-		// return;
-		// }
 		if (missions.size() == 0) {
 			missions.add(Define.strGENPointStar);
 			if (!secondFlg && !thirdFlg) {
@@ -785,6 +876,12 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strGENManga);
 			}
 		}
+		// // ■もりもり囲め
+		// Mission GENMorimoriKakome = new GENMorimoriKakome(logg, commonProps);
+		// GENMorimoriKakome.exePrivateMission(driver);
+		// if (testFlag) {
+		// return;
+		// }
 		for (String mission : missions) {
 			switch (mission) {
 				case Define.strGENPointStar: // ■ポイントの森(star)
@@ -1164,7 +1261,6 @@ public class WebClicker extends PointGet {
 				missions.add(Define.strCRIChirachi);
 				missions.add(Define.strCRIManga);
 				missions.add(Define.strCRIClickBananer);
-
 			}
 		}
 		for (String mission : missions) {

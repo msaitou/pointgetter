@@ -63,16 +63,16 @@ public abstract class Mission {
 	/**
 	 * @param driver
 	 */
-	public void exePrivateMission(WebDriver driver) {
-		exeMission(driver, 0);
+	public WebDriver exePrivateMission(WebDriver driver) {
+		return exeMission(driver, 0);
 	}
 
 	/**
 	 *
 	 * @param driver
 	 */
-	public void exeRoopMission(WebDriver driver) {
-		exeMission(driver, 1);
+	public WebDriver exeRoopMission(WebDriver driver) {
+		return exeMission(driver, 1);
 	}
 
 	/**
@@ -86,6 +86,13 @@ public abstract class Mission {
 	 * @param driver
 	 */
 	public abstract void privateMission(WebDriver driver);
+
+	/**
+	 * @return
+	 */
+	public static WebDriver getWebDriver(Map<String, String> cProps) {
+		return Utille.getWebDriver(cProps.get("geckopath"), cProps.get("ffprofile"));
+	}
 
 	/**
 	 * @param driver
@@ -328,28 +335,42 @@ public abstract class Mission {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param driver
 	 * @param i
+	 * @return
 	 */
-	private void exeMission(WebDriver driver, int i) {
+	private WebDriver exeMission(WebDriver driver, int i) {
+		return exeMission(driver, i, 1);
+	}
+	
+	/**
+	 * 
+	 * @param driver
+	 * @param i
+	 * @param retryCnt
+	 * @return
+	 */
+	private WebDriver exeMission(WebDriver driver, int i, int retryCnt) {
 		logg.info("[[[" + mName + "]]] START-");
 		try {
 			if (i == 0) {
 				privateMission(driver);
-
-			} else {
+			}
+			else {
 				roopMission(driver);
 			}
 		} catch (Exception e) {
-			// e.printStackTrace();
 			logg.error("##Exception##################");
-			logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
-			logg.error("####################");
-			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
-			logg.error("##Exception##################");
+			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+			logg.error("#############################");
 			driver.quit();
+			driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
+			if (retryCnt > 0) {
+				driver = exeMission(driver, i, --retryCnt);
+			}
 		}
 		logg.info("[[[" + mName + "]]] END-");
+		return driver;
 	}
 }

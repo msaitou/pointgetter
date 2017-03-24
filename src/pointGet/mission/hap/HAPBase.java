@@ -4,6 +4,7 @@
 package pointGet.mission.hap;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -36,20 +37,27 @@ public abstract class HAPBase extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 	}
-	
+
 	/**
-	 *
-	 * @param driver
+	 * 
+	 * @param loggg
+	 * @param cProps
+	 * @param missions
 	 */
-	private static void goToClickHAP(Logger log, Map<String, String> cProps, ArrayList<String> missions) {
-		for (String mission : missions) {// driverは各mission実体化時にスーパークラス側で用意して
+	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions) {
+		WebDriver driver = getWebDriver(cProps);
+		for (String mission : missions) {
+			Mission MisIns = null;
 			switch (mission) {
 				case Define.strHAPManga: // ■漫画
-					Mission HAPManga = new HAPManga(log, commonProps);
-//					HAPManga.exePrivateMission(driver);
+					MisIns = new HAPManga(loggg, cProps);
 					break;
 				default:
 			}
+			if (Arrays.asList(new String[] { Define.strHAPManga }).contains(mission)) {
+				driver = MisIns.exePrivateMission(driver);
+			}
 		}
+		driver.quit();
 	}
 }

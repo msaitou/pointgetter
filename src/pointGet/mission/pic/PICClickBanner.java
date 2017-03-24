@@ -9,24 +9,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
  */
-public class PICClickBanner extends Mission {
+public class PICClickBanner extends PICBase {
 	final String url = "http://pointi.jp/daily.php";
 
 	/**
 	 * @param log
 	 */
 	public PICClickBanner(Logger log, Map<String, String> cProps) {
-		super(log, cProps);
-		this.mName = "■PICクリックバナー";
-	}
-
-	@Override
-	public void roopMission(WebDriver driver) {
+		super(log, cProps, "クリックバナー");
 	}
 
 	@Override
@@ -50,9 +44,7 @@ public class PICClickBanner extends Mission {
 				} catch (Throwable e) {
 					driver.quit();
 					logg.error("##GENException##################");
-					logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
-					logg.error("####################");
-					logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
+					logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e),1000));
 					logg.error("##GENException##################");
 					driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 				}
