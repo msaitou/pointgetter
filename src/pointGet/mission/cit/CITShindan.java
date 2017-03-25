@@ -68,8 +68,7 @@ public class CITShindan extends CITBase {
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 5500); // 遷移
 						if (isExistEle(driver, selector)) {
-							clickSleepSelector(driver, selector, 5000); // 遷移
-							this.waitTilReady(driver);
+							clickSleepSelector(driver, selector, 20000); // 遷移
 
 							if (isExistEle(driver, "div[data-qid]")) {
 								int qSize = getSelectorSize(driver, "div[data-qid]"); // 選択肢の数を数える
@@ -92,7 +91,7 @@ public class CITShindan extends CITBase {
 											}
 											else if (isExistEle(driver, endSelector)
 													&& isExistEle(driver, nextSelector + none)) {
-												this.waitTilReady(driver);
+												Utille.sleep(3000);
 												clickSleepSelector(driver, endSelector, 4000); // 遷移
 												// 抜けたら
 												// span#end-btn-area>a.end-btn

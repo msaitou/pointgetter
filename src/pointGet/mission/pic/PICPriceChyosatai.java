@@ -32,7 +32,7 @@ public class PICPriceChyosatai extends PICBase {
 			if (isExistEle(driver, selector)) {
 				clickSleepSelector(driver, selector, 4000); // 遷移
 				changeCloseWindow(driver);
-				Utille.sleep(1000);
+				Utille.sleep(4000);
 				checkOverlay(driver, overlaySelector);
 				if (isExistEle(driver, footBnrSelector)
 						&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
