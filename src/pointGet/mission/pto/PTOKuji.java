@@ -42,7 +42,7 @@ public class PTOKuji extends PTOBase {
 				private static final long serialVersionUID = 1L;
 
 				{
-					put("url", "http://www.pointtown.com/ptu/shopping/top.do");
+					put("url", "http://www.pointtown.com/ptu/pointpark/top.do?o=af");
 					put("sele", "a#yellow_kuji");
 					// div.ptpc-search-box__hotword>a ０番目
 				}
@@ -54,8 +54,8 @@ public class PTOKuji extends PTOBase {
 				private static final long serialVersionUID = 1L;
 
 				{
-					put("url", "http://www.pointtown.com/ptu/pointpark/comparison/creditcardsearch.do");
-					put("sele", "a>img[alt='三角くじ紫']");
+					put("url", "http://www.pointtown.com/ptu/creditcard/index.do");
+					put("sele", "a>img[alt='三角くじ 紫']");
 				}
 			});
 			put("くじ桃", new HashMap<String, String>() {
@@ -66,7 +66,7 @@ public class PTOKuji extends PTOBase {
 
 				{
 					put("url", "http://www.pointtown.com/ptu/coupon/top.do");
-					put("sele", "a>img[alt='三角くじ桃']");
+					put("sele", "a>img[alt='三角くじ 桃']");
 				}
 			});
 			put("くじ青", new HashMap<String, String>() {
@@ -77,7 +77,18 @@ public class PTOKuji extends PTOBase {
 
 				{
 					put("url", "http://www.pointtown.com/");
-					put("sele", "a>img[alt='三角くじ青']");
+					put("sele", "a>img[alt='三角くじ 青']");
+				}
+			});
+			put("くじ緑", new HashMap<String, String>() {
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				{
+					put("url", "http://www.pointtown.com/ptu/poitto/top.do");
+					put("sele", "a>img[alt='三角くじ ']");
 				}
 			});
 			put("うさくじ", new HashMap<String, String>() {
@@ -124,7 +135,8 @@ public class PTOKuji extends PTOBase {
 				case "くじ桃":
 					if ("くじ桃".equals(clMap.getKey())) {
 						sele = "li.img>img";
-					} else if ("くじ黄".equals(clMap.getKey())) {
+					}
+					else if ("くじ黄".equals(clMap.getKey())) {
 						sele = "div.ptpc-search-box__hotword>a";
 					}
 					if (isExistEle(driver, sele)) {
@@ -148,21 +160,21 @@ public class PTOKuji extends PTOBase {
 						}
 					}
 					break;
-				//				case "くじ青":
-				//					sele = "ul.list li.tit_topic strong>a";
-				//					if (isExistEle(driver, sele)) {
-				//						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
-				//						if (isExistEle(eleList, 0)) { // 最初のリンクをクリック
-				//							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
-				//							clickSleepSelector(eleList, 0, 4000);
-				//							if (isExistEle(driver, clMap.getValue().get("sele"))) {
-				//								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
-				//								clickSleepSelector(driver, clMap.getValue().get("sele"), 5000);
-				//								existFlag = true;
-				//							}
-				//						}
-				//					}
-				//					break;
+				case "くじ緑":
+					sele = "ul.list li.tit_topic strong>a";
+					if (isExistEle(driver, sele)) {
+						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
+						if (isExistEle(eleList, 0)) { // 最初のリンクをクリック
+							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
+							clickSleepSelector(eleList, 0, 4000);
+							if (isExistEle(driver, clMap.getValue().get("sele"))) {
+								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
+								clickSleepSelector(driver, clMap.getValue().get("sele"), 5000);
+								existFlag = true;
+							}
+						}
+					}
+					break;
 				default:
 			}
 			if (existFlag) {
