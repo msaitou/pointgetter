@@ -364,10 +364,10 @@ public abstract class Mission {
 			logg.error("##Exception##################");
 			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
 			logg.error("#############################");
-			driver.quit();
-			driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
+//			driver.quit();
+//			WebDriver driver2 = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 			if (retryCnt > 0) {
-				driver = exeMission(driver, i, --retryCnt);
+				return exeMission(driver, i, --retryCnt);
 			}
 		}
 		logg.info("[[[" + mName + "]]] END-");
