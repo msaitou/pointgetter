@@ -40,8 +40,6 @@ public abstract class Mission {
 
 	protected static Map<String, String> commonProps = new HashMap<String, String>();
 
-	protected WebDriver driver = null;
-
 	/**
 	 * constracter
 	 *
@@ -343,7 +341,7 @@ public abstract class Mission {
 	private WebDriver exeMission(WebDriver driver, int i) {
 		return exeMission(driver, i, 1);
 	}
-	
+
 	/**
 	 * 
 	 * @param driver
@@ -364,8 +362,8 @@ public abstract class Mission {
 			logg.error("##Exception##################");
 			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
 			logg.error("#############################");
-//			driver.quit();
-//			WebDriver driver2 = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
+			//			driver.quit();
+			//			WebDriver driver2 = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
 			if (retryCnt > 0) {
 				return exeMission(driver, i, --retryCnt);
 			}

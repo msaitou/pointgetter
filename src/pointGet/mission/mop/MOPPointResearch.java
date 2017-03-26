@@ -13,6 +13,7 @@ import pointGet.Utille;
 
 public class MOPPointResearch extends MOPBase {
 	final String url = "http://pc.moppy.jp/point_research/index.php";
+	WebDriver driver = null;
 
 	/**
 	 * @param logg
@@ -22,16 +23,18 @@ public class MOPPointResearch extends MOPBase {
 	}
 
 	@Override
-	public void privateMission(WebDriver driver) {
+	public void privateMission(WebDriver driverAtom) {
+		driver = driverAtom;
 		driver.get(url);
-		int i = 1;
+		int skip = 1;
+		
 		while (true) {
 			selector = "a.pointResearch__box__btn";
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-			int size = eleList.size(), index = size - i;
-			if (index > -1 && isExistEle(eleList, index)) {
+			int size = eleList.size(), targetIndex = size - skip;
+			if (targetIndex > -1 && isExistEle(eleList, targetIndex)) {
 				String wid = driver.getWindowHandle();
-				clickSleepSelector(eleList, index, 3000); // アンケートスタートページ
+				clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
 				changeWindow(driver, wid);
 				selector = "div.ui-control.type-fixed>a.ui-button.quake";
 				if (isExistEle(driver, selector)) {
@@ -135,7 +138,7 @@ public class MOPPointResearch extends MOPBase {
 					}
 				}
 				else {
-					i++;
+					skip++;
 					driver.close();
 					driver.switchTo().window(wid);
 				}

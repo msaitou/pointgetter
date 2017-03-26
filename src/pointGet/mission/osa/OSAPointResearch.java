@@ -25,12 +25,13 @@ public class OSAPointResearch extends OSABase {
 	@Override
 	public void privateMission(WebDriver driverAtom) {
 		driver = driverAtom;
-		int mainus = 1;
+		int skip = 1;
+
 		while (true) {
 			driver.get(url);
 			selector = "a.ui-btn.ui-btn-a";
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-			int size = eleList.size(), targetIndex = size - mainus;
+			int size = eleList.size(), targetIndex = size - skip;
 
 			if (isExistEle(eleList, targetIndex)) { // 古い順にやる
 				String sikibetuSele = "td.no";
@@ -66,14 +67,14 @@ public class OSAPointResearch extends OSABase {
 					String cUrl = driver.getCurrentUrl();
 					if (cUrl.indexOf("rsch.jp") >= 0) {
 //						_answerRsch(sele4, wid);
-						mainus++;
+						skip++;
 					}
 					else {
 						_answerEnk(sele4, wid);
 					}
 				}
 				else {
-					mainus++;
+					skip++;
 					driver.close();
 					driver.switchTo().window(wid);
 					//					break;

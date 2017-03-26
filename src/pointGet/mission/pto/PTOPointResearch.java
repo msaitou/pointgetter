@@ -13,6 +13,7 @@ import pointGet.Utille;
 
 public class PTOPointResearch extends PTOBase {
 	final String url = "http://www.pointtown.com/ptu/pointpark/enquete/top.do?tab=infonear";
+	WebDriver driver = null;
 
 	/**
 	 * @param logg
@@ -22,20 +23,25 @@ public class PTOPointResearch extends PTOBase {
 	}
 
 	@Override
-	public void privateMission(WebDriver driver) {
+	public void privateMission(WebDriver driverAtom) {
+		driver = driverAtom;
 		driver.get(url);
+		int skip = 1;
+
 		Utille.sleep(3000);
 		while (true) {
 			selector = "td>span.promo_enq_bt";
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-			int size = eleList.size();
-			if (size > 0 
-					&& isExistEle(eleList, 0)) {
-				clickSleepSelector(eleList, 0, 10000); // アンケートスタートページ
-				changeCloseWindow(driver);
+			int size = eleList.size(), targetIndex = skip - 1; // 順番はサイト毎に変更可能だが、変数を使う
+			if (size > targetIndex
+					&& isExistEle(eleList, targetIndex)) {
+				String wid = driver.getWindowHandle();
+				clickSleepSelector(eleList, targetIndex, 10000); // アンケートスタートページ
+				changeWindow(driver, wid);
 				selector = "div.ui-control.type-fixed>a.ui-button.quake";
 				String sele3 = "div>button[type='submit']"; // 回答する surveyenk用
 				if (isExistEle(driver, selector)) {
+					closeOtherWindow(driver);
 					clickSleepSelector(driver, selector, 4000);
 					// 回答開始
 					selector = "form>input.ui-button.quake";
@@ -130,9 +136,15 @@ public class PTOPointResearch extends PTOBase {
 						}
 						// point一覧に戻る
 					}
-					else if (isExistEle(driver, sele3)) {
-						_answerSurveyEnk(sele3, "");
-					}
+				}
+				else if (isExistEle(driver, sele3)) {
+					closeOtherWindow(driver);
+					_answerSurveyEnk(sele3, "");
+				}
+				else {
+					skip++;
+					driver.close();
+					driver.switchTo().window(wid);
 				}
 			}
 			else {
@@ -140,6 +152,7 @@ public class PTOPointResearch extends PTOBase {
 			}
 		}
 	}
+
 	/**
 	 * 
 	 * @param sele3
@@ -224,7 +237,6 @@ public class PTOPointResearch extends PTOBase {
 		}
 		//			driver.close();
 		// 最後に格納したウインドウIDにスイッチ
-//		driver.switchTo().window(wid);
+		//		driver.switchTo().window(wid);
 	}
-
 }

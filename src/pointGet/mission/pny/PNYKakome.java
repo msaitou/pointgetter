@@ -39,7 +39,7 @@ public class PNYKakome extends PNYBase {
 				return;
 			}
 			selector = "form>a.ok_btn";
-			for (int i = 0;i < 2;i++) {
+			for (int i = 0; i < 2; i++) {
 				if (isExistEle(driver, selector)) {
 					// 1:スタート
 					// 2:障害物の位置確定スタート
@@ -47,16 +47,16 @@ public class PNYKakome extends PNYBase {
 				}
 			}
 			// ここから追い詰める
-			
+
 			// 直前の豚の位置
 			String prePutaPosi = "";
-			
+
 			// 豚の位置を求める？
 			String butaSele = "img#character";
-			String butaPosi = getPosi(butaSele);
+			String butaPosi = getPosi(driver, butaSele);
 			String putedSele = "a.active";
-			String putedPosi = getPosi(putedSele);
-			
+			String putedPosi = getPosi(driver, putedSele);
+
 			if (isExistEle(driver, selector)) {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 8; i++) {
@@ -67,11 +67,14 @@ public class PNYKakome extends PNYBase {
 						String selectId = "label[for='radio-";
 						if (ran == 0) {
 							selectId += "1']";
-						} else if (ran == 1) {
+						}
+						else if (ran == 1) {
 							selectId += "2']";
-						} else if (ran == 2) {
+						}
+						else if (ran == 2) {
 							selectId += "3']";
-						} else {
+						}
+						else {
 							selectId += "4']";
 						}
 						// 8kai roop
@@ -99,12 +102,14 @@ public class PNYKakome extends PNYBase {
 					clickSleepSelector(driver, selector, 3000);
 					waitTilReady(driver);
 				}
-			} else {
+			}
+			else {
 				logg.warn(this.mName + "]獲得済み");
 			}
 		}
 	}
-	public String getPosi(String sele) {
+
+	public String getPosi(WebDriver driver, String sele) {
 		WebElement myElement = driver.findElement(By.cssSelector(sele));
 		WebElement parent = myElement.findElement(By.xpath(".."));
 		return parent.getAttribute("class");

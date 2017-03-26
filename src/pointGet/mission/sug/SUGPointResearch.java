@@ -13,6 +13,7 @@ import pointGet.Utille;
 
 public class SUGPointResearch extends SUGBase {
 	final String url = "http://www.sugutama.jp/survey";
+	WebDriver driver = null;
 
 	/**
 	 * @param logg
@@ -22,8 +23,10 @@ public class SUGPointResearch extends SUGBase {
 	}
 
 	@Override
-	public void privateMission(WebDriver driver) {
+	public void privateMission(WebDriver driverAtom) {
+		driver = driverAtom;
 		driver.get(url);
+		int skip = 1;
 		selector = "img[src='//static.sugutama.jp/ssp_site/67078ba450f1dc8ab98f75613b67a50f.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // アンケート一覧ページ
@@ -31,10 +34,10 @@ public class SUGPointResearch extends SUGBase {
 			while (true) {
 				selector = "td>a[href*='ad-research.jp']";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-				int size = eleList.size();
-				if (size > 0
-						&& isExistEle(eleList, 0)) {
-					clickSleepSelector(eleList, 0, 6000); // アンケートスタートページ
+				int size = eleList.size(), targetIndex = skip - 1; // 順番はサイト毎に変更可能だが、変数を使う
+				if (size > targetIndex
+						&& isExistEle(eleList, targetIndex)) {
+					clickSleepSelector(eleList, targetIndex, 6000); // アンケートスタートページ
 					String wid = driver.getWindowHandle();
 					changeWindow(driver, wid);
 					selector = "div.ui-control.type-fixed>a.ui-button.quake";
