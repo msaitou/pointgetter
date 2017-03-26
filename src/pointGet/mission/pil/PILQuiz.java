@@ -93,7 +93,7 @@ public class PILQuiz extends PILBase {
 					logg.info(this.mName + "]kuria?");
 					selector = "input[name='submit']";
 					if (isExistEle(driver, selector)) {
-//						clickSleepSelector(driver, selector, 3000);
+						clickSleepSelector(driver, selector, 3000);
 //						waitTilReady(driver);
 					}
 				}
