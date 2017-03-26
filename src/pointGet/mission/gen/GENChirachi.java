@@ -44,6 +44,7 @@ public class GENChirachi extends GENBase {
 					for (int i = 2; i < size; i++) {
 						if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
 							clickSleepSelector(driver.findElements(By.cssSelector(selector)), i, 4000);
+							closeOtherWindow(driver);
 							break;
 						}
 					}
