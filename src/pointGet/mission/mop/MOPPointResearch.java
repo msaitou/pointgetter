@@ -24,15 +24,18 @@ public class MOPPointResearch extends MOPBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
+		int i = 1;
 		while (true) {
 			selector = "a.pointResearch__box__btn";
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-			int size = eleList.size();
-			if (isExistEle(eleList, size - 1)) {
-				clickSleepSelector(eleList, size - 1, 3000); // アンケートスタートページ
-				changeCloseWindow(driver);
+			int size = eleList.size(), index = size - i;
+			if (index > -1 && isExistEle(eleList, index)) {
+				String wid = driver.getWindowHandle();
+				clickSleepSelector(eleList, index, 3000); // アンケートスタートページ
+				changeWindow(driver, wid);
 				selector = "div.ui-control.type-fixed>a.ui-button.quake";
 				if (isExistEle(driver, selector)) {
+					closeOtherWindow(driver);
 					clickSleepSelector(driver, selector, 3000);
 					// 回答開始
 					selector = "form>input.ui-button.quake";
@@ -129,8 +132,12 @@ public class MOPPointResearch extends MOPBase {
 							// point一覧に戻る
 							clickSleepSelector(driver, moreSele, 5000);
 						}
-
 					}
+				}
+				else {
+					i++;
+					driver.close();
+					driver.switchTo().window(wid);
 				}
 			}
 			else {

@@ -24,15 +24,17 @@ public class PTOPointResearch extends PTOBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
+		Utille.sleep(3000);
 		while (true) {
-			selector = "tr[onclick*='ad-research.jp']>td>span.promo_enq_bt";
+			selector = "td>span.promo_enq_bt";
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 			int size = eleList.size();
 			if (size > 0 
 					&& isExistEle(eleList, 0)) {
-				clickSleepSelector(eleList, 0, 6000); // アンケートスタートページ
+				clickSleepSelector(eleList, 0, 10000); // アンケートスタートページ
 				changeCloseWindow(driver);
 				selector = "div.ui-control.type-fixed>a.ui-button.quake";
+				String sele3 = "div>button[type='submit']"; // 回答する surveyenk用
 				if (isExistEle(driver, selector)) {
 					clickSleepSelector(driver, selector, 4000);
 					// 回答開始
@@ -128,6 +130,9 @@ public class PTOPointResearch extends PTOBase {
 						}
 						// point一覧に戻る
 					}
+					else if (isExistEle(driver, sele3)) {
+						_answerSurveyEnk(sele3, "");
+					}
 				}
 			}
 			else {
@@ -135,4 +140,91 @@ public class PTOPointResearch extends PTOBase {
 			}
 		}
 	}
+	/**
+	 * 
+	 * @param sele3
+	 * @param wid
+	 */
+	private void _answerSurveyEnk(String sele3, String wid) {
+		// 回答開始
+		clickSleepSelector(driver, sele3, 3000);
+		String qTitleSele = "div.question-label", qTitle = "", radioSele = "label.item-radio", checkboxSele = "label.item-checkbox", choiceSele = "", seleSele = "select.mdl-textfield__input";
+		for (int k = 1; k <= 15; k++) {
+			int choiceNum = 0;
+			qTitle = "";
+			choiceSele = "";
+			if (isExistEle(driver, qTitleSele)) {
+				qTitle = driver.findElement(By.cssSelector(qTitleSele)).getText();
+				logg.info("[" + qTitle + "]");
+			}
+			if (isExistEle(driver, radioSele)) { // ラジオ
+				choiceSele = radioSele;
+			}
+			else if (isExistEle(driver, checkboxSele)) { // チェックボックス
+				choiceSele = checkboxSele;
+			}
+			else if (isExistEle(driver, seleSele)) {// セレクトボックス
+				choiceSele = seleSele;
+			}
+			if (radioSele.equals(choiceSele)
+					|| checkboxSele.equals(choiceSele)) {
+				int choiceies = getSelectorSize(driver, choiceSele);
+				switch (k) {
+					case 13: // 性別
+						//									case 3: // 結婚
+						// 13問目は1：男
+						// 3問目は3：未婚
+						break;
+					//									case 5: // 職業
+					case 14: // 年齢
+						// 2問目は3：30代
+						if (choiceies > 3) {// 一応選択可能な範囲かをチェック
+							choiceNum = 3;
+						}
+						break;
+					default:
+						choiceNum = Utille.getIntRand(choiceies);
+				}
+				List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
+				if (isExistEle(eleList2, choiceNum)) {
+					// 選択
+					clickSleepSelector(eleList2.get(choiceNum), 2500);
+				}
+			}
+			else if (seleSele.equals(choiceSele)) {
+				Utille.sleep(2000);
+				int size3 = getSelectorSize(driver, seleSele + ">option");
+				String value = "";
+				if (qTitle.indexOf("住まい") >= 0) {
+					value = "14";
+				}
+				else {
+					choiceNum = Utille.getIntRand(size3);
+					value = driver.findElements(By.cssSelector(seleSele + ">option"))
+							.get(choiceNum).getAttribute("value");
+				}
+				Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
+				selectList.selectByValue(value);
+				Utille.sleep(3000);
+			}
+			if (isExistEle(driver, sele3)) {
+				// 次へ
+				clickSleepSelector(driver, sele3, 4000);
+			}
+		}
+		Utille.sleep(3000);
+		if (isExistEle(driver, sele3)) {
+			// 次へ
+			clickSleepSelector(driver, sele3, 4000);
+		}
+		// close
+		String closeSele = "input.btn_close_en";
+		if (isExistEle(driver, closeSele)) {
+			clickSleepSelector(driver, closeSele, 4000);
+		}
+		//			driver.close();
+		// 最後に格納したウインドウIDにスイッチ
+//		driver.switchTo().window(wid);
+	}
+
 }
