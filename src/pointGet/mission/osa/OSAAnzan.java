@@ -24,7 +24,7 @@ public class OSAAnzan extends OSABase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		selector = "li.long img[alt='ANZAN']";
+		selector = "li>a>img[alt='ANZAN']";
 		driver.get(url);
 		Utille.sleep(2000);
 		if (isExistEle(driver, selector)) {
