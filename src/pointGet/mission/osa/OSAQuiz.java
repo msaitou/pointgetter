@@ -23,7 +23,7 @@ public class OSAQuiz extends OSABase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		selector = "li.long img[alt='デイリークイズ']";
+		selector = "li>a>img[alt='デイリークイズ']";
 		driver.get(url);
 		Utille.sleep(2000);
 		if (isExistEle(driver, selector)) {

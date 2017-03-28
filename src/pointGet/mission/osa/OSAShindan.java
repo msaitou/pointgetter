@@ -25,7 +25,7 @@ public class OSAShindan extends OSABase {
 	}
 	@Override
 	public void privateMission(WebDriver driver) {
-		selector = "li.long img[alt='毎日診断']";
+		selector = "li>a>img[alt='毎日診断']";
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 8000); // 遷移

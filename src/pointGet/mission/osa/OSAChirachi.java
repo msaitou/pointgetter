@@ -23,7 +23,7 @@ public class OSAChirachi extends OSABase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "li.long img[alt='お財布チラシ']";
+		selector = "li>a>img[alt='お財布チラシ']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 4000); // 遷移
 			changeCloseWindow(driver);

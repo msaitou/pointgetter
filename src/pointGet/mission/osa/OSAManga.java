@@ -23,7 +23,7 @@ public class OSAManga extends OSABase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		selector = "li.long img[alt='お財布Watch']";
+		selector = "li>a>img[alt='お財布Watch']";
 		driver.get(url);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 8000); // 遷移
