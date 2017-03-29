@@ -28,7 +28,7 @@ public class MOBNanyoubi extends MOBBase {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 	//	src="https://pc-assets.mtoku.jp/common/img/contents/item_calendar.png"
-		selector = "div.c-box.game-item>a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_calendar.png']";
+		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_calendar.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 

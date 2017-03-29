@@ -26,7 +26,7 @@ public class MOBQuiz extends MOBBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "div.c-box.game-item>a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_daily_quiz.png']";
+		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_daily_quiz.png']";
 		//		selector = "div.game_btn>div.icon>img[alt='モッピークイズ']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移

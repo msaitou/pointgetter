@@ -27,7 +27,7 @@ public class MOBAnzan extends MOBBase {
 		driver.get(url);
 //		selector = "a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_anzan.png']";
 
-		selector = "div.c-box.game-item>a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_anzan.png']";
+		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_anzan.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 4000); // 遷移
 //			changeCloseWindow(driver);

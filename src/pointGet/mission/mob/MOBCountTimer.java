@@ -21,7 +21,7 @@ public class MOBCountTimer extends MOBBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "div.c-box.game-item>a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_timer.png']";
+		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_timer.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 			checkOverlay(driver, "div.overlay-popup a.button-close");

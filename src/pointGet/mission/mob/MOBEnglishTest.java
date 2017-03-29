@@ -24,7 +24,7 @@ public class MOBEnglishTest extends MOBBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "div.c-box.game-item>a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_eitango.png']";
+		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_eitango.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 			changeCloseWindow(driver);
