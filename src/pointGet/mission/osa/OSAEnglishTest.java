@@ -3,6 +3,7 @@ package pointGet.mission.osa;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Utille;
@@ -36,12 +37,18 @@ public class OSAEnglishTest extends OSABase {
 				return;
 			}
 			selector = "div.ui-control>form>input[name='submit']";
+			String noSele = "div.ui-item-no", titleSele = "h2.ui-item-title";
 			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 8; i++) {
 					Utille.sleep(4000);
 					String selectYoubi = "";
+					if (isExistEle(driver, noSele)) {
+						String qNo = driver.findElement(By.cssSelector(noSele)).getText();
+						String qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
+						logg.info(qNo + " " + qTitle);
+					}
 					//					if (isExistEle(driver, selectorDay)) {
 					//						String text = driver.findElement(By.cssSelector(selectorDay)).getText();
 					//						logg.info("testです　" + text);
