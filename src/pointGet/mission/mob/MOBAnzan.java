@@ -30,7 +30,7 @@ public class MOBAnzan extends MOBBase {
 		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_anzan.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 4000); // 遷移
-//			changeCloseWindow(driver);
+			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
 			// finish condition
 			String finishSelector = "p.ui-timer";
