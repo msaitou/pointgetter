@@ -28,7 +28,7 @@ public class MOBEnglishTest extends MOBBase {
 		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_eitango.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
-			changeCloseWindow(driver);
+//			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
 			// finish condition
 			String finishSelector = "p.ui-timer";

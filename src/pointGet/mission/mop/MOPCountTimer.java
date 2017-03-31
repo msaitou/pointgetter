@@ -41,13 +41,14 @@ public class MOPCountTimer extends MOPBase {
 						checkOverlay(driver, "div.overlay-popup a.button-close");
 					}
 					String selectorExpression = "span.try-subject-time";
+					String finishSelector = "p.ui-timer";
 					int waitTime = 0;
 					if (isExistEle(driver, selectorExpression)) {
 						String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
 						logg.info("お題　" + text);
 						waitTime = Utille.getWaitTimeRan(text);
 					}
-					else {
+					else if (!isExistEle(driver, finishSelector)) {
 						logg.info("not get odai");
 						return;
 					}
