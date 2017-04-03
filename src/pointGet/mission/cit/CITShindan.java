@@ -3,13 +3,12 @@ package pointGet.mission.cit;
 import java.util.List;
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import lombok.val;
 import pointGet.Utille;
 
 /**
@@ -66,10 +65,18 @@ public class CITShindan extends CITBase {
 					clickSleepSelector(wEle, selector, 4000); // 遷移
 					selector = "a.submit-btn";// 次へ
 					if (isExistEle(driver, selector)) {
-						clickSleepSelector(driver, selector, 5500); // 遷移
+						clickSleepSelector(driver, selector, 7000); // 遷移
 						if (isExistEle(driver, selector)) {
 							clickSleepSelector(driver, selector, 20000); // 遷移
-
+							int c = 0;
+							while (c++ > 30) {
+								if (isExistEle(driver, "div[data-qid]")) {
+									break;
+								}
+								if (isExistEle(driver, selector)) {
+									clickSleepSelector(driver, selector, 2000); // 遷移
+								}
+							}
 							if (isExistEle(driver, "div[data-qid]")) {
 								int qSize = getSelectorSize(driver, "div[data-qid]"); // 選択肢の数を数える
 								for (int i = 0; i < qSize; i++) {

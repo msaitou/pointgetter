@@ -88,7 +88,7 @@ public class OSAPointResearch extends OSABase {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param startSele
 	 * @param wid
 	 */
@@ -190,7 +190,7 @@ public class OSAPointResearch extends OSABase {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param selector2
 	 * @param wid
 	 */
@@ -272,7 +272,7 @@ public class OSAPointResearch extends OSABase {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param sele3
 	 * @param wid
 	 */
@@ -359,7 +359,7 @@ public class OSAPointResearch extends OSABase {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param sele4
 	 * @param wid
 	 */
@@ -402,7 +402,7 @@ public class OSAPointResearch extends OSABase {
 				}
 				if (isExistEle(driver, sele4)) {
 					// 次へ(Qへ)
-					clickSleepSelector(driver, sele4, 5000);
+					clickSleepSelector(driver, sele4, 7000);
 				}
 			}
 		}
@@ -413,7 +413,7 @@ public class OSAPointResearch extends OSABase {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param sele4
 	 * @param wid
 	 */
@@ -421,7 +421,7 @@ public class OSAPointResearch extends OSABase {
 		// 回答開始
 		clickSleepSelector(driver, sele5, 7000);
 
-		String qTitleSele = "div.content_note.note", qNoSele = "div.qno", qTitle = "", qNo = "", 
+		String qTitleSele = "div.content_note.note", qNoSele = "div.qno", qTitle = "", qNo = "",
 				radioSele = "label.rdck_label_sp", choiceSele = "", overlay = "div.bnrFrame>div.bnrclose>img", noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", seleSele = "div.note>select";
 		for (int k = 1; k <= 15; k++) {
 			int choiceNum = 0;
@@ -479,7 +479,7 @@ public class OSAPointResearch extends OSABase {
 				}
 				if (isExistEle(driver, sele5)) {
 					// 次へ(Qへ)
-					clickSleepSelector(driver, sele5, 5000);
+					clickSleepSelector(driver, sele5, 7000);
 				}
 			}
 		}
