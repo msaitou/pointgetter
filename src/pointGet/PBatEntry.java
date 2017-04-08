@@ -45,14 +45,14 @@ public class PBatEntry extends PointGet {
 		if (m.get(key).size() > 0) {
 			logg.info("◆◆◆◆◆◆Start!!◆◆◆◆◆◆◆");
 			// 抽出した値に対応するMissionを順次(順番)に直列に実行
-			for (String strMission : m.get(key)) {
+			m.get(key).forEach(strMission -> {
 				// mail,point以外なら
 				if ("Mail".equals(strMission)) {
 					missionMap.put("mail", null);
-					break;
+					return;
 				} else if ("Point".equals(strMission)) {
 					missionMap.put("point", null);
-					break;
+					return;
 				} else {
 					// サイトをカテゴリー分けする
 					String site = Utille.getSiteCode(strMission);
@@ -61,7 +61,7 @@ public class PBatEntry extends PointGet {
 					}
 					missionMap.get(site).add(strMission);
 				}
-			}
+			});
 			// カテゴリーごとにmain関数をコール
 			for (Map.Entry<String, ArrayList<String>> map : missionMap.entrySet()) {
 				if (map.getValue() != null) {

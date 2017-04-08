@@ -11,6 +11,8 @@ import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.db.Dbase;
+
 /**
  * @author saitou
  *
@@ -19,6 +21,7 @@ public abstract class PointGet {
 
 	protected static String propPath = "pointGet.properties";
 	protected static Properties loadProps = null;
+	protected static Dbase Dbase = null;
 	private static String[] siteCodeList = null;
 
 	// log
@@ -30,9 +33,6 @@ public abstract class PointGet {
 	protected static void init(String clsName) {
 		_loadProps();
 		System.out.println("[" + clsName + "]");
-		if ("Points".equals(clsName)) {
-		} else if ("MailClicker".equals(clsName)) {
-		}
 		// 対象のサイトを取得
 		siteCodeList = loadProps.getProperty("SiteCodeList").split(",");
 		String[] attrList = loadProps.getProperty("AttrList").split(",");
@@ -49,6 +49,7 @@ public abstract class PointGet {
 				pGetProps.put(siteCode, siteConf);
 			}
 		}
+		Dbase = new Dbase(loadProps);
 	}
 
 	/**

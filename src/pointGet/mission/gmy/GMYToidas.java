@@ -46,7 +46,7 @@ public class GMYToidas extends GMYBase {
 							logg.warn("entryDate:" + entryDate + " nowDate:" + nowDate);
 
 							if (entryDate.equals(nowDate)) {
-								//							if (true) {
+//															if (true) {
 								wEle = eleList.get(i);
 								break;
 							}
