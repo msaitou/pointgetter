@@ -32,7 +32,9 @@ public class SUGPointResearch extends SUGBase {
 			clickSleepSelector(driver, selector, 6000); // アンケート一覧ページ
 			changeCloseWindow(driver);
 			while (true) {
-				selector = "td>a[href*='ad-research.jp']";
+				selector = "td>a[href*='ad-contents.jp']";
+				if (isExistEle(driver, selector)) {
+				}
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size = eleList.size(), targetIndex = skip - 1; // 順番はサイト毎に変更可能だが、変数を使う
 				if (size > targetIndex
