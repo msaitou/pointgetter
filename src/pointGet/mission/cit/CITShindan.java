@@ -69,7 +69,7 @@ public class CITShindan extends CITBase {
 						if (isExistEle(driver, selector)) {
 							clickSleepSelector(driver, selector, 20000); // 遷移
 							int c = 0;
-							while (c++ > 30) {
+							while (c++ < 30) {
 								if (isExistEle(driver, "div[data-qid]")) {
 									break;
 								}
