@@ -61,7 +61,7 @@ public class PointsCollection {
 	public void putPointsData(Map<String, Double> m) {
 		// 検索情報設定
 		Map<String, Object> cParams = new HashMap<String, Object>();
-		cParams.put("cond", (DBObject) JSON.parse("{'Date':" + Utille.getNowTimeStr("yyyy-MM-dd") + "}"));
+		cParams.put("cond", (DBObject) JSON.parse("{'Date':'" + Utille.getNowTimeStr("yyyy-MM-dd") + "'}"));
 		cParams.put("limit", 2);
 		//		Dbase.accessDb("update", COLLECTION_NAME_POINTS, ((a) -> {
 		Dbase.accessDb("update", COLLECTION_NAME_POINTS, cParams, ((a) -> {
