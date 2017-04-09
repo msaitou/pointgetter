@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.db.PointsCollection;
+
 /**
  * write the current point
  * @author saito
@@ -30,8 +32,8 @@ public class Points extends PointGet {
 	public static void main(String[] args) {
 		init();
 		StringBuffer sb = new StringBuffer();
-		WebDriver driver = getWebDriver();
 		Map<String, Double> pMap = new HashMap<String, Double>();
+		WebDriver driver = getWebDriver();
 		try {
 			for (String siteCode : pointSitelist) {
 				String selector = "", outPut = "", point = "", secondPoint = "";
@@ -41,7 +43,7 @@ public class Points extends PointGet {
 						driver.get("http://dietnavi.com/pc");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_GMY + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_GMY + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_GEN:
@@ -49,7 +51,7 @@ public class Points extends PointGet {
 						driver.get("http://www.gendama.jp/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_GEN + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_GEN + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_ECN:
@@ -57,7 +59,7 @@ public class Points extends PointGet {
 						driver.get("https://ecnavi.jp/mypage/point_history/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_ECN + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_ECN + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_MOP:
@@ -71,12 +73,12 @@ public class Points extends PointGet {
 						driver.get("http://pc.moppy.jp/bankbook/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_MOP + ":" + getNumber(point);
+							outPut = "[" + Define.PSITE_CODE_MOP + ":" + Utille.getNumber(point);
 						}
 						selector = "div#point_blinking em";
 						if (isExistEle(driver, selector)) {
 							secondPoint = driver.findElement(By.cssSelector(selector)).getText();
-							outPut += "." + getNumber(secondPoint) + "]";
+							outPut += "." + Utille.getNumber(secondPoint) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_PEX:
@@ -88,7 +90,7 @@ public class Points extends PointGet {
 						}
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_PEX + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_PEX + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_OSA:
@@ -102,12 +104,12 @@ public class Points extends PointGet {
 						driver.get("https://osaifu.com/contents/bankbook/top/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_OSA + ":" + getNumber(point);
+							outPut = "[" + Define.PSITE_CODE_OSA + ":" + Utille.getNumber(point);
 						}
 						selector = "dl.bankbook-total>dd.gold.coin>span";
 						if (isExistEle(driver, selector)) {
 							secondPoint = driver.findElement(By.cssSelector(selector)).getText();
-							outPut += "." + getNumber(secondPoint) + "]";
+							outPut += "." + Utille.getNumber(secondPoint) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_PTO:
@@ -119,7 +121,7 @@ public class Points extends PointGet {
 						}
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_PTO + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_PTO + ":" + Utille.getNumber(point) + "]";
 						}
 						else {
 							// ログインができていない可能性がある
@@ -130,7 +132,7 @@ public class Points extends PointGet {
 						driver.get("https://point.i2i.jp/account/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_I2I + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_I2I + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_PIL:
@@ -142,7 +144,7 @@ public class Points extends PointGet {
 							List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 							if (isExistEle(eleList, 1)) {
 								point = eleList.get(1).getText();
-								outPut = "[" + Define.PSITE_CODE_PIL + ":" + getNumber(point) + "]";
+								outPut = "[" + Define.PSITE_CODE_PIL + ":" + Utille.getNumber(point) + "]";
 							}
 						}
 						break;
@@ -156,7 +158,7 @@ public class Points extends PointGet {
 						}
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_PIC + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_PIC + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_HAP:
@@ -166,7 +168,7 @@ public class Points extends PointGet {
 						driver.get("http://hapitas.jp/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_HAP + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_HAP + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_MOB:
@@ -178,7 +180,7 @@ public class Points extends PointGet {
 							List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 							if (isExistEle(eleList, 0)) {
 								point = eleList.get(0).getText();
-								outPut = "[" + Define.PSITE_CODE_MOB + ":" + getNumber(point) + "]";
+								outPut = "[" + Define.PSITE_CODE_MOB + ":" + Utille.getNumber(point) + "]";
 							}
 						}
 						break;
@@ -189,7 +191,7 @@ public class Points extends PointGet {
 						driver.get("http://www.chobirich.com/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_CRI + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_CRI + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_PNY:
@@ -199,7 +201,7 @@ public class Points extends PointGet {
 						driver.get("https://www.poney.jp/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_PNY + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_PNY + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_SUG:
@@ -210,7 +212,7 @@ public class Points extends PointGet {
 						Utille.sleep(5000);
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_SUG + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_SUG + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_WAR:
@@ -222,18 +224,16 @@ public class Points extends PointGet {
 						}
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_WAR + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_WAR + ":" + Utille.getNumber(point) + "]";
 						}
 
 						break;
 					case Define.PSITE_CODE_CIT:
-						// login!!
-						//					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
 						selector = "li.user>a>span.user_pt";
 						driver.get("http://www.chance.com/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_CIT + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_CIT + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					case Define.PSITE_CODE_PMO:
@@ -245,7 +245,7 @@ public class Points extends PointGet {
 						}
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_PMO + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_PMO + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					// pointstadium
@@ -254,16 +254,16 @@ public class Points extends PointGet {
 						driver.get("http://www.point-stadium.com/");
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
-							outPut = "[" + Define.PSITE_CODE_PST + ":" + getNumber(point) + "]";
+							outPut = "[" + Define.PSITE_CODE_PST + ":" + Utille.getNumber(point) + "]";
 						}
 						break;
 					default:
 				}
 				if (outPut.length() > 0) {
-					sumTotal(siteCode, point);
+					total = Utille.sumTotal(siteCode, point, total);
 					Double siteTotal = getSiteTotal(siteCode, point, 0.0);
 					if (secondPoint.length() > 0) {
-						sumTotal("secondPoint", secondPoint);
+						total = Utille.sumTotal("secondPoint", secondPoint, total);
 						siteTotal = getSiteTotal(siteCode, point, siteTotal);
 					}
 					sb.append(outPut);
@@ -275,22 +275,22 @@ public class Points extends PointGet {
 				}
 			}
 		} catch (Throwable e) {
-
+			e.printStackTrace();
 		} finally {
 			driver.quit();
 		}
-//		pMap.put("mop", 556.9);
-//		pMap.put("osa", 156.9);
-//		if (!pMap.isEmpty()) {
-//			PointsCollection PC = new PointsCollection(Dbase);
-//			PC.putPointsData(pMap);
-//			PC.putAchievementData();
-//		}
+		//		pMap.put("mop", 582.9);
+		//		pMap.put("osa", 183.0);
+		if (!pMap.isEmpty()) {
+			PointsCollection PC = new PointsCollection(Dbase);
+			//			PC.putPointsData(pMap);
+			PC.putAchievementData();
+		}
 		logg.warn(total + sb.toString());
 	}
 
 	private static Double getSiteTotal(String site, String points, Double siteTotal) {
-		double current = Double.parseDouble(getNumber(points));
+		double current = Double.parseDouble(Utille.getNumber(points));
 		switch (site) {
 			case Define.PSITE_CODE_OSA:
 			case Define.PSITE_CODE_MOP:
@@ -326,63 +326,5 @@ public class Points extends PointGet {
 				break;
 		}
 		return (double) Math.round(siteTotal * 10) / 10;
-	}
-
-	private static void sumTotal(String site, String points) {
-		double current = Double.parseDouble(getNumber(points));
-		switch (site) {
-			case Define.PSITE_CODE_OSA:
-			case Define.PSITE_CODE_MOP:
-			case Define.PSITE_CODE_PMO:
-			case Define.PSITE_CODE_HAP:
-				total += current;
-				break;
-			case Define.PSITE_CODE_CRI:
-			case Define.PSITE_CODE_SUG:
-				total += current / 2;
-				break;
-			case Define.PSITE_CODE_GMY:
-			case Define.PSITE_CODE_PEX:
-			case Define.PSITE_CODE_ECN:
-			case Define.PSITE_CODE_I2I:
-			case Define.PSITE_CODE_GEN:
-			case Define.PSITE_CODE_PIL:
-			case Define.PSITE_CODE_PIC:
-			case Define.PSITE_CODE_MOB:
-			case Define.PSITE_CODE_WAR:
-			case Define.PSITE_CODE_CIT:
-			case Define.PSITE_CODE_PST:
-			case "secondPoint":
-				total += current / 10;
-				break;
-			case Define.PSITE_CODE_PTO:
-				total += current / 20;
-				break;
-			case Define.PSITE_CODE_PNY:
-				total += current / 100;
-				break;
-			default:
-				break;
-		}
-		total = (double) Math.round(total * 10) / 10;
-		//		logg.warn("total["+total+"]円");
-		//		logg.warn("current["+current+"]円");
-		//		logg.warn("points["+points+"]円");
-	}
-
-	/**
-	 *
-	 * @param points
-	 * @return
-	 */
-	private static String getNumber(String points) {
-		String[] execlude = { ",", " pt", " pt", "Pt", "pt", "mile", "ポイント" };
-		for (String s : execlude) {
-			if (points.indexOf(s) > 0) {
-				points = points.replaceAll(s, "");
-				points = points.trim();
-			}
-		}
-		return points;
 	}
 }

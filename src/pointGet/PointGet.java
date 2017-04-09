@@ -18,12 +18,10 @@ import pointGet.db.Dbase;
  *
  */
 public abstract class PointGet {
-
 	protected static String propPath = "pointGet.properties";
 	protected static Properties loadProps = null;
 	protected static Dbase Dbase = null;
 	private static String[] siteCodeList = null;
-
 	// log
 	protected static Logger logg = null;
 	// PointGet common properties

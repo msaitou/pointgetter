@@ -5,12 +5,19 @@ package pointGet.mission.mob;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import pointGet.Define;
+import pointGet.Utille;
+import pointGet.db.Dbase;
+import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 
 /**
@@ -48,7 +55,7 @@ public abstract class MOBBase extends Mission {
 	 * @param cProps
 	 * @param missions
 	 */
-	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions) {
+	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
 		WebDriver driver = getWebDriver(cProps);
 		for (String mission : missions) {
 			Mission MisIns = null;
@@ -81,13 +88,51 @@ public abstract class MOBBase extends Mission {
 					Define.strMOBAnzan,
 					Define.strMOBEnglishTest,
 					Define.strMOBCountTimer,
-					}).contains(mission)) {
+			}).contains(mission)) {
 				driver = MisIns.exeRoopMission(driver);
 			}
 			else {
 				driver = MisIns.exePrivateMission(driver);
 			}
 		}
-		driver.quit();
+		// point状況確認
+		try {
+			Double p = getSitePoint(driver, loggg);
+			PointsCollection PC = new PointsCollection(Dbase);
+			Map<String, Double> pMap = new HashMap<String, Double>() {
+				/**
+				* 
+				*/
+				private static final long serialVersionUID = 1L;
+				{
+					put(sCode, p);
+				}
+			};
+			PC.putPointsData(pMap);
+		} catch (Throwable e) {
+			loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+		} finally {
+			driver.quit();
+		}
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 * @param logg
+	 * @return
+	 */
+	public static Double getSitePoint(WebDriver driver, Logger logg) {
+		String selector = "div.bankbook_panel__point>em", point = "";
+		driver.get("http://pc.mtoku.jp/mypage/bankbook/");
+		if (Utille.isExistEle(driver, selector, logg)) {
+			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+			if (Utille.isExistEle(eleList, 0, logg)) {
+				point = eleList.get(0).getText();
+				point = Utille.getNumber(point);
+			}
+		}
+		Double sTotal = Utille.sumTotal(sCode, point, 0.0);
+		return sTotal;
 	}
 }

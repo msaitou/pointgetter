@@ -8,10 +8,13 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Define;
 import pointGet.LoginSite;
+import pointGet.Utille;
+import pointGet.db.Dbase;
 import pointGet.mission.Mission;
 
 /**
@@ -45,7 +48,7 @@ public abstract class RINBase extends Mission {
 	 * @param cProps
 	 * @param missions
 	 */
-	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions) {
+	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
 		WebDriver driver = getWebDriver(cProps);
 		// login!!
 		LoginSite.login(sCode, driver, loggg);
@@ -61,7 +64,21 @@ public abstract class RINBase extends Mission {
 				driver = MisIns.exePrivateMission(driver);
 			}
 		}
+//		// point状況確認
+//		String p = getSitePoint(driver, loggg);
+//		PointsCollection PC = new PointsCollection(Dbase);
+//		Map<String, Double> pMap = new HashMap<String, Double>();
+//		pMap.put(sCode, Double.parseDouble(p));
+//		PC.putPointsData(pMap);
 		driver.quit();
 	}
 
+	public static String getSitePoint(WebDriver driver, Logger logg) {
+		String selector = "li.user>a>span.user_pt", point = "";
+		driver.get("http://www.chance.com/");
+		if (Utille.isExistEle(driver, selector, logg)) {
+			point = driver.findElement(By.cssSelector(selector)).getText();
+		}
+		return point;
+	}
 }

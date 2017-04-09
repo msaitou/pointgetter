@@ -115,7 +115,7 @@ public class WebClicker extends PointGet {
 			}).contains(site)) {
 				continue;
 			}
-			goToClickSite2(site, missionArr);
+			goToClickSite(site, missionArr);
 			missionArr.clear();
 		}
 		roopMisssion(missionList);
@@ -142,7 +142,7 @@ public class WebClicker extends PointGet {
 			}).contains(site)) {
 				continue;
 			}
-			goToClickSite2(site, missionArr);
+			goToClickSite(site, missionArr);
 			missionArr.clear();
 		}
 		roopMisssion(missionList);
@@ -193,7 +193,7 @@ public class WebClicker extends PointGet {
 		logg.info("======subStart======");
 		ArrayList<String> missionArr = new ArrayList<String>();
 		missionArr.add(mission);
-		goToClickSite2(site, missionArr);
+		goToClickSite(site, missionArr);
 		roopMisssion(missionList);
 		logg.info("======subEnd======");
 	}
@@ -202,63 +202,63 @@ public class WebClicker extends PointGet {
 	 *
 	 * @param siteType
 	 */
-	private static void goToClickSite2(String siteType, ArrayList<String> missionArr) {
+	private static void goToClickSite(String siteType, ArrayList<String> missionArr) {
 		logg.info("■■■■■■missionSite[" + siteType + "]START■■■■■■");
 		try {
 			switch (siteType) {
 				case Define.PSITE_CODE_GMY:
-					GMYBase.goToClick(logg, commonProps, missionArr);
+					GMYBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_GEN:
-					GENBase.goToClick(logg, commonProps, missionArr);
+					GENBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_ECN:
-					ECNBase.goToClick(logg, commonProps, missionArr, missionList, wordList);
+					ECNBase.goToClick(logg, commonProps, missionArr, missionList, wordList, Dbase);
 					break;
 				case Define.PSITE_CODE_MOP:
-					MOPBase.goToClick(logg, commonProps, missionArr);
+					MOPBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_PEX:
-					PEXBase.goToClick(logg, commonProps, missionArr, missionList, wordList);
+					PEXBase.goToClick(logg, commonProps, missionArr, missionList, wordList, Dbase);
 					break;
 				case Define.PSITE_CODE_OSA:
-					OSABase.goToClick(logg, commonProps, missionArr);
+					OSABase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_RIN:
-					RINBase.goToClick(logg, commonProps, missionArr);
+					RINBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_I2I:
-					I2IBase.goToClick(logg, commonProps, missionArr);
+					I2IBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_PTO:
-					PTOBase.goToClick(logg, commonProps, missionArr);
+					PTOBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_MOB:
-					MOBBase.goToClick(logg, commonProps, missionArr);
+					MOBBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_PIC:
-					PICBase.goToClick(logg, commonProps, missionArr);
+					PICBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_SUG:
-					SUGBase.goToClick(logg, commonProps, missionArr);
+					SUGBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_PST:
-					PSTBase.goToClick(logg, commonProps, missionArr);
+					PSTBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_PIL:
-					PILBase.goToClick(logg, commonProps, missionArr);
+					PILBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_CIT:
-					CITBase.goToClick(logg, commonProps, missionArr);
+					CITBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_PMO:
-					PMOBase.goToClick(logg, commonProps, missionArr);
+					PMOBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_CRI:
-					CRIBase.goToClick(logg, commonProps, missionArr);
+					CRIBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				case Define.PSITE_CODE_HAP:
-					HAPBase.goToClick(logg, commonProps, missionArr);
+					HAPBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				default:
 			}
@@ -269,6 +269,5 @@ public class WebClicker extends PointGet {
 			logg.error("-Throwable-------------------");
 		}
 		logg.info("■■■■■■missionSite[" + siteType + "]END■■■■■■");
-
 	}
 }

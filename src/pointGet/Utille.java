@@ -108,7 +108,8 @@ public class Utille {
 				int ran = getIntRand(wordNum);
 				if (!listIndex.contains(ran)) {
 					listIndex.add(ran);
-				} else {
+				}
+				else {
 					i--;
 				}
 			}
@@ -154,6 +155,21 @@ public class Utille {
 	public static boolean isExistEle(List<WebElement> wEle, Logger logg) {
 		Eventually.eventually(() -> wEle);
 		return wEle.size() != 0;
+	}
+
+	/**
+	 * 
+	 * @param ele
+	 * @param index
+	 * @param logg
+	 * @return
+	 */
+	public static boolean isExistEle(List<WebElement> ele, int index, Logger logg) {
+		List<WebElement> eleL = new ArrayList<WebElement>();
+		eleL.add(ele.get(index));
+		boolean is = isExistEle(eleL, logg);
+		logg.info(index + ":[" + is + "]");
+		return is;
 	}
 
 	/**
@@ -423,7 +439,7 @@ public class Utille {
 		DateFormat updateTimeForm = new SimpleDateFormat(formatStr);
 		return updateTimeForm.format(date);
 	}
-	
+
 	/**
 	 * 
 	 * @param formatStr
@@ -440,7 +456,7 @@ public class Utille {
 			return waitTime - ranDiff;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param formatStr
@@ -449,5 +465,67 @@ public class Utille {
 	public static int getWaitTime(String text) {
 		Double dA = Double.parseDouble(text) * 1000;
 		return dA.intValue();
+	}
+
+	/**
+	 *
+	 * @param points
+	 * @return
+	 */
+	public static String getNumber(String points) {
+		String[] execlude = { ",", " pt", " pt", "Pt", "pt", "mile", "ポイント" };
+		for (String s : execlude) {
+			if (points.indexOf(s) > 0) {
+				points = points.replaceAll(s, "");
+				points = points.trim();
+			}
+		}
+		return points;
+	}
+	
+	/**
+	 * 
+	 * @param site
+	 * @param points
+	 * @param tot
+	 * @return
+	 */
+	public static Double sumTotal(String site, String points, Double tot) {
+		double current = Double.parseDouble(getNumber(points));
+		switch (site) {
+			case Define.PSITE_CODE_OSA:
+			case Define.PSITE_CODE_MOP:
+			case Define.PSITE_CODE_PMO:
+			case Define.PSITE_CODE_HAP:
+				tot += current;
+				break;
+			case Define.PSITE_CODE_CRI:
+			case Define.PSITE_CODE_SUG:
+				tot += current / 2;
+				break;
+			case Define.PSITE_CODE_GMY:
+			case Define.PSITE_CODE_PEX:
+			case Define.PSITE_CODE_ECN:
+			case Define.PSITE_CODE_I2I:
+			case Define.PSITE_CODE_GEN:
+			case Define.PSITE_CODE_PIL:
+			case Define.PSITE_CODE_PIC:
+			case Define.PSITE_CODE_MOB:
+			case Define.PSITE_CODE_WAR:
+			case Define.PSITE_CODE_CIT:
+			case Define.PSITE_CODE_PST:
+			case "secondPoint":
+				tot += current / 10;
+				break;
+			case Define.PSITE_CODE_PTO:
+				tot += current / 20;
+				break;
+			case Define.PSITE_CODE_PNY:
+				tot += current / 100;
+				break;
+			default:
+				break;
+		}
+		return (double) Math.round(tot * 10) / 10;
 	}
 }

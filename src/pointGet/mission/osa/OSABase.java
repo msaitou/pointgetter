@@ -5,14 +5,18 @@ package pointGet.mission.osa;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Define;
 import pointGet.LoginSite;
 import pointGet.Utille;
+import pointGet.db.Dbase;
+import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 
 /**
@@ -50,7 +54,7 @@ public abstract class OSABase extends Mission {
 	 * @param cProps
 	 * @param missions
 	 */
-	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions) {
+	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
 		WebDriver driver = getWebDriver(cProps);
 		String se = "ul.userinfo";
 		driver.get("http://osaifu.com/");
@@ -101,13 +105,60 @@ public abstract class OSABase extends Mission {
 					Define.strOSAAnzan,
 					Define.strOSAEnglishTest,
 					Define.strOSACountTimer,
-					}).contains(mission)) {
+			}).contains(mission)) {
 				driver = MisIns.exeRoopMission(driver);
 			}
 			else {
 				driver = MisIns.exePrivateMission(driver);
 			}
 		}
-		driver.quit();
+		// point状況確認
+		try {
+			Double p = getSitePoint(driver, loggg);
+			PointsCollection PC = new PointsCollection(Dbase);
+			Map<String, Double> pMap = new HashMap<String, Double>() {
+				/**
+				* 
+				*/
+				private static final long serialVersionUID = 1L;
+				{
+					put(sCode, p);
+				}
+			};
+			PC.putPointsData(pMap);
+		} catch (Throwable e) {
+			loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+		} finally {
+			driver.quit();
+		}
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 * @param logg
+	 * @return
+	 */
+	public static Double getSitePoint(WebDriver driver, Logger logg) {
+		String selector = "ul.userinfo", point = "", secondPoint = "";
+		driver.get("http://osaifu.com/");
+		if (!Utille.isExistEle(driver, selector, logg)) {
+			// login!!
+			LoginSite.login(sCode, driver, logg);
+		}
+		selector = "dl.bankbook-total>dd.current.coin>span";
+		driver.get("https://osaifu.com/contents/bankbook/top/");
+		if (Utille.isExistEle(driver, selector, logg)) {
+			point = driver.findElement(By.cssSelector(selector)).getText();
+			point = Utille.getNumber(point);
+		}
+		selector = "dl.bankbook-total>dd.gold.coin>span";
+		if (Utille.isExistEle(driver, selector, logg)) {
+			secondPoint = driver.findElement(By.cssSelector(selector)).getText();
+			secondPoint = Utille.getNumber(secondPoint);
+		}
+		Double sTotal = Utille.sumTotal(sCode, point, 0.0);
+		sTotal = Utille.sumTotal(sCode, secondPoint, sTotal);
+		return sTotal;
 	}
 }

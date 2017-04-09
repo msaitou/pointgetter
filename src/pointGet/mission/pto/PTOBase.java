@@ -5,14 +5,18 @@ package pointGet.mission.pto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Define;
 import pointGet.LoginSite;
 import pointGet.Utille;
+import pointGet.db.Dbase;
+import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 
 /**
@@ -50,7 +54,7 @@ public abstract class PTOBase extends Mission {
 	 * @param cProps
 	 * @param missions
 	 */
-	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions) {
+	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
 		WebDriver driver = getWebDriver(cProps);
 		String sel = "li.point>a>strong";
 		driver.get("https://www.pointtown.com/ptu/index.do");
@@ -91,6 +95,45 @@ public abstract class PTOBase extends Mission {
 				driver = MisIns.exePrivateMission(driver);
 			}
 		}
-		driver.quit();
+		// point状況確認
+		try {
+			Double p = getSitePoint(driver, loggg);
+			PointsCollection PC = new PointsCollection(Dbase);
+			Map<String, Double> pMap = new HashMap<String, Double>() {
+				/**
+				* 
+				*/
+				private static final long serialVersionUID = 1L;
+				{
+					put(sCode, p);
+				}
+			};
+			PC.putPointsData(pMap);
+		} catch (Throwable e) {
+			loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+		} finally {
+			driver.quit();
+		}
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 * @param logg
+	 * @return
+	 */
+	public static Double getSitePoint(WebDriver driver, Logger logg) {
+		String selector = "li.point>a>strong", point = "";
+		driver.get("https://www.pointtown.com/ptu/index.do");
+		if (!Utille.isExistEle(driver, selector, logg)) {
+			// login!!
+			LoginSite.login(sCode, driver, logg);
+		}
+		if (Utille.isExistEle(driver, selector, logg)) {
+			point = driver.findElement(By.cssSelector(selector)).getText();
+			point = Utille.getNumber(point);
+		}
+		Double sTotal = Utille.sumTotal(sCode, point, 0.0);
+		return sTotal;
 	}
 }
