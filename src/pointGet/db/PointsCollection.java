@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.db;
 
@@ -11,11 +11,11 @@ import java.util.function.Function;
 
 import org.bson.Document;
 
-import pointGet.Utille;
-
 import com.mongodb.DBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.util.JSON;
+
+import pointGet.Utille;
 
 /**
  * @author saitou
@@ -128,7 +128,11 @@ public class PointsCollection {
 					}).contains(k)) {
 						Double d = (Double) m.getValue();
 						lastTotal += d;
-						Double sa = md.get(k) - d;
+						Double nowd = 0.0;
+						if (md.containsKey(k)) {
+							nowd = md.get(k);
+						}
+						Double sa = nowd - d;
 						md.put(k, (double) Math.round(sa * 10) / 10);
 					}
 				}

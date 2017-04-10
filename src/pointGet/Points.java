@@ -122,8 +122,7 @@ public class Points extends PointGet {
 						if (isExistEle(driver, selector)) {
 							point = driver.findElement(By.cssSelector(selector)).getText();
 							outPut = "[" + Define.PSITE_CODE_PTO + ":" + Utille.getNumber(point) + "]";
-						}
-						else {
+						} else {
 							// ログインができていない可能性がある
 						}
 						break;
@@ -268,8 +267,7 @@ public class Points extends PointGet {
 					}
 					sb.append(outPut);
 					pMap.put(siteCode, siteTotal);
-				}
-				else {
+				} else {
 					// 取得できなかった
 					logg.warn("missed site:" + siteCode);
 				}
@@ -283,7 +281,7 @@ public class Points extends PointGet {
 		//		pMap.put("osa", 183.0);
 		if (!pMap.isEmpty()) {
 			PointsCollection PC = new PointsCollection(Dbase);
-			//			PC.putPointsData(pMap);
+			PC.putPointsData(pMap);
 			PC.putAchievementData();
 		}
 		logg.warn(total + sb.toString());

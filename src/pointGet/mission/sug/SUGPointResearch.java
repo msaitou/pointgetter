@@ -27,7 +27,7 @@ public class SUGPointResearch extends SUGBase {
 		driver = driverAtom;
 		driver.get(url);
 		int skip = 1;
-		selector = "img[src='//static.sugutama.jp/ssp_site/67078ba450f1dc8ab98f75613b67a50f.png']";
+		selector = "img[src='//static.sugutama.jp/ssp_site/6ca17fd4762eff9519a468ab781852d4.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // アンケート一覧ページ
 			changeCloseWindow(driver);
