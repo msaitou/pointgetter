@@ -93,11 +93,11 @@ public class OSAPointResearch extends OSABase {
 	 * @param wid
 	 */
 	private void _answerPointResearch(String startSele, String wid) {
-		clickSleepSelector(driver, startSele, 3000);
+		clickSleepSelector(driver, startSele, 4000);
 		// 回答開始
 		String beginSele = "form>input.ui-button.quake";
 		if (isExistEle(driver, beginSele)) {
-			clickSleepSelector(driver, beginSele, 3000);
+			clickSleepSelector(driver, beginSele, 4000);
 			String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button.quake", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
 			// 12問
 			for (int k = 1; k <= 13; k++) {
@@ -131,7 +131,7 @@ public class OSAPointResearch extends OSABase {
 						List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 						if (isExistEle(eleList2, choiceNum)) {
 							// 選択
-							clickSleepSelector(eleList2.get(choiceNum), 2500);
+							clickSleepSelector(eleList2.get(choiceNum), 3500);
 						}
 					}
 					else if (isExistEle(driver, checkSele)) {
@@ -140,11 +140,11 @@ public class OSAPointResearch extends OSABase {
 						List<WebElement> eleList2 = driver.findElements(By.cssSelector(checkSele));
 						if (isExistEle(eleList2, choiceNum)) {
 							// 選択
-							clickSleepSelector(eleList2.get(choiceNum), 2500);
+							clickSleepSelector(eleList2.get(choiceNum), 3500);
 						}
 					}
 					else if (isExistEle(driver, seleSele)) {
-						Utille.sleep(2000);
+						Utille.sleep(3000);
 						int size3 = getSelectorSize(driver, seleSele + ">option");
 						String value = "";
 						if (qTitle.indexOf("居住区") >= 0) {
@@ -157,7 +157,7 @@ public class OSAPointResearch extends OSABase {
 						}
 						Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
 						selectList.selectByValue(value);
-						Utille.sleep(3000);
+						Utille.sleep(4000);
 					}
 				}
 				else {
@@ -165,23 +165,23 @@ public class OSAPointResearch extends OSABase {
 				}
 				if (isExistEle(driver, seleNext2)) {
 					// 次へ
-					clickSleepSelector(driver, seleNext2, 4000);
+					clickSleepSelector(driver, seleNext2, 5000);
 				}
 			}
-			Utille.sleep(2000);
+			Utille.sleep(3000);
 			if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
 					&& isExistEle(driver, overLay)) {
 				checkOverlay(driver, overLay, false);
 			}
 			if (isExistEle(driver, beginSele)) {
 				// ポイント獲得
-				clickSleepSelector(driver, beginSele, 3000);
+				clickSleepSelector(driver, beginSele, 4000);
 			}
 			checkOverlay(driver, overLay, false);
 			String closeSele = "div.ui-control>a";
 			if (isExistEle(driver, closeSele)) {
 				// 閉じる
-				clickSleepSelector(driver, closeSele, 3000);
+				clickSleepSelector(driver, closeSele, 4000);
 			}
 			driver.close();
 			// 最後に格納したウインドウIDにスイッチ
@@ -199,10 +199,10 @@ public class OSAPointResearch extends OSABase {
 		for (int g = 0; g < 9; g++) {
 			if (isExistEle(driver, selector2)) {
 				checkOverlay(driver, overLay);
-				clickSleepSelector(driver, selector2, 3000); // 遷移
+				clickSleepSelector(driver, selector2, 4000); // 遷移
 			}
 		}
-		Utille.sleep(3000);
+		Utille.sleep(4000);
 		String choiceSele = "input[type='radio']", seleNext2 = "div>input.enquete_nextbt", seleNext3 = "div>input.enquete_nextbt_2", seleSele = "form.menu>select";
 		// 12問
 		for (int k = 1; k <= 12; k++) {
@@ -228,10 +228,10 @@ public class OSAPointResearch extends OSABase {
 				List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 				if (isExistEle(eleList2, choiceNum)) {
 					// 選択
-					clickSleepSelector(eleList2.get(choiceNum), 2500);
+					clickSleepSelector(eleList2.get(choiceNum), 3500);
 					if (isExistEle(driver, seleNext2)) {
 						// 次へ
-						clickSleepSelector(driver, seleNext2, 4000);
+						clickSleepSelector(driver, seleNext2, 5000);
 					}
 				}
 			}
@@ -245,7 +245,7 @@ public class OSAPointResearch extends OSABase {
 				selectList.selectByValue(value);
 				if (isExistEle(driver, seleNext3)) {
 					// 次へ
-					clickSleepSelector(driver, seleNext3, 4000);
+					clickSleepSelector(driver, seleNext3, 5000);
 				}
 			}
 			else {
@@ -254,7 +254,7 @@ public class OSAPointResearch extends OSABase {
 		}
 		checkOverlay(driver, overLay);
 		if (isExistEle(driver, selector2)) {
-			clickSleepSelector(driver, selector2, 3000); // 遷移
+			clickSleepSelector(driver, selector2, 4000); // 遷移
 		}
 		//								<div id="interstitial" style="background-color: rgba(0, 0, 0, 0.6); position: absolute; z-index: 1000; width: 728px; height: 450px; display: block;">
 		//								<div id="inter-contents" style="width: 300px;margin: 0 auto;position:relative;margin-top: 54px;">
@@ -265,7 +265,7 @@ public class OSAPointResearch extends OSABase {
 		String finishSele = "div#again_bt>a>img";
 		checkOverlay(driver, overLay);
 		if (isExistEle(driver, finishSele)) {
-			clickSleepSelector(driver, finishSele, 3000); // 遷移
+			clickSleepSelector(driver, finishSele, 4000); // 遷移
 			// タブが閉じる
 			driver.switchTo().window(wid); // 一覧に戻る
 		}
@@ -278,7 +278,7 @@ public class OSAPointResearch extends OSABase {
 	 */
 	private void _answerSurveyEnk(String sele3, String wid) {
 		// 回答開始
-		clickSleepSelector(driver, sele3, 3000);
+		clickSleepSelector(driver, sele3, 4000);
 		String qTitleSele = "div.question-label", qTitle = "", radioSele = "label.item-radio", checkboxSele = "label.item-checkbox", choiceSele = "", seleSele = "select.mdl-textfield__input";
 		for (int k = 1; k <= 15; k++) {
 			int choiceNum = 0;
@@ -319,11 +319,11 @@ public class OSAPointResearch extends OSABase {
 				List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 				if (isExistEle(eleList2, choiceNum)) {
 					// 選択
-					clickSleepSelector(eleList2.get(choiceNum), 2500);
+					clickSleepSelector(eleList2.get(choiceNum), 3500);
 				}
 			}
 			else if (seleSele.equals(choiceSele)) {
-				Utille.sleep(2000);
+				Utille.sleep(3000);
 				int size3 = getSelectorSize(driver, seleSele + ">option");
 				String value = "";
 				if (qTitle.indexOf("住まい") >= 0) {
@@ -336,22 +336,22 @@ public class OSAPointResearch extends OSABase {
 				}
 				Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
 				selectList.selectByValue(value);
-				Utille.sleep(3000);
+				Utille.sleep(4000);
 			}
 			if (isExistEle(driver, sele3)) {
 				// 次へ
-				clickSleepSelector(driver, sele3, 4000);
+				clickSleepSelector(driver, sele3, 5000);
 			}
 		}
-		Utille.sleep(3000);
+		Utille.sleep(4000);
 		if (isExistEle(driver, sele3)) {
 			// 次へ
-			clickSleepSelector(driver, sele3, 4000);
+			clickSleepSelector(driver, sele3, 5000);
 		}
 		// close
 		String closeSele = "input.btn_close_en";
 		if (isExistEle(driver, closeSele)) {
-			clickSleepSelector(driver, closeSele, 4000);
+			clickSleepSelector(driver, closeSele, 5000);
 		}
 		//			driver.close();
 		// 最後に格納したウインドウIDにスイッチ
@@ -365,7 +365,7 @@ public class OSAPointResearch extends OSABase {
 	 */
 	private void _answerEnk(String sele4, String wid) {
 		// 回答開始
-		clickSleepSelector(driver, sele4, 7000);
+		clickSleepSelector(driver, sele4, 8000);
 
 		String qTitleSele = "div.content_note.note", qNoSele = "div.qno", qTitle = "", qNo = "", radioSele = "label.rdck_label_sp", choiceSele = "", overlay = "div.bnrFrame>div.bnrclose>img", noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img";
 		for (int k = 1; k <= 15; k++) {
@@ -388,25 +388,25 @@ public class OSAPointResearch extends OSABase {
 				List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 				if (isExistEle(eleList2, choiceNum)) {
 					// 選択
-					clickSleepSelector(eleList2.get(choiceNum), 2500);
+					clickSleepSelector(eleList2.get(choiceNum), 3500);
 				}
 			}
 			if (isExistEle(driver, sele4)) {
 				// 次へ(回答へ)
-				clickSleepSelector(driver, sele4, 8000);
+				clickSleepSelector(driver, sele4, 9000);
 
 				// 広告
 				if (!isExistEle(driver, noneOverlay)
 						&& isExistEle(driver, overlay)) {
-					clickSleepSelector(driver, overlay, 3000);
+					clickSleepSelector(driver, overlay, 4000);
 				}
 				if (isExistEle(driver, sele4)) {
 					// 次へ(Qへ)
-					clickSleepSelector(driver, sele4, 7000);
+					clickSleepSelector(driver, sele4, 8000);
 				}
 			}
 		}
-		Utille.sleep(3000);
+		Utille.sleep(4000);
 		driver.close();
 		// 最後に格納したウインドウIDにスイッチ
 		driver.switchTo().window(wid);
@@ -419,7 +419,7 @@ public class OSAPointResearch extends OSABase {
 	 */
 	private void _answerRsch(String sele5, String wid) {
 		// 回答開始
-		clickSleepSelector(driver, sele5, 7000);
+		clickSleepSelector(driver, sele5, 8000);
 
 		String qTitleSele = "div.content_note.note", qNoSele = "div.qno", qTitle = "", qNo = "",
 				radioSele = "label.rdck_label_sp", choiceSele = "", overlay = "div.bnrFrame>div.bnrclose>img", noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", seleSele = "div.note>select";
@@ -446,11 +446,11 @@ public class OSAPointResearch extends OSABase {
 				List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 				if (isExistEle(eleList2, choiceNum)) {
 					// 選択
-					clickSleepSelector(eleList2.get(choiceNum), 2500);
+					clickSleepSelector(eleList2.get(choiceNum), 3500);
 				}
 			}
 			else if (radioSele.equals(seleSele)) {
-				Utille.sleep(2000);
+				Utille.sleep(4000);
 				int size3 = getSelectorSize(driver, seleSele + ">option");
 				String value = "";
 				if (qTitle.indexOf("性別・年代") >= 0) {
@@ -466,24 +466,24 @@ public class OSAPointResearch extends OSABase {
 				}
 				Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
 				selectList.selectByValue(value);
-				Utille.sleep(3000);
+				Utille.sleep(4000);
 			}
 			if (isExistEle(driver, sele5)) {
 				// 次へ(回答へ)
-				clickSleepSelector(driver, sele5, 5000);
+				clickSleepSelector(driver, sele5, 6000);
 
 				// 広告
 				if (!isExistEle(driver, noneOverlay)
 						&& isExistEle(driver, overlay)) {
-					clickSleepSelector(driver, overlay, 3000);
+					clickSleepSelector(driver, overlay, 4000);
 				}
 				if (isExistEle(driver, sele5)) {
 					// 次へ(Qへ)
-					clickSleepSelector(driver, sele5, 7000);
+					clickSleepSelector(driver, sele5, 8000);
 				}
 			}
 		}
-		Utille.sleep(3000);
+		Utille.sleep(4000);
 		driver.close();
 		// 最後に格納したウインドウIDにスイッチ
 		driver.switchTo().window(wid);
