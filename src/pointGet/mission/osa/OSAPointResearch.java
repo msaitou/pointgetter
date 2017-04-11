@@ -367,7 +367,7 @@ public class OSAPointResearch extends OSABase {
 		// 回答開始
 		clickSleepSelector(driver, sele4, 7000);
 
-		String qTitleSele = "div.content_note.note", qNoSele = "div.qno", qTitle = "", qNo = "", radioSele = "label.rdck_label_sp", choiceSele = "", overlay = "div.bnrFrame>div.bnrclose>img", noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img";
+		String qTitleSele = "div.content_note.note", qNoSele = "div.qno", qTitle = "", qNo = "", radioSele = "label.rdck_label_sp", choiceSele = "", overlay = "div.bnrFrame>div.bnrclose>img", noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", seleSele = "div.note>select";
 		for (int k = 1; k <= 15; k++) {
 			int choiceNum = 0;
 			qTitle = "";
@@ -382,6 +382,40 @@ public class OSAPointResearch extends OSABase {
 			if (isExistEle(driver, radioSele)) { // ラジオ
 				choiceSele = radioSele;
 			}
+			// TODO
+			else if (isExistEle(driver, seleSele)) { // セレクトボックス
+				choiceSele = seleSele;
+			}
+			if (radioSele.equals(choiceSele)) {
+				int choiceies = getSelectorSize(driver, choiceSele);
+				choiceNum = Utille.getIntRand(choiceies);
+				List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
+				if (isExistEle(eleList2, choiceNum)) {
+					// 選択
+					clickSleepSelector(eleList2.get(choiceNum), 2500);
+				}
+			}
+			else if (seleSele.equals(choiceSele)) {
+				Utille.sleep(2000);
+				int size3 = getSelectorSize(driver, seleSele + ">option");
+				String value = "";
+				if (qTitle.indexOf("性別・年代") >= 0) {
+					value = "3";
+				}
+				else if (qTitle.indexOf("お住まいの都道府県") >= 0) {
+					value = "14";
+				}
+				else {
+					choiceNum = Utille.getIntRand(size3);
+					value = driver.findElements(By.cssSelector(seleSele + ">option"))
+							.get(choiceNum).getAttribute("value");
+				}
+				Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
+				selectList.selectByValue(value);
+				Utille.sleep(3000);
+			}
+			// TODO
+
 			if (radioSele.equals(choiceSele)) {
 				int choiceies = getSelectorSize(driver, choiceSele);
 				choiceNum = Utille.getIntRand(choiceies);
@@ -400,10 +434,11 @@ public class OSAPointResearch extends OSABase {
 						&& isExistEle(driver, overlay)) {
 					clickSleepSelector(driver, overlay, 3000);
 				}
-				if (isExistEle(driver, sele4)) {
-					// 次へ(Qへ)
-					clickSleepSelector(driver, sele4, 7000);
-				}
+				// TODO
+//				if (isExistEle(driver, sele4)) {
+//					// 次へ(Qへ)
+//					clickSleepSelector(driver, sele4, 7000);
+//				}
 			}
 		}
 		Utille.sleep(3000);
