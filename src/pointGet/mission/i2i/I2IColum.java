@@ -64,11 +64,12 @@ public class I2IColum extends I2IBase {
 								}
 								// 6page
 								for (int g = 0 ;g < 6 ;g++) {
+									Utille.sleep(2000);
 									if (isExistEle(driver, overLay)) {
 										checkOverlay(driver, overLay);
 									}
 									if (isExistEle(driver, seleNextb3)) {
-										clickSleepSelector(driver, seleNextb3, 3000); // 遷移　問開始するよ
+										clickSleepSelector(driver, seleNextb3, 5000); // 遷移　問開始するよ
 									}
 								}
 								if (isExistEle(driver, overLay)) {
