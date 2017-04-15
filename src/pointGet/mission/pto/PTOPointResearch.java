@@ -38,16 +38,16 @@ public class PTOPointResearch extends PTOBase {
 				String wid = driver.getWindowHandle();
 				clickSleepSelector(eleList, targetIndex, 10000); // アンケートスタートページ
 				changeWindow(driver, wid);
-				selector = "div.ui-control.type-fixed>a.ui-button.quake";
+				selector = "div.ui-control.type-fixed>a.ui-button";
 				String sele3 = "div>button[type='submit']"; // 回答する surveyenk用
 				if (isExistEle(driver, selector)) {
 					closeOtherWindow(driver);
 					clickSleepSelector(driver, selector, 4000);
 					// 回答開始
-					selector = "form>input.ui-button.quake";
+					selector = "form>input.ui-button";
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 4000);
-						String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button.quake", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
+						String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
 						// 12問
 						for (int k = 1; k <= 13; k++) {
 							if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
@@ -154,7 +154,7 @@ public class PTOPointResearch extends PTOBase {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param sele3
 	 * @param wid
 	 */
