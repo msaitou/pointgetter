@@ -47,9 +47,9 @@ public class GMYToidas extends GMYBase {
 							String nowDate = Utille.getNowTimeStr("yyyy/MM/dd");
 							logg.warn("entryDate:" + entryDate + " nowDate:" + nowDate);
 
-							if (cntt++ <12) {
-//							if (entryDate.equals(nowDate)) {
-//															if (true) {
+							//														if (cntt++ <12) {
+							if (entryDate.equals(nowDate)) {
+								//							if (true) {
 								wEle = eleList.get(i);
 								break;
 							}
@@ -64,42 +64,52 @@ public class GMYToidas extends GMYBase {
 				if (isExistEle(wEle, selector)) {
 					clickSleepSelector(wEle, selector, 8000); // 遷移
 					//					this.waitTilReady(driver);
+					//	$('div#pager', top.frames[1].document.body)
 					driver.switchTo().frame(0);
 					selector = "div#pager";// 始める
 					Utille.sleep(15000);
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 10000); // 遷移
 						//						this.waitTilReady(driver);
-						String sele2 = "div.toidas-question-answer.fade-transition[style='opacity: 1;'] div.toidas-question-answer-checkbox-img";
-						if (isExistEle(driver, sele2)) {
-							for (int i = 0; i < 10; i++) {
-								if (isExistEle(driver, sele2)) {
-									List<WebElement> eleList2 = driver.findElements(By.cssSelector(sele2));
-									int size = eleList2.size();
-									int ran1 = Utille.getIntRand(size);
-									if (isExistEle(eleList2, ran1)) {
-										clickSleepSelector(eleList2, ran1, 2000);// 選択
-										String nextSelector = selector;
-										if (isExistEle(driver, nextSelector)) {
-											clickSleepSelector(driver, nextSelector, 2000); // 遷移
+						String[] sele2s = {
+								"div.toidas-question-answer[transition='fade'] div.toidas-question-answer-checkbox-img",
+								"div.toidas-question-answer.fade-transition[style='opacity: 1;'] div.toidas-question-answer-checkbox-img"
+						};
+						for (String sele2 : sele2s) {
+							if (isExistEle(driver, sele2)) {
+								for (int i = 0; i < 10; i++) {
+									if (isExistEle(driver, sele2)) {
+										List<WebElement> eleList2 = driver.findElements(By.cssSelector(sele2));
+										int size = eleList2.size();
+										int ran1 = Utille.getIntRand(size);
+										if (isExistEle(eleList2, ran1)) {
+											clickSleepSelector(eleList2, ran1, 2000);// 選択
+											String nextSelector = selector;
 											if (isExistEle(driver, nextSelector)) {
-												clickSleepSelector(driver, nextSelector, 6000); // 遷移
+												clickSleepSelector(driver, nextSelector, 2000); // 遷移
+												if (isExistEle(driver, nextSelector)) {
+													clickSleepSelector(driver, nextSelector, 6000); // 遷移
+												}
 											}
 										}
 									}
 								}
+								Utille.sleep(3000);
+								clickSleepSelector(driver, selector, 5000); // pointgett
+								logg.warn(mName + "]1つクリア！！");
+								clickSleepSelector(driver, selector, 8000); // 一覧に戻る
+								break;
 							}
-							Utille.sleep(3000);
-							clickSleepSelector(driver, selector, 5000); // pointgett
-							logg.warn(mName + "]1つクリア！！");
-							clickSleepSelector(driver, selector, 8000); // 一覧に戻る
-						} else {
-							logg.warn(mName + "]sele2なし");
+							else {
+								logg.warn(mName + "]sele2なし");
+							}
 						}
-					} else {
+					}
+					else {
 						logg.warn(mName + "]始められない？");
 					}
-				} else {
+				}
+				else {
 					logg.warn(mName + "]all済み");
 					break;
 				}

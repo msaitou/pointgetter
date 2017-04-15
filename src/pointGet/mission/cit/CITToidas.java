@@ -40,13 +40,13 @@ public class CITToidas extends CITBase {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size1 = eleList.size();
 				WebElement wEle = null;
-				for (int i = 0; i < size1; i++) {
+				for (int i = 2; i < size1; i++) {
 					if (isExistEle(eleList.get(i), "div.entry-date")) {
 						String entryDate = eleList.get(i).findElement(By.cssSelector("div.entry-date")).getText();
 						String nowDate = Utille.getNowTimeStr("yyyy/MM/dd");
-						if (cntt++ <12) {
-//						if (entryDate.equals(nowDate)) {
-//						if (true) {
+						//						if (cntt++ < 12) {
+						if (entryDate.equals(nowDate)) {
+							//													if (true) {
 							wEle = eleList.get(i);
 							break;
 						}
@@ -59,44 +59,52 @@ public class CITToidas extends CITBase {
 				selector = "div.entry-text-wrap a";
 				if (isExistEle(wEle, selector)) {
 					clickSleepSelector(wEle, selector, 5000); // 遷移
-//					this.waitTilReady(driver);
-					Utille.sleep(5000);
+					//					this.waitTilReady(driver);
 					driver.switchTo().frame(0);
 					selector = "div#pager";// 始める
 					Utille.sleep(10000);
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 10000); // 遷移
 						//						this.waitTilReady(driver);
-						String sele2 = "div.toidas-question-answer.fade-transition[style='opacity: 1;'] div.toidas-question-answer-checkbox-img";
-						if (isExistEle(driver, sele2)) {
-							for (int i = 0; i < 10; i++) {
-								if (isExistEle(driver, sele2)) {
-									List<WebElement> eleList2 = driver.findElements(By.cssSelector(sele2));
-									int size = eleList2.size();
-									int ran1 = Utille.getIntRand(size);
-									if (isExistEle(eleList2, ran1)) {
-										clickSleepSelector(eleList2, ran1, 2000);// 選択
-										String nextSelector = selector;
-										if (isExistEle(driver, nextSelector)) {
-											clickSleepSelector(driver, nextSelector, 2500); // 遷移
+						String[] sele2s = {
+								"div.toidas-question-answer[transition='fade'] div.toidas-question-answer-checkbox-img",
+								"div.toidas-question-answer.fade-transition[style='opacity: 1;'] div.toidas-question-answer-checkbox-img"
+						};
+						for (String sele2 : sele2s) {
+							if (isExistEle(driver, sele2)) {
+								for (int i = 0; i < 10; i++) {
+									if (isExistEle(driver, sele2)) {
+										List<WebElement> eleList2 = driver.findElements(By.cssSelector(sele2));
+										int size = eleList2.size();
+										int ran1 = Utille.getIntRand(size);
+										if (isExistEle(eleList2, ran1)) {
+											clickSleepSelector(eleList2, ran1, 2000);// 選択
+											String nextSelector = selector;
 											if (isExistEle(driver, nextSelector)) {
-												clickSleepSelector(driver, nextSelector, 4000); // 遷移
+												clickSleepSelector(driver, nextSelector, 2500); // 遷移
+												if (isExistEle(driver, nextSelector)) {
+													clickSleepSelector(driver, nextSelector, 4000); // 遷移
+												}
 											}
 										}
 									}
 								}
+								Utille.sleep(3000);
+								clickSleepSelector(driver, selector, 5000); // pointgett
+								logg.warn(mName + "]1つクリア！！");
+								clickSleepSelector(driver, selector, 5000); // 一覧に戻る
+								break;
 							}
-							Utille.sleep(3000);
-							clickSleepSelector(driver, selector, 5000); // pointgett
-							logg.warn(mName + "]1つクリア！！");
-							clickSleepSelector(driver, selector, 5000); // 一覧に戻る
-						} else {
-							logg.warn(mName + "]sele2なし");
+							else {
+								logg.warn(mName + "]sele2なし");
+							}
 						}
-					} else {
+					}
+					else {
 						logg.warn(mName + "]始められない？");
 					}
-				} else {
+				}
+				else {
 					logg.warn(mName + "]all済み");
 					break;
 				}
