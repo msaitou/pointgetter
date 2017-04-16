@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import pointGet.Utille;
 
 public class PTOPointResearch extends PTOBase {
-	final String url = "http://www.pointtown.com/ptu/pointpark/enquete/top.do?tab=infonear";
+	final String url = "http://www.pointtown.com/ptu/pointpark/enquete/top.do";
 	WebDriver driver = null;
 
 	/**
@@ -41,7 +41,7 @@ public class PTOPointResearch extends PTOBase {
 				String sele3 = "div>button[type='submit']", // 回答する surveyenk用
 				sele1 = "div.question_btn>input[type='submit']";
 				if (isExistEle(driver, selector)) {
-					_answerPointResearch(sele3, wid);
+					_answerPointResearch(selector, wid);
 				}
 				else if (isExistEle(driver, sele1)) {
 					_answerAdserver(sele1, wid);

@@ -83,6 +83,9 @@ public abstract class PTOBase extends Mission {
 				case Define.strPTOPointResearch: // ■アンケート
 					MisIns = new PTOPointResearch(loggg, cProps);
 					break;
+				case Define.strPTOPointResearch2: // ■アンケート2
+					MisIns = new PTOPointResearch2(loggg, cProps);
+					break;
 				default:
 			}
 			if (Arrays.asList(new String[] { Define.strPTOClickCorner,
@@ -91,6 +94,7 @@ public abstract class PTOBase extends Mission {
 					Define.strPTODaily,
 					Define.strPTOManga,
 					Define.strPTOPointResearch,
+					Define.strPTOPointResearch2,
 					}).contains(mission)) {
 				driver = MisIns.exePrivateMission(driver);
 			}

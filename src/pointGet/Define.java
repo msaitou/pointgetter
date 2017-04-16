@@ -110,7 +110,7 @@ public class Define {
 	final public static String strPTOUranai = "PTOUranai";
 	final public static String strPTOManga = "PTOManga";
 	final public static String strPTOPointResearch = "PTOPointResearch";
-
+	final public static String strPTOPointResearch2 = "PTOPointResearch2";
 
 	// ■■■■■Mobatoku■■■■■
 	final public static String strMOBAnzan = "MOBAnzan";
