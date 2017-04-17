@@ -38,6 +38,9 @@ public class CITToidas extends CITBase {
 				//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み
 				selector = "li[class='col-md-4 col-sm-6 entry-item category-trivia ']";
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+				if (!isExistEle(driver, selector)) {
+					break;
+				}
 				int size1 = eleList.size();
 				WebElement wEle = null;
 				for (int i = 2; i < size1; i++) {

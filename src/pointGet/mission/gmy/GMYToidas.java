@@ -37,6 +37,9 @@ public class GMYToidas extends GMYBase {
 				Utille.sleep(5000);
 				//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み
 				selector = "li[class='col-md-4 col-sm-6 entry-item category-trivia ']";
+				if (!isExistEle(driver, selector)) {
+					break;
+				}
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size1 = eleList.size();
 				WebElement wEle = null;
