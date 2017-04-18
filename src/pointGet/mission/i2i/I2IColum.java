@@ -3,14 +3,13 @@ package pointGet.mission.i2i;
 import java.util.List;
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import lombok.val;
 import pointGet.Utille;
 
 /**
@@ -64,10 +63,8 @@ public class I2IColum extends I2IBase {
 								}
 								// 6page
 								for (int g = 0 ;g < 6 ;g++) {
-									Utille.sleep(2000);
-									if (isExistEle(driver, overLay)) {
-										checkOverlay(driver, overLay);
-									}
+									Utille.sleep(4000);
+									checkOverlay(driver, overLay);
 									if (isExistEle(driver, seleNextb3)) {
 										clickSleepSelector(driver, seleNextb3, 5000); // 遷移　問開始するよ
 									}
@@ -76,7 +73,7 @@ public class I2IColum extends I2IBase {
 									checkOverlay(driver, overLay);
 								}
 								if (isExistEle(driver, seleNextb2)) {
-									clickSleepSelector(driver, seleNextb2, 3000); // 遷移　問開始するよ
+									clickSleepSelector(driver, seleNextb2, 5000); // 遷移　問開始するよ
 								}
 								String choiceSele = "input[type='radio']";
 								String seleNext2 = "div>input.enquete_nextbt";
@@ -84,9 +81,7 @@ public class I2IColum extends I2IBase {
 								String seleSele = "form.menu>select";
 								// 6問
 								for (int k = 1; k <= 6; k++) {
-									if (isExistEle(driver, overLay)) {
-										checkOverlay(driver, overLay);
-									}
+									checkOverlay(driver, overLay);
 									int choiceNum = 0;
 									if (isExistEle(driver, choiceSele)) {
 										int choiceies = getSelectorSize(driver, choiceSele);
@@ -108,7 +103,7 @@ public class I2IColum extends I2IBase {
 										List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 										if (isExistEle(eleList2, choiceNum)) {
 											// 選択
-											clickSleepSelector(eleList2.get(choiceNum), 2500);
+											clickSleepSelector(eleList2.get(choiceNum), 4000);
 											if (isExistEle(driver, seleNext2)) {
 												// 次へ
 												clickSleepSelector(driver, seleNext2, 4000);
