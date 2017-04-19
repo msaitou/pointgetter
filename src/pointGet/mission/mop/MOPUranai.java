@@ -32,7 +32,7 @@ public class MOPUranai extends MOPBase {
 				// // アラートをけして
 				// val alert = driver.switchTo().alert();
 				// alert.accept();
-				Utille.sleep(4000);
+				Utille.sleep(10000);
 				// changeCloseWindow(driver);
 
 				selector = "div#parts-slide-button__action a>img"; // 占い始める

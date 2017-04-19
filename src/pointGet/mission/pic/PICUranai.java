@@ -29,7 +29,7 @@ public class PICUranai extends PICBase {
 			if (isExistEle(driver, uranaiSelector)) {
 				clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
 				changeCloseWindow(driver);
-				Utille.sleep(4000);
+				Utille.sleep(10000);
 				selector = "div#parts-slide-button__action a>img"; // 占い始める
 																	// 全体へ
 				String selector1 = "section>div>form>input[type=image]";

@@ -2,13 +2,12 @@ package pointGet.mission.i2i;
 
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import lombok.val;
 import pointGet.Utille;
 
 /**
@@ -43,7 +42,7 @@ public class I2ISeiza extends I2IBase {
 					// アラートをけして
 					val alert = driver.switchTo().alert();
 					alert.accept();
-					Utille.sleep(5000);
+					Utille.sleep(10000);
 					changeCloseWindow(driver);
 
 					selector = "div#parts-slide-button__action a>img"; // 占い始める　全体へ
