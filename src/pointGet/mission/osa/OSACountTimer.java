@@ -22,6 +22,8 @@ public class OSACountTimer extends OSABase {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		selector = "li>a>img[alt='Count Timer']";
+		String overlaySele = "div.overlay-popup a.button-close",
+				overlayNoneSele = "div.overlay-popup[style*='display: none;'] a.button-close";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 			String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
@@ -32,8 +34,8 @@ public class OSACountTimer extends OSABase {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 5; i++) {
 					Utille.sleep(6000);
-					if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-						checkOverlay(driver, "div.overlay-popup a.button-close");
+					if (!isExistEle(driver, overlayNoneSele, false)) {
+						checkOverlay(driver, overlaySele);
 					}
 					String selectorExpression = "span.try-subject-time";
 					int waitTime = 0;
@@ -75,23 +77,23 @@ public class OSACountTimer extends OSABase {
 					}
 				}
 				
-				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-					checkOverlay(driver, "div.overlay-popup a.button-close");
+				if (!isExistEle(driver, overlayNoneSele, false)) {
+					checkOverlay(driver, overlaySele);
 				}
 				String selectorEnd = "input.ui-button.ui-button-b.ui-button-end.quake";
 				if (isExistEle(driver, selectorEnd)) {
 					clickSleepSelector(driver, selectorEnd, 3000); // 次
 				}
-				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-					checkOverlay(driver, "div.overlay-popup a.button-close");
+				if (!isExistEle(driver, overlayNoneSele, false)) {
+					checkOverlay(driver, overlaySele);
 				}
 				// ボーナスチャレンジ
 				String bounusGo = "input.ui-button.ui-button-b.ui-button-start";
 				selector = "div.fx-control>a.ui-button.ui-button-a.ui-button-close.quake";
 				if (isExistEle(driver, bounusGo)) {
 					clickSleepSelector(driver, bounusGo, 5000); // 次
-					if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-						checkOverlay(driver, "div.overlay-popup a.button-close");
+					if (!isExistEle(driver, overlayNoneSele, false)) {
+						checkOverlay(driver, overlaySele);
 					}
 					String selectorExpression = "span.try-subject-time";
 					int waitTime = 0;
@@ -99,6 +101,7 @@ public class OSACountTimer extends OSABase {
 						String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
 						logg.info("お題　" + text);
 						waitTime = Utille.getWaitTime(text);
+						waitTime -= 80;
 					}
 					else {
 						logg.info("not get odai");
@@ -130,8 +133,8 @@ public class OSACountTimer extends OSABase {
 						}
 					}
 				}
-				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-					checkOverlay(driver, "div.overlay-popup a.button-close");
+				if (!isExistEle(driver, overlayNoneSele, false)) {
+					checkOverlay(driver, overlaySele);
 				}
 				if (isExistEle(driver, selectorEnd)) {
 					clickSleepSelector(driver, selectorEnd, 3000); // 終了

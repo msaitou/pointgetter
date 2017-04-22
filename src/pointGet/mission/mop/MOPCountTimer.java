@@ -22,6 +22,8 @@ public class MOPCountTimer extends MOPBase {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		String wrapSele = "div.modal__wrap[style*='display: block;'] a.modal__closebtn";
+		String overlaySele = "div.overlay-popup a.button-close",
+				overlayNoneSele = "div.overlay-popup[style*='display: none;'] a.button-close";
 		if (isExistEle(driver, wrapSele)) {
 			Utille.sleep(2000);
 			clickSleepSelector(driver, selector, 2000);
@@ -30,15 +32,15 @@ public class MOPCountTimer extends MOPBase {
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 			changeCloseWindow(driver);
-			checkOverlay(driver, "div.overlay-popup a.button-close");
+			checkOverlay(driver, overlaySele);
 			selector = "form.fx-control>input[name='submit']";
 			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {
 				clickSelector(driver, selector);
 				for (int i = 0; i < 5; i++) {
 					Utille.sleep(6000);
-					if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-						checkOverlay(driver, "div.overlay-popup a.button-close");
+					if (!isExistEle(driver, overlayNoneSele, false)) {
+						checkOverlay(driver, overlaySele);
 					}
 					String selectorExpression = "span.try-subject-time";
 					String finishSelector = "p.ui-timer";
@@ -81,23 +83,23 @@ public class MOPCountTimer extends MOPBase {
 					}
 				}
 
-				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-					checkOverlay(driver, "div.overlay-popup a.button-close");
+				if (!isExistEle(driver, overlayNoneSele, false)) {
+					checkOverlay(driver, overlaySele);
 				}
 				String selectorEnd = "input.ui-button.ui-button-b.ui-button-end.quake";
 				if (isExistEle(driver, selectorEnd)) {
 					clickSleepSelector(driver, selectorEnd, 3000); // 次
 				}
-				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-					checkOverlay(driver, "div.overlay-popup a.button-close");
+				if (!isExistEle(driver, overlayNoneSele, false)) {
+					checkOverlay(driver, overlaySele);
 				}
 				// ボーナスチャレンジ
 				String bounusGo = "input.ui-button.ui-button-b.ui-button-start";
 				selector = "div.fx-control>a.ui-button.ui-button-a.ui-button-close.quake";
 				if (isExistEle(driver, bounusGo)) {
 					clickSleepSelector(driver, bounusGo, 5000); // 次
-					if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-						checkOverlay(driver, "div.overlay-popup a.button-close");
+					if (!isExistEle(driver, overlayNoneSele, false)) {
+						checkOverlay(driver, overlaySele);
 					}
 					String selectorExpression = "span.try-subject-time";
 					int waitTime = 0;
@@ -105,6 +107,7 @@ public class MOPCountTimer extends MOPBase {
 						String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
 						logg.info("お題　" + text);
 						waitTime = Utille.getWaitTime(text);
+						waitTime -= 50;
 					}
 					else {
 						logg.info("not get odai");
@@ -136,8 +139,8 @@ public class MOPCountTimer extends MOPBase {
 						}
 					}
 				}
-				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
-					checkOverlay(driver, "div.overlay-popup a.button-close");
+				if (!isExistEle(driver, overlayNoneSele, false)) {
+					checkOverlay(driver, overlaySele);
 				}
 				if (isExistEle(driver, selectorEnd)) {
 					clickSleepSelector(driver, selectorEnd, 3000); // 終了

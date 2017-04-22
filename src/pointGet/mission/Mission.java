@@ -178,6 +178,7 @@ public abstract class Mission {
 	 * @param selector
 	 */
 	protected void clickSelector(WebDriver driver, String selector) {
+		Utille.scrolledPage(driver, selector);
 		clickSelector(driver.findElement(By.cssSelector(selector)));
 	}
 
@@ -215,6 +216,7 @@ public abstract class Mission {
 	 * @param milliSeconds
 	 */
 	protected void clickSleepSelector(WebDriver driver, String selector, int milliSeconds) {
+		Utille.scrolledPage(driver, selector);
 		clickSleepSelector(driver.findElement(By.cssSelector(selector)), milliSeconds);
 	}
 

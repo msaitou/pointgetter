@@ -33,6 +33,7 @@ import javax.script.ScriptException;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -222,6 +223,19 @@ public class Utille {
 			}
 		}
 		return is;
+	}
+
+	/**
+	 * 
+	 * @param driver
+	 * @param seleNe
+	 */
+	public static void scrolledPage(WebDriver driver, String seleNe) {
+		WebElement ele = driver.findElement(By.cssSelector(seleNe));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		//scrollIntoView(true)だけだとスクロールしすぎるので、少し戻す
+		js.executeScript("javascript:window.scrollBy(0,-80)");
 	}
 
 	/**

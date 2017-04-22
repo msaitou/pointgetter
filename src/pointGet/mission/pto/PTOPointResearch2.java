@@ -7,7 +7,6 @@ import lombok.val;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -67,6 +66,9 @@ public class PTOPointResearch2 extends PTOBase {
 					else if (isExistEle(driver, sele6)) {
 						_answerColum(sele6, wid);
 					}
+					else if (isExistEle(driver, sele7)) {
+						_answerHiroba(sele7, wid);
+					}
 					else if (isExistEle(driver, sele4_)) {
 						driver.switchTo().frame(0);
 						_answerShopping(sele4, wid);
@@ -83,16 +85,82 @@ public class PTOPointResearch2 extends PTOBase {
 			}
 		}
 	}
+	
+	/**
+	 * 
+	 * @param sele6
+	 * @param wid
+	 */
+	private void _answerHiroba(String sele7, String wid) {
+		String choiceSele, 
+		radioSele = "div.random>label",
+		titleSele = "div.question", // 質問NOも含む
+		qTitle = "div.question"
+		;
+		String seleNext = "button.next-btn";
+		String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
+		if (isExistEle(driver, sele7)) {
+			clickSleepSelector(driver, sele7, 2000); // 遷移　問開始
+			for (int g = 0; g < 10+2; g++) {
+				int choiceNum = 0;
+				qTitle = "";
+				choiceSele = "";
+				if (isExistEle(driver, titleSele)) {
+					qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
+					logg.info(qTitle);
+					if (isExistEle(driver, radioSele)) { // ラジオ
+						choiceSele = radioSele;
+					}
+					// 回答選択
+					if (radioSele.equals(choiceSele)) {
+						int choiceies = getSelectorSize(driver, choiceSele);
+						choiceNum = Utille.getIntRand(choiceies);
+						List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
+						if (isExistEle(eleList2, choiceNum)) {
+							// 選択
+							clickSleepSelector(eleList2.get(choiceNum), 3000);
+						    if (isExistEle(driver, seleNext)) {
+								clickSleepSelector(driver, seleNext, 3000);
+							    if (isExistEle(driver, seleNext)) {
+									clickSleepSelector(driver, seleNext, 3000);
+								}
+							}
+						}
+					}
+				}
+				else {
+					break;
+				}
+			}
+		    if (isExistEle(driver, seleNext)) {
+				clickSleepSelector(driver, seleNext, 3000);
+			}
+		    String finishSele = "button.next-btn[type='submit']";
+			if (isExistEle(driver, finishSele)) {
+				clickSleepSelector(driver, finishSele, 3000);
+				String closeSele = "input.btn_close_en";
+				if (isExistEle(driver, closeSele)) {
+					clickSleepSelector(driver, closeSele, 3000);
+					driver.switchTo().window(wid);
+					driver.navigate().refresh();
+				}
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * @param sele6
+	 * @param wid
+	 */
 	private void _answerColum(String sele6, String wid) {
 		String seleNextb2 = "form>input[type='image']";
 		String seleNextb3 = "form>input[alt='next']";
 		String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
 		if (isExistEle(driver, sele6)) {
-			scrolledPage(driver, sele6);
 			clickSleepSelector(driver, sele6, 4000); // 遷移　問開始
 			for (int g = 0; g < 2; g++) {
 				if (isExistEle(driver, seleNextb2)) {
-					scrolledPage(driver, seleNextb2);
 					clickSleepSelector(driver, seleNextb2, 4000); // 遷移　問開始するよ
 				}
 			}
@@ -100,13 +168,11 @@ public class PTOPointResearch2 extends PTOBase {
 			// 6page
 			for (int g = 0; g < 6; g++) {
 				if (isExistEle(driver, seleNextb3)) {
-					scrolledPage(driver, seleNextb3);
 					clickSleepSelector(driver, seleNextb3, 13000); // 遷移　問開始するよ
 				}
 			}
 			checkOverlay(driver, overLay, false);
 			if (isExistEle(driver, seleNextb2)) {
-				scrolledPage(driver, seleNextb2);
 				clickSleepSelector(driver, seleNextb2, 5000); // 遷移　問開始するよ
 			}
 			String choiceSele = "input[type='radio']";
@@ -140,7 +206,6 @@ public class PTOPointResearch2 extends PTOBase {
 						clickSleepSelector(eleList2.get(choiceNum), 3500);
 						if (isExistEle(driver, seleNext2)) {
 							// 次へ
-							scrolledPage(driver, seleNext2);
 							clickSleepSelector(driver, seleNext2, 4000);
 						}
 					}
@@ -155,7 +220,6 @@ public class PTOPointResearch2 extends PTOBase {
 					selectList.selectByValue(value);
 					if (isExistEle(driver, seleNext3)) {
 						// 次へ
-						scrolledPage(driver, seleNext3);
 						clickSleepSelector(driver, seleNext3, 4000);
 					}
 				}
@@ -197,7 +261,6 @@ public class PTOPointResearch2 extends PTOBase {
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
 			if (isExistEle(driver, selector)) {
-				scrolledPage(driver, selector);
 				clickSleepSelector(driver, selector, 2000); // 遷移
 				if (isExistEle(driver, "div[data-qid]")) {
 					int qSize = getSelectorSize(driver, "div[data-qid]"); // 選択肢の数を数える
@@ -216,12 +279,10 @@ public class PTOPointResearch2 extends PTOBase {
 								String endSelector = "div.actionBar>a.end-btn";
 								if (isExistEle(driver, nextSelector)
 										&& isExistEle(driver, endSelector + none, false)) {
-									scrolledPage(driver, nextSelector);
 									clickSleepSelector(driver, nextSelector, 2000); // 遷移
 								}
 								else if (isExistEle(driver, endSelector)
 										&& isExistEle(driver, nextSelector + none, false)) {
-									scrolledPage(driver, endSelector);
 									clickSleepSelector(driver, endSelector, 4000); // 遷移
 									logg.info("neukata?");
 									selector = "div.col-xs-12>a.btn-danger";
@@ -299,14 +360,6 @@ public class PTOPointResearch2 extends PTOBase {
 						// 選択
 						clickSleepSelector(eleList2.get(choiceNum), 3000);
 						String seleNe = "div.btn_next>input[type='submit']";
-						scrolledPage(driver, seleNe);
-						WebElement element = driver.findElement(By.cssSelector(seleNe));
-					    ((JavascriptExecutor) driver).executeScript(
-					      "arguments[0].scrollIntoView(true);",
-					      element);
-					    JavascriptExecutor js = (JavascriptExecutor) driver;
-					    js.executeScript("javascript:window.scrollBy(0,-80)");//scrollIntoView(true)だけだとスクロールしすぎるので、少し戻す
-						
 					    if (isExistEle(driver, seleNe)) {
 							clickSleepSelector(driver, seleNe, 6000);
 						}
@@ -768,18 +821,5 @@ public class PTOPointResearch2 extends PTOBase {
 			driver.switchTo().window(wid);
 			driver.navigate().refresh();
 		}
-	}
-	
-	/**
-	 * 
-	 * @param driver
-	 * @param seleNe
-	 */
-	public void scrolledPage(WebDriver driver, String seleNe) {
-		WebElement ele = driver.findElement(By.cssSelector(seleNe));
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		//scrollIntoView(true)だけだとスクロールしすぎるので、少し戻す
-		js.executeScript("javascript:window.scrollBy(0,-80)");
 	}
 }
