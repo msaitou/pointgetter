@@ -45,7 +45,6 @@ public class CRIAnk extends CRIBase {
 						logg.info("3");
 						String dispBlo = "[style='display: block;']";
 						//							String dispBlo = "[style!='display: none;']";
-						String dispNone = "[style*='display: none']";
 						if (isExistEle(driver, selector + dispBlo)) {
 							logg.info("4");
 							String seleQ = "td.td05>a>span";

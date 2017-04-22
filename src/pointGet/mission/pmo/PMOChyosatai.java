@@ -25,7 +25,8 @@ public class PMOChyosatai extends PMOBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
-		String footBnrSelector = "div.foot-bnr a.close>span";
+		String footBnrSelector = "div.foot-bnr a.close>span",
+				footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
 		for (int j = 0; j < 6; j++) {
 			driver.get(url);
 			selector = "img[alt='トキメキ調査隊']";
@@ -34,7 +35,7 @@ public class PMOChyosatai extends PMOBase {
 				changeCloseWindow(driver);
 				checkOverlay(driver, overlaySelector);
 				if (isExistEle(driver, footBnrSelector)
-						&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+						&& !isExistEle(driver, footBnrNoneSele, false)) {
 					checkOverlay(driver, footBnrSelector);
 				}
 
@@ -44,7 +45,7 @@ public class PMOChyosatai extends PMOBase {
 					clickSleepSelector(driver, noEntrySele, 3000); // 遷移
 					checkOverlay(driver, overlaySelector);
 					if (isExistEle(driver, footBnrSelector)
-							&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+							&& !isExistEle(driver, footBnrNoneSele, false)) {
 						checkOverlay(driver, footBnrSelector);
 					}
 
@@ -65,7 +66,7 @@ public class PMOChyosatai extends PMOBase {
 								clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
 								checkOverlay(driver, overlaySelector);
 								if (isExistEle(driver, footBnrSelector)
-										&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+										&& !isExistEle(driver, footBnrNoneSele, false)) {
 									checkOverlay(driver, footBnrSelector);
 								}
 							}
@@ -76,7 +77,7 @@ public class PMOChyosatai extends PMOBase {
 					clickSleepSelector(driver, entrySele, 3000); // 遷移
 					checkOverlay(driver, overlaySelector);
 					if (isExistEle(driver, footBnrSelector)
-							&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+							&& !isExistEle(driver, footBnrNoneSele, false)) {
 						checkOverlay(driver, footBnrSelector);
 					}
 					//					selector = "div.btn>a";
@@ -94,7 +95,7 @@ public class PMOChyosatai extends PMOBase {
 							clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
 							checkOverlay(driver, overlaySelector);
 							if (isExistEle(driver, footBnrSelector)
-									&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+									&& !isExistEle(driver, footBnrNoneSele, false)) {
 								checkOverlay(driver, footBnrSelector);
 							}
 						}

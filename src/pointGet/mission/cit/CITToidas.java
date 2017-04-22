@@ -34,13 +34,13 @@ public class CITToidas extends CITBase {
 			changeCloseWindow(driver);
 			while (true) {
 				driver.switchTo().defaultContent();
-				Utille.sleep(5000);
+				Utille.sleep(7000);
 				//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み
 				selector = "li[class='col-md-4 col-sm-6 entry-item category-trivia ']";
-				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				if (!isExistEle(driver, selector)) {
 					break;
 				}
+				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size1 = eleList.size();
 				WebElement wEle = null;
 				for (int i = 2; i < size1; i++) {

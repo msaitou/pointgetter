@@ -52,7 +52,7 @@ public class SUGPointResearch extends SUGBase {
 							String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button.quake", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
 							// 12問
 							for (int k = 1; k <= 13; k++) {
-								if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
+								if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
 										&& isExistEle(driver, overLay)) {
 									checkOverlay(driver, overLay, false);
 								}
@@ -120,7 +120,7 @@ public class SUGPointResearch extends SUGBase {
 								}
 							}
 							Utille.sleep(3000);
-							if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
+							if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
 									&& isExistEle(driver, overLay)) {
 								checkOverlay(driver, overLay, false);
 							}

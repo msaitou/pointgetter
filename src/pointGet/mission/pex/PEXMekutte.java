@@ -40,7 +40,7 @@ public class PEXMekutte extends PEXBase {
 	public void mekutteSeal(WebDriver driver) {
 		waitTilReady(driver);
 		// this mission was finished sign.
-		if (isExistEle(driver, "div.link[style*='display: block'].display-none>section#end")) {
+		if (isExistEle(driver, "div.link[style*='display: block'].display-none>section#end", false)) {
 			logg.warn(this.mName + "]獲得済み");
 			return;
 		}

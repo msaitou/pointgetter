@@ -69,10 +69,10 @@ public class PILShindanAnk extends PILBase {
 												String nextSelector = "div.actionBar>a.next-btn";
 												String endSelector = "div.actionBar>a.end-btn";
 												if (isExistEle(driver, nextSelector)
-														&& isExistEle(driver, endSelector + none)) {
+														&& isExistEle(driver, endSelector + none, false)) {
 													clickSleepSelector(driver, nextSelector, 2000); // 遷移
 												} else if (isExistEle(driver, endSelector)
-														&& isExistEle(driver, nextSelector + none)) {
+														&& isExistEle(driver, nextSelector + none, false)) {
 													this.waitTilReady(driver);
 													clickSleepSelector(driver, endSelector, 4000); // 遷移
 													// 抜けたら
@@ -128,7 +128,7 @@ public class PILShindanAnk extends PILBase {
 								if (isExistEle(driver, footBannerSele)) {
 									checkOverlay(driver, footBannerSele, false);
 								}
-								if (!isExistEle(driver, dialogCloseSeleNone)
+								if (!isExistEle(driver, dialogCloseSeleNone, false)
 										&& !isExistEle(driver, "section.timemodal.modal1>div#popmodal img[src='../images/close.png']")
 										&& isExistEle(driver, dialogCloseSele)) {
 									checkOverlay(driver, dialogCloseSele, false);

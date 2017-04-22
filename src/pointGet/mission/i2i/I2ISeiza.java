@@ -2,12 +2,13 @@ package pointGet.mission.i2i;
 
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
 
 /**
@@ -57,7 +58,7 @@ public class I2ISeiza extends I2IBase {
 							boolean endFlag = false;
 							for (int j = 0; j < 20; j++) { // 20に特に意味なし　エンドレスループを避けるため
 								// overlayを消して
-								if (!isExistEle(driver, "div#inter-ad[style*='display: none'] div#inter-ad-close")) {
+								if (!isExistEle(driver, "div#inter-ad[style*='display: none'] div#inter-ad-close", false)) {
 									if (isExistEle(driver, "div#inter-ad div#inter-ad-close")) {
 										checkOverlay(driver, "div#inter-ad div#inter-ad-close", false);
 										endFlag = true;

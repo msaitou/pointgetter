@@ -3,14 +3,14 @@ package pointGet.mission.pst;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
-import pointGet.mission.Mission;
 
 /**
  * @author saitou
@@ -69,10 +69,10 @@ public class PSTShindanAnk extends PSTBase {
 												String nextSelector = "div.actionBar>a.next-btn";
 												String endSelector = "div.actionBar>a.end-btn";
 												if (isExistEle(driver, nextSelector)
-														&& isExistEle(driver, endSelector + none)) {
+														&& isExistEle(driver, endSelector + none, false)) {
 													clickSleepSelector(driver, nextSelector, 2000); // 遷移
 												} else if (isExistEle(driver, endSelector)
-														&& isExistEle(driver, nextSelector + none)) {
+														&& isExistEle(driver, nextSelector + none, false)) {
 													this.waitTilReady(driver);
 													clickSleepSelector(driver, endSelector, 4000); // 遷移
 													// 抜けたら
@@ -128,7 +128,7 @@ public class PSTShindanAnk extends PSTBase {
 								if (isExistEle(driver, footBannerSele)) {
 									checkOverlay(driver, footBannerSele, false);
 								}
-								if (!isExistEle(driver, dialogCloseSeleNone)
+								if (!isExistEle(driver, dialogCloseSeleNone, false)
 										&& !isExistEle(driver,
 												"section.timemodal.modal1>div#popmodal img[src='../images/close.png']")
 										&& isExistEle(driver, dialogCloseSele)) {

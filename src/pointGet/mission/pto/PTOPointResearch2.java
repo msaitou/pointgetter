@@ -98,7 +98,6 @@ public class PTOPointResearch2 extends PTOBase {
 		qTitle = "div.question"
 		;
 		String seleNext = "button.next-btn";
-		String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
 		if (isExistEle(driver, sele7)) {
 			clickSleepSelector(driver, sele7, 2000); // 遷移　問開始
 			for (int g = 0; g < 10+2; g++) {

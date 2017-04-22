@@ -50,7 +50,7 @@ public class OSAUranai extends OSABase {
 						for (int j = 0; j < 20; j++) { // 20に特に意味なし
 														// エンドレスループを避けるため
 							// overlayを消して
-							if (!isExistEle(driver, "div#inter-ad[style*='display: none'] div#inter-ad-close")) {
+							if (!isExistEle(driver, "div#inter-ad[style*='display: none'] div#inter-ad-close", false)) {
 								Utille.sleep(3000);
 								if (isExistEle(driver, "div#inter-ad div#inter-ad-close")) {
 									checkOverlay(driver, "div#inter-ad div#inter-ad-close", false);

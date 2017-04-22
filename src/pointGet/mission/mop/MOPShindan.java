@@ -71,11 +71,11 @@ public class MOPShindan extends MOPBase {
 											String nextSelector = "div.actionBar>a.next-btn";
 											String endSelector = "div.actionBar>a.end-btn";
 											if (isExistEle(driver, nextSelector)
-													&& isExistEle(driver, endSelector + none)) {
+													&& isExistEle(driver, endSelector + none, false)) {
 												clickSleepSelector(driver, nextSelector, 2000); // 遷移
 											}
 											else if (isExistEle(driver, endSelector)
-													&& isExistEle(driver, nextSelector + none)) {
+													&& isExistEle(driver, nextSelector + none, false)) {
 												Utille.sleep(2000);
 												this.waitTilReady(driver);
 												clickSleepSelector(driver, endSelector, 5000); // 遷移

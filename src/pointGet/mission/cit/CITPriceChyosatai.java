@@ -29,13 +29,14 @@ public class CITPriceChyosatai extends CITBase {
 		for (int j = 0; j < 6; j++) {
 			driver.get(url);
 			selector = "a[href='http://www.chance.com/game/price/play.jsp']>img[alt='プライス調査隊']";
+			String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
 			if (isExistEle(driver, selector)) {
 				clickSleepSelector(driver, selector, 4000); // 遷移
 				changeCloseWindow(driver);
 				Utille.sleep(1000);
 				checkOverlay(driver, overlaySelector);
 				if (isExistEle(driver, footBnrSelector)
-						&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+						&& !isExistEle(driver, overlayNone, false)) {
 					checkOverlay(driver, footBnrSelector);
 				}
 
@@ -45,7 +46,7 @@ public class CITPriceChyosatai extends CITBase {
 					clickSleepSelector(driver, noEntrySele, 3000); // 遷移
 					checkOverlay(driver, overlaySelector);
 					if (isExistEle(driver, footBnrSelector)
-							&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+							&& !isExistEle(driver, overlayNone, false)) {
 						checkOverlay(driver, footBnrSelector);
 					}
 
@@ -66,7 +67,7 @@ public class CITPriceChyosatai extends CITBase {
 					clickSleepSelector(driver, entrySele, 3000); // 遷移
 					checkOverlay(driver, overlaySelector);
 					if (isExistEle(driver, footBnrSelector)
-							&& !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+							&& !isExistEle(driver, overlayNone, false)) {
 						checkOverlay(driver, footBnrSelector);
 					}
 					//					selector = "div.btn>a";
@@ -84,6 +85,7 @@ public class CITPriceChyosatai extends CITBase {
 		String sele2top = "div#popup";
 		String sele2none = "[style*='display:none;']";
 		String sele2bot = " div.btn.mrg-t5.mrg-b5>a";
+		String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
 		for (int i = 0; i < 5; i++) {
 			String finshSele = "div.finish-area";
 			// otukare!
@@ -95,7 +97,7 @@ public class CITPriceChyosatai extends CITBase {
 				clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 2000);
 				for (int g = 0; g < 10; g++) {
 					if (isExistEle(driver, sele2top + sele2bot)
-							&& !isExistEle(driver, sele2top + sele2none + sele2bot)) {
+							&& !isExistEle(driver, sele2top + sele2none + sele2bot, false)) {
 						break;
 					}
 					Utille.sleep(1000);
@@ -107,16 +109,14 @@ public class CITPriceChyosatai extends CITBase {
 					clickSleepSelector(driver, sele2top + sele2bot, 3000);
 					checkOverlay(driver, overlaySelector);
 					if (isExistEle(driver, footBnrSelector)
-							&& !isExistEle(driver,
-									"div.foot-bnr[style*='display :none'] a.close>span")) {
+							&& !isExistEle(driver, overlayNone, false)) {
 						checkOverlay(driver, footBnrSelector);
 					}
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 4500);
 						waitTilReady(driver);
 						if (isExistEle(driver, footBnrSelector)
-								&& !isExistEle(driver,
-										"div.foot-bnr[style*='display :none'] a.close>span")) {
+								&& !isExistEle(driver, overlayNone, false)) {
 							checkOverlay(driver, footBnrSelector);
 						}
 					}

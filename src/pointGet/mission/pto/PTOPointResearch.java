@@ -78,7 +78,7 @@ public class PTOPointResearch extends PTOBase {
 			String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
 			// 12問
 			for (int k = 1; k <= 13; k++) {
-				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
+				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
 						&& isExistEle(driver, overLay)) {
 					checkOverlay(driver, overLay, false);
 				}
@@ -146,7 +146,7 @@ public class PTOPointResearch extends PTOBase {
 				}
 			}
 			Utille.sleep(2000);
-			if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
+			if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
 					&& isExistEle(driver, overLay)) {
 				checkOverlay(driver, overLay, false);
 			}
@@ -311,7 +311,7 @@ public class PTOPointResearch extends PTOBase {
 		Utille.sleep(5000);
 		// [style*='visibility: visible']
 		checkOverlay(driver, overLay, false);
-		if (!isExistEle(driver, "div#fade-layer[style*='display: none']")) {
+		if (!isExistEle(driver, "div#fade-layer[style*='display: none']", false)) {
 			checkOverlay(driver, overLay, false);
 		}
 		// close

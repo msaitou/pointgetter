@@ -44,7 +44,7 @@ public class OSAAnzan extends OSABase {
 					clickSelector(driver, selector);
 					for (int i = 0; i < 10; i++) {
 						Utille.sleep(4000);
-						if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")) {
+						if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)) {
 							checkOverlay(driver, "div.overlay-popup a.button-close");
 						}
 						String selectorExpression = "div.ui-item-header>h2.ui-item-title";

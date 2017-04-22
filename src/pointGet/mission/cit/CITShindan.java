@@ -3,12 +3,13 @@ package pointGet.mission.cit;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.Utille;
 
 /**
@@ -93,11 +94,11 @@ public class CITShindan extends CITBase {
 											String nextSelector = "div.actionBar>a.next-btn";
 											String endSelector = "div.actionBar>a.end-btn";
 											if (isExistEle(driver, nextSelector)
-													&& isExistEle(driver, endSelector + none)) {
+													&& isExistEle(driver, endSelector + none, false)) {
 												clickSleepSelector(driver, nextSelector, 2000); // 遷移
 											}
 											else if (isExistEle(driver, endSelector)
-													&& isExistEle(driver, nextSelector + none)) {
+													&& isExistEle(driver, nextSelector + none, false)) {
 												Utille.sleep(3000);
 												clickSleepSelector(driver, endSelector, 4000); // 遷移
 												// 抜けたら
