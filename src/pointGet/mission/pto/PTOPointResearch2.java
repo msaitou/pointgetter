@@ -52,15 +52,7 @@ public class PTOPointResearch2 extends PTOBase {
 					sele7 = "div.btn>button[type='submit']",
 					sele6 = "form>input.next_bt",
 					sele2 = "div.page-content-button>input.button.btn-next";
-	//				if (isExistEle(driver, selector)) {
-	//					_answerPointResearch(sele3, wid);
-	//				}
-	//				else if (isExistEle(driver, sele1)) {
-	//					_answerAdserver(sele1, wid);
-	//					Utille.sleep(3000);
-	//				}
-	//				else 
-						if (isExistEle(driver, sele3)) {
+					if (isExistEle(driver, sele3)) {
 						_answerSurveyEnk(sele3, wid);
 					}
 					else if (isExistEle(driver, sele2)) {
@@ -201,16 +193,15 @@ public class PTOPointResearch2 extends PTOBase {
 	 */
 	private void _answerShindan(String sele5, String wid) {
 		// 表示される結果によって処理を分ける
-//		logg.info(mName + " " + ".診断だ! " + j + " click!!");
 		selector = "a.submit-btn";// 次へ
 		if (isExistEle(driver, selector)) {
-			clickSleepSelector(driver, selector, 5500); // 遷移
+			clickSleepSelector(driver, selector, 2000); // 遷移
 			if (isExistEle(driver, selector)) {
 				scrolledPage(driver, selector);
-				clickSleepSelector(driver, selector, 7000); // 遷移
+				clickSleepSelector(driver, selector, 2000); // 遷移
 				if (isExistEle(driver, "div[data-qid]")) {
 					int qSize = getSelectorSize(driver, "div[data-qid]"); // 選択肢の数を数える
-					for (int i = 0; i < qSize+5; i++) {
+					for (int i = 0; i < qSize + 5; i++) {
 						selector = "div[data-qid][class=''] label";
 						if (isExistEle(driver, selector)) {
 							int size = getSelectorSize(driver, selector); // 選択肢の数を数える
@@ -224,33 +215,25 @@ public class PTOPointResearch2 extends PTOBase {
 								String nextSelector = "div.actionBar>a.next-btn";
 								String endSelector = "div.actionBar>a.end-btn";
 								if (isExistEle(driver, nextSelector)
-										&& isExistEle(driver, endSelector + none)) {
+										&& isExistEle(driver, endSelector + none, false)) {
 									scrolledPage(driver, nextSelector);
 									clickSleepSelector(driver, nextSelector, 2000); // 遷移
-								} else if (isExistEle(driver, endSelector)
-										&& isExistEle(driver, nextSelector + none)) {
+								}
+								else if (isExistEle(driver, endSelector)
+										&& isExistEle(driver, nextSelector + none, false)) {
 									scrolledPage(driver, endSelector);
 									clickSleepSelector(driver, endSelector, 4000); // 遷移
-									// 抜けたら
-									// span#end-btn-area>a.end-btn
-									// をクリック
 									logg.info("neukata?");
-//									selector = "span#end-btn-area>a.end-btn";
-//									if (isExistEle(driver, selector)) {
-//										scrolledPage(driver, selector);
-//										clickSleepSelector(driver, selector, 2000); // 遷移
-
-										selector = "div.col-xs-12>a.btn-danger";
-										if (isExistEle(driver, selector)) {
-											clickSleepSelector(driver, selector, 4000); // 遷移
-										}
-										String closeSele = "input.btn_close_en";
-										if (isExistEle(driver, closeSele)) {
-											clickSleepSelector(driver, closeSele, 4000);
-										}
-										driver.switchTo().window(wid);
-										break;
-//									}
+									selector = "div.col-xs-12>a.btn-danger";
+									if (isExistEle(driver, selector)) {
+										clickSleepSelector(driver, selector, 2000); // 遷移
+									}
+									String closeSele = "input.btn_close_en";
+									if (isExistEle(driver, closeSele)) {
+										clickSleepSelector(driver, closeSele, 2000);
+									}
+									driver.switchTo().window(wid);
+									break;
 								}
 							}
 						}
@@ -542,7 +525,7 @@ public class PTOPointResearch2 extends PTOBase {
 			String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
 			// 12問
 			for (int k = 1; k <= 13; k++) {
-				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
+				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
 						&& isExistEle(driver, overLay)) {
 					checkOverlay(driver, overLay, false);
 				}
@@ -610,7 +593,7 @@ public class PTOPointResearch2 extends PTOBase {
 				}
 			}
 			Utille.sleep(2000);
-			if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close")
+			if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
 					&& isExistEle(driver, overLay)) {
 				checkOverlay(driver, overLay, false);
 			}
@@ -775,7 +758,7 @@ public class PTOPointResearch2 extends PTOBase {
 		Utille.sleep(5000);
 		// [style*='visibility: visible']
 		checkOverlay(driver, overLay, false);
-		if (!isExistEle(driver, "div#fade-layer[style*='display: none']")) {
+		if (!isExistEle(driver, "div#fade-layer[style*='display: none']", false)) {
 			checkOverlay(driver, overLay, false);
 		}
 		// close

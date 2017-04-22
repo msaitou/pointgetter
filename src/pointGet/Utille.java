@@ -17,6 +17,7 @@ import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,6 +37,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author saitou utillity class
@@ -146,6 +149,9 @@ public class Utille {
 		return loadProps;
 	}
 
+	private static final Duration TIMEOUT = Duration.ofSeconds(30);
+	private static final Duration INTERVAL = Duration.ofSeconds(3);
+
 	/**
 	 *
 	 * @param wEle
@@ -153,7 +159,7 @@ public class Utille {
 	 * @return boolean
 	 */
 	public static boolean isExistEle(List<WebElement> wEle, Logger logg) {
-		Eventually.eventually(() -> wEle);
+		Eventually.eventually(() -> wEle, TIMEOUT, INTERVAL);
 		return wEle.size() != 0;
 	}
 
@@ -192,8 +198,29 @@ public class Utille {
 	 * @return boolean
 	 */
 	public static boolean isExistEle(WebDriver driver, String selector, Logger logg) {
-		boolean is = isExistEle(driver.findElements(By.cssSelector(selector)), logg);
+		return isExistEle(driver, selector, true, logg);
+	}
+
+	/**
+	 * @param driver
+	 * @param selector
+	 * @param logg
+	 * @return boolean
+	 */
+	public static boolean isExistEle(WebDriver driver, String selector, boolean showFlag, Logger logg) {
+		By register = By.cssSelector(selector);
+		boolean is = isExistEle(driver.findElements(register), logg);
 		logg.info(selector + ":[" + is + "]");
+		if (showFlag && is) {
+			try {
+				WebDriverWait wait = new WebDriverWait(driver, 30);//待ち時間を指定
+				wait.until(ExpectedConditions.visibilityOfElementLocated(register));
+			} catch (Throwable e) {
+				is = false;
+				logg.info("---------------------------dont wanna wait!");
+				logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+			}
+		}
 		return is;
 	}
 
@@ -482,7 +509,7 @@ public class Utille {
 		}
 		return points;
 	}
-	
+
 	/**
 	 * 
 	 * @param site

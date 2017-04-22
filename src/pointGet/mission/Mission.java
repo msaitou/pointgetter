@@ -107,7 +107,17 @@ public abstract class Mission {
 	 * @return
 	 */
 	protected boolean isExistEle(WebDriver driver, String selector) {
-		return Utille.isExistEle(driver, selector, logg);
+		return Utille.isExistEle(driver, selector, true, logg);
+	}
+	
+	/**
+	 *
+	 * @param driver
+	 * @param selector
+	 * @return
+	 */
+	protected boolean isExistEle(WebDriver driver, String selector, boolean showFlag) {
+		return Utille.isExistEle(driver, selector, showFlag, logg);
 	}
 
 	/**
