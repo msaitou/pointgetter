@@ -49,9 +49,8 @@ public class GMYToidas extends GMYBase {
 							String entryDate = eleList.get(i).findElement(By.cssSelector("div.entry-date")).getText();
 							String nowDate = Utille.getNowTimeStr("yyyy/MM/dd");
 							logg.warn("entryDate:" + entryDate + " nowDate:" + nowDate);
-
-							//														if (cntt++ <12) {
-							if (entryDate.equals(nowDate)) {
+							if (cntt++ < 2) {
+								//							if (entryDate.equals(nowDate)) {
 								//							if (true) {
 								wEle = eleList.get(i);
 								break;
@@ -102,17 +101,14 @@ public class GMYToidas extends GMYBase {
 								logg.warn(mName + "]1つクリア！！");
 								clickSleepSelector(driver, selector, 8000); // 一覧に戻る
 								break;
-							}
-							else {
+							} else {
 								logg.warn(mName + "]sele2なし");
 							}
 						}
-					}
-					else {
+					} else {
 						logg.warn(mName + "]始められない？");
 					}
-				}
-				else {
+				} else {
 					logg.warn(mName + "]all済み");
 					break;
 				}
