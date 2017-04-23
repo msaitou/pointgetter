@@ -47,7 +47,7 @@ public class OSAPointResearch extends OSABase {
 				clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
 				String wid = driver.getWindowHandle();
 				changeWindow(driver, wid);
-				String sele1 = "div.ui-control.type-fixed>a.ui-button.quake";// pointResearch用
+				String sele1 = "div.ui-control.type-fixed>a.ui-button";// pointResearch用
 				String sele2 = "form>input[type='image']"; // 回答する 漫画用
 				String sele3 = "div>button[type='submit']"; // 回答する surveyenk用
 				String sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
@@ -95,10 +95,10 @@ public class OSAPointResearch extends OSABase {
 	private void _answerPointResearch(String startSele, String wid) {
 		clickSleepSelector(driver, startSele, 3000);
 		// 回答開始
-		String beginSele = "form>input.ui-button.quake";
+		String beginSele = "form>input.ui-button";
 		if (isExistEle(driver, beginSele)) {
 			clickSleepSelector(driver, beginSele, 3000);
-			String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button.quake", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
+			String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
 			// 12問
 			for (int k = 1; k <= 13; k++) {
 				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)

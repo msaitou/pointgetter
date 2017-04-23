@@ -42,14 +42,14 @@ public class SUGPointResearch extends SUGBase {
 					clickSleepSelector(eleList, targetIndex, 6000); // アンケートスタートページ
 					String wid = driver.getWindowHandle();
 					changeWindow(driver, wid);
-					selector = "div.ui-control.type-fixed>a.ui-button.quake";
+					selector = "div.ui-control.type-fixed>a.ui-button";
 					if (isExistEle(driver, selector)) {
 						clickSleepSelector(driver, selector, 3000);
 						// 回答開始
-						selector = "form>input.ui-button.quake";
+						selector = "form>input.ui-button";
 						if (isExistEle(driver, selector)) {
 							clickSleepSelector(driver, selector, 3000);
-							String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button.quake", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
+							String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
 							// 12問
 							for (int k = 1; k <= 13; k++) {
 								if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
@@ -95,7 +95,7 @@ public class SUGPointResearch extends SUGBase {
 										}
 									}
 									else if (isExistEle(driver, seleSele)) {
-										Utille.sleep(2000);
+										Utille.sleep(4000);
 										int size3 = getSelectorSize(driver, seleSele + ">option");
 										String value = "";
 										if (qTitle.indexOf("居住区") >= 0) {
