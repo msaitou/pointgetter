@@ -34,7 +34,7 @@ public class CITToidas extends CITBase {
 			changeCloseWindow(driver);
 			while (true) {
 				driver.switchTo().defaultContent();
-				Utille.sleep(7000);
+				Utille.sleep(13000);
 				//				selector = "li.col-md-4.col-sm-6.entry-item.category-trivia.checked";	// が取得済み
 				selector = "li[class='col-md-4 col-sm-6 entry-item category-trivia ']";
 				if (!isExistEle(driver, selector)) {
@@ -47,8 +47,8 @@ public class CITToidas extends CITBase {
 					if (isExistEle(eleList.get(i), "div.entry-date")) {
 						String entryDate = eleList.get(i).findElement(By.cssSelector("div.entry-date")).getText();
 						String nowDate = Utille.getNowTimeStr("yyyy/MM/dd");
-						//						if (cntt++ < 12) {
-						if (entryDate.equals(nowDate)) {
+												if (cntt++ < 2) {
+//						if (entryDate.equals(nowDate)) {
 							//													if (true) {
 							wEle = eleList.get(i);
 							break;
@@ -86,7 +86,7 @@ public class CITToidas extends CITBase {
 											if (isExistEle(driver, nextSelector)) {
 												clickSleepSelector(driver, nextSelector, 2500); // 遷移
 												if (isExistEle(driver, nextSelector)) {
-													clickSleepSelector(driver, nextSelector, 4000); // 遷移
+													clickSleepSelector(driver, nextSelector, 7000); // 遷移
 												}
 											}
 										}
