@@ -3,14 +3,13 @@ package pointGet.mission.i2i;
 import java.util.List;
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import lombok.val;
 import pointGet.Utille;
 
 /**
@@ -52,60 +51,57 @@ public class I2IMangaVer2 extends I2IBase {
 						if (isExistEle(driver, selector)) {
 							List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 							if (isExistEle(eleList, 0)) {
-								clickSleepSelector(eleList, 0, 3000); // 遷移
+								clickSleepSelector(eleList, 0, 5000); // 遷移
 								String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
 								String seleNext = "form>input[type='image']";
 								String seleNexttugi = seleNext + "[src='common/image/9999/manga_next_bt.png']";
-								for (int g = 0; g < 8; g++) {
-									if (isExistEle(driver, overLay)) {
-										checkOverlay(driver, overLay, false);
-									}
+								for (int g = 0; g < 8;) {
+									checkOverlay(driver, overLay, false);
 									if (isExistEle(driver, seleNexttugi)) {
 										clickSleepSelector(driver, seleNexttugi, 3000); // 遷移
-									}
-									else if (isExistEle(driver, seleNext)) {
+										g++;
+									} else if (isExistEle(driver, seleNext)) {
 										clickSleepSelector(driver, seleNext, 3000); // 遷移
+										g++;
 									}
 								}
-								Utille.sleep(3000);
-								String choiceSele = "input[type='radio']";
+								Utille.sleep(6000);
+								String choiceSele = "div.enquete>p>label";
+								//								String choiceSele = "input[type='radio']";
 								String seleNext2 = "div>input.enquete_nextbt";
 								String seleNext3 = "div>input.enquete_nextbt_2";
 								String seleSele = "form.menu>select";
 								// 8問
 								for (int k = 1; k <= 8; k++) {
-									if (isExistEle(driver, overLay)) {
-										checkOverlay(driver, overLay, false);
-									}
+									checkOverlay(driver, overLay);
 									int choiceNum = 0;
 									if (isExistEle(driver, choiceSele)) {
 										int choiceies = getSelectorSize(driver, choiceSele);
 										switch (k) {
-										case 1:
-											// 1問目は1：男
-											break;
-										case 2:
-										case 3:
-											// 2問目は3：30代
-											// 3問目は3：会社員
-											if (choiceies > 2) {// 一応選択可能な範囲かをチェック
-												choiceNum = 2;
-											}
-											break;
-										default:
-											choiceNum = Utille.getIntRand(choiceies);
+											case 1:
+												// 1問目は1：男
+												break;
+											case 2:
+											case 3:
+												// 2問目は3：30代
+												// 3問目は3：会社員
+												if (choiceies > 2) {// 一応選択可能な範囲かをチェック
+													choiceNum = 2;
+												}
+												break;
+											default:
+												choiceNum = Utille.getIntRand(choiceies);
 										}
 										List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 										if (isExistEle(eleList2, choiceNum)) {
 											// 選択
-											clickSleepSelector(eleList2.get(choiceNum), 2500);
+											clickSleepSelector(eleList2, choiceNum, 3500);
 											if (isExistEle(driver, seleNext2)) {
 												// 次へ
-												clickSleepSelector(driver, seleNext2, 4000);
+												clickSleepSelector(driver, seleNext2, 6000);
 											}
 										}
-									}
-									else if (isExistEle(driver, seleSele)) {
+									} else if (isExistEle(driver, seleSele)) {
 										int size3 = getSelectorSize(driver, seleSele + ">option");
 										choiceNum = Utille.getIntRand(size3);
 										String value = driver.findElements(By.cssSelector(seleSele + ">option"))
@@ -117,14 +113,11 @@ public class I2IMangaVer2 extends I2IBase {
 											// 次へ
 											clickSleepSelector(driver, seleNext3, 4000);
 										}
-									}
-									else {
+									} else {
 										break;
 									}
 								}
-								if (isExistEle(driver, overLay)) {
-									checkOverlay(driver, overLay, false);
-								}
+								checkOverlay(driver, overLay, false);
 								if (isExistEle(driver, seleNext)) {
 									clickSleepSelector(driver, seleNext, 3000); // 遷移
 								}
@@ -137,8 +130,7 @@ public class I2IMangaVer2 extends I2IBase {
 									// 一覧に戻るはず
 								}
 							}
-						}
-						else {
+						} else {
 							break;
 						}
 					}
