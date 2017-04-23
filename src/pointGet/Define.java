@@ -126,6 +126,7 @@ public class Define {
 	final public static String strPICClickBanner = "PICClickBanner";
 	final public static String strPICPriceChyosatai = "PICPriceChyosatai";
 	final public static String strPICShindan = "PICShindan";
+	final public static String strPICPointResearch = "PICPointResearch";
 
 	// ■■■■■SUGUTAMA■■■■■
 	final public static String strSUGUranai = "SUGUranai";

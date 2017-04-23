@@ -11,11 +11,11 @@ import java.util.function.Function;
 
 import org.bson.Document;
 
+import pointGet.Utille;
+
 import com.mongodb.DBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.util.JSON;
-
-import pointGet.Utille;
 
 /**
  * @author saitou
@@ -25,12 +25,16 @@ public class PointsCollection {
 	final static String COLLECTION_NAME_POINTS = "points";
 	final static String COLLECTION_NAME_ACHIEVEMENT = "achievements";
 	protected Dbase Dbase = null;
+	protected String strDate = null, 
+			strDateTime = null;
 
 	/**
 	 * @param prop
 	 */
 	public PointsCollection(Dbase db) {
 		Dbase = db;
+		strDate = Utille.getNowTimeStr("yyyy-MM-dd");
+		strDateTime = Utille.getNowTimeStr("yyyy-MM-dd HH:mm:ss");
 	}
 
 	//	// テスト用
@@ -61,7 +65,7 @@ public class PointsCollection {
 	public void putPointsData(Map<String, Double> m) {
 		// 検索情報設定
 		Map<String, Object> cParams = new HashMap<String, Object>();
-		cParams.put("cond", (DBObject) JSON.parse("{'Date':'" + Utille.getNowTimeStr("yyyy-MM-dd") + "'}"));
+		cParams.put("cond", (DBObject) JSON.parse("{'Date':'" + strDate + "'}"));
 		cParams.put("limit", 2);
 		//		Dbase.accessDb("update", COLLECTION_NAME_POINTS, ((a) -> {
 		Dbase.accessDb("update", COLLECTION_NAME_POINTS, cParams, ((a) -> {
@@ -69,8 +73,8 @@ public class PointsCollection {
 			m.forEach((key, total) -> {
 				doc.append(key, total);
 			});
-			doc.append("Date", Utille.getNowTimeStr("yyyy-MM-dd"));
-			doc.append("time", Utille.getNowTimeStr("yyyy-MM-dd HH:mm:ss"));
+			doc.append("Date", strDate);
+			doc.append("time", strDateTime);
 			return doc;
 		}));
 	}
@@ -148,7 +152,7 @@ public class PointsCollection {
 		m.put("total", total.toString());
 		m.put("diff", diff.toString());
 		md.forEach((s, d) -> m.put(s, d.toString()));
-		m.put("time", Utille.getNowTimeStr("yyyy-MM-dd HH:mm:ss"));
+		m.put("time", strDateTime);
 
 		// 今の時刻★
 		// 保存内容：Total,実行日時,差分

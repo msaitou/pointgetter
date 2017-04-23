@@ -158,7 +158,7 @@ public abstract class OSABase extends Mission {
 			secondPoint = Utille.getNumber(secondPoint);
 		}
 		Double sTotal = Utille.sumTotal(sCode, point, 0.0);
-		sTotal = Utille.sumTotal(sCode, secondPoint, sTotal);
+		sTotal = Utille.sumTotal("secondPoint", secondPoint, sTotal);
 		return sTotal;
 	}
 }
