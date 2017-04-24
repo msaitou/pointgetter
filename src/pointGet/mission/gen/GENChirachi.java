@@ -27,7 +27,7 @@ public class GENChirachi extends GENBase {
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
 		selector = "div#dropmenu01";
-		if (isExistEle(driver, selector)) {
+		if (isExistEle(driver, selector, false)) {
 			int size0 = getSelectorSize(driver, selector);
 			for (int ii = 0; ii < size0; ii++) {
 				WebElement e = driver.findElements(By.cssSelector(selector)).get(ii);

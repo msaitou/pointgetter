@@ -30,7 +30,7 @@ public class GENUranai extends Mission {
 		// div#dropmenu01
 		driver.get(url);
 		selector = "div#dropmenu01";
-		if (isExistEle(driver, selector)) {
+		if (isExistEle(driver, selector, false)) {
 			int size = getSelectorSize(driver, selector);
 			for (int i = 0; i < size; i++) {
 				WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
