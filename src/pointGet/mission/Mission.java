@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Eventually;
@@ -370,7 +371,16 @@ public abstract class Mission {
 			else {
 				roopMission(driver);
 			}
-		} catch (Exception e) {
+		}
+		catch (WebDriverException we) {
+			logg.error("##Exception##################");
+			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(we), 1000));
+			logg.error("#############################");
+						driver.quit();
+						WebDriver driver2 = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
+			
+		}
+		catch (Exception e) {
 			logg.error("##Exception##################");
 			logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
 			logg.error("#############################");
