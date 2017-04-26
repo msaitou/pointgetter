@@ -50,6 +50,7 @@ public class Define {
 	final public static String strGENUranai = "GENUranai";
 	final public static String strGENChirachi = "GENChirachi";
 	final public static String strGENManga = "GENManga";
+	final public static String strGENPointResearch = "GENPointResearch";
 
 	// ■■■■■げっとま■■■■■
 	final public static String strGMYChirachi = "GMYChirachi";
@@ -76,6 +77,7 @@ public class Define {
 	final public static String strMOPCountTimer = "MOPCountTimer";
 	final public static String strMOPManga = "MOPManga";
 	final public static String strMOPPointResearch = "MOPPointResearch";
+	final public static String strMOPPointResearch2 = "MOPPointResearch2";
 	// ■■■■■osaifu■■■■■
 	final public static String strOSAClickBanner = "OSAClickBanner";
 	final public static String strOSAQuiz = "OSAQuiz";
@@ -120,6 +122,7 @@ public class Define {
 	final public static String strMOBChirachi = "MOBChirachi";
 	final public static String strMOBEnglishTest = "MOBEnglishTest";
 	final public static String strMOBCountTimer = "MOBCountTimer";
+	final public static String strMOBPointResearch = "MOBPointResearch";
 
 	// ■■■■■PointInCome■■■■■
 	final public static String strPICUranai = "PICUranai";
@@ -135,6 +138,7 @@ public class Define {
 	final public static String strSUGManga = "SUGManga";
 	final public static String strSUGColum = "SUGColum";
 	final public static String strSUGPointResearch = "SUGPointResearch";
+	final public static String strSUGPointResearch2 = "SUGPointResearch2";
 
 	// ■■■■■pointStadium■■■■■
 	final public static String strPSTUranai = "PSTUranai";
@@ -159,8 +163,10 @@ public class Define {
 	final public static String strCRIChirachi = "CRIChirachi";
 	final public static String strCRIManga = "CRIManga";
 	final public static String strCRIClickBananer = "CRIClickBananer";
+	final public static String strCRIPointResearch = "CRIPointResearch";
 	// ■■■■■ハピタス■■■■■
 	final public static String strHAPManga = "HAPManga";
+	final public static String strHAPPointResearch = "HAPPointResearch";
 
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";

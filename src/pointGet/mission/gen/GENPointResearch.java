@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import pointGet.Utille;
 
 public class GENPointResearch extends GENBase {
-	final String url = "http://osaifu.com/contents/enquete/";
+	final String url = "http://www.gendama.jp/survey/mini";
 	WebDriver driver = null;
 
 	/**
@@ -26,24 +26,15 @@ public class GENPointResearch extends GENBase {
 	public void privateMission(WebDriver driverAtom) {
 		driver = driverAtom;
 		int skip = 1;
-
 		while (true) {
 			driver.get(url);
-			selector = "a.ui-btn.ui-btn-a";
+			selector = "a dd.survey_answer";
+			if (!isExistEle(driver, selector)) {
+				break;
+			}
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 			int size = eleList.size(), targetIndex = size - skip;
-
 			if (isExistEle(eleList, targetIndex)) { // 古い順にやる
-				String sikibetuSele = "td.no";
-				if (isExistEle(driver, sikibetuSele)) {
-					String ankNo = driver.findElements(By.cssSelector(sikibetuSele)).get(targetIndex).getText();
-					logg.info("ankNo： " + ankNo);
-					//					// osaオンリー
-					//					if (ankNo.length() > 5) {
-					//						mainus++;
-					//						continue;
-					//					}
-				}
 				clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
 				String wid = driver.getWindowHandle();
 				changeWindow(driver, wid);
@@ -54,25 +45,25 @@ public class GENPointResearch extends GENBase {
 				if (isExistEle(driver, sele1)) {
 					_answerPointResearch(sele1, wid);
 				}
-				// 漫画
-				else if (isExistEle(driver, sele2)) {
-					_answerManga(sele2, wid);
-				}
-				// surveyenk
-				else if (isExistEle(driver, sele3)) {
-					_answerSurveyEnk(sele3, wid);
-				}
-				// shop-qp
-				else if (isExistEle(driver, sele4)) {
-					String cUrl = driver.getCurrentUrl();
-					if (cUrl.indexOf("rsch.jp") >= 0) {
-//						_answerRsch(sele4, wid);
-						skip++;
-					}
-					else {
-						_answerEnk(sele4, wid);
-					}
-				}
+//				// 漫画
+//				else if (isExistEle(driver, sele2)) {
+//					_answerManga(sele2, wid);
+//				}
+//				// surveyenk
+//				else if (isExistEle(driver, sele3)) {
+//					_answerSurveyEnk(sele3, wid);
+//				}
+//				// shop-qp
+//				else if (isExistEle(driver, sele4)) {
+//					String cUrl = driver.getCurrentUrl();
+//					if (cUrl.indexOf("rsch.jp") >= 0) {
+////						_answerRsch(sele4, wid);
+//						skip++;
+//					}
+//					else {
+//						_answerEnk(sele4, wid);
+//					}
+//				}
 				else {
 					skip++;
 					driver.close();
@@ -98,7 +89,13 @@ public class GENPointResearch extends GENBase {
 		String beginSele = "form>input.ui-button";
 		if (isExistEle(driver, beginSele)) {
 			clickSleepSelector(driver, beginSele, 3000);
-			String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
+			String choiceSele = "label.ui-label-radio",
+					seleNext2 = "div.fx-control>input.ui-button", 
+					seleSele = "select.ui-select",
+					overLay = "div.overlay-popup a.button-close", 
+					noSele = "div.ui-item-no", 
+					titleSele = "h2.ui-item-title", 
+					checkSele = "label.ui-label-checkbox";
 			// 12問
 			for (int k = 1; k <= 13; k++) {
 				if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
@@ -112,21 +109,16 @@ public class GENPointResearch extends GENBase {
 					int choiceNum = 0;
 					if (isExistEle(driver, choiceSele)) {
 						int choiceies = getSelectorSize(driver, choiceSele);
-						switch (k) {
-							case 1: // 性別
-							case 3: // 結婚
-								// 1問目は1：男
-								// 3問目は3：未婚
-								break;
-							case 5: // 職業
-							case 2: // 年齢
-								// 2問目は3：30代
-								if (choiceies > 2) {// 一応選択可能な範囲かをチェック
-									choiceNum = 2;
-								}
-								break;
-							default:
-								choiceNum = Utille.getIntRand(choiceies);
+						if (qTitle.indexOf("性別をお知らせ") >= 0
+								|| qTitle.indexOf("未既婚をお知") >= 0) {
+							choiceNum = 0; // 1：男 // 1: 未婚
+						}
+						else if (qTitle.indexOf("年齢をお知") >= 0
+								|| qTitle.indexOf("職業をお知") >= 0) {
+							choiceNum = 2; // 2：30代 // 2：会社員
+						}
+						else {
+							choiceNum = Utille.getIntRand(choiceies);
 						}
 						List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 						if (isExistEle(eleList2, choiceNum)) {
@@ -144,7 +136,7 @@ public class GENPointResearch extends GENBase {
 						}
 					}
 					else if (isExistEle(driver, seleSele)) {
-						Utille.sleep(2000);
+						Utille.sleep(4000);
 						int size3 = getSelectorSize(driver, seleSele + ">option");
 						String value = "";
 						if (qTitle.indexOf("居住区") >= 0) {
@@ -182,10 +174,10 @@ public class GENPointResearch extends GENBase {
 			if (isExistEle(driver, closeSele)) {
 				// 閉じる
 				clickSleepSelector(driver, closeSele, 3000);
+				driver.close();
+				// 最後に格納したウインドウIDにスイッチ
+				driver.switchTo().window(wid);
 			}
-			driver.close();
-			// 最後に格納したウインドウIDにスイッチ
-			driver.switchTo().window(wid);
 		}
 	}
 
