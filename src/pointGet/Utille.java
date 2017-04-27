@@ -214,7 +214,8 @@ public class Utille {
 		logg.info(selector + ":[" + is + "]");
 		if (showFlag && is) {
 			try {
-				WebDriverWait wait = new WebDriverWait(driver, 30);//待ち時間を指定
+				// ElementNotInteractableException が発生することがある。これはnotVisibleのスーパークラス
+				WebDriverWait wait = new WebDriverWait(driver, 45);//待ち時間を指定
 				wait.until(ExpectedConditions.visibilityOfElementLocated(register));
 			} catch (Throwable e) {
 				is = false;

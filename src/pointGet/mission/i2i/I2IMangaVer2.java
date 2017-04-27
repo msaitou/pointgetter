@@ -3,13 +3,14 @@ package pointGet.mission.i2i;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import lombok.val;
 import pointGet.Utille;
 
 /**
@@ -58,10 +59,10 @@ public class I2IMangaVer2 extends I2IBase {
 								for (int g = 0; g < 8;) {
 									checkOverlay(driver, overLay, false);
 									if (isExistEle(driver, seleNexttugi)) {
-										clickSleepSelector(driver, seleNexttugi, 3000); // 遷移
+										clickSleepSelector(driver, seleNexttugi, 5000); // 遷移
 										g++;
 									} else if (isExistEle(driver, seleNext)) {
-										clickSleepSelector(driver, seleNext, 3000); // 遷移
+										clickSleepSelector(driver, seleNext, 4000); // 遷移
 										g++;
 									}
 								}

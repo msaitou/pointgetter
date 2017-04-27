@@ -3,13 +3,14 @@ package pointGet.mission.i2i;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import lombok.val;
 import pointGet.Utille;
 
 /**
@@ -49,29 +50,27 @@ public class I2IColum extends I2IBase {
 					selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
 					String seleNext = "form>input.next_bt";
 					String seleNextb2 = "form>input[type='image']";
+//					String seleNextb2 = "form>input[alt='次へ進む']";
 					String seleNextb3 = "form>input[alt='next']";
 					String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
 					while (true) {
 						if (isExistEle(driver, selector)) {
 							clickSleepSelector(driver, selector, 3000); // 遷移　問開始
 							if (isExistEle(driver, seleNext)) {
-								clickSleepSelector(driver, seleNext, 3000); // 遷移　問開始
+								clickSleepSelector(driver, seleNext, 5000); // 遷移　問開始
 								for (int g = 0 ;g < 2 ;g++) {
 									if (isExistEle(driver, seleNextb2)) {
 										clickSleepSelector(driver, seleNextb2, 3000); // 遷移　問開始するよ
 									}
 								}
+								Utille.sleep(7000);
 								// 6page
-								for (int g = 0 ;g < 6 ;g++) {
-									Utille.sleep(4000);
-									checkOverlay(driver, overLay);
+								for (int g = 0; g < 6; g++) {
 									if (isExistEle(driver, seleNextb3)) {
-										clickSleepSelector(driver, seleNextb3, 5000); // 遷移　問開始するよ
+										clickSleepSelector(driver, seleNextb3, 13000); // 遷移　問開始するよ
 									}
 								}
-								if (isExistEle(driver, overLay)) {
 									checkOverlay(driver, overLay);
-								}
 								if (isExistEle(driver, seleNextb2)) {
 									clickSleepSelector(driver, seleNextb2, 5000); // 遷移　問開始するよ
 								}
