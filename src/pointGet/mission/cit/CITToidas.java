@@ -43,7 +43,7 @@ public class CITToidas extends CITBase {
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				int size1 = eleList.size();
 				WebElement wEle = null;
-				for (int i = 2; i < size1; i++) {
+				for (int i = 0; i < size1; i++) {
 					if (isExistEle(eleList.get(i), "div.entry-date")) {
 						String entryDate = eleList.get(i).findElement(By.cssSelector("div.entry-date")).getText();
 						String nowDate = Utille.getNowTimeStr("yyyy/MM/dd");
