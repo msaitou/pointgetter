@@ -81,6 +81,9 @@ public abstract class MOBBase extends Mission {
 				case Define.strMOBCountTimer: // ■CountTimer
 					MisIns = new MOBCountTimer(loggg, cProps);
 					break;
+				case Define.strMOBPointResearch: // ■ポイントサーチ
+					MisIns = new MOBPointResearch(loggg, cProps);
+					break;
 				default:
 			}
 			if (Arrays.asList(new String[] { Define.strMOBQuiz,
