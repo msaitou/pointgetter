@@ -25,6 +25,7 @@ import pointGet.mission.pst.PSTBase;
 import pointGet.mission.pto.PTOBase;
 import pointGet.mission.rin.RINBase;
 import pointGet.mission.sug.SUGBase;
+import pointGet.mission.war.WARBase;
 
 /**
  * get point from the point site
@@ -60,6 +61,7 @@ public class WebClicker extends PointGet {
 			Define.PSITE_CODE_MOB, // MOBATOKU
 			Define.PSITE_CODE_CRI, // ちょびリッチ
 			Define.PSITE_CODE_HAP, // ハピタス
+			Define.PSITE_CODE_WAR, // ワラウ
 	};
 
 	protected static void init(String[] args) {
@@ -259,6 +261,9 @@ public class WebClicker extends PointGet {
 					break;
 				case Define.PSITE_CODE_HAP:
 					HAPBase.goToClick(logg, commonProps, missionArr, Dbase);
+					break;
+				case Define.PSITE_CODE_WAR:
+					WARBase.goToClick(logg, commonProps, missionArr, Dbase);
 					break;
 				default:
 			}

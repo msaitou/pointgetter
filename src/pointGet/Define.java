@@ -167,7 +167,9 @@ public class Define {
 	// ■■■■■ハピタス■■■■■
 	final public static String strHAPManga = "HAPManga";
 	final public static String strHAPPointResearch = "HAPPointResearch";
-
+	// ■■■■■ワラウ■■■■■
+	final public static String strWARDailyCheck = "WARDailyCheck";
+	
 	// メールの内容の種類
 	final public static String CONTENT_TYPE_TEXT = "text/plain";
 	final public static String CONTENT_TYPE_HTML = "text/html";
