@@ -76,7 +76,7 @@ public class WARDailyCheck extends WARBase {
 			int size = eleList.size();
 			String wid = driver.getWindowHandle();
 			for (int i = 0; i < size; i++) {
-				clickSleepSelector(driver, selector, 5000);
+				clickSleepSelector(eleList, i, 5000);
 				closeOtherWindow(driver);
 			}
 		}
