@@ -62,10 +62,25 @@ public class WARDailyCheck extends WARBase {
 			}
 		}
 		++c;
-		//		selector = "section#footer-click li.panel__list__item.has-horizontal-child span.click-txt";
-		//		// サービスページ下
-		//		driver.get("http://www.pointtown.com/ptu/pointpark/top.do");
-		//		if (isExistEle(driver, selector)) {
+		selector = "a#dailyClickPt div.btnAction";
+		driver.get("http://www.warau.jp/contents/point/ranking/");
+		if (isExistEle(driver, selector)) {
+			logg.info(mName + " " + c + "　ポイント情報ランキング! ");
+			clickSleepSelector(driver, selector, 5000);
+			closeOtherWindow(driver);
+		}
+		driver.get("http://shop.warau.jp/#dailyClick");
+		selector = "div.itemBox a>img";
+		if (isExistEle(driver, selector)) {
+			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+			int size = eleList.size();
+			String wid = driver.getWindowHandle();
+			for (int i = 0; i < size; i++) {
+				clickSleepSelector(driver, selector, 5000);
+				closeOtherWindow(driver);
+			}
+		}
+		
 		//			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 		//			int size = eleList.size();
 		//			String wid = driver.getWindowHandle();
