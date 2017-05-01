@@ -11,11 +11,11 @@ import java.util.function.Function;
 
 import org.bson.Document;
 
-import pointGet.Utille;
-
 import com.mongodb.DBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.util.JSON;
+
+import pointGet.Utille;
 
 /**
  * @author saitou
@@ -25,11 +25,12 @@ public class PointsCollection {
 	final static String COLLECTION_NAME_POINTS = "points";
 	final static String COLLECTION_NAME_ACHIEVEMENT = "achievements";
 	protected Dbase Dbase = null;
-	protected String strDate = null, 
+	protected String strDate = null,
 			strDateTime = null;
 
 	/**
-	 * @param prop
+	 * constractor
+	 * @param db
 	 */
 	public PointsCollection(Dbase db) {
 		Dbase = db;
