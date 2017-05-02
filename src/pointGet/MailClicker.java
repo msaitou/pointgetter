@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.Security;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -80,6 +81,7 @@ public class MailClicker extends PointGet {
 //		mailConf.put("port", loadProps.getProperty("mail.port"));
 //		mailConf.put("before", loadProps.getProperty("mail.beforeDate"));
 
+		Map<String, HashMap<String, String>> targetSitesTmp = new HashMap<String, HashMap<String, String>>();
 		Map<String, Object> cParams = new HashMap<String, Object>();
 		cParams.put("cond", (DBObject) JSON.parse("{'type':'mail'}"));
 		@SuppressWarnings("unchecked")
@@ -119,14 +121,21 @@ public class MailClicker extends PointGet {
 					doc.forEach((k,val) -> {
 						siteConf.put(k, (String)val);
 					});
-					targetSites.put(key, siteConf);
+					targetSitesTmp.put(key, siteConf);
 					break;
 			}
 		}
 		System.out.println("wwwwwwww");
+		System.out.println(targetSitesTmp);
+		System.out.println("wwwwwwww");
+		targetSitesTmp.forEach((k, val) -> {
+			if (Arrays.asList(siteCodes).contains(k)) {
+				targetSites.put(k, targetSitesTmp.get(k));
+			}
+		});
+		System.out.println("wwwwwwww");
 		System.out.println(targetSites);
 		System.out.println("wwwwwwww");
-
 	}
 
 	/**
