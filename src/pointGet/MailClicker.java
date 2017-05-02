@@ -27,8 +27,12 @@ import javax.mail.Store;
 import javax.mail.search.ComparisonTerm;
 import javax.mail.search.ReceivedDateTerm;
 
+import org.bson.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import com.mongodb.DBObject;
+import com.mongodb.util.JSON;
 
 /**
  * get point from the point mail
@@ -49,32 +53,80 @@ public class MailClicker extends PointGet {
 	protected static void init() {
 		PointGet.init(MailClicker.class.getSimpleName());
 		_setLogger("log4jmail.properties", MailClicker.class);
-		// properties をローカル変数に展開
-		Properties loadProps = Utille.getProp(loadFilePath);
-		if (loadProps.isEmpty()) {
+//		// properties をローカル変数に展開
+//		Properties loadProps = Utille.getProp(loadFilePath);
+//		if (loadProps.isEmpty()) {
+//			return;
+//		}
+//		// メールのクリックポイントを獲得する対象のサイトを取得
+//		siteCodes = loadProps.getProperty("targetSiteCode").split(",");
+//		// PointGetMail config variable
+//		for (int i = 0; i < siteCodes.length; i++) {
+//			String key = siteCodes[i];
+//			if (key != null && !key.equals("")) {
+//				HashMap<String, String> siteConf = new HashMap<String, String>();
+//				siteConf.put("dir", loadProps.getProperty(key + ".dir"));
+//				siteConf.put("subjectKey", loadProps.getProperty(key + ".subjectKey"));
+//				if (loadProps.containsKey(key + ".subjectKey2")) {
+//					siteConf.put("subjectKey2", loadProps.getProperty(key + ".subjectKey2"));
+//				}
+//				targetSites.put(key, siteConf);
+//			}
+//		}
+//		// mail's conf
+//		mailConf.put("host", loadProps.getProperty("mail.host"));
+//		mailConf.put("user", loadProps.getProperty("mail.user"));
+//		mailConf.put("password", loadProps.getProperty("mail.password"));
+//		mailConf.put("port", loadProps.getProperty("mail.port"));
+//		mailConf.put("before", loadProps.getProperty("mail.beforeDate"));
+
+		Map<String, Object> cParams = new HashMap<String, Object>();
+		cParams.put("cond", (DBObject) JSON.parse("{'type':'mail'}"));
+		@SuppressWarnings("unchecked")
+		List<HashMap<String, Object>> rec = (List<HashMap<String, Object>>) Dbase.accessDb("find",
+				"configs", cParams, null);
+		if (null == rec || rec.isEmpty() || null == rec.get(0)) {
+			System.out.println("not found Conigs..");
 			return;
 		}
-		// メールのクリックポイントを獲得する対象のサイトを取得
-		siteCodes = loadProps.getProperty("targetSiteCode").split(",");
-		// PointGetMail config variable
-		for (int i = 0; i < siteCodes.length; i++) {
-			String key = siteCodes[i];
-			if (key != null && !key.equals("")) {
-				HashMap<String, String> siteConf = new HashMap<String, String>();
-				siteConf.put("dir", loadProps.getProperty(key + ".dir"));
-				siteConf.put("subjectKey", loadProps.getProperty(key + ".subjectKey"));
-				if (loadProps.containsKey(key + ".subjectKey2")) {
-					siteConf.put("subjectKey2", loadProps.getProperty(key + ".subjectKey2"));
-				}
-				targetSites.put(key, siteConf);
+		for (Map.Entry<String, Object> field: rec.get(0).entrySet()) {
+			String key = field.getKey();
+			Object value = field.getValue();
+			switch (key) {
+				case "targetSiteCodeOrigin":
+				case "type":
+					break;
+				case "targetSiteCode":
+					if (value instanceof List) {
+						List docs = (List)value;
+						siteCodes = new String[docs.size()];
+						for (int i = 0 ;i< docs.size();i++) {
+							siteCodes[i] = docs.get(i).toString();
+							System.out.println("siteCodes::::"+siteCodes[i]);
+						}
+					}
+					break;
+				case "host":
+				case "user":
+				case "port":
+				case "password":
+				case "before":
+					mailConf.put(key, value.toString());
+					break;
+				default:
+					Document doc = (Document)value;
+					HashMap<String, String> siteConf = new HashMap<String, String>();
+					doc.forEach((k,val) -> {
+						siteConf.put(k, (String)val);
+					});
+					targetSites.put(key, siteConf);
+					break;
 			}
 		}
-		// mail's conf
-		mailConf.put("host", loadProps.getProperty("mail.host"));
-		mailConf.put("user", loadProps.getProperty("mail.user"));
-		mailConf.put("password", loadProps.getProperty("mail.password"));
-		mailConf.put("port", loadProps.getProperty("mail.port"));
-		mailConf.put("before", loadProps.getProperty("mail.beforeDate"));
+		System.out.println("wwwwwwww");
+		System.out.println(targetSites);
+		System.out.println("wwwwwwww");
+
 	}
 
 	/**

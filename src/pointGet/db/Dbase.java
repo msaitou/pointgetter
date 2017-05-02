@@ -62,14 +62,16 @@ public class Dbase {
 	public <R, T> Object findData(Map<String, Object> cParams, Function<T, R> f) {
 		Bson cond = (Bson) JSON.parse("{}"), sort = (Bson) JSON.parse("{}");
 		int limit = 0;
-		if (cParams.containsKey("cond")) {
-			cond = (Bson) cParams.get("cond");
-		}
-		if (cParams.containsKey("sort")) {
-			sort = (Bson) cParams.get("sort");
-		}
-		if (cParams.containsKey("limit")) {
-			limit = Integer.parseInt(cParams.get("limit").toString());
+		if (null != cParams && !cParams.isEmpty()) {
+			if (cParams.containsKey("cond")) {
+				cond = (Bson) cParams.get("cond");
+			}
+			if (cParams.containsKey("sort")) {
+				sort = (Bson) cParams.get("sort");
+			}
+			if (cParams.containsKey("limit")) {
+				limit = Integer.parseInt(cParams.get("limit").toString());
+			}
 		}
 		FindIterable<Document> iterator = coll.find(cond).sort(sort).limit(limit);
 		MongoCursor<Document> cursor = iterator.iterator();
