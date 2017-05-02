@@ -1,4 +1,4 @@
-package pointGet.mission.mob;
+package pointGet.mission.gen;
 
 import java.util.List;
 import java.util.Map;
@@ -12,8 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerPointResearch;
 
-public class MOBPointResearch extends MOBBase {
-  final String url = "http://pc.mtoku.jp/research/";
+public class GENPointResearch2 extends GENBase {
+  final String url = "http://www.gendama.jp/survey/mini";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerPointResearch PointResearch = null;
@@ -21,32 +21,31 @@ public class MOBPointResearch extends MOBBase {
   /**
    * @param logg
    */
-  public MOBPointResearch(Logger logg, Map<String, String> cProps) {
+  public GENPointResearch2(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "アンケート");
-    PointResearch = new AnswerPointResearch(logg);
   }
 
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
-    selector = "table.researchlist_table td>a";
     int skip = 1;
-    String sele1 = "div.ui-control.type-fixed>a.ui-button";// pointResearch用
-    //  String sele2 = "form>input[type='image']"; // 回答する 漫画用
-    //  String sele3 = "div>button[type='submit']"; // 回答する surveyenk用
-    String sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+    PointResearch = new AnswerPointResearch(logg);
     while (true) {
+      driver.get(url);
+      selector = "a dd.survey_answer";
       if (!isExistEle(driver, selector)) {
         break;
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size = eleList.size(), targetIndex = size - skip;
-      if (size > targetIndex
-          && isExistEle(eleList, targetIndex)) { // 古い順にやる
+      if (isExistEle(eleList, targetIndex)) { // 古い順にやる
         clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
+        String sele1 = "div.ui-control.type-fixed>a.ui-button";// pointResearch用
+        String sele2 = "form>input[type='image']"; // 回答する 漫画用
+        String sele3 = "div>button[type='submit']"; // 回答する surveyenk用
+        String sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
         if (isExistEle(driver, sele1)) {
           PointResearch.answer(driver, sele1, wid);
         }
@@ -58,28 +57,124 @@ public class MOBPointResearch extends MOBBase {
         //				else if (isExistEle(driver, sele3)) {
         //					_answerSurveyEnk(sele3, wid);
         //				}
-        // shop-qp
-        else if (isExistEle(driver, sele4)) {
-          String cUrl = driver.getCurrentUrl();
-          if (cUrl.indexOf("rsch.jp") >= 0) {
-            //						_answerRsch(sele4, wid);
-            skip++;
-          }
-          else {
-            _answerEnk(sele4, wid);
-          }
-        }
+        //				// shop-qp
+        //				else if (isExistEle(driver, sele4)) {
+        //					String cUrl = driver.getCurrentUrl();
+        //					if (cUrl.indexOf("rsch.jp") >= 0) {
+        ////						_answerRsch(sele4, wid);
+        //						skip++;
+        //					}
+        //					else {
+        //						_answerEnk(sele4, wid);
+        //					}
+        //				}
         else {
           skip++;
           driver.close();
           driver.switchTo().window(wid);
+          //					break;
         }
-        driver.navigate().refresh();
-        Utille.sleep(5000);
       }
       else {
         // 対象がなくなったら終了
         break;
+      }
+    }
+  }
+
+  /**
+   *
+   * @param startSele
+   * @param wid
+   */
+  private void _answerPointResearch(String startSele, String wid) {
+    clickSleepSelector(driver, startSele, 3000);
+    // 回答開始
+    String beginSele = "form>input.ui-button";
+    if (isExistEle(driver, beginSele)) {
+      clickSleepSelector(driver, beginSele, 3000);
+      String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
+      // 12問
+      for (int k = 1; k <= 13; k++) {
+        if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
+            && isExistEle(driver, overLay)) {
+          checkOverlay(driver, overLay, false);
+        }
+        if (isExistEle(driver, noSele)) {
+          String qNo = driver.findElement(By.cssSelector(noSele)).getText();
+          String qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
+          logg.info(qNo + " " + qTitle);
+          int choiceNum = 0;
+          if (isExistEle(driver, choiceSele)) {
+            int choiceies = getSelectorSize(driver, choiceSele);
+            if (qTitle.indexOf("性別をお知らせ") >= 0
+                || qTitle.indexOf("未既婚をお知") >= 0) {
+              choiceNum = 0; // 1：男 // 1: 未婚
+            }
+            else if (qTitle.indexOf("年齢をお知") >= 0
+                || qTitle.indexOf("職業をお知") >= 0) {
+              choiceNum = 2; // 2：30代 // 2：会社員
+            }
+            else {
+              choiceNum = Utille.getIntRand(choiceies);
+            }
+            List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
+            if (isExistEle(eleList2, choiceNum)) {
+              // 選択
+              clickSleepSelector(eleList2.get(choiceNum), 2500);
+            }
+          }
+          else if (isExistEle(driver, checkSele)) {
+            int size4 = getSelectorSize(driver, checkSele);
+            choiceNum = Utille.getIntRand(size4);
+            List<WebElement> eleList2 = driver.findElements(By.cssSelector(checkSele));
+            if (isExistEle(eleList2, choiceNum)) {
+              // 選択
+              clickSleepSelector(eleList2.get(choiceNum), 2500);
+            }
+          }
+          else if (isExistEle(driver, seleSele)) {
+            Utille.sleep(4000);
+            int size3 = getSelectorSize(driver, seleSele + ">option");
+            String value = "";
+            if (qTitle.indexOf("居住区") >= 0) {
+              value = "4";
+            }
+            else {
+              choiceNum = Utille.getIntRand(size3);
+              value = driver.findElements(By.cssSelector(seleSele + ">option"))
+                  .get(choiceNum).getAttribute("value");
+            }
+            Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
+            selectList.selectByValue(value);
+            Utille.sleep(3000);
+          }
+        }
+        else {
+          break;
+        }
+        if (isExistEle(driver, seleNext2)) {
+          // 次へ
+          clickSleepSelector(driver, seleNext2, 4000);
+        }
+      }
+      Utille.sleep(2000);
+      if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
+          && isExistEle(driver, overLay)) {
+        checkOverlay(driver, overLay, false);
+      }
+      if (isExistEle(driver, beginSele)) {
+        // ポイント獲得
+        clickSleepSelector(driver, beginSele, 3000);
+      }
+      checkOverlay(driver, overLay, false);
+      String closeSele = "div.ui-control>a";
+      if (isExistEle(driver, closeSele)) {
+        // 閉じる
+        clickSleepSelector(driver, closeSele, 3000);
+        driver.close();
+        // 最後に格納したウインドウIDにスイッチ
+        driver.switchTo().window(wid);
       }
     }
   }
