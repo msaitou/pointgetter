@@ -100,7 +100,7 @@ public class MOBCountTimer extends MOBBase {
 						String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
 						logg.info("お題　" + text);
 						waitTime = Utille.getWaitTime(text);
-						waitTime -= 80;
+            waitTime -= 99;
 					}
 					else {
 						logg.info("not get odai");
