@@ -3,21 +3,34 @@ package pointGet.mission.pto;
 import java.util.List;
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import lombok.val;
 import pointGet.Utille;
+import pointGet.mission.parts.AnswerAdserver;
+import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerHiroba;
+import pointGet.mission.parts.AnswerInfopanel;
+import pointGet.mission.parts.AnswerKotsuta;
+import pointGet.mission.parts.AnswerShindan;
+import pointGet.mission.parts.AnswerShopping;
 import pointGet.mission.parts.AnswerSurveyEnk;
 
 public class PTOPointResearch2 extends PTOBase {
   final String url = "http://www.pointtown.com/ptu/pointpark/enquete/top.do";
   WebDriver driver = null;
   AnswerSurveyEnk SurveyEnk = null;
+  AnswerAdserver Adserver = null;
+  AnswerColum Colum = null;
+  AnswerKotsuta Kotsuta = null;
+  AnswerInfopanel Infopanel = null;
+  AnswerShindan Shindan = null;
+  AnswerHiroba Hiroba = null;
+  AnswerShopping Shopping = null;
 
   /**
    * @param logg
@@ -25,28 +38,34 @@ public class PTOPointResearch2 extends PTOBase {
   public PTOPointResearch2(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "ポイントリサーチ2!!");
     SurveyEnk = new AnswerSurveyEnk(logg);
+    Adserver = new AnswerAdserver(logg);
+    Colum = new AnswerColum(logg);
+    Kotsuta = new AnswerKotsuta(logg);
+    Infopanel = new AnswerInfopanel(logg);
+    Shindan = new AnswerShindan(logg);
+    Hiroba = new AnswerHiroba(logg);
+    Shopping = new AnswerShopping(logg);
   }
 
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    int skip = 0;
+    int skip = 1;
     String sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
-    sele1 = "div>input.btn_submit",// 
-    sele4 = "div>input[type='submit']",// 
-    sele4_ = "#iframe", //
-    sele5 = "div#shindan", //
-    sele7 = "div.btn>button[type='submit']", //
-    sele6 = "form>input.next_bt", //
-    sele2 = "div.page-content-button>input.button.btn-next";
+        sele1 = "div>input.btn_submit", //
+        sele4 = "div>input[type='submit']", //
+        sele4_ = "#iframe", //
+        sele5 = "div#shindan", //
+        sele7 = "div.btn>button[type='submit']", //
+        sele6 = "form>input.next_bt", // コラム用
+        sele2 = "div.page-content-button>input.button.btn-next";
     while (true) {
       Utille.sleep(5000);
       selector = "div#pt-enq1 td.frame04>a.promo_enq_bt";
       if (isExistEle(driver, selector)) {
         List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-        int size = eleList.size();
-        int targetIndex = size - 1 - skip; // 順番はサイト毎に変更可能だが、変数を使う
+        int size = eleList.size(), targetIndex = size - 1 - skip; // 順番はサイト毎に変更可能だが、変数を使う
         logg.info("size:" + size + " targetIndex:" + targetIndex + " skip:" + skip);
         if (size > targetIndex && targetIndex > 0
             && isExistEle(eleList, targetIndex)) {
@@ -55,37 +74,36 @@ public class PTOPointResearch2 extends PTOBase {
           changeWindow(driver, wid);
           //					selector = "div.ui-control.type-fixed>a.ui-button";
           if (isExistEle(driver, sele3)) {
-            _answerSurveyEnk(sele3, wid);
+            //            _answerSurveyEnk(sele3, wid);
             SurveyEnk.answer(driver, sele3, wid);
-          }
-          else if (isExistEle(driver, sele2)) {
-            _answerKotsuta(sele2, wid);
-          }
-          else if (isExistEle(driver, sele1)) {
-            _answerInfopanel(sele1, wid);
-          }
-          else if (isExistEle(driver, sele5)) {
-            _answerShindan(sele5, wid);
-          }
-          else if (isExistEle(driver, sele6)) {
-            _answerColum(sele6, wid);
-          }
-          else if (isExistEle(driver, sele7)) {
-            _answerHiroba(sele7, wid);
-          }
-          else if (isExistEle(driver, sele4_)) {
-            driver.switchTo().frame(0);
-            _answerShopping(sele4, wid);
-          }
-          else {
+            skip++;
+          } else if (isExistEle(driver, sele2)) {
+            //            _answerKotsuta(sele2, wid);
+            Kotsuta.answer(driver, sele2, wid);
+          } else if (isExistEle(driver, sele1)) {
+            //            _answerInfopanel(sele1, wid);
+            Infopanel.answer(driver, sele1, wid);
+          } else if (isExistEle(driver, sele5)) {
+            //            _answerShindan(sele5, wid);
+            Shindan.answer(driver, sele5, wid);
+          } else if (isExistEle(driver, sele6)) {
+            //            _answerColum(sele6, wid);
+            Colum.answer(driver, sele6, wid);
+          } else if (isExistEle(driver, sele7)) {
+            //            _answerHiroba(sele7, wid);
+            Hiroba.answer(driver, sele7, wid);
+          } else if (isExistEle(driver, sele4_)) {
+            //            driver.switchTo().frame(0);
+            //            _answerShopping(sele4, wid);
+            Shopping.answer(driver, sele4, wid);
+          } else {
             skip++;
             driver.close();
             driver.switchTo().window(wid);
           }
           driver.navigate().refresh();
           Utille.sleep(5000);
-        }
-        else {
+        } else {
           break;
         }
       }
@@ -93,13 +111,13 @@ public class PTOPointResearch2 extends PTOBase {
   }
 
   /**
-   * 
+   *
    * @param sele6
    * @param wid
    */
   private void _answerHiroba(String sele7, String wid) {
     String choiceSele, radioSele = "div.random>label", titleSele = "div.question", // 質問NOも含む
-    qTitle = "div.question";
+        qTitle = "div.question";
     String seleNext = "button.next-btn";
     if (isExistEle(driver, sele7)) {
       clickSleepSelector(driver, sele7, 2000); // 遷移　問開始
@@ -120,7 +138,7 @@ public class PTOPointResearch2 extends PTOBase {
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
             if (isExistEle(eleList2, choiceNum)) {
               // 選択
-              clickSleepSelector(eleList2.get(choiceNum), 3000);
+              clickSleepSelector(eleList2, choiceNum, 3000);
               if (isExistEle(driver, seleNext)) {
                 clickSleepSelector(driver, seleNext, 3000);
                 if (isExistEle(driver, seleNext)) {
@@ -129,8 +147,7 @@ public class PTOPointResearch2 extends PTOBase {
               }
             }
           }
-        }
-        else {
+        } else {
           break;
         }
       }
@@ -151,7 +168,7 @@ public class PTOPointResearch2 extends PTOBase {
   }
 
   /**
-   * 
+   *
    * @param sele6
    * @param wid
    */
@@ -211,8 +228,7 @@ public class PTOPointResearch2 extends PTOBase {
               clickSleepSelector(driver, seleNext2, 4000);
             }
           }
-        }
-        else if (isExistEle(driver, seleSele)) {
+        } else if (isExistEle(driver, seleSele)) {
           int size3 = getSelectorSize(driver, seleSele + ">option");
           choiceNum = Utille.getIntRand(size3);
           String value = driver.findElements(By.cssSelector(seleSele + ">option"))
@@ -224,8 +240,7 @@ public class PTOPointResearch2 extends PTOBase {
             // 次へ
             clickSleepSelector(driver, seleNext3, 4000);
           }
-        }
-        else {
+        } else {
           break;
         }
       }
@@ -253,7 +268,7 @@ public class PTOPointResearch2 extends PTOBase {
   }
 
   /**
-   * 
+   *
    * @param sele5
    * @param wid
    */
@@ -282,8 +297,7 @@ public class PTOPointResearch2 extends PTOBase {
                 if (isExistEle(driver, nextSelector)
                     && isExistEle(driver, endSelector + none, false)) {
                   clickSleepSelector(driver, nextSelector, 2000); // 遷移
-                }
-                else if (isExistEle(driver, endSelector)
+                } else if (isExistEle(driver, endSelector)
                     && isExistEle(driver, nextSelector + none, false)) {
                   clickSleepSelector(driver, endSelector, 4000); // 遷移
                   logg.info("neukata?");
@@ -315,9 +329,9 @@ public class PTOPointResearch2 extends PTOBase {
     // 回答開始
     clickSleepSelector(driver, sele, 3000);
     String choiceSele, radioSele = "div.answer>input[type='radio']", checkSele = "div.answer>input[type='checkbox']",
-    //		noSele = "span.query-num",
-    titleSele = "h2.question", // 質問NOも含む
-    qTitle, seleSub = "div.btn_next>input[type='submit']";
+        //		noSele = "span.query-num",
+        titleSele = "h2.question", // 質問NOも含む
+        qTitle, seleSub = "div.btn_next>input[type='submit']";
     Utille.sleep(2000);
     for (int k = 1; k <= 15; k++) {
       int choiceNum = 0;
@@ -328,8 +342,7 @@ public class PTOPointResearch2 extends PTOBase {
         logg.info(qTitle);
         if (isExistEle(driver, radioSele)) { // ラジオ
           choiceSele = radioSele;
-        }
-        else if (isExistEle(driver, checkSele)) { // チェックぼっくす
+        } else if (isExistEle(driver, checkSele)) { // チェックぼっくす
           choiceSele = checkSele;
         }
 
@@ -339,17 +352,13 @@ public class PTOPointResearch2 extends PTOBase {
           int choiceies = getSelectorSize(driver, choiceSele);
           if (qTitle.indexOf("あなたの性別") >= 0) {
             choiceNum = 0; // 1：男
-          }
-          else if (qTitle.indexOf("あなたの年齢を") >= 0) {
+          } else if (qTitle.indexOf("あなたの年齢を") >= 0) {
             choiceNum = 2; // 2：30代
-          }
-          else if (qTitle.indexOf("あなたのご職業") >= 0) {
+          } else if (qTitle.indexOf("あなたのご職業") >= 0) {
             choiceNum = 2; // 2：会社員
-          }
-          else if (qTitle.indexOf("あなたのお住まいを") >= 0) {
+          } else if (qTitle.indexOf("あなたのお住まいを") >= 0) {
             choiceNum = 2; // 2：関東
-          }
-          else {
+          } else {
             choiceNum = Utille.getIntRand(choiceies);
           }
           List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
@@ -362,8 +371,7 @@ public class PTOPointResearch2 extends PTOBase {
             }
           }
         }
-      }
-      else {
+      } else {
         break;
       }
     }
@@ -384,9 +392,9 @@ public class PTOPointResearch2 extends PTOBase {
 
   private void _answerInfopanel(String sele1, String wid) {
     String choiceSele, radioSele = "div.answer>input[type='radio']", checkSele = "div.answer>input[type='checkbox']",
-    //				noSele = "span.query-num",
-    titleSele = "h2.question", // 質問NOも含む
-    qTitle, seleSub = "div.btn_next>input[type='submit']";
+        //				noSele = "span.query-num",
+        titleSele = "h2.question", // 質問NOも含む
+        qTitle, seleSub = "div.btn_next>input[type='submit']";
     clickSleepSelector(driver, sele1, 5000);
     driver.switchTo().frame(0);
     Utille.sleep(2000);
@@ -401,8 +409,7 @@ public class PTOPointResearch2 extends PTOBase {
           logg.info(qTitle);
           if (isExistEle(driver, radioSele)) { // ラジオ
             choiceSele = radioSele;
-          }
-          else if (isExistEle(driver, checkSele)) { // チェックぼっくす
+          } else if (isExistEle(driver, checkSele)) { // チェックぼっくす
             choiceSele = checkSele;
           }
 
@@ -412,17 +419,13 @@ public class PTOPointResearch2 extends PTOBase {
             int choiceies = getSelectorSize(driver, choiceSele);
             if (qTitle.indexOf("あなたの性別") >= 0) {
               choiceNum = 0; // 1：男
-            }
-            else if (qTitle.indexOf("あなたの年齢を") >= 0) {
+            } else if (qTitle.indexOf("あなたの年齢を") >= 0) {
               choiceNum = 2; // 2：30代
-            }
-            else if (qTitle.indexOf("あなたのご職業") >= 0) {
+            } else if (qTitle.indexOf("あなたのご職業") >= 0) {
               choiceNum = 2; // 2：会社員
-            }
-            else if (qTitle.indexOf("あなたのお住まい") >= 0) {
+            } else if (qTitle.indexOf("あなたのお住まい") >= 0) {
               choiceNum = 2; // 2：関東
-            }
-            else {
+            } else {
               choiceNum = Utille.getIntRand(choiceies);
             }
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
@@ -435,8 +438,7 @@ public class PTOPointResearch2 extends PTOBase {
               }
             }
           }
-        }
-        else {
+        } else {
           break;
         }
       }
@@ -457,12 +459,13 @@ public class PTOPointResearch2 extends PTOBase {
   }
 
   /**
-   * 
+   *
    * @param sele2
    * @param wid
    */
   private void _answerKotsuta(String sele2, String wid) {
-    String choiceSele, radioSele = "td.choice-table-input>input.radio", seleSele = "select", noSele = "span.query-num", titleSele = "span.query-text", qTitle;
+    String choiceSele, radioSele = "td.choice-table-input>input.radio", seleSele = "select", noSele = "span.query-num",
+        titleSele = "span.query-text", qTitle;
     clickSleepSelector(driver, sele2, 4000);
     for (int k = 1; k <= 18; k++) {
       int choiceNum = 0;
@@ -474,8 +477,7 @@ public class PTOPointResearch2 extends PTOBase {
         logg.info(qNo + " " + qTitle);
         if (isExistEle(driver, radioSele)) { // ラジオ
           choiceSele = radioSele;
-        }
-        else if (isExistEle(driver, seleSele)) { // セレクト
+        } else if (isExistEle(driver, seleSele)) { // セレクト
           choiceSele = seleSele;
         }
         // 回答選択
@@ -485,17 +487,13 @@ public class PTOPointResearch2 extends PTOBase {
           int choiceies = getSelectorSize(driver, choiceSele);
           if (qTitle.indexOf("あなたの性別") >= 0) {
             choiceNum = 0; // 1：男
-          }
-          else if (qTitle.indexOf("あなたの年齢をお知らせください") >= 0) {
+          } else if (qTitle.indexOf("あなたの年齢をお知らせください") >= 0) {
             choiceNum = 3; // 4：30代
-          }
-          else if (qTitle.indexOf("あなたの職業") >= 0) {
+          } else if (qTitle.indexOf("あなたの職業") >= 0) {
             choiceNum = 3; // 3：会社員
-          }
-          else if (qTitle.indexOf("あなたのお住まいの都道府県を教えてください") >= 0) {
+          } else if (qTitle.indexOf("あなたのお住まいの都道府県を教えてください") >= 0) {
             choiceNum = 3; // 3：関東
-          }
-          else {
+          } else {
             choiceNum = Utille.getIntRand(choiceies);
           }
           List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
@@ -506,15 +504,13 @@ public class PTOPointResearch2 extends PTOBase {
               clickSleepSelector(driver, sele2, 6000);
             }
           }
-        }
-        else if (seleSele.equals(choiceSele)) {
+        } else if (seleSele.equals(choiceSele)) {
           Utille.sleep(2000);
           int size3 = getSelectorSize(driver, choiceSele + ">option");
           String value = "";
           if (qTitle.indexOf("あなたのお住まいを") >= 0) {
             value = "13";
-          }
-          else {
+          } else {
             choiceNum = Utille.getIntRand(size3);
             value = driver.findElements(By.cssSelector(choiceSele + ">option"))
                 .get(choiceNum).getAttribute("value");
@@ -526,16 +522,14 @@ public class PTOPointResearch2 extends PTOBase {
             clickSleepSelector(driver, sele2, 6000);
           }
         }
-      }
-      else {
+      } else {
         break;
       }
     }
     while (true) {
       if (isExistEle(driver, sele2)) {
         clickSleepSelector(driver, sele2, 5000);
-      }
-      else {
+      } else {
         break;
       }
     }
@@ -549,8 +543,8 @@ public class PTOPointResearch2 extends PTOBase {
     }
   }
 
-  /** 
-   * 
+  /**
+   *
    * @param sele3
    * @param wid
    */
@@ -561,7 +555,9 @@ public class PTOPointResearch2 extends PTOBase {
     selector = "form>input.ui-button";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000);
-      String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button", seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no", titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
+      String choiceSele = "label.ui-label-radio", seleNext2 = "div.fx-control>input.ui-button",
+          seleSele = "select.ui-select", overLay = "div.overlay-popup a.button-close", noSele = "div.ui-item-no",
+          titleSele = "h2.ui-item-title", checkSele = "label.ui-label-checkbox";
       // 12問
       for (int k = 1; k <= 13; k++) {
         if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
@@ -596,8 +592,7 @@ public class PTOPointResearch2 extends PTOBase {
               // 選択
               clickSleepSelector(eleList2.get(choiceNum), 3000);
             }
-          }
-          else if (isExistEle(driver, checkSele)) {
+          } else if (isExistEle(driver, checkSele)) {
             int size4 = getSelectorSize(driver, checkSele);
             choiceNum = Utille.getIntRand(size4);
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(checkSele));
@@ -605,15 +600,13 @@ public class PTOPointResearch2 extends PTOBase {
               // 選択
               clickSleepSelector(eleList2.get(choiceNum), 3000);
             }
-          }
-          else if (isExistEle(driver, seleSele)) {
+          } else if (isExistEle(driver, seleSele)) {
             Utille.sleep(2000);
             int size3 = getSelectorSize(driver, seleSele + ">option");
             String value = "";
             if (qTitle.indexOf("居住区") >= 0) {
               value = "4";
-            }
-            else {
+            } else {
               choiceNum = Utille.getIntRand(size3);
               value = driver.findElements(By.cssSelector(seleSele + ">option"))
                   .get(choiceNum).getAttribute("value");
@@ -622,8 +615,7 @@ public class PTOPointResearch2 extends PTOBase {
             selectList.selectByValue(value);
             Utille.sleep(3000);
           }
-        }
-        else {
+        } else {
           break;
         }
         if (isExistEle(driver, seleNext2)) {
@@ -660,11 +652,11 @@ public class PTOPointResearch2 extends PTOBase {
   private void _answerSurveyEnk(String sele3, String wid) {
     // 回答開始
     clickSleepSelector(driver, sele3, 3000);
-    String qTitleSele = "div.question-label", 
-        qTitle = "", 
-        radioSele = "label.item-radio", 
-        checkboxSele = "label.item-checkbox", 
-        choiceSele = "", 
+    String qTitleSele = "div.question-label",
+        qTitle = "",
+        radioSele = "label.item-radio",
+        checkboxSele = "label.item-checkbox",
+        choiceSele = "",
         seleSele = "select.mdl-textfield__input";
     for (int k = 1; k <= 18; k++) {
       int choiceNum = 0;
@@ -673,17 +665,14 @@ public class PTOPointResearch2 extends PTOBase {
       if (isExistEle(driver, qTitleSele)) {
         qTitle = driver.findElement(By.cssSelector(qTitleSele)).getText();
         logg.info("[" + qTitle + "]");
-      }
-      else {
+      } else {
         break;
       }
       if (isExistEle(driver, radioSele)) { // ラジオ
         choiceSele = radioSele;
-      }
-      else if (isExistEle(driver, checkboxSele)) { // チェックボックス
+      } else if (isExistEle(driver, checkboxSele)) { // チェックボックス
         choiceSele = checkboxSele;
-      }
-      else if (isExistEle(driver, seleSele)) {// セレクトボックス
+      } else if (isExistEle(driver, seleSele)) {// セレクトボックス
         choiceSele = seleSele;
       }
       if (radioSele.equals(choiceSele)
@@ -691,13 +680,11 @@ public class PTOPointResearch2 extends PTOBase {
         int choiceies = getSelectorSize(driver, choiceSele);
         if (qTitle.indexOf("あなたの性別を") >= 0) {
           // 1：男
-        }
-        else if (qTitle.indexOf("あなたの年齢を") >= 0) {
+        } else if (qTitle.indexOf("あなたの年齢を") >= 0) {
           if (choiceies > 3) {// 一応選択可能な範囲かをチェック
             choiceNum = 3;
           }
-        }
-        else {
+        } else {
           choiceNum = Utille.getIntRand(choiceies);
         }
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
@@ -705,15 +692,13 @@ public class PTOPointResearch2 extends PTOBase {
           // 選択
           clickSleepSelector(eleList2.get(choiceNum), 2500);
         }
-      }
-      else if (seleSele.equals(choiceSele)) {
+      } else if (seleSele.equals(choiceSele)) {
         Utille.sleep(2000);
         int size3 = getSelectorSize(driver, seleSele + ">option");
         String value = "";
         if (qTitle.indexOf("住まい") >= 0) {
           value = "14";
-        }
-        else {
+        } else {
           choiceNum = Utille.getIntRand(size3);
           value = driver.findElements(By.cssSelector(seleSele + ">option"))
               .get(choiceNum).getAttribute("value");
@@ -745,7 +730,8 @@ public class PTOPointResearch2 extends PTOBase {
   }
 
   private void _answerAdserver(String sele, String wid) {
-    String choiceSele, radioSele = "label.radiolabel", overLay = "div#center-frame>img", noSele = "h2>span.q_number", titleSele = "h2>span.q_text", qTitle;
+    String choiceSele, radioSele = "label.radiolabel", overLay = "div#center-frame>img", noSele = "h2>span.q_number",
+        titleSele = "h2>span.q_text", qTitle;
     clickSleepSelector(driver, sele, 4000);
     Utille.sleep(4000);
     for (int k = 1; k <= 20; k++) {
@@ -766,17 +752,13 @@ public class PTOPointResearch2 extends PTOBase {
           int choiceies = getSelectorSize(driver, choiceSele);
           if (qTitle.indexOf("あなたの性別を教えてください") >= 0) {
             choiceNum = 0; // 1：男
-          }
-          else if (qTitle.indexOf("あなたの年齢を教えてください") >= 0) {
+          } else if (qTitle.indexOf("あなたの年齢を教えてください") >= 0) {
             choiceNum = 3; // 4：30代
-          }
-          else if (qTitle.indexOf("あなたの職業を教えてください") >= 0) {
+          } else if (qTitle.indexOf("あなたの職業を教えてください") >= 0) {
             choiceNum = 3; // 3：会社員
-          }
-          else if (qTitle.indexOf("あなたのお住まいの都道府県を教えてください") >= 0) {
+          } else if (qTitle.indexOf("あなたのお住まいの都道府県を教えてください") >= 0) {
             choiceNum = 3; // 3：関東
-          }
-          else {
+          } else {
             choiceNum = Utille.getIntRand(choiceies);
           }
           List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
@@ -788,8 +770,7 @@ public class PTOPointResearch2 extends PTOBase {
             }
           }
         }
-      }
-      else {
+      } else {
         break;
       }
     }

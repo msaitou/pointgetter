@@ -35,7 +35,7 @@ public class AnswerSurveyEnk extends MissCommon {
     radioSele = "label.item-radio", // ラジオセレクター
     checkboxSele = "label.item-checkbox", // チェックボックスセレクター
     overlay = "div.bnrFrame>div.bnrclose>img", // 広告セレクター
-    noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", // 非表示広告セレクター 
+    noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", // 非表示広告セレクター
     seleSele = "select.mdl-textfield__input"; // ドロップダウンセレクター
     for (int k = 1; k <= 15; k++) {
       int choiceNum = 0;
@@ -69,7 +69,7 @@ public class AnswerSurveyEnk extends MissCommon {
         }
         else {
           if (checkboxSele.equals(choiceSele)) {
-            choiceies -= 1; // チェックボックスは最後の選択肢を選択しない
+            choiceies--;// チェックボックスは最後の選択肢を選択しない
           }
           choiceNum = Utille.getIntRand(choiceies);
         }
