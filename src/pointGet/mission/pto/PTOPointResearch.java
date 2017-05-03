@@ -11,12 +11,14 @@ import org.openqa.selenium.support.ui.Select;
 
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerPointResearch;
+import pointGet.mission.parts.AnswerSurveyEnk;
 
 public class PTOPointResearch extends PTOBase {
   final String url = "http://www.pointtown.com/ptu/pointpark/enquete/top.do";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerPointResearch PointResearch = null;
+  AnswerSurveyEnk SurveyEnk = null;
 
   /**
    * @param logg
@@ -24,12 +26,14 @@ public class PTOPointResearch extends PTOBase {
   public PTOPointResearch(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "ポイントリサーチ");
     PointResearch = new AnswerPointResearch(logg);
+    SurveyEnk = new AnswerSurveyEnk(logg);
   }
 
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
+    selector = "td>span.promo_enq_bt";
     Utille.sleep(3000);
     int skip = 1;
     String sele3 = "div>button[type='submit']", // 回答する surveyenk用
@@ -37,7 +41,6 @@ public class PTOPointResearch extends PTOBase {
     sele1 = "div.ui-control.type-fixed>a.ui-button"; // ポイントサーチ用 
 
     while (true) {
-      selector = "td>span.promo_enq_bt";
       if (!isExistEle(driver, selector)) {
         break;
       }
@@ -56,8 +59,11 @@ public class PTOPointResearch extends PTOBase {
           Utille.sleep(3000);
         }
         else if (isExistEle(driver, sele3)) {
-          closeOtherWindow(driver);
-          _answerSurveyEnk(sele3, "");
+//          closeOtherWindow(driver);
+//          _answerSurveyEnk(sele3, "");
+          logg.info("[TODO 使えるか微妙]");
+          SurveyEnk.answer(driver, sele3, wid);
+          skip++;
         }
         else {
           skip++;
@@ -74,6 +80,7 @@ public class PTOPointResearch extends PTOBase {
   }
 
 
+  // TODO 消すな、処理が少し異なる
   /**
    *
    * @param sele3
@@ -82,7 +89,12 @@ public class PTOPointResearch extends PTOBase {
   private void _answerSurveyEnk(String sele3, String wid) {
     // 回答開始
     clickSleepSelector(driver, sele3, 3000);
-    String qTitleSele = "div.question-label", qTitle = "", radioSele = "label.item-radio", checkboxSele = "label.item-checkbox", choiceSele = "", seleSele = "select.mdl-textfield__input";
+    String qTitleSele = "div.question-label", 
+        qTitle = "", 
+        radioSele = "label.item-radio", 
+        checkboxSele = "label.item-checkbox", 
+        choiceSele = "", 
+        seleSele = "select.mdl-textfield__input";
     for (int k = 1; k <= 15; k++) {
       int choiceNum = 0;
       qTitle = "";

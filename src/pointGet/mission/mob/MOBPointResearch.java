@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import pointGet.Utille;
+import pointGet.mission.parts.AnswerEnkShopQP2;
+import pointGet.mission.parts.AnswerEnqY2at;
 import pointGet.mission.parts.AnswerPointResearch;
 
 public class MOBPointResearch extends MOBBase {
@@ -17,13 +19,16 @@ public class MOBPointResearch extends MOBBase {
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerPointResearch PointResearch = null;
-
+  AnswerEnkShopQP2 EnkShopQP = null;
+  AnswerEnqY2at EnqY2at = null;
   /**
    * @param logg
    */
   public MOBPointResearch(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "アンケート");
     PointResearch = new AnswerPointResearch(logg);
+    EnkShopQP = new AnswerEnkShopQP2(logg);
+    EnqY2at = new AnswerEnqY2at(logg);
   }
 
   @Override
@@ -47,6 +52,8 @@ public class MOBPointResearch extends MOBBase {
         clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
+        String cUrl = driver.getCurrentUrl();
+
         if (isExistEle(driver, sele1)) {
           PointResearch.answer(driver, sele1, wid);
         }
@@ -58,17 +65,25 @@ public class MOBPointResearch extends MOBBase {
         //				else if (isExistEle(driver, sele3)) {
         //					_answerSurveyEnk(sele3, wid);
         //				}
-        // shop-qp
-        else if (isExistEle(driver, sele4)) {
-          String cUrl = driver.getCurrentUrl();
-          if (cUrl.indexOf("rsch.jp") >= 0) {
-            //						_answerRsch(sele4, wid);
-            skip++;
-          }
-          else {
-            _answerEnk(sele4, wid);
-          }
+        else if (cUrl.indexOf("enq.shop-qp.com") >= 0
+            && isExistEle(driver, sele4)) {
+          EnkShopQP.answer(driver, sele4, wid);
         }
+        else if (cUrl.indexOf("enq.y2at.com") >= 0
+            && isExistEle(driver, sele4)) {
+          EnqY2at.answer(driver, sele4, wid);
+        }
+//
+//        // shop-qp
+//        else if (isExistEle(driver, sele4)) {
+//          if (cUrl.indexOf("rsch.jp") >= 0) {
+//            //						_answerRsch(sele4, wid);
+//            skip++;
+//          }
+//          else {
+//            EnkShopQP.answer(driver, sele4, wid);
+//          }
+//        }
         else {
           skip++;
           driver.close();
@@ -249,95 +264,6 @@ public class MOBPointResearch extends MOBBase {
       clickSleepSelector(driver, closeSele, 4000);
     }
     //			driver.close();
-    // 最後に格納したウインドウIDにスイッチ
-    driver.switchTo().window(wid);
-  }
-
-  /**
-   *
-   * @param sele4
-   * @param wid
-   */
-  private void _answerEnk(String sele4, String wid) {
-    // 回答開始
-    clickSleepSelector(driver, sele4, 7000);
-
-    String qTitleSele = "div.content_note.note", qNoSele = "div.qno", qTitle = "", qNo = "", radioSele = "label.rdck_label_sp", choiceSele = "", overlay = "div.bnrFrame>div.bnrclose>img", noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", seleSele = "div.note>select";
-    for (int k = 1; k <= 15; k++) {
-      int choiceNum = 0;
-      qTitle = "";
-      qNo = "";
-      choiceSele = "";
-      if (isExistEle(driver, qTitleSele)
-          && isExistEle(driver, qNoSele)) {
-        qNo = driver.findElement(By.cssSelector(qNoSele)).getText();
-        qTitle = driver.findElement(By.cssSelector(qTitleSele)).getText();
-        logg.info("[" + qNo + " " + qTitle + "]");
-      }
-      if (isExistEle(driver, radioSele)) { // ラジオ
-        choiceSele = radioSele;
-      }
-      // TODO
-      else if (isExistEle(driver, seleSele)) { // セレクトボックス
-        choiceSele = seleSele;
-      }
-      if (radioSele.equals(choiceSele)) {
-        int choiceies = getSelectorSize(driver, choiceSele);
-        choiceNum = Utille.getIntRand(choiceies);
-        List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
-        if (isExistEle(eleList2, choiceNum)) {
-          // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
-        }
-      }
-      else if (seleSele.equals(choiceSele)) {
-        Utille.sleep(2000);
-        int size3 = getSelectorSize(driver, seleSele + ">option");
-        String value = "";
-        if (qTitle.indexOf("性別・年代") >= 0) {
-          value = "3";
-        }
-        else if (qTitle.indexOf("お住まいの都道府県") >= 0) {
-          value = "14";
-        }
-        else {
-          choiceNum = Utille.getIntRand(size3);
-          value = driver.findElements(By.cssSelector(seleSele + ">option"))
-              .get(choiceNum).getAttribute("value");
-        }
-        Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
-        selectList.selectByValue(value);
-        Utille.sleep(3000);
-      }
-      // TODO
-
-      if (radioSele.equals(choiceSele)) {
-        int choiceies = getSelectorSize(driver, choiceSele);
-        choiceNum = Utille.getIntRand(choiceies);
-        List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
-        if (isExistEle(eleList2, choiceNum)) {
-          // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
-        }
-      }
-      if (isExistEle(driver, sele4)) {
-        // 次へ(回答へ)
-        clickSleepSelector(driver, sele4, 8000);
-
-        // 広告
-        if (!isExistEle(driver, noneOverlay)
-            && isExistEle(driver, overlay)) {
-          clickSleepSelector(driver, overlay, 3000);
-        }
-        // TODO
-        //				if (isExistEle(driver, sele4)) {
-        //					// 次へ(Qへ)
-        //					clickSleepSelector(driver, sele4, 7000);
-        //				}
-      }
-    }
-    Utille.sleep(3000);
-    driver.close();
     // 最後に格納したウインドウIDにスイッチ
     driver.switchTo().window(wid);
   }

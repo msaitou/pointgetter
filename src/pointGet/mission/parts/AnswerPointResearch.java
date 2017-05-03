@@ -12,10 +12,6 @@ import pointGet.Utille;
 import pointGet.mission.MissCommon;
 
 public class AnswerPointResearch extends MissCommon {
-  final String url = "http://www.gendama.jp/survey/mini";
-
-  //  WebDriver driver = null;
-
   /**
    * constracter
    *
@@ -31,6 +27,7 @@ public class AnswerPointResearch extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
+    logg.info("-[" + this.getClass().getName() + "]-");
     clickSleepSelector(driver, startSele, 4000);
     // 回答開始
     String beginSele = "form>input.ui-button";
