@@ -28,13 +28,17 @@ public class AnswerZukan extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("####[" + this.getClass().getName() + "]####");
-
-    clickSleepSelector(driver, startSele, 3000);
-    clickSleepSelector(driver, startSele, 4000); // 遷移　問開始
-    clickSleepSelector(driver, startSele, 4000); // 遷移　問開始
-    String seleNextb2 = "form>input[type='image']", //
+    Utille.sleep(4000);
+    for (int g = 0; g < 3; g++) {
+      if (isExistEle(driver, startSele)) {
+        clickSleepSelector(driver, startSele, 4000);
+      }
+    }
+    String 
+        seleNextb2 = "form>input[alt='進む']", //
+    seleEnd = "form>input[type='image']", //
     overLay = "div#interstitial[style*='display: block']>div>div#inter-close", //
-    choiceSele = "input[type='radio']", // ラジオセレクター
+    choiceSele = "ul#enqueteUl>li>label", // ラジオセレクター
     seleNext2 = "div>input.enquete_nextbt", //　次へセレクター
     seleNext3 = "div>input.enquete_nextbt_2", //　次へセレクター2
     seleSele = "form.menu>select", // プルダウンセレクター
@@ -102,11 +106,13 @@ public class AnswerZukan extends MissCommon {
         }
       }
     }
-    for (int ii = 0; ii < 2; ii++) {
-      checkOverlay(driver, overLay, false);
-      if (isExistEle(driver, seleNextb2)) {
-        clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
-      }
+    checkOverlay(driver, overLay, false);
+    if (isExistEle(driver, seleNextb2)) {
+      clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
+    }
+    checkOverlay(driver, overLay, false);
+    if (isExistEle(driver, seleEnd)) {
+      clickSleepSelector(driver, seleEnd, 4000); // 遷移　
     }
     driver.close();
     driver.switchTo().window(wid);
