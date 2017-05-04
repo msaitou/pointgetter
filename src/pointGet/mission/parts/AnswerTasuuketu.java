@@ -51,8 +51,9 @@ public class AnswerTasuuketu extends MissCommon {
             // 選択
             clickSleepSelector(eleList2.get(choiceNum), 3000);
             if (isExistEle(driver, voteSele)) {
-              clickSleepSelector(driver, voteSele, 6000);
+              clickSleepSelector(driver, voteSele, 7000);
               if (isExistEle(driver, voteSele)) {
+                waitTilReady(driver);
                 clickSleepSelector(driver, voteSele, 6000);
               }
             }
