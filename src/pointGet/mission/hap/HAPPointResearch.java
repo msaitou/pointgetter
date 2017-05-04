@@ -65,7 +65,7 @@ public class HAPPointResearch extends HAPBase {
     driver = driverAtom;
     driver.get(url);
     selector = "tbody#easyenquete td>a>img";
-    int skip = 22;
+    int skip = 2;
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
     sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
