@@ -18,6 +18,7 @@ import pointGet.mission.parts.AnswerPointResearch;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerShopping;
 import pointGet.mission.parts.AnswerSurveyEnk;
+import pointGet.mission.parts.AnswerTasuuketu;
 import pointGet.mission.parts.AnswerZukan;
 
 public class GENPointResearch2 extends GENBase {
@@ -37,6 +38,8 @@ public class GENPointResearch2 extends GENBase {
   AnswerPhotoEnk PhotoEnk = null;
   /* アンケートクラス　図鑑 */
   AnswerZukan Zukan = null;
+  /* アンケートクラス　多数決 */
+  AnswerTasuuketu Tasuuketu = null;
 
   /**
    * @param logg
@@ -54,6 +57,7 @@ public class GENPointResearch2 extends GENBase {
     Shopping = new AnswerShopping(logg);
     PhotoEnk = new AnswerPhotoEnk(logg);
     Zukan = new AnswerZukan(logg);
+    Tasuuketu = new AnswerTasuuketu(logg);
   }
 
   @Override
@@ -72,6 +76,7 @@ public class GENPointResearch2 extends GENBase {
     sele6 = "form>input.next_bt", // コラム用
     sele7 = "div.btn>button[type='submit']", //
     sele8 = "form>input.next_bt",
+        sele9 = "a.start__button",
 
     //    sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
     a = "";
@@ -117,6 +122,9 @@ public class GENPointResearch2 extends GENBase {
         else if (cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
+        }
+        else if (isExistEle(driver, sele9)) {
+          Tasuuketu.answer(driver, sele9, wid);
         }
         else {
           skip++;
