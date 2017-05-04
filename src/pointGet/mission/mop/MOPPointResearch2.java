@@ -54,7 +54,7 @@ public class MOPPointResearch2 extends MOPBase {
         String cUrl = driver.getCurrentUrl();
         if (isExistEle(driver, sele3)) {
           SurveyEnk.answer(driver, sele3, wid);
-          skip++;
+//          skip++;
         }
         else if (cUrl.indexOf("enq.shop-qp.com") >= 0
             && isExistEle(driver, sele4)) {

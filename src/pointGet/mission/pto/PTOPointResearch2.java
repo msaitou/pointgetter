@@ -72,27 +72,27 @@ public class PTOPointResearch2 extends PTOBase {
           changeWindow(driver, wid);
           if (isExistEle(driver, sele3)) {
             SurveyEnk.answer(driver, sele3, wid);
-            skip++;
-          } 
+//            skip++;
+          }
           else if (isExistEle(driver, sele2)) {
             Kotsuta.answer(driver, sele2, wid);
-          } 
+          }
           else if (isExistEle(driver, sele1)) {
             Infopanel.answer(driver, sele1, wid);
-          } 
+          }
           else if (isExistEle(driver, sele5)) {
             Shindan.answer(driver, sele5, wid);
-          } 
+          }
           else if (isExistEle(driver, sele6)) {
             Colum.answer(driver, sele6, wid);
-          } 
+          }
           else if (isExistEle(driver, sele7)) {
             Hiroba.answer(driver, sele7, wid);
-          } 
+          }
           else if (isExistEle(driver, sele4_)) {
             // $('iframe').contents().find("div>input[type='submit']")
             Shopping.answer(driver, sele4, wid);
-          } 
+          }
           else {
             skip++;
             driver.close();

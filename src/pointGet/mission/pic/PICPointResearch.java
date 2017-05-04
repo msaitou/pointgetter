@@ -54,7 +54,7 @@ public class PICPointResearch extends PICBase {
           if (isExistEle(driver, sele3)) {
             // http://mini.surveyenquete.net
             SurveyEnk.answer(driver, sele3, wid);
-            skip++;
+//            skip++;
           }
           else if (cUrl.indexOf("enq.shop-qp.com") >= 0
               && isExistEle(driver, sele8)) {
