@@ -30,7 +30,7 @@ public class AnswerSurveyEnk extends MissCommon {
     logg.info("-[" + this.getClass().getName() + "]-");
     // 回答開始
     clickSleepSelector(driver, startSele, 7000);
-    String qTitleSele = "div.content_note.note", // タイトルセレクター
+    String qTitleSele = "div.question-label", // タイトルセレクター
     qNoSele = "div.qno", // 問番セレクター
     radioSele = "label.item-radio", // ラジオセレクター
     checkboxSele = "label.item-checkbox", // チェックボックスセレクター
@@ -111,14 +111,18 @@ public class AnswerSurveyEnk extends MissCommon {
       }
     }
     Utille.sleep(3000);
+    if (isExistEle(driver, startSele)) {
+      // 次へ(回答へ)
+      clickSleepSelector(driver, startSele, 8000);
+    }
     // close
-    String closeSele = "input.btn_close_en";
-    if (isExistEle(driver, closeSele)) {
-      clickSleepSelector(driver, closeSele, 4000);
-    }
-    else {
+//    String closeSele = "input.btn_close_en";
+//    if (isExistEle(driver, closeSele)) {
+//      clickSleepSelector(driver, closeSele, 4000);
+//    }
+//    else {
       driver.close();
-    }
+//    }
     // 最後に格納したウインドウIDにスイッチ
     driver.switchTo().window(wid);
   }
