@@ -38,7 +38,6 @@ public class HAPPointResearch extends HAPBase {
   AnswerPhotoEnk PhotoEnk = null;
   /* アンケートクラス　図鑑 */
   AnswerZukan Zukan = null;
-  
 
   /**
    * @param logg
@@ -63,17 +62,17 @@ public class HAPPointResearch extends HAPBase {
     driver = driverAtom;
     driver.get(url);
     selector = "tbody#easyenquete td>a>img";
-    int skip = 3;
+    int skip = 22;
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
     sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
-    sele3 = "div>button[type='submit']", // 回答する surveyenk用
-        sele4 = "div>input[type='submit']", //
-        sele4_ = "#iframe", //
+    sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
+    sele4 = "div>input[type='submit']", //
+    sele4_ = "#iframe", //
     sele5 = "div#shindan", //
     sele6 = "form>input.next_bt", // コラム用
-        sele7 = "div.btn>button[type='submit']", //
-        sele8 = "form>input.next_bt",
+    sele7 = "div.btn>button[type='submit']", //
+    sele8 = "form>input.next_bt",
 
     //    sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
     a = "";
@@ -100,9 +99,10 @@ public class HAPPointResearch extends HAPBase {
         else if (isExistEle(driver, sele5)) {
           Shindan.answer(driver, sele5, wid);
         }
-        else if (isExistEle(driver, sele7)) {
+        else if (cUrl.indexOf("question-hiroba") >= 0
+            && isExistEle(driver, sele7)) {
           Hiroba.answer(driver, sele7, wid);
-        } 
+        }
         else if (isExistEle(driver, sele4_)) {
           // $('iframe').contents().find("div>input[type='submit']")
           Shopping.answer(driver, sele4, wid);
@@ -119,9 +119,7 @@ public class HAPPointResearch extends HAPBase {
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
         }
-        
 
-        
         //        if (isExistEle(driver, sele1)) {
         //          PointResearch.answer(driver, sele1, wid);
         //        }

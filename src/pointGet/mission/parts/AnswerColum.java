@@ -2,8 +2,11 @@ package pointGet.mission.parts;
 
 import java.util.List;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -109,10 +112,17 @@ public class AnswerColum extends MissCommon {
     checkOverlay(driver, overLay, false);
     if (isExistEle(driver, finishSele)) {
       clickSleepSelector(driver, finishSele, 5000); // 遷移
-//      // アラートをけして
-//      val alert = driver.switchTo().alert();
-//      alert.accept();
-//      Utille.sleep(5000);
+      try {
+        // アラートをけして
+        val alert = driver.switchTo().alert();
+        alert.accept();
+        Utille.sleep(5000);
+      }
+      catch (NoAlertPresentException ae) {
+        logg.error("##Exception##################");
+        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(ae), 1000));
+        logg.error("#############################");
+      }
     }
 //    if (isExistEle(driver, closeSele)) {
 //      clickSleepSelector(driver, closeSele, 4000);

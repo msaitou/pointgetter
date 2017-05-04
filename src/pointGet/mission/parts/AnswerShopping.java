@@ -27,6 +27,7 @@ public class AnswerShopping extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("####[" + this.getClass().getName() + "]####");
+    Utille.sleep(2000);
     driver.switchTo().frame(0);
     clickSleepSelector(driver, startSele, 3000);
     String radioSele = "div.answer>input[type='radio']", //

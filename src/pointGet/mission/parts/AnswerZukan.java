@@ -45,7 +45,8 @@ public class AnswerZukan extends MissCommon {
     titleSele = "p#enqueteTitle";
     for (int g = 0; g < 4; g++) {
       if (isExistEle(driver, seleNextb2)) {
-        clickSleepSelector(driver, seleNextb2, 4000); // 遷移　問開始するよ
+        waitTilReady(driver);
+        clickSleepSelector(driver, seleNextb2, 6000); // 遷移　問開始するよ
       }
     }
     Utille.sleep(5000);
