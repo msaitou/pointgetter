@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.MissCommon;
 
@@ -110,10 +109,10 @@ public class AnswerColum extends MissCommon {
     checkOverlay(driver, overLay, false);
     if (isExistEle(driver, finishSele)) {
       clickSleepSelector(driver, finishSele, 5000); // 遷移
-      // アラートをけして
-      val alert = driver.switchTo().alert();
-      alert.accept();
-      Utille.sleep(5000);
+//      // アラートをけして
+//      val alert = driver.switchTo().alert();
+//      alert.accept();
+//      Utille.sleep(5000);
     }
 //    if (isExistEle(driver, closeSele)) {
 //      clickSleepSelector(driver, closeSele, 4000);

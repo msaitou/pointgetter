@@ -29,9 +29,8 @@ public class AnswerSurveyEnk extends MissCommon {
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("-[" + this.getClass().getName() + "]-");
     // 回答開始
-    clickSleepSelector(driver, startSele, 7000);
+    clickSleepSelector(driver, startSele, 4000);
     String qTitleSele = "div.question-label", // タイトルセレクター
-    qNoSele = "div.qno", // 問番セレクター
     radioSele = "label.item-radio", // ラジオセレクター
     checkboxSele = "label.item-checkbox", // チェックボックスセレクター
     overlay = "div.bnrFrame>div.bnrclose>img", // 広告セレクター
@@ -39,12 +38,10 @@ public class AnswerSurveyEnk extends MissCommon {
     seleSele = "select.mdl-textfield__input"; // ドロップダウンセレクター
     for (int k = 1; k <= 15; k++) {
       int choiceNum = 0;
-      String qTitle = "", qNo = "", choiceSele = "";
-      if (isExistEle(driver, qTitleSele)
-          && isExistEle(driver, qNoSele)) {
-        qNo = driver.findElement(By.cssSelector(qNoSele)).getText();
+      String qTitle = "", choiceSele = "";
+      if (isExistEle(driver, qTitleSele)) {
         qTitle = driver.findElement(By.cssSelector(qTitleSele)).getText();
-        logg.info("[" + qNo + " " + qTitle + "]");
+        logg.info("[" + qTitle + "]");
       }
       if (isExistEle(driver, radioSele)) { // ラジオ
         choiceSele = radioSele;
@@ -98,11 +95,10 @@ public class AnswerSurveyEnk extends MissCommon {
         selectList.selectByValue(value);
         Utille.sleep(3000);
       }
-      // TODO
 
       if (isExistEle(driver, startSele)) {
         // 次へ(回答へ)
-        clickSleepSelector(driver, startSele, 8000);
+        clickSleepSelector(driver, startSele, 4000);
         // 広告
         if (!isExistEle(driver, noneOverlay)
             && isExistEle(driver, overlay)) {
@@ -113,7 +109,7 @@ public class AnswerSurveyEnk extends MissCommon {
     Utille.sleep(3000);
     if (isExistEle(driver, startSele)) {
       // 次へ(回答へ)
-      clickSleepSelector(driver, startSele, 8000);
+      clickSleepSelector(driver, startSele, 5000);
     }
     // close
 //    String closeSele = "input.btn_close_en";
