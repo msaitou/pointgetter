@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import pointGet.Utille;
-import pointGet.mission.parts.AnswerEnkShopQP2;
+import pointGet.mission.parts.AnswerEnkShopQP;
 import pointGet.mission.parts.AnswerEnqY2at;
 import pointGet.mission.parts.AnswerPointResearch;
 
@@ -19,7 +19,7 @@ public class MOBPointResearch extends MOBBase {
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerPointResearch PointResearch = null;
-  AnswerEnkShopQP2 EnkShopQP = null;
+  AnswerEnkShopQP EnkShopQP = null;
   AnswerEnqY2at EnqY2at = null;
   /**
    * @param logg
@@ -27,7 +27,7 @@ public class MOBPointResearch extends MOBBase {
   public MOBPointResearch(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "アンケート");
     PointResearch = new AnswerPointResearch(logg);
-    EnkShopQP = new AnswerEnkShopQP2(logg);
+    EnkShopQP = new AnswerEnkShopQP(logg);
     EnqY2at = new AnswerEnqY2at(logg);
   }
 

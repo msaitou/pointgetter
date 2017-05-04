@@ -107,8 +107,7 @@ public class AnswerEnkShopQP2 extends MissCommon {
     String closeSele = "input.btn_close_en";
     if (isExistEle(driver, closeSele)) {
       clickSleepSelector(driver, closeSele, 4000);
-      driver.switchTo().window(wid);
-      driver.navigate().refresh();
     }
+    driver.switchTo().window(wid);
   }
 }
