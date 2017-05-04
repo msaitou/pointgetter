@@ -57,9 +57,13 @@ public abstract class HAPBase extends Mission {
 				case Define.strHAPManga: // ■漫画
 					MisIns = new HAPManga(loggg, cProps);
 					break;
+        case Define.strHAPPointResearch: // ■アンケート
+          MisIns = new HAPPointResearch(loggg, cProps);
+          break;
 				default:
 			}
-			if (Arrays.asList(new String[] { Define.strHAPManga }).contains(mission)) {
+			if (Arrays.asList(new String[] { Define.strHAPManga,
+			    Define.strHAPPointResearch}).contains(mission)) {
 				driver = MisIns.exePrivateMission(driver);
 			}
 		}
