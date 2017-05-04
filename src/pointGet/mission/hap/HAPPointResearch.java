@@ -1,4 +1,4 @@
-package pointGet.mission.osa;
+package pointGet.mission.hap;
 
 import java.util.List;
 import java.util.Map;
@@ -10,44 +10,73 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import pointGet.Utille;
+import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerEnkShopQP;
-import pointGet.mission.parts.AnswerEnqY2at;
-import pointGet.mission.parts.AnswerManga;
+import pointGet.mission.parts.AnswerHiroba;
+import pointGet.mission.parts.AnswerKotsuta;
+import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerPointResearch;
+import pointGet.mission.parts.AnswerShindan;
+import pointGet.mission.parts.AnswerShopping;
 import pointGet.mission.parts.AnswerSurveyEnk;
+import pointGet.mission.parts.AnswerZukan;
 
-public class OSAPointResearch extends OSABase {
-  final String url = "http://osaifu.com/contents/enquete/";
+public class HAPPointResearch extends HAPBase {
+  final String url = "http://hapitas.jp/enquete/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerPointResearch PointResearch = null;
   AnswerEnkShopQP EnkShopQP = null;
+
   AnswerSurveyEnk SurveyEnk = null;
-  AnswerEnqY2at EnqY2at = null;
-  AnswerManga Manga = null;
+  AnswerKotsuta Kotsuta = null;
+  AnswerColum Colum = null;
+  AnswerShindan Shindan = null;
+  AnswerHiroba Hiroba = null;
+  AnswerShopping Shopping = null;
+  /* アンケートクラス　写真 */
+  AnswerPhotoEnk PhotoEnk = null;
+  /* アンケートクラス　図鑑 */
+  AnswerZukan Zukan = null;
+  
 
   /**
    * @param logg
    */
-  public OSAPointResearch(Logger logg, Map<String, String> cProps) {
+  public HAPPointResearch(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "アンケート");
     PointResearch = new AnswerPointResearch(logg);
     EnkShopQP = new AnswerEnkShopQP(logg);
+
     SurveyEnk = new AnswerSurveyEnk(logg);
-    EnqY2at = new AnswerEnqY2at(logg);
-    Manga = new AnswerManga(logg);
+    Kotsuta = new AnswerKotsuta(logg);
+    Colum = new AnswerColum(logg);
+    Shindan = new AnswerShindan(logg);
+    Hiroba = new AnswerHiroba(logg);
+    Shopping = new AnswerShopping(logg);
+    PhotoEnk = new AnswerPhotoEnk(logg);
+    Zukan = new AnswerZukan(logg);
   }
 
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "a.ui-btn.ui-btn-a";
+    selector = "tbody#easyenquete td>a>img";
     int skip = 1;
-    String sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
-    sele2 = "form>input[type='image']", // 回答する 漫画用
+    String
+    //    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
+    sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div>button[type='submit']", // 回答する surveyenk用
-    sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+        sele4 = "div>input[type='submit']", //
+        sele4_ = "#iframe", //
+    sele5 = "div#shindan", //
+    sele6 = "form>input.next_bt", // コラム用
+        sele7 = "div.btn>button[type='submit']", //
+        sele8 = "form>input.next_bt",
+
+    //    sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+    a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
         // 対象がなくなったら終了
@@ -56,54 +85,67 @@ public class OSAPointResearch extends OSABase {
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size = eleList.size(), targetIndex = size - skip;
       if (size > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
-        String sikibetuSele = "td.no";
-        if (isExistEle(driver, sikibetuSele)) {
-          String ankNo = driver.findElements(By.cssSelector(sikibetuSele)).get(targetIndex).getText();
-          logg.info("ankNo： " + ankNo);
-          //					// osaオンリー
-          //					if (ankNo.length() > 5) {
-          //						mainus++;
-          //						continue;
-          //					}
-        }
         clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
-        if (isExistEle(driver, sele1)) {
-          PointResearch.answer(driver, sele1, wid);
-        }
-        // 漫画
-        else if (isExistEle(driver, sele2)) {
-//          _answerManga(sele2, wid);
-          Manga.answer(driver, sele2, wid);
-          logg.info("manngayたんと動く？");
+
+        if (isExistEle(driver, sele2)) {
+          Kotsuta.answer(driver, sele2, wid);
         }
         // surveyenk
         else if (isExistEle(driver, sele3)) {
           SurveyEnk.answer(driver, sele3, wid);
           skip++;
         }
-        // shop-qp
-        else if (cUrl.indexOf("enq.shop-qp.com") >= 0
-            && isExistEle(driver, sele4)) {
-          EnkShopQP.answer(driver, sele4, wid);
+        else if (isExistEle(driver, sele5)) {
+          Shindan.answer(driver, sele5, wid);
         }
-        else if (cUrl.indexOf("enq.y2at.com") >= 0
-            && isExistEle(driver, sele4)) {
-          EnqY2at.answer(driver, sele4, wid);
+        else if (isExistEle(driver, sele7)) {
+          Hiroba.answer(driver, sele7, wid);
+        } 
+        else if (isExistEle(driver, sele4_)) {
+          // $('iframe').contents().find("div>input[type='submit']")
+          Shopping.answer(driver, sele4, wid);
         }
+        else if (cUrl.indexOf("column-enquete") >= 0
+            && isExistEle(driver, sele6)) {
+          Colum.answer(driver, sele6, wid);
+        }
+        else if (cUrl.indexOf("photo-enquete") >= 0
+            && isExistEle(driver, sele8)) {
+          PhotoEnk.answer(driver, sele8, wid);
+        }
+        else if (cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
+            && isExistEle(driver, sele8)) {
+          Zukan.answer(driver, sele8, wid);
+        }
+        
 
-//        else if (isExistEle(driver, sele4)) {
-//          String cUrl = driver.getCurrentUrl();
-//          if (cUrl.indexOf("rsch.jp") >= 0) {
-//            //						_answerRsch(sele4, wid);
-//            skip++;
-//          }
-//          else {
-//            EnkShopQP.answer(driver, sele4, wid);
-//          }
-//        }
+        
+        //        if (isExistEle(driver, sele1)) {
+        //          PointResearch.answer(driver, sele1, wid);
+        //        }
+        //        // 漫画
+        //        else if (isExistEle(driver, sele2)) {
+        //          _answerManga(sele2, wid);
+        //        }
+        //        // shop-qp
+        //        else if (cUrl.indexOf("enq.shop-qp.com") >= 0
+        //            && isExistEle(driver, sele4)) {
+        //          EnkShopQP.answer(driver, sele4, wid);
+        //        }
+
+        //        else if (isExistEle(driver, sele4)) {
+        //          String cUrl = driver.getCurrentUrl();
+        //          if (cUrl.indexOf("rsch.jp") >= 0) {
+        //            //						_answerRsch(sele4, wid);
+        //            skip++;
+        //          }
+        //          else {
+        //            EnkShopQP.answer(driver, sele4, wid);
+        //          }
+        //        }
         else {
           skip++;
           driver.close();
