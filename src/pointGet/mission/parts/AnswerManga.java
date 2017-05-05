@@ -99,13 +99,13 @@ public class AnswerManga extends MissCommon {
       clickSleepSelector(driver, startSele, 3000); // 遷移
     }
     checkOverlay(driver, overLay);
-    if (isExistEle(driver, finishSele)) {
-      clickSleepSelector(driver, finishSele, 3000); // 遷移
-      // タブが閉じる?
-    }
-    else {
+//    if (isExistEle(driver, finishSele)) {
+//      clickSleepSelector(driver, finishSele, 3000); // 遷移
+//      // タブが閉じる?
+//    }
+//    else {
       driver.close();
-    }
+//    }
     driver.switchTo().window(wid);
   }
 }
