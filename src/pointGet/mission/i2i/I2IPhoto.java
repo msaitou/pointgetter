@@ -1,14 +1,16 @@
 package pointGet.mission.i2i;
 
+import java.util.List;
 import java.util.Map;
-
-import lombok.val;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
+import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerPhotoEnk;
 
@@ -20,6 +22,7 @@ public class I2IPhoto extends I2IBase {
   final String url = "https://point.i2i.jp/special/freepoint/";
   /* アンケートクラス　写真 */
   AnswerPhotoEnk PhotoEnk = null;
+
   /**
    * @param logg
    */
@@ -41,19 +44,36 @@ public class I2IPhoto extends I2IBase {
           if (!isExistEle(e, selector2)) {
             break;
           }
-          String wid = driver.getWindowHandle();
           clickSleepSelector(e, selector2, 5000);
           // アラートをけして
           val alert = driver.switchTo().alert();
           alert.accept();
           Utille.sleep(5000);
-          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
+          String sele8 = "form>input.next_bt";
           while (true) {
             if (isExistEle(driver, selector)) {
-              PhotoEnk.answer(driver, selector, wid);
-              driver.navigate().refresh();
-              Utille.sleep(5000);
+              List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+              int size2 = eleList.size(), targetIndex = size - 1;
+              if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+                Actions actions = new Actions(driver);
+                actions.keyDown(Keys.CONTROL);
+                actions.click(eleList.get(targetIndex));
+                actions.perform();
+                Utille.sleep(5000);
+                //              clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+                String wid = driver.getWindowHandle();
+                changeWindow(driver, wid);
+                if (isExistEle(driver, sele8)) {
+                  PhotoEnk.answer(driver, sele8, wid);
+                  driver.navigate().refresh();
+                  Utille.sleep(5000);
+                }
+                else {
+                  break;
+                }
+              }
             }
             else {
               break;
