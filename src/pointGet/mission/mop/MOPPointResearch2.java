@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerEnkShopQP;
+import pointGet.mission.parts.AnswerEnqNstk;
 import pointGet.mission.parts.AnswerEnqY2at;
 import pointGet.mission.parts.AnswerSurveyEnk;
 
@@ -19,7 +20,8 @@ public class MOPPointResearch2 extends MOPBase {
   AnswerSurveyEnk SurveyEnk = null;
   AnswerEnqY2at EnqY2at = null;
   AnswerEnkShopQP EnkShopQP = null;
-
+  AnswerEnqNstk EnqNstk = null;
+  
   /**
    * @param logg
    */
@@ -28,6 +30,7 @@ public class MOPPointResearch2 extends MOPBase {
     SurveyEnk = new AnswerSurveyEnk(logg);
     EnqY2at = new AnswerEnqY2at(logg);
     EnkShopQP = new AnswerEnkShopQP(logg);
+    EnqNstk = new AnswerEnqNstk(logg);
   }
 
   @Override
@@ -39,8 +42,8 @@ public class MOPPointResearch2 extends MOPBase {
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button",// pointResearch用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
-        a = "";
-    String sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+    sele4 = "div#buttonArea>input[name='next']", // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+    a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
         break;
@@ -49,12 +52,12 @@ public class MOPPointResearch2 extends MOPBase {
       int size = eleList.size(), targetIndex = size - skip;
       if (targetIndex > -1 && isExistEle(eleList, targetIndex)) {
         String wid = driver.getWindowHandle();
-        clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+        clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
         if (isExistEle(driver, sele3)) {
           SurveyEnk.answer(driver, sele3, wid);
-//          skip++;
+          //          skip++;
         }
         else if (cUrl.indexOf("enq.shop-qp.com") >= 0
             && isExistEle(driver, sele4)) {
@@ -64,6 +67,11 @@ public class MOPPointResearch2 extends MOPBase {
             && isExistEle(driver, sele4)) {
           EnqY2at.answer(driver, sele4, wid);
         }
+        else if (cUrl.indexOf("enq.nstk-4.com") >= 0
+            && isExistEle(driver, sele4)) {
+          EnqNstk.answer(driver, sele4, wid);
+        }
+        
         else {
           skip++;
           driver.close();

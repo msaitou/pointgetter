@@ -41,7 +41,8 @@ public class AnswerPhotoEnk extends MissCommon {
     clickSleepSelector(driver, startSele, 4000); // 遷移　問開始
     for (int g = 0; g < 5; g++) {
       if (isExistEle(driver, seleNextb2)) {
-        clickSleepSelector(driver, seleNextb2, 5000); // 遷移　問開始するよ
+        waitTilReady(driver);
+        clickSleepSelector(driver, seleNextb2, 6000); // 遷移　問開始するよ
       }
     }
     Utille.sleep(5000);

@@ -116,9 +116,9 @@ public class AnswerEnqY2at extends MissCommon {
             && isExistEle(driver, overlay)) {
           clickSleepSelector(driver, overlay, 3000);
         }
-        // TODO 10回に1回かも
-        if (maruFlg
-            || (!maruFlg && k % 10 == 0)) {
+        if (isExistEle(driver, "div.ansview_attention", false)) {
+//        if (maruFlg
+//            || (!maruFlg && k % 10 == 0)) {
           if (isExistEle(driver, startSele)) {
             waitTilReady(driver);
             // 次へ(回答へ)

@@ -10,11 +10,9 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerColum;
-import pointGet.mission.parts.AnswerEnkShopQP;
 import pointGet.mission.parts.AnswerHiroba;
 import pointGet.mission.parts.AnswerKotsuta;
 import pointGet.mission.parts.AnswerPhotoEnk;
-import pointGet.mission.parts.AnswerPointResearch;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerShopping;
 import pointGet.mission.parts.AnswerSurveyEnk;
@@ -24,10 +22,6 @@ import pointGet.mission.parts.AnswerZukan;
 public class HAPPointResearch extends HAPBase {
   final String url = "http://hapitas.jp/enquete/";
   WebDriver driver = null;
-  /* アンケートクラス　ポイントサーチ */
-  AnswerPointResearch PointResearch = null;
-  AnswerEnkShopQP EnkShopQP = null;
-
   AnswerSurveyEnk SurveyEnk = null;
   AnswerKotsuta Kotsuta = null;
   AnswerColum Colum = null;
@@ -46,8 +40,6 @@ public class HAPPointResearch extends HAPBase {
    */
   public HAPPointResearch(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "アンケート");
-    PointResearch = new AnswerPointResearch(logg);
-    EnkShopQP = new AnswerEnkShopQP(logg);
 
     SurveyEnk = new AnswerSurveyEnk(logg);
     Kotsuta = new AnswerKotsuta(logg);
@@ -65,21 +57,17 @@ public class HAPPointResearch extends HAPBase {
     driver = driverAtom;
     driver.get(url);
     selector = "tbody#easyenquete td>a>img";
-    int skip = 2;
+    int skip = 1;
     String
-    //    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
     sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
-        sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
-        sele4 = "div>input[type='submit']", //
-        sele4_ = "#iframe", //
-        sele5 = "div#shindan", //
-        sele6 = "form>input.next_bt", // コラム用
-        sele7 = "div.btn>button[type='submit']", //
-        sele8 = "form>input.next_bt",
-        sele9 = "a.start__button",
-
-        //    sele4 = "div#buttonArea>input[name='next']"; // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
-        a = "";
+    sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
+    sele4 = "div>input[type='submit']", //
+    sele4_ = "#iframe", //
+    sele5 = "div#shindan", //
+    sele6 = "form>input.next_bt", // コラム用
+    sele7 = "div.btn>button[type='submit']", //
+    sele8 = "form>input.next_bt", sele9 = "a.start__button",
+    a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
         // 対象がなくなったら終了
