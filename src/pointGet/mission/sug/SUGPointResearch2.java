@@ -70,7 +70,7 @@ public class SUGPointResearch2 extends SUGBase {
         if (cUrl.indexOf("www.netmile.co.jp/ctrl/user") >= 0
             && isExistEle(driver, sele1_)) {
           clickSleepSelector(driver, sele1_, 4000); // なぜだかませぺーじ
-          if (isExistEle(driver, sele2)) {
+          if (isExistEle(driver, sele1)) {
             Kotsuta.answer(driver, sele1, wid);
           }
           else {
