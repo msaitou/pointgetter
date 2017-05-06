@@ -28,7 +28,7 @@ public class AnswerShopping extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("####[" + this.getClass().getName() + "]####");
-    Utille.sleep(2000);
+    Utille.sleep(5000);
     driver.switchTo().frame(0);
     clickSleepSelector(driver, startSele, 3000);
     String
@@ -41,7 +41,7 @@ public class AnswerShopping extends MissCommon {
     seleSub = "div.btn_next>input[type='submit']", //
     finishSele = "div.btn_2next>input[type='button']", //
       finishSele2 = "div.btn_getpoint>a", // 6問バージョン用
-        
+
     closeSele = "input.btn_close_en", seleSele = "select[name='prefecture']"; // ドロップダウンセレクター
 
     Utille.sleep(2000);
