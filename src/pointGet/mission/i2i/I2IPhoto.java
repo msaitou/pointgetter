@@ -3,6 +3,8 @@ package pointGet.mission.i2i;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import lombok.val;
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerPhotoEnk;
 
@@ -55,14 +56,22 @@ public class I2IPhoto extends I2IBase {
           while (true) {
             if (isExistEle(driver, selector)) {
               List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-              int size2 = eleList.size(), targetIndex = size - 1;
+              int size2 = eleList.size(), targetIndex = size2 - 1;
+              logg.info("size2:" + size2 + " target:" + targetIndex);
               if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+//                try {
+//                  new Robot().keyPress(KeyEvent.VK_CONTROL);
+//                  new Actions(driver).click(eleList.get(targetIndex)).build().perform();
+//                  new Robot().keyRelease(KeyEvent.VK_CONTROL);
+//              } catch (AWTException ee) {
+//                  throw new IllegalStateException(ee);
+//              }
                 Actions actions = new Actions(driver);
                 actions.keyDown(Keys.CONTROL);
-                actions.click(eleList.get(targetIndex));
+                actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
                 actions.perform();
                 Utille.sleep(5000);
-                //              clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+//                                              clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
                 String wid = driver.getWindowHandle();
                 changeWindow(driver, wid);
                 if (isExistEle(driver, sele8)) {

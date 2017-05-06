@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import pointGet.Utille;
 import pointGet.mission.MissCommon;
@@ -31,12 +32,13 @@ public class AnswerShopping extends MissCommon {
     driver.switchTo().frame(0);
     clickSleepSelector(driver, startSele, 3000);
     String radioSele = "div.answer>input[type='radio']", //
-        checkboxSele = "div.answer>input[type='checkbox']", //
-        //    noSele = "span.query-num",
-        titleSele = "h2.question", // 質問NOも含む
-        seleSub = "div.btn_next>input[type='submit']", //
-        finishSele = "div.btn_2next>input[type='button']", //
-        closeSele = "input.btn_close_en";
+    checkboxSele = "div.answer>input[type='checkbox']", //
+    //    noSele = "span.query-num",
+    titleSele = "h2.question", // 質問NOも含む
+    seleSub = "div.btn_next>input[type='submit']", //
+    finishSele = "div.btn_2next>input[type='button']", //
+    closeSele = "input.btn_close_en", 
+    seleSele = "select[name='prefecture']"; // ドロップダウンセレクター
 
     Utille.sleep(2000);
     for (int k = 1; k <= 15; k++) {
@@ -47,8 +49,12 @@ public class AnswerShopping extends MissCommon {
         logg.info(qTitle);
         if (isExistEle(driver, radioSele)) { // ラジオ
           choiceSele = radioSele;
-        } else if (isExistEle(driver, checkboxSele)) { // チェックぼっくす
+        }
+        else if (isExistEle(driver, checkboxSele)) { // チェックぼっくす
           choiceSele = checkboxSele;
+        }
+        else if (isExistEle(driver, seleSele)) { // ドロップダウン
+          choiceSele = seleSele;
         }
 
         // 回答選択
@@ -57,13 +63,17 @@ public class AnswerShopping extends MissCommon {
           int choiceies = getSelectorSize(driver, choiceSele);
           if (qTitle.indexOf("あなたの性別") >= 0) {
             choiceNum = 0; // 1：男
-          } else if (qTitle.indexOf("あなたの年齢を") >= 0) {
+          }
+          else if (qTitle.indexOf("あなたの年齢を") >= 0) {
             choiceNum = 2; // 2：30代
-          } else if (qTitle.indexOf("あなたのご職業") >= 0) {
+          }
+          else if (qTitle.indexOf("あなたのご職業") >= 0) {
             choiceNum = 2; // 2：会社員
-          } else if (qTitle.indexOf("あなたのお住まいを") >= 0) {
+          }
+          else if (qTitle.indexOf("あなたのお住まいを") >= 0) {
             choiceNum = 2; // 2：関東
-          } else {
+          }
+          else {
             if (checkboxSele.equals(choiceSele)) {
               choiceies--; // チェックボックスは最後の選択肢を除く
             }
@@ -78,7 +88,30 @@ public class AnswerShopping extends MissCommon {
             }
           }
         }
-      } else {
+        else if (seleSele.equals(choiceSele)) {
+          Utille.sleep(2000);
+          int size3 = getSelectorSize(driver, seleSele + ">option");
+          String value = "";
+          if (qTitle.indexOf("性別・年代") >= 0) {
+            value = "3";
+          }
+          else if (qTitle.indexOf("のお住まい") >= 0) {
+            value = "神奈川県";
+          }
+          else {
+            choiceNum = Utille.getIntRand(size3);
+            value = driver.findElements(By.cssSelector(seleSele + ">option"))
+                .get(choiceNum).getAttribute("value");
+          }
+          Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
+          selectList.selectByValue(value);
+          Utille.sleep(3000);
+          if (isExistEle(driver, seleSub)) {
+            clickSleepSelector(driver, seleSub, 6000);
+          }
+        }
+      }
+      else {
         break;
       }
     }
@@ -87,9 +120,9 @@ public class AnswerShopping extends MissCommon {
       clickSleepSelector(driver, finishSele, 4000);
       driver.close();
       changeWindow(driver, wid2);
-//      if (isExistEle(driver, closeSele)) {
-//        clickSleepSelector(driver, closeSele, 4000);
-//      }
+      //      if (isExistEle(driver, closeSele)) {
+      //        clickSleepSelector(driver, closeSele, 4000);
+      //      }
       driver.close();
       driver.switchTo().window(wid);
     }
