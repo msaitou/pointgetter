@@ -70,7 +70,7 @@ public abstract class GMYBase extends Mission {
           MisIns = new GMYToidas(loggg, cProps);
           break;
         case Define.strGMYPointResearch: // ■アンケート
-          MisIns = new GMYToidas(loggg, cProps);
+          MisIns = new GMYPointResearch(loggg, cProps);
           break;
         default:
       }

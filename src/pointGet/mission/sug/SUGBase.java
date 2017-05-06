@@ -79,6 +79,10 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGPointResearch2: // ■アンケート
           MisIns = new SUGPointResearch2(loggg, cProps);
           break;
+        case Define.strSUGClickBanner: // ■クリックバナー
+          MisIns = new SUGClickBananer(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] {
