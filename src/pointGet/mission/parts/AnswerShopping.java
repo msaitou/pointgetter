@@ -31,14 +31,18 @@ public class AnswerShopping extends MissCommon {
     Utille.sleep(2000);
     driver.switchTo().frame(0);
     clickSleepSelector(driver, startSele, 3000);
-    String radioSele = "div.answer>input[type='radio']", //
-    checkboxSele = "div.answer>input[type='checkbox']", //
+    String
+    //    radioSele = "div.answer>input[type='radio']", //
+    //    checkboxSele = "div.answer>input[type='checkbox']", //
+    radioSele = "div.answer>label", //
+    checkboxSele = radioSele, //
     //    noSele = "span.query-num",
     titleSele = "h2.question", // 質問NOも含む
     seleSub = "div.btn_next>input[type='submit']", //
     finishSele = "div.btn_2next>input[type='button']", //
-    closeSele = "input.btn_close_en", 
-    seleSele = "select[name='prefecture']"; // ドロップダウンセレクター
+      finishSele2 = "div.btn_getpoint>a", // 6問バージョン用
+        
+    closeSele = "input.btn_close_en", seleSele = "select[name='prefecture']"; // ドロップダウンセレクター
 
     Utille.sleep(2000);
     for (int k = 1; k <= 15; k++) {
@@ -115,9 +119,25 @@ public class AnswerShopping extends MissCommon {
         break;
       }
     }
+    String fSele = null;
     if (isExistEle(driver, finishSele)) {
+//      String wid2 = driver.getWindowHandle();
+//      clickSleepSelector(driver, finishSele, 4000);
+//      driver.close();
+//      changeWindow(driver, wid2);
+//      //      if (isExistEle(driver, closeSele)) {
+//      //        clickSleepSelector(driver, closeSele, 4000);
+//      //      }
+//      driver.close();
+//      driver.switchTo().window(wid);
+      fSele = finishSele;
+    }
+    else if (isExistEle(driver, finishSele2)) {
+      fSele = finishSele2;
+    }
+    if (null !=fSele) {
       String wid2 = driver.getWindowHandle();
-      clickSleepSelector(driver, finishSele, 4000);
+      clickSleepSelector(driver, fSele, 4000);
       driver.close();
       changeWindow(driver, wid2);
       //      if (isExistEle(driver, closeSele)) {
