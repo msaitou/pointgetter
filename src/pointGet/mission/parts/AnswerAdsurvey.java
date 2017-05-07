@@ -11,13 +11,13 @@ import org.openqa.selenium.support.ui.Select;
 import pointGet.Utille;
 import pointGet.mission.MissCommon;
 
-public class AnswerGameParkEnk extends MissCommon {
+public class AnswerAdsurvey extends MissCommon {
   /**
    * constracter
    *
    * @param log4j object
    */
-  public AnswerGameParkEnk(Logger log) {
+  public AnswerAdsurvey(Logger log) {
     logg = log;
   }
 
@@ -28,28 +28,23 @@ public class AnswerGameParkEnk extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("-[" + this.getClass().getName() + "]-");
-    //    String beginSele = "form>input.ui-button";
-    String choiceSele = "div.answer label", // ラジオセレクター
-    seleNext = "div>button#nextBtn", // 次へボタンセレクター
-    seleSele = "select[name='answer']", // ドロップダウンセレクター
-    //      overLay = "div.overlay-popup a.button-close", // タイトルセレクター 
-    //        checkSele = "label.ui-label-checkbox"; // チェックボックスセレクター
-    titleSele = "div.container>h3" // タイトルセレクター
-//    beginSele = "form>input.btn_regular"
-    ;
-    if (isExistEle(driver, startSele, false)) {
-      clickSleepSelector(driver, startSele, 4000);
-    }
-    // 回答開始
-    //    if (isExistEle(driver, beginSele)) {
-    //      clickSleepSelector(driver, beginSele, 4000);
-    //    }
+    String 
+    choiceSele = "div.answer label", // ラジオセレクター
+    seleSele = "select[name='question_4']", // ドロップダウンセレクター
+    seleNext = "div.btn_next>input.btn", //
+//    radioSele = "label.radiolabel", //
+//    checkboxSele = "label.checkbox", //　
+//    overLay = "div#center-frame>img", //　広告
+//    noSele = "h2>span.q_number", // タイトル
+    titleSele = "h2.question", // close
+//    closeSele = "div.question_btn>input[name='submit']", //
+    beginSele = "form>input.btn_regular", //
+    a = "";
+    driver.switchTo().frame(0);
+    clickSleepSelector(driver, startSele, 4000);
+//    Utille.sleep(4000);
     // 12問?
     for (int k = 1; k <= 15; k++) {
-      //        if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
-      //            && isExistEle(driver, overLay)) {
-      //          checkOverlay(driver, overLay, false);
-      //        }
       if (isExistEle(driver, titleSele)) {
         String qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
         logg.info(qTitle);
@@ -73,21 +68,12 @@ public class AnswerGameParkEnk extends MissCommon {
             clickSleepSelector(eleList2.get(choiceNum), 3000);
           }
         }
-        //          else if (isExistEle(driver, checkSele)) {
-        //            int size4 = getSelectorSize(driver, checkSele);
-        //            choiceNum = Utille.getIntRand(size4);
-        //            List<WebElement> eleList2 = driver.findElements(By.cssSelector(checkSele));
-        //            if (isExistEle(eleList2, choiceNum)) {
-        //              // 選択
-        //              clickSleepSelector(eleList2.get(choiceNum), 3000);
-        //            }
-        //          }
         else if (isExistEle(driver, seleSele)) {
           Utille.sleep(4000);
           int size3 = getSelectorSize(driver, seleSele + ">option");
           String value = "";
           if (qTitle.indexOf("お住まいを") >= 0) {
-            value = "14";
+            value = "34";
           }
           else {
             choiceNum = Utille.getIntRand(size3);
@@ -109,13 +95,9 @@ public class AnswerGameParkEnk extends MissCommon {
       }
     }
     Utille.sleep(2000);
-    //      if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)
-    //          && isExistEle(driver, overLay)) {
-    //        checkOverlay(driver, overLay, false);
-    //      }
     if (isExistEle(driver, startSele)) {
       // ポイント獲得
-      clickSleepSelector(driver, startSele, 6000);
+      clickSleepSelector(driver, startSele, 5000);
     }
     driver.close();
     // 最後に格納したウインドウIDにスイッチ
