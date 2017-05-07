@@ -61,7 +61,7 @@ public class CITShindan extends CITBase {
         if (isExistEle(wEle, sele1)) {
           clickSleepSelector(wEle, sele1, 4000); // 遷移
           waitTilReady(driver);
-          Shindan.answer(driver, "", "");
+          Shindan.answer(driver, "", null);
         }
         else {
           break;

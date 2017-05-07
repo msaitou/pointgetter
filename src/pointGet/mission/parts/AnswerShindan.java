@@ -66,7 +66,7 @@ public class AnswerShindan extends MissCommon {
                     checkAndAcceptAlert(driver);
 
                     // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
-                    if (null != wid) {
+                    if (null == wid) {
                       String returnUrl = driver.findElement(By.cssSelector(listUrlSele))
                           .getAttribute("href");
                       logg.info("returnUrl:" + returnUrl);

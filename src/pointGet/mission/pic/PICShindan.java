@@ -61,7 +61,7 @@ public class PICShindan extends PICBase {
         if (isExistEle(wEle, sele1)) {
           clickSleepSelector(wEle, sele1, 4000); // 遷移
           waitTilReady(driver);
-          Shindan.answer(driver, "", "");
+          Shindan.answer(driver, "", null);
           //          selector = "a.submit-btn";// 次へ
           //          if (isExistEle(driver, selector)) {
           //            clickSleepSelector(driver, selector, 5500); // 遷移
