@@ -52,6 +52,7 @@ public class Define {
   final public static String strGENManga = "GENManga";
   final public static String strGENPointResearch = "GENPointResearch";
   final public static String strGENPointResearch2 = "GENPointResearch2";
+  final public static String strGENGameParkEnk = "GENGameParkEnk";
 
   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
@@ -60,6 +61,7 @@ public class Define {
   final public static String strGMYPriceChyosatai = "GMYPriceChyosatai";
   final public static String strGMYToidas = "GMYToidas";
   final public static String strGMYPointResearch = "GMYPointResearch";
+  final public static String strGMYGameParkEnk = "GMYGameParkEnk";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
@@ -93,6 +95,7 @@ public class Define {
   final public static String strOSAManga = "OSAManga";
   final public static String strOSACountTimer = "OSACountTimer";
   final public static String strOSAPointResearch = "OSAPointResearch";
+  final public static String strOSAGameParkEnk = "OSAGameParkEnk";
 
   // ■■■■■PEX■■■■■
   final public static String strPEX4quiz = "PEX4quiz";
@@ -143,18 +146,20 @@ public class Define {
   final public static String strSUGPointResearch = "SUGPointResearch";
   final public static String strSUGPointResearch2 = "SUGPointResearch2";
   final public static String strSUGClickBanner = "SUGClickBanner";
-    
+
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
   final public static String strPSTQuiz = "PSTQuiz";
   final public static String strPSTShindanAnk = "PSTShindanAnk";
   final public static String strPSTManga = "PSTManga";
+  final public static String strPSTGameParkEnk = "PSTGameParkEnk";
   // ■■■■■pointisland■■■■■
   final public static String strPILUranai = "PILUranai";
   final public static String strPILQuiz = "PILQuiz";
   final public static String strPILClickBanner = "PILClickBanner";
   final public static String strPILShindanAnk = "PILShindanAnk";
   final public static String strPILManga = "PILManga";
+  final public static String strPILGameParkEnk = "PILGameParkEnk";
   // ■■■■■chanceIt■■■■■
   final public static String strCITPriceChyosatai = "CITPriceChyosatai";
   final public static String strCITShindan = "CITShindan";
@@ -162,20 +167,25 @@ public class Define {
   final public static String strCITChirachi = "CITChirachi";
   final public static String strCITClickBanner = "CITClickBanner";
   final public static String strCITPointResearch = "CITPointResearch";
+  final public static String strCITGameParkEnk = "CITGameParkEnk";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";
+  final public static String strPMOGameParkEnk = "PMOGameParkEnk";
+
   // ■■■■■ちょびリッチ■■■■■
   final public static String strCRIChirachi = "CRIChirachi";
   final public static String strCRIManga = "CRIManga";
   final public static String strCRIClickBananer = "CRIClickBananer";
   final public static String strCRIPointResearch = "CRIPointResearch";
+  final public static String strCRIGameParkEnk = "CRIGameParkEnk";
   // ■■■■■ハピタス■■■■■
   final public static String strHAPManga = "HAPManga";
   final public static String strHAPPointResearch = "HAPPointResearch";
   // ■■■■■ワラウ■■■■■
   final public static String strWARDailyCheck = "WARDailyCheck";
   final public static String strWARPointResearch = "WARPointResearch";
+  final public static String strWARGameParkEnk = "WARGameParkEnk";
 
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";
