@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.mission.osa;
 
@@ -49,7 +49,7 @@ public abstract class OSABase extends Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param loggg
 	 * @param cProps
 	 * @param missions
@@ -98,6 +98,9 @@ public abstract class OSABase extends Mission {
 				case Define.strOSAPointResearch: // ■ポイントリサーチ
 					MisIns = new OSAPointResearch(loggg, cProps);
 					break;
+        case Define.strOSAGameParkEnk: // ■ゲームパークアンケート
+          MisIns = new OSAGameParkEnk(loggg, cProps);
+          break;
 				default:
 			}
 			if (Arrays.asList(new String[] { Define.strOSAQuiz,
@@ -118,7 +121,7 @@ public abstract class OSABase extends Mission {
 			PointsCollection PC = new PointsCollection(Dbase);
 			Map<String, Double> pMap = new HashMap<String, Double>() {
 				/**
-				* 
+				*
 				*/
 				private static final long serialVersionUID = 1L;
 				{
@@ -134,7 +137,7 @@ public abstract class OSABase extends Mission {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param driver
 	 * @param logg
 	 * @return
