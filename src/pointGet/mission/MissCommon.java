@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -279,5 +282,22 @@ public abstract class MissCommon {
     // 元のウインドウIDにスイッチ
     driver.switchTo().window(wid);
   }
-
+  
+  /**
+   * 
+   * @param driver
+   */
+  public void checkAndAcceptAlert(WebDriver driver) {
+    try {
+      // アラートをけして
+      val alert = driver.switchTo().alert();
+      alert.accept();
+      Utille.sleep(3000);
+    }
+    catch (NoAlertPresentException ae) {
+      logg.error("##NOT EXIST Alert##################");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(ae), 1000));
+      logg.error("#############################");
+    }
+  }
 }
