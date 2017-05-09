@@ -84,7 +84,9 @@ public abstract class GENBase extends Mission {
         case Define.strGENPointResearch2: // ■ポイントアンケート2
           MisIns = new GENPointResearch2(loggg, cProps);
           break;
-
+        case Define.strGENGameParkEnk: // ■GameParkアンケート
+          MisIns = new GENGameParkEnk(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strGENPointStar,
@@ -94,7 +96,8 @@ public abstract class GENBase extends Mission {
           Define.strGENChirachi,
           Define.strGENManga,
           Define.strGENPointResearch,
-          Define.strGENPointResearch2
+          Define.strGENPointResearch2,
+          Define.strGENGameParkEnk
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

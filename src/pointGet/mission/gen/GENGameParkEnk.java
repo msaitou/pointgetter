@@ -1,4 +1,4 @@
-package pointGet.mission.pmo;
+package pointGet.mission.gen;
 
 import java.util.List;
 import java.util.Map;
@@ -12,8 +12,8 @@ import pointGet.Utille;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 
-public class PMOGameParkEnk extends PMOBase {
-  final String url = "http://poimon-plus.gamepark.net/survey/summary/";
+public class GENGameParkEnk extends GENBase {
+  final String url = "http://www.gendama.jp/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
@@ -22,7 +22,7 @@ public class PMOGameParkEnk extends PMOBase {
   /**
    * @param logg
    */
-  public PMOGameParkEnk(Logger logg, Map<String, String> cProps) {
+  public GENGameParkEnk(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "GameParkアンケート");
     GameParkEnk = new AnswerGameParkEnk(logg);
     Adsurvey = new AnswerAdsurvey(logg);
@@ -32,6 +32,7 @@ public class PMOGameParkEnk extends PMOBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
+    driver.get("http://gendama-plus.gamepark.net/");
     String pop1 = "div#campaignDialog p.btnPdPlay", //
     pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
     pop2Cls = "div.campaignClose>img", //
@@ -67,7 +68,7 @@ public class PMOGameParkEnk extends PMOBase {
           changeWindow(driver, wid);
           String cUrl = driver.getCurrentUrl();
 
-          if (cUrl.indexOf("poimon.qpark.jp/enquete/") >= 0
+          if (cUrl.indexOf("gendama.qpark.jp/enquete/") >= 0
               && isExistEle(driver, sele1)) {
             Utille.sleep(4000);
             GameParkEnk.answer(driver, sele1, wid);
