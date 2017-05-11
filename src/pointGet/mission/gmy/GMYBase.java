@@ -72,6 +72,9 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYPointResearch: // ■アンケート
           MisIns = new GMYPointResearch(loggg, cProps);
           break;
+        case Define.strGMYGameParkEnk: // ■GameParkアンケート
+          MisIns = new GMYGameParkEnk(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -80,6 +83,7 @@ public abstract class GMYBase extends Mission {
           Define.strGMYPriceChyosatai,
           Define.strGMYToidas,
           Define.strGMYPointResearch,
+          Define.strGMYGameParkEnk
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
