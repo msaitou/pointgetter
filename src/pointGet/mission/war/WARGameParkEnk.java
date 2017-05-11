@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.war;
 
 import java.util.List;
 import java.util.Map;
@@ -12,9 +12,9 @@ import pointGet.Utille;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 
-public class GMYGameParkEnk extends GMYBase {
+public class WARGameParkEnk extends WARBase {
   // 途中TODO
-  final String url = "http://www.point-stadium.com/wgamepkj.asp";
+  final String url = "http://dietnavi.com/pc/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
@@ -23,7 +23,7 @@ public class GMYGameParkEnk extends GMYBase {
   /**
    * @param logg
    */
-  public GMYGameParkEnk(Logger logg, Map<String, String> cProps) {
+  public WARGameParkEnk(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "ゲームパークアンケート");
     GameParkEnk = new AnswerGameParkEnk(logg);
     Adsurvey = new AnswerAdsurvey(logg);

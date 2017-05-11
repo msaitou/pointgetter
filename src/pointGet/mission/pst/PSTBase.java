@@ -23,100 +23,103 @@ import pointGet.mission.Mission;
  *
  */
 public abstract class PSTBase extends Mission {
-	/* current site code */
-	public final static String sCode = Define.PSITE_CODE_PST;
-	boolean finsishFlag = false;
+  /* current site code */
+  public final static String sCode = Define.PSITE_CODE_PST;
+  boolean finsishFlag = false;
 
-	/**
-	 * @param log
-	 * @param cProps
-	 */
-	public PSTBase(Logger log, Map<String, String> cProps, String name) {
-		super(log, cProps);
-		this.mName = "■" + sCode + name;
-	}
+  /**
+   * @param log
+   * @param cProps
+   */
+  public PSTBase(Logger log, Map<String, String> cProps, String name) {
+    super(log, cProps);
+    this.mName = "■" + sCode + name;
+  }
 
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
-	}
+  @Override
+  public void roopMission(WebDriver driver) {
+    for (int i = 0; i < 5 && !finsishFlag; i++) {
+      privateMission(driver);
+    }
+  }
 
-	@Override
-	public void privateMission(WebDriver driver) {
-	}
+  @Override
+  public void privateMission(WebDriver driver) {
+  }
 
-	/**
-	 * 
-	 * @param loggg
-	 * @param cProps
-	 * @param missions
-	 */
-	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
-		WebDriver driver = getWebDriver(cProps);
-		for (String mission : missions) {
-			Mission MisIns = null;
-			switch (mission) {
-				case Define.strPSTQuiz: // ■PSTクイズ
-					MisIns = new PSTQuiz(loggg, cProps);
-					break;
-				case Define.strPSTUranai: // ■占い
-					MisIns = new PSTUranai(loggg, cProps);
-					break;
-				case Define.strPSTShindanAnk: // ■PST診断＆アンケート
-					MisIns = new PSTShindanAnk(loggg, cProps);
-					break;
-				case Define.strPSTManga: // ■PSTまんが　
-					MisIns = new PSTManga(loggg, cProps);
-					break;
-				default:
-			}
-			if (Arrays.asList(new String[] { Define.strPSTQuiz,
-					Define.strPSTShindanAnk
-					}).contains(mission)) {
-				driver = MisIns.exeRoopMission(driver);
-			}
-			else {
-				driver = MisIns.exePrivateMission(driver);
-			}
-		}
-		// point状況確認
-		try {
-			Double p = getSitePoint(driver, loggg);
-			PointsCollection PC = new PointsCollection(Dbase);
-			Map<String, Double> pMap = new HashMap<String, Double>() {
-				/**
-				* 
-				*/
-				private static final long serialVersionUID = 1L;
-				{
-					put(sCode, p);
-				}
-			};
-			PC.putPointsData(pMap);
-		} catch (Throwable e) {
-			loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
-		} finally {
-			driver.quit();
-		}
-	}
+  /**
+   * 
+   * @param loggg
+   * @param cProps
+   * @param missions
+   */
+  public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
+    WebDriver driver = getWebDriver(cProps);
+    for (String mission : missions) {
+      Mission MisIns = null;
+      switch (mission) {
+        case Define.strPSTQuiz: // ■PSTクイズ
+          MisIns = new PSTQuiz(loggg, cProps);
+          break;
+        case Define.strPSTUranai: // ■占い
+          MisIns = new PSTUranai(loggg, cProps);
+          break;
+        case Define.strPSTShindanAnk: // ■PST診断＆アンケート
+          MisIns = new PSTShindanAnk(loggg, cProps);
+          break;
+        case Define.strPSTManga: // ■PSTまんが　
+          MisIns = new PSTManga(loggg, cProps);
+          break;
+        case Define.strPSTGameParkEnk: // ■PSTまんが　
+          MisIns = new PSTGameParkEnk(loggg, cProps);
+          break;
+        default:
+      }
+      if (Arrays.asList(new String[] { Define.strPSTQuiz,
+          Define.strPSTShindanAnk
+      }).contains(mission)) {
+        driver = MisIns.exeRoopMission(driver);
+      }
+      else {
+        driver = MisIns.exePrivateMission(driver);
+      }
+    }
+    // point状況確認
+    try {
+      Double p = getSitePoint(driver, loggg);
+      PointsCollection PC = new PointsCollection(Dbase);
+      Map<String, Double> pMap = new HashMap<String, Double>() {
+        /**
+        * 
+        */
+        private static final long serialVersionUID = 1L;
+        {
+          put(sCode, p);
+        }
+      };
+      PC.putPointsData(pMap);
+    } catch (Throwable e) {
+      loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+    } finally {
+      driver.quit();
+    }
+  }
 
-	/**
-	 * 
-	 * @param driver
-	 * @param logg
-	 * @return
-	 */
-	public static Double getSitePoint(WebDriver driver, Logger logg) {
-		String selector = "div.login>p.point>strong", point = "";
-		driver.get("http://www.point-stadium.com/");
-		Utille.sleep(5000);
-		if (Utille.isExistEle(driver, selector, logg)) {
-			point = driver.findElement(By.cssSelector(selector)).getText();
-			point = Utille.getNumber(point);
-		}
-		Double sTotal = Utille.sumTotal(sCode, point, 0.0);
-		return sTotal;
-	}
+  /**
+   * 
+   * @param driver
+   * @param logg
+   * @return
+   */
+  public static Double getSitePoint(WebDriver driver, Logger logg) {
+    String selector = "div.login>p.point>strong", point = "";
+    driver.get("http://www.point-stadium.com/");
+    Utille.sleep(5000);
+    if (Utille.isExistEle(driver, selector, logg)) {
+      point = driver.findElement(By.cssSelector(selector)).getText();
+      point = Utille.getNumber(point);
+    }
+    Double sTotal = Utille.sumTotal(sCode, point, 0.0);
+    return sTotal;
+  }
 }

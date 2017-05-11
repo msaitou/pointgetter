@@ -26,108 +26,112 @@ import pointGet.mission.Mission;
  *
  */
 public abstract class PILBase extends Mission {
-	/* current site code */
-	public final static String sCode = Define.PSITE_CODE_PIL;
-	boolean finsishFlag = false;
+  /* current site code */
+  public final static String sCode = Define.PSITE_CODE_PIL;
+  boolean finsishFlag = false;
 
-	/**
-	 * @param log
-	 * @param cProps
-	 */
-	public PILBase(Logger log, Map<String, String> cProps, String name) {
-		super(log, cProps);
-		this.mName = "■" + sCode + name;
-	}
+  /**
+   * @param log
+   * @param cProps
+   */
+  public PILBase(Logger log, Map<String, String> cProps, String name) {
+    super(log, cProps);
+    this.mName = "■" + sCode + name;
+  }
 
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
-	}
+  @Override
+  public void roopMission(WebDriver driver) {
+    for (int i = 0; i < 5 && !finsishFlag; i++) {
+      privateMission(driver);
+    }
+  }
 
-	@Override
-	public void privateMission(WebDriver driver) {
-	}
-	
-	/**
-	 * 
-	 * @param loggg
-	 * @param cProps
-	 * @param missions
-	 */
-	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
-		WebDriver driver = getWebDriver(cProps);
-		// login!!
-		LoginSite.login(sCode, driver, loggg);
-		for (String mission : missions) {
-			Mission MisIns = null;
-			switch (mission) {
-				case Define.strPILClickBanner: // ■PILクリック
-					MisIns = new PILClickBanner(loggg, cProps);
-					break;
-				case Define.strPILQuiz: // ■PILクイズ
-					MisIns = new PILQuiz(loggg, cProps);
-					break;
-				case Define.strPILUranai: // ■PIL占い
-					MisIns = new PILUranai(loggg, cProps);
-					break;
-				case Define.strPILShindanAnk: // ■PIL診断＆アンケート
-					MisIns = new PILShindanAnk(loggg, cProps);
-					break;
-				case Define.strPILManga: // ■まんが
-					MisIns = new PILManga(loggg, cProps);
-					break;
-				default:
-			}
-			if (Arrays.asList(new String[] {Define.strPILQuiz,
-					Define.strPILShindanAnk
-					}).contains(mission)) {
-				driver = MisIns.exeRoopMission(driver);
-			}
-			else {
-				driver = MisIns.exePrivateMission(driver);
-			}
-		}
-		// point状況確認
-		try {
-			Double p = getSitePoint(driver, loggg);
-			PointsCollection PC = new PointsCollection(Dbase);
-			Map<String, Double> pMap = new HashMap<String, Double>() {
-				/**
-				* 
-				*/
-				private static final long serialVersionUID = 1L;
-				{
-					put(sCode, p);
-				}
-			};
-			PC.putPointsData(pMap);
-		} catch (Throwable e) {
-			loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
-		} finally {
-			driver.quit();
-		}
-	}
+  @Override
+  public void privateMission(WebDriver driver) {
+  }
 
-	/**
-	 * 
-	 * @param driver
-	 * @param logg
-	 * @return
-	 */
-	public static Double getSitePoint(WebDriver driver, Logger logg) {
-		// login!!
-		LoginSite.login(sCode, driver, logg);
-		String selector = "table.memberinfo tr>td>strong", point = "";
-		if (Utille.isExistEle(driver, selector, logg)) {
-			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-			if (Utille.isExistEle(eleList, 1, logg)) {
-				point = eleList.get(1).getText();
-				point = Utille.getNumber(point);
-			}
-		}
-		Double sTotal = Utille.sumTotal(sCode, point, 0.0);
-		return sTotal;
-	}
+  /**
+   * 
+   * @param loggg
+   * @param cProps
+   * @param missions
+   */
+  public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
+    WebDriver driver = getWebDriver(cProps);
+    // login!!
+    LoginSite.login(sCode, driver, loggg);
+    for (String mission : missions) {
+      Mission MisIns = null;
+      switch (mission) {
+        case Define.strPILClickBanner: // ■PILクリック
+          MisIns = new PILClickBanner(loggg, cProps);
+          break;
+        case Define.strPILQuiz: // ■PILクイズ
+          MisIns = new PILQuiz(loggg, cProps);
+          break;
+        case Define.strPILUranai: // ■PIL占い
+          MisIns = new PILUranai(loggg, cProps);
+          break;
+        case Define.strPILShindanAnk: // ■PIL診断＆アンケート
+          MisIns = new PILShindanAnk(loggg, cProps);
+          break;
+        case Define.strPILManga: // ■まんが
+          MisIns = new PILManga(loggg, cProps);
+          break;
+        case Define.strPILGameParkEnk: // ■GameParkアンケート
+          MisIns = new PILGameParkEnk(loggg, cProps);
+          break;
+
+        default:
+      }
+      if (Arrays.asList(new String[] { Define.strPILQuiz,
+          Define.strPILShindanAnk
+      }).contains(mission)) {
+        driver = MisIns.exeRoopMission(driver);
+      }
+      else {
+        driver = MisIns.exePrivateMission(driver);
+      }
+    }
+    // point状況確認
+    try {
+      Double p = getSitePoint(driver, loggg);
+      PointsCollection PC = new PointsCollection(Dbase);
+      Map<String, Double> pMap = new HashMap<String, Double>() {
+        /**
+        * 
+        */
+        private static final long serialVersionUID = 1L;
+        {
+          put(sCode, p);
+        }
+      };
+      PC.putPointsData(pMap);
+    } catch (Throwable e) {
+      loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+    } finally {
+      driver.quit();
+    }
+  }
+
+  /**
+   * 
+   * @param driver
+   * @param logg
+   * @return
+   */
+  public static Double getSitePoint(WebDriver driver, Logger logg) {
+    // login!!
+    LoginSite.login(sCode, driver, logg);
+    String selector = "table.memberinfo tr>td>strong", point = "";
+    if (Utille.isExistEle(driver, selector, logg)) {
+      List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+      if (Utille.isExistEle(eleList, 1, logg)) {
+        point = eleList.get(1).getText();
+        point = Utille.getNumber(point);
+      }
+    }
+    Double sTotal = Utille.sumTotal(sCode, point, 0.0);
+    return sTotal;
+  }
 }

@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.pil;
 
 import java.util.List;
 import java.util.Map;
@@ -12,9 +12,9 @@ import pointGet.Utille;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 
-public class GMYGameParkEnk extends GMYBase {
+public class PILGameParkEnk extends PILBase {
   // 途中TODO
-  final String url = "http://www.point-stadium.com/wgamepkj.asp";
+  final String url = "http://www.point-island.com/wgamepkj.asp";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
@@ -23,7 +23,7 @@ public class GMYGameParkEnk extends GMYBase {
   /**
    * @param logg
    */
-  public GMYGameParkEnk(Logger logg, Map<String, String> cProps) {
+  public PILGameParkEnk(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "ゲームパークアンケート");
     GameParkEnk = new AnswerGameParkEnk(logg);
     Adsurvey = new AnswerAdsurvey(logg);
@@ -33,7 +33,7 @@ public class GMYGameParkEnk extends GMYBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "a[href*='gamepark']";
+    selector = "input[name='gamep']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
         pop2Cls = "div.campaignClose>img", //
@@ -72,7 +72,7 @@ public class GMYGameParkEnk extends GMYBase {
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
 
-            if (cUrl.indexOf("getmoney.qpark.jp/enquete/") >= 0) {
+            if (cUrl.indexOf("seg.qpark.jp/enquete/") >= 0) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);
             }

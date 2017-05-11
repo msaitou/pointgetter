@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.pst;
 
 import java.util.List;
 import java.util.Map;
@@ -12,9 +12,9 @@ import pointGet.Utille;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 
-public class GMYGameParkEnk extends GMYBase {
+public class PSTGameParkEnk extends PSTBase {
   // 途中TODO
-  final String url = "http://www.point-stadium.com/wgamepkj.asp";
+  final String url = "http://dietnavi.com/pc/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
@@ -23,7 +23,7 @@ public class GMYGameParkEnk extends GMYBase {
   /**
    * @param logg
    */
-  public GMYGameParkEnk(Logger logg, Map<String, String> cProps) {
+  public PSTGameParkEnk(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "ゲームパークアンケート");
     GameParkEnk = new AnswerGameParkEnk(logg);
     Adsurvey = new AnswerAdsurvey(logg);
@@ -72,7 +72,7 @@ public class GMYGameParkEnk extends GMYBase {
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
 
-            if (cUrl.indexOf("getmoney.qpark.jp/enquete/") >= 0) {
+            if (cUrl.indexOf("seg.qpark.jp/enquete/") >= 0) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);
             }
