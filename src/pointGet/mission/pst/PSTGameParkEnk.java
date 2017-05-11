@@ -14,7 +14,7 @@ import pointGet.mission.parts.AnswerGameParkEnk;
 
 public class PSTGameParkEnk extends PSTBase {
   // 途中TODO
-  final String url = "http://dietnavi.com/pc/";
+  final String url = "http://www.point-stadium.com/wgamepkj.asp";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
