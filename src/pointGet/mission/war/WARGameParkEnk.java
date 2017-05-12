@@ -14,7 +14,7 @@ import pointGet.mission.parts.AnswerGameParkEnk;
 
 public class WARGameParkEnk extends WARBase {
   // 途中TODO
-  final String url = "http://dietnavi.com/pc/";
+  final String url = "http://www.warau.jp/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
@@ -33,7 +33,7 @@ public class WARGameParkEnk extends WARBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "a[href*='gamepark']";
+    selector = "a[href*='gamepark']>span";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
         pop2Cls = "div.campaignClose>img", //
@@ -42,7 +42,7 @@ public class WARGameParkEnk extends WARBase {
         a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
-      changeCloseWindow(driver);
+//      changeCloseWindow(driver);
       if (!isExistEle(driver, pop1None, false)
           && isExistEle(driver, pop1)) {
         clickSleepSelector(driver, pop1, 4000); // 遷移
@@ -72,7 +72,7 @@ public class WARGameParkEnk extends WARBase {
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
 
-            if (cUrl.indexOf("getmoney.qpark.jp/enquete/") >= 0) {
+            if (cUrl.indexOf("warau.qpark.jp/enquete/") >= 0) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);
             }
