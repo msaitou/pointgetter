@@ -107,10 +107,20 @@ public class AnswerColum extends MissCommon {
       }
     }
     checkOverlay(driver, overLay, false);
+    String wid2 = driver.getWindowHandle();
+    boolean winNotClosed = false;
     if (isExistEle(driver, finishSele)) {
       clickSleepSelector(driver, finishSele, 5000); // 遷移
-      // アラートをけして
-      checkAndAcceptAlert(driver);
+      java.util.Set<String> widSet = driver.getWindowHandles();
+      for (String id : widSet) {
+        if (id.equals(wid2)) {
+          winNotClosed = true;
+        }
+      }
+      if (winNotClosed) {
+        // アラートをけして
+        checkAndAcceptAlert(driver);
+      }
     }
     
 //    if (isExistEle(driver, closeSele)) {
@@ -120,10 +130,20 @@ public class AnswerColum extends MissCommon {
 //    }
       // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
       if (null == wid) {
+        logg.info("close0");
       }
       else {
-        driver.close();
+        logg.info("close1");
+//        String wid2 = driver.getWindowHandle();
+          logg.info("close2");
+          if (!wid2.equals(wid)) {
+            logg.info("close3");
+            driver.close();
+            logg.info("close4");
+          }
+        logg.info("close6");
         driver.switchTo().window(wid);
+        logg.info("close7");
       }
   }
 }

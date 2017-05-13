@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -282,7 +283,7 @@ public abstract class MissCommon {
     // 元のウインドウIDにスイッチ
     driver.switchTo().window(wid);
   }
-  
+
   /**
    * 
    * @param driver
@@ -293,11 +294,15 @@ public abstract class MissCommon {
       val alert = driver.switchTo().alert();
       alert.accept();
       Utille.sleep(3000);
-    }
-    catch (NoAlertPresentException ae) {
+    } catch (NoAlertPresentException ae) {
       logg.error("##NOT EXIST Alert##################");
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(ae), 1000));
       logg.error("#############################");
+    } catch (NoSuchWindowException e) {
+      logg.error("##NOT EXIST Alert2##################");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+      logg.error("#############################");
+      Utille.sleep(2000);
     }
   }
 }

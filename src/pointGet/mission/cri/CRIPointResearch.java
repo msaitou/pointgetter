@@ -11,7 +11,9 @@ import org.openqa.selenium.WebElement;
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerHiroba;
+import pointGet.mission.parts.AnswerKonatab;
 import pointGet.mission.parts.AnswerKotsuta;
+import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerShopping;
@@ -34,6 +36,8 @@ public class CRIPointResearch extends CRIBase {
   AnswerZukan Zukan = null;
   /* アンケートクラス　多数決 */
   AnswerTasuuketu Tasuuketu = null;
+  AnswerManga Manga = null;
+  AnswerKonatab Konatab = null;
 
   /**
    * @param logg
@@ -50,6 +54,8 @@ public class CRIPointResearch extends CRIBase {
     PhotoEnk = new AnswerPhotoEnk(logg);
     Zukan = new AnswerZukan(logg);
     Tasuuketu = new AnswerTasuuketu(logg);
+    Manga = new AnswerManga(logg);
+    Konatab = new AnswerKonatab(logg);
   }
 
   @Override
@@ -58,15 +64,18 @@ public class CRIPointResearch extends CRIBase {
     driver.get(url);
     selector = "td>p.enq_unanswered>a";
     int skip = 1;
-    String
-    sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
+    String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
     sele4 = "div>input[type='submit']", //
     sele4_ = "#iframe", //
     sele5 = "div#shindan", //
     sele6 = "form>input.next_bt", // コラム用
     sele7 = "div.btn>button[type='submit']", //
-    sele8 = "form>input.next_bt", sele9 = "a.start__button",
+    sele8 = "form>input.next_bt", //
+    sele9 = "a.start__button", //
+    sele10 = "p#nextBtn>input", //
+    sele1 = "form>input[type='image']", // 回答する 漫画用
+
     a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
@@ -113,6 +122,14 @@ public class CRIPointResearch extends CRIBase {
         }
         else if (isExistEle(driver, sele9)) {
           Tasuuketu.answer(driver, sele9, wid);
+        }
+        // 漫画
+        else if (isExistEle(driver, sele1)) {
+          Manga.answer(driver, sele1, wid);
+          skip++; // 残るのでスキップ
+        }
+        else if (isExistEle(driver, sele10)) {
+          Konatab.answer(driver, sele10, wid);
         }
         else {
           skip++;
