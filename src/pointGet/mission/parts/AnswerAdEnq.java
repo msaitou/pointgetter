@@ -122,7 +122,10 @@ public class AnswerAdEnq extends MissCommon {
       }
     }
     if (isExistEle(driver, finishSele)) {
+      String wid2 = driver.getWindowHandle();
       clickSleepSelector(driver, finishSele, 4000);
+      driver.close();
+      changeWindow(driver, wid2);
     }
     driver.close();
     driver.switchTo().window(wid);
