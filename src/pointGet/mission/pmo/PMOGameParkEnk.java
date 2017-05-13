@@ -13,7 +13,7 @@ import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 
 public class PMOGameParkEnk extends PMOBase {
-  final String url = "http://poimon-plus.gamepark.net/survey/summary/";
+  final String url = "http://poimon.jp/daily/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
@@ -32,61 +32,67 @@ public class PMOGameParkEnk extends PMOBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
+    selector = "li.gamepark>a div.btnGp";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
-    pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
-    pop2Cls = "div.campaignClose>img", //
-    pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
-    enkLinkSele = "li.survey>a>img", //
-    a = "";
-    if (!isExistEle(driver, pop1None, false)
-        && isExistEle(driver, pop1)) {
-      clickSleepSelector(driver, pop1, 4000); // 遷移
-      if (!isExistEle(driver, pop2ClsNone, false)
-          && isExistEle(driver, pop2Cls)) {
-        clickSleepSelector(driver, pop2Cls, 4000); // 遷移
-      }
-    }
-    if (isExistEle(driver, enkLinkSele)) {
-      clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
-
-      selector = "div.qBox>button";
-      int skip = 1;
-      String sele1 = "form>button#nextBtn", // pointResearch用
-      sele2 = "form>input.btn_regular", // 
-      sele2_ = "iframe.question_frame", //
-      b = "";
-      while (true) {
-        if (!isExistEle(driver, selector)) {
-          break;
+        pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
+        pop2Cls = "div.campaignClose>img", //
+        pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
+        enkLinkSele = "li.survey>a>img", //
+        a = "";
+    if (isExistEle(driver, selector)) {
+      clickSleepSelector(driver, selector, 4000); // 遷移
+      changeCloseWindow(driver);
+      if (!isExistEle(driver, pop1None, false)
+          && isExistEle(driver, pop1)) {
+        clickSleepSelector(driver, pop1, 4000); // 遷移
+        if (!isExistEle(driver, pop2ClsNone, false)
+            && isExistEle(driver, pop2Cls)) {
+          clickSleepSelector(driver, pop2Cls, 4000); // 遷移
         }
-        List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-        int size = eleList.size(), targetIndex = 0;
-        if (size > targetIndex && isExistEle(eleList, targetIndex)) {
-          String wid = driver.getWindowHandle();
-          clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
-          changeWindow(driver, wid);
-          String cUrl = driver.getCurrentUrl();
+      }
+      if (isExistEle(driver, enkLinkSele)) {
+        clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
 
-          if (cUrl.indexOf("poimon.qpark.jp/enquete/") >= 0
-              && isExistEle(driver, sele1)) {
-            Utille.sleep(4000);
-            GameParkEnk.answer(driver, sele1, wid);
+        selector = "div.qBox>button";
+        int skip = 1;
+        String sele1 = "form>button#nextBtn", // pointResearch用
+            sele2 = "form>input.btn_regular", //
+            sele2_ = "iframe.question_frame", //
+            b = "";
+        while (true) {
+          if (!isExistEle(driver, selector)) {
+            break;
           }
-          else if (cUrl.indexOf("adsurvey.media-ad.jp") >= 0
-              && isExistEle(driver, sele2_)) {
-            // $('iframe').contents().find("div>input[type='submit']")
-            Adsurvey.answer(driver, sele2, wid);
+          List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+          int size = eleList.size(), targetIndex = 0;
+          if (size > targetIndex && isExistEle(eleList, targetIndex)) {
+            String wid = driver.getWindowHandle();
+            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+            changeWindow(driver, wid);
+            String cUrl = driver.getCurrentUrl();
+
+            if (cUrl.indexOf("poimon.qpark.jp/enquete/") >= 0
+                && isExistEle(driver, sele1)) {
+              Utille.sleep(4000);
+              GameParkEnk.answer(driver, sele1, wid);
+            }
+            else if (cUrl.indexOf("adsurvey.media-ad.jp") >= 0
+                && isExistEle(driver, sele2_)) {
+              // $('iframe').contents().find("div>input[type='submit']")
+              Utille.sleep(4000);
+              Adsurvey.answer(driver, sele2, wid);
+            }
+            else {
+              skip++;
+              driver.close();
+              driver.switchTo().window(wid);
+            }
+            driver.navigate().refresh();
+            Utille.sleep(5000);
           }
           else {
-            skip++;
-            driver.close();
-            driver.switchTo().window(wid);
+            break;
           }
-          driver.navigate().refresh();
-          Utille.sleep(5000);
-        }
-        else {
-          break;
         }
       }
     }
