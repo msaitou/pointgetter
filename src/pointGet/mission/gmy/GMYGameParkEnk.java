@@ -14,7 +14,7 @@ import pointGet.mission.parts.AnswerGameParkEnk;
 
 public class GMYGameParkEnk extends GMYBase {
   // 途中TODO
-  final String url = "http://www.point-stadium.com/wgamepkj.asp";
+  final String url = "http://dietnavi.com/pc/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
@@ -33,6 +33,7 @@ public class GMYGameParkEnk extends GMYBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
+    waitTilReady(driver);
     selector = "a[href*='gamepark']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //

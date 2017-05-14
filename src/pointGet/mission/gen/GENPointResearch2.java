@@ -115,7 +115,9 @@ public class GENPointResearch2 extends GENBase {
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
         }
-        else if (cUrl.indexOf("photo-enquete") >= 0
+        else if (
+            (cUrl.indexOf("photo-enquete") >= 0
+            || cUrl.indexOf("cosmetic-brand.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
         }
