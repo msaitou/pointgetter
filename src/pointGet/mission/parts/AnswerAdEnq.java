@@ -41,7 +41,7 @@ public class AnswerAdEnq extends MissCommon {
     seleSub = "div.btn_next>input[type='submit']", //
     finishSele = "div.btn_next>form>input[type='submit']", //
     finishSele2 = "div.btn_getpoint>a", // 6問バージョン用
-    seleSele = "select[name='question_']"; // ドロップダウンセレクター
+    seleSele = "select[name*='question_']"; // ドロップダウンセレクター
 
     Utille.sleep(2000);
     for (int k = 1; k <= 12 + 3; k++) {

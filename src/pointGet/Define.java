@@ -149,6 +149,7 @@ public class Define {
   final public static String strSUGPointResearch = "SUGPointResearch";
   final public static String strSUGPointResearch2 = "SUGPointResearch2";
   final public static String strSUGClickBanner = "SUGClickBanner";
+  final public static String strSUGChyousadan = "SUGChyousadan";
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";

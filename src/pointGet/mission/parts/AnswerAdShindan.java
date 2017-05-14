@@ -30,7 +30,7 @@ public class AnswerAdShindan extends MissCommon {
     String choiceSele = "div.answer__form>label.radio", // ラジオセレクター
     seleNext = "div.button__box>input#adtech-button", //
     titleSele = "div.question", // close
-    alreadyGetSele = "bonus__progress settled", a = "";
+    alreadyGetSele = "p.bonus__progress.settled", a = "";
     if (!isExistEle(driver, alreadyGetSele, false)) {// 既に獲得済みがなければ
       clickSleepSelector(driver, startSele, 4000);
       // 12問?
