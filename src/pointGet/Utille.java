@@ -235,7 +235,7 @@ public class Utille {
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
     JavascriptExecutor js = (JavascriptExecutor) driver;
     //scrollIntoView(true)だけだとスクロールしすぎるので、少し戻す
-    js.executeScript("javascript:window.scrollBy(0,-80)");
+    js.executeScript("javascript:window.scrollBy(0,-120)");
   }
 
   /**

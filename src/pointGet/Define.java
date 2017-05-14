@@ -53,7 +53,8 @@ public class Define {
   final public static String strGENPointResearch = "GENPointResearch";
   final public static String strGENPointResearch2 = "GENPointResearch2";
   final public static String strGENGameParkEnk = "GENGameParkEnk";
-
+  final public static String strGENMorikoreEnk = "GENMorikoreEnk";
+  
   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
   final public static String strGMYClickBanner = "GMYClickBanner";
@@ -84,6 +85,7 @@ public class Define {
   final public static String strMOPPointResearch = "MOPPointResearch";
   final public static String strMOPPointResearch2 = "MOPPointResearch2";
   final public static String strMOPMiniGameEnk = "MOPMiniGameEnk";
+  final public static String strMOPChyousadan = "MOPChyousadan";
 
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
@@ -157,6 +159,7 @@ public class Define {
   final public static String strPSTShindanAnk = "PSTShindanAnk";
   final public static String strPSTManga = "PSTManga";
   final public static String strPSTGameParkEnk = "PSTGameParkEnk";
+  final public static String strPSTChyousadan = "PSTChyousadan";
   // ■■■■■pointisland■■■■■
   final public static String strPILUranai = "PILUranai";
   final public static String strPILQuiz = "PILQuiz";
@@ -164,6 +167,8 @@ public class Define {
   final public static String strPILShindanAnk = "PILShindanAnk";
   final public static String strPILManga = "PILManga";
   final public static String strPILGameParkEnk = "PILGameParkEnk";
+  final public static String strPILChyousadan = "PILChyousadan";
+  
   // ■■■■■chanceIt■■■■■
   final public static String strCITPriceChyosatai = "CITPriceChyosatai";
   final public static String strCITShindan = "CITShindan";

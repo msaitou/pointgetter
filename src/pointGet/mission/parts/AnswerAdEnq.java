@@ -30,102 +30,104 @@ public class AnswerAdEnq extends MissCommon {
     logg.info("####[" + this.getClass().getName() + "]####");
     Utille.sleep(5000);
     driver.switchTo().frame(0);
-    clickSleepSelector(driver, startSele, 3000);
-    String
-    //    radioSele = "div.answer>input[type='radio']", //
-    //    checkboxSele = "div.answer>input[type='checkbox']", //
-    radioSele = "div.answer>label", //
-    checkboxSele = radioSele, //
-    //    noSele = "span.query-num",
-    titleSele = "h2.question", // 質問NOも含む
-    seleSub = "div.btn_next>input[type='submit']", //
-    finishSele = "div.btn_next>form>input[type='submit']", //
-    finishSele2 = "div.btn_getpoint>a", // 6問バージョン用
-    seleSele = "select[name*='question_']"; // ドロップダウンセレクター
+    if (isExistEle(driver, startSele)) {
+      clickSleepSelector(driver, startSele, 3000);
+      String
+      //    radioSele = "div.answer>input[type='radio']", //
+      //    checkboxSele = "div.answer>input[type='checkbox']", //
+      radioSele = "div.answer>label", //
+      checkboxSele = radioSele, //
+      //    noSele = "span.query-num",
+      titleSele = "h2.question", // 質問NOも含む
+      seleSub = "div.btn_next>input[type='submit']", //
+      finishSele = "div.btn_next>form>input[type='submit']", //
+      finishSele2 = "div.btn_getpoint>a", // 6問バージョン用
+      seleSele = "select[name*='question_']"; // ドロップダウンセレクター
 
-    Utille.sleep(2000);
-    for (int k = 1; k <= 12 + 3; k++) {
-      int choiceNum = 0;
-      String qTitle = "", choiceSele = "";
-      if (isExistEle(driver, titleSele)) {
-        qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
-        logg.info(qTitle);
-        if (isExistEle(driver, radioSele)) { // ラジオ
-          choiceSele = radioSele;
-        }
-        else if (isExistEle(driver, checkboxSele)) { // チェックぼっくす
-          choiceSele = checkboxSele;
-        }
-        else if (isExistEle(driver, seleSele)) { // ドロップダウン
-          choiceSele = seleSele;
-        }
+      Utille.sleep(2000);
+      for (int k = 1; k <= 12 + 3; k++) {
+        int choiceNum = 0;
+        String qTitle = "", choiceSele = "";
+        if (isExistEle(driver, titleSele)) {
+          qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
+          logg.info(qTitle);
+          if (isExistEle(driver, radioSele)) { // ラジオ
+            choiceSele = radioSele;
+          }
+          else if (isExistEle(driver, checkboxSele)) { // チェックぼっくす
+            choiceSele = checkboxSele;
+          }
+          else if (isExistEle(driver, seleSele)) { // ドロップダウン
+            choiceSele = seleSele;
+          }
 
-        // 回答選択
-        if (radioSele.equals(choiceSele)
-            || checkboxSele.equals(choiceSele)) {
-          int choiceies = getSelectorSize(driver, choiceSele);
-          if (qTitle.indexOf("あなたの性別") >= 0) {
-            choiceNum = 0; // 1：男
-          }
-          else if (qTitle.indexOf("あなたの年齢を") >= 0) {
-            choiceNum = 2; // 2：30代
-          }
-          else if (qTitle.indexOf("あなたのご職業") >= 0) {
-            choiceNum = 2; // 2：会社員
-          }
-          else if (qTitle.indexOf("あなたの国籍") >= 0) {
-            choiceNum = 0; // 0:日本
-          }
-          else if (qTitle.indexOf("あなたのお住まいを") >= 0) {
-            choiceNum = 2; // 2：関東
-          }
-          else {
-            if (checkboxSele.equals(choiceSele)) {
-              choiceies--; // チェックボックスは最後の選択肢を除く
+          // 回答選択
+          if (radioSele.equals(choiceSele)
+              || checkboxSele.equals(choiceSele)) {
+            int choiceies = getSelectorSize(driver, choiceSele);
+            if (qTitle.indexOf("あなたの性別") >= 0) {
+              choiceNum = 0; // 1：男
             }
-            choiceNum = Utille.getIntRand(choiceies);
+            else if (qTitle.indexOf("あなたの年齢を") >= 0) {
+              choiceNum = 2; // 2：30代
+            }
+            else if (qTitle.indexOf("あなたのご職業") >= 0) {
+              choiceNum = 2; // 2：会社員
+            }
+            else if (qTitle.indexOf("あなたの国籍") >= 0) {
+              choiceNum = 0; // 0:日本
+            }
+            else if (qTitle.indexOf("あなたのお住まいを") >= 0) {
+              choiceNum = 2; // 2：関東
+            }
+            else {
+              if (checkboxSele.equals(choiceSele)) {
+                choiceies--; // チェックボックスは最後の選択肢を除く
+              }
+              choiceNum = Utille.getIntRand(choiceies);
+            }
+            List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
+            if (isExistEle(eleList2, choiceNum)) {
+              // 選択
+              clickSleepSelector(eleList2.get(choiceNum), 3000);
+              if (isExistEle(driver, seleSub)) {
+                clickSleepSelector(driver, seleSub, 4000);
+              }
+            }
           }
-          List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
-          if (isExistEle(eleList2, choiceNum)) {
-            // 選択
-            clickSleepSelector(eleList2.get(choiceNum), 3000);
+          else if (seleSele.equals(choiceSele)) {
+            Utille.sleep(2000);
+            int size3 = getSelectorSize(driver, seleSele + ">option");
+            String value = "";
+            if (qTitle.indexOf("性別・年代") >= 0) {
+              value = "3";
+            }
+            else if (qTitle.indexOf("のお住まい") >= 0) {
+              value = "34";
+            }
+            else {
+              choiceNum = Utille.getIntRand(size3);
+              value = driver.findElements(By.cssSelector(seleSele + ">option"))
+                  .get(choiceNum).getAttribute("value");
+            }
+            Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
+            selectList.selectByValue(value);
+            Utille.sleep(3000);
             if (isExistEle(driver, seleSub)) {
               clickSleepSelector(driver, seleSub, 4000);
             }
           }
         }
-        else if (seleSele.equals(choiceSele)) {
-          Utille.sleep(2000);
-          int size3 = getSelectorSize(driver, seleSele + ">option");
-          String value = "";
-          if (qTitle.indexOf("性別・年代") >= 0) {
-            value = "3";
-          }
-          else if (qTitle.indexOf("のお住まい") >= 0) {
-            value = "34";
-          }
-          else {
-            choiceNum = Utille.getIntRand(size3);
-            value = driver.findElements(By.cssSelector(seleSele + ">option"))
-                .get(choiceNum).getAttribute("value");
-          }
-          Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
-          selectList.selectByValue(value);
-          Utille.sleep(3000);
-          if (isExistEle(driver, seleSub)) {
-            clickSleepSelector(driver, seleSub, 4000);
-          }
+        else {
+          break;
         }
       }
-      else {
-        break;
+      if (isExistEle(driver, finishSele)) {
+        String wid2 = driver.getWindowHandle();
+        clickSleepSelector(driver, finishSele, 4000);
+        driver.close();
+        changeWindow(driver, wid2);
       }
-    }
-    if (isExistEle(driver, finishSele)) {
-      String wid2 = driver.getWindowHandle();
-      clickSleepSelector(driver, finishSele, 4000);
-      driver.close();
-      changeWindow(driver, wid2);
     }
     driver.close();
     driver.switchTo().window(wid);

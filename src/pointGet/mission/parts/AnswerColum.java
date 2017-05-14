@@ -118,6 +118,7 @@ public class AnswerColum extends MissCommon {
         }
       }
       if (winNotClosed) {
+        logg.info("alert消そう");
         // アラートをけして
         checkAndAcceptAlert(driver);
       }
@@ -136,7 +137,7 @@ public class AnswerColum extends MissCommon {
         logg.info("close1");
 //        String wid2 = driver.getWindowHandle();
           logg.info("close2");
-          if (!wid2.equals(wid)) {
+          if (winNotClosed) {
             logg.info("close3");
             driver.close();
             logg.info("close4");
