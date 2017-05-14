@@ -104,6 +104,9 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPPointResearch2: // ■ポイントリサーチ２
           MisIns = new MOPPointResearch2(loggg, cProps);
           break;
+        case Define.strMOPMiniGameEnk: // ■ポイントリサーチ２
+          MisIns = new MOPMiniGameEnk(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strMOPQuiz,

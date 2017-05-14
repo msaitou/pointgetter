@@ -83,6 +83,8 @@ public class Define {
   final public static String strMOPManga = "MOPManga";
   final public static String strMOPPointResearch = "MOPPointResearch";
   final public static String strMOPPointResearch2 = "MOPPointResearch2";
+  final public static String strMOPMiniGameEnk = "MOPMiniGameEnk";
+
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
   final public static String strOSAQuiz = "OSAQuiz";
@@ -97,7 +99,7 @@ public class Define {
   final public static String strOSAPointResearch = "OSAPointResearch";
   final public static String strOSAGameParkEnk = "OSAGameParkEnk";
   final public static String strOSAFarmEnk = "OSAFarmEnk";
-  
+
   // ■■■■■PEX■■■■■
   final public static String strPEX4quiz = "PEX4quiz";
   final public static String strPEXAnswer = "PEXAnswer";
