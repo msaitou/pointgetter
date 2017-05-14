@@ -83,6 +83,7 @@ public class OSAFarmEnk extends OSABase {
             else if (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
+              skip++;
             }
             else {
               skip++;

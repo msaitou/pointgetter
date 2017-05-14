@@ -82,7 +82,9 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGClickBanner: // ■クリックバナー
           MisIns = new SUGClickBananer(loggg, cProps);
           break;
-          
+        case Define.strSUGChyousadan: // ■調査団
+          MisIns = new SUGChyousadan(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
