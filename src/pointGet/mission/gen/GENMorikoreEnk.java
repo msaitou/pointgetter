@@ -39,7 +39,7 @@ public class GENMorikoreEnk extends GENBase {
     driver = driverAtom;
     driver.get(url);
     selector = "section#ftrlink li>a[href*='/cl/?id=134610&u=6167192']";
-    String enkLinkSele = "div.playlist__clear>div>a[href='/ad/enq/list']", //    
+    String enkLinkSele = "a>img[alt='モリモリ診断']", //    
     a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移

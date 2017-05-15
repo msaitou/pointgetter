@@ -29,7 +29,7 @@ public class AnswerTasuuketu extends MissCommon {
     logg.info("-[" + this.getClass().getName() + "]-");
     String radioSele = "label.radio", //
         voteSele = "input.button--answer", //
-        nextSele = "input.button--next", //
+        nextSele = "a.button--next", //
         titleSele = "div.question>p", // close
         a = "";
     clickSleepSelector(driver, startSele, 4000);
