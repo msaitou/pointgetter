@@ -46,14 +46,14 @@ public class MOPMiniGameEnk extends MOPBase {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         selector = "div.enqueteContainer a[href] dd.title";
         int skip = 0;
-        String 
+        String
         sele1_ = "iframe.question_frame",//
-        sele1 = "form>input[type='submit']", // 
+        sele1 = "form>input[type='submit']", //
         sele3 = "form>input[type='submit']", //
         sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
         b = "";
         while (true) {
-          checkOverlay(driver, overlaySele, false);
+//          checkOverlay(driver, overlaySele, false);
           if (!isExistEle(driver, selector)) {
             break;
           }
@@ -61,6 +61,7 @@ public class MOPMiniGameEnk extends MOPBase {
           int size = eleList.size(), targetIndex = skip;
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
+            Utille.scrolledPage(driver, eleList.get(targetIndex));
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
