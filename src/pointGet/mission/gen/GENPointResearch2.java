@@ -87,7 +87,7 @@ public class GENPointResearch2 extends GENBase {
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size = eleList.size(), targetIndex = size - skip;
-      if (size > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+      if (targetIndex > -1 && size > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
         clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);

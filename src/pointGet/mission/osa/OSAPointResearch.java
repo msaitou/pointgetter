@@ -55,7 +55,8 @@ public class OSAPointResearch extends OSABase {
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size = eleList.size(), targetIndex = size - skip;
-      if (size > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+      if (targetIndex > -1 && size > targetIndex
+          && isExistEle(eleList, targetIndex)) { // 古い順にやる
         String sikibetuSele = "td.no";
         if (isExistEle(driver, sikibetuSele)) {
           String ankNo = driver.findElements(By.cssSelector(sikibetuSele)).get(targetIndex).getText();

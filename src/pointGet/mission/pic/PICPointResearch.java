@@ -45,7 +45,7 @@ public class PICPointResearch extends PICBase {
         int size = eleList.size();
         int targetIndex = size - 1 - skip; // 順番はサイト毎に変更可能だが、変数を使う
         logg.info("size:" + size + " targetIndex:" + targetIndex + " skip:" + skip);
-        if (size > targetIndex && targetIndex > 0
+        if (targetIndex > -1 && size > targetIndex
             && isExistEle(eleList, targetIndex)) {
           String wid = driver.getWindowHandle();
           clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ

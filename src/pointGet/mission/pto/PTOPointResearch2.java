@@ -65,7 +65,7 @@ public class PTOPointResearch2 extends PTOBase {
         List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
         int size = eleList.size(), targetIndex = size - 1 - skip; // 順番はサイト毎に変更可能だが、変数を使う
         logg.info("size:" + size + " targetIndex:" + targetIndex + " skip:" + skip);
-        if (size > targetIndex && targetIndex > 0
+        if (size > targetIndex && targetIndex > -1
             && isExistEle(eleList, targetIndex)) {
           String wid = driver.getWindowHandle();
           clickSleepSelector(eleList, targetIndex, 10000); // アンケートスタートページ

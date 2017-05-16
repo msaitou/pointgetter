@@ -21,7 +21,7 @@ public class MOPPointResearch2 extends MOPBase {
   AnswerEnqY2at EnqY2at = null;
   AnswerEnkShopQP EnkShopQP = null;
   AnswerEnqNstk EnqNstk = null;
-  
+
   /**
    * @param logg
    */
@@ -71,7 +71,7 @@ public class MOPPointResearch2 extends MOPBase {
             && isExistEle(driver, sele4)) {
           EnqNstk.answer(driver, sele4, wid);
         }
-        
+
         else {
           skip++;
           driver.close();

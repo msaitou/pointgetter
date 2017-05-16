@@ -56,7 +56,7 @@ public class SUGPointResearch2 extends SUGBase {
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size = eleList.size(), targetIndex = skip - 1; // 順番はサイト毎に変更可能だが、変数を使う
-      if (size > targetIndex
+      if (targetIndex > -1 && size > targetIndex
           && isExistEle(eleList, targetIndex)) {
         clickSleepSelector(eleList, targetIndex, 6000); // アンケートスタートページ
         String wid = driver.getWindowHandle();

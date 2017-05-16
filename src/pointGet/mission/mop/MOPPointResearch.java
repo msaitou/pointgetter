@@ -38,7 +38,8 @@ public class MOPPointResearch extends MOPBase {
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size = eleList.size(), targetIndex = size - skip;
-      if (targetIndex > -1 && isExistEle(eleList, targetIndex)) {
+      if (targetIndex > -1 && targetIndex > -1
+          && isExistEle(eleList, targetIndex)) {
         String wid = driver.getWindowHandle();
         clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
         changeWindow(driver, wid);
