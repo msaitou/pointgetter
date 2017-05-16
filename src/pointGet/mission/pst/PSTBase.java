@@ -70,8 +70,11 @@ public abstract class PSTBase extends Mission {
         case Define.strPSTManga: // ■PSTまんが　
           MisIns = new PSTManga(loggg, cProps);
           break;
-        case Define.strPSTGameParkEnk: // ■PSTまんが　
+        case Define.strPSTGameParkEnk: // ■GameParkアンケート
           MisIns = new PSTGameParkEnk(loggg, cProps);
+          break;
+        case Define.strPSTChyousadan: // ■調査団
+          MisIns = new PSTChyousadan(loggg, cProps);
           break;
         default:
       }

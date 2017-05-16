@@ -54,7 +54,8 @@ public class Define {
   final public static String strGENPointResearch2 = "GENPointResearch2";
   final public static String strGENGameParkEnk = "GENGameParkEnk";
   final public static String strGENMorikoreEnk = "GENMorikoreEnk";
-  
+  final public static String strGENChyousadan = "GENChyousadan";
+
   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
   final public static String strGMYClickBanner = "GMYClickBanner";
@@ -101,6 +102,7 @@ public class Define {
   final public static String strOSAPointResearch = "OSAPointResearch";
   final public static String strOSAGameParkEnk = "OSAGameParkEnk";
   final public static String strOSAFarmEnk = "OSAFarmEnk";
+  final public static String strOSAChyousadan = "OSAChyousadan";
 
   // ■■■■■PEX■■■■■
   final public static String strPEX4quiz = "PEX4quiz";
@@ -124,6 +126,7 @@ public class Define {
   final public static String strPTOManga = "PTOManga";
   final public static String strPTOPointResearch = "PTOPointResearch";
   final public static String strPTOPointResearch2 = "PTOPointResearch2";
+  final public static String strPTOChyousadan = "PTOChyousadan";
 
   // ■■■■■Mobatoku■■■■■
   final public static String strMOBAnzan = "MOBAnzan";
@@ -141,6 +144,7 @@ public class Define {
   final public static String strPICPriceChyosatai = "PICPriceChyosatai";
   final public static String strPICShindan = "PICShindan";
   final public static String strPICPointResearch = "PICPointResearch";
+  final public static String strPICChyousadan = "PICChyousadan";
 
   // ■■■■■SUGUTAMA■■■■■
   final public static String strSUGUranai = "SUGUranai";
@@ -188,9 +192,11 @@ public class Define {
   final public static String strCRIClickBananer = "CRIClickBananer";
   final public static String strCRIPointResearch = "CRIPointResearch";
   final public static String strCRIGameParkEnk = "CRIGameParkEnk";
+  final public static String strCRIChyousadan = "CRIChyousadan";
   // ■■■■■ハピタス■■■■■
   final public static String strHAPManga = "HAPManga";
   final public static String strHAPPointResearch = "HAPPointResearch";
+  final public static String strHAPChyousadan = "HAPChyousadan";
   // ■■■■■ワラウ■■■■■
   final public static String strWARDailyCheck = "WARDailyCheck";
   final public static String strWARPointResearch = "WARPointResearch";

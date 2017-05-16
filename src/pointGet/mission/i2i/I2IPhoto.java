@@ -3,8 +3,6 @@ package pointGet.mission.i2i;
 import java.util.List;
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -47,9 +45,8 @@ public class I2IPhoto extends I2IBase {
           }
           clickSleepSelector(e, selector2, 5000);
           // アラートをけして
-          val alert = driver.switchTo().alert();
-          alert.accept();
-          Utille.sleep(5000);
+          checkAndAcceptAlert(driver);
+          Utille.sleep(2000);
           changeCloseWindow(driver);
           selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
           String sele8 = "form>input.next_bt";
