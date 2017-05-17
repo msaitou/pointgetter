@@ -104,7 +104,10 @@ public abstract class OSABase extends Mission {
         case Define.strOSAFarmEnk: // ■ファームアンケート
           MisIns = new OSAFarmEnk(loggg, cProps);
           break;
-        default:
+        case Define.strOSAChyousadan: // ■調査団
+          MisIns = new OSAChyousadan(loggg, cProps);
+          break;
+       default:
       }
       if (Arrays.asList(new String[] { Define.strOSAQuiz,
           Define.strOSANanyoubi,

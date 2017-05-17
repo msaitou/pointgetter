@@ -80,6 +80,9 @@ public abstract class PICBase extends Mission {
         case Define.strPICPointResearch: // ■ポイントリサーチ
           MisIns = new PICPointResearch(loggg, cProps);
           break;
+        case Define.strPICChyousadan: // ■調査団
+          MisIns = new PICChyousadan(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strPICClickBanner,
@@ -87,6 +90,7 @@ public abstract class PICBase extends Mission {
           Define.strPICPriceChyosatai,
           Define.strPICShindan,
           Define.strPICPointResearch,
+          Define.strPICChyousadan
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

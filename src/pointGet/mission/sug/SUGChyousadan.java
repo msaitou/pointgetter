@@ -45,6 +45,7 @@ public class SUGChyousadan extends SUGBase {
         sele1 = "form>input[type='submit']", // 
         b = "";
         selector = "div.enquete_box a dd.title>strong";
+        int cn = 0;
         while (isExistEle(driver, selector)) {
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
           int size = eleList.size(), targetIndex = size - skip;
@@ -66,6 +67,10 @@ public class SUGChyousadan extends SUGBase {
             }
             driver.navigate().refresh();
             Utille.sleep(5000);
+            // 回数を制限する
+            if (cn++ > 2) {
+              break;
+            }
           }
           else {
             break;
