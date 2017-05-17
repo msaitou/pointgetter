@@ -1,5 +1,6 @@
 package pointGet.mission.gen;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -8,94 +9,86 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
-import pointGet.mission.Mission;
+import pointGet.mission.parts.AnswerAdEnq;
 
-public class GENChyousadan extends Mission {
-	final String url = "http://www.gendama.jp/";
+public class GENChyousadan extends GENBase {
+  final String url = "http://www.gendama.jp/";
+  AnswerAdEnq AdEnq = null;
 
-	/**
-	 * @param logg
-	 */
-	public GENChyousadan(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps);
-		this.mName = "■GEN星座";
-	}
+  /**
+   * @param logg
+   */
+  public GENChyousadan(Logger logg, Map<String, String> cProps) {
+    super(logg, cProps, "調査団");
+    AdEnq = new AnswerAdEnq(logg);
+  }
 
-	@Override
-	public void roopMission(WebDriver driver) {
-	}
+  @Override
+  public void roopMission(WebDriver driver) {
+  }
 
-	@Override
-	public void privateMission(WebDriver driver) {
-		// div#dropmenu01
-		driver.get(url);
-		selector = "div#dropmenu01";
-		if (isExistEle(driver, selector, false)) {
-			int size = getSelectorSize(driver, selector);
-			for (int i = 0; i < size; i++) {
-				WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-				String selector2 = "a[onclick*='CMくじ']";
-				if (isExistEle(e, selector2)) {
-					if (!isExistEle(e, selector2)) {
-						break;
-					}
-					String cmPageUrl = e.findElement(By.cssSelector(selector2)).getAttribute("href");
-					driver.get(cmPageUrl); // CMpage
-					Utille.sleep(3000);
-					String uranaiSelector = "a>img[alt='uranai']";
-					if (!isExistEle(driver, uranaiSelector)) {
-						break;
-					}
-					clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
-					changeCloseWindow(driver);
-					// // アラートをけして
-					// val alert = driver.switchTo().alert();
-					// alert.accept();
-					Utille.sleep(10000);
-					// changeCloseWindow(driver);
-
-					selector = "div#parts-slide-button__action a>img"; // 占い始める
-																		// 全体へ
-					String selector1 = "section>div>form>input[type=image]";
-					String selectList[] = { selector, selector1 };
-					for (int g = 0; g < selectList.length; g++) {
-						if (isExistEle(driver, selectList[g])) {
-							clickSleepSelector(driver, selectList[g], 3000); // 遷移
-																				// 全体へ
-
-							String nextSelector = "div#next-button a>img";
-							String symbleSelector = "div#symbols-next-button a>img";
-							boolean endFlag = false;
-							for (int j = 0; j < 20; j++) { // 20に特に意味なし
-															// エンドレスループを避けるため
-								// overlayを消して
-								if (!isExistEle(driver, "div#inter-ad[style*='display: none'] div#inter-ad-close", false)) {
-									Utille.sleep(3000);
-									if (isExistEle(driver, "div#inter-ad div#inter-ad-close")) {
-										checkOverlay(driver, "div#inter-ad div#inter-ad-close", false);
-										endFlag = true;
-									}
-								}
-
-								if (isExistEle(driver, nextSelector)) {
-									clickSleepSelector(driver, nextSelector, 3000); // 遷移
-								} else if (isExistEle(driver, selector)) {
-									clickSleepSelector(driver, selector, 3000); // 遷移
-								} else if (isExistEle(driver, symbleSelector)) {
-									clickSleepSelector(driver, symbleSelector, 3000); // 遷移
-								} else if (isExistEle(driver, selector1)) {
-									clickSleepSelector(driver, selector1, 3000); // 遷移
-								}
-								Utille.sleep(3000);
-								if (endFlag) {
-									break;
-								}
-							}
-						}
-					}
-					break; // 星座はこれで終了
-				}
-			}
-		}
-	}
+  @Override
+  public void privateMission(WebDriver driver) {
+    // div#dropmenu01
+    driver.get(url);
+    selector = "div#dropmenu01";
+    String seleFirst = "a>img[alt='reado']";
+    if (isExistEle(driver, selector, false)) {
+      int size0 = getSelectorSize(driver, selector);
+      for (int i = 0; i < size0; i++) {
+        WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
+        String selector2 = "a[onclick*='CMくじ']";
+        if (isExistEle(e, selector2)) {
+          if (!isExistEle(e, selector2)) {
+            break;
+          }
+          String cmPageUrl = e.findElement(By.cssSelector(selector2)).getAttribute("href");
+          driver.get(cmPageUrl); // CMpage
+          Utille.sleep(3000);
+          if (!isExistEle(driver, seleFirst)) {
+            break;
+          }
+          clickSleepSelector(driver, seleFirst, 3000); // 遷移 全体へ
+          changeCloseWindow(driver);
+          Utille.sleep(10000);
+          int skip = 1;
+          String sele1_ = "iframe.question_frame", //
+          sele1 = "form>input[type='submit']", // 
+          b = "";
+          selector = "div.enquete_box a dd.title>strong";
+          int cn = 0;
+          while (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            int size = eleList.size(), targetIndex = size - skip;
+            if (size > targetIndex && isExistEle(eleList, targetIndex)) {
+              String wid = driver.getWindowHandle();
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
+              clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+              changeWindow(driver, wid);
+              String cUrl = driver.getCurrentUrl();
+              if (cUrl.indexOf("ad/enq/") >= 0
+                  && isExistEle(driver, sele1_)) {
+                // $('iframe').contents().find("div>input[type='submit']")
+                AdEnq.answer(driver, sele1, wid);
+              }
+              else {
+                skip++;
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+              driver.navigate().refresh();
+              Utille.sleep(5000);
+              // 回数を制限する
+              if (cn++ > 2) {
+                break;
+              }
+            }
+            else {
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
 }

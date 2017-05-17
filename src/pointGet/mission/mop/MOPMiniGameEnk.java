@@ -91,6 +91,10 @@ public class MOPMiniGameEnk extends MOPBase {
             break;
           }
         }
+        String stampSele = "div#pointFarmBox>a#btn";
+        if (isExistEle(driver, stampSele)) {
+          clickSleepSelector(driver, stampSele, 4000); // 遷移
+        }
       }
     }
   }

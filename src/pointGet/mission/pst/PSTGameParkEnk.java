@@ -93,6 +93,14 @@ public class PSTGameParkEnk extends PSTBase {
             break;
           }
         }
+        String stampSele = "div#exchengeButton",
+            historySele = "p.iconMdl>a";
+        if (isExistEle(driver, historySele)) {
+          clickSleepSelector(driver, historySele, 4000); // 遷移
+          if (isExistEle(driver, stampSele)) {
+            clickSleepSelector(driver, stampSele, 4000); // 遷移
+          }
+        }
       }
     }
   }

@@ -51,8 +51,8 @@ public class OSAFarmEnk extends OSABase {
       changeCloseWindow(driver);
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
+        int skip = 1;
         selector = "div.enqueteContainer a[href] dd.title";
-        int skip = 0;
         String 
         sele1_ = "iframe.question_frame",//
         sele1 = "form>input[type='submit']", // 
@@ -96,6 +96,10 @@ public class OSAFarmEnk extends OSABase {
           else {
             break;
           }
+        }
+        String stampSele = "a.suggest-surveys";
+        if (isExistEle(driver, stampSele)) {
+          clickSleepSelector(driver, stampSele, 4000); // 遷移
         }
       }
     }
