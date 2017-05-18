@@ -32,7 +32,7 @@ public class GENGameParkEnk extends GENBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    driver.get("http://gendama-plus.gamepark.net/");
+//    driver.get("http://gendama-plus.gamepark.net/");
     String pop1 = "div#campaignDialog p.btnPdPlay", //
     pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
     pop2Cls = "div.campaignClose>img", //
@@ -41,9 +41,9 @@ public class GENGameParkEnk extends GENBase {
     dispLink = "dl.accordion>dt>span",
         linkSele = "dd.accordion_list img[alt='GamePark']",
     a = "";
-    if (!isExistEle(driver, dispLink, false)) {
+    if (isExistEle(driver, dispLink, false)) {
       clickSleepSelector(driver, dispLink, 3000);
-      if (!isExistEle(driver, linkSele, false)) {
+      if (isExistEle(driver, linkSele, false)) {
         clickSleepSelector(driver, linkSele, 3000);
       }
     }
