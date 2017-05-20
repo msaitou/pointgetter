@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.pto;
 
 import java.util.List;
 import java.util.Map;
@@ -11,18 +11,14 @@ import org.openqa.selenium.WebElement;
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerSouSenkyo;
 
-/**
- * @author saitou
- *
- */
-public class GMYKumaVote extends GMYBase {
-  final String url = "http://dietnavi.com/pc/";
+public class PTOKumaVote extends PTOBase {
+  final String url = "http://www.pointtown.com/";
   AnswerSouSenkyo SouSenkyo = null;
 
   /**
    * @param logg
    */
-  public GMYKumaVote(Logger logg, Map<String, String> cProps) {
+  public PTOKumaVote(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "くま投票");
     SouSenkyo = new AnswerSouSenkyo(logg);
   }
@@ -30,13 +26,13 @@ public class GMYKumaVote extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "ul.check_list1 a[href*='http://dietnavi.com/pc/ad_jump.php']";
+    selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
     String sele0 = "a.start__button" //
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "a>img[alt='election']";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 5000); // 遷移
-      changeCloseWindow(driver);
+      clickSleepSelector(driver, selector, 6000); // 遷移
+      driver.switchTo().frame(0);
       Utille.sleep(3000);
       if (isExistEle(driver, preSele)) {
         clickSleepSelector(driver, preSele, 5000); // 遷移 全体へ

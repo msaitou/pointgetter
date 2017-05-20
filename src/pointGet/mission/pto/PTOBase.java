@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.mission.pto;
 
@@ -49,7 +49,7 @@ public abstract class PTOBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param loggg
    * @param cProps
    * @param missions
@@ -89,6 +89,9 @@ public abstract class PTOBase extends Mission {
         case Define.strPTOChyousadan: // ■調査団
           MisIns = new PTOChyousadan(loggg, cProps);
           break;
+        case Define.strPTOKumaVote: // ■くま投票
+          MisIns = new PTOKumaVote(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strPTOClickCorner,
@@ -98,7 +101,8 @@ public abstract class PTOBase extends Mission {
           Define.strPTOManga,
           Define.strPTOPointResearch,
           Define.strPTOPointResearch2,
-          Define.strPTOChyousadan
+          Define.strPTOChyousadan,
+          Define.strPTOKumaVote
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -109,7 +113,7 @@ public abstract class PTOBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -125,7 +129,7 @@ public abstract class PTOBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return
