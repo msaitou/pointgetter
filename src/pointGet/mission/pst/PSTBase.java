@@ -76,6 +76,9 @@ public abstract class PSTBase extends Mission {
         case Define.strPSTChyousadan: // ■調査団
           MisIns = new PSTChyousadan(loggg, cProps);
           break;
+        case Define.strPSTKumaVote: // ■くま投票
+          MisIns = new PSTKumaVote(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strPSTQuiz,

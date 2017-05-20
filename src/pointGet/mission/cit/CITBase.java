@@ -73,13 +73,17 @@ public abstract class CITBase extends Mission {
         case Define.strCITGameParkEnk: // ■GameParkアンケート
           MisIns = new CITGameParkEnk(loggg, cProps);
           break;
+        case Define.strCITKumaVote: // ■くま投票
+          MisIns = new CITKumaVote(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCITPriceChyosatai,
           Define.strCITShindan,
           Define.strCITToidas,
           Define.strCITClickBanner,
-          Define.strCITGameParkEnk
+          Define.strCITGameParkEnk,
+          Define.strCITKumaVote
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

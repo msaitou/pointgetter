@@ -85,6 +85,9 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGChyousadan: // ■調査団
           MisIns = new SUGChyousadan(loggg, cProps);
           break;
+        case Define.strSUGKumaVote: // ■くま投票
+          MisIns = new SUGKumaVote(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
