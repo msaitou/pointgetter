@@ -57,6 +57,7 @@ public class AnswerColum extends MissCommon {
     // 6問
     for (int k = 1; k <= 6; k++) {
       checkOverlay(driver, overLay, false);
+      Utille.sleep(2000);
       int choiceNum = 0;
       if (isExistEle(driver, choiceSele)) {
         int choiceies = getSelectorSize(driver, choiceSele);

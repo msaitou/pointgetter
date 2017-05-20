@@ -12,6 +12,7 @@ import pointGet.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerKotsuta;
 import pointGet.mission.parts.AnswerManga;
+import pointGet.mission.parts.AnswerMinnanosur;
 import pointGet.mission.parts.AnswerPointResearch;
 
 public class SUGPointResearch2 extends SUGBase {
@@ -23,6 +24,7 @@ public class SUGPointResearch2 extends SUGBase {
   AnswerColum Colum = null;
   AnswerManga Manga = null;
   AnswerKotsuta Kotsuta = null;
+  AnswerMinnanosur Minnanosur = null;
 
   /**
    * @param logg
@@ -33,6 +35,7 @@ public class SUGPointResearch2 extends SUGBase {
     Colum = new AnswerColum(logg);
     Manga = new AnswerManga(logg);
     Kotsuta = new AnswerKotsuta(logg);
+    Minnanosur = new AnswerMinnanosur(logg);
   }
 
   @Override
@@ -44,10 +47,12 @@ public class SUGPointResearch2 extends SUGBase {
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button",
     sele6 = "form>input.next_bt", // コラム用
-        sele2 = "form>input[type='image']", // 回答する 漫画用
-        sele1 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
-        sele1_ = "input[type='button']", a = "";
-//    Utille.sleep(10000);
+    sele2 = "form>input[type='image']", // 回答する 漫画用
+    sele1 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
+    sele1_ = "input[type='button']", //
+    sele7 = "div.btn>button[type='submit']", //
+    a = "";
+    //    Utille.sleep(10000);
     while (true) {
       waitTilReady(driver);
       if (!isExistEle(driver, selector, false)) {
@@ -70,8 +75,19 @@ public class SUGPointResearch2 extends SUGBase {
         if (cUrl.indexOf("www.netmile.co.jp/ctrl/user") >= 0
             && isExistEle(driver, sele1_)) {
           clickSleepSelector(driver, sele1_, 4000); // なぜだかませぺーじ
+          String cUrl2 = driver.getCurrentUrl();
           if (isExistEle(driver, sele1)) {
             Kotsuta.answer(driver, sele1, wid);
+          }
+          else if ((cUrl2.indexOf("column-enquete") >= 0
+              || cUrl2.indexOf("beautynail-design.com") >= 0)
+              && isExistEle(driver, sele6)) {
+                Utille.sleep(4000);
+            Colum.answer(driver, sele6, wid);
+          }
+          else if (cUrl2.indexOf("minnanosurvey.com") >= 0
+              && isExistEle(driver, sele7)) {
+            Minnanosur.answer(driver, sele7, wid);
           }
           else {
             skip++;
@@ -79,7 +95,10 @@ public class SUGPointResearch2 extends SUGBase {
             driver.switchTo().window(wid);
           }
         }
-        else if (cUrl.indexOf("column-enquete") >= 0
+        else if ((cUrl.indexOf("column-enquete") >= 0
+            || cUrl.indexOf("beautynail-design.com") >= 0
+            || cUrl.indexOf("fashion-cosmelife.com") >= 0
+            )
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
         }
@@ -87,6 +106,10 @@ public class SUGPointResearch2 extends SUGBase {
         else if (isExistEle(driver, sele2)) {
           Manga.answer(driver, sele2, wid);
           logg.info("manngayたんと動く？");
+        }
+        else if (cUrl.indexOf("minnanosurvey.com") >= 0
+            && isExistEle(driver, sele7)) {
+          Minnanosur.answer(driver, sele7, wid);
         }
         else {
           skip++;

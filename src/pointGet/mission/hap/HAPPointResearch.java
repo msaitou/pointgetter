@@ -108,13 +108,17 @@ public class HAPPointResearch extends HAPBase {
           Shopping.answer(driver, sele4, wid);
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
-            || cUrl.indexOf("beautynail-design.com") >= 0)
+            || cUrl.indexOf("beautynail-design.com") >= 0
+            || cUrl.indexOf("fashion-cosmelife.com") >= 0
+            )
             && isExistEle(driver, sele6)) {
+          Utille.sleep(3000);
           Colum.answer(driver, sele6, wid);
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("cosmetic-brand.com") >= 0)
             && isExistEle(driver, sele8)) {
+          Utille.sleep(3000);
           PhotoEnk.answer(driver, sele8, wid);
         }
         else if (cUrl.indexOf("cosme-beaute.com/picturebook") >= 0

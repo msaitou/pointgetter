@@ -85,9 +85,11 @@ public class GENMorikoreEnk extends GENBase {
               AdShindan.answer(driver, sele3, wid);
               skip++;
             }
-            else if (cUrl.indexOf("column-enquete") >= 0
+            else if ((cUrl.indexOf("column-enquete") >= 0
+                || cUrl.indexOf("beautynail-design.com") >= 0
+                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                )
                 && isExistEle(driver, sele6)) {
-              Colum.answer(driver, sele6, wid);
             }
             else {
               skip++;
