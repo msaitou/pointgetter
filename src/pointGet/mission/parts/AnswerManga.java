@@ -42,10 +42,10 @@ public class AnswerManga extends MissCommon {
     for (int g = 0; g < 9; g++) {
       if (isExistEle(driver, startSele)) {
         checkOverlay(driver, overLay);
-        clickSleepSelector(driver, startSele, 3000); // 遷移
+        clickSleepSelector(driver, startSele, 4000); // 遷移
       }
     }
-    Utille.sleep(3000);
+    Utille.sleep(4000);
     // 12問
     for (int k = 1; k <= 12; k++) {
       checkOverlay(driver, overLay);

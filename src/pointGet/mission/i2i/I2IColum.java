@@ -29,6 +29,7 @@ public class I2IColum extends I2IBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
+    Utille.sleep(3000);
     selector = "li.pointfreeList_item";
     if (isExistEle(driver, selector)) {
       int size = getSelectorSize(driver, selector);

@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerEnkShopQP;
+import pointGet.mission.parts.AnswerEnqNstk2;
 import pointGet.mission.parts.AnswerEnqY2at;
 import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerPointResearch;
@@ -25,6 +26,7 @@ public class OSAPointResearch extends OSABase {
   AnswerSurveyEnk SurveyEnk = null;
   AnswerEnqY2at EnqY2at = null;
   AnswerManga Manga = null;
+  AnswerEnqNstk2 EnqNstk2 = null;
 
   /**
    * @param logg
@@ -36,6 +38,7 @@ public class OSAPointResearch extends OSABase {
     SurveyEnk = new AnswerSurveyEnk(logg);
     EnqY2at = new AnswerEnqY2at(logg);
     Manga = new AnswerManga(logg);
+    EnqNstk2 = new AnswerEnqNstk2(logg);
   }
 
   @Override
@@ -94,17 +97,10 @@ public class OSAPointResearch extends OSABase {
             && isExistEle(driver, sele4)) {
           EnqY2at.answer(driver, sele4, wid);
         }
-
-//        else if (isExistEle(driver, sele4)) {
-//          String cUrl = driver.getCurrentUrl();
-//          if (cUrl.indexOf("rsch.jp") >= 0) {
-//            //						_answerRsch(sele4, wid);
-//            skip++;
-//          }
-//          else {
-//            EnkShopQP.answer(driver, sele4, wid);
-//          }
-//        }
+        else if (cUrl.indexOf("enq.nstk-4.com") >= 0
+            && isExistEle(driver, sele4)) {
+          EnqNstk2.answer(driver, sele4, wid);
+        }
         else {
           skip++;
           driver.close();

@@ -12,6 +12,7 @@ import pointGet.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerHiroba;
 import pointGet.mission.parts.AnswerKotsuta;
+import pointGet.mission.parts.AnswerMinnanosur;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerShopping;
@@ -34,6 +35,7 @@ public class HAPPointResearch extends HAPBase {
   AnswerZukan Zukan = null;
   /* アンケートクラス　多数決 */
   AnswerTasuuketu Tasuuketu = null;
+  AnswerMinnanosur Minnanosur = null;
 
   /**
    * @param logg
@@ -50,6 +52,7 @@ public class HAPPointResearch extends HAPBase {
     PhotoEnk = new AnswerPhotoEnk(logg);
     Zukan = new AnswerZukan(logg);
     Tasuuketu = new AnswerTasuuketu(logg);
+    Minnanosur = new AnswerMinnanosur(logg);
   }
 
   @Override
@@ -58,15 +61,15 @@ public class HAPPointResearch extends HAPBase {
     driver.get(url);
     selector = "tbody#easyenquete td>a>img";
     int skip = 1;
-    String
-    sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
+    String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
     sele4 = "div>input[type='submit']", //
     sele4_ = "#iframe", //
     sele5 = "div#shindan", //
     sele6 = "form>input.next_bt", // コラム用
     sele7 = "div.btn>button[type='submit']", //
-    sele8 = "form>input.next_bt", sele9 = "a.start__button",
+    sele8 = "form>input.next_bt", //
+    sele9 = "a.start__button", //
     a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
@@ -96,16 +99,20 @@ public class HAPPointResearch extends HAPBase {
             && isExistEle(driver, sele7)) {
           Hiroba.answer(driver, sele7, wid);
         }
+        else if (cUrl.indexOf("minnanosurvey.com") >= 0
+            && isExistEle(driver, sele7)) {
+          Minnanosur.answer(driver, sele7, wid);
+        }
         else if (isExistEle(driver, sele4_)) {
           // $('iframe').contents().find("div>input[type='submit']")
           Shopping.answer(driver, sele4, wid);
         }
-        else if (cUrl.indexOf("column-enquete") >= 0
+        else if ((cUrl.indexOf("column-enquete") >= 0
+            || cUrl.indexOf("beautynail-design.com") >= 0)
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
         }
-        else if (
-            (cUrl.indexOf("photo-enquete") >= 0
+        else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("cosmetic-brand.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);

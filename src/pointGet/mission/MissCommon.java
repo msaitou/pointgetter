@@ -2,6 +2,7 @@ package pointGet.mission;
 
 import static org.junit.Assert.*;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,8 @@ public abstract class MissCommon {
    */
   protected void waitTilReady(WebDriver driver) {
     Eventually.eventually(() -> assertEquals(
-        ((JavascriptExecutor) driver).executeScript("return document.readyState"), "complete"));
+        ((JavascriptExecutor) driver).executeScript("return document.readyState"), "complete")
+        ,Duration.ofSeconds(30), Duration.ofSeconds(3));
   }
 
   /**

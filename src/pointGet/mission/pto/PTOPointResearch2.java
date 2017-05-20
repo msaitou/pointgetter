@@ -51,13 +51,13 @@ public class PTOPointResearch2 extends PTOBase {
     driver.get(url);
     int skip = 0;
     String sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
-        sele1 = "div>input.btn_submit", //
-        sele4 = "div>input[type='submit']", //
-        sele4_ = "#iframe", //
-        sele5 = "div#shindan", //
-        sele7 = "div.btn>button[type='submit']", //
-        sele6 = "form>input.next_bt", // コラム用
-        sele2 = "div.page-content-button>input.button.btn-next";
+    sele1 = "div>input.btn_submit", //
+    sele4 = "div>input[type='submit']", //
+    sele4_ = "#iframe", //
+    sele5 = "div#shindan", //
+    sele7 = "div.btn>button[type='submit']", //
+    sele6 = "form>input.next_bt", // コラム用
+    sele2 = "div.page-content-button>input.button.btn-next";
     while (true) {
       Utille.sleep(5000);
       selector = "div#pt-enq1 td.frame04>a.promo_enq_bt";
@@ -72,7 +72,7 @@ public class PTOPointResearch2 extends PTOBase {
           changeWindow(driver, wid);
           if (isExistEle(driver, sele3)) {
             SurveyEnk.answer(driver, sele3, wid);
-//            skip++;
+            //            skip++;
           }
           else if (isExistEle(driver, sele2)) {
             Kotsuta.answer(driver, sele2, wid);
@@ -100,9 +100,13 @@ public class PTOPointResearch2 extends PTOBase {
           }
           driver.navigate().refresh();
           Utille.sleep(5000);
-        } else {
+        }
+        else {
           break;
         }
+      }
+      else {
+        break;
       }
     }
   }
