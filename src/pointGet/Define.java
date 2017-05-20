@@ -64,6 +64,7 @@ public class Define {
   final public static String strGMYToidas = "GMYToidas";
   final public static String strGMYPointResearch = "GMYPointResearch";
   final public static String strGMYGameParkEnk = "GMYGameParkEnk";
+  final public static String strGMYKumaVote = "GMYKumaVote";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
@@ -172,7 +173,7 @@ public class Define {
   final public static String strPILManga = "PILManga";
   final public static String strPILGameParkEnk = "PILGameParkEnk";
   final public static String strPILChyousadan = "PILChyousadan";
-  
+
   // ■■■■■chanceIt■■■■■
   final public static String strCITPriceChyosatai = "CITPriceChyosatai";
   final public static String strCITShindan = "CITShindan";

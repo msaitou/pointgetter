@@ -44,7 +44,7 @@ public abstract class GMYBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param loggg
    * @param cProps
    * @param missions
@@ -75,6 +75,10 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYGameParkEnk: // ■GameParkアンケート
           MisIns = new GMYGameParkEnk(loggg, cProps);
           break;
+        case Define.strGMYKumaVote: // ■くま投票
+          MisIns = new GMYKumaVote(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -83,7 +87,8 @@ public abstract class GMYBase extends Mission {
           Define.strGMYPriceChyosatai,
           Define.strGMYToidas,
           Define.strGMYPointResearch,
-          Define.strGMYGameParkEnk
+          Define.strGMYGameParkEnk,
+          Define.strGMYKumaVote
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -94,7 +99,7 @@ public abstract class GMYBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -110,7 +115,7 @@ public abstract class GMYBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return
