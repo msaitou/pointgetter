@@ -37,7 +37,7 @@ public class GMYKumaVote extends GMYBase {
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);
-      Utille.sleep(3000);
+      Utille.sleep(5000);
       if (isExistEle(driver, preSele)) {
         clickSleepSelector(driver, preSele, 5000); // 遷移 全体へ
         changeCloseWindow(driver);
