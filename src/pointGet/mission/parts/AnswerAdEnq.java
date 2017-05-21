@@ -26,10 +26,13 @@ public class AnswerAdEnq extends MissCommon {
    * @param startSele
    * @param wid
    */
-  public void answer(WebDriver driver, String startSele, String wid) {
+  public boolean answer(WebDriver driver, String startSele, String wid) {
     logg.info("####[" + this.getClass().getName() + "]####");
     Utille.sleep(5000);
     driver.switchTo().frame(0);
+    if (isExistEle(driver, "iframe[title='reCAPTCHA ウィジェット']")) {
+      return false;
+    }
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 3000);
       String
@@ -90,6 +93,15 @@ public class AnswerAdEnq extends MissCommon {
             if (isExistEle(eleList2, choiceNum)) {
               // 選択
               clickSleepSelector(eleList2.get(choiceNum), 3000);
+              if (isExistEle(driver, "div.ad_footer>div>div>div.layered", false)) {
+                driver.navigate().refresh();
+                Utille.sleep(5000);
+                driver.switchTo().frame(0);
+                if (isExistEle(driver, startSele)) {
+                  clickSleepSelector(driver, startSele, 3000);
+                }
+                continue;
+              }
               if (isExistEle(driver, seleSub)) {
                 clickSleepSelector(driver, seleSub, 4000);
               }
@@ -113,6 +125,15 @@ public class AnswerAdEnq extends MissCommon {
             Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
             selectList.selectByValue(value);
             Utille.sleep(3000);
+            if (isExistEle(driver, "div.ad_footer>div>div>div.layered", false)) {
+              driver.navigate().refresh();
+              Utille.sleep(5000);
+              driver.switchTo().frame(0);
+              if (isExistEle(driver, startSele)) {
+                clickSleepSelector(driver, startSele, 3000);
+              }
+              continue;
+            }
             if (isExistEle(driver, seleSub)) {
               clickSleepSelector(driver, seleSub, 4000);
             }
@@ -131,5 +152,6 @@ public class AnswerAdEnq extends MissCommon {
     }
     driver.close();
     driver.switchTo().window(wid);
+    return true;
   }
 }

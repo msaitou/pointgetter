@@ -14,6 +14,7 @@ import pointGet.mission.parts.AnswerHiroba;
 import pointGet.mission.parts.AnswerKonatab;
 import pointGet.mission.parts.AnswerKotsuta;
 import pointGet.mission.parts.AnswerManga;
+import pointGet.mission.parts.AnswerMinnanosur;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerShopping;
@@ -38,6 +39,7 @@ public class CRIPointResearch extends CRIBase {
   AnswerTasuuketu Tasuuketu = null;
   AnswerManga Manga = null;
   AnswerKonatab Konatab = null;
+  AnswerMinnanosur Minnanosur = null;
 
   /**
    * @param logg
@@ -56,6 +58,7 @@ public class CRIPointResearch extends CRIBase {
     Tasuuketu = new AnswerTasuuketu(logg);
     Manga = new AnswerManga(logg);
     Konatab = new AnswerKonatab(logg);
+    Minnanosur = new AnswerMinnanosur(logg);
   }
 
   @Override
@@ -104,6 +107,10 @@ public class CRIPointResearch extends CRIBase {
         else if (cUrl.indexOf("question-hiroba") >= 0
             && isExistEle(driver, sele7)) {
           Hiroba.answer(driver, sele7, wid);
+        }
+        else if (cUrl.indexOf("minnanosurvey.com") >= 0
+            && isExistEle(driver, sele7)) {
+          Minnanosur.answer(driver, sele7, wid);
         }
         else if (isExistEle(driver, sele4_)) {
           // $('iframe').contents().find("div>input[type='submit']")

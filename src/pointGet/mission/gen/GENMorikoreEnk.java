@@ -63,12 +63,13 @@ public class GENMorikoreEnk extends GENBase {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = skip;
+          int size = eleList.size(), targetIndex = size - skip;
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             Utille.scrolledPage(driver, eleList.get(targetIndex));
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
+            Utille.sleep(3000);
             String cUrl = driver.getCurrentUrl();
             logg.info("cUrl["+cUrl+"]");
             if (isExistEle(driver, sele9)) {
@@ -78,7 +79,9 @@ public class GENMorikoreEnk extends GENBase {
             else if (cUrl.indexOf("ad/enq/") >= 0
                 && isExistEle(driver, sele1_)) {
               // $('iframe').contents().find("div>input[type='submit']")
-              AdEnq.answer(driver, sele1, wid);
+              if (!AdEnq.answer(driver, sele1, wid)) {
+                break;
+              }
             }
             else if (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 && isExistEle(driver, sele3)) {
@@ -90,6 +93,7 @@ public class GENMorikoreEnk extends GENBase {
                 || cUrl.indexOf("fashion-cosmelife.com") >= 0
                 )
                 && isExistEle(driver, sele6)) {
+              Colum.answer(driver, sele6, wid);
             }
             else {
               skip++;
