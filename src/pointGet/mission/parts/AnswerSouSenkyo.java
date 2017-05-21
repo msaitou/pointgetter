@@ -32,7 +32,7 @@ public class AnswerSouSenkyo extends MissCommon {
         nextSele = "a.button--next", //
         titleSele = "div.question>p", // close
         a = "";
-    for (int k = 1; k <= 100; k++) {
+    for (int k = 1; k <= 40; k++) {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "";
       if (isExistEle(driver, titleSele)) {
