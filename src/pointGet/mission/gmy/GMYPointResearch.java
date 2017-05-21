@@ -12,6 +12,7 @@ import pointGet.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerHiroba;
 import pointGet.mission.parts.AnswerKotsuta;
+import pointGet.mission.parts.AnswerMinnanosur;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerShopping;
@@ -34,6 +35,7 @@ public class GMYPointResearch extends GMYBase {
   AnswerZukan Zukan = null;
   /* アンケートクラス　多数決 */
   AnswerTasuuketu Tasuuketu = null;
+  AnswerMinnanosur Minnanosur = null;
 
   /**
    * @param logg
@@ -49,6 +51,7 @@ public class GMYPointResearch extends GMYBase {
     PhotoEnk = new AnswerPhotoEnk(logg);
     Zukan = new AnswerZukan(logg);
     Tasuuketu = new AnswerTasuuketu(logg);
+    Minnanosur = new AnswerMinnanosur(logg);
   }
 
   @Override
@@ -57,16 +60,14 @@ public class GMYPointResearch extends GMYBase {
     driver.get(url);
     selector = "div.survey td.s_status>a";
     int skip = 1;
-    String
-    sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
+    String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
     sele4 = "div>input[type='submit']", //
     sele4_ = "#iframe", //
     sele5 = "div#shindan", //
     sele6 = "form>input.next_bt", // コラム用
     sele7 = "div.btn>button[type='submit']", //
-    sele8 = "form>input.next_bt", sele9 = "a.start__button",
-    a = "";
+    sele8 = "form>input.next_bt", sele9 = "a.start__button", a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
         // 対象がなくなったら終了
@@ -97,13 +98,18 @@ public class GMYPointResearch extends GMYBase {
             && isExistEle(driver, sele7)) {
           Hiroba.answer(driver, sele7, wid);
         }
+        else if (cUrl.indexOf("minnanosurvey.com") >= 0
+            && isExistEle(driver, sele7)) {
+          Minnanosur.answer(driver, sele7, wid);
+        }
         else if (isExistEle(driver, sele4_)) {
           // $('iframe').contents().find("div>input[type='submit']")
           Shopping.answer(driver, sele4, wid);
         }
-        else if (
-            (cUrl.indexOf("column-enquete") >= 0
-            || cUrl.indexOf("beautynail-design.com") >= 0)
+        else if ((cUrl.indexOf("column-enquete") >= 0
+            || cUrl.indexOf("beautynail-design.com") >= 0
+            || cUrl.indexOf("fashion-cosmelife.com") >= 0
+            )
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
         }

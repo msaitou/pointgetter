@@ -71,14 +71,17 @@ public abstract class CRIBase extends Mission {
         case Define.strCRIChyousadan: // ■調査団
           MisIns = new CRIChyousadan(loggg, cProps);
           break;
-
+        case Define.strCRIKumaVote: // ■くま投票
+          MisIns = new CRIKumaVote(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCRIChirachi,
           Define.strCRIManga, Define.strCRIClickBananer,
           Define.strCRIPointResearch,
-          Define.strCRIChyousadan
-      }).contains(mission)) {
+          Define.strCRIChyousadan,
+          Define.strCRIKumaVote
+          }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
     }

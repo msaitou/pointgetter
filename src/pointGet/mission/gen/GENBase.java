@@ -93,6 +93,9 @@ public abstract class GENBase extends Mission {
         case Define.strGENChyousadan: // ■調査団
           MisIns = new GENChyousadan(loggg, cProps);
           break;
+        case Define.strGENKumaVote: // ■くま投票
+          MisIns = new GENKumaVote(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strGENPointStar,
@@ -105,7 +108,8 @@ public abstract class GENBase extends Mission {
           Define.strGENPointResearch2,
           Define.strGENGameParkEnk,
           Define.strGENMorikoreEnk,
-          Define.strGENChyousadan
+          Define.strGENChyousadan,
+          Define.strGENKumaVote
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

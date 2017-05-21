@@ -78,7 +78,6 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYKumaVote: // ■くま投票
           MisIns = new GMYKumaVote(loggg, cProps);
           break;
-
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,

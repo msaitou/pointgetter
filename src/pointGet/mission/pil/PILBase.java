@@ -84,6 +84,9 @@ public abstract class PILBase extends Mission {
         case Define.strPILChyousadan: // ■調査団
           MisIns = new PILChyousadan(loggg, cProps);
           break;
+        case Define.strPILKumaVote: // ■くま投票
+          MisIns = new PILKumaVote(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strPILQuiz,

@@ -14,6 +14,7 @@ import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerHiroba;
 import pointGet.mission.parts.AnswerInfopanel;
 import pointGet.mission.parts.AnswerKotsuta;
+import pointGet.mission.parts.AnswerMinnanosur;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerShopping;
 import pointGet.mission.parts.AnswerSurveyEnk;
@@ -29,6 +30,7 @@ public class PTOPointResearch2 extends PTOBase {
   AnswerShindan Shindan = null;
   AnswerHiroba Hiroba = null;
   AnswerShopping Shopping = null;
+  AnswerMinnanosur Minnanosur = null;
 
   /**
    * @param logg
@@ -43,6 +45,7 @@ public class PTOPointResearch2 extends PTOBase {
     Shindan = new AnswerShindan(logg);
     Hiroba = new AnswerHiroba(logg);
     Shopping = new AnswerShopping(logg);
+    Minnanosur = new AnswerMinnanosur(logg);
   }
 
   @Override
@@ -70,6 +73,7 @@ public class PTOPointResearch2 extends PTOBase {
           String wid = driver.getWindowHandle();
           clickSleepSelector(eleList, targetIndex, 10000); // アンケートスタートページ
           changeWindow(driver, wid);
+          String cUrl = driver.getCurrentUrl();
           if (isExistEle(driver, sele3)) {
             SurveyEnk.answer(driver, sele3, wid);
             //            skip++;
@@ -83,11 +87,20 @@ public class PTOPointResearch2 extends PTOBase {
           else if (isExistEle(driver, sele5)) {
             Shindan.answer(driver, sele5, wid);
           }
-          else if (isExistEle(driver, sele6)) {
+          else if ((cUrl.indexOf("column-enquete") >= 0
+              || cUrl.indexOf("beautynail-design.com") >= 0
+              || cUrl.indexOf("fashion-cosmelife.com") >= 0
+              )
+              && isExistEle(driver, sele6)) {
             Colum.answer(driver, sele6, wid);
           }
-          else if (isExistEle(driver, sele7)) {
+          else if (cUrl.indexOf("question-hiroba") >= 0
+              && isExistEle(driver, sele7)) {
             Hiroba.answer(driver, sele7, wid);
+          }
+          else if (cUrl.indexOf("minnanosurvey.com") >= 0
+              && isExistEle(driver, sele7)) {
+            Minnanosur.answer(driver, sele7, wid);
           }
           else if (isExistEle(driver, sele4_)) {
             // $('iframe').contents().find("div>input[type='submit']")
