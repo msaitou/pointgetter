@@ -49,6 +49,7 @@ public class I2IPhoto extends I2IBase {
           Utille.sleep(2000);
           changeCloseWindow(driver);
           selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
+          Utille.sleep(5000);
           String sele8 = "form>input.next_bt";
           while (true) {
             if (isExistEle(driver, selector)) {

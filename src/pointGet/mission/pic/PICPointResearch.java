@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 import pointGet.mission.parts.AnswerEnkShopQP;
+import pointGet.mission.parts.AnswerEnqNstk;
 import pointGet.mission.parts.AnswerEnqY2at;
 import pointGet.mission.parts.AnswerSurveyEnk;
 
@@ -19,6 +20,7 @@ public class PICPointResearch extends PICBase {
   AnswerEnkShopQP EnkShopQP = null;
   AnswerSurveyEnk SurveyEnk = null;
   AnswerEnqY2at EnqY2at = null;
+  AnswerEnqNstk EnqNstk = null;
 
   /**
    * @param logg
@@ -28,6 +30,7 @@ public class PICPointResearch extends PICBase {
     EnkShopQP = new AnswerEnkShopQP(logg);
     SurveyEnk = new AnswerSurveyEnk(logg);
     EnqY2at = new AnswerEnqY2at(logg);
+    EnqNstk = new AnswerEnqNstk(logg);
   }
 
   @Override
@@ -63,6 +66,10 @@ public class PICPointResearch extends PICBase {
           else if (cUrl.indexOf("enq.y2at.com") >= 0
               && isExistEle(driver, sele8)) {
             EnqY2at.answer(driver, sele8, wid);
+          }
+          else if (cUrl.indexOf("enq.nstk-4.com") >= 0
+              && isExistEle(driver, sele8)) {
+            EnqNstk.answer(driver, sele8, wid);
           }
           else {
             skip++;

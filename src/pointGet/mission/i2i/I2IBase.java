@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.mission.i2i;
 
@@ -44,7 +44,7 @@ public abstract class I2IBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param loggg
    * @param cProps
    * @param missions
@@ -82,7 +82,7 @@ public abstract class I2IBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -98,7 +98,7 @@ public abstract class I2IBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return
@@ -106,6 +106,7 @@ public abstract class I2IBase extends Mission {
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "td.ad_point>span.limited", point = "";
     driver.get("https://point.i2i.jp/account/");
+    Utille.sleep(5000);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

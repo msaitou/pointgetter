@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.Utille;
 import pointGet.mission.parts.AnswerShindan;
 
 /**
@@ -30,7 +31,7 @@ public class GMYShindan extends GMYBase {
   public void privateMission(WebDriver driver) {
     driver.get(url);
     selector = "ul.check_list1 a[href='http://dietnavi.com/pc/game/shindan/play.php']";
-    String sele0 = "div.entry", // 
+    String sele0 = "div.entry", //
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため
     sumiSelector = "img[src='/images/icons/sumi.png']";
     if (isExistEle(driver, selector)) {
@@ -60,6 +61,7 @@ public class GMYShindan extends GMYBase {
         if (isExistEle(wEle, sele1)) {
           clickSleepSelector(wEle, sele1, 4000); // 遷移
           waitTilReady(driver);
+          Utille.sleep(4000);
           Shindan.answer(driver, "", null);
         }
         else {
