@@ -68,8 +68,8 @@ public class AnswerSouSenkyo extends MissCommon {
         break;
       }
     }
-    Utille.sleep(5000);
-    driver.close();
-    driver.switchTo().window(wid);
+//    Utille.sleep(5000);
+//    driver.close();
+//    driver.switchTo().window(wid);
   }
 }

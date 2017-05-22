@@ -13,98 +13,98 @@ import pointGet.Utille;
  * 4時更新
  */
 public class PMOChyosatai extends PMOBase {
-	final String url = "http://poimon.jp/daily/";
+  final String url = "http://poimon.jp/daily/";
 
-	/**
-	 * @param log
-	 */
-	public PMOChyosatai(Logger log, Map<String, String> cProps) {
-		super(log, cProps, "トキメキ調査隊");
-	}
+  /**
+   * @param log
+   */
+  public PMOChyosatai(Logger log, Map<String, String> cProps) {
+    super(log, cProps, "トキメキ調査隊");
+  }
 
-	@Override
-	public void privateMission(WebDriver driver) {
-		String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
-		String footBnrSelector = "div.foot-bnr a.close>span",
-				footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
-		for (int j = 0; j < 6; j++) {
-			driver.get(url);
-			selector = "img[alt='トキメキ調査隊']";
-			if (isExistEle(driver, selector)) {
-				clickSleepSelector(driver, selector, 4000); // 遷移
-				changeCloseWindow(driver);
-				checkOverlay(driver, overlaySelector);
-				if (isExistEle(driver, footBnrSelector)
-						&& !isExistEle(driver, footBnrNoneSele, false)) {
-					checkOverlay(driver, footBnrSelector);
-				}
+  @Override
+  public void privateMission(WebDriver driver) {
+    String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
+    String footBnrSelector = "div.foot-bnr a.close>span", //
+    footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
+    for (int j = 0; j < 6; j++) {
+      driver.get(url);
+      selector = "p.tokimeki>span";
+      if (isExistEle(driver, selector)) {
+        clickSleepSelector(driver, selector, 4000); // 遷移
+        changeCloseWindow(driver);
+        checkOverlay(driver, overlaySelector);
+        if (isExistEle(driver, footBnrSelector)
+            && !isExistEle(driver, footBnrNoneSele, false)) {
+          checkOverlay(driver, footBnrSelector);
+        }
 
-				String noEntrySele = "div.thumbnail span.icon-noentry";
-				String entrySele = "div.thumbnail span.icon-entry";
-				if (isExistEle(driver, noEntrySele)) {
-					clickSleepSelector(driver, noEntrySele, 3000); // 遷移
-					checkOverlay(driver, overlaySelector);
-					if (isExistEle(driver, footBnrSelector)
-							&& !isExistEle(driver, footBnrNoneSele, false)) {
-						checkOverlay(driver, footBnrSelector);
-					}
+        String noEntrySele = "div.thumbnail span.icon-noentry";
+        String entrySele = "div.thumbnail span.icon-entry";
+        if (isExistEle(driver, noEntrySele)) {
+          clickSleepSelector(driver, noEntrySele, 3000); // 遷移
+          checkOverlay(driver, overlaySelector);
+          if (isExistEle(driver, footBnrSelector)
+              && !isExistEle(driver, footBnrNoneSele, false)) {
+            checkOverlay(driver, footBnrSelector);
+          }
 
-					selector = "div.thumb-start div.btn>a";
-					if (isExistEle(driver, selector)) {
-						clickSleepSelector(driver, selector, 4000); // 遷移
-						checkOverlay(driver, overlaySelector);
-						checkOverlay(driver, footBnrSelector);
-						String finshSele = "div.finish-area";
-						// otukare!
-						if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
-							break;
-						}
-						selector = "span.icon-arrow";
-						for (int i = 0; i < 10; i++) {
-							int ran = Utille.getIntRand(2);
-							if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-								clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
-								checkOverlay(driver, overlaySelector);
-								if (isExistEle(driver, footBnrSelector)
-										&& !isExistEle(driver, footBnrNoneSele, false)) {
-									checkOverlay(driver, footBnrSelector);
-								}
-							}
-						}
-					}
-				}
-				else if (isExistEle(driver, entrySele)) {
-					clickSleepSelector(driver, entrySele, 3000); // 遷移
-					checkOverlay(driver, overlaySelector);
-					if (isExistEle(driver, footBnrSelector)
-							&& !isExistEle(driver, footBnrNoneSele, false)) {
-						checkOverlay(driver, footBnrSelector);
-					}
-					//					selector = "div.btn>a";
-					selector = "span.icon-arrow";
-					for (int i = 0; i < 10; i++) {
-						String finshSele = "div.finish-area";
-						// otukare!
-						if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
-							break;
-						}
-						int ran = Utille.getIntRand(2);
-						Utille.sleep(2000);
-						if (isExistEle(driver.findElements(By.cssSelector(selector)))
-								&& isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-							clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
-							checkOverlay(driver, overlaySelector);
-							if (isExistEle(driver, footBnrSelector)
-									&& !isExistEle(driver, footBnrNoneSele, false)) {
-								checkOverlay(driver, footBnrSelector);
-							}
-						}
-					}
-				}
-				else {
-					j = 6;
-				}
-			}
-		}
-	}
+          selector = "div.thumb-start div.btn>a";
+          if (isExistEle(driver, selector)) {
+            clickSleepSelector(driver, selector, 4000); // 遷移
+            checkOverlay(driver, overlaySelector);
+            checkOverlay(driver, footBnrSelector);
+            String finshSele = "div.finish-area";
+            // otukare!
+            if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
+              break;
+            }
+            selector = "span.icon-arrow";
+            for (int i = 0; i < 10; i++) {
+              int ran = Utille.getIntRand(2);
+              if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
+                clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
+                checkOverlay(driver, overlaySelector);
+                if (isExistEle(driver, footBnrSelector)
+                    && !isExistEle(driver, footBnrNoneSele, false)) {
+                  checkOverlay(driver, footBnrSelector);
+                }
+              }
+            }
+          }
+        }
+        else if (isExistEle(driver, entrySele)) {
+          clickSleepSelector(driver, entrySele, 3000); // 遷移
+          checkOverlay(driver, overlaySelector);
+          if (isExistEle(driver, footBnrSelector)
+              && !isExistEle(driver, footBnrNoneSele, false)) {
+            checkOverlay(driver, footBnrSelector);
+          }
+          //					selector = "div.btn>a";
+          selector = "span.icon-arrow";
+          for (int i = 0; i < 10; i++) {
+            String finshSele = "div.finish-area";
+            // otukare!
+            if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
+              break;
+            }
+            int ran = Utille.getIntRand(2);
+            Utille.sleep(2000);
+            if (isExistEle(driver.findElements(By.cssSelector(selector)))
+                && isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
+              clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
+              checkOverlay(driver, overlaySelector);
+              if (isExistEle(driver, footBnrSelector)
+                  && !isExistEle(driver, footBnrNoneSele, false)) {
+                checkOverlay(driver, footBnrSelector);
+              }
+            }
+          }
+        }
+        else {
+          j = 6;
+        }
+      }
+    }
+  }
 }

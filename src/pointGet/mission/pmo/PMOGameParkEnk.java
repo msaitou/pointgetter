@@ -32,7 +32,7 @@ public class PMOGameParkEnk extends PMOBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "li.gamepark>a div.btnGp";
+    selector = "div.gameparkBox>img";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
         pop2Cls = "div.campaignClose>img", //

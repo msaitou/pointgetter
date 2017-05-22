@@ -283,6 +283,7 @@ public class WebClicker extends PointGet {
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
       logg.error("-Throwable-------------------");
     }
+    subRetryCnt = 0;
     logg.info("■■■■■■missionSite[" + siteType + "]END■■■■■■");
   }
 }
