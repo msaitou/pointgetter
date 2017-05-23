@@ -1,10 +1,12 @@
 package pointGet.mission.pic;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import pointGet.Utille;
 
@@ -93,8 +95,10 @@ public class PICPriceChyosatai extends PICBase {
         break;
       }
       int ran = Utille.getIntRand(2);
-      if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-        clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 2000);
+      List<WebElement> elems = driver.findElements(By.cssSelector(selector));
+      if (isExistEle(elems, ran)) {
+        Utille.scrolledPage(driver, elems.get(ran));
+        clickSleepSelector(elems, ran, 2000);
         for (int g = 0; g < 10; g++) {
           if (isExistEle(driver, sele2top + sele2bot)
               && !isExistEle(driver, sele2top + sele2none + sele2bot, false)) {

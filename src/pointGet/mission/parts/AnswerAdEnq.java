@@ -28,7 +28,7 @@ public class AnswerAdEnq extends MissCommon {
    */
   public boolean answer(WebDriver driver, String startSele, String wid) {
     logg.info("####[" + this.getClass().getName() + "]####");
-    Utille.sleep(5000);
+    Utille.sleep(3000);
     driver.switchTo().frame(0);
     if (isExistEle(driver, "iframe[title='reCAPTCHA ウィジェット']")) {
       return false;
@@ -91,10 +91,12 @@ public class AnswerAdEnq extends MissCommon {
             }
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
             if (isExistEle(eleList2, choiceNum)) {
+              Utille.sleep(500);
               // 選択
-              clickSleepSelector(eleList2.get(choiceNum), 3000);
+              clickSleepSelector(eleList2, choiceNum, 3000);
               if (isExistEle(driver, "div.ad_footer>div>div>div.layered", false)) {
                 driver.navigate().refresh();
+                k--;
                 Utille.sleep(5000);
                 driver.switchTo().frame(0);
                 if (isExistEle(driver, startSele)) {
@@ -127,6 +129,7 @@ public class AnswerAdEnq extends MissCommon {
             Utille.sleep(3000);
             if (isExistEle(driver, "div.ad_footer>div>div>div.layered", false)) {
               driver.navigate().refresh();
+              k--;
               Utille.sleep(5000);
               driver.switchTo().frame(0);
               if (isExistEle(driver, startSele)) {
