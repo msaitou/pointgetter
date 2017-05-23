@@ -28,21 +28,21 @@ public class AnswerAdsurvey extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("-[" + this.getClass().getName() + "]-");
-    String 
-    choiceSele = "div.answer label", // ラジオセレクター
-    seleSele = "select[name='question_4']", // ドロップダウンセレクター
-    seleNext = "div.btn_next>input.btn", //
-//    radioSele = "label.radiolabel", //
-//    checkboxSele = "label.checkbox", //　
-//    overLay = "div#center-frame>img", //　広告
-//    noSele = "h2>span.q_number", // タイトル
-    titleSele = "h2.question", // close
-//    closeSele = "div.question_btn>input[name='submit']", //
-    beginSele = "form>input.btn_regular", //
-    a = "";
+    String choiceSele = "div.answer label", // ラジオセレクター
+        seleSele = "select[name='question_4']", // ドロップダウンセレクター
+        seleNext = "div.btn_next>input.btn", //
+        //    radioSele = "label.radiolabel", //
+        //    checkboxSele = "label.checkbox", //　
+        //    overLay = "div#center-frame>img", //　広告
+        //    noSele = "h2>span.q_number", // タイトル
+        titleSele = "h2.question", // close
+        //    closeSele = "div.question_btn>input[name='submit']", //
+        a = "";
     driver.switchTo().frame(0);
-    clickSleepSelector(driver, startSele, 4000);
-//    Utille.sleep(4000);
+    if (isExistEle(driver, startSele)) {
+      clickSleepSelector(driver, startSele, 4000);
+    }
+    //    Utille.sleep(4000);
     // 12問?
     for (int k = 1; k <= 15; k++) {
       if (isExistEle(driver, titleSele)) {

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.mission.pmo;
 
@@ -45,14 +45,14 @@ public abstract class PMOBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param loggg
    * @param cProps
    * @param missions
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    String sel = "span#ygps>span.pointEmphasis";
+    String sel = "div.point span.F5";
     driver.get("http://poimon.jp/");
     if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
@@ -81,7 +81,7 @@ public abstract class PMOBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -97,13 +97,13 @@ public abstract class PMOBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "span#ygps>span.pointEmphasis", point = "";
+    String selector = "div.point span.F5", point = "";
     driver.get("http://poimon.jp/");
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!

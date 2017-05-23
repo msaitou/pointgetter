@@ -63,6 +63,10 @@ public class I2IMangaVer2 extends I2IBase {
                     clickSleepSelector(driver, seleNext, 4000); // 遷移
                     g++;
                   }
+                  else {
+                    driver.navigate().refresh();
+                    Utille.sleep(5000);
+                  }
                 }
                 Utille.sleep(6000);
                 String choiceSele = "div.enquete>p>label";
