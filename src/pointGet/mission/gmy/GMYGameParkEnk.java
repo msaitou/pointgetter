@@ -56,7 +56,7 @@ public class GMYGameParkEnk extends GMYBase {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
 
         selector = "div.qBox>button";
-        int skip = 1;
+        int skip = 0;
         String sele1 = "form>button#nextBtn", // pointResearch用
             sele2 = "form>input.btn_regular", //
             sele2_ = "iframe.question_frame", //
@@ -66,7 +66,7 @@ public class GMYGameParkEnk extends GMYBase {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = 0;
+          int size = eleList.size(), targetIndex = skip;
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ

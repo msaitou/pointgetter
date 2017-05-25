@@ -44,6 +44,7 @@ public class I2ISeiza extends I2IBase {
           changeCloseWindow(driver);
 
           selector = "div#parts-slide-button__action a>img"; // 占い始める　全体へ
+          waitTilReady(driver);
           String selector1 = "section>div>form>input[type=image]";
           String selectList[] = { selector, selector1 };
           for (int g = 0; g < selectList.length; g++) {
@@ -61,7 +62,7 @@ public class I2ISeiza extends I2IBase {
                     endFlag = true;
                   }
                 }
-
+                waitTilReady(driver);
                 if (isExistEle(driver, nextSelector)) {
                   clickSleepSelector(driver, nextSelector, 3000); // 遷移
                 }
@@ -73,6 +74,9 @@ public class I2ISeiza extends I2IBase {
                 }
                 else if (isExistEle(driver, selector1)) {
                   clickSleepSelector(driver, selector1, 3000); // 遷移
+                }
+                else {
+                  Utille.sleep(1000);
                 }
                 if (endFlag) {
                   break;

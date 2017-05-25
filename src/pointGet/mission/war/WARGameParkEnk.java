@@ -42,7 +42,7 @@ public class WARGameParkEnk extends WARBase {
         a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
-//      changeCloseWindow(driver);
+      //      changeCloseWindow(driver);
       if (!isExistEle(driver, pop1None, false)
           && isExistEle(driver, pop1)) {
         clickSleepSelector(driver, pop1, 4000); // 遷移
@@ -55,7 +55,7 @@ public class WARGameParkEnk extends WARBase {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
 
         selector = "div.qBox>button";
-        int skip = 1;
+        int skip = 0;
         String sele1 = "form>button#nextBtn", // pointResearch用
             sele2 = "form>input.btn_regular", //
             sele2_ = "iframe.question_frame", //
@@ -65,7 +65,7 @@ public class WARGameParkEnk extends WARBase {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = 0;
+          int size = eleList.size(), targetIndex = skip;
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
