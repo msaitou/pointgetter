@@ -29,8 +29,8 @@ public class PMOChyosatai extends PMOBase {
     footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
       driver.get(url);
-      selector = "p.tokimeki>span";
-      if (isExistEle(driver, selector)) {
+      selector = "p.tokimeki";
+      if (isExistEle(driver, selector, false)) {
         clickSleepSelector(driver, selector, 4000); // 遷移
         changeCloseWindow(driver);
         checkOverlay(driver, overlaySelector);

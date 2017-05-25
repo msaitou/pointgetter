@@ -99,7 +99,7 @@ public abstract class Mission extends MissCommon {
         roopMission(driver);
       }
     } catch (WebDriverException we) {
-      logg.error("##Exception##################");
+      logg.error("##wException##################");
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(we), 1000));
       logg.error("#############################");
       driver.quit();

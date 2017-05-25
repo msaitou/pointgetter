@@ -273,7 +273,7 @@ public class WebClicker extends PointGet {
       logg.error("-WebDriverException-------------------");
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
       logg.error("-WebDriverException-------------------");
-      if (subRetryCnt++ < 2) {
+      if (subRetryCnt++ < 4) {
         //リトライ
         goToClickSite(siteType, missionArr);
       }
