@@ -83,6 +83,9 @@ public class PICPointResearch extends PICBase {
           break;
         }
       }
+      else {
+        break;
+      }
     }
   }
 }
