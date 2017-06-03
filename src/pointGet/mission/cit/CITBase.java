@@ -76,6 +76,9 @@ public abstract class CITBase extends Mission {
         case Define.strCITKumaVote: // ■くま投票
           MisIns = new CITKumaVote(loggg, cProps);
           break;
+        case Define.strCITPointResearch: // ■アンケート
+          MisIns = new CITPointResearch(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCITPriceChyosatai,
@@ -83,7 +86,8 @@ public abstract class CITBase extends Mission {
           Define.strCITToidas,
           Define.strCITClickBanner,
           Define.strCITGameParkEnk,
-          Define.strCITKumaVote
+          Define.strCITKumaVote,
+          Define.strCITPointResearch
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

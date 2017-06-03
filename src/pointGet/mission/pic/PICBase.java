@@ -86,6 +86,10 @@ public abstract class PICBase extends Mission {
         case Define.strPICKumaVote: // ■くま投票
           MisIns = new PICKumaVote(loggg, cProps);
           break;
+        case Define.strPICInterview: // ■インタビュー
+          MisIns = new PICInterview(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] { Define.strPICClickBanner,
@@ -94,7 +98,8 @@ public abstract class PICBase extends Mission {
           Define.strPICShindan,
           Define.strPICPointResearch,
           Define.strPICChyousadan,
-          Define.strPICKumaVote
+          Define.strPICKumaVote,
+          Define.strPICInterview
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
