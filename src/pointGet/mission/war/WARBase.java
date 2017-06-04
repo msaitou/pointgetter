@@ -71,11 +71,16 @@ public abstract class WARBase extends Mission {
         case Define.strWARGameParkEnk: // ■Gameparkアンケート
           MisIns = new WARGameParkEnk(loggg, cProps);
           break;
+        case Define.strWARPointResearch: // ■ガチョウアンケート
+          MisIns = new WARPointResearch(loggg, cProps);
+          break;
+
         default:
       }
-      if (Arrays.asList(new String[] { 
+      if (Arrays.asList(new String[] {
           Define.strWARDailyCheck,
-          Define.strWARGameParkEnk
+          Define.strWARGameParkEnk,
+          Define.strWARPointResearch
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -86,7 +91,7 @@ public abstract class WARBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -102,7 +107,7 @@ public abstract class WARBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return
