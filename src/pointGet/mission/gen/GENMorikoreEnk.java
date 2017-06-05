@@ -39,7 +39,7 @@ public class GENMorikoreEnk extends GENBase {
     driver = driverAtom;
     driver.get(url);
     selector = "section#ftrlink li>a[href*='/cl/?id=134610&u=6167192']";
-    String enkLinkSele = "a>img[alt='モリモリ診断']", //    
+    String enkLinkSele = "a>img[alt='モリモリ診断']", //
     a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
@@ -60,7 +60,7 @@ public class GENMorikoreEnk extends GENBase {
           selector = "div.enqueteBox a[href]>dl";
           int skip = 1;
           String sele1_ = "iframe.question_frame", //
-          sele1 = "form>input[type='submit']", // 
+          sele1 = "form>input[type='submit']", //
           sele3 = "form>input[type='submit']", //
           sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
           sele6 = "form>input.next_bt", // コラム用
@@ -72,7 +72,8 @@ public class GENMorikoreEnk extends GENBase {
             }
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
             int size = eleList.size(), targetIndex = size - skip;
-            if (size > targetIndex && isExistEle(eleList, targetIndex)) {
+            if (size > targetIndex &&
+                targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
               String wid = driver.getWindowHandle();
               Utille.scrolledPage(driver, eleList.get(targetIndex));
               clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
