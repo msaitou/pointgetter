@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -17,6 +15,7 @@ import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import lombok.val;
 import pointGet.Eventually;
 import pointGet.Utille;
 
@@ -38,8 +37,8 @@ public abstract class MissCommon {
    */
   protected void waitTilReady(WebDriver driver) {
     Eventually.eventually(() -> assertEquals(
-        ((JavascriptExecutor) driver).executeScript("return document.readyState"), "complete")
-        ,Duration.ofSeconds(30), Duration.ofSeconds(3));
+        ((JavascriptExecutor) driver).executeScript("return document.readyState"), "complete"), Duration.ofSeconds(30),
+        Duration.ofSeconds(3));
   }
 
   /**
@@ -105,6 +104,16 @@ public abstract class MissCommon {
   }
 
   /**
+  *
+  * @param wEle
+  * @param selector
+  * @return
+  */
+  protected boolean isExistEle(WebElement wEle, String selector, boolean showFlag) {
+    return Utille.isExistEle(wEle, selector, logg);
+  }
+
+  /**
    *
    * @param driver
    * @param selector
@@ -113,6 +122,16 @@ public abstract class MissCommon {
   protected int getSelectorSize(WebDriver driver, String selector) {
     return driver.findElements(By.cssSelector(selector)).size();
   }
+
+  /**
+  *
+  * @param driver
+  * @param selector
+  * @return
+  */
+ protected int getSelectorSize(WebElement ele, String selector) {
+   return ele.findElements(By.cssSelector(selector)).size();
+ }
 
   /**
    *
@@ -289,7 +308,7 @@ public abstract class MissCommon {
   }
 
   /**
-   * 
+   *
    * @param driver
    */
   public void checkAndAcceptAlert(WebDriver driver) {

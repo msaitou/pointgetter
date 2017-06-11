@@ -41,6 +41,7 @@ public class Define {
   final public static String strECNSearchBokin = "ECNSearchBokin";
   final public static String strECNTellmeWhich = "ECNTellmeWhich";
   final public static String strECNWebSearche = "ECNWebSearche";
+  final public static String strECNPointResearch = "ECNPointResearch";
 
   // ■■■■■げん玉■■■■■
   final public static String strGENClickBanner = "GENClickBanner";
@@ -143,7 +144,7 @@ public class Define {
   final public static String strMOBCountTimer = "MOBCountTimer";
   final public static String strMOBPointResearch = "MOBPointResearch";
   final public static String strMOBTokkuTimer = "MOBTokkuTimer";
-  
+
   // ■■■■■PointInCome■■■■■
   final public static String strPICUranai = "PICUranai";
   final public static String strPICClickBanner = "PICClickBanner";

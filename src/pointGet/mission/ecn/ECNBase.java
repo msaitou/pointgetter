@@ -87,6 +87,9 @@ public abstract class ECNBase extends Mission {
         case Define.strECNChirachi: // ■チラシ
           MisIns = new ECNChirachi(loggg, cProps);
           break;
+        case Define.strECNPointResearch: // ■アンケート
+          MisIns = new ECNPointResearch(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strECNGaragara,
