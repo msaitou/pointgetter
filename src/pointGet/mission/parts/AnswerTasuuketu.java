@@ -32,7 +32,10 @@ public class AnswerTasuuketu extends MissCommon {
         nextSele = "a.button--next", //
         titleSele = "div.question>p", // close
         a = "";
-    clickSleepSelector(driver, startSele, 4000);
+    if (isExistEle(driver, startSele)) {
+      clickSleepSelector(driver, startSele, 4000);
+    }
+
     for (int k = 1; k <= 10; k++) {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "";

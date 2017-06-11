@@ -142,7 +142,8 @@ public class Define {
   final public static String strMOBEnglishTest = "MOBEnglishTest";
   final public static String strMOBCountTimer = "MOBCountTimer";
   final public static String strMOBPointResearch = "MOBPointResearch";
-
+  final public static String strMOBTokkuTimer = "MOBTokkuTimer";
+  
   // ■■■■■PointInCome■■■■■
   final public static String strPICUranai = "PICUranai";
   final public static String strPICClickBanner = "PICClickBanner";
