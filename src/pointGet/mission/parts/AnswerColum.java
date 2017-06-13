@@ -27,7 +27,7 @@ public class AnswerColum extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("####[" + this.getClass().getName() + "]####");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String seleNextb2 = "form>input[type='image']", //
         seleNextb3 = "form>input[alt='next']", //
         overLay = "div#interstitial[style*='display: block']>div>div#inter-close", //

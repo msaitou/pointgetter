@@ -26,7 +26,7 @@ public class AnswerAdserver extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String radioSele = "label.radiolabel", //
         checkboxSele = "label.checkbox", //　
         overLay = "div#center-frame>img", //　広告
@@ -38,6 +38,10 @@ public class AnswerAdserver extends MissCommon {
     for (int k = 1; k <= 20; k++) {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "", qNo = "";
+      if (!isExistEle(driver, "div#fade-layer[style*='display: none']", false)) {
+        checkOverlay(driver, overLay, false);
+      }
+
       if (isExistEle(driver, noSele)) {
         qNo = driver.findElement(By.cssSelector(noSele)).getText();
         qTitle = driver.findElement(By.cssSelector(titleSele)).getText();

@@ -26,7 +26,7 @@ public class AnswerSouSenkyo extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String radioSele = "label.radio", //
         voteSele = "input.button--answer", //
         nextSele = "a.button--next", //

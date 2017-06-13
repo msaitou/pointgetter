@@ -27,8 +27,8 @@ public class AnswerSurveyEnk extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
-    // 回答開始
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
+   // 回答開始
     clickSleepSelector(driver, startSele, 4000);
     String qTitleSele = "div.question-label", // タイトルセレクター
     radioSele = "label.item-radio", // ラジオセレクター

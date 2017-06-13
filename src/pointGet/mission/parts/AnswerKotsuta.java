@@ -27,7 +27,7 @@ public class AnswerKotsuta extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("####[" + this.getClass().getName() + "]####");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String radioSele = "td.choice-table-input>input.radio", // ラジオセレクター
         seleSele = "select", // ドロップダウンセレクター
         noSele = "span.query-num", // 問番セレクター

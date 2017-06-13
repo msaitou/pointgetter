@@ -27,7 +27,7 @@ public class AnswerAdEnq extends MissCommon {
    * @param wid
    */
   public boolean answer(WebDriver driver, String startSele, String wid) {
-    logg.info("####[" + this.getClass().getName() + "]####");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     Utille.sleep(3000);
     driver.switchTo().frame(0);
     if (isExistEle(driver, "iframe[title='reCAPTCHA ウィジェット']")) {

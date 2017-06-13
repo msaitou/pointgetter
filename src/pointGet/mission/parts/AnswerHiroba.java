@@ -26,7 +26,7 @@ public class AnswerHiroba extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String radioSele = "div.random>label", //
         titleSele = "div.question", // 質問NOも含む
         seleNext = "button.next-btn", //

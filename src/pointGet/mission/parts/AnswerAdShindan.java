@@ -26,7 +26,7 @@ public class AnswerAdShindan extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String choiceSele = "div.answer__form>label.radio", // ラジオセレクター
     seleNext = "div.button__box>input#adtech-button", //
     titleSele = "div.question", // close

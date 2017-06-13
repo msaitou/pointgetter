@@ -26,8 +26,8 @@ public class AnswerTasuuketu extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
-    String radioSele = "label.radio", //
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
+   String radioSele = "label.radio", //
         voteSele = "input.button--answer", //
         nextSele = "a.button--next", //
         titleSele = "div.question>p", // close

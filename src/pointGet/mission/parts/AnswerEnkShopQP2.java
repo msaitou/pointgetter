@@ -31,7 +31,7 @@ public class AnswerEnkShopQP2 extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     // 回答開始
     clickSleepSelector(driver, startSele, 3000);
     String qTitleSele = "div.question-label", // タイトルセレクター

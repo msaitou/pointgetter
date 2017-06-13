@@ -27,7 +27,7 @@ public class AnswerPhotoEnk extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("####[" + this.getClass().getName() + "]####");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     clickSleepSelector(driver, startSele, 3000);
     String seleNextb2 = "form>input[alt='進む']", //
     seleEnd = "form>input[type='image']", //

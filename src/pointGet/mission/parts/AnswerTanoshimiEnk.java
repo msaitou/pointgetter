@@ -26,7 +26,7 @@ public class AnswerTanoshimiEnk extends MissCommon {
    * @param wid
    */
   public boolean answer(WebDriver driver, String startSele, String wid) {
-    logg.info("####[" + this.getClass().getName() + "]####");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
 
     String seleNext = "form[name='form1']>input.btn";
     if (isExistEle(driver, seleNext)) {

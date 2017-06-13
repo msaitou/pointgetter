@@ -26,7 +26,7 @@ public class AnswerMinnanosur extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String radioSele = "label.radio_label", //
         titleSele = "p.question-count", // 質問NO
         seleNext = "button.next-btn", //

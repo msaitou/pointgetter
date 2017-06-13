@@ -27,7 +27,7 @@ public class AnswerShopping extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("####[" + this.getClass().getName() + "]####");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     Utille.sleep(5000);
     driver.switchTo().frame(0);
     clickSleepSelector(driver, startSele, 3000);

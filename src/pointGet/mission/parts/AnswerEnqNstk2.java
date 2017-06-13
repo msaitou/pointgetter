@@ -27,7 +27,7 @@ public class AnswerEnqNstk2 extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String 
 //    enkTitle = "", // アンケートタイトル
 //    enkTitleSele = "div#eqttitle", // アンケートタイトルセレクター

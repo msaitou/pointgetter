@@ -27,7 +27,7 @@ public class AnswerGameParkEnk extends MissCommon {
    * @param wid
    */
   public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("-[" + this.getClass().getName() + "]-");
+    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     //    String beginSele = "form>input.ui-button";
     String choiceSele = "div.answer label", // ラジオセレクター
     seleNext = "div>button#nextBtn", // 次へボタンセレクター
