@@ -151,6 +151,7 @@ public class AnswerAdEnq extends MissCommon {
         clickSleepSelector(driver, finishSele, 4000);
         String wid3 = driver.getWindowHandle();
         if (wid3 != wid2) {
+          driver.switchTo().window(wid3);
           driver.close();
           changeWindow(driver, wid2);
         }

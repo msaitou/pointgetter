@@ -32,11 +32,11 @@ public class MOBTokkuTimer extends MOBBase {
         String selectId = "input#timer_btn_start";
         String selectStop = "input#timer_btn_stop";
         String selectRes = "div#ok_btn>input.tokku_timer__comfirm__btn__ok";
-        String next = "input",
+        String tuutyou = "a.tokku_timer__btn__just[href='http://pc.mtoku.jp/mypage/bankbook/']",
             retryBtn = "a.tokku_timer__btn__return";
         
         int limitRoop = 0;
-        while (limitRoop++ < 5) {
+        while (limitRoop++ < 10) {
           int waitTime = 0;
           if (isExistEle(driver, selectorExpression)) {
             String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
@@ -60,12 +60,13 @@ public class MOBTokkuTimer extends MOBBase {
                 
                 checkOverlay(driver, overlaySele);
                 
-                // クリアなら次のボタンが表示
-                if (isExistEle(driver, next)) {
-                  clickSleepSelector(driver, next, 3000); // 次
+                // クリア
+                if (isExistEle(driver, tuutyou)) {
+                  clickSleepSelector(driver, tuutyou, 3000); // クリア
+                  break;
                 }
                 else if (isExistEle(driver, retryBtn)) {
-                  clickSleepSelector(driver, retryBtn, 3000); // 終了
+                  clickSleepSelector(driver, retryBtn, 3000); // リトライ
                 }
               }
             }
