@@ -12,6 +12,7 @@ import pointGet.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerEnkShopQP;
 import pointGet.mission.parts.AnswerEnqNstk;
+import pointGet.mission.parts.AnswerEnqY2at;
 import pointGet.mission.parts.AnswerHiroba;
 import pointGet.mission.parts.AnswerKotsuta;
 import pointGet.mission.parts.AnswerMinnanosur;
@@ -44,6 +45,7 @@ public class GENPointResearch2 extends GENBase {
   AnswerTasuuketu Tasuuketu = null;
   AnswerMinnanosur Minnanosur = null;
   AnswerEnqNstk EnqNstk = null;
+  AnswerEnqY2at EnqY2at = null;
 
   /**
    * @param logg
@@ -64,6 +66,7 @@ public class GENPointResearch2 extends GENBase {
     Tasuuketu = new AnswerTasuuketu(logg);
     Minnanosur = new AnswerMinnanosur(logg);
     EnqNstk = new AnswerEnqNstk(logg);
+    EnqY2at = new AnswerEnqY2at(logg);
   }
 
   @Override
@@ -137,14 +140,21 @@ public class GENPointResearch2 extends GENBase {
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
         }
-        else if (cUrl.indexOf("vote.media-ad.jp/question") >= 0) {
+        else if (cUrl.indexOf("vote.media-ad.jp/") >= 0) {
           Tasuuketu.answer(driver, sele9, wid);
         }
         else if (cUrl.indexOf("enq.nstk-4.com") >= 0
             && isExistEle(driver, sele10)) {
           EnqNstk.answer(driver, sele10, wid);
         }
-        
+        else if (cUrl.indexOf("enq.shop-qp.com") >= 0
+            && isExistEle(driver, sele10)) {
+          EnkShopQP.answer(driver, sele10, wid);
+        }
+        else if (cUrl.indexOf("enq.y2at.com") >= 0
+            && isExistEle(driver, sele10)) {
+          EnqY2at.answer(driver, sele10, wid);
+        }
         else {
           skip++;
           driver.close();
