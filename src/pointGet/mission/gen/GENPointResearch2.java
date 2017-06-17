@@ -78,16 +78,16 @@ public class GENPointResearch2 extends GENBase {
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
     sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
-    sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
-    sele4 = "div>input[type='submit']", //
-    sele4_ = "#iframe", //
-    sele5 = "div#shindan", //
-    sele6 = "form>input.next_bt", // コラム用
-    sele7 = "div.btn>button[type='submit']", //
-    sele8 = "form>input.next_bt",
-    sele9 = "a.start__button",
-    sele10 = "div#buttonArea>input[name='next']", // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
-    a = "";
+        sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
+        sele4 = "div>input[type='submit']", //
+        sele4_ = "#iframe", //
+        sele5 = "div#shindan", //
+        sele6 = "form>input.next_bt", // コラム用
+        sele7 = "div.btn>button[type='submit']", //
+        sele8 = "form>input.next_bt",
+        sele9 = "a.start__button",
+        sele10 = "div#buttonArea>input[name='next']", // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+        a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
         // 対象がなくなったら終了
@@ -96,11 +96,11 @@ public class GENPointResearch2 extends GENBase {
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size = eleList.size(), targetIndex = size - skip;
       if (targetIndex > -1 && size > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
-        clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+        clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
-
+        logg.info("url[" + cUrl + "]");
         if (isExistEle(driver, sele2)) {
           Kotsuta.answer(driver, sele2, wid);
         }
@@ -125,13 +125,11 @@ public class GENPointResearch2 extends GENBase {
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
-            || cUrl.indexOf("fashion-cosmelife.com") >= 0
-            )
+            || cUrl.indexOf("fashion-cosmelife.com") >= 0)
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
         }
-        else if (
-            (cUrl.indexOf("photo-enquete") >= 0
+        else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("cosmetic-brand.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
@@ -141,7 +139,8 @@ public class GENPointResearch2 extends GENBase {
           Zukan.answer(driver, sele8, wid);
         }
         else if (cUrl.indexOf("vote.media-ad.jp/") >= 0) {
-          Tasuuketu.answer(driver, sele9, wid);
+          if (!Tasuuketu.answer(driver, sele9, wid))
+            skip++;
         }
         else if (cUrl.indexOf("enq.nstk-4.com") >= 0
             && isExistEle(driver, sele10)) {

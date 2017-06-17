@@ -25,9 +25,10 @@ public class AnswerTasuuketu extends MissCommon {
    * @param startSele
    * @param wid
    */
-  public void answer(WebDriver driver, String startSele, String wid) {
+  public boolean answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
-   String radioSele = "label.radio", //
+    boolean res = false;
+    String radioSele = "label.radio", //
         voteSele = "input.button--answer", //
         nextSele = "a.button--next", //
         titleSele = "div.question>p", // close
@@ -40,6 +41,7 @@ public class AnswerTasuuketu extends MissCommon {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "";
       if (isExistEle(driver, titleSele)) {
+        res = true;
         qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
         logg.info("[" + qTitle + "]");
 
@@ -75,5 +77,6 @@ public class AnswerTasuuketu extends MissCommon {
     Utille.sleep(5000);
     driver.close();
     driver.switchTo().window(wid);
+    return res;
   }
 }

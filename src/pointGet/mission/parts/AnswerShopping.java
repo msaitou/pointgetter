@@ -45,7 +45,7 @@ public class AnswerShopping extends MissCommon {
     closeSele = "input.btn_close_en", seleSele = "select[name='prefecture']"; // ドロップダウンセレクター
 
     Utille.sleep(2000);
-    for (int k = 1; k <= 15; k++) {
+    for (int k = 1; k <= 20; k++) {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "";
       if (isExistEle(driver, titleSele)) {
