@@ -1,4 +1,4 @@
-package pointGet.mission.pil;
+package pointGet.mission.pst;
 
 import java.util.List;
 import java.util.Map;
@@ -13,13 +13,13 @@ import pointGet.Utille;
 /**
  * @author saitou
  */
-public class PILClickBanner extends PILBase {
-  final String url = "http://www.point-island.com/mincp.asp";
+public class PSTClickBanner extends PSTBase {
+  final String url = "http://www.point-stadium.com/mincp.asp";
 
   /**
    * @param log
    */
-  public PILClickBanner(Logger log, Map<String, String> cProps) {
+  public PSTClickBanner(Logger log, Map<String, String> cProps) {
     super(log, cProps, "クリックポイント");
   }
 
@@ -27,7 +27,7 @@ public class PILClickBanner extends PILBase {
   public void privateMission(WebDriver driver) {
     driver.get(url);
     Utille.sleep(2000);
-    String selecter[] = { "table.msg001 table table td>a>img" };
+    String selecter[] = { "td>a>img" };
     for (int j = 0; j < selecter.length; j++) {
       logg.info("selector: start");
       String selector = selecter[j];

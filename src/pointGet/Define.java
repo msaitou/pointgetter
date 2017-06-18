@@ -176,6 +176,8 @@ public class Define {
   final public static String strPSTGameParkEnk = "PSTGameParkEnk";
   final public static String strPSTChyousadan = "PSTChyousadan";
   final public static String strPSTKumaVote = "PSTKumaVote";
+  final public static String strPSTClickBanner = "PSTClickBanner";
+  
   // ■■■■■pointisland■■■■■
   final public static String strPILUranai = "PILUranai";
   final public static String strPILQuiz = "PILQuiz";
