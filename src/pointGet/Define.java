@@ -91,7 +91,8 @@ public class Define {
   final public static String strMOPMiniGameEnk = "MOPMiniGameEnk";
   final public static String strMOPChyousadan = "MOPChyousadan";
   final public static String strMOPKumaVote = "MOPKumaVote";
-
+  final public static String strMOPGaingame = "MOPGaingame";
+  
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
   final public static String strOSAQuiz = "OSAQuiz";

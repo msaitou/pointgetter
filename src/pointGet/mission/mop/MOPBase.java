@@ -113,6 +113,9 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPKumaVote: // ■くま投票
           MisIns = new MOPKumaVote(loggg, cProps);
           break;
+        case Define.strMOPGaingame: // ■リーグジュエル
+          MisIns = new MOPGaingame(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strMOPQuiz,
