@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -72,7 +73,16 @@ public class PICInterview extends PICBase {
             else if (cUrl.indexOf("ad/enq/") >= 0
                 && isExistEle(driver, sele1_)) {
               // $('iframe').contents().find("div>input[type='submit']")
-              AdEnq.answer(driver, sele1, wid);
+              boolean isSuccess = true;
+              do {
+                try {
+                  AdEnq.answer(driver, sele1, wid);
+                }
+                catch (StaleElementReferenceException e) {
+                 logg.warn("StaleElementReferenceException-----------------"); 
+                 isSuccess = false;
+                }
+              } while(!isSuccess);
             }
             else if (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 && isExistEle(driver, sele3)) {
