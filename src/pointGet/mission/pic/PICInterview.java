@@ -46,7 +46,7 @@ public class PICInterview extends PICBase {
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         selector = "a>dl>dd>strong";
-        int skip = 0;
+        int skip = 1; // tasuuketuyatte
         String
         sele1_ = "iframe.question_frame",//
         sele1 = "form>input[type='submit']", //
@@ -66,6 +66,7 @@ public class PICInterview extends PICBase {
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
+            logg.info("url[" + cUrl + "]");
             if (isExistEle(driver, sele9)) {
               Tasuuketu.answer(driver, sele9, wid);
               skip++;
@@ -79,12 +80,13 @@ public class PICInterview extends PICBase {
                   AdEnq.answer(driver, sele1, wid);
                 }
                 catch (StaleElementReferenceException e) {
-                 logg.warn("StaleElementReferenceException-----------------"); 
+                 logg.warn("StaleElementReferenceException-----------------");
                  isSuccess = false;
                 }
               } while(!isSuccess);
             }
-            else if (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+            else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+                || cUrl.indexOf("sheep.seikaku-checker.club") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
               skip++;

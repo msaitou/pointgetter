@@ -84,6 +84,7 @@ public class ECNPointResearch extends ECNBase {
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
+        logg.info("url[" + cUrl + "]");
         if (cUrl.indexOf("research.ecnavi.jp/ar") >= 0
             && isExistEle(driver, sele2)) {
           ResearcgEcEnq.answer(driver, sele2, wid);

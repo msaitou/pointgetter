@@ -40,8 +40,8 @@ public class PTOPointResearch extends PTOBase {
     Utille.sleep(3000);
     int skip = 1;
     String sele3 = "div>button[type='submit']", // 回答する surveyenk用
-    sele2 = "div.question_btn>input[type='submit']", //
-    sele1 = "div.ui-control.type-fixed>a.ui-button"; // ポイントサーチ用
+        sele2 = "div.question_btn>input[type='submit']", //
+        sele1 = "div.ui-control.type-fixed>a.ui-button"; // ポイントサーチ用
 
     while (true) {
       if (!isExistEle(driver, selector)) {
@@ -54,6 +54,8 @@ public class PTOPointResearch extends PTOBase {
         String wid = driver.getWindowHandle();
         clickSleepSelector(eleList, targetIndex, 10000); // アンケートスタートページ
         changeWindow(driver, wid);
+        String cUrl = driver.getCurrentUrl();
+        logg.info("url[" + cUrl + "]");
         if (isExistEle(driver, sele1)) {
           PointResearch.answer(driver, sele1, wid);
         }
@@ -61,8 +63,8 @@ public class PTOPointResearch extends PTOBase {
           Adserver.answer(driver, sele2, wid);
         }
         else if (isExistEle(driver, sele3)) {
-//          closeOtherWindow(driver);
-//          _answerSurveyEnk(sele3, "");
+          //          closeOtherWindow(driver);
+          //          _answerSurveyEnk(sele3, "");
           SurveyEnk.answer(driver, sele3, wid);
           skip++;
         }
@@ -79,7 +81,6 @@ public class PTOPointResearch extends PTOBase {
       }
     }
   }
-
 
   // TODO 消すな、処理が少し異なる
   /**

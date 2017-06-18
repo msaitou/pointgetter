@@ -70,7 +70,7 @@ public class CITGameParkEnk extends CITBase {
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
-
+            logg.info("url[" + cUrl + "]");
             if (cUrl.indexOf("chance.qpark.jp/enquete/") >= 0) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);

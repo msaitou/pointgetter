@@ -74,6 +74,7 @@ public class PTOPointResearch2 extends PTOBase {
           clickSleepSelector(eleList, targetIndex, 10000); // アンケートスタートページ
           changeWindow(driver, wid);
           String cUrl = driver.getCurrentUrl();
+          logg.info("url[" + cUrl + "]");
           if (isExistEle(driver, sele3)) {
             SurveyEnk.answer(driver, sele3, wid);
             //            skip++;

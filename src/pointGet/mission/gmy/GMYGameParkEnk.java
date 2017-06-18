@@ -72,6 +72,7 @@ public class GMYGameParkEnk extends GMYBase {
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
+            logg.info("url[" + cUrl + "]");
 
             if (cUrl.indexOf("getmoney.qpark.jp/enquete/") >= 0) {
               Utille.sleep(4000);

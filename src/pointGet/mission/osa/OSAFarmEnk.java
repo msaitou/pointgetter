@@ -70,6 +70,7 @@ public class OSAFarmEnk extends OSABase {
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
+            logg.info("url[" + cUrl + "]");
             if (isExistEle(driver, sele9)) {
               Tasuuketu.answer(driver, sele9, wid);
               skip++;

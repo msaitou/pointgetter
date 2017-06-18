@@ -48,6 +48,8 @@ public class SUGPointResearch extends SUGBase {
           clickSleepSelector(eleList, targetIndex, 6000); // アンケートスタートページ
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);
+          String cUrl = driver.getCurrentUrl();
+          logg.info("url[" + cUrl + "]");
           if (isExistEle(driver, sele1)) {
             PointResearch.answer(driver, sele1, wid);
           }

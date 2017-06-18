@@ -54,6 +54,7 @@ public class PICPointResearch extends PICBase {
           clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ
           changeWindow(driver, wid);
           String cUrl = driver.getCurrentUrl();
+          logg.info("url[" + cUrl + "]");
           if (isExistEle(driver, sele3)) {
             // http://mini.surveyenquete.net
             SurveyEnk.answer(driver, sele3, wid);

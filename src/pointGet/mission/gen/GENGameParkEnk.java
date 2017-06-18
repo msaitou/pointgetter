@@ -75,6 +75,7 @@ public class GENGameParkEnk extends GENBase {
           clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
           changeWindow(driver, wid);
           String cUrl = driver.getCurrentUrl();
+          logg.info("url[" + cUrl + "]");
 
           if (cUrl.indexOf("gendama.qpark.jp/enquete/") >= 0
               && isExistEle(driver, sele1)) {

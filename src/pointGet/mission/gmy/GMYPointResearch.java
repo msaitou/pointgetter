@@ -81,7 +81,7 @@ public class GMYPointResearch extends GMYBase {
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
-
+        logg.info("url[" + cUrl + "]");
         if (cUrl.indexOf("kotsuta.com") >= 0
             && isExistEle(driver, sele2)) {
           // ws-g.jp は対象外

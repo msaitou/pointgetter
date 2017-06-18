@@ -42,7 +42,7 @@ public class SUGChyousadan extends SUGBase {
         Utille.sleep(3000);
         int skip = 1;
         String sele1_ = "iframe.question_frame", //
-        sele1 = "form>input[type='submit']", // 
+        sele1 = "form>input[type='submit']", //
         b = "";
         selector = "div.enquete_box a dd.title>strong";
         int cn = 0;
@@ -55,6 +55,7 @@ public class SUGChyousadan extends SUGBase {
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
+            logg.info("url[" + cUrl + "]");
             if (cUrl.indexOf("ad/enq/") >= 0
                 && isExistEle(driver, sele1_)) {
               // $('iframe').contents().find("div>input[type='submit']")

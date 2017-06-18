@@ -81,6 +81,7 @@ public class CITPointResearch extends CITBase {
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
+        logg.info("url[" + cUrl + "]");
 
         if (cUrl.indexOf("kotsuta.com") >= 0
             && isExistEle(driver, sele2)) {

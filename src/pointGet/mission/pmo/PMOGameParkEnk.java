@@ -70,7 +70,7 @@ public class PMOGameParkEnk extends PMOBase {
             clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
-
+            logg.info("url[" + cUrl + "]");
             if (cUrl.indexOf("poimon.qpark.jp/enquete/") >= 0
                 && isExistEle(driver, sele1)) {
               Utille.sleep(4000);

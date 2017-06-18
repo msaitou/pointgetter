@@ -93,6 +93,7 @@ public class CRIPointResearch extends CRIBase {
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
+        logg.info("url[" + cUrl + "]");
         if (cUrl.indexOf("kotsuta.com") >= 0
             && isExistEle(driver, sele2)) {
           Kotsuta.answer(driver, sele2, wid);

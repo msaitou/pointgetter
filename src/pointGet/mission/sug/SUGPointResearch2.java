@@ -67,6 +67,7 @@ public class SUGPointResearch2 extends SUGBase {
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
+        logg.info("url[" + cUrl + "]");
 
         //          if (isExistEle(driver, sele1)) {
         //            PointResearch.answer(driver, sele1, wid);
@@ -76,6 +77,7 @@ public class SUGPointResearch2 extends SUGBase {
             && isExistEle(driver, sele1_)) {
           clickSleepSelector(driver, sele1_, 4000); // なぜだかませぺーじ
           String cUrl2 = driver.getCurrentUrl();
+          logg.info("url2[" + cUrl2 + "]");
           if (isExistEle(driver, sele1)) {
             Kotsuta.answer(driver, sele1, wid);
           }

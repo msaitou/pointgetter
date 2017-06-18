@@ -55,6 +55,7 @@ public class MOPPointResearch2 extends MOPBase {
         clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
+        logg.info("url[" + cUrl + "]");
         if (isExistEle(driver, sele3)) {
           SurveyEnk.answer(driver, sele3, wid);
           //          skip++;
