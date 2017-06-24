@@ -39,6 +39,7 @@ public class AnswerAdEnq extends MissCommon {
       //    radioSele = "div.answer>input[type='radio']", //
       //    checkboxSele = "div.answer>input[type='checkbox']", //
       radioSele = "div.answer>label", //
+      textareaSele = "div>textarea", //
       checkboxSele = radioSele, //
       //    noSele = "span.query-num",
       titleSele = "h2.question", // 質問NOも含む
@@ -46,12 +47,24 @@ public class AnswerAdEnq extends MissCommon {
       finishSele = "div.btn_next>form>input[type='submit']", //
       finishSele2 = "div.btn_getpoint>a", // 6問バージョン用
       seleSele = "select[name*='question_']"; // ドロップダウンセレクター
+      String agreeSele = "label[for=agree_checkbox]";
+      if (isExistEle(driver, agreeSele)) {
+        clickSleepSelector(driver, agreeSele, 4000);
+        if (isExistEle(driver, seleSub)) {
+          clickSleepSelector(driver, seleSub, 3000);
+          if (isExistEle(driver, startSele)) {
+            clickSleepSelector(driver, startSele, 3000);
+          }
+        }
+      }
 
       Utille.sleep(2000);
-      for (int k = 1; k <= 12 + 3; k++) {
+      for (int k = 1; k <= 15 + 3; k++) {
         int choiceNum = 0;
         String qTitle = "", choiceSele = "";
         if (isExistEle(driver, titleSele)) {
+          // TODO　ラジオボックスの位置まで移動。
+          // Q15の対応
           qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
           logg.info(qTitle);
           if (isExistEle(driver, radioSele)) { // ラジオ
@@ -62,6 +75,9 @@ public class AnswerAdEnq extends MissCommon {
           }
           else if (isExistEle(driver, seleSele)) { // ドロップダウン
             choiceSele = seleSele;
+          }
+          else if (isExistEle(driver, textareaSele)) { // テキストエリア
+            choiceSele = textareaSele;
           }
 
           // 回答選択
@@ -93,6 +109,7 @@ public class AnswerAdEnq extends MissCommon {
             if (isExistEle(eleList2, choiceNum)) {
               Utille.sleep(500);
               // 選択
+              Utille.scrolledPage(driver, eleList2.get(choiceNum));
               clickSleepSelector(eleList2, choiceNum, 3000);
               if (isExistEle(driver, "div.ad_footer>div>div>div.layered", false)) {
                 driver.navigate().refresh();
@@ -137,6 +154,11 @@ public class AnswerAdEnq extends MissCommon {
               }
               continue;
             }
+            if (isExistEle(driver, seleSub)) {
+              clickSleepSelector(driver, seleSub, 4000);
+            }
+          }
+          if (textareaSele.equals(choiceSele)) {
             if (isExistEle(driver, seleSub)) {
               clickSleepSelector(driver, seleSub, 4000);
             }

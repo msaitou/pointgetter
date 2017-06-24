@@ -55,6 +55,7 @@ public class MOBTokkuTimer extends MOBBase {
             long e = System.currentTimeMillis();
             if (isExistEle(driver, selectStop)) {
               clickSleepSelector(driver, selectStop, 5000); // END
+              checkOverlay(driver, overlaySele);
               if (isExistEle(driver, selectRes)) {
                 clickSleepSelector(driver, selectRes, 4000); // 結果
                 
