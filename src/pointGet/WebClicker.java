@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriverException;
 import pointGet.mission.Mission;
 import pointGet.mission.cit.CITBase;
 import pointGet.mission.cri.CRIBase;
+import pointGet.mission.dmy.DMYBase;
 import pointGet.mission.ecn.ECNBase;
 import pointGet.mission.gen.GENBase;
 import pointGet.mission.gmy.GMYBase;
@@ -63,6 +64,7 @@ public class WebClicker extends PointGet {
       Define.PSITE_CODE_CRI, // ちょびリッチ
       Define.PSITE_CODE_HAP, // ハピタス
       Define.PSITE_CODE_WAR, // ワラウ
+      Define.PSITE_CODE_DMY, // ドットマネー
   };
 
   protected static void init(String[] args) {
@@ -265,6 +267,9 @@ public class WebClicker extends PointGet {
           break;
         case Define.PSITE_CODE_WAR:
           WARBase.goToClick(logg, commonProps, missionArr, Dbase);
+          break;
+        case Define.PSITE_CODE_DMY:
+          DMYBase.goToClick(logg, commonProps, missionArr, Dbase);
           break;
         default:
       }

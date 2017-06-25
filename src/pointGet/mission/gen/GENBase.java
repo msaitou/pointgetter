@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.Define;
+import pointGet.LoginSite;
 import pointGet.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
@@ -57,6 +58,12 @@ public abstract class GENBase extends Mission {
     // if (testFlag) {
     // return;
     // }
+    String se = "li#user_point01";
+    driver.get("http://www.gendama.jp/");
+    if (!Utille.isExistEle(driver, se, loggg)) {
+      // login!!
+      LoginSite.login(sCode, driver, loggg);
+    }
     for (String mission : missions) {
       Mission MisIns = null;
       switch (mission) {

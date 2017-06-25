@@ -30,6 +30,7 @@ public class Define {
   final public static String PSITE_CODE_SUG = "sug";
   final public static String PSITE_CODE_WAR = "war";
   final public static String PSITE_CODE_PST = "pst";
+  final public static String PSITE_CODE_DMY = "dmy";
 
   // ■■■■■ECnavi■■■■■
   final public static String strECNChinjyu = "ECNChinjyu";
@@ -58,7 +59,7 @@ public class Define {
   final public static String strGENChyousadan = "GENChyousadan";
   final public static String strGENKumaVote = "GENKumaVote";
 
-  // ■■■■■げっとま■■■■■
+   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
   final public static String strGMYClickBanner = "GMYClickBanner";
   final public static String strGMYShindan = "GMYShindan";
@@ -92,7 +93,7 @@ public class Define {
   final public static String strMOPChyousadan = "MOPChyousadan";
   final public static String strMOPKumaVote = "MOPKumaVote";
   final public static String strMOPGaingame = "MOPGaingame";
-  
+
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
   final public static String strOSAQuiz = "OSAQuiz";
@@ -177,7 +178,7 @@ public class Define {
   final public static String strPSTChyousadan = "PSTChyousadan";
   final public static String strPSTKumaVote = "PSTKumaVote";
   final public static String strPSTClickBanner = "PSTClickBanner";
-  
+
   // ■■■■■pointisland■■■■■
   final public static String strPILUranai = "PILUranai";
   final public static String strPILQuiz = "PILQuiz";
@@ -218,6 +219,14 @@ public class Define {
   final public static String strWARDailyCheck = "WARDailyCheck";
   final public static String strWARPointResearch = "WARPointResearch";
   final public static String strWARGameParkEnk = "WARGameParkEnk";
+
+  // ■■■■■dotmaney■■■■■
+  final public static String strDMYChirachi = "DMYChirachi";
+  final public static String strDMYPriceChyosatai = "DMYPriceChyosatai";
+  final public static String strDMYPointResearch = "DMYPointResearch";
+  final public static String strDMYScrachi = "DMYScrachi";
+  final public static String strDMYChyousadan = "DMYChyousadan";
+  final public static String strDMYKumaVote = "DMYKumaVote";
 
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";

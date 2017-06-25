@@ -47,8 +47,13 @@ public class LoginSite extends PointGet {
       case Define.PSITE_CODE_OSA:
         loginOsa(driver, logg);
         break;
-      case Define.PSITE_CODE_GMY:
       case Define.PSITE_CODE_GEN:
+        loginGen(driver, logg);
+        break;
+      case Define.PSITE_CODE_DMY:
+        loginDmy(driver, logg);
+        break;
+      case Define.PSITE_CODE_GMY:
       case Define.PSITE_CODE_ECN:
       case Define.PSITE_CODE_I2I:
       case Define.PSITE_CODE_MOB:
@@ -61,6 +66,44 @@ public class LoginSite extends PointGet {
       case Define.PSITE_CODE_SUG:
       default:
         return;
+    }
+  }
+
+  /**
+   * @param driver
+   * @param logg
+   */
+  public static void loginDmy(WebDriver driver, Logger logg) {
+    driver.get("https://dauth.user.ameba.jp/login/ameba");
+    Utille.sleep(2000);
+    if (Utille.isExistEle(driver, "input[name='accountId']", logg)) {
+      WebElement ele = driver.findElement(By.cssSelector("input[name='accountId']"));
+      ele.clear();
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginid"));
+      ele = driver.findElement(By.cssSelector("input[name='password']"));
+      ele.clear();
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginpass"));
+      driver.findElement(By.cssSelector("button[type='submit']")).click();
+      Utille.sleep(5000);
+    }
+  }
+
+  /**
+   * @param driver
+   * @param logg
+   */
+  public static void loginGen(WebDriver driver, Logger logg) {
+    driver.get("https://ssl.realworld.jp/auth/?site=gendama_jp&rid=&af=&frid=&token=&goto=http%3A%2F%2Fwww.gendama.jp%2F?p=start");
+    Utille.sleep(2000);
+    if (Utille.isExistEle(driver, "input[name='rwsid']", logg)) {
+      WebElement ele = driver.findElement(By.cssSelector("input[name='rwsid']"));
+      ele.clear();
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginid"));
+      ele = driver.findElement(By.cssSelector("input[name='pass']"));
+      ele.clear();
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginpass"));
+      driver.findElement(By.cssSelector("input[name='login_page']")).click();
+      Utille.sleep(5000);
     }
   }
 
