@@ -538,6 +538,7 @@ public class Utille {
       case Define.PSITE_CODE_MOP:
       case Define.PSITE_CODE_PMO:
       case Define.PSITE_CODE_HAP:
+      case Define.PSITE_CODE_DMY:
         tot += current;
         break;
       case Define.PSITE_CODE_CRI:

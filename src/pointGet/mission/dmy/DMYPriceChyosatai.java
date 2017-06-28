@@ -28,6 +28,11 @@ public class DMYPriceChyosatai extends DMYBase {
 
   @Override
   public void privateMission(WebDriver driver) {
+    driver.get(url);
+    selector = "li.not-login>a.btn-login";
+    if (isExistEle(driver, selector, false)) {
+      clickSleepSelector(driver, selector, 3000);
+    }
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
       driver.get(url);

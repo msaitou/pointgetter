@@ -67,9 +67,9 @@ public abstract class DMYBase extends Mission {
         case Define.strDMYPriceChyosatai: // ■price調査隊
           MisIns = new DMYPriceChyosatai(loggg, cProps);
           break;
-//        case Define.strDMYPointResearch: // ■アンケート
-//          MisIns = new DMYPointResearch(loggg, cProps);
-//          break;
+        case Define.strDMYPointResearch: // ■アンケート
+          MisIns = new DMYPointResearch(loggg, cProps);
+          break;
 //        case Define.strDMYScrachi: // ■スクラッチ
 //          MisIns = new DMYScrachi(loggg, cProps);
 //          break;
@@ -85,7 +85,7 @@ public abstract class DMYBase extends Mission {
       if (Arrays.asList(new String[] {
           Define.strDMYChirachi,
           Define.strDMYPriceChyosatai,
-//          Define.strDMYPointResearch,
+          Define.strDMYPointResearch,
 //          Define.DMYScrachi,
 //        Define.strDMYChyousadan,
 //        Define.strDMYKumaVote,
@@ -122,8 +122,8 @@ public abstract class DMYBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "div.p-dotmoney_balance span.-em", point = "";
-    driver.get("http://mypage.ameba.jp/");
+    String selector = "div.p-history-list__list-item-first span.u-ff-dmoney", point = "";
+    driver.get("https://d-money.jp/history");
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);
