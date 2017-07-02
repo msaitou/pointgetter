@@ -70,9 +70,9 @@ public abstract class DMYBase extends Mission {
         case Define.strDMYPointResearch: // ■アンケート
           MisIns = new DMYPointResearch(loggg, cProps);
           break;
-//        case Define.strDMYScrachi: // ■スクラッチ
-//          MisIns = new DMYScrachi(loggg, cProps);
-//          break;
+        case Define.strDMYScrachi: // ■スクラッチ
+          MisIns = new DMYScrachi(loggg, cProps);
+          break;
 //        case Define.strDMYChyousadan: // ■調査団
 //        MisIns = new DMYChyousadan(loggg, cProps);
 //        break;
@@ -86,6 +86,7 @@ public abstract class DMYBase extends Mission {
           Define.strDMYChirachi,
           Define.strDMYPriceChyosatai,
           Define.strDMYPointResearch,
+          Define.strDMYScrachi,
 //          Define.DMYScrachi,
 //        Define.strDMYChyousadan,
 //        Define.strDMYKumaVote,
