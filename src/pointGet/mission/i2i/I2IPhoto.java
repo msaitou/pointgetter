@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerPhotoEnk;
 
 /**

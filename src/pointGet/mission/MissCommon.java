@@ -16,8 +16,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import lombok.val;
-import pointGet.Eventually;
-import pointGet.Utille;
+import pointGet.common.Eventually;
+import pointGet.common.Utille;
 
 public abstract class MissCommon {
   /* log */

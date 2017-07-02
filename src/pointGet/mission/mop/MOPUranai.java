@@ -5,7 +5,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 
 public class MOPUranai extends MOPBase {
 	final String url = "http://pc.moppy.jp/gamecontents/";

@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 
 public class MOBAnzan extends MOBBase {
 	final String url = "http://pc.mtoku.jp/contents/";

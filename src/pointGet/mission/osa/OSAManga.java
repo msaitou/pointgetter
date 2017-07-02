@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 
 public class OSAManga extends OSABase {
 	final String url = "http://osaifu.com/contents/coinland/";

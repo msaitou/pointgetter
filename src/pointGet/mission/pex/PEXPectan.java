@@ -5,9 +5,9 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Define;
 import pointGet.LoginSite;
-import pointGet.Utille;
+import pointGet.common.Define;
+import pointGet.common.Utille;
 
 /**
  * @author saitou

@@ -32,6 +32,9 @@ import org.bson.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Define;
+import pointGet.common.Utille;
+
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
 

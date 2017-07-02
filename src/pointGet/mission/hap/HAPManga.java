@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 
 public class HAPManga extends HAPBase {
 	final String url = "http://hapitas.jp/";

@@ -1,4 +1,4 @@
-package pointGet;
+package pointGet.common;
 
 import java.time.Duration;
 import java.util.function.Supplier;

@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 
 public class MOPCountTimer extends MOPBase {
 	final String url = "http://pc.moppy.jp/gamecontents/";

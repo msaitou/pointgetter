@@ -1,4 +1,4 @@
-package pointGet;
+package pointGet.common;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

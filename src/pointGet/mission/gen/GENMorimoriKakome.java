@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 import pointGet.mission.Mission;
 
 /**

@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 
 public class MOBTokkuTimer extends MOBBase {
   final String url = "http://pc.mtoku.jp/contents/";

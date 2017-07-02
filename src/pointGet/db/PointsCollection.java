@@ -15,7 +15,7 @@ import com.mongodb.DBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.util.JSON;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 
 /**
  * @author saitou

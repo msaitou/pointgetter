@@ -7,6 +7,8 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
+import pointGet.common.Define;
+import pointGet.common.Utille;
 import pointGet.mission.Mission;
 import pointGet.mission.cit.CITBase;
 import pointGet.mission.cri.CRIBase;

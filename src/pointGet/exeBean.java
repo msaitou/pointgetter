@@ -1,5 +1,7 @@
 package pointGet;
 
+import pointGet.common.Utille;
+
 public class exeBean {
 
 	/**

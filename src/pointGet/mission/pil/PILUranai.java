@@ -5,7 +5,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 
 public class PILUranai extends PILBase {
 	final String url = "http://www.point-island.com/wcmpoint.asp";

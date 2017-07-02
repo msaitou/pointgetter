@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import pointGet.Utille;
+import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdserver;
 import pointGet.mission.parts.AnswerPointResearch;
 import pointGet.mission.parts.AnswerSurveyEnk;

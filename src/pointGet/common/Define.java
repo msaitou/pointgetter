@@ -1,4 +1,4 @@
-package pointGet;
+package pointGet.common;
 
 /**
  * @author saitou constant variables list
