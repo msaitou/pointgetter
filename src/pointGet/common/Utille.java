@@ -491,10 +491,10 @@ public class Utille {
     int ranDiff = Utille.getIntRand(300);
     int ranSign = Utille.getIntRand(2);
     if (ranSign == 0) {
-      return waitTime + ranDiff;
+      return waitTime + ranDiff - 200;
     }
     else {
-      return waitTime - ranDiff;
+      return waitTime - ranDiff - 200;
     }
   }
 

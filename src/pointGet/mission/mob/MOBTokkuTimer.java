@@ -42,7 +42,7 @@ public class MOBTokkuTimer extends MOBBase {
             String text = driver.findElement(By.cssSelector(selectorExpression)).getText();
             logg.info("お題　" + text);
             waitTime = Utille.getWaitTime(text);
-            waitTime -= 110;
+            waitTime -= 310;
           }
           else {
             logg.info("not get odai");
