@@ -81,7 +81,7 @@ public class CRIAnk extends CRIBase {
                       }
                     }
 
-                    String overLaySele = "div#mdl_area[style='display: block;'] div#mdl_close";
+                    String overLaySele = "div#mdl_area[style*='display: block;'] div#mdl_close";
                     // overlayを消して
                     checkOverlay(driver, overLaySele);
                     if (isExistEle(driver, seleNext)) {
