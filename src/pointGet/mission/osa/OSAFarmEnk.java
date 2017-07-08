@@ -13,6 +13,7 @@ import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
+import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerTasuuketu;
 
 public class OSAFarmEnk extends OSABase {
@@ -25,6 +26,7 @@ public class OSAFarmEnk extends OSABase {
   AnswerTasuuketu Tasuuketu = null;
   AnswerAdEnq AdEnq = null;
   AnswerAdShindan AdShindan = null;
+  AnswerPittango Pittango = null;
 
   /**
    * @param logg
@@ -36,75 +38,11 @@ public class OSAFarmEnk extends OSABase {
     Adsurvey = new AnswerAdsurvey(logg);
     AdEnq = new AnswerAdEnq(logg);
     AdShindan = new AnswerAdShindan(logg);
+    Pittango = new AnswerPittango(logg);
   }
 
   @Override
   public void privateMission(WebDriver driverAtom) {
-//    driver = driverAtom;
-//    driver.get(url);
-//    selector = "li>a>img[alt='お財布ファーム']";
-//    String enkLinkSele = "li#enqueteNav>a>*", //
-//        a = "";
-//    if (isExistEle(driver, selector)) {
-//      clickSleepSelector(driver, selector, 4000); // 遷移
-//      changeCloseWindow(driver);
-//      if (isExistEle(driver, enkLinkSele)) {
-//        clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
-//        int skip = 1;
-//        selector = "div.enqueteContainer a[href] dd.title";
-//        String sele1_ = "iframe.question_frame", //
-//            sele1 = "form>input[type='submit']", //
-//            sele3 = "form>input[type='submit']", //
-//            sele9 = "a.start__button", //
-//            overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-//            b = "";
-//        while (true) {
-//          if (!isExistEle(driver, selector)) {
-//            break;
-//          }
-//          List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-//          int size = eleList.size(), targetIndex = skip;
-//          if (size > targetIndex && isExistEle(eleList, targetIndex)) {
-//            String wid = driver.getWindowHandle();
-//            Utille.scrolledPage(driver, eleList.get(targetIndex));
-//            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
-//            changeWindow(driver, wid);
-//            String cUrl = driver.getCurrentUrl();
-//            logg.info("url[" + cUrl + "]");
-//            if (isExistEle(driver, sele9)) {
-//              Tasuuketu.answer(driver, sele9, wid);
-//              skip++;
-//            }
-//            else if (cUrl.indexOf("ad/enq/") >= 0
-//                && isExistEle(driver, sele1_)) {
-//              // $('iframe').contents().find("div>input[type='submit']")
-//              AdEnq.answer(driver, sele1, wid);
-//            }
-//            else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
-//                || cUrl.indexOf("enquetter.com/question") >= 0)
-//                && isExistEle(driver, sele3)) {
-//              AdShindan.answer(driver, sele3, wid);
-//              skip++;
-//            }
-//            else {
-//              skip++;
-//              driver.close();
-//              driver.switchTo().window(wid);
-//            }
-//            driver.navigate().refresh();
-//            Utille.sleep(5000);
-//          }
-//          else {
-//            break;
-//          }
-//        }
-//        String stampSele = "a.suggest-surveys";
-//        if (isExistEle(driver, stampSele)) {
-//          clickSleepSelector(driver, stampSele, 4000); // 遷移
-//        }
-//      }
-//    }
-
     driver = driverAtom;
     driver.get(url);
     selector = "li>a>img[alt='お財布ファーム']";
@@ -115,13 +53,17 @@ public class OSAFarmEnk extends OSABase {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
       driver.get("http://farm.osaifu.com/square/votes");
-      for (int k = 0; k < 3; k++) {
+      for (int k = 0; k < 4; k++) {
         if (k == 1) {
           driver.get("http://farm.osaifu.com/square/diagnoses");
         }
         else if (k == 2) {
           driver.get("http://farm.osaifu.com/square/surveys");
         }
+        else if (k == 3) {
+          driver.get("http://farm.osaifu.com/square/pittango");
+        }
+
 
         Utille.sleep(3000);
         selector = "div.enqueteBox a[href]>dl";
@@ -166,13 +108,13 @@ public class OSAFarmEnk extends OSABase {
               AdShindan.answer(driver, sele3, wid);
               skip++;
             }
-//            else if ((cUrl.indexOf("column-enquete") >= 0
-//                || cUrl.indexOf("beautynail-design.com") >= 0
-//                || cUrl.indexOf("fashion-cosmelife.com") >= 0
-//                )
-//                && isExistEle(driver, sele6)) {
-//              Colum.answer(driver, sele6, wid);
-//            }
+            else if ((cUrl.indexOf("http://pittango.net/") >= 0
+            //                || cUrl.indexOf("beautynail-design.com") >= 0
+            //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+            )
+                && isExistEle(driver, sele3)) {
+              Pittango.answer(driver, sele3, wid);
+            }
             else {
               skip++;
               driver.close();

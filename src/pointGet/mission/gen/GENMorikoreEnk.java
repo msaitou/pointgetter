@@ -12,6 +12,7 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerTasuuketu;
 
 public class GENMorikoreEnk extends GENBase {
@@ -22,6 +23,7 @@ public class GENMorikoreEnk extends GENBase {
   AnswerAdEnq AdEnq = null;
   AnswerAdShindan AdShindan = null;
   AnswerColum Colum = null;
+  AnswerPittango Pittango = null;
 
   /**
    * @param logg
@@ -32,6 +34,7 @@ public class GENMorikoreEnk extends GENBase {
     AdEnq = new AnswerAdEnq(logg);
     AdShindan = new AnswerAdShindan(logg);
     Colum = new AnswerColum(logg);
+    Pittango = new AnswerPittango(logg);
   }
 
   @Override
@@ -40,7 +43,7 @@ public class GENMorikoreEnk extends GENBase {
     driver.get(url);
     selector = "section#ftrlink li>a[href*='/cl/?id=134610&u=6167192']";
     String enkLinkSele = "a>img[alt='モリモリ診断']", //
-    a = "";
+        a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
       changeCloseWindow(driver);
@@ -48,23 +51,27 @@ public class GENMorikoreEnk extends GENBase {
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         changeCloseWindow(driver);
-        for (int k = 0; k < 3; k++) {
+        driver.get("http://mrga.service-navi.jp/square/votes");
+        for (int k = 0; k < 4; k++) {
           if (k == 1) {
             driver.get("http://mrga.service-navi.jp/square/columns");
           }
           else if (k == 2) {
             driver.get("http://mrga.service-navi.jp/square/surveys");
           }
+          else if (k == 2) {
+            driver.get("http://mrga.service-navi.jp/square/pittango");
+          }
 
           Utille.sleep(3000);
           selector = "div.enqueteBox a[href]>dl";
           int skip = 1;
           String sele1_ = "iframe.question_frame", //
-          sele1 = "form>input[type='submit']", //
-          sele3 = "form>input[type='submit']", //
-          sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-          sele6 = "form>input.next_bt", // コラム用
-          b = "";
+              sele1 = "form>input[type='submit']", //
+              sele3 = "form>input[type='submit']", //
+              sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+              sele6 = "form>input.next_bt", // コラム用
+              b = "";
           while (true) {
             checkOverlay(driver, overlaySele, false);
             if (!isExistEle(driver, selector)) {
@@ -99,10 +106,16 @@ public class GENMorikoreEnk extends GENBase {
               }
               else if ((cUrl.indexOf("column-enquete") >= 0
                   || cUrl.indexOf("beautynail-design.com") >= 0
-                  || cUrl.indexOf("fashion-cosmelife.com") >= 0
-                  )
+                  || cUrl.indexOf("fashion-cosmelife.com") >= 0)
                   && isExistEle(driver, sele6)) {
                 Colum.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("http://pittango.net/") >= 0
+              //                || cUrl.indexOf("beautynail-design.com") >= 0
+              //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+              )
+                  && isExistEle(driver, sele3)) {
+                Pittango.answer(driver, sele3, wid);
               }
               else {
                 skip++;
