@@ -204,7 +204,7 @@ public class Define {
   final public static String strPMOGameParkEnk = "PMOGameParkEnk";
 
   // ■■■■■ちょびリッチ■■■■■
-  final public static String strCRIChirachi = "CRIChirachi";
+  final public static String strCRIAnk = "CRIAnk";
   final public static String strCRIManga = "CRIManga";
   final public static String strCRIClickBananer = "CRIClickBananer";
   final public static String strCRIPointResearch = "CRIPointResearch";

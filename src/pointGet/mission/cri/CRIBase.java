@@ -56,7 +56,7 @@ public abstract class CRIBase extends Mission {
     for (String mission : missions) {
       Mission MisIns = null;
       switch (mission) {
-        case Define.strCRIChirachi: // ■アンケート
+        case Define.strCRIAnk: // ■アンケート
           MisIns = new CRIAnk(loggg, cProps);
           break;
         case Define.strCRIManga: // ■漫画
@@ -76,12 +76,12 @@ public abstract class CRIBase extends Mission {
           break;
         default:
       }
-      if (Arrays.asList(new String[] { Define.strCRIChirachi,
+      if (Arrays.asList(new String[] { Define.strCRIAnk,
           Define.strCRIManga, Define.strCRIClickBananer,
           Define.strCRIPointResearch,
           Define.strCRIChyousadan,
           Define.strCRIKumaVote
-          }).contains(mission)) {
+      }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
     }
