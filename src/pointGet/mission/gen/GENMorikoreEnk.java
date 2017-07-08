@@ -50,26 +50,16 @@ public class GENMorikoreEnk extends GENBase {
 
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
-        driver.get("http://mrga.service-navi.jp/square/votes");
         changeCloseWindow(driver);
-<<<<<<< HEAD
         driver.get("http://mrga.service-navi.jp/square/votes");
         for (int k = 0; k < 4; k++) {
           if (k == 1) {
             driver.get("http://mrga.service-navi.jp/square/columns");
           }
           else if (k == 2) {
-=======
-        for (int k = 0; k < 3; k++) {
-//          if (k == 1) {
-//            driver.get("http://mrga.service-navi.jp/square/columns");
-//          }
-//          else 
-            if (k == 2) {
->>>>>>> branch 'master' of https://github.com/msaitou/pointgetter.git
             driver.get("http://mrga.service-navi.jp/square/surveys");
           }
-          else if (k == 2) {
+          else if (k == 3) {
             driver.get("http://mrga.service-navi.jp/square/pittango");
           }
 
