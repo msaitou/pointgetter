@@ -47,12 +47,14 @@ public class GENMorikoreEnk extends GENBase {
 
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
+        driver.get("http://mrga.service-navi.jp/square/votes");
         changeCloseWindow(driver);
         for (int k = 0; k < 3; k++) {
-          if (k == 1) {
-            driver.get("http://mrga.service-navi.jp/square/columns");
-          }
-          else if (k == 2) {
+//          if (k == 1) {
+//            driver.get("http://mrga.service-navi.jp/square/columns");
+//          }
+//          else 
+            if (k == 2) {
             driver.get("http://mrga.service-navi.jp/square/surveys");
           }
 
@@ -92,7 +94,10 @@ public class GENMorikoreEnk extends GENBase {
                   break;
                 }
               }
-              else if (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+              else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+                  || cUrl.indexOf("enquetter.com/question") >= 0
+                  || cUrl.indexOf("seikaku-checker.club/question") >= 0
+                  )
                   && isExistEle(driver, sele3)) {
                 AdShindan.answer(driver, sele3, wid);
                 skip++;
