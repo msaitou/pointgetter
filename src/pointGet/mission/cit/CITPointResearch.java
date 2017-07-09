@@ -115,7 +115,8 @@ public class CITPointResearch extends CITBase {
           Colum.answer(driver, sele6, wid);
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
-            || cUrl.indexOf("cosmetic-brand.com") >= 0)
+            || cUrl.indexOf("cosmetic-brand.com") >= 0
+            || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
         }
