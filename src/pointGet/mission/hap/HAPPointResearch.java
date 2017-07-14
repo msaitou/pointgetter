@@ -116,7 +116,8 @@ public class HAPPointResearch extends HAPBase {
           Colum.answer(driver, sele6, wid);
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
-            || cUrl.indexOf("cosmetic-brand.com") >= 0)
+            || cUrl.indexOf("cosmetic-brand.com") >= 0
+            || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
           Utille.sleep(3000);
           PhotoEnk.answer(driver, sele8, wid);

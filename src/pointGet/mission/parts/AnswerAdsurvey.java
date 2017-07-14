@@ -65,6 +65,7 @@ public class AnswerAdsurvey extends MissCommon {
           List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
           if (isExistEle(eleList2, choiceNum)) {
             // 選択
+            Utille.scrolledPage(driver, eleList2.get(choiceNum));
             clickSleepSelector(eleList2.get(choiceNum), 3000);
           }
         }

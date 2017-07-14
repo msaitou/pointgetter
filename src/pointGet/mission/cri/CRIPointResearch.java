@@ -124,7 +124,8 @@ public class CRIPointResearch extends CRIBase {
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
         }
-        else if (cUrl.indexOf("photo-enquete") >= 0
+        else if ((cUrl.indexOf("photo-enquete") >= 0
+            || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
         }
