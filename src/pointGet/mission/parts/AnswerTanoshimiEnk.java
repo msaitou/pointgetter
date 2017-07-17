@@ -34,7 +34,11 @@ public class AnswerTanoshimiEnk extends MissCommon {
       // 以下より10問
       String choiceSele = "label.adchange";
       String nextSele2 = "p.btm>input.btn";
+      String title = ".q_id";
       for (int i = 0; i < 10; i++) {
+        if (isExistEle(driver, title)) { // 答え合わせ
+          logg.info(driver.findElement(By.cssSelector(title)).getText());
+        }
         List<WebElement> eleChoice = driver
             .findElements(By.cssSelector(choiceSele));
         int choiceies = eleChoice.size();
@@ -50,7 +54,7 @@ public class AnswerTanoshimiEnk extends MissCommon {
         }
       }
 
-      String overLaySele = "div#mdl_area[style='display: block;'] div#mdl_close";
+      String overLaySele = "div#mdl_area[style*='display: block;'] div#mdl_close";
       // overlayを消して
       checkOverlay(driver, overLaySele);
       if (isExistEle(driver, seleNext)) {

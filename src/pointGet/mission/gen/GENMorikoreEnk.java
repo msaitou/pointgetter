@@ -98,6 +98,7 @@ public class GENMorikoreEnk extends GENBase {
                 if (!AdEnq.answer(driver, sele1, wid)) {
                   break;
                 }
+                skip++;
               }
               else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                   || cUrl.indexOf("enquetter.com/question") >= 0

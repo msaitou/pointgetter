@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -15,7 +17,6 @@ import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import lombok.val;
 import pointGet.common.Eventually;
 import pointGet.common.Utille;
 
@@ -319,12 +320,8 @@ public abstract class MissCommon {
       Utille.sleep(3000);
     } catch (NoAlertPresentException ae) {
       logg.error("##NOT EXIST Alert##################");
-      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(ae), 1000));
-      logg.error("#############################");
     } catch (NoSuchWindowException e) {
       logg.error("##NOT EXIST Alert2##################");
-      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
-      logg.error("#############################");
       Utille.sleep(2000);
     }
   }
