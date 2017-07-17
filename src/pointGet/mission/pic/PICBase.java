@@ -89,6 +89,9 @@ public abstract class PICBase extends Mission {
         case Define.strPICInterview: // ■インタビュー
           MisIns = new PICInterview(loggg, cProps);
           break;
+        case Define.strPICMedalMool: // ■メダルモール
+          MisIns = new PICMedalMool(loggg, cProps);
+          break;
           
         default:
       }
@@ -99,7 +102,8 @@ public abstract class PICBase extends Mission {
           Define.strPICPointResearch,
           Define.strPICChyousadan,
           Define.strPICKumaVote,
-          Define.strPICInterview
+          Define.strPICInterview,
+          Define.strPICMedalMool
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
