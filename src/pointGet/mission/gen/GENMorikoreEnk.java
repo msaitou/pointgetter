@@ -92,7 +92,9 @@ public class GENMorikoreEnk extends GENBase {
                 Tasuuketu.answer(driver, sele9, wid);
                 skip++;
               }
-              else if (cUrl.indexOf("ad/enq/") >= 0
+              else if ((cUrl.indexOf("ad/enq/") >= 0
+                  || cUrl.indexOf("beautypress.tokyo") >= 0)
+                  
                   && isExistEle(driver, sele1_)) {
                 // $('iframe').contents().find("div>input[type='submit']")
                 if (!AdEnq.answer(driver, sele1, wid)) {

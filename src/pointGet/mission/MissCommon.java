@@ -15,6 +15,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Eventually;
@@ -130,9 +131,9 @@ public abstract class MissCommon {
   * @param selector
   * @return
   */
- protected int getSelectorSize(WebElement ele, String selector) {
-   return ele.findElements(By.cssSelector(selector)).size();
- }
+  protected int getSelectorSize(WebElement ele, String selector) {
+    return ele.findElements(By.cssSelector(selector)).size();
+  }
 
   /**
    *
@@ -169,7 +170,16 @@ public abstract class MissCommon {
    * @param selector
    */
   protected void clickSelector(WebElement ele) {
-    ele.click();
+    int i = 0;
+    while (i++ < 5) {
+      try {
+        ele.click();
+        return;
+      } catch (WebDriverException e) {
+        logg.error("-clickSelector error-------------------");
+        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50));
+      }
+    }
   }
 
   /**
