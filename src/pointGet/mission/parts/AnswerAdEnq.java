@@ -46,10 +46,12 @@ public class AnswerAdEnq extends MissCommon {
       seleSub = "div.btn_next>input[type='submit']", //
           seleAttent = "p.attention_txt",
       finishSele = "div.btn_next>form>input[type='submit']", //
-      finishSele2 = "div.btn_getpoint>a", // 6問バージョン用
+      foot = "div.ad_footer>div>div>div.layered", // 6問バージョン用
+          footNone = "div.ad_footer>div>div>div.layered[style*='display: none']", // 6問バージョン用
+
       seleSele = "select[name*='question_']"; // ドロップダウンセレクター
       String agreeSele = "label[for=agree_checkbox]";
-      
+
       if (isExistEle(driver, agreeSele)) {
         clickSleepSelector(driver, agreeSele, 4000);
         if (isExistEle(driver, seleSub)) {
@@ -113,7 +115,8 @@ public class AnswerAdEnq extends MissCommon {
               // 選択
               Utille.scrolledPage(driver, eleList2.get(choiceNum));
               clickSleepSelector(eleList2, choiceNum, 3000);
-              if (isExistEle(driver, "div.ad_footer>div>div>div.layered", false)) {
+              if (!isExistEle(driver, footNone, false)
+                  && isExistEle(driver, foot, false)) {
                 driver.navigate().refresh();
                 k--;
                 Utille.sleep(5000);
@@ -146,7 +149,8 @@ public class AnswerAdEnq extends MissCommon {
             Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
             selectList.selectByValue(value);
             Utille.sleep(3000);
-            if (isExistEle(driver, "div.ad_footer>div>div>div.layered", false)) {
+            if (!isExistEle(driver, footNone, false)
+                && isExistEle(driver, foot, false)) {
               driver.navigate().refresh();
               k--;
               Utille.sleep(5000);
