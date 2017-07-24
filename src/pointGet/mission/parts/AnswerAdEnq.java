@@ -44,10 +44,12 @@ public class AnswerAdEnq extends MissCommon {
       //    noSele = "span.query-num",
       titleSele = "h2.question", // 質問NOも含む
       seleSub = "div.btn_next>input[type='submit']", //
+          seleAttent = "p.attention_txt",
       finishSele = "div.btn_next>form>input[type='submit']", //
       finishSele2 = "div.btn_getpoint>a", // 6問バージョン用
       seleSele = "select[name*='question_']"; // ドロップダウンセレクター
       String agreeSele = "label[for=agree_checkbox]";
+      
       if (isExistEle(driver, agreeSele)) {
         clickSleepSelector(driver, agreeSele, 4000);
         if (isExistEle(driver, seleSub)) {
@@ -162,6 +164,11 @@ public class AnswerAdEnq extends MissCommon {
             if (isExistEle(driver, seleSub)) {
               clickSleepSelector(driver, seleSub, 4000);
             }
+          }
+        }
+        else if (isExistEle(driver, seleAttent)) {
+          if (isExistEle(driver, finishSele)) {
+            clickSleepSelector(driver, finishSele, 4000);
           }
         }
         else {
