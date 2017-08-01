@@ -81,6 +81,7 @@ public class PMOGameParkEnk extends PMOBase {
               // $('iframe').contents().find("div>input[type='submit']")
               Utille.sleep(4000);
               Adsurvey.answer(driver, sele2, wid);
+              skip++;
             }
             else {
               skip++;
