@@ -57,7 +57,9 @@ public class GENMorikoreEnk extends GENBase {
             driver.get("http://mrga.service-navi.jp/square/columns");
           }
           else if (k == 2) {
-            driver.get("http://mrga.service-navi.jp/square/surveys");
+            driver.get("http://mrga.service-navi.jp/square/diagnoses");
+//            driver.get("http://mrga.service-navi.jp/square/surveys");
+            continue;
           }
           else if (k == 3) {
             driver.get("http://mrga.service-navi.jp/square/pittango");
