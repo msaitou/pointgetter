@@ -14,6 +14,7 @@ import pointGet.mission.parts.AnswerEnkShopQP;
 import pointGet.mission.parts.AnswerEnqNstk;
 import pointGet.mission.parts.AnswerEnqY2at;
 import pointGet.mission.parts.AnswerHiroba;
+import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKotsuta;
 import pointGet.mission.parts.AnswerMinnanosur;
 import pointGet.mission.parts.AnswerPhotoEnk;
@@ -46,6 +47,7 @@ public class GENPointResearch2 extends GENBase {
   AnswerMinnanosur Minnanosur = null;
   AnswerEnqNstk EnqNstk = null;
   AnswerEnqY2at EnqY2at = null;
+  AnswerKansatu Kansatu = null;
 
   /**
    * @param logg
@@ -67,6 +69,7 @@ public class GENPointResearch2 extends GENBase {
     Minnanosur = new AnswerMinnanosur(logg);
     EnqNstk = new AnswerEnqNstk(logg);
     EnqY2at = new AnswerEnqY2at(logg);
+    Kansatu = new AnswerKansatu(logg);
   }
 
   @Override
@@ -78,16 +81,14 @@ public class GENPointResearch2 extends GENBase {
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
     sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
-        sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
-        sele4 = "div>input[type='submit']", //
-        sele4_ = "#iframe", //
-        sele5 = "div#shindan", //
-        sele6 = "form>input.next_bt", // コラム用
-        sele7 = "div.btn>button[type='submit']", //
-        sele8 = "form>input.next_bt",
-        sele9 = "a.start__button",
-        sele10 = "div#buttonArea>input[name='next']", // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
-        a = "";
+    sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
+    sele4 = "div>input[type='submit']", //
+    sele4_ = "#iframe", //
+    sele5 = "div#shindan", //
+    sele6 = "form>input.next_bt", // コラム用
+    sele7 = "div.btn>button[type='submit']", //
+    sele8 = "form>input.next_bt", sele9 = "a.start__button", sele10 = "div#buttonArea>input[name='next']", // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+    a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
         // 対象がなくなったら終了
@@ -138,6 +139,10 @@ public class GENPointResearch2 extends GENBase {
         else if (cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
+        }
+        else if (cUrl.indexOf("eyemake-beauty.com") >= 0
+            && isExistEle(driver, sele8)) {
+          Kansatu.answer(driver, sele8, wid);
         }
         else if (cUrl.indexOf("vote.media-ad.jp/") >= 0) {
           if (!Tasuuketu.answer(driver, sele9, wid))

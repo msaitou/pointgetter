@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerHiroba;
+import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKotsuta;
 import pointGet.mission.parts.AnswerMinnanosur;
 import pointGet.mission.parts.AnswerPhotoEnk;
@@ -36,6 +37,7 @@ public class HAPPointResearch extends HAPBase {
   /* アンケートクラス　多数決 */
   AnswerTasuuketu Tasuuketu = null;
   AnswerMinnanosur Minnanosur = null;
+  AnswerKansatu Kansatu = null;
 
   /**
    * @param logg
@@ -53,6 +55,7 @@ public class HAPPointResearch extends HAPBase {
     Zukan = new AnswerZukan(logg);
     Tasuuketu = new AnswerTasuuketu(logg);
     Minnanosur = new AnswerMinnanosur(logg);
+    Kansatu = new AnswerKansatu(logg);
   }
 
   @Override
@@ -125,6 +128,10 @@ public class HAPPointResearch extends HAPBase {
         else if (cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
+        }
+        else if (cUrl.indexOf("eyemake-beauty.com") >= 0
+            && isExistEle(driver, sele8)) {
+          Kansatu.answer(driver, sele8, wid);
         }
         else if (isExistEle(driver, sele9)) {
           Tasuuketu.answer(driver, sele9, wid);
