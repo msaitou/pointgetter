@@ -38,13 +38,13 @@ public class GENGameParkEnk extends GENBase {
     pop2Cls = "div.campaignClose>img", //
     pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
     enkLinkSele = "li.survey>a>img", //
-    dispLink = "dl.accordion>dt>span",
+    dispLink = "section#game dl.accordion>dt>span",
         linkSele = "dd.accordion_list img[alt='GamePark']",
     a = "";
     if (isExistEle(driver, dispLink, false)) {
       clickSleepSelector(driver, dispLink, 3000);
       if (isExistEle(driver, linkSele, false)) {
-        clickSleepSelector(driver, linkSele, 3000);
+        clickSleepSelector(driver, linkSele, 6000);
       }
     }
     if (!isExistEle(driver, pop1None, false)
