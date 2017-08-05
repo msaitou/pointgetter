@@ -39,17 +39,17 @@ public class AnswerAdEnq extends MissCommon {
       //    radioSele = "div.answer>input[type='radio']", //
       //    checkboxSele = "div.answer>input[type='checkbox']", //
       radioSele = "div.answer>label", //
-      textareaSele = "div>textarea", //
-      checkboxSele = radioSele, //
-      //    noSele = "span.query-num",
-      titleSele = "h2.question", // 質問NOも含む
-      seleSub = "div.btn_next>input[type='submit']", //
+          textareaSele = "div>textarea", //
+          checkboxSele = radioSele, //
+          //    noSele = "span.query-num",
+          titleSele = "h2.question", // 質問NOも含む
+          seleSub = "div.btn_next>input[type='submit']", //
           seleAttent = "p.attention_txt",
-      finishSele = "div.btn_next>form>input[type='submit']", //
-      foot = "div.ad_footer>div>div>div.layered", // 6問バージョン用
+          finishSele = "div.btn_next>form>input[type='submit']", //
+          foot = "div.ad_footer>div>div>div.layered", // 6問バージョン用
           footNone = "div.ad_footer>div>div>div.layered[style*='display: none']", // 6問バージョン用
 
-      seleSele = "select[name*='question_']"; // ドロップダウンセレクター
+          seleSele = "select[name*='question_']"; // ドロップダウンセレクター
       String agreeSele = "label[for=agree_checkbox]";
 
       if (isExistEle(driver, agreeSele)) {
@@ -115,17 +115,17 @@ public class AnswerAdEnq extends MissCommon {
               // 選択
               Utille.scrolledPage(driver, eleList2.get(choiceNum));
               clickSleepSelector(eleList2, choiceNum, 3000);
-              if (!isExistEle(driver, footNone, false)
-                  && isExistEle(driver, foot, false)) {
-                driver.navigate().refresh();
-                k--;
-                Utille.sleep(5000);
-                driver.switchTo().frame(0);
-                if (isExistEle(driver, startSele)) {
-                  clickSleepSelector(driver, startSele, 3000);
-                }
-                continue;
-              }
+              //              if (!isExistEle(driver, footNone, false)
+              //                  && isExistEle(driver, foot, false)) {
+              //                driver.navigate().refresh();
+              //                k--;
+              //                Utille.sleep(5000);
+              //                driver.switchTo().frame(0);
+              //                if (isExistEle(driver, startSele)) {
+              //                  clickSleepSelector(driver, startSele, 3000);
+              //                }
+              //                continue;
+              //              }
               if (isExistEle(driver, seleSub)) {
                 clickSleepSelector(driver, seleSub, 4000);
               }
@@ -149,17 +149,17 @@ public class AnswerAdEnq extends MissCommon {
             Select selectList = new Select(driver.findElement(By.cssSelector(seleSele)));
             selectList.selectByValue(value);
             Utille.sleep(3000);
-            if (!isExistEle(driver, footNone, false)
-                && isExistEle(driver, foot, false)) {
-              driver.navigate().refresh();
-              k--;
-              Utille.sleep(5000);
-              driver.switchTo().frame(0);
-              if (isExistEle(driver, startSele)) {
-                clickSleepSelector(driver, startSele, 3000);
-              }
-              continue;
-            }
+            //            if (!isExistEle(driver, footNone, false)
+            //                && isExistEle(driver, foot, false)) {
+            //              driver.navigate().refresh();
+            //              k--;
+            //              Utille.sleep(5000);
+            //              driver.switchTo().frame(0);
+            //              if (isExistEle(driver, startSele)) {
+            //                clickSleepSelector(driver, startSele, 3000);
+            //              }
+            //              continue;
+            //            }
             if (isExistEle(driver, seleSub)) {
               clickSleepSelector(driver, seleSub, 4000);
             }
@@ -171,26 +171,38 @@ public class AnswerAdEnq extends MissCommon {
           }
         }
         else if (isExistEle(driver, seleAttent)) {
-          if (isExistEle(driver, finishSele)) {
-            clickSleepSelector(driver, finishSele, 4000);
-          }
+          //          if (isExistEle(driver, finishSele)) {
+          //            clickSleepSelector(driver, finishSele, 6000);
+          //          }
+          break;
         }
         else {
           break;
         }
       }
       if (isExistEle(driver, finishSele)) {
+        logg.info("999999");
         String wid2 = driver.getWindowHandle();
         clickSleepSelector(driver, finishSele, 4000);
+        logg.info("999998");
         String wid3 = driver.getWindowHandle();
-        if (wid3 != wid2) {
-          driver.switchTo().window(wid3);
-          driver.close();
-          changeWindow(driver, wid2);
-        }
+        // kokoはpicだけかも
+//        if (wid3 != wid2) {
+//          logg.info("999997");
+//          driver.switchTo().window(wid3);
+//          logg.info("999996");
+//          driver.close();
+//          logg.info("999995");
+//          changeWindow(driver, wid2);
+//          logg.info("999994");
+//        }
+        logg.info("999993");
       }
+      logg.info("999992");
     }
+    logg.info("999991");
     driver.close();
+    logg.info("999991");
     driver.switchTo().window(wid);
     return true;
   }

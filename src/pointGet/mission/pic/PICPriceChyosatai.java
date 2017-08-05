@@ -15,7 +15,7 @@ import pointGet.common.Utille;
  * 4時更新
  */
 public class PICPriceChyosatai extends PICBase {
-  final String url = "http://pointi.jp/game/index.php";
+  final String url = "https://pointi.jp/game/";
   private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
   private String footBnrSelector = "div.foot-bnr a.close>span";
 
@@ -31,7 +31,7 @@ public class PICPriceChyosatai extends PICBase {
     for (int j = 0; j < 6; j++) {
       driver.get(url);
       String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
-      selector = "a[href='http://pointi.jp/api/prices.php']>img[alt='プライス調査隊']";
+      selector = "a[href='//pointi.jp/api/prices.php']>img[alt='プライス調査隊']";
       if (isExistEle(driver, selector)) {
         clickSleepSelector(driver, selector, 4000); // 遷移
         changeCloseWindow(driver);
