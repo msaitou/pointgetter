@@ -116,6 +116,9 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPGaingame: // ■リーグジュエル
           MisIns = new MOPGaingame(loggg, cProps);
           break;
+        case Define.strMOPKanji: // ■漢字テスト
+          MisIns = new MOPKanji(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strMOPQuiz,
@@ -123,6 +126,7 @@ public abstract class MOPBase extends Mission {
           Define.strMOPAnzan,
           Define.strMOPEnglishTest,
           Define.strMOPCountTimer,
+          Define.strMOPKanji,
       }).contains(mission)) {
         driver = MisIns.exeRoopMission(driver);
       }

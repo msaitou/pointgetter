@@ -110,6 +110,9 @@ public abstract class OSABase extends Mission {
         case Define.strOSAKumaVote: // ■くま投票
           MisIns = new OSAKumaVote(loggg, cProps);
           break;
+        case Define.strOSAKanji: // ■漢字テスト
+          MisIns = new OSAKanji(loggg, cProps);
+          break;
        default:
       }
       if (Arrays.asList(new String[] { Define.strOSAQuiz,
@@ -117,6 +120,7 @@ public abstract class OSABase extends Mission {
           Define.strOSAAnzan,
           Define.strOSAEnglishTest,
           Define.strOSACountTimer,
+          Define.strOSAKanji,
       }).contains(mission)) {
         driver = MisIns.exeRoopMission(driver);
       }

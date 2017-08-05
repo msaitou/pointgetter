@@ -87,6 +87,9 @@ public abstract class MOBBase extends Mission {
         case Define.strMOBTokkuTimer: // ■ポイントサーチ
           MisIns = new MOBTokkuTimer(loggg, cProps);
           break;
+        case Define.strMOBKanji: // ■漢字テスト
+          MisIns = new MOBKanji(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strMOBQuiz,
@@ -94,7 +97,8 @@ public abstract class MOBBase extends Mission {
           Define.strMOBAnzan,
           Define.strMOBEnglishTest,
           Define.strMOBCountTimer,
-      }).contains(mission)) {
+          Define.strMOBKanji,
+          }).contains(mission)) {
         driver = MisIns.exeRoopMission(driver);
       }
       else {

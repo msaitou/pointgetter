@@ -93,6 +93,7 @@ public class Define {
   final public static String strMOPChyousadan = "MOPChyousadan";
   final public static String strMOPKumaVote = "MOPKumaVote";
   final public static String strMOPGaingame = "MOPGaingame";
+  final public static String strMOPKanji = "MOPKanji";
 
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
@@ -110,6 +111,7 @@ public class Define {
   final public static String strOSAFarmEnk = "OSAFarmEnk";
   final public static String strOSAChyousadan = "OSAChyousadan";
   final public static String strOSAKumaVote = "OSAKumaVote";
+  final public static String strOSAKanji = "OSAKanji";
 
   // ■■■■■PEX■■■■■
   final public static String strPEX4quiz = "PEX4quiz";
@@ -146,6 +148,7 @@ public class Define {
   final public static String strMOBCountTimer = "MOBCountTimer";
   final public static String strMOBPointResearch = "MOBPointResearch";
   final public static String strMOBTokkuTimer = "MOBTokkuTimer";
+  final public static String strMOBKanji = "MOBKanji";
 
   // ■■■■■PointInCome■■■■■
   final public static String strPICUranai = "PICUranai";
