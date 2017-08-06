@@ -60,12 +60,13 @@ public class MOPMiniGameEnk extends MOPBase {
         }
 
         Utille.sleep(3000);
-        selector = "div.enqueteBox a[href]>dl";
+        selector = "div.enquete_box a[href]>dl";
         int skip = 1;
         String sele1_ = "iframe.question_frame", //
             sele1 = "form>input[type='submit']", //
             sele3 = "form>input[type='submit']", //
-            sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+            sele9 = "div>a>dl>dt", //
+            overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
             sele6 = "form>input.next_bt", // コラム用
             b = "";
         while (true) {

@@ -69,6 +69,9 @@ public abstract class I2IBase extends Mission {
         case Define.strI2INews: // ■気になるニュース
           MisIns = new I2INews(loggg, cProps);
           break;
+        case Define.strI2IKenkou: // ■サラサラ健康コラム
+          MisIns = new I2IKenkou(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strI2ISeiza,
@@ -76,6 +79,7 @@ public abstract class I2IBase extends Mission {
           Define.strI2IMangaVer2,
           Define.strI2IPhoto,
           Define.strI2INews,
+          Define.strI2IKenkou,
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
