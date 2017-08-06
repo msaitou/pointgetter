@@ -66,12 +66,16 @@ public abstract class I2IBase extends Mission {
         case Define.strI2IPhoto: // ■漫画
           MisIns = new I2IPhoto(loggg, cProps);
           break;
+        case Define.strI2INews: // ■気になるニュース
+          MisIns = new I2INews(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strI2ISeiza,
           Define.strI2IColum,
           Define.strI2IMangaVer2,
           Define.strI2IPhoto,
+          Define.strI2INews,
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

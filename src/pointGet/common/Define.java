@@ -74,6 +74,8 @@ public class Define {
   final public static String strI2IColum = "I2IColum";
   final public static String strI2IMangaVer2 = "I2IMangaVer2";
   final public static String strI2IPhoto = "I2IPhoto";
+  final public static String strI2INews = "I2INews";
+  final public static String strI2IKenkou = "I2IKenkou";
 
   // ■■■■■moppy■■■■■
   final public static String strMOPChyosatai = "MOPChyosatai";

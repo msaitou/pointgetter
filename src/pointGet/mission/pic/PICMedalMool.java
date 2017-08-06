@@ -43,8 +43,8 @@ public class PICMedalMool extends PICBase {
 
     String sele3 = "div.enq-submit>button[type='submit']", //
     sele8 = "div#buttonArea>input[name='next']", //
-    sele2 = "form>input[type='image']"// 回答する 漫画用
-    ;
+    sele2 = "form>input[type='image']", // 回答する 漫画用
+    sele1 = "a>img[alt='次へ']";
 
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000); // 遷移
@@ -55,9 +55,10 @@ public class PICMedalMool extends PICBase {
 
       String[] preSeleList = {
 //          "a[href*='pc/uranai']",
-//          "a[href*='cosmeticsstyle.com/pointi/list']",
-//          "a[href*='fashion-cosmelife.com/pointi']",
-          "a[href*='comicEnquete']" };
+          "a[href*='cosmeticsstyle.com/pointi/list']",
+          "a[href*='fashion-cosmelife.com/pointi']",
+          "a[href*='comicEnquete']",
+          "a[href*='news']" };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
         String preSele = preSeleList[k];
@@ -74,7 +75,7 @@ public class PICMedalMool extends PICBase {
           changeWindow(driver, wid);
           selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
           Utille.sleep(5000);
-          String sele1 = "form>input.next_bt";
+          String sele = "form>input.next_bt";
           if (isExistEle(driver, selector)) {
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
             int size2 = eleList.size(), targetIndex = size2 - 1;
@@ -82,8 +83,8 @@ public class PICMedalMool extends PICBase {
             if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
               Utille.scrolledPage(driver, eleList.get(targetIndex));
               clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ
-              if (isExistEle(driver, sele1)) {
-                PhotoEnk.answer(driver, sele1, wid);
+              if (isExistEle(driver, sele)) {
+                PhotoEnk.answer(driver, sele, wid);
               }
               else {
                 driver.close();
@@ -92,6 +93,8 @@ public class PICMedalMool extends PICBase {
             }
           }
           else {
+            driver.close();
+            driver.switchTo().window(wid);
             k++;
           }
         }
@@ -115,12 +118,15 @@ public class PICMedalMool extends PICBase {
             //            Utille.sleep(5000);
           }
           else {
+            driver.close();
+            driver.switchTo().window(wid);
             k++;
+            Utille.sleep(3000);
           }
-//          if (++cnt > 1) {
-//            k++;
-//            cnt = 0;
-//          }
+          //          if (++cnt > 1) {
+          //            k++;
+          //            cnt = 0;
+          //          }
         }
         else if (preSele.equals("a[href*='comicEnquete']")) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
@@ -140,13 +146,43 @@ public class PICMedalMool extends PICBase {
             }
           }
           else {
+            driver.close();
+            driver.switchTo().window(wid);
             k++;
           }
-//          if (++cnt > 1) {
-//            k++;
-//            cnt = 0;
-//          }
+          //          if (++cnt > 1) {
+          //            k++;
+          //            cnt = 0;
+          //          }
         }
+        else if (preSele.equals("a[href*='news']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          selector = "img[src='./images/top/read_button.png']"; // 回答する
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            if (isExistEle(eleList, 0)) {
+              clickSleepSelector(eleList, 0, 5000); // 遷移
+              if (isExistEle(driver, sele1)) {
+                Manga.answer(driver, sele1, wid);
+              }
+              else {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
+          //          if (++cnt > 1) {
+          //            k++;
+          //            cnt = 0;
+          //          }
+        }
+
         Utille.sleep(5000);
       }
     }
