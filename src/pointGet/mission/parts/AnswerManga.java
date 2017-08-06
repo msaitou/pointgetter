@@ -39,10 +39,27 @@ public class AnswerManga extends MissCommon {
     //        closeSele = "input.btn_close_en", // 閉じるボタンセレクター
     a = "";
 
-    for (int g = 0; g < 9; g++) {
-      if (isExistEle(driver, startSele)) {
-        checkOverlay(driver, overLay);
-        clickSleepSelector(driver, startSele, 4000); // 遷移
+//    for (int g = 0; g < 9; g++) {
+//      if (isExistEle(driver, startSele)) {
+//        checkOverlay(driver, overLay);
+//        clickSleepSelector(driver, startSele, 4000); // 遷移
+//      }
+//    }
+    String seleNext = "form>input[type='image']";
+    String seleNexttugi = seleNext + "[src='common/image/9999/manga_next_bt.png']";
+    for (int g = 0; g < 8;) {
+      checkOverlay(driver, overLay, false);
+      if (isExistEle(driver, seleNexttugi)) {
+        clickSleepSelector(driver, seleNexttugi, 5000); // 遷移
+        g++;
+      }
+      else if (isExistEle(driver, seleNext)) {
+        clickSleepSelector(driver, seleNext, 4000); // 遷移
+        g++;
+      }
+      else {
+        driver.navigate().refresh();
+        Utille.sleep(5000);
       }
     }
     Utille.sleep(4000);

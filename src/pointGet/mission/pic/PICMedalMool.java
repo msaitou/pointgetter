@@ -131,6 +131,7 @@ public class PICMedalMool extends PICBase {
         else if (preSele.equals("a[href*='comicEnquete']")) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
           String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
           selector = "a.ui-btn.ui-btn-a"; // 回答する
           if (isExistEle(driver, selector)) {
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
