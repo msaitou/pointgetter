@@ -60,7 +60,8 @@ public class MOPMiniGameEnk extends MOPBase {
         }
 
         Utille.sleep(3000);
-        selector = "div.enquete_box a[href]>dl";
+        selector = "div.enqueteBox a[href]>dl";
+//        selector = "div.enquete_box a[href]>dl";
         int skip = 1;
         String sele1_ = "iframe.question_frame", //
             sele1 = "form>input[type='submit']", //

@@ -139,6 +139,7 @@ public class Define {
   final public static String strPTOPointResearch2 = "PTOPointResearch2";
   final public static String strPTOChyousadan = "PTOChyousadan";
   final public static String strPTOKumaVote = "PTOKumaVote";
+  final public static String strPTOFarmEnk = "PTOFarmEnk";
 
   // ■■■■■Mobatoku■■■■■
   final public static String strMOBAnzan = "MOBAnzan";
@@ -175,6 +176,7 @@ public class Define {
   final public static String strSUGClickBanner = "SUGClickBanner";
   final public static String strSUGChyousadan = "SUGChyousadan";
   final public static String strSUGKumaVote = "SUGKumaVote";
+  final public static String strSUGGetPark = "SUGGetPark";
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
