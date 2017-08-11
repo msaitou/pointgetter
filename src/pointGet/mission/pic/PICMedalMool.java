@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerKenkou;
 import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerUranai;
@@ -22,6 +23,7 @@ public class PICMedalMool extends PICBase {
   AnswerPhotoEnk PhotoEnk = null;
   AnswerColum Colum = null;
   AnswerUranai Uranai = null;
+  AnswerKenkou Kenkou = null;
 
   /**
    * @param logg
@@ -32,6 +34,7 @@ public class PICMedalMool extends PICBase {
     PhotoEnk = new AnswerPhotoEnk(logg);
     Manga = new AnswerManga(logg);
     Uranai = new AnswerUranai(logg);
+    Kenkou = new AnswerKenkou(logg);
   }
 
   @Override
@@ -43,6 +46,7 @@ public class PICMedalMool extends PICBase {
 
     String sele3 = "div.enq-submit>button[type='submit']", //
     sele8 = "div#buttonArea>input[name='next']", //
+    sele4 = "form>input[alt='進む']",
     sele2 = "form>input[type='image']", // 回答する 漫画用
     sele1 = "a>img[alt='次へ']";
 
@@ -54,11 +58,13 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-//          "a[href*='pc/uranai']",
+          "a[href*='pc/uranai']",
           "a[href*='cosmeticsstyle.com/pointi/list']",
           "a[href*='fashion-cosmelife.com/pointi']",
           "a[href*='comicEnquete']",
-          "a[href*='news']" };
+          "a[href*='news']" ,
+          "a[href*='sarasara']" ,
+          };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
         String preSele = preSeleList[k];
@@ -156,9 +162,11 @@ public class PICMedalMool extends PICBase {
           //            cnt = 0;
           //          }
         }
+        // ニュース
         else if (preSele.equals("a[href*='news']")) {
-          clickSleepSelector(driver, preSele, 3000); // 遷移
+          clickSleepSelector(driver, preSele, 16000); // 遷移
           String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
           selector = "img[src='./images/top/read_button.png']"; // 回答する
           if (isExistEle(driver, selector)) {
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -178,12 +186,36 @@ public class PICMedalMool extends PICBase {
             driver.switchTo().window(wid);
             k++;
           }
+        }
+        // 健康さらさら
+        else if (preSele.equals("a[href*='sarasara']")) {
+          clickSleepSelector(driver, preSele, 16000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          selector = "a.ui-btn.ui-btn-a"; // 回答する
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            if (isExistEle(eleList, 0)) {
+              clickSleepSelector(eleList, 0, 5000); // 遷移
+              if (isExistEle(driver, sele4)) {
+                Kenkou.answer(driver, sele4, wid);
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+              else {
+              }
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
           //          if (++cnt > 1) {
           //            k++;
           //            cnt = 0;
           //          }
         }
-
         Utille.sleep(5000);
       }
     }
