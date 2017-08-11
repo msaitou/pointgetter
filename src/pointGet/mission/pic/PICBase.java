@@ -92,7 +92,9 @@ public abstract class PICBase extends Mission {
         case Define.strPICMedalMool: // ■メダルモール
           MisIns = new PICMedalMool(loggg, cProps);
           break;
-          
+        case Define.strPICFarmEnk: // ■ポイントファーム
+          MisIns = new PICFarmEnk(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strPICClickBanner,
@@ -103,7 +105,8 @@ public abstract class PICBase extends Mission {
           Define.strPICChyousadan,
           Define.strPICKumaVote,
           Define.strPICInterview,
-          Define.strPICMedalMool
+          Define.strPICMedalMool,
+          Define.strPICFarmEnk
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

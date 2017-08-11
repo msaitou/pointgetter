@@ -164,8 +164,9 @@ public class Define {
   final public static String strPICKumaVote = "PICKumaVote";
   final public static String strPICInterview = "PICInterview";
   final public static String strPICMedalMool = "PICMedalMool";
-  
-  
+  final public static String strPICFarmEnk = "PICFarmEnk";
+
+
   // ■■■■■SUGUTAMA■■■■■
   final public static String strSUGUranai = "SUGUranai";
   final public static String strSUGQuiz = "SUGQuiz";
