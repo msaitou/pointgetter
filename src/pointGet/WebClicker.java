@@ -18,6 +18,7 @@ import pointGet.mission.gen.GENBase;
 import pointGet.mission.gmy.GMYBase;
 import pointGet.mission.hap.HAPBase;
 import pointGet.mission.i2i.I2IBase;
+import pointGet.mission.lfm.LFMBase;
 import pointGet.mission.mob.MOBBase;
 import pointGet.mission.mop.MOPBase;
 import pointGet.mission.osa.OSABase;
@@ -67,6 +68,7 @@ public class WebClicker extends PointGet {
       Define.PSITE_CODE_HAP, // ハピタス
       Define.PSITE_CODE_WAR, // ワラウ
       Define.PSITE_CODE_DMY, // ドットマネー
+      Define.PSITE_CODE_LFM, // ライフメディア
   };
 
   protected static void init(String[] args) {
@@ -272,6 +274,9 @@ public class WebClicker extends PointGet {
           break;
         case Define.PSITE_CODE_DMY:
           DMYBase.goToClick(logg, commonProps, missionArr, Dbase);
+          break;
+        case Define.PSITE_CODE_LFM:
+          LFMBase.goToClick(logg, commonProps, missionArr, Dbase);
           break;
         default:
       }

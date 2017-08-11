@@ -12,6 +12,7 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerKenkou;
 import pointGet.mission.parts.AnswerManga;
+import pointGet.mission.parts.AnswerNews;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerUranai;
 
@@ -25,6 +26,7 @@ public class PICMedalMool extends PICBase {
   AnswerUranai Uranai = null;
   AnswerKenkou Kenkou = null;
 
+  AnswerNews News = null;
   /**
    * @param logg
    */
@@ -33,6 +35,7 @@ public class PICMedalMool extends PICBase {
     Colum = new AnswerColum(logg);
     PhotoEnk = new AnswerPhotoEnk(logg);
     Manga = new AnswerManga(logg);
+    News = new AnswerNews(logg);
     Uranai = new AnswerUranai(logg);
     Kenkou = new AnswerKenkou(logg);
   }
@@ -58,12 +61,12 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-          "a[href*='pc/uranai']",
-          "a[href*='cosmeticsstyle.com/pointi/list']",
-          "a[href*='fashion-cosmelife.com/pointi']",
-          "a[href*='comicEnquete']",
+//          "a[href*='pc/uranai']",
+//          "a[href*='cosmeticsstyle.com/pointi/list']",
+//          "a[href*='fashion-cosmelife.com/pointi']",
+//          "a[href*='comicEnquete']",
           "a[href*='news']" ,
-          "a[href*='sarasara']" ,
+//          "a[href*='sarasara']" ,
           };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
@@ -173,7 +176,9 @@ public class PICMedalMool extends PICBase {
             if (isExistEle(eleList, 0)) {
               clickSleepSelector(eleList, 0, 5000); // 遷移
               if (isExistEle(driver, sele1)) {
-                Manga.answer(driver, sele1, wid);
+                News.answer(driver, sele1, wid);
+                driver.close();
+                driver.switchTo().window(wid);
               }
               else {
                 driver.close();

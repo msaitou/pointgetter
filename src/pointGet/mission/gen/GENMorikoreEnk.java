@@ -52,14 +52,18 @@ public class GENMorikoreEnk extends GENBase {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         changeCloseWindow(driver);
         driver.get("http://mrga.service-navi.jp/square/votes");
-        for (int k = 0; k < 4; k++) {
+        for (int k = 0; k < 5; k++) {
           if (k == 1) {
             driver.get("http://mrga.service-navi.jp/square/columns");
           }
           else if (k == 2) {
             driver.get("http://mrga.service-navi.jp/square/diagnoses");
 //            driver.get("http://mrga.service-navi.jp/square/surveys");
-            continue;
+//            continue;
+          }
+          else if (k == 4) {
+            driver.get("http://mrga.service-navi.jp/square/surveys");
+//            continue;
           }
           else if (k == 3) {
             driver.get("http://mrga.service-navi.jp/square/pittango");

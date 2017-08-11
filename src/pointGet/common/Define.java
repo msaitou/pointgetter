@@ -31,6 +31,7 @@ public class Define {
   final public static String PSITE_CODE_WAR = "war";
   final public static String PSITE_CODE_PST = "pst";
   final public static String PSITE_CODE_DMY = "dmy";
+  final public static String PSITE_CODE_LFM = "lfm";
 
   // ■■■■■ECnavi■■■■■
   final public static String strECNChinjyu = "ECNChinjyu";
@@ -236,6 +237,19 @@ public class Define {
   final public static String strDMYScrachi = "DMYScrachi";
   final public static String strDMYChyousadan = "DMYChyousadan";
   final public static String strDMYKumaVote = "DMYKumaVote";
+
+  // ■■■■■LIFE MEDIA■■■■■
+  final public static String strLFMChyosatai = "LFMChyosatai";
+  final public static String strLFMPriceChyosatai = "LFMPriceChyosatai";
+  final public static String strLFMQuiz = "LFMQuiz";
+  final public static String strLFMQuiz2 = "LFMQuiz2";
+  final public static String strLFMUranai = "LFMUranai";
+  final public static String strLFMPointResearch = "LFMPointResearch";
+  final public static String strLFMPointResearch2 = "LFMPointResearch2";
+  final public static String strLFMFarmEnk = "LFMFarmEnk";
+  final public static String strLFMChyousadan = "LFMChyousadan";
+  final public static String strLFMKumaVote = "LFMKumaVote";
+  final public static String strLFMGameParkEnk = "LFMGameParkEnk";
 
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";
