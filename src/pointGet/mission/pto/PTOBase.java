@@ -92,6 +92,10 @@ public abstract class PTOBase extends Mission {
         case Define.strPTOKumaVote: // ■くま投票
           MisIns = new PTOKumaVote(loggg, cProps);
           break;
+        case Define.strPTOFarmEnk: // ■ファーム
+          MisIns = new PTOFarmEnk(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strPTOClickCorner,
@@ -102,7 +106,8 @@ public abstract class PTOBase extends Mission {
           Define.strPTOPointResearch,
           Define.strPTOPointResearch2,
           Define.strPTOChyousadan,
-          Define.strPTOKumaVote
+          Define.strPTOKumaVote,
+          Define.strPTOFarmEnk
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
