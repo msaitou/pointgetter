@@ -102,7 +102,7 @@ public class PICFarmEnk extends PICBase {
             }
             else if (
                 (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
-                || cUrl.indexOf("enquetter.com/question") >= 0)
+                || cUrl.indexOf("lion.seikaku-checker.club/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
               skip++;
