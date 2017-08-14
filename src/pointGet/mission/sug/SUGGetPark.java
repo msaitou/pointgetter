@@ -100,10 +100,13 @@ public class SUGGetPark extends SUGBase {
               if (!AdEnq.answer(driver, sele1, wid)) {
                 break;
               }
+              changeWindow(driver, wid);
+              driver.close();
+              driver.switchTo().window(wid);
             }
             else if (
                 (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
-                || cUrl.indexOf("enquetter.com/question") >= 0)
+                || cUrl.indexOf("checker.club/question/") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
               skip++;

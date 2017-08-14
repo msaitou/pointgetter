@@ -61,12 +61,12 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-//          "a[href*='pc/uranai']",
-//          "a[href*='cosmeticsstyle.com/pointi/list']",
-//          "a[href*='fashion-cosmelife.com/pointi']",
-//          "a[href*='comicEnquete']",
+          "a[href*='pc/uranai']",
+          "a[href*='cosmeticsstyle.com/pointi/list']",
+          "a[href*='fashion-cosmelife.com/pointi']",
+          "a[href*='comicEnquete']",
           "a[href*='news']" ,
-//          "a[href*='sarasara']" ,
+          "a[href*='sarasara']" ,
           };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {

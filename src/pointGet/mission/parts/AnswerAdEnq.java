@@ -192,7 +192,7 @@ public class AnswerAdEnq extends MissCommon {
 //          driver.switchTo().window(wid3);
 //          logg.info("999996");
 //          driver.close();
-//          logg.info("999995");
+//          loggx.info("999995");
 //          changeWindow(driver, wid2);
 //          logg.info("999994");
 //        }
