@@ -28,6 +28,13 @@ public class GMYToidas extends GMYBase {
   public void privateMission(WebDriver driver) {
     selector = "div.everyday_list1 ul>li>a[href='http://dietnavi.com/pc/ad_jump.php?id=42431']";
     driver.get(url);
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    recoNoneSele = "div#cxOverlayParent>a.recommend_close" // disabled recomend
+    ;
+    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+      clickSleepSelector(driver, recoSele, 2000); // 遷移
+    }
+
     int cntt = 0;
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 7500); // 遷移

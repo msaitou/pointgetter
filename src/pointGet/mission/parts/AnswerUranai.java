@@ -62,6 +62,7 @@ public class AnswerUranai extends MissCommon {
           }
           Utille.sleep(3000);
           if (endFlag) {
+            Utille.sleep(3000);
             break;
           }
         }

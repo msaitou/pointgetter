@@ -32,7 +32,7 @@ public class PTOFarmEnk extends PTOBase {
    * @param logg
    */
   public PTOFarmEnk(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "ファームアンケート");
+    super(logg, cProps, "ポイント農場");
     Tasuuketu = new AnswerTasuuketu(logg);
     GameParkEnk = new AnswerGameParkEnk(logg);
     Adsurvey = new AnswerAdsurvey(logg);
@@ -50,18 +50,18 @@ public class PTOFarmEnk extends PTOBase {
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
-      changeCloseWindow(driver);
+//      changeCloseWindow(driver);
       driver.get("http://farm.pointtown.com/square/diagnoses");
-      for (int k = 0; k < 3; k++) {
+      for (int k = 0; k < 4; k++) {
         if (k == 1) {
           driver.get("http://farm.pointtown.com/square/surveys");
         }
         else if (k == 2) {
           driver.get("http://farm.pointtown.com/square/pittango");
         }
-//        else if (k == 3) {
-//          driver.get("http://farm.osaifu.com/square/pittango");
-//        }
+        else if (k == 3) {
+          driver.get("http://farm.pointtown.com/square/diagnoses");
+        }
 
 
         Utille.sleep(3000);

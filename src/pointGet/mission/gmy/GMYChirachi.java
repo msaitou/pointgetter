@@ -23,6 +23,12 @@ public class GMYChirachi extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    recoNoneSele = "div#cxOverlayParent>a.recommend_close" // disabled recomend
+    ;
+    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+      clickSleepSelector(driver, recoSele, 2000); // 遷移
+    }
     selector = "a[href='http://dietnavi.com/pc/chirashi/']>span";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移

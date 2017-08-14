@@ -41,6 +41,12 @@ public class GMYGameParkEnk extends GMYBase {
         pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
         enkLinkSele = "li.survey>a>img", //
         a = "";
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    recoNoneSele = "div#cxOverlayParent>a.recommend_close" // disabled recomend
+    ;
+    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+      clickSleepSelector(driver, recoSele, 2000); // 遷移
+    }
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
       changeCloseWindow(driver);

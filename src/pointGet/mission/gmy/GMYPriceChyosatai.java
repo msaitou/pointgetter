@@ -29,6 +29,12 @@ public class GMYPriceChyosatai extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    recoNoneSele = "div#cxOverlayParent>a.recommend_close" // disabled recomend
+    ;
+    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+      clickSleepSelector(driver, recoSele, 2000); // 遷移
+    }
     for (int j = 0; j < 6; j++) {
       driver.get(url);
       selector = "ul a[href='http://dietnavi.com/pc/game/price/play.php']";

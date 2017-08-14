@@ -30,10 +30,16 @@ public class GMYShindan extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "ul.check_list1 a[href='http://dietnavi.com/pc/game/shindan/play.php']";
     String sele0 = "div.entry", //
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため
-    sumiSelector = "img[src='/images/icons/sumi.png']";
+    sumiSelector = "img[src='/images/icons/sumi.png']", // 
+    recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    recoNoneSele = "div#cxOverlayParent>a.recommend_close"  // disabled recomend
+        ;
+    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+      clickSleepSelector(driver, recoSele, 2000); // 遷移
+    }
+    selector = "ul.check_list1 a[href='http://dietnavi.com/pc/game/shindan/play.php']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);

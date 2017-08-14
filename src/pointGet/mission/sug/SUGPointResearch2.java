@@ -47,7 +47,7 @@ public class SUGPointResearch2 extends SUGBase {
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button",
     sele6 = "form>input.next_bt", // コラム用
-    sele2 = "form>input[type='image']", // 回答する 漫画用
+    sele2 = "form>input[alt='進む']", // 回答する 漫画用
     sele1 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele1_ = "input[type='button']", //
     sele7 = "div.btn>button[type='submit']", //
