@@ -122,8 +122,11 @@ public class MOPMiniGameEnk extends MOPBase {
             break;
           }
         }
+        String stampSele = "a[href='/exchange/point']#btn";
+        if (isExistEle(driver, stampSele)) {
+          clickSleepSelector(driver, stampSele, 4000); // 遷移
+        }
       }
     }
-
   }
 }

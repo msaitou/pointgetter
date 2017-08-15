@@ -54,16 +54,15 @@ public class SUGGetPark extends SUGBase {
       changeCloseWindow(driver);
       driver.get("http://park.netmile.co.jp/survey/");
       for (int k = 0; k < 1; k++) {
-//        if (k == 1) {
-//          driver.get("http://farm.osaifu.com/square/diagnoses");
-//        }
-//        else if (k == 2) {
-//          driver.get("http://farm.osaifu.com/square/surveys");
-//        }
-//        else if (k == 3) {
-//          driver.get("http://farm.osaifu.com/square/pittango");
-//        }
-
+        //        if (k == 1) {
+        //          driver.get("http://farm.osaifu.com/square/diagnoses");
+        //        }
+        //        else if (k == 2) {
+        //          driver.get("http://farm.osaifu.com/square/surveys");
+        //        }
+        //        else if (k == 3) {
+        //          driver.get("http://farm.osaifu.com/square/pittango");
+        //        }
 
         Utille.sleep(3000);
         selector = "div.enqueteBox a[href]>dl";
@@ -104,17 +103,16 @@ public class SUGGetPark extends SUGBase {
               driver.close();
               driver.switchTo().window(wid);
             }
-            else if (
-                (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+            else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("checker.club/question/") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
               skip++;
             }
             else if ((cUrl.indexOf("http://pittango.net/") >= 0
-            //                || cUrl.indexOf("beautynail-design.com") >= 0
-            //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
-            )
+                //                || cUrl.indexOf("beautynail-design.com") >= 0
+                //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                )
                 && isExistEle(driver, sele3)) {
               Pittango.answer(driver, sele3, wid);
             }
@@ -131,11 +129,10 @@ public class SUGGetPark extends SUGBase {
           }
         }
       }
-      String stampSele = "a.suggest-surveys";
+      String stampSele = "a[href='/exchange/mile']#btn";
       if (isExistEle(driver, stampSele)) {
         clickSleepSelector(driver, stampSele, 4000); // 遷移
       }
     }
-
   }
 }

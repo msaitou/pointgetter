@@ -125,7 +125,7 @@ public class LFMFarmEnk extends LFMBase {
           }
         }
       }
-      String stampSele = "a.suggest-surveys";
+      String stampSele = "a#btn";
       if (isExistEle(driver, stampSele)) {
         clickSleepSelector(driver, stampSele, 4000); // 遷移
       }
