@@ -59,7 +59,7 @@ public class MOPMiniGameEnk extends MOPBase {
           driver.get("http://minigamepark.moppy.jp/square/pittango");
         }
 
-        Utille.sleep(3000);
+        Utille.sleep(6000);
         selector = "div.enqueteBox a[href]>dl";
 //        selector = "div.enquete_box a[href]>dl";
         int skip = 1;
