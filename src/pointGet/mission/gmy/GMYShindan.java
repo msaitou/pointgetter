@@ -32,10 +32,10 @@ public class GMYShindan extends GMYBase {
     driver.get(url);
     String sele0 = "div.entry", //
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため
-    sumiSelector = "img[src='/images/icons/sumi.png']", // 
-    recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-    recoNoneSele = "div#cxOverlayParent>a.recommend_close"  // disabled recomend
-        ;
+    sumiSelector = "img[src='/images/icons/sumi.png']";
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+    ;
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }

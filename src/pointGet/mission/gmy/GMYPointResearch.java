@@ -58,6 +58,12 @@ public class GMYPointResearch extends GMYBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+    ;
+    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+      clickSleepSelector(driver, recoSele, 2000); // 遷移
+    }
     selector = "div.survey td.s_status>a";
     int skip = 1;
     String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用

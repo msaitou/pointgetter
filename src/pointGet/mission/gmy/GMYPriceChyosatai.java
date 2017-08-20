@@ -30,7 +30,7 @@ public class GMYPriceChyosatai extends GMYBase {
   public void privateMission(WebDriver driver) {
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-    recoNoneSele = "div#cxOverlayParent>a.recommend_close" // disabled recomend
+    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移

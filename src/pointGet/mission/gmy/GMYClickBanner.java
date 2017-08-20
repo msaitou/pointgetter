@@ -34,11 +34,11 @@ public class GMYClickBanner extends GMYBase {
     for (int j = 0; j < urls.length; j++) {
       driver.get(urls[j]);
       String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-      recoNoneSele = "div#cxOverlayParent>a.recommend_close" // disabled recomend
-      ;
-      if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
-        clickSleepSelector(driver, recoSele, 2000); // 遷移
-      }
+          recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+          ;
+          if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+            clickSleepSelector(driver, recoSele, 2000); // 遷移
+          }
       if (isExistEle(driver, selector)) {
         List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
         // clipoバナー

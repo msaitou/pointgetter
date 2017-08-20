@@ -35,7 +35,7 @@ public class GMYKumaVote extends GMYBase {
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "a>img[alt='election']";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-    recoNoneSele = "div#cxOverlayParent>a.recommend_close" // disabled recomend
+    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
