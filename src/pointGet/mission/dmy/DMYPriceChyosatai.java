@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import pointGet.common.Utille;
 
@@ -83,6 +84,33 @@ public class DMYPriceChyosatai extends DMYBase {
         }
       }
     }
+    String exchangeSele = "span.btn-exchange>a", //
+        exchageListSele = "select[name='point']",
+        doExchangeSele = "div.btn-area>button[type='submit']",
+        sele = "li.js_tabPrice a.start-search";
+    ;
+    driver.get(url);
+    if (isExistEle(driver, sele)) {
+      clickSleepSelector(driver, sele, 4000); // 遷移
+      changeCloseWindow(driver);
+      if (isExistEle(driver, exchangeSele)) {
+        clickSleepSelector(driver, exchangeSele, 6000);
+        if (isExistEle(driver, exchageListSele)) {
+          int size = getSelectorSize(driver, exchageListSele + ">option");
+          String value = driver.findElements(By.cssSelector(exchageListSele + ">option"))
+              .get(size - 1).getAttribute("value");
+          Select selectList = new Select(driver.findElement(By.cssSelector(exchageListSele)));
+          selectList.selectByValue(value); // 交換ポイントを選択
+          Utille.sleep(3000);
+          for (int i = 0; i < 2; i++) {
+            if (isExistEle(driver, doExchangeSele)) {
+              clickSleepSelector(driver, doExchangeSele, 6000); // i=1 交換する　i=2 本当に
+            }
+          }
+        }
+      }
+    }
+
   }
 
   private void localRoop1(WebDriver driver) {

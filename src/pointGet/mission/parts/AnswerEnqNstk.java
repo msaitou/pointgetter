@@ -34,7 +34,7 @@ public class AnswerEnqNstk extends MissCommon {
     //    qNoSele = "div.qno", // 問番セレクター
     radioSele = "label.rdck_label_sp", // ラジオセレクター
     overlay = "div.bnrFrame>div.bnrclose>img", // 広告セレクター
-    noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", // 非表示広告セレクター 
+    noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", // 非表示広告セレクター
     seleSele = "div.note>select", a = ""; // ドロップダウンセレクター
     boolean maruFlg = false, enkFlag = false;
     if (isExistEle(driver, enkTitleSele)) {
@@ -103,6 +103,10 @@ public class AnswerEnqNstk extends MissCommon {
         Utille.sleep(3000);
       }
 
+      if (!isExistEle(driver, noneOverlay)
+          && isExistEle(driver, overlay)) {
+        clickSleepSelector(driver, overlay, 3000);
+      }
       if (isExistEle(driver, startSele)) {
         // 次へ(回答へ)
         waitTilReady(driver);
