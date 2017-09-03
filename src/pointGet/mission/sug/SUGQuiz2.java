@@ -57,10 +57,10 @@ public class SUGQuiz2 extends SUGBase {
                 if (isExistEle(driver, doExchangeSele)) {
                   clickSleepSelector(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
                 }
-                // Topへ戻る
-                if (isExistEle(driver, returnTopSele)) {
-                  clickSleepSelector(driver, returnTopSele, 4000);
-                }
+              }
+              // Topへ戻る
+              if (isExistEle(driver, returnTopSele)) {
+                clickSleepSelector(driver, returnTopSele, 4000);
               }
               break;
             }
