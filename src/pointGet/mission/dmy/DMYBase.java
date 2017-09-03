@@ -123,7 +123,7 @@ public abstract class DMYBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "div.p-history-list__list-item-first span.u-ff-dmoney", point = "";
+    String selector = "span.p-dmoney-header-small__amount__balance.moneyFont", point = "";
     driver.get("https://d-money.jp/history");
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
