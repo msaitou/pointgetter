@@ -85,10 +85,10 @@ public class LoginSite extends PointGet {
     if (Utille.isExistEle(driver, "input#userid", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input#userid"));
       ele.clear();
-      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginid"));
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GPO).get("loginid"));
       ele = driver.findElement(By.cssSelector("input#passwd"));
       ele.clear();
-      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginpass"));
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GPO).get("loginpass"));
       driver.findElement(By.cssSelector("input.btnlogin")).click();
       Utille.sleep(5000);
     }
@@ -104,10 +104,10 @@ public class LoginSite extends PointGet {
     if (Utille.isExistEle(driver, "input[name='accountId']", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input[name='accountId']"));
       ele.clear();
-      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginid"));
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_DMY).get("loginid"));
       ele = driver.findElement(By.cssSelector("input[name='password']"));
       ele.clear();
-      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginpass"));
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_DMY).get("loginpass"));
       driver.findElement(By.cssSelector("button[type='submit']")).click();
       Utille.sleep(5000);
     }
