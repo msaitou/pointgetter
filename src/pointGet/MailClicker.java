@@ -32,11 +32,11 @@ import org.bson.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.common.Define;
-import pointGet.common.Utille;
-
 import com.mongodb.DBObject;
 import com.mongodb.util.JSON;
+
+import pointGet.common.Define;
+import pointGet.common.Utille;
 
 /**
  * get point from the point mail
@@ -580,7 +580,8 @@ public class MailClicker extends PointGet {
             }
             break;
           case Define.PSITE_CODE_CIT: // チャンスイット
-            if (contentLow[i].indexOf("http://c.chanceit.jp/c/") >= 0) {
+            if (contentLow[i].indexOf("http://c.chanceit.jp/c/") >= 0
+            || contentLow[i].indexOf("&s=") >= 0) {
               String url3 = contentLow[i].substring(contentLow[i].indexOf("http"));
               urlList.add(Utille.trimWhitespace(url3));
             }
