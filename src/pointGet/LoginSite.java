@@ -56,6 +56,9 @@ public class LoginSite extends PointGet {
       case Define.PSITE_CODE_DMY:
         loginDmy(driver, logg);
         break;
+      case Define.PSITE_CODE_GPO:
+        loginGpo(driver, logg);
+        break;
       case Define.PSITE_CODE_GMY:
       case Define.PSITE_CODE_ECN:
       case Define.PSITE_CODE_I2I:
@@ -69,6 +72,25 @@ public class LoginSite extends PointGet {
       case Define.PSITE_CODE_SUG:
       default:
         return;
+    }
+  }
+
+  /**
+   * @param driver
+   * @param logg
+   */
+  public static void loginGpo(WebDriver driver, Logger logg) {
+    driver.get("https://www.gpoint.co.jp/scripts/auth/LoginEntry.do");
+    Utille.sleep(2000);
+    if (Utille.isExistEle(driver, "input#userid", logg)) {
+      WebElement ele = driver.findElement(By.cssSelector("input#userid"));
+      ele.clear();
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginid"));
+      ele = driver.findElement(By.cssSelector("input#passwd"));
+      ele.clear();
+      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginpass"));
+      driver.findElement(By.cssSelector("input.btnlogin")).click();
+      Utille.sleep(5000);
     }
   }
 

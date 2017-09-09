@@ -165,7 +165,7 @@ public class Utille {
   }
 
   /**
-   * 
+   *
    * @param ele
    * @param index
    * @param logg
@@ -227,7 +227,7 @@ public class Utille {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param seleNe
    */
@@ -482,7 +482,7 @@ public class Utille {
   }
 
   /**
-   * 
+   *
    * @param formatStr
    * @return
    */
@@ -499,7 +499,7 @@ public class Utille {
   }
 
   /**
-   * 
+   *
    * @param formatStr
    * @return
    */
@@ -525,7 +525,7 @@ public class Utille {
   }
 
   /**
-   * 
+   *
    * @param site
    * @param points
    * @param tot
@@ -540,6 +540,7 @@ public class Utille {
       case Define.PSITE_CODE_HAP:
       case Define.PSITE_CODE_DMY:
       case Define.PSITE_CODE_LFM:
+      case Define.PSITE_CODE_GPO:
         tot += current;
         break;
       case Define.PSITE_CODE_CRI:
