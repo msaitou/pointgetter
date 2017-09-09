@@ -56,7 +56,7 @@ public abstract class GPOBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    String sel = "uli.status-point",
+    String sel = "li.status-point",
         laySel = "div.layer_board a.btnclose_top.btn_close>img";
     driver.get("http://www.gpoint.co.jp/");
     if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
@@ -98,16 +98,16 @@ public abstract class GPOBase extends Mission {
           MisIns = new GPOAnzan(loggg, cProps);
           break;
         case Define.strGPOColum: // ■コラム
-          MisIns = new GPOAnzan(loggg, cProps);
+          MisIns = new GPOColum(loggg, cProps);
           break;
         case Define.strGPOPhoto: // ■写真
-          MisIns = new GPOAnzan(loggg, cProps);
+          MisIns = new GPOPhoto(loggg, cProps);
           break;
         case Define.strGPOPointResearch: // ■アンケート
-          MisIns = new GPOAnzan(loggg, cProps);
+          MisIns = new GPOPointResearch(loggg, cProps);
           break;
         case Define.strGPOPointResearch2: // ■アンケート２
-          MisIns = new GPOAnzan(loggg, cProps);
+          MisIns = new GPOPointResearch2(loggg, cProps);
           break;
         default:
       }
