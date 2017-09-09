@@ -32,7 +32,7 @@ public class GPOFarmEnk extends GPOBase {
    * @param logg
    */
   public GPOFarmEnk(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "PICファームアンケート");
+    super(logg, cProps, "勇者君の栽培アンケート");
     Tasuuketu = new AnswerTasuuketu(logg);
     GameParkEnk = new AnswerGameParkEnk(logg);
     Adsurvey = new AnswerAdsurvey(logg);
@@ -45,22 +45,22 @@ public class GPOFarmEnk extends GPOBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    String enkLinkSele = "div>a>img[alt='スタンプランド']", //
+    String enkLinkSele = "div.bnr>[alt='勇者君の栽培日記']", //
     a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      driver.get("http://land.pointi.jp/square/surveys");
+      driver.get("http://farm-gpoint.media-ad.jp/square/surveys");
       for (int k = 0; k < 4; k++) {
         if (k == 1) {
-          driver.get("http://land.pointi.jp/square/diagnoses");
+          driver.get("http://farm-gpoint.media-ad.jp/square/diagnoses");
         }
         else if (k == 2) {
-          driver.get("http://land.pointi.jp/square/votes");
+          driver.get("http://farm-gpoint.media-ad.jp/square/votes");
         }
         else if (k == 3) {
-          driver.get("http://land.pointi.jp/square/pittango");
+          driver.get("http://farm-gpoint.media-ad.jp/square/pittango");
         }
 
 

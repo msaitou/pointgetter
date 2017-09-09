@@ -263,6 +263,11 @@ public class Define {
   final public static String strGPOQuiz = "GPOQuiz";
   final public static String strGPOAnzan = "GPOAnzan";
 
+  final public static String strGPOColum = "GPOColum";
+  final public static String strGPOPhoto = "GPOPhoto";
+  final public static String strGPOPointResearch = "GPOPointResearch";
+  final public static String strGPOPointResearch2 = "GPOPointResearch2";
+
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";
   final public static String CONTENT_TYPE_HTML = "text/html";

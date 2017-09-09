@@ -97,6 +97,18 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOAnzan: // ■暗算
           MisIns = new GPOAnzan(loggg, cProps);
           break;
+        case Define.strGPOColum: // ■コラム
+          MisIns = new GPOAnzan(loggg, cProps);
+          break;
+        case Define.strGPOPhoto: // ■写真
+          MisIns = new GPOAnzan(loggg, cProps);
+          break;
+        case Define.strGPOPointResearch: // ■アンケート
+          MisIns = new GPOAnzan(loggg, cProps);
+          break;
+        case Define.strGPOPointResearch2: // ■アンケート２
+          MisIns = new GPOAnzan(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
@@ -107,7 +119,11 @@ public abstract class GPOBase extends Mission {
           Define.strGPOGameParkEnk,
           Define.strGPOMangaVer2,
           Define.strGPOQuiz,
-          Define.strGPOAnzan
+          Define.strGPOColum,
+          Define.strGPOPhoto,
+          Define.strGPOPointResearch,
+          Define.strGPOPointResearch2,
+                   Define.strGPOAnzan
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

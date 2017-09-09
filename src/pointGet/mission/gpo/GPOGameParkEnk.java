@@ -32,7 +32,7 @@ public class GPOGameParkEnk extends GPOBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "li>a>img[alt='GamePark']";
+    selector = "div.bnr>[alt='GamePark']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
         pop2Cls = "div.campaignClose>img", //
@@ -71,7 +71,7 @@ public class GPOGameParkEnk extends GPOBase {
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");
-            if (cUrl.indexOf("osaifu.qpark.jp/enquete/") >= 0) {
+            if (cUrl.indexOf("gpoint.qpark.jp/enquete/") >= 0) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);
             }
