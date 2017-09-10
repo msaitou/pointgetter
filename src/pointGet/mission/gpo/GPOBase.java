@@ -59,12 +59,12 @@ public abstract class GPOBase extends Mission {
     String sel = "li.status-point",
         laySel = "div.layer_board a.btnclose_top.btn_close>img";
     driver.get("http://www.gpoint.co.jp/");
-    if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
+    if (!Utille.isExistEle(driver, sel, false, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
       LoginSite.login(sCode, driver, loggg);
     }
     // オーバーレイがあれば消す
-    if (!Utille.isExistEle(driver, "div.layer_board[style*='display: none'] a.btnclose_top.btn_close>img", loggg)
+    if (!Utille.isExistEle(driver, "div.layer_board[style*='display: none'] a.btnclose_top.btn_close>img", false, loggg)
         && Utille.isExistEle(driver, laySel, loggg)) {
       driver.findElement(By.cssSelector(laySel)).click();
       Utille.sleep(3000);
@@ -123,7 +123,7 @@ public abstract class GPOBase extends Mission {
           Define.strGPOPhoto,
           Define.strGPOPointResearch,
           Define.strGPOPointResearch2,
-                   Define.strGPOAnzan
+          Define.strGPOAnzan
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
