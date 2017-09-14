@@ -46,7 +46,7 @@ public class GPOFarmEnk extends GPOBase {
     driver = driverAtom;
     driver.get(url);
     String enkLinkSele = "div.bnr>[alt='勇者君の栽培日記']", //
-    a = "";
+        a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
@@ -63,16 +63,15 @@ public class GPOFarmEnk extends GPOBase {
           driver.get("http://farm-gpoint.media-ad.jp/square/pittango");
         }
 
-
         Utille.sleep(3000);
         selector = "div.enqueteBox a[href]>dl";
         int skip = 1;
         String sele1_ = "iframe.question_frame", //
-        sele1 = "form>input[type='submit']", //
-        sele3 = "form>input[type='submit']", //
-        sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-        sele6 = "form>input.next_bt", // コラム用
-        b = "";
+            sele1 = "form>input[type='submit']", //
+            sele3 = "form>input[type='submit']", //
+            sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+            sele6 = "form>input.next_bt", // コラム用
+            b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
           if (!isExistEle(driver, selector)) {
@@ -100,9 +99,9 @@ public class GPOFarmEnk extends GPOBase {
                 break;
               }
             }
-            else if (
-                (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
-                || cUrl.indexOf("lion.seikaku-checker.club/question") >= 0)
+            else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+                || cUrl.indexOf("lion.seikaku-checker.club/question") >= 0
+                || cUrl.indexOf("enquetter.com/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
               skip++;

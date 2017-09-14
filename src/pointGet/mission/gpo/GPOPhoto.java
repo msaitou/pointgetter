@@ -5,10 +5,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerPhotoEnk;
@@ -52,14 +50,17 @@ public class GPOPhoto extends GPOBase {
             int size2 = eleList.size(), targetIndex = size2 - 1;
             logg.info("size2:" + size2 + " target:" + targetIndex);
             if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
-              Actions actions = new Actions(driver);
-              actions.keyDown(Keys.CONTROL);
-              actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
-              actions.perform();
-              Utille.sleep(5000);
-              //                                            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+//              Actions actions = new Actions(driver);
+//              actions.keyDown(Keys.CONTROL);
+//              actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
+//              actions.perform();
+//              Utille.sleep(5000);
+
+              clickSleepSelector(eleList, targetIndex, 6000); // アンケートスタートページ
               String wid = driver.getWindowHandle();
-              changeWindow(driver, wid);
+              //                                            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+//              String wid = driver.getWindowHandle();
+//              changeWindow(driver, wid);
               if (isExistEle(driver, sele8)) {
                 PhotoEnk.answer(driver, sele8, wid);
                 driver.navigate().refresh();
