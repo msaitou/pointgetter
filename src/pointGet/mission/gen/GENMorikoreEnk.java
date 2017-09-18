@@ -43,7 +43,7 @@ public class GENMorikoreEnk extends GENBase {
     driver.get(url);
     selector = "section#ftrlink li>a[href*='/cl/?id=134610&u=6167192']";
     String enkLinkSele = "a>img[alt='モリモリ診断']", //
-        a = "";
+    a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
       changeCloseWindow(driver);
@@ -58,12 +58,13 @@ public class GENMorikoreEnk extends GENBase {
           }
           else if (k == 2) {
             driver.get("http://mrga.service-navi.jp/square/diagnoses");
-//            driver.get("http://mrga.service-navi.jp/square/surveys");
-//            continue;
+            //            driver.get("http://mrga.service-navi.jp/square/surveys");
+            //            continue;
           }
           else if (k == 4) {
             driver.get("http://mrga.service-navi.jp/square/surveys");
-//            continue;
+
+            //            continue;
           }
           else if (k == 3) {
             driver.get("http://mrga.service-navi.jp/square/pittango");
@@ -73,11 +74,11 @@ public class GENMorikoreEnk extends GENBase {
           selector = "div.enquete_box a[href]>dl";
           int skip = 1;
           String sele1_ = "iframe.question_frame", //
-              sele1 = "form>input[type='submit']", //
-              sele3 = "form>input[type='submit']", //
-              sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-              sele6 = "form>input.next_bt", // コラム用
-              b = "";
+          sele1 = "form>input[type='submit']", //
+          sele3 = "form>input[type='submit']", //
+          sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+          sele6 = "form>input.next_bt", // コラム用
+          b = "";
           while (true) {
             checkOverlay(driver, overlaySele, false);
             if (!isExistEle(driver, selector)) {
@@ -99,8 +100,10 @@ public class GENMorikoreEnk extends GENBase {
                 skip++;
               }
               else if ((cUrl.indexOf("ad/enq/") >= 0
-                  || cUrl.indexOf("beautypress.tokyo") >= 0)
-                  
+                  || cUrl.indexOf("beautypress.tokyo") >= 0
+                  || cUrl.indexOf("credit-card.link") >= 0
+                  )
+
                   && isExistEle(driver, sele1_)) {
                 // $('iframe').contents().find("div>input[type='submit']")
                 if (!AdEnq.answer(driver, sele1, wid)) {
@@ -111,6 +114,7 @@ public class GENMorikoreEnk extends GENBase {
               else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                   || cUrl.indexOf("enquetter.com/question") >= 0
                   || cUrl.indexOf("seikaku-checker.club/question") >= 0
+                  || cUrl.indexOf("http://credit-card.link") >= 0
                   )
                   && isExistEle(driver, sele3)) {
                 AdShindan.answer(driver, sele3, wid);
@@ -123,9 +127,9 @@ public class GENMorikoreEnk extends GENBase {
                 Colum.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("http://pittango.net/") >= 0
-              //                || cUrl.indexOf("beautynail-design.com") >= 0
-              //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
-              )
+                  //                || cUrl.indexOf("beautynail-design.com") >= 0
+                  //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                  )
                   && isExistEle(driver, sele3)) {
                 Pittango.answer(driver, sele3, wid);
               }
