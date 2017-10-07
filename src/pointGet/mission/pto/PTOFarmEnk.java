@@ -14,6 +14,7 @@ import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 import pointGet.mission.parts.AnswerPittango;
+import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
 
 public class PTOFarmEnk extends PTOBase {
@@ -27,6 +28,7 @@ public class PTOFarmEnk extends PTOBase {
   AnswerAdEnq AdEnq = null;
   AnswerAdShindan AdShindan = null;
   AnswerPittango Pittango = null;
+  AnswerShindan Shindan = null;
 
   /**
    * @param logg
@@ -39,6 +41,7 @@ public class PTOFarmEnk extends PTOBase {
     AdEnq = new AnswerAdEnq(logg);
     AdShindan = new AnswerAdShindan(logg);
     Pittango = new AnswerPittango(logg);
+    Shindan = new AnswerShindan(logg);
   }
 
   @Override
@@ -50,7 +53,7 @@ public class PTOFarmEnk extends PTOBase {
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
-//      changeCloseWindow(driver);
+      //      changeCloseWindow(driver);
       driver.get("http://farm.pointtown.com/square/diagnoses");
       for (int k = 0; k < 4; k++) {
         if (k == 1) {
@@ -63,7 +66,6 @@ public class PTOFarmEnk extends PTOBase {
           driver.get("http://farm.pointtown.com/square/diagnoses");
         }
 
-
         Utille.sleep(3000);
         selector = "div.enqueteBox a[href]>dl";
         int skip = 1;
@@ -72,7 +74,7 @@ public class PTOFarmEnk extends PTOBase {
         sele3 = "form>input[type='submit']", //
         sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
         sele6 = "form>input.next_bt", // コラム用
-        b = "";
+        sele4 = "a.submit-btn", b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
           if (!isExistEle(driver, selector)) {
@@ -100,17 +102,21 @@ public class PTOFarmEnk extends PTOBase {
                 break;
               }
             }
-            else if (
-                (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+            else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+                && isExistEle(driver, sele4)) {
+              Shindan.answer(driver, sele4, wid);
+              skip++;
+            }
+            else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("enquetter.com/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
               skip++;
             }
             else if ((cUrl.indexOf("http://pittango.net/") >= 0
-            //                || cUrl.indexOf("beautynail-design.com") >= 0
-            //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
-            )
+                //                || cUrl.indexOf("beautynail-design.com") >= 0
+                //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                )
                 && isExistEle(driver, sele3)) {
               Pittango.answer(driver, sele3, wid);
             }

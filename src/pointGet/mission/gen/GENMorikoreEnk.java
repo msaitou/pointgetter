@@ -13,6 +13,7 @@ import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerPittango;
+import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
 
 public class GENMorikoreEnk extends GENBase {
@@ -24,6 +25,7 @@ public class GENMorikoreEnk extends GENBase {
   AnswerAdShindan AdShindan = null;
   AnswerColum Colum = null;
   AnswerPittango Pittango = null;
+  AnswerShindan Shindan = null;
 
   /**
    * @param logg
@@ -35,6 +37,7 @@ public class GENMorikoreEnk extends GENBase {
     AdShindan = new AnswerAdShindan(logg);
     Colum = new AnswerColum(logg);
     Pittango = new AnswerPittango(logg);
+    Shindan = new AnswerShindan(logg);
   }
 
   @Override
@@ -78,6 +81,7 @@ public class GENMorikoreEnk extends GENBase {
           sele3 = "form>input[type='submit']", //
           sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
           sele6 = "form>input.next_bt", // コラム用
+              sele4 = "a.submit-btn",
           b = "";
           while (true) {
             checkOverlay(driver, overlaySele, false);
@@ -109,6 +113,11 @@ public class GENMorikoreEnk extends GENBase {
                 if (!AdEnq.answer(driver, sele1, wid)) {
                   break;
                 }
+                skip++;
+              }
+              else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+                  && isExistEle(driver, sele4)) {
+                Shindan.answer(driver, sele4, wid);
                 skip++;
               }
               else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0

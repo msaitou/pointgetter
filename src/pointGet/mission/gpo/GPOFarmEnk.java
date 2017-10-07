@@ -14,6 +14,7 @@ import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 import pointGet.mission.parts.AnswerPittango;
+import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
 
 public class GPOFarmEnk extends GPOBase {
@@ -27,6 +28,7 @@ public class GPOFarmEnk extends GPOBase {
   AnswerAdEnq AdEnq = null;
   AnswerAdShindan AdShindan = null;
   AnswerPittango Pittango = null;
+  AnswerShindan Shindan = null;
 
   /**
    * @param logg
@@ -39,6 +41,7 @@ public class GPOFarmEnk extends GPOBase {
     AdEnq = new AnswerAdEnq(logg);
     AdShindan = new AnswerAdShindan(logg);
     Pittango = new AnswerPittango(logg);
+    Shindan = new AnswerShindan(logg);
   }
 
   @Override
@@ -71,6 +74,7 @@ public class GPOFarmEnk extends GPOBase {
             sele3 = "form>input[type='submit']", //
             sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
             sele6 = "form>input.next_bt", // コラム用
+                sele4 = "a.submit-btn",
             b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
@@ -98,6 +102,11 @@ public class GPOFarmEnk extends GPOBase {
               if (!AdEnq.answer(driver, sele1, wid)) {
                 break;
               }
+            }
+            else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+                && isExistEle(driver, sele4)) {
+              Shindan.answer(driver, sele4, wid);
+              skip++;
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("lion.seikaku-checker.club/question") >= 0

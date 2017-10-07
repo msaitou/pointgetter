@@ -127,6 +127,7 @@ public class LoginSite extends PointGet {
       ele = driver.findElement(By.cssSelector("input[name='pass']"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_GEN).get("loginpass"));
+      Utille.clickRecaptha(driver, logg);
       driver.findElement(By.cssSelector("input[name='login_page']")).click();
       Utille.sleep(5000);
     }
@@ -306,6 +307,7 @@ public class LoginSite extends PointGet {
       ele = driver.findElement(By.cssSelector("input.auth_input[name=pass]"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PTO).get("loginpass"));
+      Utille.clickRecaptha(driver, logg);
       driver.findElement(By.cssSelector("div.login-btn>input")).click();
       Utille.sleep(3000);
     }

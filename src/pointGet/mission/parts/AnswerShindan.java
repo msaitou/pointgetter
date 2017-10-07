@@ -30,6 +30,7 @@ public class AnswerShindan extends MissCommon {
     String beginSele = "a.submit-btn", // 次へ
     sele = "div[data-qid][class=''] label", //
     seleFinish = "div.col-xs-12 a.btn-danger", //
+    seleFinish2 = "div.col-xs-12 button.btn-danger", //
     closeSele = "input.btn_close_en", // ?
     listUrlSele = "div.col-xs-12 a.btn-warning", //
     none = "[style*='display: none']", //
@@ -60,26 +61,28 @@ public class AnswerShindan extends MissCommon {
                     && isExistEle(driver, nextSelector + none, false)) {
                   clickSleepSelector(driver, endSelector, 4000); // 遷移
                   logg.info("neukata?");
+                  Utille.clickRecaptha(driver, logg);
+
                   if (isExistEle(driver, seleFinish)) {
                     clickSleepSelector(driver, seleFinish, 2000);
-                    // アラートをけして
-                    checkAndAcceptAlert(driver);
-
-                    // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
-                    if (null == wid) {
-                      String returnUrl = driver.findElement(By.cssSelector(listUrlSele))
-                          .getAttribute("href");
-                      logg.info("returnUrl:" + returnUrl);
-                      driver.get(returnUrl);
-                      Utille.sleep(3000);
-                    }
-                    else {
-                      driver.close();
-                      driver.switchTo().window(wid);
-                    }
                   }
-                  //                  driver.close();
-                  //                  driver.switchTo().window(wid);
+                  else if (isExistEle(driver, seleFinish2)) {
+                    clickSleepSelector(driver, seleFinish2, 2000);
+                  }
+                  // アラートをけして
+                  checkAndAcceptAlert(driver);
+                  // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
+                  if (null == wid) {
+                    String returnUrl = driver.findElement(By.cssSelector(listUrlSele))
+                        .getAttribute("href");
+                    logg.info("returnUrl:" + returnUrl);
+                    driver.get(returnUrl);
+                    Utille.sleep(3000);
+                  }
+                  else {
+                    driver.close();
+                    driver.switchTo().window(wid);
+                  }
                   break;
                 }
               }

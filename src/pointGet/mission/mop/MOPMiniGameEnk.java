@@ -12,6 +12,7 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerPittango;
+import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
 
 public class MOPMiniGameEnk extends MOPBase {
@@ -22,7 +23,8 @@ public class MOPMiniGameEnk extends MOPBase {
   AnswerAdEnq AdEnq = null;
   AnswerAdShindan AdShindan = null;
   AnswerPittango Pittango = null;
-
+  AnswerShindan Shindan = null;
+  
   /**
    * @param logg
    */
@@ -32,6 +34,7 @@ public class MOPMiniGameEnk extends MOPBase {
     AdEnq = new AnswerAdEnq(logg);
     AdShindan = new AnswerAdShindan(logg);
     Pittango = new AnswerPittango(logg);
+    Shindan = new AnswerShindan(logg);
   }
 
   @Override
@@ -46,7 +49,8 @@ public class MOPMiniGameEnk extends MOPBase {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
 //      driver.get("http://minigamepark.moppy.jp/square/pittango");
-      driver.get("http://minigamepark.moppy.jp/square/votes");
+      driver.get("http://minigamepark.moppy.jp/square/diagnoses");
+//      driver.get("http://minigamepark.moppy.jp/square/votes");
       for (int k = 0; k < 4; k++) {
 //      for (int k = 0; k < 1; k++) {
         if (k == 1) {
@@ -69,6 +73,7 @@ public class MOPMiniGameEnk extends MOPBase {
             sele9 = "div>a>dl>dt", //
             overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
             sele6 = "form>input.next_bt", // コラム用
+            sele4 = "a.submit-btn",
             b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
@@ -96,6 +101,11 @@ public class MOPMiniGameEnk extends MOPBase {
               if (!AdEnq.answer(driver, sele1, wid)) {
                 break;
               }
+            }
+            else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+                && isExistEle(driver, sele4)) {
+              Shindan.answer(driver, sele4, wid);
+              skip++;
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("enquetter.com/question") >= 0)

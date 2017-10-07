@@ -572,4 +572,21 @@ public class Utille {
     }
     return (double) Math.round(tot * 10) / 10;
   }
+
+  /**
+   * 
+   * @param driver
+   * @param logg
+   */
+  public static void clickRecaptha(WebDriver driver, Logger logg) {
+    // キャプチャをクリック
+    WebElement iframe = driver.findElement(By.cssSelector("[title='reCAPTCHA ウィジェット']"));
+    driver.switchTo().frame(iframe);
+    String reCaptcha = "span#recaptcha-anchor";
+    if (isExistEle(driver, reCaptcha, logg)) {
+      driver.findElement(By.cssSelector(reCaptcha)).click();
+      Utille.sleep(5000);
+    }
+    driver.switchTo().defaultContent();
+  }
 }
