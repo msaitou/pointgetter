@@ -74,7 +74,8 @@ public class PTOFarmEnk extends PTOBase {
         sele3 = "form>input[type='submit']", //
         sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
         sele6 = "form>input.next_bt", // コラム用
-        sele4 = "a.submit-btn", b = "";
+        sele4 = "a.submit-btn", 
+        b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
           if (!isExistEle(driver, selector)) {
