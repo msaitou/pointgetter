@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
  *
  */
 public class DMYChirachi extends DMYBase {
-  final String url = "http://d-moneymall.jp/daily.html?content=pricesearch&fromid=money_header&internalid=gnavi";
+  final String url = "https://d-money.jp/mall";
 
   /**
    * @param log
@@ -23,27 +23,23 @@ public class DMYChirachi extends DMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "li.not-login>a.btn-login";
-    if (isExistEle(driver, selector, false)) {
-      clickSleepSelector(driver, selector, 3000);
-    }
-    selector = "li.js_labelShufoo";
+    selector = "i.c-dmoney_icon_21_reward";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000);
-      selector = "div#js-shufoo a.js-goRequest";
+    }
+    selector = "img[src*='shufoo.png']";
+    if (isExistEle(driver, selector)) {
+      clickSleepSelector(driver, selector, 3000);
+      selector = "a.flyer1_0--link";
       if (isExistEle(driver, selector)) {
-        clickSleepSelector(driver, selector, 5000);
-        selector = "li.chirashi>div>a.list-btn";
-        if (isExistEle(driver, selector)) {
-          int size = getSelectorSize(driver, selector);
-          for (int i = 0; i < size && i < 2; i++) {
-            if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
-              clickSleepSelector(driver.findElements(By.cssSelector(selector)), i, 4000);
-              break; // 1発で終了　戻れない
-//              driver.navigate().back();
-//              // アラートをけして
-//              checkAndAcceptAlert(driver);
-            }
+        int size = getSelectorSize(driver, selector);
+        for (int i = 0; i < size && i < 2; i++) {
+          if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
+            clickSleepSelector(driver.findElements(By.cssSelector(selector)), i, 4000);
+            break; // 1発で終了　戻れない
+            //              driver.navigate().back();
+            //              // アラートをけして
+            //              checkAndAcceptAlert(driver);
           }
         }
       }

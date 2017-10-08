@@ -13,7 +13,7 @@ import pointGet.common.Utille;
  *
  */
 public class DMYScrachi extends DMYBase {
-  final String url = "http://d-moneymall.jp/daily.html?content=pricesearch&fromid=money_header&internalid=gnavi";
+  final String url = "https://d-money.jp/mall";
 
   /**
    * @param log
@@ -25,31 +25,25 @@ public class DMYScrachi extends DMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    // なぜか２回目のログイン
-    selector = "li.not-login>a.btn-login";
-    if (isExistEle(driver, selector, false)) {
-      clickSleepSelector(driver, selector, 3000);
-    }
-    selector = "li.js_labelScratch";
+    selector = "i.c-dmoney_icon_21_reward";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000);
-      selector = "a.scratch-start-btn";
+    }
+    selector = "img[src*='scratch.png']";
+    if (isExistEle(driver, selector)) {
+      clickSleepSelector(driver, selector, 5000);
+      selector = "ul.item-box>li.item>img";
       if (isExistEle(driver, selector)) {
-        clickSleepSelector(driver, selector, 5000);
-
-        selector = "ul.scratch-list>li[class='scratch-listItem js-scratchItem";
-        if (isExistEle(driver, selector)) {
-          for (int i = 0; i < 3; i++) {
-            if (isExistEle(driver, selector)) {
-              int size = getSelectorSize(driver, selector);
-              int ran = Utille.getIntRand(size);
-              if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-                clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
-              }
+        for (int i = 0; i < 3; i++) {
+          if (isExistEle(driver, selector)) {
+            int size = getSelectorSize(driver, selector);
+            int ran = Utille.getIntRand(size);
+            if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
+              clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
             }
           }
-          Utille.sleep(3000);
         }
+        Utille.sleep(3000);
       }
     }
   }

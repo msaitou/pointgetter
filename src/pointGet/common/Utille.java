@@ -586,6 +586,7 @@ public class Utille {
     if (isExistEle(driver, reCaptcha, logg)) {
       driver.findElement(By.cssSelector(reCaptcha)).click();
       Utille.sleep(5000);
+      Utille.sleep(5000);
     }
     driver.switchTo().defaultContent();
   }

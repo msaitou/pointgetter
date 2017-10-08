@@ -53,7 +53,7 @@ public abstract class DMYBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     String sel = "div.p-dotmoney_meta";
-    driver.get("https://www.ameba.jp/");
+    driver.get("https://d-money.jp/mall");
     if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
       LoginSite.login(sCode, driver, loggg);

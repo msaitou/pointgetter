@@ -16,7 +16,7 @@ import pointGet.common.Utille;
  * 4時更新
  */
 public class DMYPriceChyosatai extends DMYBase {
-  final String url = "http://d-moneymall.jp/daily.html?content=pricesearch&internalid=gnavi";
+  final String url = "https://d-money.jp/mall";
   private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
   private String footBnrSelector = "div.foot-bnr a.close>span";
 
@@ -29,66 +29,66 @@ public class DMYPriceChyosatai extends DMYBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
-    selector = "li.not-login>a.btn-login";
-    if (isExistEle(driver, selector, false)) {
-      clickSleepSelector(driver, selector, 3000);
-    }
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
       driver.get(url);
-      selector = "li.js_tabPrice a.start-search";
+      selector = "i.c-dmoney_icon_21_reward";
       if (isExistEle(driver, selector)) {
-        clickSleepSelector(driver, selector, 5000); // 遷移
+        clickSleepSelector(driver, selector, 3000);
+      }
+      selector = "img[src*='price.png']";
+      if (isExistEle(driver, selector)) {
+        clickSleepSelector(driver, selector, 5000);
+        String wid = driver.getWindowHandle();
+        changeCloseWindow(driver);
+      }
+      checkOverlay(driver, overlaySelector);
+      if (isExistEle(driver, footBnrSelector)
+          && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+        checkOverlay(driver, footBnrSelector);
+      }
+
+      String noEntrySele = "div.thumbnail span.icon-noentry";
+      String entrySele = "div.thumbnail span.icon-entry";
+      if (isExistEle(driver, noEntrySele)) {
+        clickSleepSelector(driver, noEntrySele, 3000); // 遷移
         checkOverlay(driver, overlaySelector);
         if (isExistEle(driver, footBnrSelector)
-            && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+            && !isExistEle(driver, overlayNone, false)) {
           checkOverlay(driver, footBnrSelector);
         }
 
-        String noEntrySele = "div.thumbnail span.icon-noentry";
-        String entrySele = "div.thumbnail span.icon-entry";
-        if (isExistEle(driver, noEntrySele)) {
-          clickSleepSelector(driver, noEntrySele, 3000); // 遷移
+        selector = "div.thumb-start div.btn>a";
+        if (isExistEle(driver, selector)) {
+          clickSleepSelector(driver, selector, 4000); // 遷移
           checkOverlay(driver, overlaySelector);
-          if (isExistEle(driver, footBnrSelector)
-              && !isExistEle(driver, overlayNone, false)) {
-            checkOverlay(driver, footBnrSelector);
+          checkOverlay(driver, footBnrSelector);
+          String finshSele = "div.finish-area";
+          // otukare!
+          if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
+            break;
           }
-
-          selector = "div.thumb-start div.btn>a";
-          if (isExistEle(driver, selector)) {
-            clickSleepSelector(driver, selector, 4000); // 遷移
-            checkOverlay(driver, overlaySelector);
-            checkOverlay(driver, footBnrSelector);
-            String finshSele = "div.finish-area";
-            // otukare!
-            if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
-              break;
-            }
-            localRoop1(driver);
-          }
-        }
-        else if (isExistEle(driver, entrySele)) {
-          clickSleepSelector(driver, entrySele, 3000); // 遷移
-          checkOverlay(driver, overlaySelector);
-          if (isExistEle(driver, footBnrSelector)
-              && !isExistEle(driver, overlayNone, false)) {
-            checkOverlay(driver, footBnrSelector);
-          }
-          //					selector = "div.btn>a";
           localRoop1(driver);
         }
-        else {
-          j = 6;
+      }
+      else if (isExistEle(driver, entrySele)) {
+        clickSleepSelector(driver, entrySele, 3000); // 遷移
+        checkOverlay(driver, overlaySelector);
+        if (isExistEle(driver, footBnrSelector)
+            && !isExistEle(driver, overlayNone, false)) {
+          checkOverlay(driver, footBnrSelector);
         }
+        //					selector = "div.btn>a";
+        localRoop1(driver);
+      }
+      else {
+        j = 6;
       }
     }
     String exchangeSele = "span.btn-exchange>a", //
-        exchageListSele = "select[name='point']",
-        doExchangeSele = "div.btn-area>button[type='submit']",
-        sele = "li.js_tabPrice a.start-search";
-    ;
+    exchageListSele = "select[name='point']", //
+    doExchangeSele = "div.btn-area>button[type='submit']", //
+    sele = "li.js_tabPrice a.start-search";
     driver.get(url);
     if (isExistEle(driver, sele)) {
       clickSleepSelector(driver, sele, 4000); // 遷移

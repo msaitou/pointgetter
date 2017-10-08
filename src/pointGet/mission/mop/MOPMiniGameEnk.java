@@ -49,8 +49,8 @@ public class MOPMiniGameEnk extends MOPBase {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
 //      driver.get("http://minigamepark.moppy.jp/square/pittango");
-      driver.get("http://minigamepark.moppy.jp/square/diagnoses");
-//      driver.get("http://minigamepark.moppy.jp/square/votes");
+//      driver.get("http://minigamepark.moppy.jp/square/diagnoses");
+      driver.get("http://minigamepark.moppy.jp/square/votes");
       for (int k = 0; k < 4; k++) {
 //      for (int k = 0; k < 1; k++) {
         if (k == 1) {

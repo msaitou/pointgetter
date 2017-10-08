@@ -99,17 +99,26 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginDmy(WebDriver driver, Logger logg) {
-    driver.get("https://dauth.user.ameba.jp/login/ameba");
-    Utille.sleep(2000);
-    if (Utille.isExistEle(driver, "input[name='accountId']", logg)) {
-      WebElement ele = driver.findElement(By.cssSelector("input[name='accountId']"));
-      ele.clear();
-      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_DMY).get("loginid"));
-      ele = driver.findElement(By.cssSelector("input[name='password']"));
-      ele.clear();
-      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_DMY).get("loginpass"));
-      driver.findElement(By.cssSelector("button[type='submit']")).click();
-      Utille.sleep(5000);
+    //    driver.get("https://dauth.user.ameba.jp/login/ameba");
+    String loginBtnSele = "a.c-btn-login";
+    String loginBtnSele2 = "input.btn_primary";
+    if (Utille.isExistEle(driver, loginBtnSele, logg)) {
+      driver.findElement(By.cssSelector(loginBtnSele)).click();
+      Utille.sleep(2000);
+      if (Utille.isExistEle(driver, loginBtnSele2, logg)) {
+        driver.findElement(By.cssSelector(loginBtnSele2)).click();
+        Utille.sleep(2000);
+        if (Utille.isExistEle(driver, "input[name='accountId']", logg)) {
+          WebElement ele = driver.findElement(By.cssSelector("input[name='accountId']"));
+          ele.clear();
+          ele.sendKeys(pGetProps.get(Define.PSITE_CODE_DMY).get("loginid"));
+          ele = driver.findElement(By.cssSelector("input[name='password']"));
+          ele.clear();
+          ele.sendKeys(pGetProps.get(Define.PSITE_CODE_DMY).get("loginpass"));
+          driver.findElement(By.cssSelector("button[type='submit']")).click();
+          Utille.sleep(5000);
+        }
+      }
     }
   }
 
@@ -118,7 +127,8 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginGen(WebDriver driver, Logger logg) {
-    driver.get("https://ssl.realworld.jp/auth/?site=gendama_jp&rid=&af=&frid=&token=&goto=http%3A%2F%2Fwww.gendama.jp%2F?p=start");
+    driver
+        .get("https://ssl.realworld.jp/auth/?site=gendama_jp&rid=&af=&frid=&token=&goto=http%3A%2F%2Fwww.gendama.jp%2F?p=start");
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input[name='rwsid']", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input[name='rwsid']"));
