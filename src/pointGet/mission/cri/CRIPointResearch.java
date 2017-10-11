@@ -120,6 +120,7 @@ public class CRIPointResearch extends CRIBase {
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
+            || cUrl.indexOf("style-cutehair.com") >= 0
             )
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);

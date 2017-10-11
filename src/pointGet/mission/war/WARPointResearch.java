@@ -112,7 +112,8 @@ public class WARPointResearch extends WARBase {
             && isExistEle(driver, sele4)) {
           EnqNstk2.answer(driver, sele4, wid);
         }
-        else if (cUrl.indexOf("n-research.jp") >= 0
+        else if ((cUrl.indexOf("n-research.jp") >= 0
+            || cUrl.indexOf("beautylife-health.jp") >= 0)
             && isExistEle(driver, sele5)) {
           TanoshimiEnk.answer(driver, sele5, wid);
         }

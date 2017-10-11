@@ -107,7 +107,9 @@ public class PICMedalMool extends PICBase {
             k++;
           }
         }
-        else if (preSele.equals("a[href*='fashion-cosmelife.com/pointi']")) {
+        else if (preSele.equals("a[href*='fashion-cosmelife.com/pointi']")
+            || preSele.equals("a[href*='style-cutehair.com']")
+            ) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);
