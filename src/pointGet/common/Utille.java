@@ -574,7 +574,7 @@ public class Utille {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    */
@@ -584,6 +584,7 @@ public class Utille {
     driver.switchTo().frame(iframe);
     String reCaptcha = "span#recaptcha-anchor";
     if (isExistEle(driver, reCaptcha, logg)) {
+      Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
       driver.findElement(By.cssSelector(reCaptcha)).click();
       Utille.sleep(5000);
       Utille.sleep(5000);
