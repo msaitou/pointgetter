@@ -38,7 +38,7 @@ public class GMYPriceChyosatai extends GMYBase {
     }
     for (int j = 0; j < 6; j++) {
       driver.get(url);
-      selector = "ul a[href='http://dietnavi.com/pc/game/price/play.php']";
+      selector = "li a[href='https://dietnavi.com/pc/game/price/play.php']";
       if (isExistEle(driver, selector)) {
         driver.get("http://dietnavi.com/pc/game/price/play.php");
         Utille.sleep(2000);
