@@ -117,11 +117,15 @@ public class CITPointResearch extends CITBase {
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("cosmetic-brand.com") >= 0
-            || cUrl.indexOf("cosmeticsstyle.com") >= 0)
+            || cUrl.indexOf("cosmeticsstyle.com") >= 0
+            || cUrl.indexOf("natural-vegetables.com") >= 0
+            )
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
         }
-        else if (cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
+        else if ((cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
+            || cUrl.indexOf("haircare-choice.com") >= 0
+            )
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
         }
