@@ -21,7 +21,7 @@ import pointGet.mission.parts.AnswerTasuuketu;
 import pointGet.mission.parts.AnswerZukan;
 
 public class CITPointResearch extends CITBase {
-  final String url = "http://www.chance.com/research/";
+  final String url = "https://www.chance.com/research/";
   WebDriver driver = null;
   AnswerSurveyEnk SurveyEnk = null;
   AnswerKotsuta Kotsuta = null;
@@ -58,8 +58,8 @@ public class CITPointResearch extends CITBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "a>img[src='/img/survey/bt-answer.gif']";
-    int skip = 1;
+    selector = "a>p.btn";
+    int skip = 0;
     String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
     sele4 = "div>input[type='submit']", //
@@ -74,7 +74,7 @@ public class CITPointResearch extends CITBase {
         break;
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-      int size = eleList.size(), targetIndex = size - skip;
+      int size = eleList.size(), targetIndex = skip;
       if (targetIndex > -1 &&
           size > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
         clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
