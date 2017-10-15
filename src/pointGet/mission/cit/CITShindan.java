@@ -29,11 +29,12 @@ public class CITShindan extends CITBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "a[href='http://www.chance.com/research/shindan/play.jsp']>img[alt='診断テスト']";
+    selector = "a[href='https://www.chance.com/research/shindan/play.jsp']>img[alt='診断テスト']";
     String sele0 = "div.entry", // 
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため
     sumiSelector = "img[src='/images/icons/sumi.png']";
-
+//    int limit = 20; 
+    int limit = 3; 
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);
@@ -44,7 +45,7 @@ public class CITShindan extends CITBase {
         for (int i = 0; i < size1; i++) {
           if (isExistEle(eleList, i)) {
             if (isExistEle(eleList.get(i), sumiSelector)) {
-              if (++zumiCnt > 3) { // 新規ミッション追加時はコメント
+              if (++zumiCnt > limit) { // 新規ミッション追加時はコメント
                 break;
               }
               continue;
@@ -54,7 +55,7 @@ public class CITShindan extends CITBase {
           }
         }
         if (wEle == null
-            || zumiCnt > 3) {// 新規ミッション追加時はコメント
+            || zumiCnt > limit) {// 新規ミッション追加時はコメント
           logg.warn(mName + "]all済み");
           break;
         }

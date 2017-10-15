@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.LoginSite;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -55,6 +56,19 @@ public abstract class CITBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
+    driver.get("https://www.chance.com/");
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+    ;
+    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg) 
+        && Utille.isExistEle(driver, recoSele, loggg)) {
+      driver.findElement(By.cssSelector(recoSele)).click();
+    }
+    String se = "li.user>a>span.user_pt";
+    if (!Utille.isExistEle(driver, se, false, loggg)) {
+      // login!!
+      LoginSite.login(sCode, driver, loggg);
+    }
     for (String mission : missions) {
       Mission MisIns = null;
       switch (mission) {
