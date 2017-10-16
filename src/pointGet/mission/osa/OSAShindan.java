@@ -1,14 +1,15 @@
 package pointGet.mission.osa;
 
+import java.util.List;
 import java.util.Map;
-
-import lombok.val;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
+import pointGet.mission.parts.AnswerShindan;
 
 /**
  * @author saitou
@@ -16,88 +17,56 @@ import pointGet.common.Utille;
  */
 public class OSAShindan extends OSABase {
   final String url = "http://osaifu.com/contents/coinland/";
+  AnswerShindan Shindan = null;
 
   /**
    * @param logg
    */
   public OSAShindan(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "毎日診断");
+    Shindan = new AnswerShindan(logg);
   }
 
   @Override
   public void privateMission(WebDriver driver) {
     selector = "li>a>img[alt='毎日診断']";
     driver.get(url);
+    String sele0 = "div.entry", //
+    sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため
+    sumiSelector = "img[src='/images/icons/sumi.png']";
+    int limit = 60;
+    selector = "ul.check_list1 a[href='https://dietnavi.com/pc/game/shindan/play.php']";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 8000); // 遷移
+      clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);
-      while (true) {
-        Utille.sleep(5000);
-        //				selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
-        selector = "div[class='thumbnail'] span.button-new"; // NEWだけ実施
-        if (isExistEle(driver, selector)) {
-          clickSleepSelector(driver, selector, 4000); // 遷移
-          selector = "a.submit-btn";// 次へ
-          if (isExistEle(driver, selector)) {
-            clickSleepSelector(driver, selector, 5000); // 遷移
-            if (isExistEle(driver, selector)) {
-              this.waitTilReady(driver);
-              clickSleepSelector(driver, selector, 3000); // 遷移
-
-              if (isExistEle(driver, "div[data-qid]")) {
-                int qSize = getSelectorSize(driver, "div[data-qid]"); // 選択肢の数を数える
-                for (int i = 0; i < qSize; i++) {
-                  selector = "div[data-qid][class=''] label";
-                  if (isExistEle(driver, selector)) {
-                    int size = getSelectorSize(driver, selector); // 選択肢の数を数える
-                    int ran1 = Utille.getIntRand(size);
-                    if (isExistEle(driver.findElements(By.cssSelector(selector)).get(ran1))) {
-                      driver.findElements(By.cssSelector(selector)).get(ran1).click(); // 選択
-                      Utille.sleep(3000);
-
-                      // end-btn が出たら終了
-                      String none = "[style*='display: none']";
-                      String nextSelector = "div.actionBar>a.next-btn";
-                      String endSelector = "div.actionBar>a.end-btn";
-                      if (isExistEle(driver, endSelector + none, false)
-                          && isExistEle(driver, nextSelector)) {
-                        clickSleepSelector(driver, nextSelector, 2500); // 遷移
-                      }
-                      else if (isExistEle(driver, nextSelector + none, false)
-                          && isExistEle(driver, endSelector)) {
-                        Utille.sleep(2000);
-                        this.waitTilReady(driver);
-                        clickSleepSelector(driver, endSelector, 5000); // 遷移
-                        // 抜けたら　span#end-btn-area>a.end-btn　	をクリック
-                        selector = "span#end-btn-area>a.end-btn";
-                        if (isExistEle(driver.findElements(By.cssSelector(selector)))) {
-                          clickSleepSelector(driver, selector, 4000); // 遷移
-                          // アラートをけして
-                          val alert = driver.switchTo().alert();
-                          alert.accept();
-                          // overlayを消して
-                          checkOverlay(driver, "div#overlay p#close>i");
-
-                          selector = "div.col-xs-12>a.btn-warning";
-                          if (!isExistEle(driver, selector)) {
-                            break;
-                          }
-                          String returnUrl = driver.findElement(By.cssSelector(selector))
-                              .getAttribute("href");
-                          logg.info("returnUrl:" + returnUrl);
-                          driver.get(returnUrl);
-                          Utille.sleep(3000);
-                        }
-                      }
-                    }
-                  }
-                }
+      while (isExistEle(driver, sele0)) {
+        List<WebElement> eleList = driver.findElements(By.cssSelector(sele0));
+        int size1 = eleList.size(), zumiCnt = 0;
+        WebElement wEle = null;
+        for (int i = 0; i < size1; i++) {
+          if (isExistEle(eleList, i)) {
+            if (isExistEle(eleList.get(i), sumiSelector)) {
+              if (++zumiCnt > 3) { // 新規ミッション追加時はコメント
+                break;
               }
+              continue;
             }
+            wEle = eleList.get(i);
+            break;
           }
         }
-        else {
+        if (wEle == null
+            || zumiCnt > 3) {// 新規ミッション追加時はコメント
           logg.warn(mName + "]all済み");
+          break;
+        }
+        if (isExistEle(wEle, sele1)) {
+          clickSleepSelector(wEle, sele1, 4000); // 遷移
+          waitTilReady(driver);
+          Utille.sleep(4000);
+          Shindan.answer(driver, "", null);
+        }
+        else {
           break;
         }
       }

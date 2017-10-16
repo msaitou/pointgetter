@@ -29,7 +29,7 @@ public class PTOKumaVote extends PTOBase {
     selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
     String sele0 = "a.start__button" //
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
-        , preSele = "a>img[alt='election']";
+        , preSele = "dl>dt>img[src*='kumakumasenkyo']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       driver.switchTo().frame(0);

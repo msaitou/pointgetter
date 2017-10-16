@@ -42,7 +42,7 @@ public class GENUranai extends Mission {
 					String cmPageUrl = e.findElement(By.cssSelector(selector2)).getAttribute("href");
 					driver.get(cmPageUrl); // CMpage
 					Utille.sleep(3000);
-					String uranaiSelector = "a>img[alt='uranai']";
+					String uranaiSelector = "dl>dt>img[src*='kumakumaseiza_pc']";
 					if (!isExistEle(driver, uranaiSelector)) {
 						break;
 					}

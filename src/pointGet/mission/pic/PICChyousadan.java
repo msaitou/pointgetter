@@ -27,7 +27,7 @@ public class PICChyousadan extends PICBase {
   public void privateMission(WebDriver driver) {
     driver.get(url);
     selector = "dd.n9>a>span";
-    String seleFirst = "a>img[alt='reado']";
+    String seleFirst = "dl>dt>img[src*='kumakumachosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);

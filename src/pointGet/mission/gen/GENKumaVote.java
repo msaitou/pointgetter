@@ -46,7 +46,7 @@ public class GENKumaVote extends GENBase {
           Utille.sleep(3000);
           String sele0 = "a.start__button" //
           , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
-          , preSele = "a>img[alt='election']";
+          , preSele = "dl>dt>img[src*='kumakumasenkyo']";
           if (isExistEle(driver, preSele)) {
             clickSleepSelector(driver, preSele, 5000); // 遷移 全体へ
             changeCloseWindow(driver);

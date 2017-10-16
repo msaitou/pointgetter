@@ -27,7 +27,7 @@ public class MOPUranai extends MOPBase {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);
       Utille.sleep(9000);
-      String uranaiSelector = "a>img[alt='uranai']";
+      String uranaiSelector = "dl>dt>img[src*='kumakumaseiza_pc']";
       if (isExistEle(driver, uranaiSelector)) {
         clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
         changeCloseWindow(driver);

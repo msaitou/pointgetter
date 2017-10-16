@@ -25,7 +25,7 @@ public class PTOUranai extends PTOBase {
 			clickSleepSelector(driver, selector, 6000); // 遷移
 			driver.switchTo().frame(0);
 			Utille.sleep(3000);
-			String uranaiSelector = "a>img[alt='uranai']";
+			String uranaiSelector = "dl>dt>img[src*='kumakumaseiza_pc']";
 			if (isExistEle(driver, uranaiSelector)) {
 				clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
 				changeCloseWindow(driver);

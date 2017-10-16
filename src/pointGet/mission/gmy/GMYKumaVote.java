@@ -33,7 +33,7 @@ public class GMYKumaVote extends GMYBase {
     selector = "ul.check_list1 a[href*='http://dietnavi.com/pc/ad_jump.php']";
     String sele0 = "a.start__button" //
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
-        , preSele = "a>img[alt='election']";
+        , preSele = "dl>dt>img[src*='kumakumasenkyo']";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
     recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;

@@ -31,7 +31,7 @@ public class SUGChyousadan extends SUGBase {
   public void privateMission(WebDriver driver) {
     driver.get(url);
     selector = "dl.game-area>dt>a[href='/ssp/20']>img";
-    String seleFirst = "a>img[alt='reado']";
+    String seleFirst = "dl>dt>img[src*='kumakumachosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);

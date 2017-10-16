@@ -27,7 +27,7 @@ public class PTOChyousadan extends PTOBase {
   public void privateMission(WebDriver driver) {
     driver.get(url);
     selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
-    String seleFirst = "a>img[alt='reado']";
+    String seleFirst = "dl>dt>img[src*='kumakumachosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       driver.switchTo().frame(0);
