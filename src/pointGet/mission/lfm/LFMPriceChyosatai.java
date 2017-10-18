@@ -32,7 +32,7 @@ public class LFMPriceChyosatai extends LFMBase {
     for (int j = 0; j < 6; j++) {
       driver.get(url);
       String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
-      String selector = "dd>a>img[alt='プライス調査隊']";
+      String selector = "div>a>img[alt='プライス調査隊']";
       if (isExistEle(driver, selector)) {
         clickSleepSelector(driver, selector, 4000); // 遷移
         changeCloseWindow(driver);

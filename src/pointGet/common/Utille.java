@@ -579,16 +579,17 @@ public class Utille {
    * @param logg
    */
   public static void clickRecaptha(WebDriver driver, Logger logg) {
-    // キャプチャをクリック
-    WebElement iframe = driver.findElement(By.cssSelector("[title='reCAPTCHA ウィジェット']"));
-    driver.switchTo().frame(iframe);
-    String reCaptcha = "span#recaptcha-anchor";
-    if (isExistEle(driver, reCaptcha, logg)) {
-      Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
-      driver.findElement(By.cssSelector(reCaptcha)).click();
-      Utille.sleep(5000);
-      Utille.sleep(5000);
+    if (isExistEle(driver, "[title='reCAPTCHA ウィジェット']", false, logg)) {
+      // キャプチャをクリック
+      WebElement iframe = driver.findElement(By.cssSelector("[title='reCAPTCHA ウィジェット']"));
+      driver.switchTo().frame(iframe);
+      String reCaptcha = "span#recaptcha-anchor";
+      if (isExistEle(driver, reCaptcha, logg)) {
+        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
+        driver.findElement(By.cssSelector(reCaptcha)).click();
+        Utille.sleep(10000);
+      }
+      driver.switchTo().defaultContent();
     }
-    driver.switchTo().defaultContent();
   }
 }

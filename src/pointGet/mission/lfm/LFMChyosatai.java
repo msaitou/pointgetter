@@ -37,7 +37,7 @@ public class LFMChyosatai extends LFMBase {
     for (int j = 0; j < 6; j++) {
       driver.get(url);
       //        selector = "p.tokimeki";
-      String selector = "dd>a>img[alt='トキメキ調査隊']";
+      String selector = "div>a>img[alt='トキメキ調査隊']";
       if (isExistEle(driver, selector, false)) {
         clickSleepSelector(driver, selector, 4000); // 遷移
         changeCloseWindow(driver);
