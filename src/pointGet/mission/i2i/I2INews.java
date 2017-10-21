@@ -44,7 +44,7 @@ public class I2INews extends I2IBase {
           clickSleepSelector(e, selector2, 5000);
           // アラートをけして
           checkAndAcceptAlert(driver);
-          Utille.sleep(10000);
+          Utille.sleep(15000);
           changeWindow(driver, wid);
           selector = "img[src='./images/top/read_button.png']"; // アンケート一覧の回答するボタン
           String seleNextb2 = "a>img[alt='次へ']";

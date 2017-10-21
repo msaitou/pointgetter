@@ -88,7 +88,10 @@ public class DMYPointResearch extends DMYBase {
             && isExistEle(driver, sele1_)) {
           // $('iframe').contents().find("div>input[type='submit']")
           if (!AdEnq.answer(driver, sele1, wid)) {
-            break;
+            skip++;
+            driver.close();
+            driver.switchTo().window(wid);
+//            break;
           }
         }
         else if (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0

@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.LoginSite;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -51,6 +52,12 @@ public abstract class HAPBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
+    driver.get("http://hapitas.jp/");
+    String se = "li.user>a>span.user_pt";
+    if (!Utille.isExistEle(driver, se, false, loggg)) {
+      // login!!
+      LoginSite.login(sCode, driver, loggg);
+    }
     for (String mission : missions) {
       Mission MisIns = null;
       switch (mission) {

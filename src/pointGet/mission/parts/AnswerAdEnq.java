@@ -200,6 +200,9 @@ public class AnswerAdEnq extends MissCommon {
       }
       logg.info("999992");
     }
+    else {
+      return false;
+    }
     logg.info("999991");
     driver.close();
     logg.info("999991");

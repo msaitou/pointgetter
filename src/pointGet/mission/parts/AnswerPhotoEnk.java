@@ -104,10 +104,12 @@ public class AnswerPhotoEnk extends MissCommon {
       }
     }
     checkOverlay(driver, overLay, false);
+    Utille.clickRecaptha(driver, logg);
     if (isExistEle(driver, seleNextb2)) {
       clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
     }
     checkOverlay(driver, overLay, false);
+    Utille.clickRecaptha(driver, logg);
     if (isExistEle(driver, seleEnd)) {
       clickSleepSelector(driver, seleEnd, 4000); // 遷移　
     }

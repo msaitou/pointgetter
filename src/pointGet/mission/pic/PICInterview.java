@@ -77,7 +77,12 @@ public class PICInterview extends PICBase {
               boolean isSuccess = true;
               do {
                 try {
-                  AdEnq.answer(driver, sele1, wid);
+                  if (!AdEnq.answer(driver, sele1, wid)) {
+                    skip++;
+                    driver.close();
+                    driver.switchTo().window(wid);
+//                    break;
+                  }
                 }
                 catch (StaleElementReferenceException e) {
                  logg.warn("StaleElementReferenceException-----------------");

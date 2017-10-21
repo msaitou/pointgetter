@@ -65,17 +65,72 @@ public class LoginSite extends PointGet {
       case Define.PSITE_CODE_CIT:
         loginCit(driver, logg);
         break;
+      case Define.PSITE_CODE_HAP:
+        loginHap(driver, logg);
+        break;
+      case Define.PSITE_CODE_LFM:
+        loginLfm(driver, logg);
+        break;
       case Define.PSITE_CODE_ECN:
       case Define.PSITE_CODE_I2I:
       case Define.PSITE_CODE_MOB:
       case Define.PSITE_CODE_CRI:
-      case Define.PSITE_CODE_HAP:
       case Define.PSITE_CODE_KOZ:
       case Define.PSITE_CODE_NTM:
       case Define.PSITE_CODE_PNY:
       case Define.PSITE_CODE_SUG:
       default:
         return;
+    }
+  }
+
+  /**
+   * @param driver
+   * @param logg
+   */
+  public static void loginLfm(WebDriver driver, Logger logg) {
+    String seleLogin = "li.login>a>span";
+    if (Utille.isExistEle(driver, seleLogin, logg)) {
+      driver.findElement(By.cssSelector(seleLogin)).click();
+      Utille.sleep(4000);
+      if (Utille.isExistEle(driver, "dd>input[name='id']", logg)) {
+        WebElement ele = driver.findElement(By.cssSelector("dd>input[name='id']"));
+        ele.clear();
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CIT).get("loginid"));
+        ele = driver.findElement(By.cssSelector("dd>input[name='password']"));
+        ele.clear();
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CIT).get("loginpass"));
+//        Utille.clickRecaptha(driver, logg);
+        driver.findElement(By.cssSelector("p.btn_login>input.bt")).click();
+        Utille.sleep(5000);
+      }
+    }
+  }
+
+  /**
+   * @param driver
+   * @param logg
+   */
+  public static void loginHap(WebDriver driver, Logger logg) {
+    String seleLogin = "a.usernavi-link-signin";
+    if (Utille.isExistEle(driver, seleLogin, logg)) {
+      driver.findElement(By.cssSelector(seleLogin)).click();
+      Utille.sleep(4000);
+      if (Utille.isExistEle(driver, "li>input[name='mail']", logg)) {
+        WebElement ele = driver.findElement(By.cssSelector("li>input[name='mail']"));
+        ele.clear();
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_HAP).get("loginid"));
+        ele = driver.findElement(By.cssSelector("li>input[name='password']"));
+        ele.clear();
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_HAP).get("loginpass"));
+        // 自動ログインチェック（一応）
+        if (Utille.isExistEle(driver, "p>input[name='login_keep']", logg)) {
+          driver.findElement(By.cssSelector("p>input[name='login_keep']")).click();
+        }
+        Utille.clickRecaptha(driver, logg);
+        driver.findElement(By.cssSelector("p>input[type='submit']")).click();
+        Utille.sleep(5000);
+      }
     }
   }
 
@@ -95,7 +150,7 @@ public class LoginSite extends PointGet {
         ele = driver.findElement(By.cssSelector("dd>input[name='password']"));
         ele.clear();
         ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CIT).get("loginpass"));
-//        Utille.clickRecaptha(driver, logg);
+        Utille.clickRecaptha(driver, logg);
         driver.findElement(By.cssSelector("p.btn_login>input.bt")).click();
         Utille.sleep(5000);
       }

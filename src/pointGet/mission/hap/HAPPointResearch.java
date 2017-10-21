@@ -83,6 +83,13 @@ public class HAPPointResearch extends HAPBase {
       int size = eleList.size(), targetIndex = size - skip;
       if (targetIndex > -1 && size > targetIndex
           && isExistEle(eleList, targetIndex)) { // 古い順にやる
+        // メール参照の場合スキップ
+        WebElement judgeEle = eleList.get(targetIndex).findElement(By.xpath("../../../td[4]")); // 直前のtd
+        logg.info("text[" + judgeEle.getText() + "]");
+        if ("メール参照".equals(judgeEle.getText())) {
+          skip++;
+          continue;
+        }
         clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
@@ -108,7 +115,9 @@ public class HAPPointResearch extends HAPBase {
         }
         else if (isExistEle(driver, sele4_)) {
           // $('iframe').contents().find("div>input[type='submit']")
-          Shopping.answer(driver, sele4, wid);
+          if (!Shopping.answer(driver, sele4, wid)) {
+            skip++;
+          }
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0

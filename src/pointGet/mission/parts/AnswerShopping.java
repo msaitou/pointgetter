@@ -26,10 +26,15 @@ public class AnswerShopping extends MissCommon {
    * @param startSele
    * @param wid
    */
-  public void answer(WebDriver driver, String startSele, String wid) {
+  public boolean answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     Utille.sleep(5000);
     driver.switchTo().frame(0);
+    if (!isExistEle(driver, startSele)) {
+      driver.close();
+      driver.switchTo().window(wid);
+      return false;
+    }
     clickSleepSelector(driver, startSele, 3000);
     String
     //    radioSele = "div.answer>input[type='radio']", //
@@ -146,5 +151,6 @@ public class AnswerShopping extends MissCommon {
       driver.close();
       driver.switchTo().window(wid);
     }
+    return true;
   }
 }
