@@ -3,6 +3,7 @@ package pointGet.mission.parts;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
 import pointGet.mission.MissCommon;
 
 public class AnswerKenkou extends MissCommon {
@@ -46,10 +47,12 @@ public class AnswerKenkou extends MissCommon {
     }
 
     checkOverlay(driver, overLay);
+    Utille.clickRecaptha(driver, logg);
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 5000);
     }
     checkOverlay(driver, overLay);
+    Utille.clickRecaptha(driver, logg);
     if (isExistEle(driver, seleEnd)) {
       clickSleepSelector(driver, seleEnd, 6000);
     }

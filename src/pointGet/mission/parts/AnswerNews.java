@@ -3,6 +3,7 @@ package pointGet.mission.parts;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
 import pointGet.mission.MissCommon;
 
 public class AnswerNews extends MissCommon {
@@ -51,11 +52,13 @@ public class AnswerNews extends MissCommon {
       }
     }
 
+    Utille.clickRecaptha(driver, logg);
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 10000);
     }
     if (!isExistEle(driver, overLayNone, false)) {
       checkOverlay(driver, overLay);
+      Utille.clickRecaptha(driver, logg);
       clickSleepSelector(driver, startSele, 6000);
     }
     //    driver.close();

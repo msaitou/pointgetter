@@ -112,10 +112,12 @@ public class AnswerManga extends MissCommon {
       }
     }
     checkOverlay(driver, overLay);
+    Utille.clickRecaptha(driver, logg);
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 3000); // 遷移
     }
     checkOverlay(driver, overLay);
+    Utille.clickRecaptha(driver, logg);
 //    if (isExistEle(driver, finishSele)) {
 //      clickSleepSelector(driver, finishSele, 3000); // 遷移
 //      // タブが閉じる?
