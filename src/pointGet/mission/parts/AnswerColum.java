@@ -103,6 +103,8 @@ public class AnswerColum extends MissCommon {
     }
     for (int ii = 0; ii < 2; ii++) {
       checkOverlay(driver, overLay, false);
+      Utille.clickRecaptha(driver, logg);
+
       if (isExistEle(driver, seleNextb2)) {
         clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
       }

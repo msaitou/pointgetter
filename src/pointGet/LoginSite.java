@@ -283,6 +283,8 @@ public class LoginSite extends PointGet {
       ele = driver.findElement(By.cssSelector("input.passwordForm"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_WAR).get("loginpass"));
+      Utille.clickRecaptha(driver, logg);
+
       driver.findElement(By.cssSelector("input.btn.btnlogin")).click();
       Utille.sleep(4000);
     }
