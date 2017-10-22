@@ -32,6 +32,7 @@ public class AnswerHiroba extends MissCommon {
         seleNext = "button.next-btn", //
         finishSele = "button.next-btn[type='submit']", //
         closeSele = "input.btn_close_en";//
+    Utille.clickRecaptha(driver, logg);
 
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 2000); // 遷移　問開始

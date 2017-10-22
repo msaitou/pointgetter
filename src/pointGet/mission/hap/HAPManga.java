@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import pointGet.common.Utille;
 
 public class HAPManga extends HAPBase {
+  // ★未使用
 	final String url = "http://hapitas.jp/";
 
 	/**

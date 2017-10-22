@@ -51,15 +51,18 @@ public class AnswerNews extends MissCommon {
         }
       }
     }
-
+    checkOverlay(driver, overLay);
     Utille.clickRecaptha(driver, logg);
-    if (isExistEle(driver, startSele)) {
-      clickSleepSelector(driver, startSele, 10000);
+    String finishSele = "input[alt='進む']";
+    if (isExistEle(driver, finishSele)) {
+      clickSleepSelector(driver, finishSele, 10000);
     }
     if (!isExistEle(driver, overLayNone, false)) {
       checkOverlay(driver, overLay);
       Utille.clickRecaptha(driver, logg);
-      clickSleepSelector(driver, startSele, 6000);
+      if (isExistEle(driver, startSele)) {
+        clickSleepSelector(driver, startSele, 6000);
+      }
     }
     //    driver.close();
     //    driver.switchTo().window(wid);

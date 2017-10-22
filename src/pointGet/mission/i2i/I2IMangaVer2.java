@@ -123,6 +123,7 @@ public class I2IMangaVer2 extends I2IBase {
                   }
                 }
                 checkOverlay(driver, overLay, false);
+                Utille.clickRecaptha(driver, logg);
                 if (isExistEle(driver, seleNext)) {
                   clickSleepSelector(driver, seleNext, 3000); // 遷移
                 }

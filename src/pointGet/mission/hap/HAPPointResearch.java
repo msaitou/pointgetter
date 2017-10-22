@@ -70,7 +70,7 @@ public class HAPPointResearch extends HAPBase {
     sele4_ = "#iframe", //
     sele5 = "div#shindan", //
     sele6 = "form>input.next_bt", // コラム用
-    sele7 = "div.btn>button[type='submit']", //
+    sele7 = "div.btn>div>button[type='submit']", //
     sele8 = "form>input.next_bt", //
     sele9 = "a.start__button", //
     a = "";
