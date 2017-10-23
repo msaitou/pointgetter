@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerHiroba;
+import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKonatab;
 import pointGet.mission.parts.AnswerKotsuta;
 import pointGet.mission.parts.AnswerManga;
@@ -40,6 +41,7 @@ public class CRIPointResearch extends CRIBase {
   AnswerManga Manga = null;
   AnswerKonatab Konatab = null;
   AnswerMinnanosur Minnanosur = null;
+  AnswerKansatu Kansatu = null;
 
   /**
    * @param logg
@@ -59,6 +61,7 @@ public class CRIPointResearch extends CRIBase {
     Manga = new AnswerManga(logg);
     Konatab = new AnswerKonatab(logg);
     Minnanosur = new AnswerMinnanosur(logg);
+    Kansatu = new AnswerKansatu(logg);
   }
 
   @Override
@@ -73,7 +76,7 @@ public class CRIPointResearch extends CRIBase {
     sele4_ = "#iframe", //
     sele5 = "div#shindan", //
     sele6 = "form>input.next_bt", // コラム用
-    sele7 = "div.btn>button[type='submit']", //
+    sele7 = "div>button[type='submit']", //
     sele8 = "form>input.next_bt", //
     sele9 = "a.start__button", //
     sele10 = "p#nextBtn>input", //
@@ -106,7 +109,7 @@ public class CRIPointResearch extends CRIBase {
           Shindan.answer(driver, sele5, wid);
         }
         else if (cUrl.indexOf("question-hiroba") >= 0
-            && isExistEle(driver, sele7)) {
+            && isExistEle(driver, sele7, false)) {
           Hiroba.answer(driver, sele7, wid);
         }
         else if (cUrl.indexOf("minnanosurvey.com") >= 0
@@ -120,25 +123,36 @@ public class CRIPointResearch extends CRIBase {
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                    || cUrl.indexOf("eyemake-beauty.com") >= 0
             || cUrl.indexOf("style-cutehair.com") >= 0
             )
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
+          skip++;
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("natural-vegetables.com") >= 0
+                || cUrl.indexOf("eyemake-beauty.com") >= 0
             || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
         }
         else if ((cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
+            || cUrl.indexOf("eyemake-beauty.com") >= 0
             )
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
         }
         else if (isExistEle(driver, sele9)) {
           Tasuuketu.answer(driver, sele9, wid);
+        }
+        else if ((cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("healthy-cookinglife.com") >= 0
+            )
+            && isExistEle(driver, sele8)) {
+          Kansatu.answer(driver, sele8, wid);
         }
         // 漫画
         else if (isExistEle(driver, sele1)) {

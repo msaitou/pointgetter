@@ -70,7 +70,7 @@ public class HAPPointResearch extends HAPBase {
     sele4_ = "#iframe", //
     sele5 = "div#shindan", //
     sele6 = "form>input.next_bt", // コラム用
-    sele7 = "div.btn>div>button[type='submit']", //
+    sele7 = "div>button[type='submit']", //
     sele8 = "form>input.next_bt", //
     sele9 = "a.start__button", //
     a = "";
@@ -106,7 +106,7 @@ public class HAPPointResearch extends HAPBase {
           Shindan.answer(driver, sele5, wid);
         }
         else if (cUrl.indexOf("question-hiroba") >= 0
-            && isExistEle(driver, sele7)) {
+            && isExistEle(driver, sele7, false)) {  // キャプチャで見えないので
           Hiroba.answer(driver, sele7, wid);
         }
         else if (cUrl.indexOf("minnanosurvey.com") >= 0

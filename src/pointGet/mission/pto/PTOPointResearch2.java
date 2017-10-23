@@ -58,7 +58,7 @@ public class PTOPointResearch2 extends PTOBase {
     sele4 = "div>input[type='submit']", //
     sele4_ = "#iframe", //
     sele5 = "div#shindan", //
-    sele7 = "div.btn>button[type='submit']", //
+    sele7 = "div>button[type='submit']", //
     sele6 = "form>input.next_bt", // コラム用
     sele2 = "div.page-content-button>input.button.btn-next";
     while (true) {
@@ -97,7 +97,7 @@ public class PTOPointResearch2 extends PTOBase {
             Colum.answer(driver, sele6, wid);
           }
           else if (cUrl.indexOf("question-hiroba") >= 0
-              && isExistEle(driver, sele7)) {
+              && isExistEle(driver, sele7, false)) {
             Hiroba.answer(driver, sele7, wid);
           }
           else if (cUrl.indexOf("minnanosurvey.com") >= 0

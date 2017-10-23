@@ -86,7 +86,7 @@ public class GENPointResearch2 extends GENBase {
     sele4_ = "#iframe", //
     sele5 = "div#shindan", //
     sele6 = "form>input.next_bt", // コラム用
-    sele7 = "div.btn>button[type='submit']", //
+    sele7 = "div>button[type='submit']", //
     sele8 = "form>input.next_bt", sele9 = "a.start__button", sele10 = "div#buttonArea>input[name='next']", // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
     a = "";
     while (true) {
@@ -113,7 +113,7 @@ public class GENPointResearch2 extends GENBase {
           Shindan.answer(driver, sele5, wid);
         }
         else if (cUrl.indexOf("question-hiroba") >= 0
-            && isExistEle(driver, sele7)) {
+            && isExistEle(driver, sele7, false)) {
           Hiroba.answer(driver, sele7, wid);
         }
         else if (cUrl.indexOf("minnanosurvey.com") >= 0
