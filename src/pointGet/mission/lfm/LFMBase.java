@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.LoginSite;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -57,10 +58,11 @@ public abstract class LFMBase extends Mission {
     WebDriver driver = getWebDriver(cProps);
     String sel = "div.point span.F5";
     driver.get("http://lifemedia.jp/");
-//    if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
-//      // login!!
-//      LoginSite.login(sCode, driver, loggg);
-//    }
+    String sele = "em#mempoint";
+    if (!Utille.isExistEle(driver, sele, loggg)) {
+      // login!!
+      LoginSite.login(sCode, driver, loggg);
+    }
     for (String mission : missions) {
       Mission MisIns = null;
       switch (mission) {
@@ -149,10 +151,10 @@ public abstract class LFMBase extends Mission {
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "em#mempoint", point = "";
     driver.get("http://lifemedia.jp/");
-//    if (!Utille.isExistEle(driver, selector, logg)) {
-//      // login!!
-//      LoginSite.login(sCode, driver, logg);
-//    }
+    if (!Utille.isExistEle(driver, selector, logg)) {
+      // login!!
+      LoginSite.login(sCode, driver, logg);
+    }
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

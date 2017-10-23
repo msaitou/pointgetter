@@ -89,19 +89,19 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginLfm(WebDriver driver, Logger logg) {
-    String seleLogin = "li.login>a>span";
+    String seleLogin = "li.log>a>span";
     if (Utille.isExistEle(driver, seleLogin, logg)) {
       driver.findElement(By.cssSelector(seleLogin)).click();
       Utille.sleep(4000);
-      if (Utille.isExistEle(driver, "dd>input[name='id']", logg)) {
-        WebElement ele = driver.findElement(By.cssSelector("dd>input[name='id']"));
+      if (Utille.isExistEle(driver, "input[name='IMIID']", logg)) {
+        WebElement ele = driver.findElement(By.cssSelector("input[name='IMIID']"));
         ele.clear();
         ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CIT).get("loginid"));
-        ele = driver.findElement(By.cssSelector("dd>input[name='password']"));
+        ele = driver.findElement(By.cssSelector("input[name='PASS']"));
         ele.clear();
         ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CIT).get("loginpass"));
 //        Utille.clickRecaptha(driver, logg);
-        driver.findElement(By.cssSelector("p.btn_login>input.bt")).click();
+        driver.findElement(By.cssSelector("div>input.next")).click();
         Utille.sleep(5000);
       }
     }
