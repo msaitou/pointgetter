@@ -115,6 +115,7 @@ public class GMYPointResearch extends GMYBase {
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("style-cutehair.com") >= 0
             )
             && isExistEle(driver, sele6)) {
@@ -123,11 +124,13 @@ public class GMYPointResearch extends GMYBase {
         else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("cosmetic-brand.com") >= 0
             || cUrl.indexOf("natural-vegetables.com") >= 0
+                || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
         }
         else if ((cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
             )
             && isExistEle(driver, sele8)) {

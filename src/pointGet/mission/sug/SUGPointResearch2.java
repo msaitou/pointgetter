@@ -82,9 +82,10 @@ public class SUGPointResearch2 extends SUGBase {
             Kotsuta.answer(driver, sele1, wid);
           }
           else if ((cUrl2.indexOf("column-enquete") >= 0
+              || cUrl.indexOf("eyelashes-fashion.com") >= 0
               || cUrl2.indexOf("beautynail-design.com") >= 0)
               && isExistEle(driver, sele6)) {
-                Utille.sleep(4000);
+            Utille.sleep(4000);
             Colum.answer(driver, sele6, wid);
           }
           else if (cUrl2.indexOf("minnanosurvey.com") >= 0
@@ -99,6 +100,7 @@ public class SUGPointResearch2 extends SUGBase {
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
             || cUrl.indexOf("style-cutehair.com") >= 0
             )

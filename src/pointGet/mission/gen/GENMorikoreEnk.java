@@ -81,8 +81,7 @@ public class GENMorikoreEnk extends GENBase {
           sele3 = "form>input[type='submit']", //
           sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
           sele6 = "form>input.next_bt", // コラム用
-              sele4 = "a.submit-btn",
-          b = "";
+          sele4 = "a.submit-btn", b = "";
           while (true) {
             checkOverlay(driver, overlaySele, false);
             if (!isExistEle(driver, selector)) {
@@ -131,7 +130,8 @@ public class GENMorikoreEnk extends GENBase {
               }
               else if ((cUrl.indexOf("column-enquete") >= 0
                   || cUrl.indexOf("beautynail-design.com") >= 0
-                      || cUrl.indexOf("style-cutehair.com") >= 0
+                  || cUrl.indexOf("style-cutehair.com") >= 0
+                  || cUrl.indexOf("eyelashes-fashion.com") >= 0
                   || cUrl.indexOf("fashion-cosmelife.com") >= 0)
                   && isExistEle(driver, sele6)) {
                 Colum.answer(driver, sele6, wid);

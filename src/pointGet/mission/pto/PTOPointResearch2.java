@@ -90,6 +90,7 @@ public class PTOPointResearch2 extends PTOBase {
           }
           else if ((cUrl.indexOf("column-enquete") >= 0
               || cUrl.indexOf("beautynail-design.com") >= 0
+              || cUrl.indexOf("eyelashes-fashion.com") >= 0
               || cUrl.indexOf("fashion-cosmelife.com") >= 0
               || cUrl.indexOf("style-cutehair.com") >= 0
               )
