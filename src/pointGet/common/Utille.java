@@ -37,7 +37,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -62,9 +62,14 @@ public class Utille {
     System.setProperty("webdriver.gecko.driver", geckoPath);
     System.setProperty("webdriver.firefox.profile", ffProfile);
 
-    DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-    capabilities.setCapability("marionette", true);
-    WebDriver driver = new FirefoxDriver(capabilities);
+//    DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+//    capabilities.setCapability("marionette", true);
+    
+    FirefoxOptions firefoxOptions = new FirefoxOptions();
+    firefoxOptions.setCapability("marionette", true);
+    WebDriver driver  = new FirefoxDriver(firefoxOptions);
+    
+//    WebDriver driver = new FirefoxDriver(capabilities);
     return driver;
   }
 

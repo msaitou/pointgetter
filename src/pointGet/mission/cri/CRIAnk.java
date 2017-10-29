@@ -74,6 +74,7 @@ public class CRIAnk extends CRIBase {
                         clickSleepSelector(eleChoice, choiceNum, 3000); // 選択肢を選択
                         if (isExistEle(driver, nextSele2)) {
                           clickSleepSelector(driver, nextSele2, 3000);
+                          Utille.clickRecaptha(driver, logg);
                           if (isExistEle(driver, nextSele2)) { // 答え合わせ
                             clickSleepSelector(driver, nextSele2, 4000); // 次の問題
                           }
