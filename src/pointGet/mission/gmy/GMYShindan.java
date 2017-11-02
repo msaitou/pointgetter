@@ -51,9 +51,9 @@ public class GMYShindan extends GMYBase {
         for (int i = 0; i < size1; i++) {
           if (isExistEle(eleList, i)) {
             if (isExistEle(eleList.get(i), sumiSelector)) {
-              if (++zumiCnt > 3) { // 新規ミッション追加時はコメント
-                break;
-              }
+//              if (++zumiCnt > 3) { // 新規ミッション追加時はコメント
+//                break;
+//              }
               continue;
             }
             wEle = eleList.get(i);
@@ -61,7 +61,8 @@ public class GMYShindan extends GMYBase {
           }
         }
         if (wEle == null
-            || zumiCnt > 3) {// 新規ミッション追加時はコメント
+//            || zumiCnt > 3
+            ) {// 新規ミッション追加時はコメント
           logg.warn(mName + "]all済み");
           break;
         }

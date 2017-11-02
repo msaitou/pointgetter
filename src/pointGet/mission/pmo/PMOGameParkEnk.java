@@ -71,7 +71,8 @@ public class PMOGameParkEnk extends PMOBase {
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");
-            if (cUrl.indexOf("poimon.qpark.jp/enquete/") >= 0
+            if ((cUrl.indexOf("poimon.qpark.jp/enquete/") >= 0
+                || cUrl.indexOf("credit-card.link/ad/enq") >= 0)
                 && isExistEle(driver, sele1)) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);

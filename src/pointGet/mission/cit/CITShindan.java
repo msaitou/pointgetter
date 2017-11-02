@@ -45,9 +45,9 @@ public class CITShindan extends CITBase {
         for (int i = 0; i < size1; i++) {
           if (isExistEle(eleList, i)) {
             if (isExistEle(eleList.get(i), sumiSelector)) {
-              if (++zumiCnt > limit) { // 新規ミッション追加時はコメント
-                break;
-              }
+//              if (++zumiCnt > limit) { // 新規ミッション追加時はコメント
+//                break;
+//              }
               continue;
             }
             wEle = eleList.get(i);
@@ -55,7 +55,8 @@ public class CITShindan extends CITBase {
           }
         }
         if (wEle == null
-            || zumiCnt > limit) {// 新規ミッション追加時はコメント
+//            || zumiCnt > limit
+            ) {// 新規ミッション追加時はコメント
           logg.warn(mName + "]all済み");
           break;
         }

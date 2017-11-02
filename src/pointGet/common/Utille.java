@@ -62,14 +62,14 @@ public class Utille {
     System.setProperty("webdriver.gecko.driver", geckoPath);
     System.setProperty("webdriver.firefox.profile", ffProfile);
 
-//    DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-//    capabilities.setCapability("marionette", true);
-    
+    //    DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+    //    capabilities.setCapability("marionette", true);
+
     FirefoxOptions firefoxOptions = new FirefoxOptions();
     firefoxOptions.setCapability("marionette", true);
-    WebDriver driver  = new FirefoxDriver(firefoxOptions);
-    
-//    WebDriver driver = new FirefoxDriver(capabilities);
+    WebDriver driver = new FirefoxDriver(firefoxOptions);
+
+    //    WebDriver driver = new FirefoxDriver(capabilities);
     return driver;
   }
 
@@ -240,7 +240,7 @@ public class Utille {
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
     JavascriptExecutor js = (JavascriptExecutor) driver;
     //scrollIntoView(true)だけだとスクロールしすぎるので、少し戻す
-    js.executeScript("javascript:window.scrollBy(0,-120)");
+    js.executeScript("javascript:window.scrollBy(0,-620)");
   }
 
   /**
@@ -590,9 +590,22 @@ public class Utille {
       driver.switchTo().frame(iframe);
       String reCaptcha = "span#recaptcha-anchor";
       if (isExistEle(driver, reCaptcha, logg)) {
-        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
+        //        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
         driver.findElement(By.cssSelector(reCaptcha)).click();
-        Utille.sleep(10000);
+        int sleepCnt = 1;
+        boolean hopeBool = false;
+        Utille.sleep(2000);
+        driver.switchTo().defaultContent();
+        while (sleepCnt <= 300) {
+          WebElement iframeImage = driver.findElement(By.cssSelector("[title='reCAPTCHA による確認']"));
+          if (hopeBool == iframeImage.isDisplayed()) {
+            logg.info("display:" + iframeImage.isDisplayed());
+            break;
+          }
+          Utille.sleep(100);
+          sleepCnt++;
+        }
+        Utille.sleep(2000);
       }
       driver.switchTo().defaultContent();
     }
