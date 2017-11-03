@@ -584,9 +584,11 @@ public class Utille {
    * @param logg
    */
   public static void clickRecaptha(WebDriver driver, Logger logg) {
-    if (isExistEle(driver, "[title='reCAPTCHA ウィジェット']", false, logg)) {
+    Utille.sleep(2000);
+    String reCaptchaCheck = "div.g-recaptcha iframe";
+    if (isExistEle(driver, reCaptchaCheck, false, logg)) {
       // キャプチャをクリック
-      WebElement iframe = driver.findElement(By.cssSelector("[title='reCAPTCHA ウィジェット']"));
+      WebElement iframe = driver.findElement(By.cssSelector(reCaptchaCheck));
       driver.switchTo().frame(iframe);
       String reCaptcha = "span#recaptcha-anchor";
       if (isExistEle(driver, reCaptcha, logg)) {
