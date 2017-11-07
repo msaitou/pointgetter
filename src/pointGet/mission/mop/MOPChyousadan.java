@@ -30,10 +30,10 @@ public class MOPChyousadan extends MOPBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "dl>dt>img[src*='kumakumachosa']";
-    String seleFirst = "a>img[alt='reado']";
+    selector = "div.game_btn>div.icon>img[alt='CMくじ']";
+    String seleFirst = "dl>dt>img[src*='kumakumachosa']";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 6000); // 遷移
+      clickSleepSelector(driver, selector, 8000); // 遷移
       changeCloseWindow(driver);
       Utille.sleep(3000);
       if (isExistEle(driver, seleFirst)) {
@@ -44,7 +44,7 @@ public class MOPChyousadan extends MOPBase {
         String sele1_ = "iframe.question_frame", //
         sele1 = "form>input[type='submit']", //
         b = "";
-        selector = "div.enquete_box a dd.title>strong";
+        selector = "div.enquete_box>a";
         int cn = 0;
         while (isExistEle(driver, selector)) {
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));

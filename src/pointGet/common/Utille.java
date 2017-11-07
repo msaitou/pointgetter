@@ -598,18 +598,65 @@ public class Utille {
         boolean hopeBool = false;
         Utille.sleep(2000);
         driver.switchTo().defaultContent();
-        while (sleepCnt <= 300) {
-          WebElement iframeImage = driver.findElement(By.cssSelector("[title='reCAPTCHA による確認']"));
-          if (hopeBool == iframeImage.isDisplayed()) {
-            logg.info("display:" + iframeImage.isDisplayed());
-            break;
+        String reCapatChaConfirm = "[title='reCAPTCHA による確認']";
+        if (isExistEle(driver, reCapatChaConfirm, logg)) {
+          while (sleepCnt <= 300) {
+            WebElement iframeImage = driver.findElement(By.cssSelector(reCapatChaConfirm));
+            if (hopeBool == iframeImage.isDisplayed()) {
+              logg.info("display:" + iframeImage.isDisplayed());
+              break;
+            }
+            Utille.sleep(100);
+            sleepCnt++;
           }
-          Utille.sleep(100);
-          sleepCnt++;
+          Utille.sleep(2000);
         }
-        Utille.sleep(2000);
       }
       driver.switchTo().defaultContent();
     }
   }
+  /**
+  *
+  * @param driver
+  * @param logg
+  */
+ public static boolean clickRecaptha(WebDriver driver, Logger logg, String baseFrameSele) {
+   boolean res = false;
+   Utille.sleep(2000);
+   String reCaptchaCheck = "div.g-recaptcha iframe";
+   if (isExistEle(driver, reCaptchaCheck, false, logg)) {
+     // キャプチャをクリック
+     WebElement iframe = driver.findElement(By.cssSelector(reCaptchaCheck));
+     driver.switchTo().frame(iframe);
+     String reCaptcha = "span#recaptcha-anchor";
+     if (isExistEle(driver, reCaptcha, logg)) {
+       //        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
+       driver.findElement(By.cssSelector(reCaptcha)).click();
+       int sleepCnt = 1;
+       boolean hopeBool = false;
+       Utille.sleep(2000);
+       driver.switchTo().defaultContent();
+       WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
+       driver.switchTo().frame(baseFrame);
+       String reCapatChaConfirm = "[title='reCAPTCHA による確認']";
+       if (isExistEle(driver, reCapatChaConfirm, false, logg)) {
+         res = true;
+         while (sleepCnt <= 300) {
+           WebElement iframeImage = driver.findElement(By.cssSelector(reCapatChaConfirm));
+           if (hopeBool == iframeImage.isDisplayed()) {
+             logg.info("display:" + iframeImage.isDisplayed());
+             break;
+           }
+           Utille.sleep(100);
+           sleepCnt++;
+         }
+         Utille.sleep(2000);
+       }
+     }
+     driver.switchTo().defaultContent();
+     WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
+     driver.switchTo().frame(baseFrame);
+   }
+   return res;
+ }
 }

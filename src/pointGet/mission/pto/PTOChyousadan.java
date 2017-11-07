@@ -30,17 +30,17 @@ public class PTOChyousadan extends PTOBase {
     String seleFirst = "dl>dt>img[src*='kumakumachosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
-      driver.switchTo().frame(0);
+      changeCloseWindow(driver);
       Utille.sleep(3000);
       if (isExistEle(driver, seleFirst)) {
-        clickSleepSelector(driver, seleFirst, 3000); // 遷移 全体へ
+        clickSleepSelector(driver, seleFirst, 3000); // 調査一覧へ
         changeCloseWindow(driver);
-        Utille.sleep(10000);
+        Utille.sleep(3000);
         int skip = 1;
         String sele1_ = "iframe.question_frame", //
         sele1 = "form>input[type='submit']", //
         b = "";
-        selector = "div.enquete_box a dd.title>strong";
+        selector = "div.enquete_box>a";
         int cn = 0;
         while (isExistEle(driver, selector)) {
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -48,7 +48,8 @@ public class PTOChyousadan extends PTOBase {
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             Utille.scrolledPage(driver, eleList.get(targetIndex));
-            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+//            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+            clickSleepSelector(driver.findElements(By.cssSelector(selector)).get(targetIndex), 6000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");

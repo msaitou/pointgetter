@@ -48,7 +48,7 @@ public class GENMorikoreEnk extends GENBase {
     String enkLinkSele = "a>img[alt='モリモリ診断']", //
     a = "";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 4000); // 遷移
+      clickSleepSelector(driver, selector, 10000); // 遷移
       changeCloseWindow(driver);
 
       if (isExistEle(driver, enkLinkSele)) {

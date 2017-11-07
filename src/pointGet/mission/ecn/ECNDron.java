@@ -23,8 +23,8 @@ public class ECNDron extends ECNBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		String[] dronUrlList = { "http://ecnavi.jp/", "http://ecnavi.jp/pointboard/#doron" };
-		selector = "div#doron a.item";
+		String[] dronUrlList = { "http://ecnavi.jp/", "http://ecnavi.jp/shopping/#doron" };
+		selector = "div#doron a.item>img";
 		for (int i = 0; i < dronUrlList.length; i++) {
 			driver.get(dronUrlList[i]);
 			Utille.sleep(2000);

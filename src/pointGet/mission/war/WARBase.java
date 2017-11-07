@@ -56,7 +56,7 @@ public abstract class WARBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    String selector = "span.item>span.PT3.marginRight5", point = "";
+    String selector = "li.PT3.pt", point = "";
     driver.get("http://www.warau.jp/");
     if (!Utille.isExistEle(driver, selector, loggg)) {
       // login!!
@@ -113,7 +113,7 @@ public abstract class WARBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "span.item>span.PT3.marginRight5", point = "";
+    String selector = "li.PT3.pt", point = "";
     driver.get("http://www.warau.jp/");
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!

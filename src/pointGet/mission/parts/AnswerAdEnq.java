@@ -29,9 +29,16 @@ public class AnswerAdEnq extends MissCommon {
   public boolean answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     Utille.sleep(3000);
+    String baseFrameSele = "iframe.question_frame";
     driver.switchTo().frame(0);
-    if (isExistEle(driver, "iframe[title='reCAPTCHA ウィジェット']")) {
-      return false;
+//    if (isExistEle(driver, "iframe[title='reCAPTCHA ウィジェット']")) {
+//      return false;
+//    }
+    if (Utille.clickRecaptha(driver, logg, baseFrameSele)) {
+      String preStartSele = "div.btn_next>input[type='submit']";
+      if (isExistEle(driver, preStartSele)) {
+        clickSleepSelector(driver, preStartSele, 3000);
+      }
     }
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 3000);

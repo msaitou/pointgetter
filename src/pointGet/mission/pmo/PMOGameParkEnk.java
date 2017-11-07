@@ -72,12 +72,13 @@ public class PMOGameParkEnk extends PMOBase {
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");
             if ((cUrl.indexOf("poimon.qpark.jp/enquete/") >= 0
-                || cUrl.indexOf("credit-card.link/ad/enq") >= 0)
+                )
                 && isExistEle(driver, sele1)) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);
             }
-            else if (cUrl.indexOf("adsurvey.media-ad.jp") >= 0
+            else if ((cUrl.indexOf("adsurvey.media-ad.jp") >= 0
+                || cUrl.indexOf("credit-card.link/ad/enq") >= 0)
                 && isExistEle(driver, sele2_)) {
               // $('iframe').contents().find("div>input[type='submit']")
               Utille.sleep(4000);
