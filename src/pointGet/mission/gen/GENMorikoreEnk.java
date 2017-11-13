@@ -120,6 +120,7 @@ public class GENMorikoreEnk extends GENBase {
                 skip++;
               }
               else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+                  || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
                   || cUrl.indexOf("enquetter.com/question") >= 0
                   || cUrl.indexOf("seikaku-checker.club/question") >= 0
                   || cUrl.indexOf("http://credit-card.link") >= 0

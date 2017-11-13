@@ -113,6 +113,7 @@ public class SUGGetPark extends SUGBase {
               skip++;
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+                || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
                 || cUrl.indexOf("checker.club/question/") >= 0
                 || cUrl.indexOf("dgss/question") >= 0)
                 && isExistEle(driver, sele3)) {

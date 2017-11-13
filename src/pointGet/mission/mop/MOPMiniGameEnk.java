@@ -108,6 +108,7 @@ public class MOPMiniGameEnk extends MOPBase {
               skip++;
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+                || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
                 || cUrl.indexOf("enquetter.com/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);

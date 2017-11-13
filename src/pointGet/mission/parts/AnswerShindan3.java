@@ -10,13 +10,13 @@ import org.openqa.selenium.WebElement;
 import pointGet.common.Utille;
 import pointGet.mission.MissCommon;
 
-public class AnswerShindan extends MissCommon {
+public class AnswerShindan3 extends MissCommon {
   /**
    * constracter
    *
    * @param log4j object
    */
-  public AnswerShindan(Logger log) {
+  public AnswerShindan3(Logger log) {
     logg = log;
   }
 
@@ -46,12 +46,6 @@ public class AnswerShindan extends MissCommon {
 
           int qSize = getSelectorSize(driver, "div[data-qid]"); // 問題の数を数える
           for (int i = 0; i < qSize + 5; i++) {
-            if (i == 0) {
-              sele = "div[data-qid='" + (i +1) + "'] label";
-            }
-            else {
-              sele = "div[data-qid][class=''] label";
-            }
             if (isExistEle(driver, sele)) {
               List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
               int size = eleList.size(), // 選択肢の数を数える
