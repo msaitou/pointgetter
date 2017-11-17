@@ -96,10 +96,10 @@ public class LoginSite extends PointGet {
       if (Utille.isExistEle(driver, "input[name='IMIID']", logg)) {
         WebElement ele = driver.findElement(By.cssSelector("input[name='IMIID']"));
         ele.clear();
-        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CIT).get("loginid"));
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_LFM).get("loginid"));
         ele = driver.findElement(By.cssSelector("input[name='PASS']"));
         ele.clear();
-        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CIT).get("loginpass"));
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_LFM).get("loginpass"));
 //        Utille.clickRecaptha(driver, logg);
         driver.findElement(By.cssSelector("div>input.next")).click();
         Utille.sleep(5000);
