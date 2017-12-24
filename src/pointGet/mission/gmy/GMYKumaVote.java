@@ -30,7 +30,7 @@ public class GMYKumaVote extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "ul.check_list1 a[href*='http://dietnavi.com/pc/ad_jump.php']";
+    selector = "div.everyday_list1 ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
     String sele0 = "a.start__button" //
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "dl>dt>img[src*='kumakumasenkyo']";

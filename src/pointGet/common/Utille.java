@@ -435,9 +435,13 @@ public class Utille {
       operator[i++] = ope;
     }
     ScriptEngineManager manager = new ScriptEngineManager();
-    ScriptEngine engine = manager.getEngineByName("JavaScript");
+    ScriptEngine engine = manager.getEngineByName("nashorn");
     Object res = null;
     try {
+      System.out.println("\\t strNum1[" + strNum1 + operator[0] + strNum2 + operator[1] + strNum3 + "]");
+      System.out.println("\\t manager[" + manager + "]");
+      System.out.println("\\t engine[" + engine + "]");
+
       res = engine.eval(strNum1 + operator[0] + strNum2 + operator[1] + strNum3);
       if (res instanceof Double) {
         double val = (Double) res;

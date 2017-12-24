@@ -124,12 +124,19 @@ public class CRIPointResearch extends CRIBase {
             || cUrl.indexOf("beautynail-design.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
                 || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                    || cUrl.indexOf("eyemake-beauty.com") >= 0
+//                    || cUrl.indexOf("eyemake-beauty.com") >= 0
             || cUrl.indexOf("style-cutehair.com") >= 0
             )
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
           skip++;
+        }
+        else if ((cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("healthy-cookinglife.com") >= 0
+            )
+            && isExistEle(driver, sele8)) {
+          Kansatu.answer(driver, sele8, wid);
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("natural-vegetables.com") >= 0
@@ -149,13 +156,6 @@ public class CRIPointResearch extends CRIBase {
         }
         else if (isExistEle(driver, sele9)) {
           Tasuuketu.answer(driver, sele9, wid);
-        }
-        else if ((cUrl.indexOf("eyemake-beauty.com") >= 0
-            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-            || cUrl.indexOf("healthy-cookinglife.com") >= 0
-            )
-            && isExistEle(driver, sele8)) {
-          Kansatu.answer(driver, sele8, wid);
         }
         // 漫画
         else if (isExistEle(driver, sele1)) {

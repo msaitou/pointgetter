@@ -30,13 +30,11 @@ public class MOPUranai extends MOPBase {
       String uranaiSelector = "dl>dt>img[src*='kumakumaseiza_pc']";
       if (isExistEle(driver, uranaiSelector)) {
         clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
-        changeCloseWindow(driver);
-        Utille.sleep(10000);
-        String selector1 = "section>div>form>input[type=image]";
         String wid = driver.getWindowHandle();
-        if (isExistEle(driver, selector1)) {
-          Uranai.answer(driver, selector1, wid);
-        }
+        changeCloseWindow(driver);
+        Utille.sleep(15000);
+        String selector1 = "section>div>form>input[type=image]";
+        Uranai.answer(driver, selector1, wid);
       }
     }
   }
