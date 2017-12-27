@@ -83,7 +83,8 @@ public class CITPointResearch extends CITBase {
         String cUrl = driver.getCurrentUrl();
         logg.info("url[" + cUrl + "]");
 
-        if (cUrl.indexOf("kotsuta.com") >= 0
+        if ((cUrl.indexOf("kotsuta.com") >= 0
+            || cUrl.indexOf("kotsukotsutame-ru.com") >= 0)
             && isExistEle(driver, sele2)) {
           // ws-g.jp は対象外
           Kotsuta.answer(driver, sele2, wid);
@@ -95,7 +96,8 @@ public class CITPointResearch extends CITBase {
         else if (isExistEle(driver, sele5)) {
           Shindan.answer(driver, sele5, wid);
         }
-        else if (cUrl.indexOf("question-hiroba") >= 0
+        else if ((cUrl.indexOf("question-hiroba") >= 0
+            || cUrl.indexOf("kenko-gourmet.com") >= 0)
             && isExistEle(driver, sele7, false)) {
           Hiroba.answer(driver, sele7, wid);
         }

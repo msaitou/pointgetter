@@ -97,7 +97,8 @@ public class PTOPointResearch2 extends PTOBase {
               && isExistEle(driver, sele6)) {
             Colum.answer(driver, sele6, wid);
           }
-          else if (cUrl.indexOf("question-hiroba") >= 0
+          else if ((cUrl.indexOf("question-hiroba") >= 0
+              || cUrl.indexOf("kenko-gourmet.com") >= 0)
               && isExistEle(driver, sele7, false)) {
             Hiroba.answer(driver, sele7, wid);
           }

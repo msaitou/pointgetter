@@ -105,7 +105,8 @@ public class HAPPointResearch extends HAPBase {
         else if (isExistEle(driver, sele5)) {
           Shindan.answer(driver, sele5, wid);
         }
-        else if (cUrl.indexOf("question-hiroba") >= 0
+        else if ((cUrl.indexOf("question-hiroba") >= 0
+            || cUrl.indexOf("kenko-gourmet.com") >= 0)
             && isExistEle(driver, sele7, false)) {  // キャプチャで見えないので
           Hiroba.answer(driver, sele7, wid);
         }
