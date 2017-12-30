@@ -2,6 +2,7 @@ package pointGet.mission.pto;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -115,7 +116,7 @@ public class PTOPointResearch2 extends PTOBase {
             driver.close();
             driver.switchTo().window(wid);
           }
-          driver.navigate().refresh();
+          Utille.refresh(driver, logg);
           Utille.sleep(5000);
         }
         else {

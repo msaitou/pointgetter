@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -663,4 +664,71 @@ public class Utille {
    }
    return res;
  }
+ /**
+  * 
+  * @param driver
+  * @param logg
+  */
+ static public void refresh(WebDriver driver, Logger logg) {
+	 refresh(driver, logg, 30000);
+ }
+
+ /**
+  * 
+  * @param driver
+  * @param logg
+  * @param mill
+  */
+ static public void refresh(WebDriver driver, Logger logg, long mill) {
+	 try {
+	     logg.info("refresh設定ーー");
+	     driver.manage().timeouts().pageLoadTimeout(mill, TimeUnit.MILLISECONDS);
+	     logg.info("refresh設定語ーー");
+	 }
+	 catch (Exception e) {
+//	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+	     logg.info("タイムアウトしましたよ?");
+	 }
+	 try {
+	     logg.info("refresh前ーー");
+	     driver.navigate().refresh();
+	     logg.info("refresh後ーー");
+	 }
+	 catch (Exception e) {
+	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+	     logg.info("タイムアウトしましたよ");
+	 }
+ }
+ 
+ static public void url(WebDriver driver, String url, Logger logg) {
+	 url(driver, url, logg, 30000);
+ }
+ 
+ /**
+  * 
+  * @param driver
+  * @param logg
+  * @param mill
+  */
+ static public void url(WebDriver driver, String url, Logger logg, long mill) {
+	 try {
+	     logg.info("url設定ーー");
+	     driver.manage().timeouts().pageLoadTimeout(mill, TimeUnit.MILLISECONDS);
+	     logg.info("url設定語ーー");
+	 }
+	 catch (Exception e) {
+//	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+	     logg.info("タイムアウトしましたよ?");
+	 }
+	 try {
+	     logg.info("url前ーー");
+	     driver.get(url);
+	     logg.info("url後ーー");
+	 }
+	 catch (Exception e) {
+	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+	     logg.info("タイムアウトしましたよ");
+	 }
+ }
 }
+

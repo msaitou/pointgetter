@@ -31,7 +31,8 @@ public class DMYPriceChyosatai extends DMYBase {
   public void privateMission(WebDriver driver) {
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
-      driver.get(url);
+        Utille.url(driver, url, logg);
+//      driver.get(url);
       selector = "i.c-dmoney_icon_21_reward";
       if (isExistEle(driver, selector)) {
         clickSleepSelector(driver, selector, 3000);
@@ -39,7 +40,6 @@ public class DMYPriceChyosatai extends DMYBase {
       selector = "img[src*='price.png']";
       if (isExistEle(driver, selector)) {
         clickSleepSelector(driver, selector, 5000);
-        String wid = driver.getWindowHandle();
         changeCloseWindow(driver);
       }
       checkOverlay(driver, overlaySelector);
@@ -89,11 +89,32 @@ public class DMYPriceChyosatai extends DMYBase {
     exchageListSele = "select[name='point']", //
     doExchangeSele = "div.btn-area>button[type='submit']", //
     sele = "li.js_tabPrice a.start-search";
-    driver.get(url);
-    if (isExistEle(driver, sele)) {
-      clickSleepSelector(driver, sele, 4000); // 遷移
+//    driver.get(url);
+    Utille.url(driver, url, logg);
+    selector = "i.c-dmoney_icon_21_reward";
+    if (isExistEle(driver, selector)) {
+      clickSleepSelector(driver, selector, 3000);
+    }
+    selector = "img[src*='price.png']";
+    if (isExistEle(driver, selector)) {
+      clickSleepSelector(driver, selector, 5000);
+      String wid = driver.getWindowHandle();
       changeCloseWindow(driver);
+    }
+    checkOverlay(driver, overlaySelector);
+    if (isExistEle(driver, footBnrSelector)
+        && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+      checkOverlay(driver, footBnrSelector);
+    }
+//    Utille.sleep(30000);
+//    if (isExistEle(driver, sele)) {
+//      clickSleepSelector(driver, sele, 4000); // 遷移
+//      changeCloseWindow(driver);
       if (isExistEle(driver, exchangeSele)) {
+          if (isExistEle(driver, footBnrSelector)
+                  && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+                checkOverlay(driver, footBnrSelector);
+              }
         clickSleepSelector(driver, exchangeSele, 6000);
         if (isExistEle(driver, exchageListSele)) {
           int size = getSelectorSize(driver, exchageListSele + ">option");
@@ -104,11 +125,15 @@ public class DMYPriceChyosatai extends DMYBase {
           Utille.sleep(3000);
           for (int i = 0; i < 2; i++) {
             if (isExistEle(driver, doExchangeSele)) {
+                if (isExistEle(driver, footBnrSelector)
+            	        && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+            	      checkOverlay(driver, footBnrSelector);
+            	    }
               clickSleepSelector(driver, doExchangeSele, 6000); // i=1 交換する　i=2 本当に
             }
           }
         }
-      }
+//      }
     }
 
   }
