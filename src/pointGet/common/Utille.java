@@ -645,7 +645,7 @@ public class Utille {
        String reCapatChaConfirm = "[title='reCAPTCHA による確認']";
        if (isExistEle(driver, reCapatChaConfirm, false, logg)) {
          res = true;
-         while (sleepCnt <= 300) {
+         while (sleepCnt <= 6000) {
            WebElement iframeImage = driver.findElement(By.cssSelector(reCapatChaConfirm));
            if (hopeBool == iframeImage.isDisplayed()) {
              logg.info("display:" + iframeImage.isDisplayed());
