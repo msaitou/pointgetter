@@ -35,7 +35,6 @@ import javax.script.ScriptException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -600,136 +599,134 @@ public class Utille {
       if (isExistEle(driver, reCaptcha, logg)) {
         //        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
         driver.findElement(By.cssSelector(reCaptcha)).click();
-        int sleepCnt = 1;
-        boolean hopeBool = false;
         Utille.sleep(2000);
         driver.switchTo().defaultContent();
-        String reCapatChaConfirm = "[title='reCAPTCHA による確認']";
-        if (isExistEle(driver, reCapatChaConfirm, logg)) {
-          while (sleepCnt <= 300) {
-            WebElement iframeImage = driver.findElement(By.cssSelector(reCapatChaConfirm));
-            if (hopeBool == iframeImage.isDisplayed()) {
-              logg.info("display:" + iframeImage.isDisplayed());
-              break;
-            }
-            Utille.sleep(100);
-            sleepCnt++;
-          }
-          Utille.sleep(2000);
-        }
+        clickRecapthaWaitting(driver, logg);
       }
       driver.switchTo().defaultContent();
     }
   }
+
   /**
   *
   * @param driver
   * @param logg
   */
- public static boolean clickRecaptha(WebDriver driver, Logger logg, String baseFrameSele) {
-   boolean res = false;
-   Utille.sleep(2000);
-   String reCaptchaCheck = "div.g-recaptcha iframe";
-   if (isExistEle(driver, reCaptchaCheck, false, logg)) {
-     // キャプチャをクリック
-     WebElement iframe = driver.findElement(By.cssSelector(reCaptchaCheck));
-     driver.switchTo().frame(iframe);
-     String reCaptcha = "span#recaptcha-anchor";
-     if (isExistEle(driver, reCaptcha, logg)) {
-       //        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
-       driver.findElement(By.cssSelector(reCaptcha)).click();
-       int sleepCnt = 1;
-       boolean hopeBool = false;
-       Utille.sleep(2000);
-       driver.switchTo().defaultContent();
-       WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
-       driver.switchTo().frame(baseFrame);
-       String reCapatChaConfirm = "[title='reCAPTCHA による確認']";
-       if (isExistEle(driver, reCapatChaConfirm, false, logg)) {
-         res = true;
-         while (sleepCnt <= 6000) {
-           WebElement iframeImage = driver.findElement(By.cssSelector(reCapatChaConfirm));
-           if (hopeBool == iframeImage.isDisplayed()) {
-             logg.info("display:" + iframeImage.isDisplayed());
-             break;
-           }
-           Utille.sleep(100);
-           sleepCnt++;
-         }
-         Utille.sleep(2000);
-       }
-     }
-     driver.switchTo().defaultContent();
-     WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
-     driver.switchTo().frame(baseFrame);
-   }
-   return res;
- }
- /**
-  * 
-  * @param driver
-  * @param logg
-  */
- static public void refresh(WebDriver driver, Logger logg) {
-	 refresh(driver, logg, 30000);
- }
+  public static boolean clickRecaptha(WebDriver driver, Logger logg, String baseFrameSele) {
+    boolean res = false;
+    Utille.sleep(2000);
+    String reCaptchaCheck = "div.g-recaptcha iframe";
+    if (isExistEle(driver, reCaptchaCheck, false, logg)) {
+      // キャプチャをクリック
+      WebElement iframe = driver.findElement(By.cssSelector(reCaptchaCheck));
+      driver.switchTo().frame(iframe);
+      String reCaptcha = "span#recaptcha-anchor";
+      if (isExistEle(driver, reCaptcha, logg)) {
+        //        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
+        driver.findElement(By.cssSelector(reCaptcha)).click();
+        Utille.sleep(2000);
+        driver.switchTo().defaultContent();
+        WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
+        driver.switchTo().frame(baseFrame);
+        clickRecapthaWaitting(driver, logg);
+      }
+      driver.switchTo().defaultContent();
+      WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
+      driver.switchTo().frame(baseFrame);
+    }
+    return res;
+  }
 
- /**
-  * 
-  * @param driver
-  * @param logg
-  * @param mill
-  */
- static public void refresh(WebDriver driver, Logger logg, long mill) {
-	 try {
-	     logg.info("refresh設定ーー");
-	     driver.manage().timeouts().pageLoadTimeout(mill, TimeUnit.MILLISECONDS);
-	     logg.info("refresh設定語ーー");
-	 }
-	 catch (Exception e) {
-//	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
-	     logg.info("タイムアウトしましたよ?");
-	 }
-	 try {
-	     logg.info("refresh前ーー");
-	     driver.navigate().refresh();
-	     logg.info("refresh後ーー");
-	 }
-	 catch (Exception e) {
-	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
-	     logg.info("タイムアウトしましたよ");
-	 }
- }
- 
- static public void url(WebDriver driver, String url, Logger logg) {
-	 url(driver, url, logg, 30000);
- }
- 
- /**
-  * 
-  * @param driver
-  * @param logg
-  * @param mill
-  */
- static public void url(WebDriver driver, String url, Logger logg, long mill) {
-	 try {
-	     logg.info("url設定ーー");
-	     driver.manage().timeouts().pageLoadTimeout(mill, TimeUnit.MILLISECONDS);
-	     logg.info("url設定語ーー");
-	 }
-	 catch (Exception e) {
-//	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
-	     logg.info("タイムアウトしましたよ?");
-	 }
-	 try {
-	     logg.info("url前ーー");
-	     driver.get(url);
-	     logg.info("url後ーー");
-	 }
-	 catch (Exception e) {
-	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
-	     logg.info("タイムアウトしましたよ");
-	 }
- }
+  /**
+   * recaptha用ウェイティング
+   * @param driver
+   * @param logg
+   * @return
+   */
+  public static boolean clickRecapthaWaitting(WebDriver driver, Logger logg) {
+    boolean res = false;
+    int sleepCnt = 1;
+    boolean hopeBool = false;
+    String reCapatChaConfirm = "[title='reCAPTCHA による確認']";
+    if (isExistEle(driver, reCapatChaConfirm, false, logg)) {
+      res = true;
+      while (sleepCnt <= 120) {
+        logg.info("まつ？:" + sleepCnt);
+        WebElement iframeImage = driver.findElement(By.cssSelector(reCapatChaConfirm));
+        logg.info("まつの？:" + sleepCnt);
+        if (hopeBool == iframeImage.isDisplayed()) {
+          logg.info("display:" + iframeImage.isDisplayed());
+          break;
+        }
+        Utille.sleep(1000);
+        logg.info("まった？:" + sleepCnt);
+        sleepCnt++;
+      }
+      Utille.sleep(2000);
+    }
+    return res;
+  }
+
+  /**
+   * 
+   * @param driver
+   * @param logg
+   */
+  static public void refresh(WebDriver driver, Logger logg) {
+    refresh(driver, logg, 30000);
+  }
+
+  /**
+   * 
+   * @param driver
+   * @param logg
+   * @param mill
+   */
+  static public void refresh(WebDriver driver, Logger logg, long mill) {
+    try {
+      logg.info("refresh設定ーー");
+      driver.manage().timeouts().pageLoadTimeout(mill, TimeUnit.MILLISECONDS);
+      logg.info("refresh設定語ーー");
+    } catch (Exception e) {
+      //	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+      logg.info("タイムアウトしましたよ?");
+    }
+    try {
+      logg.info("refresh前ーー");
+      driver.navigate().refresh();
+      logg.info("refresh後ーー");
+    } catch (Exception e) {
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+      logg.info("タイムアウトしましたよ");
+    }
+  }
+
+  static public void url(WebDriver driver, String url, Logger logg) {
+    url(driver, url, logg, 30000);
+  }
+
+  /**
+   * 
+   * @param driver
+   * @param logg
+   * @param mill
+   */
+  static public void url(WebDriver driver, String url, Logger logg, long mill) {
+    try {
+      logg.info("url設定ーー");
+      driver.manage().timeouts().pageLoadTimeout(mill, TimeUnit.MILLISECONDS);
+      logg.info("url設定語ーー");
+    } catch (Exception e) {
+      //	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+      logg.info("タイムアウトしましたよ?");
+    }
+    try {
+      logg.info("url前ーー");
+      driver.get(url);
+      logg.info("url後ーー");
+    } catch (Exception e) {
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+      logg.info("タイムアウトしましたよ");
+    }
+  }
 }
-

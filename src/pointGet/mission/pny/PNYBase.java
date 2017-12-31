@@ -22,52 +22,53 @@ import pointGet.mission.Mission;
  *
  */
 public abstract class PNYBase extends Mission {
-	/* current site code */
-	public final static String sCode = Define.PSITE_CODE_PNY;
-	boolean finsishFlag = false;
+  /* current site code */
+  public final static String sCode = Define.PSITE_CODE_PNY;
+  boolean finsishFlag = false;
 
-	/**
-	 * @param log
-	 * @param cProps
-	 */
-	public PNYBase(Logger log, Map<String, String> cProps, String name) {
-		super(log, cProps);
-		this.mName = "■" + sCode + name;
-	}
+  /**
+   * @param log
+   * @param cProps
+   */
+  public PNYBase(Logger log, Map<String, String> cProps, String name) {
+    super(log, cProps);
+    this.mName = "■" + sCode + name;
+  }
 
-	@Override
-	public void roopMission(WebDriver driver) {
-		for (int i = 0; i < 5 && !finsishFlag; i++) {
-			privateMission(driver);
-		}
-	}
+  @Override
+  public void roopMission(WebDriver driver) {
+    for (int i = 0; i < 5 && !finsishFlag; i++) {
+      privateMission(driver);
+    }
+  }
 
-	@Override
-	public void privateMission(WebDriver driver) {
-	}
-	/**
-	 * 
-	 * @param loggg
-	 * @param cProps
-	 * @param missions
-	 */
-	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
-		WebDriver driver = getWebDriver(cProps);
-		// point状況確認
-		String p = getSitePoint(driver, loggg);
-		PointsCollection PC = new PointsCollection(Dbase);
-		Map<String, Double> pMap = new HashMap<String, Double>();
-		pMap.put(sCode, Double.parseDouble(p));
-		PC.putPointsData(pMap);
-		driver.quit();
-	}
+  @Override
+  public void privateMission(WebDriver driver) {
+  }
 
-	public static String getSitePoint(WebDriver driver, Logger logg) {
-		String selector = "li.user>a>span.user_pt", point = "";
-		driver.get("http://www.chance.com/");
-		if (Utille.isExistEle(driver, selector, logg)) {
-			point = driver.findElement(By.cssSelector(selector)).getText();
-		}
-		return point;
-	}
+  /**
+   * 
+   * @param loggg
+   * @param cProps
+   * @param missions
+   */
+  public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
+    WebDriver driver = getWebDriver(cProps);
+    // point状況確認
+    String p = getSitePoint(driver, loggg);
+    PointsCollection PC = new PointsCollection(Dbase);
+    Map<String, Double> pMap = new HashMap<String, Double>();
+    pMap.put(sCode, Double.parseDouble(p));
+    PC.putPointsData(pMap);
+    driver.close();
+  }
+
+  public static String getSitePoint(WebDriver driver, Logger logg) {
+    String selector = "li.user>a>span.user_pt", point = "";
+    driver.get("http://www.chance.com/");
+    if (Utille.isExistEle(driver, selector, logg)) {
+      point = driver.findElement(By.cssSelector(selector)).getText();
+    }
+    return point;
+  }
 }

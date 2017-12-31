@@ -22,63 +22,63 @@ import pointGet.mission.Mission;
  *
  */
 public abstract class RINBase extends Mission {
-	/* current site code */
-	public final static String sCode = Define.PSITE_CODE_RIN;
+  /* current site code */
+  public final static String sCode = Define.PSITE_CODE_RIN;
 
-	/**
-	 * @param log
-	 * @param cProps
-	 */
-	public RINBase(Logger log, Map<String, String> cProps, String name) {
-		super(log, cProps);
-		this.mName = "■" + sCode + name;
-	}
+  /**
+   * @param log
+   * @param cProps
+   */
+  public RINBase(Logger log, Map<String, String> cProps, String name) {
+    super(log, cProps);
+    this.mName = "■" + sCode + name;
+  }
 
-	@Override
-	public void roopMission(WebDriver driver) {
-	}
+  @Override
+  public void roopMission(WebDriver driver) {
+  }
 
-	@Override
-	public void privateMission(WebDriver driver) {
-	}
+  @Override
+  public void privateMission(WebDriver driver) {
+  }
 
-	/**
-	 * 
-	 * @param loggg
-	 * @param cProps
-	 * @param missions
-	 */
-	public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
-		WebDriver driver = getWebDriver(cProps);
-		// login!!
-		LoginSite.login(sCode, driver, loggg);
-		for (String mission : missions) {
-			Mission MisIns = null;
-			switch (mission) {
-				case Define.strRINClickBanner: // ■クリックバナー(楽天)
-					MisIns = new RINClickBanner(loggg, cProps);
-					break;
-				default:
-			}
-			if (Arrays.asList(new String[] { Define.strRINClickBanner }).contains(mission)) {
-				driver = MisIns.exePrivateMission(driver);
-			}
-		}
-//		// point状況確認
-//		String p = getSitePoint(driver, loggg);
-//		PointsCollection PC = new PointsCollection(Dbase);
-//		Map<String, Double> pMap = new HashMap<String, Double>();
-//		pMap.put(sCode, Double.parseDouble(p));
-//		PC.putPointsData(pMap);
-		driver.quit();
-	}
+  /**
+   * 
+   * @param loggg
+   * @param cProps
+   * @param missions
+   */
+  public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
+    WebDriver driver = getWebDriver(cProps);
+    // login!!
+    LoginSite.login(sCode, driver, loggg);
+    for (String mission : missions) {
+      Mission MisIns = null;
+      switch (mission) {
+        case Define.strRINClickBanner: // ■クリックバナー(楽天)
+          MisIns = new RINClickBanner(loggg, cProps);
+          break;
+        default:
+      }
+      if (Arrays.asList(new String[] { Define.strRINClickBanner }).contains(mission)) {
+        driver = MisIns.exePrivateMission(driver);
+      }
+    }
+    //		// point状況確認
+    //		String p = getSitePoint(driver, loggg);
+    //		PointsCollection PC = new PointsCollection(Dbase);
+    //		Map<String, Double> pMap = new HashMap<String, Double>();
+    //		pMap.put(sCode, Double.parseDouble(p));
+    //		PC.putPointsData(pMap);
+    driver.close();
+  }
 
-	public static String getSitePoint(WebDriver driver, Logger logg) {
-		String selector = "li.user>a>span.user_pt", point = "";
-		driver.get("http://www.chance.com/");
-		if (Utille.isExistEle(driver, selector, logg)) {
-			point = driver.findElement(By.cssSelector(selector)).getText();
-		}
-		return point;
-	}
+  public static String getSitePoint(WebDriver driver, Logger logg) {
+    String selector = "li.user>a>span.user_pt", point = "";
+    driver.get("http://www.chance.com/");
+    if (Utille.isExistEle(driver, selector, logg)) {
+      point = driver.findElement(By.cssSelector(selector)).getText();
+    }
+    return point;
+  }
 }

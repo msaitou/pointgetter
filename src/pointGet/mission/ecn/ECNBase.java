@@ -125,7 +125,7 @@ public abstract class ECNBase extends Mission {
     } catch (Throwable e) {
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
-      driver.quit();
+      driver.close();
     }
   }
 

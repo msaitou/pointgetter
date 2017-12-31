@@ -404,6 +404,11 @@ public class LoginSite extends PointGet {
       ele = driver.findElement(By.cssSelector("input#pex_user_login_password"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PEX).get("loginpass"));
+      Utille.clickRecaptha(driver, logg);
+      String seleKeep = "label[for='pex_user_login_remember']";
+      if (Utille.isExistEle(driver, seleKeep, logg)) {
+        driver.findElement(By.cssSelector(seleKeep)).click();
+      }
       driver.findElement(By.cssSelector("input.form-submit")).click();
       Utille.sleep(3000);
     }

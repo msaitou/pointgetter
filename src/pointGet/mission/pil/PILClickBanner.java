@@ -42,7 +42,7 @@ public class PILClickBanner extends PILBase {
             }
           }
         } catch (Throwable e) {
-          driver.quit();
+          driver.close();
           logg.error("##PILException##################");
           logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
           logg.error("####################");

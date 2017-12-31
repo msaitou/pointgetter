@@ -42,7 +42,7 @@ public class PSTClickBanner extends PSTBase {
             }
           }
         } catch (Throwable e) {
-          driver.quit();
+          driver.close();
           logg.error("##PILException##################");
           logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
           logg.error("####################");

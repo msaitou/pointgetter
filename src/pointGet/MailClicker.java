@@ -32,11 +32,11 @@ import org.bson.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.mongodb.DBObject;
-import com.mongodb.util.JSON;
-
 import pointGet.common.Define;
 import pointGet.common.Utille;
+
+import com.mongodb.DBObject;
+import com.mongodb.util.JSON;
 
 /**
  * get point from the point mail
@@ -316,7 +316,7 @@ public class MailClicker extends PointGet {
                 logMess += "-END";
               } catch (Throwable t) {
                 t.printStackTrace();
-                driver.quit();
+                driver.close();
                 logg.error("##Exception##################");
                 logg.error(Utille.truncateBytes(t.getLocalizedMessage(), 500));
                 logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(t), 500));
@@ -325,7 +325,7 @@ public class MailClicker extends PointGet {
               }
               logg.info(logMess);
             }
-            driver.quit();
+            driver.close();
           } else {
             for (String url : e.getValue()) {
               HttpURLConnection conn;

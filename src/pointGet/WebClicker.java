@@ -189,7 +189,7 @@ public class WebClicker extends PointGet {
         }
         logg.info("again!!");
       }
-      driver.quit();// if not null then execute Quit!
+      driver.close();// if not null then execute Quit!
     }
   }
 
