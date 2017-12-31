@@ -67,7 +67,7 @@ public class PMOGameParkEnk extends PMOBase {
           int size = eleList.size(), targetIndex = skip;
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
-            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+            clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");

@@ -76,7 +76,7 @@ public class OSAAnzan extends OSABase {
 								if (isExistEle(eleList, j)) {
 									String choice = eleList.get(j).getText();
 									if (Utille.numEqual(selectAns, choice)) {
-										clickSleepSelector(eleList, j, 3000);// 選択
+										clickSleepSelector(driver, eleList, j, 3000);// 選択
 										int ranSleep = Utille.getIntRand(9);
 										Utille.sleep(ranSleep * 1000);
 										waitTilReady(driver);

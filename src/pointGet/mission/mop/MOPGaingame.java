@@ -63,7 +63,7 @@ public class MOPGaingame extends MOPBase {
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(seleCourse));
             int choiceies = eleList2.size();
             int choiceNum = Utille.getIntRand(choiceies);
-            clickSleepSelector(eleList2, choiceNum, 5000);
+            clickSleepSelector(driver, eleList2, choiceNum, 5000);
             // event発生
             if (isExistEle(driver, seleActionSele, false)) {
               clickSleepSelector(driver, seleActionSele, 5000);

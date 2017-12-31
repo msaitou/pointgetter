@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchWindowException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
@@ -143,7 +144,7 @@ public abstract class MissCommon {
   protected void clickSelector(WebDriver driver, String selector) {
     WebElement ele = driver.findElement(By.cssSelector(selector));
     Utille.scrolledPage(driver, ele);
-    clickSelector(ele);
+    clickSelector(driver, ele);
   }
 
   /**
@@ -151,8 +152,8 @@ public abstract class MissCommon {
    * @param eleList
    * @param index
    */
-  protected void clickSelector(List<WebElement> eleList, int index) {
-    clickSelector(eleList.get(index));
+  protected void clickSelector(WebDriver driver, List<WebElement> eleList, int index) {
+    clickSelector(driver, eleList.get(index));
   }
 
   /**
@@ -160,29 +161,51 @@ public abstract class MissCommon {
    * @param ele
    * @param selector
    */
-  protected void clickSelector(WebElement ele, String selector) {
-    clickSelector(ele.findElement(By.cssSelector(selector)));
+  protected void clickSelector(WebDriver driver, WebElement ele, String selector) {
+    clickSelector(driver, ele.findElement(By.cssSelector(selector)));
   }
 
-  /**
-   *
-   * @param ele
-   * @param selector
-   */
-  protected void clickSelector(WebElement ele) {
-    int i = 0;
-    while (i++ < 5) {
-      try {
-        ele.click();
-        return;
-      } catch (WebDriverException e) {
-        logg.error("-clickSelector error-------------------");
-        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50));
-      }
-    }
-  }
+//  /**
+//   *
+//   * @param ele
+//   * @param selector
+//   */
+//  protected void clickSelector(WebElement ele) {
+//    int i = 0;
+//    while (i++ < 5) {
+//      try {
+//        ele.click();
+//        return;
+//      } catch (TimeoutException te) {
+//    	  
+//      } catch (WebDriverException e) {
+//        logg.error("-clickSelector error-------------------");
+//        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50));
+//      }
+//    }
+//  }
 
   /**
+  *
+  * @param ele
+  * @param selector
+  */
+ protected void clickSelector(WebDriver driver, WebElement ele) {
+   int i = 0;
+   while (i++ < 5) {
+     try {
+       ele.click();
+       return;
+     } catch (TimeoutException te) {
+    	 Utille.refresh(driver, logg);
+     } catch (WebDriverException e) {
+       logg.error("-clickSelector error-------------------");
+       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50));
+     }
+   }
+ }
+
+ /**
    *
    * @param driver
    * @param selector
@@ -191,7 +214,7 @@ public abstract class MissCommon {
   protected void clickSleepSelector(WebDriver driver, String selector, int milliSeconds) {
     WebElement ele = driver.findElement(By.cssSelector(selector));
     Utille.scrolledPage(driver, ele);
-    clickSleepSelector(ele, milliSeconds);
+    clickSleepSelector(driver, ele, milliSeconds);
   }
 
   /**
@@ -200,8 +223,8 @@ public abstract class MissCommon {
    * @param index
    * @param milliSeconds
    */
-  protected void clickSleepSelector(List<WebElement> eleList, int index, int milliSeconds) {
-    clickSleepSelector(eleList.get(index), milliSeconds);
+  protected void clickSleepSelector(WebDriver driver, List<WebElement> eleList, int index, int milliSeconds) {
+    clickSleepSelector(driver, eleList.get(index), milliSeconds);
   }
 
   /**
@@ -210,8 +233,8 @@ public abstract class MissCommon {
    * @param selector
    * @param milliSeconds
    */
-  protected void clickSleepSelector(WebElement ele, String selector, int milliSeconds) {
-    clickSleepSelector(ele.findElement(By.cssSelector(selector)), milliSeconds);
+  protected void clickSleepSelector(WebDriver driver, WebElement ele, String selector, int milliSeconds) {
+    clickSleepSelector(driver, ele.findElement(By.cssSelector(selector)), milliSeconds);
   }
 
   /**
@@ -220,8 +243,8 @@ public abstract class MissCommon {
    * @param selector
    * @param milliSeconds
    */
-  protected void clickSleepSelector(WebElement ele, int milliSeconds) {
-    clickSelector(ele);
+  protected void clickSleepSelector(WebDriver driver, WebElement ele, int milliSeconds) {
+    clickSelector(driver, ele);
     Utille.sleep(milliSeconds);
   }
 

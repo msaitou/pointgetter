@@ -91,7 +91,7 @@ public class PICMedalMool extends PICBase {
             logg.info("size2:" + size2 + " target:" + targetIndex);
             if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
               Utille.scrolledPage(driver, eleList.get(targetIndex));
-              clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ
+              clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
               if (isExistEle(driver, sele)) {
                 PhotoEnk.answer(driver, sele, wid);
               }
@@ -147,7 +147,7 @@ public class PICMedalMool extends PICBase {
           if (isExistEle(driver, selector)) {
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
             if (isExistEle(eleList, 0)) {
-              clickSleepSelector(eleList, 0, 5000); // 遷移
+              clickSleepSelector(driver, eleList, 0, 5000); // 遷移
               if (isExistEle(driver, sele2)) {
                 Manga.answer(driver, sele2, wid);
               }
@@ -176,7 +176,7 @@ public class PICMedalMool extends PICBase {
           if (isExistEle(driver, selector)) {
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
             if (isExistEle(eleList, 0)) {
-              clickSleepSelector(eleList, 0, 5000); // 遷移
+              clickSleepSelector(driver, eleList, 0, 5000); // 遷移
               if (isExistEle(driver, sele1)) {
                 News.answer(driver, sele1, wid);
                 driver.close();
@@ -203,7 +203,7 @@ public class PICMedalMool extends PICBase {
           if (isExistEle(driver, selector)) {
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
             if (isExistEle(eleList, 0)) {
-              clickSleepSelector(eleList, 0, 5000); // 遷移
+              clickSleepSelector(driver, eleList, 0, 5000); // 遷移
               if (isExistEle(driver, sele4)) {
                 Kenkou.answer(driver, sele4, wid);
                 driver.close();

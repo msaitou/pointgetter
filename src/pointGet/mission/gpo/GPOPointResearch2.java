@@ -58,7 +58,7 @@ public class GPOPointResearch2 extends GPOBase {
             if (targetIndex > -1 && size > targetIndex
                 && isExistEle(eleList, targetIndex)) {
               String wid = driver.getWindowHandle();
-              clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ
+              clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
               changeWindow(driver, wid);
               String cUrl = driver.getCurrentUrl();
               logg.info("url[" + cUrl + "]");

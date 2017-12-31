@@ -45,7 +45,7 @@ public class GMYClickBanner extends GMYBase {
         int size = eleList.size();
         for (int i = 0; i < size; i++) {
           if (isExistEle(eleList, i)) {
-            clickSleepSelector(eleList, i, 2000);
+            clickSleepSelector(driver, eleList, i, 2000);
             closeOtherWindow(driver);
           }
         }

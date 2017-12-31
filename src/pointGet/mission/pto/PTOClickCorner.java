@@ -89,7 +89,7 @@ public class PTOClickCorner extends PTOBase {
 			for (int i = 0; i < size; i++) {
 				if (isExistEle(eleList, i)) {
 					logg.info(mName + " " + c + ".サービスページ下! " + i);
-					clickSleepSelector(eleList, i, 5000);
+					clickSleepSelector(driver, eleList, i, 5000);
 					changeWindow(driver, wid);
 					//					java.util.Set<String> widSet = driver.getWindowHandles();
 					//					for (String id : widSet) {

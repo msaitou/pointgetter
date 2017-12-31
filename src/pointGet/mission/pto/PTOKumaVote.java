@@ -45,7 +45,7 @@ public class PTOKumaVote extends PTOBase {
             int size1 = eleList.size(), zumiCnt = 0, targetIndex = 0;
             if (isExistEle(eleList, targetIndex)) {
               Utille.scrolledPage(driver, eleList.get(targetIndex));
-              clickSleepSelector(eleList, targetIndex, 4000); // 遷移
+              clickSleepSelector(driver, eleList, targetIndex, 4000); // 遷移
               SouSenkyo.answer(driver, "", null);
             }
             else {

@@ -66,7 +66,7 @@ public class AnswerAdsurvey extends MissCommon {
           if (isExistEle(eleList2, choiceNum)) {
             // 選択
             Utille.scrolledPage(driver, eleList2.get(choiceNum));
-            clickSleepSelector(eleList2.get(choiceNum), 3000);
+            clickSleepSelector(driver, eleList2.get(choiceNum), 3000);
           }
         }
         else if (isExistEle(driver, seleSele)) {

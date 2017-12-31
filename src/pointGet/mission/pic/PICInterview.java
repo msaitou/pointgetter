@@ -63,7 +63,7 @@ public class PICInterview extends PICBase {
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             Utille.scrolledPage(driver, eleList.get(targetIndex));
-            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+            clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");

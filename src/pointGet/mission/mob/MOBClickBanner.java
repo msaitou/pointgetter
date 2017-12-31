@@ -30,7 +30,7 @@ public class MOBClickBanner extends MOBBase {
 			int size = getSelectorSize(driver, selector);
 			for (int i = 0; i < size; i++) {
 				if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
-					clickSleepSelector(driver.findElements(By.cssSelector(selector)), i, 2000);
+					clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), i, 2000);
 					closeOtherWindow(driver);
 				}
 			}

@@ -144,7 +144,7 @@ public class PTOKuji extends PTOBase {
 							List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
 							if (isExistEle(eleList, i)) { // 最初のリンクをクリック
 								logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
-								clickSleepSelector(eleList, i, 4000);
+								clickSleepSelector(driver, eleList, i, 4000);
 								if ("くじ桃".equals(clMap.getKey())) {
 									closeOtherWindow(driver);
 								}
@@ -166,7 +166,7 @@ public class PTOKuji extends PTOBase {
 						List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
 						if (isExistEle(eleList, 0)) { // 最初のリンクをクリック
 							logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
-							clickSleepSelector(eleList, 0, 8000);
+							clickSleepSelector(driver, eleList, 0, 8000);
 							if (isExistEle(driver, clMap.getValue().get("sele"))) {
 								logg.info(mName + " " + c + "." + clMap.getKey() + "!");
 								clickSleepSelector(driver, clMap.getValue().get("sele"), 5000);

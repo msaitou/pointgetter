@@ -38,7 +38,7 @@ public class PEXClickBanner extends PEXBase {
 				}
 				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 				if (isExistEle(eleList, i)) {
-					clickSleepSelector(eleList, i, 3000);// 選択
+					clickSleepSelector(driver, eleList, i, 3000);// 選択
 					driver.get(url);
 					Utille.sleep(1000);
 				}

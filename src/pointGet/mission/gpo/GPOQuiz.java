@@ -47,7 +47,7 @@ public class GPOQuiz extends GPOBase {
           if (isExistEle(elems, ii)) {
             Utille.scrolledPage(driver, elems.get(ii));
             if ("スタンプ交換".equals(elems.get(ii).getText())) {
-              clickSleepSelector(elems, ii, 3000); // 遷移
+              clickSleepSelector(driver, elems, ii, 3000); // 遷移
 
               if (isExistEle(driver, exchangeListSele)) {
                 int size = getSelectorSize(driver, exchangeListSele + ">option");

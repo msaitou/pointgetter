@@ -70,7 +70,7 @@ public class OSAPointResearch extends OSABase {
           //						continue;
           //					}
         }
-        clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+        clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
@@ -156,7 +156,7 @@ public class OSAPointResearch extends OSABase {
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
           // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
+          clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
           if (isExistEle(driver, seleNext2)) {
             // 次へ
             clickSleepSelector(driver, seleNext2, 4000);
@@ -247,7 +247,7 @@ public class OSAPointResearch extends OSABase {
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
           // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
+          clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
         }
       }
       else if (seleSele.equals(choiceSele)) {
@@ -319,7 +319,7 @@ public class OSAPointResearch extends OSABase {
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
           // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
+          clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
         }
       }
       else if (radioSele.equals(seleSele)) {

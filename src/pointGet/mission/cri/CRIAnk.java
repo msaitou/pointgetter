@@ -55,7 +55,7 @@ public class CRIAnk extends CRIBase {
 
                 if (isExistEle(webEle, webEle.size() - 1)) {// 最後尾の選択しから
                   logg.info("6");
-                  clickSleepSelector(webEle, webEle.size() - 1, 4000);
+                  clickSleepSelector(driver, webEle, webEle.size() - 1, 4000);
 
                   String seleNext = "form[name='form1']>input.btn";
                   if (isExistEle(driver, seleNext)) {
@@ -71,7 +71,7 @@ public class CRIAnk extends CRIBase {
                       //											int choiceies = getSelectorSize(driver, choiceSele);
                       int choiceNum = Utille.getIntRand(choiceies);
                       if (isExistEle(eleChoice, choiceNum)) {
-                        clickSleepSelector(eleChoice, choiceNum, 3000); // 選択肢を選択
+                        clickSleepSelector(driver, eleChoice, choiceNum, 3000); // 選択肢を選択
                         if (isExistEle(driver, nextSele2)) {
                           clickSleepSelector(driver, nextSele2, 3000);
                           Utille.clickRecaptha(driver, logg);

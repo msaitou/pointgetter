@@ -38,7 +38,7 @@ public class PILShindanAnk extends PILBase {
       int size1 = eleList.size();
       for (int j = 0; j < size1; j++) {
         if (isExistEle(eleList, j)) {
-          clickSleepSelector(eleList, j, 3500);
+          clickSleepSelector(driver, eleList, j, 3500);
 
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);
@@ -159,7 +159,7 @@ public class PILShindanAnk extends PILBase {
                   List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
                   if (isExistEle(eleList2, choiceNum)) {
                     // 選択
-                    clickSleepSelector(eleList2.get(choiceNum), 2500);
+                    clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
                     if (isExistEle(driver, nextSele)) {
                       // 次へ
                       clickSleepSelector(driver, nextSele, 4000);

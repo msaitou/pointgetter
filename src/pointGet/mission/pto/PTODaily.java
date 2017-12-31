@@ -118,7 +118,7 @@ public class PTODaily extends PTOBase {
             int ran = Utille.getIntRand(eleList.size());
             if (isExistEle(eleList, ran)) {
               logg.info(mName + " " + ++c + "." + clMap.getKey() + "!");
-              clickSleepSelector(eleList, ran, 2000);
+              clickSleepSelector(driver, eleList, ran, 2000);
               if (isExistEle(driver, sele)) {
                 clickSleepSelector(driver, sele, 2000);
                 logg.info(mName + " " + c + "." + sele + "click!");
@@ -134,7 +134,7 @@ public class PTODaily extends PTOBase {
           for (int i = 0; i < size; i++) {
             if (isExistEle(eleList, i)) {
               logg.info(mName + " " + c + "." + clMap.getKey() + i + "個目!");
-              clickSleepSelector(eleList, i, 2000);
+              clickSleepSelector(driver, eleList, i, 2000);
               closeOtherWindow(driver);
             }
           }
@@ -146,7 +146,7 @@ public class PTODaily extends PTOBase {
           for (int i = 0; i < size; i++) {
             if (isExistEle(eleList, i)) {
               logg.info(mName + " " + c + "." + clMap.getKey() + i + "個目!");
-              clickSleepSelector(eleList, i, 2000);
+              clickSleepSelector(driver, eleList, i, 2000);
               closeOtherWindow(driver);
             }
           }
@@ -157,7 +157,7 @@ public class PTODaily extends PTOBase {
           for (int i = 0; i < size2; i++) {
             if (isExistEle(eleList2, i)) {
               logg.info(mName + " " + c + "." + clMap.getKey() + "　隠れ " + i + "個目!");
-              clickSleepSelector(eleList2, i, 2000);
+              clickSleepSelector(driver, eleList2, i, 2000);
               closeOtherWindow(driver);
             }
           }

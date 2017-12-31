@@ -41,7 +41,7 @@ public class CITClickBanner extends CITBase {
             for (WebElement we : pList) {
               String tex = we.getText();
               if (tex.indexOf("クリック") > -1) {
-                clickSleepSelector(we, 5000);
+                clickSleepSelector(driver, we, 5000);
                 String sele = "div.btn_point img[src='/img/10/items/btn_point.gif']";
                 if (isExistEle(driver, sele)) {
                   waitTilReady(driver);
@@ -69,7 +69,7 @@ public class CITClickBanner extends CITBase {
       int size1 = eleList.size();
       for (int i = 0; i < size1; i++) {
         if (isExistEle(eleList, i)) {
-          clickSleepSelector(eleList, i, 4000);
+          clickSleepSelector(driver, eleList, i, 4000);
           //					closeOtherWindow(driver);
         }
       }
@@ -95,7 +95,7 @@ public class CITClickBanner extends CITBase {
             if (tex.indexOf("クリック") > -1) {
               String clcSele = "dl>dt>a";
               if (isExistEle(eleList.get(i), clcSele)) {
-                clickSleepSelector(eleList.get(i), clcSele, 4000);
+                clickSleepSelector(driver, eleList.get(i), clcSele, 4000);
                 break;
               }
             }
@@ -117,7 +117,7 @@ public class CITClickBanner extends CITBase {
       int size1 = eleList.size();
       for (int i = 0; i < size1; i++) {
         if (isExistEle(eleList, i)) {
-          clickSleepSelector(eleList, i, 4000);
+          clickSleepSelector(driver, eleList, i, 4000);
           //					closeOtherWindow(driver);
         }
       }

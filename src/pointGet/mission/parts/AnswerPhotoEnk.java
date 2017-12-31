@@ -78,7 +78,7 @@ public class AnswerPhotoEnk extends MissCommon {
           List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
           if (isExistEle(eleList2, choiceNum)) {
             // 選択
-            clickSleepSelector(eleList2.get(choiceNum), 3500);
+            clickSleepSelector(driver, eleList2.get(choiceNum), 3500);
             if (isExistEle(driver, seleNext2)) {
               // 次へ
               clickSleepSelector(driver, seleNext2, 4000);

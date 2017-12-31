@@ -121,7 +121,7 @@ public class AnswerAdEnq extends MissCommon {
               Utille.sleep(500);
               // 選択
               Utille.scrolledPage(driver, eleList2.get(choiceNum));
-              clickSleepSelector(eleList2, choiceNum, 3000);
+              clickSleepSelector(driver, eleList2, choiceNum, 3000);
               //              if (!isExistEle(driver, footNone, false)
               //                  && isExistEle(driver, foot, false)) {
               //                driver.navigate().refresh();

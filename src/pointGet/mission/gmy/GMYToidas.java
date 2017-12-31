@@ -71,7 +71,7 @@ public class GMYToidas extends GMYBase {
         }
         selector = "div.entry-text-wrap a";
         if (isExistEle(wEle, selector)) {
-          clickSleepSelector(wEle, selector, 8000); // 遷移
+          clickSleepSelector(driver, wEle, selector, 8000); // 遷移
           //					this.waitTilReady(driver);
           //	$('div#pager', top.frames[1].document.body)
           driver.switchTo().frame(0);
@@ -92,7 +92,7 @@ public class GMYToidas extends GMYBase {
                     int size = eleList2.size();
                     int ran1 = Utille.getIntRand(size);
                     if (isExistEle(eleList2, ran1)) {
-                      clickSleepSelector(eleList2, ran1, 2000);// 選択
+                      clickSleepSelector(driver, eleList2, ran1, 2000);// 選択
                       String nextSelector = selector;
                       if (isExistEle(driver, nextSelector)) {
                         clickSleepSelector(driver, nextSelector, 2000); // 遷移

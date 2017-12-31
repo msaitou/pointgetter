@@ -37,7 +37,7 @@ public class ECNGaragara extends ECNBase {
 //					continue;
 //				}
 				if (isExistEle(eleList, i)) {
-					clickSleepSelector(eleList, i, 2000);
+					clickSleepSelector(driver, eleList, i, 2000);
 					closeOtherWindow(driver);
 				}
 			}

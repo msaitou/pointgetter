@@ -154,7 +154,7 @@ public class DMYPriceChyosatai extends DMYBase {
       List<WebElement> elems = driver.findElements(By.cssSelector(selector));
       if (isExistEle(elems, ran)) {
         Utille.scrolledPage(driver, elems.get(ran));
-        clickSleepSelector(elems, ran, 2000);
+        clickSleepSelector(driver, elems, ran, 2000);
         for (int g = 0; g < 10; g++) {
           if (isExistEle(driver, sele2top + sele2bot)
               && !isExistEle(driver, sele2top + sele2none + sele2bot, false)) {
@@ -162,7 +162,7 @@ public class DMYPriceChyosatai extends DMYBase {
           }
           Utille.sleep(1000);
           if (g == 9) {
-            clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 2000);
+            clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), ran, 2000);
           }
         }
         if (isExistEle(driver, sele2top + sele2bot)) {

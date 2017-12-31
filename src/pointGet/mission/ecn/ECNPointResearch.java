@@ -80,7 +80,7 @@ public class ECNPointResearch extends ECNBase {
       int size = eleList.size(), targetIndex = size - skip;
       if (targetIndex > -1 && size > targetIndex
           && isExistEle(eleList, targetIndex)) { // 古い順にやる
-        clickSleepSelector(eleList, targetIndex, 5000); // アンケートスタートページ
+        clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();

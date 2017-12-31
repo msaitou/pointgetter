@@ -74,7 +74,7 @@ public class AnswerEnkShopQP2 extends MissCommon {
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
           // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
+          clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
         }
       }
       else if (seleSele.equals(choiceSele)) {

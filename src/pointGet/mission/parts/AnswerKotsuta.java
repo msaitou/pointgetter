@@ -65,7 +65,7 @@ public class AnswerKotsuta extends MissCommon {
           List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
           if (isExistEle(eleList2, choiceNum)) {
             // 選択
-            clickSleepSelector(eleList2.get(choiceNum), 3000);
+            clickSleepSelector(driver, eleList2.get(choiceNum), 3000);
             if (isExistEle(driver, startSele)) {
               clickSleepSelector(driver, startSele, 6000);
             }

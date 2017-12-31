@@ -49,7 +49,7 @@ public class PSTChyousadan extends PSTBase {
             String wid = driver.getWindowHandle();
             Utille.scrolledPage(driver, eleList.get(targetIndex));
 //            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
-            clickSleepSelector(driver.findElements(By.cssSelector(selector)).get(targetIndex), 6000); // アンケートスタートページ
+            clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)).get(targetIndex), 6000); // アンケートスタートページ
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");

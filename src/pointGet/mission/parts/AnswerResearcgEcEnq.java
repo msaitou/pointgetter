@@ -69,7 +69,7 @@ public class AnswerResearcgEcEnq extends MissCommon {
           List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
           if (isExistEle(eleList2, choiceNum)) {
             // 選択
-            clickSleepSelector(eleList2.get(choiceNum), 3000);
+            clickSleepSelector(driver, eleList2.get(choiceNum), 3000);
             if (isExistEle(driver, nextSele)) {
               clickSleepSelector(driver, nextSele, 6000);
               String t = driver.findElement(By.cssSelector(nextSele)).getAttribute("value");
@@ -88,7 +88,7 @@ public class AnswerResearcgEcEnq extends MissCommon {
               int choiceies = getSelectorSize(wE, matrixRadioSele);
               choiceNum = Utille.getIntRand(choiceies);
               // 選択
-              clickSleepSelector(eleList3, choiceNum, 500);
+              clickSleepSelector(driver, eleList3, choiceNum, 500);
             }
           }
           if (isExistEle(driver, nextSele)) {

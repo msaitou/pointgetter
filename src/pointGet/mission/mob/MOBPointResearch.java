@@ -49,7 +49,7 @@ public class MOBPointResearch extends MOBBase {
       int size = eleList.size(), targetIndex = size - skip;
       if (targetIndex > -1 && size > targetIndex
           && isExistEle(eleList, targetIndex)) { // 古い順にやる
-        clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+        clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
@@ -138,7 +138,7 @@ public class MOBPointResearch extends MOBBase {
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
           // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
+          clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
           if (isExistEle(driver, seleNext2)) {
             // 次へ
             clickSleepSelector(driver, seleNext2, 4000);
@@ -229,7 +229,7 @@ public class MOBPointResearch extends MOBBase {
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
           // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
+          clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
         }
       }
       else if (seleSele.equals(choiceSele)) {
@@ -301,7 +301,7 @@ public class MOBPointResearch extends MOBBase {
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
           // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
+          clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
         }
       }
       else if (radioSele.equals(seleSele)) {

@@ -61,7 +61,7 @@ public class CITToidas extends CITBase {
         }
         selector = "div.entry-text-wrap a";
         if (isExistEle(wEle, selector)) {
-          clickSleepSelector(wEle, selector, 5000); // 遷移
+          clickSleepSelector(driver, wEle, selector, 5000); // 遷移
           //					this.waitTilReady(driver);
           driver.switchTo().frame(0);
           selector = "div#pager";// 始める
@@ -81,7 +81,7 @@ public class CITToidas extends CITBase {
                     int size = eleList2.size();
                     int ran1 = Utille.getIntRand(size);
                     if (isExistEle(eleList2, ran1)) {
-                      clickSleepSelector(eleList2, ran1, 2000);// 選択
+                      clickSleepSelector(driver, eleList2, ran1, 2000);// 選択
                       String nextSelector = selector;
                       if (isExistEle(driver, nextSelector)) {
                         clickSleepSelector(driver, nextSelector, 2500); // 遷移

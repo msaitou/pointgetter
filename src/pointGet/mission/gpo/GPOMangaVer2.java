@@ -38,7 +38,7 @@ public class GPOMangaVer2 extends GPOBase {
           if (!isExistEle(e, selector2)) {
             break;
           }
-          clickSleepSelector(e, selector2, 5000);
+          clickSleepSelector(driver, e, selector2, 5000);
           // アラートをけして
           checkAndAcceptAlert(driver);
           Utille.sleep(2000);
@@ -49,7 +49,7 @@ public class GPOMangaVer2 extends GPOBase {
             if (isExistEle(driver, selector)) {
               List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
               if (isExistEle(eleList, 0)) {
-                clickSleepSelector(eleList, 0, 5000); // 遷移
+                clickSleepSelector(driver, eleList, 0, 5000); // 遷移
                 String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
                 String seleNext = "form>input[type='image']";
                 String seleNexttugi = seleNext + "[src='common/image/9999/manga_next_bt.png']";
@@ -98,7 +98,7 @@ public class GPOMangaVer2 extends GPOBase {
                     List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
                     if (isExistEle(eleList2, choiceNum)) {
                       // 選択
-                      clickSleepSelector(eleList2, choiceNum, 3500);
+                      clickSleepSelector(driver, eleList2, choiceNum, 3500);
                       if (isExistEle(driver, seleNext2)) {
                         // 次へ
                         clickSleepSelector(driver, seleNext2, 6000);

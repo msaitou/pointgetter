@@ -52,7 +52,7 @@ public class PTOPointResearch extends PTOBase {
       if (targetIndex > -1 && size > targetIndex
           && isExistEle(eleList, targetIndex)) {
         String wid = driver.getWindowHandle();
-        clickSleepSelector(eleList, targetIndex, 10000); // アンケートスタートページ
+        clickSleepSelector(driver, eleList, targetIndex, 10000); // アンケートスタートページ
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
         logg.info("url[" + cUrl + "]");
@@ -136,7 +136,7 @@ public class PTOPointResearch extends PTOBase {
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
           // 選択
-          clickSleepSelector(eleList2.get(choiceNum), 2500);
+          clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
         }
       }
       else if (seleSele.equals(choiceSele)) {

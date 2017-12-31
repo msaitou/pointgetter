@@ -44,7 +44,7 @@ public class AnswerTanoshimiEnk extends MissCommon {
         int choiceies = eleChoice.size();
         int choiceNum = Utille.getIntRand(choiceies);
         if (isExistEle(eleChoice, choiceNum)) {
-          clickSleepSelector(eleChoice, choiceNum, 3000); // 選択肢を選択
+          clickSleepSelector(driver, eleChoice, choiceNum, 3000); // 選択肢を選択
           if (isExistEle(driver, nextSele2)) {
             clickSleepSelector(driver, nextSele2, 3000);
             if (isExistEle(driver, nextSele2)) { // 答え合わせ

@@ -90,7 +90,7 @@ public class HAPPointResearch extends HAPBase {
           skip++;
           continue;
         }
-        clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+        clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();

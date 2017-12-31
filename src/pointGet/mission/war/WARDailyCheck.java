@@ -56,7 +56,7 @@ public class WARDailyCheck extends WARBase {
 			for (int i = 0; i < size; i++) {
 				if (isExistEle(eleList, i)) {
 					logg.info(mName + " " + c + ".サービスページ下! " + i);
-					clickSleepSelector(eleList, i, 5000);
+					clickSleepSelector(driver, eleList, i, 5000);
 					closeOtherWindow(driver);
 				}
 			}
@@ -76,7 +76,7 @@ public class WARDailyCheck extends WARBase {
 			int size = eleList.size();
 			String wid = driver.getWindowHandle();
 			for (int i = 0; i < size; i++) {
-				clickSleepSelector(eleList, i, 5000);
+				clickSleepSelector(driver, eleList, i, 5000);
 				closeOtherWindow(driver);
 			}
 		}

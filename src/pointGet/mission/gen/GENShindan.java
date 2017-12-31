@@ -70,7 +70,7 @@ public class GENShindan extends Mission {
         }
         selector = "div[class='thumbnail'] h3.entrytitle>a"; // クラスを完全一致にするのは済の場合クラスが追加されるため
         if (isExistEle(wEle, selector)) {
-          clickSleepSelector(wEle, selector, 4000); // 遷移
+          clickSleepSelector(driver, wEle, selector, 4000); // 遷移
           selector = "a.submit-btn";// 次へ
           if (isExistEle(driver, selector)) {
             clickSleepSelector(driver, selector, 5000); // 遷移

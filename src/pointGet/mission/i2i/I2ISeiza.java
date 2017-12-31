@@ -36,7 +36,7 @@ public class I2ISeiza extends I2IBase {
           if (!isExistEle(e, selector2)) {
             break;
           }
-          clickSleepSelector(e, selector2, 5000);
+          clickSleepSelector(driver, e, selector2, 5000);
           //					changeCloseWindow(driver);
           // アラートをけして
           checkAndAcceptAlert(driver);

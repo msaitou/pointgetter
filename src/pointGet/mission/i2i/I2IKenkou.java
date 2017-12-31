@@ -41,7 +41,7 @@ public class I2IKenkou extends I2IBase {
             break;
           }
           String wid = driver.getWindowHandle();
-          clickSleepSelector(e, selector2, 5000);
+          clickSleepSelector(driver, e, selector2, 5000);
           // アラートをけして
           checkAndAcceptAlert(driver);
           Utille.sleep(10000);

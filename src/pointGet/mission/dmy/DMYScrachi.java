@@ -39,7 +39,7 @@ public class DMYScrachi extends DMYBase {
             int size = getSelectorSize(driver, selector);
             int ran = Utille.getIntRand(size);
             if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-              clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
+              clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), ran, 3000);
             }
           }
         }

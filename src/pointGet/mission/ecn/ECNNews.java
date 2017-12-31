@@ -37,7 +37,7 @@ public class ECNNews extends ECNBase {
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       if (isExistEle(eleList, i)) {
-        clickSleepSelector(eleList, i, 3000);
+        clickSleepSelector(driver, eleList, i, 3000);
 
         String selector1 = "div.feeling_buttons button";
         int ran = Utille.getIntRand(4);

@@ -67,7 +67,7 @@ public class GMYShindan extends GMYBase {
           break;
         }
         if (isExistEle(wEle, sele1)) {
-          clickSleepSelector(wEle, sele1, 4000); // 遷移
+          clickSleepSelector(driver, wEle, sele1, 4000); // 遷移
           waitTilReady(driver);
           Utille.sleep(4000);
           Shindan.answer(driver, "", null);

@@ -87,7 +87,7 @@ public class PTOFarmEnk extends PTOBase {
               targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             Utille.scrolledPage(driver, eleList.get(targetIndex));
-            clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+            clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);
             Utille.sleep(3000);
             String cUrl = driver.getCurrentUrl();

@@ -65,7 +65,7 @@ public class MOPChyosatai extends MOPBase {
             for (int i = 0; i < 10; i++) {
               int ran = Utille.getIntRand(2);
               if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-                clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
+                clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), ran, 3000);
                 checkOverlay(driver, overlaySelector);
                 if (isExistEle(driver, footBnrSelector)
                     && !isExistEle(driver, footBnrNoneSele, false)) {
@@ -94,7 +94,7 @@ public class MOPChyosatai extends MOPBase {
             Utille.sleep(2000);
             if (isExistEle(driver.findElements(By.cssSelector(selector)))
                 && isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
-              clickSleepSelector(driver.findElements(By.cssSelector(selector)), ran, 3000);
+              clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), ran, 3000);
               checkOverlay(driver, overlaySelector);
               if (isExistEle(driver, footBnrSelector)
                   && !isExistEle(driver, footBnrNoneSele, false)) {

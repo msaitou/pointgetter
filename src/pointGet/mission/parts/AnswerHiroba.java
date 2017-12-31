@@ -53,7 +53,7 @@ public class AnswerHiroba extends MissCommon {
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
             if (isExistEle(eleList2, choiceNum)) {
               // 選択
-              clickSleepSelector(eleList2, choiceNum, 3000);
+              clickSleepSelector(driver, eleList2, choiceNum, 3000);
               if (isExistEle(driver, seleNext)) {
                 clickSleepSelector(driver, seleNext, 3000);
                 if (isExistEle(driver, seleNext)) {

@@ -43,7 +43,7 @@ public class I2IPhoto extends I2IBase {
           if (!isExistEle(e, selector2)) {
             break;
           }
-          clickSleepSelector(e, selector2, 7000);
+          clickSleepSelector(driver, e, selector2, 7000);
           // アラートをけして
           checkAndAcceptAlert(driver);
           Utille.sleep(2000);

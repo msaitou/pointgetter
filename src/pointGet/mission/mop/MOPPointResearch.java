@@ -46,7 +46,7 @@ public class MOPPointResearch extends MOPBase {
       if (targetIndex > -1 && targetIndex > -1
           && isExistEle(eleList, targetIndex)) {
         String wid = driver.getWindowHandle();
-        clickSleepSelector(eleList, targetIndex, 4000); // アンケートスタートページ
+        clickSleepSelector(driver, eleList, targetIndex, 4000); // アンケートスタートページ
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
         logg.info("url[" + cUrl + "]");

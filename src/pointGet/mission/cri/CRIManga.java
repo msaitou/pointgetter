@@ -44,7 +44,7 @@ public class CRIManga extends CRIBase {
 					if (isExistEle(driver, selector)) {
 						List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 						if (isExistEle(eleList, 0)) {
-							clickSleepSelector(eleList, 0, 3000); // 遷移
+							clickSleepSelector(driver, eleList, 0, 3000); // 遷移
 							String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
 							String seleNext = "form>input[type='image']";
 							for (int g = 0; g < 9; g++) {
@@ -86,7 +86,7 @@ public class CRIManga extends CRIBase {
 									List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
 									if (isExistEle(eleList2, choiceNum)) {
 										// 選択
-										clickSleepSelector(eleList2.get(choiceNum), 2500);
+										clickSleepSelector(driver, eleList2.get(choiceNum), 2500);
 										if (isExistEle(driver, seleNext2)) {
 											// 次へ
 											clickSleepSelector(driver, seleNext2, 4000);

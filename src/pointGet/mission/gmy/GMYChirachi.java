@@ -36,7 +36,7 @@ public class GMYChirachi extends GMYBase {
       int size = getSelectorSize(driver, selector);
       for (int i = 0; i < size && i < 2; i++) {
         if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
-          clickSleepSelector(driver.findElements(By.cssSelector(selector)), i, 4000);
+          clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), i, 4000);
           closeOtherWindow(driver);
           break;
         }

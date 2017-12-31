@@ -47,7 +47,7 @@ public class GENClickBanner extends Mission {
 				try {
 					for (int i = 0; i < size; i++) {
 						if (isExistEle(eleList, i)) {
-							clickSleepSelector(eleList, i, 2500);
+							clickSleepSelector(driver, eleList, i, 2500);
 							closeOtherWindow(driver);
 						}
 					}
@@ -71,7 +71,7 @@ public class GENClickBanner extends Mission {
 		try {
 			for (int i = 0; i < size; i++) {
 				if (isExistEle(eleList, i)) {
-					clickSleepSelector(eleList, i, 2500);
+					clickSleepSelector(driver, eleList, i, 2500);
 					closeOtherWindow(driver);
 				}
 			}

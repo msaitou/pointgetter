@@ -51,7 +51,7 @@ public class AnswerShindan3 extends MissCommon {
               int size = eleList.size(), // 選択肢の数を数える
               ran1 = Utille.getIntRand(size);
               if (isExistEle(eleList, ran1)) {
-                clickSleepSelector(eleList, ran1, 4000); // 選択
+                clickSleepSelector(driver, eleList, ran1, 4000); // 選択
                 // end-btn が出たら終了
                 if (isExistEle(driver, endSelector + none, false)
                     && isExistEle(driver, nextSelector)) {

@@ -82,7 +82,7 @@ public class SUGClickBananer extends SUGBase {
             for (int i = 0; i < stampNum; i++) {
               if (isExistEle(eleList, i)) {
                 logg.info(mName + " " + i + "." + clMap.getKey() + "!");
-                clickSleepSelector(eleList, i, 9000);
+                clickSleepSelector(driver, eleList, i, 9000);
                 closeOtherWindow(driver);
               }
             }
@@ -95,7 +95,7 @@ public class SUGClickBananer extends SUGBase {
             for (int i = 0; i < stampNum; i++) {
               if (isExistEle(eleList, i)) {
                 logg.info(mName + " " + i + "." + clMap.getKey() + "!");
-                clickSleepSelector(eleList, i, 9000);
+                clickSleepSelector(driver, eleList, i, 9000);
                 closeOtherWindow(driver);
               }
             }
@@ -109,7 +109,7 @@ public class SUGClickBananer extends SUGBase {
 						for (int i = 0; i < stampNum; i++) {
 							if (isExistEle(eleList, i)) {
 								logg.info(mName + " " + i + "." + clMap.getKey() + "!");
-								clickSleepSelector(eleList, i, 9000);
+								clickSleepSelector(driver, eleList, i, 9000);
 								closeOtherWindow(driver);
 							}
 						}

@@ -72,7 +72,7 @@ public class PTOPointResearch2 extends PTOBase {
         if (size > targetIndex && targetIndex > -1
             && isExistEle(eleList, targetIndex)) {
           String wid = driver.getWindowHandle();
-          clickSleepSelector(eleList, targetIndex, 10000); // アンケートスタートページ
+          clickSleepSelector(driver, eleList, targetIndex, 10000); // アンケートスタートページ
           changeWindow(driver, wid);
           String cUrl = driver.getCurrentUrl();
           logg.info("url[" + cUrl + "]");

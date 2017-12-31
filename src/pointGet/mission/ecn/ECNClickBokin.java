@@ -30,7 +30,7 @@ public class ECNClickBokin extends ECNBase {
 			List<WebElement> eleList1 = driver.findElements(By.cssSelector(selector));
 			for (WebElement ele : eleList1) {
 				if (isExistEle(ele, "a")) {
-					clickSleepSelector(ele, "a", 3000);
+					clickSleepSelector(driver, ele, "a", 3000);
 					closeOtherWindow(driver);
 				}
 			}
