@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdEnq;
+import pointGet.mission.parts.AnswerShindan;
 
 /**
  *
@@ -18,6 +19,7 @@ import pointGet.mission.parts.AnswerAdEnq;
 public class MOPChyousadan extends MOPBase {
   final String url = "http://pc.moppy.jp/gamecontents/";
   AnswerAdEnq AdEnq = null;
+  AnswerShindan Shindan = null;
 
   /**
    * @param logg
@@ -25,6 +27,7 @@ public class MOPChyousadan extends MOPBase {
   public MOPChyousadan(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "調査団");
     AdEnq = new AnswerAdEnq(logg);
+    Shindan = new AnswerShindan(logg);
   }
 
   @Override
@@ -35,14 +38,15 @@ public class MOPChyousadan extends MOPBase {
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 8000); // 遷移
       changeCloseWindow(driver);
-      Utille.sleep(3000);
+      Utille.sleep(10000);
       if (isExistEle(driver, seleFirst)) {
         clickSleepSelector(driver, seleFirst, 3000); // 調査一覧へ
         changeCloseWindow(driver);
-        Utille.sleep(3000);
+        Utille.sleep(6000);
         int skip = 1;
         String sele1_ = "iframe.question_frame", //
         sele1 = "form>input[type='submit']", //
+        sele4 = "a.submit-btn",
         b = "";
         selector = "div.enquete_box>a";
         int cn = 0;
@@ -61,17 +65,22 @@ public class MOPChyousadan extends MOPBase {
               // $('iframe').contents().find("div>input[type='submit']")
               AdEnq.answer(driver, sele1, wid);
             }
+            else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+                && isExistEle(driver, sele4)) {
+              Shindan.answer(driver, sele4, wid);
+              skip++;
+            }
             else {
               skip++;
               driver.close();
               driver.switchTo().window(wid);
             }
-            driver.navigate().refresh();
+            Utille.refresh(driver, logg);
             Utille.sleep(5000);
-            // 回数を制限する
-            if (cn++ > 2) {
-              break;
-            }
+//            // 回数を制限する
+//            if (cn++ > 2) {
+//              break;
+//            }
           }
           else {
             break;

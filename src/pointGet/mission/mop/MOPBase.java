@@ -56,7 +56,7 @@ public abstract class MOPBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    driver.get("http://pc.moppy.jp/");
+    Utille.url(driver, "http://pc.moppy.jp/", loggg);
     String se = "div#preface>ul.pre__login__inner";
     if (!Utille.isExistEle(driver, se, loggg)) {
       // login!!
@@ -151,7 +151,8 @@ public abstract class MOPBase extends Mission {
     } catch (Throwable e) {
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
-      driver.close();
+//      driver.close();
+      driver.quit();
     }
   }
 
@@ -162,7 +163,7 @@ public abstract class MOPBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "div#preface>ul.pre__login__inner", point = "", secondPoint = "";
+    String selector = "div#preface>ul.pre__login__inner", point = "0", secondPoint = "0";
     driver.get("http://pc.moppy.jp/");
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!

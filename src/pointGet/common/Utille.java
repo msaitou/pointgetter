@@ -73,8 +73,7 @@ public class Utille {
     FirefoxOptions firefoxOptions = new FirefoxOptions();
     firefoxOptions.setCapability("marionette", true);
     WebDriver driver = new FirefoxDriver(firefoxOptions);
-
-    //    WebDriver driver = new FirefoxDriver(capabilities);
+    driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
     return driver;
   }
 
@@ -632,7 +631,7 @@ public class Utille {
         driver.switchTo().defaultContent();
         WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
         driver.switchTo().frame(baseFrame);
-        clickRecapthaWaitting(driver, logg);
+        res = clickRecapthaWaitting(driver, logg);
       }
       driver.switchTo().defaultContent();
       WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
@@ -677,7 +676,7 @@ public class Utille {
    * @param logg
    */
   static public void refresh(WebDriver driver, Logger logg) {
-    refresh(driver, logg, 3000);
+    refresh(driver, logg, 30000);
   }
 
   /**
@@ -725,8 +724,8 @@ public class Utille {
    }
  }
 
-  static public void url(WebDriver driver, String url, Logger logg) {
-    url(driver, url, logg, 3000);
+  static public boolean url(WebDriver driver, String url, Logger logg) {
+    return url(driver, url, logg, 60000);
   }
 
   /**
@@ -735,7 +734,8 @@ public class Utille {
    * @param logg
    * @param mill
    */
-  static public void url(WebDriver driver, String url, Logger logg, long mill) {
+  static public boolean url(WebDriver driver, String url, Logger logg, long mill) {
+    boolean res = false;
     try {
       logg.info("url設定ーー");
       driver.manage().timeouts().pageLoadTimeout(mill, TimeUnit.MILLISECONDS);
@@ -748,9 +748,13 @@ public class Utille {
       logg.info("url前ーー");
       driver.get(url);
       logg.info("url後ーー");
+      res = true;
     } catch (Exception e) {
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
       logg.info("タイムアウトしましたよ");
+//      driver.close();
+//      driver.quit();
     }
+    return res;
   }
 }

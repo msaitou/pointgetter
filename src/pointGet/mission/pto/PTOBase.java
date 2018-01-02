@@ -57,7 +57,7 @@ public abstract class PTOBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     String sel = "li.point>a>strong";
-    driver.get("https://www.pointtown.com/ptu/index.do");
+    Utille.url(driver, "https://www.pointtown.com/ptu/index.do", loggg);
     if (!Utille.isExistEle(driver, sel, loggg)) {
       // login!!
       LoginSite.login(sCode, driver, loggg);
@@ -130,6 +130,7 @@ public abstract class PTOBase extends Mission {
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
       driver.close();
+      driver.quit();
     }
   }
 
@@ -140,7 +141,7 @@ public abstract class PTOBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "li.point>a>strong", point = "";
+    String selector = "li.point>a>strong", point = "0";
     driver.get("https://www.pointtown.com/ptu/index.do");
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!

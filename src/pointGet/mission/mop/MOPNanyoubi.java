@@ -1,5 +1,6 @@
 package pointGet.mission.mop;
 
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,6 +8,8 @@ import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import pointGet.common.Utille;
 
@@ -33,6 +36,41 @@ public class MOPNanyoubi extends MOPBase {
 
 			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
+      String exchangeSele = "a.stamp__btn", //
+          exchangeListSele = "select.exchange__selection",
+          doExchangeSele = "input.exchange__btn",
+          returnTopSele = "a.stamp__btn.stamp__btn-return";
+      Utille.sleep(2000);
+      // スタンプ変換
+      if (isExistEle(driver, exchangeSele)) {
+        List<WebElement> elems = driver.findElements(By.cssSelector(exchangeSele));
+        for (int ii = 0; ii < elems.size(); ii++) {
+          if (isExistEle(elems, ii)) {
+            Utille.scrolledPage(driver, elems.get(ii));
+            if ("スタンプ交換".equals(elems.get(ii).getText())) {
+              clickSleepSelector(driver, elems, ii, 3000); // 遷移
+
+              if (isExistEle(driver, exchangeListSele)) {
+                int size = getSelectorSize(driver, exchangeListSele + ">option");
+                String value = driver.findElements(By.cssSelector(exchangeListSele + ">option"))
+                    .get(size - 1).getAttribute("value");
+                Select selectList = new Select(driver.findElement(By.cssSelector(exchangeListSele)));
+                selectList.selectByValue(value); // 交換ポイントを選択
+                Utille.sleep(3000);
+                if (isExistEle(driver, doExchangeSele)) {
+                  clickSleepSelector(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
+                }
+              }
+              // Topへ戻る
+              if (isExistEle(driver, returnTopSele)) {
+                clickSleepSelector(driver, returnTopSele, 4000);
+              }
+              break;
+            }
+          }
+        }
+      }
+
 			// finish condition
 			String finishSelector = "p.ui-timer";
 			if (isExistEle(driver, finishSelector)) {

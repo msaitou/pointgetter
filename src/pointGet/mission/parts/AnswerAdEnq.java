@@ -31,9 +31,6 @@ public class AnswerAdEnq extends MissCommon {
     Utille.sleep(3000);
     String baseFrameSele = "iframe.question_frame";
     driver.switchTo().frame(0);
-//    if (isExistEle(driver, "iframe[title='reCAPTCHA ウィジェット']")) {
-//      return false;
-//    }
     if (Utille.clickRecaptha(driver, logg, baseFrameSele)) {
       String preStartSele = "div.btn_next>input[type='submit']";
       if (isExistEle(driver, preStartSele)) {
