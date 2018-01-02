@@ -35,12 +35,16 @@ import javax.script.ScriptException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import lombok.val;
 
 /**
  * @author saitou utillity class
@@ -673,7 +677,7 @@ public class Utille {
    * @param logg
    */
   static public void refresh(WebDriver driver, Logger logg) {
-    refresh(driver, logg, 30000);
+    refresh(driver, logg, 3000);
   }
 
   /**
@@ -696,13 +700,33 @@ public class Utille {
       driver.navigate().refresh();
       logg.info("refresh後ーー");
     } catch (Exception e) {
-      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
+		logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
       logg.info("タイムアウトしましたよ");
     }
+    finally {
+    	checkAndAcceptAlertUtille(driver, logg);
+    }
   }
+  /**
+  *
+  * @param driver
+  */
+  static public void checkAndAcceptAlertUtille(WebDriver driver, Logger logg) {
+   try {
+     // アラートをけして
+     val alert = driver.switchTo().alert();
+     alert.accept();
+     Utille.sleep(3000);
+   } catch (NoAlertPresentException ae) {
+     logg.error("##NOT EXIST Alert##################");
+   } catch (NoSuchWindowException e) {
+     logg.error("##NOT EXIST Alert2##################");
+     Utille.sleep(2000);
+   }
+ }
 
   static public void url(WebDriver driver, String url, Logger logg) {
-    url(driver, url, logg, 30000);
+    url(driver, url, logg, 3000);
   }
 
   /**

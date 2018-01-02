@@ -10,7 +10,9 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerHiroba;
+import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKonatab;
 import pointGet.mission.parts.AnswerKotsuta;
@@ -42,6 +44,8 @@ public class CRIPointResearch extends CRIBase {
   AnswerKonatab Konatab = null;
   AnswerMinnanosur Minnanosur = null;
   AnswerKansatu Kansatu = null;
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
 
   /**
    * @param logg
@@ -62,6 +66,8 @@ public class CRIPointResearch extends CRIBase {
     Konatab = new AnswerKonatab(logg);
     Minnanosur = new AnswerMinnanosur(logg);
     Kansatu = new AnswerKansatu(logg);
+    Cooking = new AnswerCooking(logg);
+    Hyakkey = new AnswerHyakkey(logg);
   }
 
   @Override
@@ -156,6 +162,22 @@ public class CRIPointResearch extends CRIBase {
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
         }
+        else if ((cUrl.indexOf("natural-cuisine.com") >= 0
+//                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+//                || cUrl.indexOf("haircare-choice.com") >= 0
+//                || cUrl.indexOf("eyemake-beauty.com") >= 0
+                )
+                && isExistEle(driver, sele8)) {
+        	Cooking.answer(driver, sele8, wid);
+            }
+        else if ((cUrl.indexOf("beautyhair-fashion.com") >= 0
+//              || cUrl.indexOf("eyelashes-fashion.com") >= 0
+//              || cUrl.indexOf("haircare-choice.com") >= 0
+//              || cUrl.indexOf("eyemake-beauty.com") >= 0
+              )
+              && isExistEle(driver, sele8)) {
+        	Hyakkey.answer(driver, sele8, wid);
+          }
         else if (isExistEle(driver, sele9)) {
           Tasuuketu.answer(driver, sele9, wid);
         }
@@ -172,7 +194,7 @@ public class CRIPointResearch extends CRIBase {
           driver.close();
           driver.switchTo().window(wid);
         }
-        driver.navigate().refresh();
+        Utille.refresh(driver, logg);
         Utille.sleep(5000);
       }
       else {
