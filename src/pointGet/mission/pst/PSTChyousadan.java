@@ -35,7 +35,25 @@ public class PSTChyousadan extends PSTBase {
       if (isExistEle(driver, seleFirst)) {
         clickSleepSelector(driver, seleFirst, 3000); // 調査一覧へ
         changeCloseWindow(driver);
-        Utille.sleep(3000);
+        Utille.sleep(8000);
+        // ポイントに変換
+        String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
+            changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
+        if (isExistEle(driver, coinSele) ) {
+          String coins = driver.findElement(By.cssSelector(coinSele)).getText();
+          int icoins = Integer.parseInt(Utille.getNumber(coins));
+          if (icoins >= 100) {
+            if (isExistEle(driver, bankSele)) {
+              clickSleepSelector(driver, bankSele, 5000); // 遷移
+              if (isExistEle(driver, changeSele)) {
+                clickSleepSelector(driver, changeSele, 5000);
+                if (isExistEle(driver, changeBtnSele)) {
+                  clickSleepSelector(driver, changeBtnSele, 5000);
+                }
+              }
+            }
+          }
+        }
         int skip = 1;
         String sele1_ = "iframe.question_frame", //
         sele1 = "form>input[type='submit']", //

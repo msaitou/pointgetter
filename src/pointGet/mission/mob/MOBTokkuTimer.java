@@ -68,6 +68,7 @@ public class MOBTokkuTimer extends MOBBase {
                 }
                 else if (isExistEle(driver, retryBtn)) {
                   clickSleepSelector(driver, retryBtn, 3000); // リトライ
+                  checkOverlay(driver, overlaySele);
                 }
               }
             }
