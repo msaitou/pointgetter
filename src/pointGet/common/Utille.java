@@ -704,6 +704,7 @@ public class Utille {
     }
     finally {
     	checkAndAcceptAlertUtille(driver, logg);
+      driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
     }
   }
   /**
@@ -754,6 +755,9 @@ public class Utille {
       logg.info("タイムアウトしましたよ");
 //      driver.close();
 //      driver.quit();
+    }
+    finally {
+      driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
     }
     return res;
   }
