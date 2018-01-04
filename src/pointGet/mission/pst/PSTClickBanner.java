@@ -42,12 +42,13 @@ public class PSTClickBanner extends PSTBase {
             }
           }
         } catch (Throwable e) {
-          driver.close();
-          logg.error("##PILException##################");
+//          driver.close();
+          driver.quit();
+          logg.error("##PSTException##################");
           logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
           logg.error("####################");
           logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
-          logg.error("##PILException##################");
+          logg.error("##PSTException##################");
           driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
         }
       }

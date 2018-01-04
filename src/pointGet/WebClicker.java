@@ -189,7 +189,8 @@ public class WebClicker extends PointGet {
         }
         logg.info("again!!");
       }
-      driver.close();// if not null then execute Quit!
+//      driver.close();// if not null then execute Quit!
+      driver.quit();
     }
   }
 
@@ -287,8 +288,8 @@ public class WebClicker extends PointGet {
       }
     } catch (WebDriverException e) {
       e.printStackTrace();
-      logg.error("-WebDriverException-------------------");
-      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
+      logg.error("-WebDriverException--------------webclicker-----");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
       logg.error("-WebDriverException-------------------");
       if (subRetryCnt++ < 4) {
         //リトライ
@@ -296,8 +297,8 @@ public class WebClicker extends PointGet {
       }
     } catch (Throwable e) {
       e.printStackTrace();
-      logg.error("-Throwable-------------------");
-      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
+      logg.error("-Throwable-------------webclicker------");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
       logg.error("-Throwable-------------------");
     }
     subRetryCnt = 0;

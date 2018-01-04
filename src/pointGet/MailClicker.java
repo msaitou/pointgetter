@@ -316,16 +316,18 @@ public class MailClicker extends PointGet {
                 logMess += "-END";
               } catch (Throwable t) {
                 t.printStackTrace();
-                driver.close();
+                driver.quit();
+//                driver.close();
                 logg.error("##Exception##################");
-                logg.error(Utille.truncateBytes(t.getLocalizedMessage(), 500));
-                logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(t), 500));
+                logg.error(Utille.truncateBytes(t.getLocalizedMessage(), 50000));
+                logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(t), 50000));
                 logg.error("##Exception##################");
                 driver = getWebDriver();
               }
               logg.info(logMess);
             }
-            driver.close();
+            driver.quit();
+//            driver.close();
           } else {
             for (String url : e.getValue()) {
               HttpURLConnection conn;

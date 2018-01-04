@@ -99,14 +99,15 @@ public abstract class Mission extends MissCommon {
         roopMission(driver);
       }
     } catch (WebDriverException we) {
-      logg.error("##wException##################");
-      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(we), 1000));
+      logg.error("##MissionException##################");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(we), 30000));
       logg.error("#############################");
-      driver.close();
+//      driver.close();
+      driver.quit();
       driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
     } catch (Exception e) {
-      logg.error("##Exception##################");
-      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+      logg.error("##MissionException##################");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 30000));
       logg.error("#############################");
       if (retryCnt > 0) {
         return exeMission(driver, i, --retryCnt);

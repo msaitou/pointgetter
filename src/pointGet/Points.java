@@ -279,7 +279,8 @@ public class Points extends PointGet {
     } catch (Throwable e) {
       e.printStackTrace();
     } finally {
-      driver.close();
+//      driver.close();
+      driver.quit();
     }
     //		pMap.put("mop", 582.9);
     //		pMap.put("osa", 183.0);

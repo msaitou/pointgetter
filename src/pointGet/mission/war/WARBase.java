@@ -100,9 +100,11 @@ public abstract class WARBase extends Mission {
       };
       PC.putPointsData(pMap);
     } catch (Throwable e) {
+      loggg.error("["+sCode+"");
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
-      driver.close();
+      driver.quit();
+//      driver.close();
     }
   }
 

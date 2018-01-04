@@ -42,10 +42,11 @@ public class PICClickBanner extends PICBase {
             }
           }
         } catch (Throwable e) {
-          driver.close();
-          logg.error("##GENException##################");
+//          driver.close();
+          driver.quit();
+          logg.error("##PICException##################");
           logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
-          logg.error("##GENException##################");
+          logg.error("##PICException##################");
           driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
         }
       }

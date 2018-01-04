@@ -52,7 +52,8 @@ public class GENClickBanner extends Mission {
             }
           }
         } catch (Throwable e) {
-          driver.close();
+//          driver.close();
+          driver.quit();
           logg.error("##GENException##################");
           logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
           logg.error("####################");
@@ -76,12 +77,13 @@ public class GENClickBanner extends Mission {
         }
       }
     } catch (Throwable e) {
-      driver.close();
-      logg.error("##GENException##################");
+//      driver.close();
+      driver.quit();
+      logg.error("##GEN2Exception##################");
       logg.error(Utille.truncateBytes(e.getLocalizedMessage(), 500));
       logg.error("####################");
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 500));
-      logg.error("##GENException##################");
+      logg.error("##GEN2Exception##################");
       driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
     }
   }
