@@ -73,7 +73,7 @@ public class Utille {
     FirefoxOptions firefoxOptions = new FirefoxOptions();
     firefoxOptions.setCapability("marionette", true);
     WebDriver driver = new FirefoxDriver(firefoxOptions);
-    driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+    driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
     return driver;
   }
 
