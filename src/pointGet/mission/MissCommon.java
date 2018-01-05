@@ -143,7 +143,6 @@ public abstract class MissCommon {
    */
   protected void clickSelector(WebDriver driver, String selector) {
     WebElement ele = driver.findElement(By.cssSelector(selector));
-    Utille.scrolledPage(driver, ele);
     clickSelector(driver, ele);
   }
 
@@ -191,6 +190,7 @@ public abstract class MissCommon {
   * @param selector
   */
  protected void clickSelector(WebDriver driver, WebElement ele) {
+   Utille.scrolledPage(driver, ele);
    int i = 0;
    while (i++ < 5) {
      try {
@@ -213,7 +213,6 @@ public abstract class MissCommon {
    */
   protected void clickSleepSelector(WebDriver driver, String selector, int milliSeconds) {
     WebElement ele = driver.findElement(By.cssSelector(selector));
-    Utille.scrolledPage(driver, ele);
     clickSleepSelector(driver, ele, milliSeconds);
   }
 

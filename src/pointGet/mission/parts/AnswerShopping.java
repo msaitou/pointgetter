@@ -151,6 +151,10 @@ public class AnswerShopping extends MissCommon {
       driver.close();
       driver.switchTo().window(wid);
     }
+    else {
+      driver.close();
+      driver.switchTo().window(wid);
+    }
     return true;
   }
 }
