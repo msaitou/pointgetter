@@ -19,7 +19,7 @@ public class PILChyousadan extends PILBase {
    * @param logg
    */
   public PILChyousadan(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "星座");
+    super(logg, cProps, "調査団");
     AdEnq = new AnswerAdEnq(logg);
   }
 
@@ -85,10 +85,10 @@ public class PILChyousadan extends PILBase {
             }
             driver.navigate().refresh();
             Utille.sleep(5000);
-            // 回数を制限する
-            if (cn++ > 2) {
-              break;
-            }
+//            // 回数を制限する
+//            if (cn++ > 2) {
+//              break;
+//            }
           }
           else {
             break;

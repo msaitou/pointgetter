@@ -63,7 +63,7 @@ public class HAPPointResearch extends HAPBase {
     driver = driverAtom;
     driver.get(url);
     selector = "tbody#easyenquete td>a>img";
-    int skip = 0;
+    int skip = 1;
     String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
     sele4 = "div>input[type='submit']", //
@@ -93,6 +93,7 @@ public class HAPPointResearch extends HAPBase {
         clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
+        Utille.sleep(3000);
         String cUrl = driver.getCurrentUrl();
         logg.info("url[" + cUrl + "]");
         if (isExistEle(driver, sele2)) {

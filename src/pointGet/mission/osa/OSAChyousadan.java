@@ -65,10 +65,10 @@ public class OSAChyousadan extends OSABase {
             }
             driver.navigate().refresh();
             Utille.sleep(5000);
-            // 回数を制限する
-            if (cn++ > 2) {
-              break;
-            }
+//            // 回数を制限する
+//            if (cn++ > 2) {
+//              break;
+//            }
           }
           else {
             break;
