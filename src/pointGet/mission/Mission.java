@@ -102,9 +102,13 @@ public abstract class Mission extends MissCommon {
       logg.error("##MissionException##################");
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(we), 30000));
       logg.error("#############################");
-//      driver.close();
-      driver.quit();
-      driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
+      try {
+        driver.close();
+        //      driver.quit();
+        driver = Utille.getWebDriver(commonProps.get("geckopath"), commonProps.get("ffprofile"));
+      } catch (Throwable te) {
+        logg.error("##MissionException close失敗##################");
+      }
     } catch (Exception e) {
       logg.error("##MissionException##################");
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 30000));
