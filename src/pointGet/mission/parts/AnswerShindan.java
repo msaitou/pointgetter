@@ -1,6 +1,7 @@
 package pointGet.mission.parts;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -65,6 +66,7 @@ public class AnswerShindan extends MissCommon {
                 }
                 else if (isExistEle(driver, endSelector)
                     && isExistEle(driver, nextSelector + none, false)) {
+                  driver.manage().timeouts().pageLoadTimeout(30000, TimeUnit.MILLISECONDS);
                   clickSleepSelector(driver, endSelector, 4000); // 遷移
                   logg.info("neukata?");
                   Utille.clickRecaptha(driver, logg);

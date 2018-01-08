@@ -10,10 +10,12 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdEnq;
+import pointGet.mission.parts.AnswerShindan;
 
 public class PILChyousadan extends PILBase {
   final String url = "http://www.point-island.com/wcmpoint.asp";
   AnswerAdEnq AdEnq = null;
+  AnswerShindan Shindan = null;
 
   /**
    * @param logg
@@ -21,7 +23,8 @@ public class PILChyousadan extends PILBase {
   public PILChyousadan(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "調査団");
     AdEnq = new AnswerAdEnq(logg);
-  }
+    Shindan = new AnswerShindan(logg);
+ }
 
   @Override
   public void privateMission(WebDriver driver) {
@@ -59,6 +62,7 @@ public class PILChyousadan extends PILBase {
         int skip = 1;
         String sele1_ = "iframe.question_frame", //
         sele1 = "form>input[type='submit']", //
+            sele4 = "a.submit-btn",
         b = "";
         selector = "div.enquete_box>a";
         int cn = 0;
@@ -78,12 +82,17 @@ public class PILChyousadan extends PILBase {
               // $('iframe').contents().find("div>input[type='submit']")
               AdEnq.answer(driver, sele1, wid);
             }
+            else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+                && isExistEle(driver, sele4)) {
+              Shindan.answer(driver, sele4, wid);
+              skip++;
+            }
             else {
               skip++;
               driver.close();
               driver.switchTo().window(wid);
             }
-            driver.navigate().refresh();
+            Utille.refresh(driver, logg);
             Utille.sleep(5000);
 //            // 回数を制限する
 //            if (cn++ > 2) {
