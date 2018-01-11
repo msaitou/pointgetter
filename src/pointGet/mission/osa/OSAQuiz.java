@@ -15,7 +15,7 @@ import pointGet.common.Utille;
  * @author saitou 0時、8時、16時開催
  */
 public class OSAQuiz extends OSABase {
-  final String url = "http://osaifu.com/contents/coinland/";
+  final String url = "http://osaifu.com/coinland/";
 
   /**
    * @param logg

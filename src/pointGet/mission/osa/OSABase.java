@@ -6,11 +6,13 @@ package pointGet.mission.osa;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import pointGet.LoginSite;
 import pointGet.common.Define;
@@ -56,7 +58,7 @@ public abstract class OSABase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    String se = "ul.userinfo";
+    String se = "span.txt__username";
     driver.get("http://osaifu.com/");
     if (!Utille.isExistEle(driver, se, loggg)) {
       // login!!
@@ -158,21 +160,26 @@ public abstract class OSABase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "ul.userinfo", point = "", secondPoint = "";
+    String selector = "span.txt__username", point = "", secondPoint = "";
     driver.get("http://osaifu.com/");
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);
     }
-    selector = "dl.bankbook-total>dd.current.coin>span";
-    driver.get("https://osaifu.com/contents/bankbook/top/");
-    if (Utille.isExistEle(driver, selector, logg)) {
-      point = driver.findElement(By.cssSelector(selector)).getText();
+    selector = "dd.a-txt__coin>em";
+    driver.get("https://osaifu.com/my-osaifu/");
+    List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+
+    int targetIndex = 0;  // coin
+    if (Utille.isExistEle(eleList, targetIndex, logg)) {
+      Utille.scrolledPage(driver, eleList.get(targetIndex));
+      point = driver.findElements(By.cssSelector(selector)).get(targetIndex).getText();
       point = Utille.getNumber(point);
     }
-    selector = "dl.bankbook-total>dd.gold.coin>span";
-    if (Utille.isExistEle(driver, selector, logg)) {
-      secondPoint = driver.findElement(By.cssSelector(selector)).getText();
+    targetIndex = 2;  // gold
+    if (Utille.isExistEle(eleList, targetIndex, logg)) {
+      Utille.scrolledPage(driver, eleList.get(targetIndex));
+      secondPoint = driver.findElements(By.cssSelector(selector)).get(targetIndex).getText();
       secondPoint = Utille.getNumber(secondPoint);
     }
     Double sTotal = Utille.sumTotal(sCode, point, 0.0);

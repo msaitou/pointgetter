@@ -143,7 +143,7 @@ public abstract class PTOBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "li.point>a>strong", point = "0";
-    driver.get("https://www.pointtown.com/ptu/index.do");
+    Utille.url(driver, "https://www.pointtown.com/ptu/index.do", logg);
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);

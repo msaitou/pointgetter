@@ -117,7 +117,7 @@ public class PTOKuji extends PTOBase {
 		// 1．ログイン直後のTOP画面で
 		int c = 0;
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
-			driver.get(clMap.getValue().get("url"));
+      Utille.url(driver, clMap.getValue().get("url"), logg);
 			boolean existFlag = false;
 			String sele = "";
 			switch (clMap.getKey()) {
@@ -154,7 +154,7 @@ public class PTOKuji extends PTOBase {
 									existFlag = true;
 									break;
 								}
-								driver.get(clMap.getValue().get("url"));
+					      Utille.url(driver, clMap.getValue().get("url"), logg);
 								Utille.sleep(4000);
 							}
 						}

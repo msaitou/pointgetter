@@ -28,7 +28,7 @@ public class PTOChyousadan extends PTOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
     String seleFirst = "dl>dt>img[src*='kumakumachosa']";
     if (isExistEle(driver, selector)) {

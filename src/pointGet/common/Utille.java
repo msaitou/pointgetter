@@ -753,6 +753,17 @@ public class Utille {
     } catch (Exception e) {
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
       logg.info("タイムアウトしましたよ");
+      int retry = 0;
+      while (retry++ <= 3) {
+        logg.info(retry+"回目のリトライ");
+        try {
+          refresh(driver, logg, 60000);
+        }
+        catch (Exception re) {
+          logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 30000));
+          logg.info(retry+"回目のリトライretryRefreshでタイムアウトしましたよ");
+        }
+      }
 //      driver.close();
 //      driver.quit();
     }

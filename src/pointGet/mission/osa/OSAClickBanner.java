@@ -13,7 +13,7 @@ import pointGet.common.Utille;
  * 1日1回
  */
 public class OSAClickBanner extends OSABase {
-	final String url = "http://osaifu.com/";
+	final String url = "https://osaifu.com/";
 
 	/**
 	 * @param logg
@@ -25,7 +25,7 @@ public class OSAClickBanner extends OSABase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "section.recommend-area.item-block img.item-name";
+		selector = "section[data-block-title='クリックで貯める'] div>img";
 		if (isExistEle(driver, selector)) {
 			int size = getSelectorSize(driver, selector);;
 			for (int i = 0; i < size; i++) {

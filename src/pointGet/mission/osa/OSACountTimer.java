@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import pointGet.common.Utille;
 
 public class OSACountTimer extends OSABase {
-  final String url = "http://osaifu.com/contents/coinland/";
+  final String url = "http://osaifu.com/coinland/";
 
   /**
    * @author saitou 0時、12時開催

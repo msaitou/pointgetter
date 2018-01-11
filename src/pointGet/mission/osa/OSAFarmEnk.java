@@ -18,7 +18,7 @@ import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
 
 public class OSAFarmEnk extends OSABase {
-  final String url = "http://osaifu.com/contents/coinland/";
+  final String url = "http://osaifu.com/coinland/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;

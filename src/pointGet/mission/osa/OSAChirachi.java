@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
  *
  */
 public class OSAChirachi extends OSABase {
-  final String url = "http://osaifu.com/contents/coinland/";
+  final String url = "http://osaifu.com/coinland/";
 
   /**
    * @param log

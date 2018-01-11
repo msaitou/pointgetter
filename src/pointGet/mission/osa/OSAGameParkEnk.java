@@ -13,7 +13,7 @@ import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 
 public class OSAGameParkEnk extends OSABase {
-  final String url = "http://osaifu.com/contents/coinland/";
+  final String url = "http://osaifu.com/coinland/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;

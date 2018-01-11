@@ -13,7 +13,7 @@ import pointGet.common.Utille;
  * @author saitou 0時、12時開催
  */
 public class OSAEnglishTest extends OSABase {
-	final String url = "http://osaifu.com/contents/coinland/";
+  final String url = "http://osaifu.com/coinland/";
 
 	/**
 	 * @param logg

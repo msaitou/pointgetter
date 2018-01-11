@@ -96,10 +96,10 @@ public class PTODaily extends PTOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     int c = 0;
     for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
-      driver.get(clMap.getValue().get("url"));
+      Utille.url(driver, clMap.getValue().get("url"), logg);
       String sele = "";
       int size = 0;
       List<WebElement> eleList = null;
@@ -150,7 +150,7 @@ public class PTODaily extends PTOBase {
               closeOtherWindow(driver);
             }
           }
-          driver.get("http://www.pointtown.com/ptu/collection/collection.do");
+          Utille.url(driver, "http://www.pointtown.com/ptu/collection/collection.do", logg);
           sele = "li.listbox dt>a>img";
           List<WebElement> eleList2 = driver.findElements(By.cssSelector(sele));
           int size2 = eleList2.size();

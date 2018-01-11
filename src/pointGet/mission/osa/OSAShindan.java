@@ -16,7 +16,7 @@ import pointGet.mission.parts.AnswerShindan;
  *
  */
 public class OSAShindan extends OSABase {
-  final String url = "http://osaifu.com/contents/coinland/";
+  final String url = "http://osaifu.com/coinland/";
   AnswerShindan Shindan = null;
 
   /**
@@ -35,7 +35,7 @@ public class OSAShindan extends OSABase {
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため
     sumiSelector = "img[src='/images/icons/sumi.png']";
     int limit = 60;
-    selector = "li>a>img[src='/img/coinland/pc/icon/icon-shindan.png']";
+    selector = "li>a>img[src='/assets/pc/img/coinland/icon-shindan.png']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);

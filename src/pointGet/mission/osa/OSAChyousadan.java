@@ -12,7 +12,7 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdEnq;
 
 public class OSAChyousadan extends OSABase {
-  final String url = "http://osaifu.com/contents/coinland/";
+  final String url = "http://osaifu.com/coinland/";
   AnswerAdEnq AdEnq = null;
 
   /**

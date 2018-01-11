@@ -37,9 +37,8 @@ public class PICInterview extends PICBase {
     driver = driverAtom;
     driver.get(url);
     selector = "img[src='./web_interview/img/top.png']";
-    String
-    enkLinkSele = "a>dl>dd>strong", //
-    a = "";
+    String enkLinkSele = "a>dl>dd>strong", //
+        a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
       changeCloseWindow(driver);
@@ -47,14 +46,13 @@ public class PICInterview extends PICBase {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         selector = "a>dl>dd>strong";
         int skip = 1; // tasuuketuyatte
-        String
-        sele1_ = "iframe.question_frame",//
-        sele1 = "form>input[type='submit']", //
-        sele3 = "form>input[type='submit']", //
-        sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-        b = "";
+        String sele1_ = "iframe.question_frame", //
+            sele1 = "form>input[type='submit']", //
+            sele3 = "form>input[type='submit']", //
+            sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+            b = "";
         while (true) {
-//          checkOverlay(driver, overlaySele, false);
+          //          checkOverlay(driver, overlaySele, false);
           if (!isExistEle(driver, selector)) {
             break;
           }
@@ -81,17 +79,17 @@ public class PICInterview extends PICBase {
                     skip++;
                     driver.close();
                     driver.switchTo().window(wid);
-//                    break;
+                    //                    break;
                   }
+                } catch (StaleElementReferenceException e) {
+                  logg.warn("StaleElementReferenceException-----------------");
+                  isSuccess = false;
                 }
-                catch (StaleElementReferenceException e) {
-                 logg.warn("StaleElementReferenceException-----------------");
-                 isSuccess = false;
-                }
-              } while(!isSuccess);
+              } while (!isSuccess);
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
-                || cUrl.indexOf("sheep.seikaku-checker.club") >= 0)
+                || cUrl.indexOf("sheep.seikaku-checker.club") >= 0
+                || cUrl.indexOf("diagnosis.media-ad.jp/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
               skip++;

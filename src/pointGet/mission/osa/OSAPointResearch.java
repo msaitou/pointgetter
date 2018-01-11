@@ -18,7 +18,7 @@ import pointGet.mission.parts.AnswerPointResearch;
 import pointGet.mission.parts.AnswerSurveyEnk;
 
 public class OSAPointResearch extends OSABase {
-  final String url = "http://osaifu.com/contents/enquete/";
+  final String url = "http://osaifu.com/enquete/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerPointResearch PointResearch = null;

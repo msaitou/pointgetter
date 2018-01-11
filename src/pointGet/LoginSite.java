@@ -253,16 +253,16 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginOsa(WebDriver driver, Logger logg) {
-    driver.get("https://osaifu.com/contents/login/");
+    driver.get("https://osaifu.com/login/");
     Utille.sleep(2000);
-    if (Utille.isExistEle(driver, "input[name='tel_or_email']", logg)) {
-      WebElement ele = driver.findElement(By.cssSelector("input[name='tel_or_email']"));
+    if (Utille.isExistEle(driver, "input[name='_username']", logg)) {
+      WebElement ele = driver.findElement(By.cssSelector("input[name='_username']"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_OSA).get("loginid"));
-      ele = driver.findElement(By.cssSelector("input[name='passwd']"));
+      ele = driver.findElement(By.cssSelector("input[name='_password']"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_OSA).get("loginpass"));
-      driver.findElement(By.cssSelector("input[name='submit']")).click();
+      driver.findElement(By.cssSelector("button[type='submit']")).click();
       Utille.sleep(5000);
     }
   }

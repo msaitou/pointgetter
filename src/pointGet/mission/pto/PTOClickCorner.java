@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -67,11 +69,11 @@ public class PTOClickCorner extends PTOBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get("https://www.pointtown.com/ptu/index.do");
+    Utille.url(driver, "https://www.pointtown.com/ptu/index.do", logg);
 		// 1．ログイン直後のTOP画面で
 		int c = 0;
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
-			driver.get(clMap.getValue().get("url"));
+	    Utille.url(driver, clMap.getValue().get("url"), logg);
 			if (isExistEle(driver, clMap.getValue().get("sele"))) {
 				logg.info(mName + " " + ++c + "." + clMap.getKey() + "!");
 				clickSleepSelector(driver, clMap.getValue().get("sele"), 2000);
@@ -81,7 +83,7 @@ public class PTOClickCorner extends PTOBase {
 		++c;
 		selector = "section#footer-click li.panel__list__item.has-horizontal-child span.click-txt";
 		// サービスページ下
-		driver.get("http://www.pointtown.com/ptu/pointpark/top.do");
+    Utille.url(driver, "http://www.pointtown.com/ptu/pointpark/top.do", logg);
 		if (isExistEle(driver, selector)) {
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 			int size = eleList.size();
