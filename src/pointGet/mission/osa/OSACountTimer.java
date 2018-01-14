@@ -26,6 +26,7 @@ public class OSACountTimer extends OSABase {
         overlayNoneSele = "div.overlay-popup[style*='display: none;'] a.button-close";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 2000); // 遷移
+      changeCloseWindow(driver);
       String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
       checkOverlay(driver, overlaySelector);
       selector = "form.fx-control>input[name='submit']";

@@ -30,6 +30,7 @@ public class OSANanyoubi extends OSABase {
 		Utille.sleep(2000);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
+      changeCloseWindow(driver);
 			String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
 			checkOverlay(driver, overlaySelector);
 			// finish condition

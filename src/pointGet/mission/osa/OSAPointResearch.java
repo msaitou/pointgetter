@@ -45,7 +45,7 @@ public class OSAPointResearch extends OSABase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "a.ui-btn.ui-btn-a";
+    selector = "a.a-btn-primary";
     int skip = 1;
     String sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
     sele2 = "form>input[type='image']", // 回答する 漫画用

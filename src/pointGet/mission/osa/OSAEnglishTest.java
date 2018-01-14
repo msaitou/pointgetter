@@ -28,6 +28,7 @@ public class OSAEnglishTest extends OSABase {
 		selector = "li>a>img[alt='英単語TEST']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移
+      changeCloseWindow(driver);
 			String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
 			checkOverlay(driver, overlaySelector);
 			// finish condition
