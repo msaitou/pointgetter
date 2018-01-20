@@ -2,7 +2,6 @@ package pointGet.mission.pto;
 
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -99,6 +98,7 @@ public class PTOPointResearch2 extends PTOBase {
             Colum.answer(driver, sele6, wid);
           }
           else if ((cUrl.indexOf("question-hiroba") >= 0
+              || cUrl.indexOf("shigoto-hoken.com") >= 0
               || cUrl.indexOf("kenko-gourmet.com") >= 0)
               && isExistEle(driver, sele7, false)) {
             Hiroba.answer(driver, sele7, wid);

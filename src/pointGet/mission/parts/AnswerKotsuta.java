@@ -34,7 +34,7 @@ public class AnswerKotsuta extends MissCommon {
         titleSele = "span.query-text", // 問セレクター
         closeSele = "input.btn_close_en"; // 閉じるボタンセレクター
     clickSleepSelector(driver, startSele, 4000);
-    for (int k = 1; k <= 18; k++) {
+    for (int k = 1; k <= 21; k++) {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "", qNo = "";
       if (isExistEle(driver, noSele)) {
