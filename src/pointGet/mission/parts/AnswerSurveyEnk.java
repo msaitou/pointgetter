@@ -35,7 +35,8 @@ public class AnswerSurveyEnk extends MissCommon {
     checkboxSele = "label.item-checkbox", // チェックボックスセレクター
     overlay = "div.bnrFrame>div.bnrclose>img", // 広告セレクター
     noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", // 非表示広告セレクター
-    seleSele = "select.mdl-textfield__input"; // ドロップダウンセレクター
+    seleSele = "select.mdl-textfield__input",
+    nextSele = "a.nextEnqBtn"; // ドロップダウンセレクター
     for (int k = 1; k <= 20; k++) {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "";
@@ -99,6 +100,15 @@ public class AnswerSurveyEnk extends MissCommon {
       if (isExistEle(driver, startSele)) {
         // 次へ(回答へ)
         clickSleepSelector(driver, startSele, 4000);
+        // 広告
+        if (!isExistEle(driver, noneOverlay)
+            && isExistEle(driver, overlay)) {
+          clickSleepSelector(driver, overlay, 3000);
+        }
+      }
+      else if (isExistEle(driver, nextSele)) {
+        // 次へ(回答へ)
+        clickSleepSelector(driver, nextSele, 4000);
         // 広告
         if (!isExistEle(driver, noneOverlay)
             && isExistEle(driver, overlay)) {
