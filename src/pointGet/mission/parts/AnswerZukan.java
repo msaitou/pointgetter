@@ -114,10 +114,40 @@ public class AnswerZukan extends MissCommon {
     }
     checkOverlay(driver, overLay, false);
     Utille.clickRecaptha(driver, logg);
+    String wid2 = driver.getWindowHandle();
+    boolean winNotClosed = false;
     if (isExistEle(driver, seleEnd)) {
       clickSleepSelector(driver, seleEnd, 4000); // 遷移　
+      java.util.Set<String> widSet = driver.getWindowHandles();
+      for (String id : widSet) {
+        if (id.equals(wid2)) {
+          winNotClosed = true;
+        }
+      }
+      if (winNotClosed) {
+        logg.info("alert消そう");
+        // アラートをけして
+        checkAndAcceptAlert(driver);
+      }
+      // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
+      if (null == wid) {
+        logg.info("close0");
+      }
+      else {
+        logg.info("close1");
+//        String wid2 = driver.getWindowHandle();
+          logg.info("close2");
+          if (winNotClosed) {
+            logg.info("close3");
+            driver.close();
+            logg.info("close4");
+          }
+        logg.info("close6");
+        driver.switchTo().window(wid);
+        logg.info("close7");
+      }
     }
-    driver.close();
-    driver.switchTo().window(wid);
+    
+    
   }
 }

@@ -116,6 +116,7 @@ public class CRIPointResearch extends CRIBase {
           Shindan.answer(driver, sele5, wid);
         }
         else if ((cUrl.indexOf("question-hiroba") >= 0
+              || cUrl.indexOf("medicine-good.com") >= 0
             || cUrl.indexOf("kenko-gourmet.com") >= 0
             || cUrl.indexOf("shigoto-hoken.com") >= 0
             )
@@ -156,7 +157,7 @@ public class CRIPointResearch extends CRIBase {
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
         }
-        else if ((cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
+        else if ((cUrl.indexOf("cosme-beaute.com") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
             || cUrl.indexOf("eyemake-beauty.com") >= 0
