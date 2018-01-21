@@ -37,7 +37,7 @@ public class AnswerSurveyEnk extends MissCommon {
     noneOverlay = "div.bnrFrame[style*='display: none;']>div.bnrclose>img", // 非表示広告セレクター
     seleSele = "select.mdl-textfield__input",
     nextSele = "a.nextEnqBtn"; // ドロップダウンセレクター
-    for (int k = 1; k <= 20; k++) {
+    for (int k = 1; k <= 23; k++) {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "";
       if (isExistEle(driver, qTitleSele)) {

@@ -28,7 +28,7 @@ public class PEXPectan extends PEXBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get("http://pex.jp");
-		String sel = "dd.user_pt.fw_b>span.fw_b";
+		String sel = "nav span.g-icon_point";
 		if (!isExistEle(driver, sel)) {
 			// Login
 			LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
