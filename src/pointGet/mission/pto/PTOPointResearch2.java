@@ -98,7 +98,8 @@ public class PTOPointResearch2 extends PTOBase {
             Colum.answer(driver, sele6, wid);
           }
           else if ((cUrl.indexOf("question-hiroba") >= 0
-              || cUrl.indexOf("shigoto-hoken.com") >= 0
+              || cUrl.indexOf("medicine-good.com") >= 0
+                          || cUrl.indexOf("shigoto-hoken.com") >= 0
               || cUrl.indexOf("kenko-gourmet.com") >= 0)
               && isExistEle(driver, sele7, false)) {
             Hiroba.answer(driver, sele7, wid);

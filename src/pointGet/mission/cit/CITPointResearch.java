@@ -97,7 +97,8 @@ public class CITPointResearch extends CITBase {
           Shindan.answer(driver, sele5, wid);
         }
         else if ((cUrl.indexOf("question-hiroba") >= 0
-            || cUrl.indexOf("shigoto-hoken.com") >= 0
+            || cUrl.indexOf("medicine-good.com") >= 0
+                      || cUrl.indexOf("shigoto-hoken.com") >= 0
             || cUrl.indexOf("kenko-gourmet.com") >= 0)
             && isExistEle(driver, sele7, false)) {
           Hiroba.answer(driver, sele7, wid);
