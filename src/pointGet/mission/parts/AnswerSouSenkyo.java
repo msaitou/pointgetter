@@ -27,7 +27,7 @@ public class AnswerSouSenkyo extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
-    String radioSele = "label.radio", //
+    String radioSele = "label.radio>span", //
         voteSele = "input.button--answer", //
         nextSele = "a.button--next", //
         titleSele = "div.question>p", // close
@@ -38,7 +38,7 @@ public class AnswerSouSenkyo extends MissCommon {
       if (isExistEle(driver, titleSele)) {
         qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
         logg.info("[" + qTitle + "]");
-
+        Utille.sleep(2000);
         if (isExistEle(driver, radioSele)) { // ラジオ
           choiceSele = radioSele;
         }

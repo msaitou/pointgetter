@@ -54,7 +54,7 @@ public class PSTGameParkEnk extends PSTBase {
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
 
-        selector = "div.qBox>button";
+        selector = "div.qBox button";
         int skip = 0;
         String sele1 = "form>button#nextBtn", // pointResearch用
             sele2 = "form>input.btn_regular", //

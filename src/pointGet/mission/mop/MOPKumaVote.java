@@ -37,7 +37,8 @@ public class MOPKumaVote extends MOPBase {
       changeCloseWindow(driver);
       Utille.sleep(8000);
       // ポイントに変換
-      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
+      String bankSele = "li.icon_h_bank>a", 
+          coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
           changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
       if (isExistEle(driver, coinSele) ) {
         String coins = driver.findElement(By.cssSelector(coinSele)).getText();
