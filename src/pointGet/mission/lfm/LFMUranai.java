@@ -26,10 +26,10 @@ public class LFMUranai extends LFMBase {
     String uranaiSelector = "div>img[alt='今日の12星座占い']";
     if (isExistEle(driver, uranaiSelector)) {
       clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
-      changeCloseWindow(driver);
+      String wid = driver.getWindowHandle();
+      changeWindow(driver, wid);
       Utille.sleep(10000);
       String selector1 = "div#parts-slide-button__action a>img";
-      String wid = driver.getWindowHandle();
       if (isExistEle(driver, selector1)) {
         Uranai.answer(driver, selector1, wid);
       }

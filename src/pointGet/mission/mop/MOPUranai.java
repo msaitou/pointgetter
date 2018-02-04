@@ -51,7 +51,7 @@ public class MOPUranai extends MOPBase {
       if (isExistEle(driver, uranaiSelector)) {
         clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
         String wid = driver.getWindowHandle();
-        changeCloseWindow(driver);
+        changeWindow(driver, wid);
         Utille.sleep(15000);
         String selector1 = "section>div>form>input[type=image]";
         Uranai.answer(driver, selector1, wid);
