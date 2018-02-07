@@ -123,6 +123,11 @@ public class AnswerEnqNstk extends MissCommon {
             waitTilReady(driver);
             // 次へ(回答へ)
             clickSleepSelector(driver, startSele, 5000);
+            if (!isExistEle(driver, noneOverlay)
+                && isExistEle(driver, overlay)) {
+              clickSleepSelector(driver, overlay, 3000);
+            }
+
           }
         }
       }
