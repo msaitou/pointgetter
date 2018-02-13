@@ -161,7 +161,8 @@ public class GENPointResearch2 extends GENBase {
           if (!Tasuuketu.answer(driver, sele9, wid))
             skip++;
         }
-        else if (cUrl.indexOf("enq.nstk-4.com") >= 0
+        else if ((cUrl.indexOf("enq.nstk-4.com") >= 0
+        		|| cUrl.indexOf("enq.gourmet-syokusai.com") >= 0)
             && isExistEle(driver, sele10)) {
           EnqNstk.answer(driver, sele10, wid);
         }
