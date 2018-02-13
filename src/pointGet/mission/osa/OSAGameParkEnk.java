@@ -82,8 +82,11 @@ public class OSAGameParkEnk extends OSABase {
             }
             else {
               skip++;
-              driver.close();
-              driver.switchTo().window(wid);
+              String wid2 = driver.getWindowHandle();
+              if (wid != wid2) {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
             }
             driver.navigate().refresh();
             Utille.sleep(5000);
