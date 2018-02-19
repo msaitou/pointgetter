@@ -55,6 +55,7 @@ public class GPOPhoto extends GPOBase {
 //              actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
 //              actions.perform();
 //              Utille.sleep(5000);
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
 
               clickSleepSelector(driver, eleList, targetIndex, 6000); // アンケートスタートページ
               String wid = driver.getWindowHandle();

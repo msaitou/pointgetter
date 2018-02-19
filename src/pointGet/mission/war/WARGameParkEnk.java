@@ -33,7 +33,7 @@ public class WARGameParkEnk extends WARBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "a[href*='gamepark']>span";
+    selector = "a[href*='http://go.warau.jp/140/25.html']>span";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
         pop2Cls = "div.campaignClose>img", //

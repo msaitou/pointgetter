@@ -64,6 +64,7 @@ public class I2IPhoto extends I2IBase {
 //              } catch (AWTException ee) {
 //                  throw new IllegalStateException(ee);
 //              }
+                Utille.scrolledPage(driver, driver.findElements(By.cssSelector(selector)).get(targetIndex));
                 Actions actions = new Actions(driver);
                 actions.keyDown(Keys.CONTROL);
                 actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
