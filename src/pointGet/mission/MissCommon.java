@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
+import lombok.val;
 import pointGet.common.Eventually;
 import pointGet.common.Utille;
 
@@ -176,7 +175,7 @@ public abstract class MissCommon {
 //        ele.click();
 //        return;
 //      } catch (TimeoutException te) {
-//    	  
+//
 //      } catch (WebDriverException e) {
 //        logg.error("-clickSelector error-------------------");
 //        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50));

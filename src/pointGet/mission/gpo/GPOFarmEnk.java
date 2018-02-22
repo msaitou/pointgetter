@@ -12,6 +12,7 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerAdsurvey;
+import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerGameParkEnk;
 import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerShindan;
@@ -29,6 +30,7 @@ public class GPOFarmEnk extends GPOBase {
   AnswerAdShindan AdShindan = null;
   AnswerPittango Pittango = null;
   AnswerShindan Shindan = null;
+  AnswerColum Colum = null;
 
   /**
    * @param logg
@@ -42,6 +44,7 @@ public class GPOFarmEnk extends GPOBase {
     AdShindan = new AnswerAdShindan(logg);
     Pittango = new AnswerPittango(logg);
     Shindan = new AnswerShindan(logg);
+    Colum = new AnswerColum(logg);
   }
 
   @Override
@@ -102,6 +105,14 @@ public class GPOFarmEnk extends GPOBase {
               if (!AdEnq.answer(driver, sele1, wid)) {
                 break;
               }
+            }
+            else if ((cUrl.indexOf("column-enquete") >= 0
+                    || cUrl.indexOf("beautynail-design.com") >= 0
+                        || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                    || cUrl.indexOf("style-cutehair.com") >= 0
+                    || cUrl.indexOf("fashion-cosmelife.com") >= 0)
+                    && isExistEle(driver, sele6)) {
+                  Colum.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
                 && isExistEle(driver, sele4)) {

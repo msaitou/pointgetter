@@ -42,7 +42,7 @@ public class GPOPointResearch2 extends GPOBase {
     String sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
         sele8 = "div#buttonArea>input[name='next']"; // enq.shop-qp.com,enq.y2at.com用
     String sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
-        selector2 = "li.menu02>a";
+        selector2 = "li.menu05>a";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 4000);
       if (isExistEle(driver, selector2)) {

@@ -267,6 +267,8 @@ public class Define {
   final public static String strGPOPhoto = "GPOPhoto";
   final public static String strGPOPointResearch = "GPOPointResearch";
   final public static String strGPOPointResearch2 = "GPOPointResearch2";
+  final public static String strGPOKansatu = "GPOKansatu";
+  final public static String strGPOHyakkey = "GPOHyakkey";
 
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";

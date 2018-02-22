@@ -109,6 +109,13 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOPointResearch2: // ■アンケート２
           MisIns = new GPOPointResearch2(loggg, cProps);
           break;
+        case Define.strGPOKansatu: // ■観察
+            MisIns = new GPOKansatu(loggg, cProps);
+            break;
+        case Define.strGPOHyakkey: // ■百景
+            MisIns = new GPOHyakkey(loggg, cProps);
+            break;
+
         default:
       }
       if (Arrays.asList(new String[] {
@@ -123,7 +130,9 @@ public abstract class GPOBase extends Mission {
           Define.strGPOPhoto,
           Define.strGPOPointResearch,
           Define.strGPOPointResearch2,
-          Define.strGPOAnzan
+          Define.strGPOAnzan,
+          Define.strGPOKansatu,
+          Define.strGPOHyakkey
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

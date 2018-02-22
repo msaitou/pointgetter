@@ -34,7 +34,7 @@ public class AnswerKansatu extends MissCommon {
         clickSleepSelector(driver, startSele, 4000);
       }
     }
-    String 
+    String
         seleNextb2 = "form>input[alt='進む']", //
         seleChageStart = "div#start", //
     seleEnd = "form>input[type='image']", //
@@ -143,7 +143,7 @@ public class AnswerKansatu extends MissCommon {
         logg.info("close1");
 //        String wid2 = driver.getWindowHandle();
           logg.info("close2");
-          if (winNotClosed) {
+          if (winNotClosed && !wid2.equals(wid)) {
             logg.info("close3");
             driver.close();
             logg.info("close4");
@@ -153,7 +153,7 @@ public class AnswerKansatu extends MissCommon {
         logg.info("close7");
       }
     }
-    driver.close();
-    driver.switchTo().window(wid);
+//    driver.close();
+//    driver.switchTo().window(wid);
   }
 }

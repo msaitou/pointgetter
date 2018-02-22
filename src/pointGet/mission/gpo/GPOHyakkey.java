@@ -11,30 +11,30 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
-import pointGet.mission.parts.AnswerPhotoEnk;
+import pointGet.mission.parts.AnswerHyakkey;
 
 /**
  * @author saitou
  *
  */
-public class GPOPhoto extends GPOBase {
+public class GPOHyakkey extends GPOBase {
   final String url = "http://www.gpoint.co.jp/";
-  /* アンケートクラス　写真 */
-  AnswerPhotoEnk PhotoEnk = null;
+  /* アンケートクラス　日本百景 */
+  AnswerHyakkey Hyakkey = null;
 
   /**
    * @param logg
    */
-  public GPOPhoto(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "写真アンケート");
-    PhotoEnk = new AnswerPhotoEnk(logg);
+  public GPOHyakkey(Logger logg, Map<String, String> cProps) {
+    super(logg, cProps, "日本百景アンケート");
+    Hyakkey = new AnswerHyakkey(logg);
   }
 
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
     String sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
-        selector2 = "li.menu02>a";
+        selector2 = "li.menu06>a";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 4000);
       if (isExistEle(driver, selector2)) {
@@ -62,7 +62,7 @@ public class GPOPhoto extends GPOBase {
                 String wid = driver.getWindowHandle();
                 changeWindow(driver, wid);
               if (isExistEle(driver, sele8)) {
-                PhotoEnk.answer(driver, sele8, wid);
+            	  Hyakkey.answer(driver, sele8, wid);
                 driver.navigate().refresh();
                 Utille.sleep(5000);
               }
