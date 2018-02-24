@@ -12,9 +12,14 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerKansatu;
+import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
+import pointGet.mission.parts.AnswerZukan;
 
 public class GENMorikoreEnk extends GENBase {
   final String url = "http://www.gendama.jp/";
@@ -26,6 +31,12 @@ public class GENMorikoreEnk extends GENBase {
   AnswerColum Colum = null;
   AnswerPittango Pittango = null;
   AnswerShindan Shindan = null;
+  /* アンケートクラス　写真 */
+  AnswerPhotoEnk PhotoEnk = null;
+  AnswerKansatu Kansatu = null;
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
+  AnswerZukan Zukan = null;
 
   /**
    * @param logg
@@ -38,6 +49,11 @@ public class GENMorikoreEnk extends GENBase {
     Colum = new AnswerColum(logg);
     Pittango = new AnswerPittango(logg);
     Shindan = new AnswerShindan(logg);
+    PhotoEnk = new AnswerPhotoEnk(logg);
+    Cooking = new AnswerCooking(logg);
+    Hyakkey = new AnswerHyakkey(logg);
+    Kansatu = new AnswerKansatu(logg);
+    Zukan = new AnswerZukan(logg);
   }
 
   @Override
@@ -128,6 +144,39 @@ public class GENMorikoreEnk extends GENBase {
                   && isExistEle(driver, sele3)) {
                 AdShindan.answer(driver, sele3, wid);
                 skip++;
+              }
+
+              else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
+                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  )
+                  && isExistEle(driver, sele6)) {
+                Zukan.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
+                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  )
+                  && isExistEle(driver, sele6)) {
+                Kansatu.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("cosmelife.com/map") >= 0
+                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  )
+                  && isExistEle(driver, sele6)) {
+                Hyakkey.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
+                  //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  )
+                  && isExistEle(driver, sele6)) {
+                Cooking.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("photo-enquete") >= 0
+                  || cUrl.indexOf("cosmelife.com/photo") >= 0
+                  || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  || cUrl.indexOf("natural-vegetables.com") >= 0
+                  || cUrl.indexOf("cosmeticsstyle.com") >= 0)
+                  && isExistEle(driver, sele6)) {
+                PhotoEnk.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("column-enquete") >= 0
                   || cUrl.indexOf("beautynail-design.com") >= 0
