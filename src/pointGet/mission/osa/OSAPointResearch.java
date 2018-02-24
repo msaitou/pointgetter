@@ -69,7 +69,7 @@ public class OSAPointResearch extends OSABase {
           //						continue;
           //					}
         }
-        clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
+        clickSleepSelector(driver, eleList, targetIndex, 6000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
@@ -93,7 +93,8 @@ public class OSAPointResearch extends OSABase {
             && isExistEle(driver, sele4)) {
           EnkShopQP.answer(driver, sele4, wid);
         }
-        else if (cUrl.indexOf("enq.y2at.com") >= 0
+        else if ((cUrl.indexOf("enq.y2at.com") >= 0
+            || cUrl.indexOf("enq.torixchu.com") >= 0)
             && isExistEle(driver, sele4)) {
           EnqY2at.answer(driver, sele4, wid);
         }

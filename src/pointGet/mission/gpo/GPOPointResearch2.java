@@ -71,7 +71,8 @@ public class GPOPointResearch2 extends GPOBase {
                   && isExistEle(driver, sele8)) {
                 EnkShopQP.answer(driver, sele8, wid);
               }
-              else if (cUrl.indexOf("enq.y2at.com") >= 0
+              else if ((cUrl.indexOf("enq.y2at.com") >= 0
+                  || cUrl.indexOf("enq.torixchu.com") >= 0)
                   && isExistEle(driver, sele8)) {
                 EnqY2at.answer(driver, sele8, wid);
               }

@@ -170,7 +170,8 @@ public class GENPointResearch2 extends GENBase {
             && isExistEle(driver, sele10)) {
           EnkShopQP.answer(driver, sele10, wid);
         }
-        else if (cUrl.indexOf("enq.y2at.com") >= 0
+        else if ((cUrl.indexOf("enq.y2at.com") >= 0
+            || cUrl.indexOf("enq.torixchu.com") >= 0)
             && isExistEle(driver, sele10)) {
           EnqY2at.answer(driver, sele10, wid);
         }
