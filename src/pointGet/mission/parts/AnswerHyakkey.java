@@ -28,14 +28,14 @@ public class AnswerHyakkey extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
-    
+
     String seleNextb2 = "form>input[type='image']", //
             seleNextb3 = "form>input[alt='next']", //
             seleNextb4 = "form>input[alt='進む']", //
             overLay = "div#interstitial[style*='display: block']>div>div#inter-close", //
 //            choiceSele = "input[type='radio']", // ラジオセレクター
               choiceSele = "label[for*='que']", // ラジオセレクター
-                
+
             seleNext2 = "div>input.enquete_nextbt", //　次へセレクター
             seleNext3 = "div>input.enquete_nextbt_2", //　次へセレクター2
             seleSele = "form.menu>select", // プルダウンセレクター
@@ -110,9 +110,39 @@ public class AnswerHyakkey extends MissCommon {
           Utille.clickRecaptha(driver, logg);
 
           if (isExistEle(driver, seleNextb2)) {
+              String wid2 = driver.getWindowHandle();
+              boolean winNotClosed = false;
             clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
+            java.util.Set<String> widSet = driver.getWindowHandles();
+            for (String id : widSet) {
+              if (id.equals(wid2)) {
+                winNotClosed = true;
+              }
+            }
+            if (winNotClosed) {
+              logg.info("alert消そう");
+              // アラートをけして
+              checkAndAcceptAlert(driver);
+            }
+            // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
+            if (null == wid) {
+              logg.info("close0");
+            }
+            else {
+              logg.info("close1");
+//              String wid2 = driver.getWindowHandle();
+                logg.info("close2");
+                if (winNotClosed && !wid2.equals(wid)) {
+                  logg.info("close3");
+                  driver.close();
+                  logg.info("close4");
+                }
+              logg.info("close6");
+              driver.switchTo().window(wid);
+              logg.info("close7");
+            }
           }
         }
-        driver.switchTo().window(wid);
+//        driver.switchTo().window(wid);
   }
 }

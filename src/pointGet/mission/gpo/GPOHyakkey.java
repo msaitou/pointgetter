@@ -52,19 +52,20 @@ public class GPOHyakkey extends GPOBase {
             int size2 = eleList.size(), targetIndex = size2 - 1;
             logg.info("size2:" + size2 + " target:" + targetIndex);
             if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
-                Utille.scrolledPage(driver, driver.findElements(By.cssSelector(selector)).get(targetIndex));
+                Utille.scrolledPage(driver, eleList.get(targetIndex));
+                Utille.sleep(3000);
                 Actions actions = new Actions(driver);
                 actions.keyDown(Keys.CONTROL);
-                actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
+                actions.click(eleList.get(targetIndex));
                 actions.perform();
-                Utille.sleep(5000);
 
                 String wid = driver.getWindowHandle();
                 changeWindow(driver, wid);
+                Utille.sleep(7000);
               if (isExistEle(driver, sele8)) {
             	  Hyakkey.answer(driver, sele8, wid);
-                driver.navigate().refresh();
-                Utille.sleep(5000);
+                  Utille.refresh(driver, logg);
+                  Utille.sleep(5000);
               }
               else {
                 break;
