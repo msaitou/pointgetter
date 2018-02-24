@@ -145,7 +145,6 @@ public class GENMorikoreEnk extends GENBase {
                 AdShindan.answer(driver, sele3, wid);
                 skip++;
               }
-
               else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
                   //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
                   )

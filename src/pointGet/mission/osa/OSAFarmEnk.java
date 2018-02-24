@@ -12,10 +12,16 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerAdsurvey;
+import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerGameParkEnk;
+import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerKansatu;
+import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
+import pointGet.mission.parts.AnswerZukan;
 
 public class OSAFarmEnk extends OSABase {
   final String url = "http://osaifu.com/coinland/";
@@ -29,6 +35,12 @@ public class OSAFarmEnk extends OSABase {
   AnswerAdShindan AdShindan = null;
   AnswerPittango Pittango = null;
   AnswerShindan Shindan = null;
+  AnswerPhotoEnk PhotoEnk = null;
+  AnswerKansatu Kansatu = null;
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
+  AnswerZukan Zukan = null;
+  AnswerColum Colum = null;
 
   /**
    * @param logg
@@ -42,6 +54,11 @@ public class OSAFarmEnk extends OSABase {
     AdShindan = new AnswerAdShindan(logg);
     Pittango = new AnswerPittango(logg);
     Shindan = new AnswerShindan(logg);
+    Cooking = new AnswerCooking(logg);
+    Hyakkey = new AnswerHyakkey(logg);
+    Kansatu = new AnswerKansatu(logg);
+    Zukan = new AnswerZukan(logg);
+    Colum = new AnswerColum(logg);
   }
 
   @Override
@@ -122,6 +139,46 @@ public class OSAFarmEnk extends OSABase {
                 )
                 && isExistEle(driver, sele3)) {
               Pittango.answer(driver, sele3, wid);
+            }
+            else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
+                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                )
+                && isExistEle(driver, sele6)) {
+              Zukan.answer(driver, sele6, wid);
+            }
+            else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
+                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                )
+                && isExistEle(driver, sele6)) {
+              Kansatu.answer(driver, sele6, wid);
+            }
+            else if ((cUrl.indexOf("cosmelife.com/map") >= 0
+                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                )
+                && isExistEle(driver, sele6)) {
+              Hyakkey.answer(driver, sele6, wid);
+            }
+            else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
+                //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                )
+                && isExistEle(driver, sele6)) {
+              Cooking.answer(driver, sele6, wid);
+            }
+            else if ((cUrl.indexOf("photo-enquete") >= 0
+                || cUrl.indexOf("cosmelife.com/photo") >= 0
+                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                || cUrl.indexOf("natural-vegetables.com") >= 0
+                || cUrl.indexOf("cosmeticsstyle.com") >= 0)
+                && isExistEle(driver, sele6)) {
+              PhotoEnk.answer(driver, sele6, wid);
+            }
+            else if ((cUrl.indexOf("column-enquete") >= 0
+                || cUrl.indexOf("beautynail-design.com") >= 0
+                || cUrl.indexOf("style-cutehair.com") >= 0
+                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                || cUrl.indexOf("fashion-cosmelife.com") >= 0)
+                && isExistEle(driver, sele6)) {
+              Colum.answer(driver, sele6, wid);
             }
             else {
               skip++;
