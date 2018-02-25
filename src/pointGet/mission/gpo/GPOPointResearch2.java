@@ -12,6 +12,7 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerEnkShopQP;
 import pointGet.mission.parts.AnswerEnqNstk;
 import pointGet.mission.parts.AnswerEnqY2at;
+import pointGet.mission.parts.AnswerPointResearch;
 import pointGet.mission.parts.AnswerSurveyEnk;
 
 public class GPOPointResearch2 extends GPOBase {
@@ -21,6 +22,8 @@ public class GPOPointResearch2 extends GPOBase {
   AnswerSurveyEnk SurveyEnk = null;
   AnswerEnqY2at EnqY2at = null;
   AnswerEnqNstk EnqNstk = null;
+  /* アンケートクラス　ポイントサーチ */
+  AnswerPointResearch PointResearch = null;
 
   /**
    * @param logg
@@ -31,22 +34,25 @@ public class GPOPointResearch2 extends GPOBase {
     SurveyEnk = new AnswerSurveyEnk(logg);
     EnqY2at = new AnswerEnqY2at(logg);
     EnqNstk = new AnswerEnqNstk(logg);
+    PointResearch = new AnswerPointResearch(logg);
   }
 
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "li>a.answer_btn";
+    selector = "td>a.ui-button";
     int skip = 0;
     String sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
         sele8 = "div#buttonArea>input[name='next']"; // enq.shop-qp.com,enq.y2at.com用
-    String sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
+    String sele1_ = "div.ui-control.type-fixed>a.ui-button",
+        sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
         selector2 = "li.menu05>a";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 4000);
       if (isExistEle(driver, selector2)) {
         clickSleepSelector(driver, selector2, 5000);
+        changeCloseWindow(driver);
 
         while (true) {
           Utille.sleep(5000);
@@ -62,7 +68,10 @@ public class GPOPointResearch2 extends GPOBase {
               changeWindow(driver, wid);
               String cUrl = driver.getCurrentUrl();
               logg.info("url[" + cUrl + "]");
-              if (isExistEle(driver, sele3)) {
+              if (isExistEle(driver, sele1_)) {
+                PointResearch.answer(driver, sele1_, wid);
+              }
+              else if (isExistEle(driver, sele3)) {
                 // http://mini.surveyenquete.net
                 SurveyEnk.answer(driver, sele3, wid);
                 //            skip++;
@@ -77,7 +86,7 @@ public class GPOPointResearch2 extends GPOBase {
                 EnqY2at.answer(driver, sele8, wid);
               }
               else if ((cUrl.indexOf("enq.nstk-4.com") >= 0
-              		|| cUrl.indexOf("enq.gourmet-syokusai.com") >= 0)
+                  || cUrl.indexOf("enq.gourmet-syokusai.com") >= 0)
                   && isExistEle(driver, sele8)) {
                 EnqNstk.answer(driver, sele8, wid);
               }
@@ -86,7 +95,7 @@ public class GPOPointResearch2 extends GPOBase {
                 driver.close();
                 driver.switchTo().window(wid);
               }
-              driver.navigate().refresh();
+              Utille.refresh(driver, logg);
               Utille.sleep(5000);
             }
             else {

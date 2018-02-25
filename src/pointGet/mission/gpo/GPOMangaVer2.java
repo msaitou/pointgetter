@@ -64,7 +64,7 @@ public class GPOMangaVer2 extends GPOBase {
                     g++;
                   }
                   else {
-                    driver.navigate().refresh();
+                    Utille.refresh(driver, logg);
                     Utille.sleep(5000);
                   }
                 }

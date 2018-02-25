@@ -43,7 +43,7 @@ public class GPONews extends GPOBase {
         if (isExistEle(driver, seleNextb2)) {
           News.answer(driver, seleNextb2, null);
         }
-        driver.navigate().refresh();
+        Utille.refresh(driver, logg);
         Utille.sleep(10000);
       }
     }

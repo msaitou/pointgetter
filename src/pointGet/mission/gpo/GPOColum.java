@@ -46,7 +46,7 @@ public class GPOColum extends GPOBase {
           if (isExistEle(driver, seleNextb2)) {
             Colum.answer(driver, seleNextb2, null);
           }
-          driver.navigate().refresh();
+          Utille.refresh(driver, logg);
           Utille.sleep(5000);
         }
       }

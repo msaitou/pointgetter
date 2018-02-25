@@ -121,7 +121,7 @@ public class SUGPointResearch2 extends SUGBase {
           driver.close();
           driver.switchTo().window(wid);
         }
-        driver.navigate().refresh();
+        Utille.refresh(driver, logg);
         Utille.sleep(5000);
       }
       else {

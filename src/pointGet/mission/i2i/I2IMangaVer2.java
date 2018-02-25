@@ -64,7 +64,7 @@ public class I2IMangaVer2 extends I2IBase {
                     g++;
                   }
                   else {
-                    driver.navigate().refresh();
+                    Utille.refresh(driver, logg);
                     Utille.sleep(5000);
                   }
                 }

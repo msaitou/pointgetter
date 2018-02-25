@@ -99,6 +99,9 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMKumaVote: // ■総選挙
           MisIns = new LFMKumaVote(loggg, cProps);
           break;
+        case Define.strLFMKenkou: // ■サラサラ健康コラム
+          MisIns = new LFMKenkou(loggg, cProps);
+          break;
 
         default:
       }
@@ -114,6 +117,7 @@ public abstract class LFMBase extends Mission {
           , Define.strLFMChyousadan
           , Define.strLFMKumaVote
           , Define.strLFMGameParkEnk
+          , Define.strLFMKenkou
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

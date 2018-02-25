@@ -64,7 +64,7 @@ public class HAPChyousadan extends HAPBase {
               driver.close();
               driver.switchTo().window(wid);
             }
-            driver.navigate().refresh();
+            Utille.refresh(driver, logg);
             Utille.sleep(5000);
             // 回数を制限する
             if (cn++ > 2) {

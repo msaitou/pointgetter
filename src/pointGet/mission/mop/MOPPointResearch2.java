@@ -80,7 +80,7 @@ public class MOPPointResearch2 extends MOPBase {
           driver.close();
           driver.switchTo().window(wid);
         }
-        driver.navigate().refresh();
+        Utille.refresh(driver, logg);
         Utille.sleep(5000);
       }
       else {

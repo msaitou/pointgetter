@@ -53,7 +53,7 @@ public class I2INews extends I2IBase {
             if (isExistEle(driver, seleNextb2)) {
               News.answer(driver, seleNextb2, null);
             }
-            driver.navigate().refresh();
+            Utille.refresh(driver, logg);
             Utille.sleep(10000);
           }
           break; // 星座はこれで終了

@@ -53,7 +53,7 @@ public class I2IColum extends I2IBase {
             if (isExistEle(driver, seleNextb2)) {
               Colum.answer(driver, seleNextb2, null);
             }
-            driver.navigate().refresh();
+            Utille.refresh(driver, logg);
             Utille.sleep(5000);
           }
           break; // 星座はこれで終了

@@ -75,7 +75,7 @@ public class I2IPhoto extends I2IBase {
                 changeWindow(driver, wid);
                 if (isExistEle(driver, sele8)) {
                   PhotoEnk.answer(driver, sele8, wid);
-                  driver.navigate().refresh();
+                  Utille.refresh(driver, logg);
                   Utille.sleep(5000);
                 }
                 else {

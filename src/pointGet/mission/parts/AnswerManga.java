@@ -58,7 +58,7 @@ public class AnswerManga extends MissCommon {
         g++;
       }
       else {
-        driver.navigate().refresh();
+        Utille.refresh(driver, logg);
         Utille.sleep(5000);
       }
     }

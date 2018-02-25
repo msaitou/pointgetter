@@ -44,7 +44,7 @@ public class GPOKenkou extends GPOBase {
         if (isExistEle(driver, seleNextb2)) {
           Kenkou.answer(driver, seleNextb2, null);
         }
-        driver.navigate().refresh();
+        Utille.refresh(driver, logg);
         // アラートをけして
         checkAndAcceptAlert(driver);
         Utille.sleep(10000);

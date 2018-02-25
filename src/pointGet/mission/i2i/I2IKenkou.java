@@ -53,7 +53,7 @@ public class I2IKenkou extends I2IBase {
             if (isExistEle(driver, seleNextb2)) {
               Kenkou.answer(driver, seleNextb2, null);
             }
-            driver.navigate().refresh();
+            Utille.refresh(driver, logg);
             // アラートをけして
             checkAndAcceptAlert(driver);
             Utille.sleep(10000);

@@ -88,7 +88,7 @@ public class OSAGameParkEnk extends OSABase {
                 driver.switchTo().window(wid);
               }
             }
-            driver.navigate().refresh();
+            Utille.refresh(driver, logg);
             Utille.sleep(5000);
           }
           else {

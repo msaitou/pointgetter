@@ -252,6 +252,8 @@ public class Define {
   final public static String strLFMChyousadan = "LFMChyousadan";
   final public static String strLFMKumaVote = "LFMKumaVote";
   final public static String strLFMGameParkEnk = "LFMGameParkEnk";
+  final public static String strLFMKenkou = "LFMKenkou";
+  final public static String strLFMRecipiChyosatai = "LFMRecipiChyosatai";
 
   // ■■■■■Gpoint■■■■■
   final public static String strGPOFarmEnk = "GPOFarmEnk";
