@@ -54,6 +54,7 @@ public class PICFarmEnk extends PICBase {
     AdShindan = new AnswerAdShindan(logg);
     Pittango = new AnswerPittango(logg);
     Shindan = new AnswerShindan(logg);
+    PhotoEnk = new AnswerPhotoEnk(logg);
     Cooking = new AnswerCooking(logg);
     Hyakkey = new AnswerHyakkey(logg);
     Kansatu = new AnswerKansatu(logg);

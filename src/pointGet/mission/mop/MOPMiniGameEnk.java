@@ -48,6 +48,7 @@ public class MOPMiniGameEnk extends MOPBase {
     Pittango = new AnswerPittango(logg);
     Shindan = new AnswerShindan(logg);
     Cooking = new AnswerCooking(logg);
+    PhotoEnk = new AnswerPhotoEnk(logg);
     Hyakkey = new AnswerHyakkey(logg);
     Kansatu = new AnswerKansatu(logg);
     Zukan = new AnswerZukan(logg);

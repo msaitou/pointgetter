@@ -54,6 +54,7 @@ public class GPOFarmEnk extends GPOBase {
     AdShindan = new AnswerAdShindan(logg);
     Pittango = new AnswerPittango(logg);
     Shindan = new AnswerShindan(logg);
+    PhotoEnk = new AnswerPhotoEnk(logg);
     Colum = new AnswerColum(logg);
     Cooking = new AnswerCooking(logg);
     Hyakkey = new AnswerHyakkey(logg);
