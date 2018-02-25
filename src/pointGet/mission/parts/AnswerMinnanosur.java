@@ -30,12 +30,13 @@ public class AnswerMinnanosur extends MissCommon {
     String radioSele = "label.radio_label", //
         titleSele = "p.question-count", // 質問NO
         seleNext = "button.next-btn", //
+		seleNext2 = "a.next-button",
         finishSele = "button.next-btn[type='submit']", //
         closeSele = "input.btn_close_en";//
 
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 2000); // 遷移　問開始
-      for (int g = 0; g < 10 + 2; g++) {
+      for (int g = 0; g < 13 + 2; g++) {
         int choiceNum = 0;
         String qTitle = "", choiceSele = "";
         if (isExistEle(driver, titleSele)) {
@@ -57,6 +58,12 @@ public class AnswerMinnanosur extends MissCommon {
                 if (isExistEle(driver, seleNext)) {
                   clickSleepSelector(driver, seleNext, 3000);
                 }
+                else if (isExistEle(driver, seleNext2)) {
+                    clickSleepSelector(driver, seleNext2, 3000);
+                    if (isExistEle(driver, seleNext)) {
+                      clickSleepSelector(driver, seleNext, 3000);
+                    }
+                }
               }
             }
           }
@@ -68,10 +75,10 @@ public class AnswerMinnanosur extends MissCommon {
         clickSleepSelector(driver, seleNext, 3000);
         if (isExistEle(driver, seleNext)) {
           clickSleepSelector(driver, seleNext, 3000);
-          driver.close();
-          driver.switchTo().window(wid);
         }
       }
+      driver.close();
+      driver.switchTo().window(wid);
     }
   }
 }
