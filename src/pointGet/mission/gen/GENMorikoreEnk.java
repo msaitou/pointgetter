@@ -70,23 +70,23 @@ public class GENMorikoreEnk extends GENBase {
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         changeCloseWindow(driver);
-        driver.get("http://mrga.service-navi.jp/square/votes");
+        driver.get("http://mrga.service-navi.jp/square/diagnoses");
         for (int k = 0; k < 5; k++) {
           if (k == 1) {
             driver.get("http://mrga.service-navi.jp/square/columns");
           }
           else if (k == 2) {
-            driver.get("http://mrga.service-navi.jp/square/diagnoses");
+            driver.get("http://mrga.service-navi.jp/square/surveys");
             //            driver.get("http://mrga.service-navi.jp/square/surveys");
             //            continue;
           }
           else if (k == 4) {
-            driver.get("http://mrga.service-navi.jp/square/surveys");
+            driver.get("http://mrga.service-navi.jp/square/pittango");
 
             //            continue;
           }
           else if (k == 3) {
-            driver.get("http://mrga.service-navi.jp/square/pittango");
+            driver.get("http://mrga.service-navi.jp/square/votes");
           }
 
           Utille.sleep(3000);
@@ -114,8 +114,18 @@ public class GENMorikoreEnk extends GENBase {
               Utille.sleep(3000);
               String cUrl = driver.getCurrentUrl();
               logg.info("cUrl[" + cUrl + "]");
+              String isShindanText ="",isShindanSele = "h3.start__title";
+              if (isExistEle(driver, isShindanSele)) {
+                isShindanText = driver.findElement(By.cssSelector(isShindanSele)).getText();
+              }
+              
               if (isExistEle(driver, sele9)) {
                 Tasuuketu.answer(driver, sele9, wid);
+                skip++;
+              }
+              else if ("この診断について".equals(isShindanText)
+                  && isExistEle(driver, sele3)) {
+                AdShindan.answer(driver, sele3, wid);
                 skip++;
               }
               else if ((cUrl.indexOf("ad/enq/") >= 0
@@ -133,16 +143,6 @@ public class GENMorikoreEnk extends GENBase {
               else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
                   && isExistEle(driver, sele4)) {
                 Shindan.answer(driver, sele4, wid);
-                skip++;
-              }
-              else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
-                  || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
-                  || cUrl.indexOf("enquetter.com/question") >= 0
-                  || cUrl.indexOf("seikaku-checker.club/question") >= 0
-                  || cUrl.indexOf("http://credit-card.link") >= 0
-                  )
-                  && isExistEle(driver, sele3)) {
-                AdShindan.answer(driver, sele3, wid);
                 skip++;
               }
               else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
