@@ -72,7 +72,7 @@ public class WARGameParkEnk extends WARBase {
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");
-            if (cUrl.indexOf("warau.qpark.jp/enquete/") >= 0) {
+            if (cUrl.indexOf("warau.qpark.jp/enquete") >= 0) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);
             }

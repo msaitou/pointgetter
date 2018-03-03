@@ -71,7 +71,7 @@ public class OSAGameParkEnk extends OSABase {
             changeWindow(driver, wid);
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");
-            if (cUrl.indexOf("osaifu.qpark.jp/enquete/") >= 0) {
+            if (cUrl.indexOf("saifu.qpark.jp/enquete") >= 0) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);
             }
