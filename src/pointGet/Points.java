@@ -37,10 +37,17 @@ public class Points extends PointGet {
     Map<String, Double> pMap = new HashMap<String, Double>();
     WebDriver driver = getWebDriver();
     try {
+      PointsCollection PC = new PointsCollection(Dbase);
+      List<HashMap<String, Object>> pList = PC.getPointList();
+      HashMap<String, Object> pointMap = pList.get(0);
+System.out.println(pointMap);
       for (String siteCode : pointSitelist) {
         String selector = "", outPut = "", point = "", secondPoint = "";
         switch (siteCode) {
           case Define.PSITE_CODE_GMY:
+            if (!pointMap.containsKey(Define.PSITE_CODE_GMY)) {
+              break;
+            }
             selector = "span.user_point";
             driver.get("http://dietnavi.com/pc");
             if (isExistEle(driver, selector)) {
@@ -49,6 +56,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_GEN:
+            if (!pointMap.containsKey(Define.PSITE_CODE_GEN)) {
+              break;
+            }
             selector = "li#user_point01>a>span";
             driver.get("http://www.gendama.jp/");
             if (isExistEle(driver, selector)) {
@@ -57,6 +67,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_ECN:
+            if (!pointMap.containsKey(Define.PSITE_CODE_ECN)) {
+              break;
+            }
             selector = "p.user_point_txt>strong";
             driver.get("https://ecnavi.jp/mypage/point_history/");
             if (isExistEle(driver, selector)) {
@@ -65,6 +78,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_MOP:
+            if (!pointMap.containsKey(Define.PSITE_CODE_MOP)) {
+              break;
+            }
             driver.get("http://pc.moppy.jp/");
             selector = "div#preface>ul.pre__login__inner";
             if (!isExistEle(driver, selector)) {
@@ -84,6 +100,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_PEX:
+            if (!pointMap.containsKey(Define.PSITE_CODE_PEX)) {
+              break;
+            }
             selector = "dd.user_pt.fw_b>span.fw_b";
             driver.get("https://pex.jp/user/point_passbook/all");
             if (!isExistEle(driver, selector)) {
@@ -96,6 +115,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_OSA:
+            if (!pointMap.containsKey(Define.PSITE_CODE_OSA)) {
+              break;
+            }
             selector = "ul.userinfo";
             driver.get("http://osaifu.com/");
             if (!isExistEle(driver, selector)) {
@@ -115,6 +137,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_PTO:
+            if (!pointMap.containsKey(Define.PSITE_CODE_PTO)) {
+              break;
+            }
             selector = "li.point>a>strong";
             driver.get("https://www.pointtown.com/ptu/index.do");
             if (!isExistEle(driver, selector)) {
@@ -130,6 +155,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_I2I:
+            if (!pointMap.containsKey(Define.PSITE_CODE_I2I)) {
+              break;
+            }
             selector = "td.ad_point>span.limited";
             driver.get("https://point.i2i.jp/account/");
             if (isExistEle(driver, selector)) {
@@ -138,6 +166,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_PIL:
+            if (!pointMap.containsKey(Define.PSITE_CODE_PIL)) {
+              break;
+            }
             // login!!
             LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
             selector = "table.memberinfo tr>td>strong";
@@ -151,6 +182,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_PIC:
+            if (!pointMap.containsKey(Define.PSITE_CODE_PIC)) {
+              break;
+            }
             selector = "p.text.point";
             driver.get("http://pointi.jp/my/my_page.php"); // http://pointi.jp/
             if (!isExistEle(driver, selector)) {
@@ -164,6 +198,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_HAP:
+            if (!pointMap.containsKey(Define.PSITE_CODE_HAP)) {
+              break;
+            }
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "a.usernavi-point";
@@ -174,6 +211,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_MOB:
+            if (!pointMap.containsKey(Define.PSITE_CODE_MOB)) {
+              break;
+            }
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "div.bankbook_panel__point>em";
@@ -187,6 +227,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_CRI:
+            if (!pointMap.containsKey(Define.PSITE_CODE_CRI)) {
+              break;
+            }
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "li.p_menu.point>a";
@@ -197,6 +240,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_PNY:
+            if (!pointMap.containsKey(Define.PSITE_CODE_PNY)) {
+              break;
+            }
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "p#user_get_point>em";
@@ -207,6 +253,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_SUG:
+            if (!pointMap.containsKey(Define.PSITE_CODE_SUG)) {
+              break;
+            }
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "span#user-mile-status-earn";
@@ -218,6 +267,9 @@ public class Points extends PointGet {
             }
             break;
           case Define.PSITE_CODE_WAR:
+            if (!pointMap.containsKey(Define.PSITE_CODE_WAR)) {
+              break;
+            }
             selector = "span.item>span.PT3.marginRight5";
             driver.get("http://www.warau.jp/");
             if (!isExistEle(driver, selector)) {
@@ -231,6 +283,9 @@ public class Points extends PointGet {
 
             break;
           case Define.PSITE_CODE_CIT:
+            if (!pointMap.containsKey(Define.PSITE_CODE_CIT)) {
+              break;
+            }
             selector = "li.user>a>span.user_pt";
             driver.get("http://www.chance.com/");
             if (isExistEle(driver, selector)) {
@@ -252,6 +307,9 @@ public class Points extends PointGet {
             break;
           // pointstadium
           case Define.PSITE_CODE_PST:
+            if (!pointMap.containsKey(Define.PSITE_CODE_PST)) {
+              break;
+            }
             selector = "div.login>p.point>strong";
             driver.get("http://www.point-stadium.com/");
             if (isExistEle(driver, selector)) {
