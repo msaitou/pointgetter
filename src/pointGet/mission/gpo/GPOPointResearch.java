@@ -30,7 +30,7 @@ public class GPOPointResearch extends GPOBase {
     driver = driverAtom;
     driver.get(url);
     String sele = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
-        selector2 = "li.menu03>a";
+        selector2 = "li.menu05>a";
     String sele1 = "div.ui-control.type-fixed>a.ui-button";
     int skip = 1;
     if (isExistEle(driver, sele)) {

@@ -47,7 +47,7 @@ public class GPOPointResearch2 extends GPOBase {
         sele8 = "div#buttonArea>input[name='next']"; // enq.shop-qp.com,enq.y2at.com用
     String sele1_ = "div.ui-control.type-fixed>a.ui-button",
         sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
-        selector2 = "li.menu05>a";
+        selector2 = "li.menu04>a";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 4000);
       if (isExistEle(driver, selector2)) {
