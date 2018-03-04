@@ -52,8 +52,9 @@ public class PICUranai extends PICBase {
         Utille.sleep(15000);
         selector = "div#parts-slide-button__action a>img"; // 占い始める
         // 全体へ
-        String selector1 = "section>div>form>input[type=image]";
-        String selectList[] = { selector, selector1 };
+        String selector1 = "section>div>form>input[type=image]",
+            sele2= "div.start-signs>a>img[alt='さそり座']";
+        String selectList[] = { selector, selector1 ,sele2};
         for (int g = 0; g < selectList.length; g++) {
           if (isExistEle(driver, selectList[g])) {
             clickSleepSelector(driver, selectList[g], 3000); // 遷移
