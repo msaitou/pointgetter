@@ -66,7 +66,7 @@ public class GPOFarmEnk extends GPOBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    String enkLinkSele = "div.bnr>[alt='勇者君の栽培日記']", //
+    String enkLinkSele = "div.bnr>[alt='勇者くんの栽培日記']", //
         a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
