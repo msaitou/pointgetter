@@ -10,10 +10,15 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKotsuta;
 import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerMinnanosur;
+import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerPointResearch;
+import pointGet.mission.parts.AnswerZukan;
 
 public class SUGPointResearch2 extends SUGBase {
   final String url = "http://www.sugutama.jp/survey";
@@ -25,6 +30,11 @@ public class SUGPointResearch2 extends SUGBase {
   AnswerManga Manga = null;
   AnswerKotsuta Kotsuta = null;
   AnswerMinnanosur Minnanosur = null;
+  AnswerPhotoEnk PhotoEnk = null;
+  AnswerKansatu Kansatu = null;
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
+  AnswerZukan Zukan = null;
 
   /**
    * @param logg
@@ -36,7 +46,12 @@ public class SUGPointResearch2 extends SUGBase {
     Manga = new AnswerManga(logg);
     Kotsuta = new AnswerKotsuta(logg);
     Minnanosur = new AnswerMinnanosur(logg);
-  }
+    PhotoEnk = new AnswerPhotoEnk(logg);
+    Cooking = new AnswerCooking(logg);
+    Hyakkey = new AnswerHyakkey(logg);
+    Kansatu = new AnswerKansatu(logg);
+    Zukan = new AnswerZukan(logg);
+ }
 
   @Override
   public void privateMission(WebDriver driverAtom) {
@@ -81,7 +96,39 @@ public class SUGPointResearch2 extends SUGBase {
           if (isExistEle(driver, sele1)) {
             Kotsuta.answer(driver, sele1, wid);
           }
-          else if ((cUrl2.indexOf("column-enquete") >= 0
+          else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
+              //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              )
+              && isExistEle(driver, sele6)) {
+            Zukan.answer(driver, sele6, wid);
+          }
+          else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
+              //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              )
+              && isExistEle(driver, sele6)) {
+            Kansatu.answer(driver, sele6, wid);
+          }
+          else if ((cUrl.indexOf("cosmelife.com/map") >= 0
+              //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              )
+              && isExistEle(driver, sele6)) {
+            Hyakkey.answer(driver, sele6, wid);
+          }
+          else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
+              //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              )
+              && isExistEle(driver, sele6)) {
+            Cooking.answer(driver, sele6, wid);
+          }
+          else if ((cUrl.indexOf("photo-enquete") >= 0
+              || cUrl.indexOf("cosmelife.com/photo") >= 0
+              || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              || cUrl.indexOf("natural-vegetables.com") >= 0
+              || cUrl.indexOf("cosmeticsstyle.com") >= 0)
+              && isExistEle(driver, sele6)) {
+            PhotoEnk.answer(driver, sele6, wid);
+          }
+         else if ((cUrl2.indexOf("column-enquete") >= 0
               || cUrl.indexOf("eyelashes-fashion.com") >= 0
               || cUrl2.indexOf("beautynail-design.com") >= 0)
               && isExistEle(driver, sele6)) {
