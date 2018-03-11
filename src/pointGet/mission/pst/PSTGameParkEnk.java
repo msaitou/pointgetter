@@ -35,11 +35,11 @@ public class PSTGameParkEnk extends PSTBase {
     driver.get(url);
     selector = "input[name='gamep']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
-        pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
-        pop2Cls = "div.campaignClose>img", //
-        pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
-        enkLinkSele = "li.survey>a>img", //
-        a = "";
+    pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
+    pop2Cls = "div.campaignClose>img", //
+    pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
+    enkLinkSele = "li.survey>a>img", //
+    a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
       changeCloseWindow(driver);
@@ -55,17 +55,21 @@ public class PSTGameParkEnk extends PSTBase {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
 
         selector = "div.qBox button";
-        int skip = 0;
+        int skip = 0, beforeSize = 0;
         String sele1 = "form>button#nextBtn", // pointResearch用
-            sele2 = "form>input.btn_regular", //
-            sele2_ = "iframe.question_frame", //
-            b = "";
+        sele2 = "form>input.btn_regular", //
+        sele2_ = "iframe.question_frame", //
+        b = "";
         while (true) {
           if (!isExistEle(driver, selector)) {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
           int size = eleList.size(), targetIndex = skip;
+          //        int skip = 0, beforeSize = 0;
+          if (beforeSize == size) {
+            skip++;
+          }
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
@@ -94,8 +98,7 @@ public class PSTGameParkEnk extends PSTBase {
             break;
           }
         }
-        String stampSele = "div#exchengeButton",
-            historySele = "p.iconMdl>a";
+        String stampSele = "div#exchengeButton", historySele = "p.iconMdl>a";
         if (isExistEle(driver, historySele)) {
           clickSleepSelector(driver, historySele, 4000); // 遷移
           if (isExistEle(driver, stampSele)) {
