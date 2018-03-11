@@ -119,6 +119,10 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPKanji: // ■漢字テスト
           MisIns = new MOPKanji(loggg, cProps);
           break;
+        case Define.strMOPCMother: // ■CMサイトその他
+          MisIns = new MOPCMother(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strMOPQuiz,
