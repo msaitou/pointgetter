@@ -56,7 +56,7 @@ public abstract class GMYBase extends Mission {
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
         recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
-    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg) 
+    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
         && Utille.isExistEle(driver, recoSele, loggg)) {
       driver.findElement(By.cssSelector(recoSele)).click();
     }
@@ -92,6 +92,9 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYKumaVote: // ■くま投票
           MisIns = new GMYKumaVote(loggg, cProps);
           break;
+        case Define.strGMYCMother: // ■CMその他
+          MisIns = new GMYCMother(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -101,7 +104,8 @@ public abstract class GMYBase extends Mission {
           Define.strGMYToidas,
           Define.strGMYPointResearch,
           Define.strGMYGameParkEnk,
-          Define.strGMYKumaVote
+          Define.strGMYKumaVote,
+          Define.strGMYCMother
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

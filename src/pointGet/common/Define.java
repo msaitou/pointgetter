@@ -60,6 +60,7 @@ public class Define {
   final public static String strGENMorikoreEnk = "GENMorikoreEnk";
   final public static String strGENChyousadan = "GENChyousadan";
   final public static String strGENKumaVote = "GENKumaVote";
+  final public static String strGENCMother = "GENCMother";
 
    // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
@@ -70,6 +71,7 @@ public class Define {
   final public static String strGMYPointResearch = "GMYPointResearch";
   final public static String strGMYGameParkEnk = "GMYGameParkEnk";
   final public static String strGMYKumaVote = "GMYKumaVote";
+  final public static String strGMYCMother = "GMYCMother";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
@@ -143,6 +145,7 @@ public class Define {
   final public static String strPTOChyousadan = "PTOChyousadan";
   final public static String strPTOKumaVote = "PTOKumaVote";
   final public static String strPTOFarmEnk = "PTOFarmEnk";
+  final public static String strPTOCMother = "PTOCMother";
 
   // ■■■■■Mobatoku■■■■■
   final public static String strMOBAnzan = "MOBAnzan";
@@ -181,6 +184,7 @@ public class Define {
   final public static String strSUGChyousadan = "SUGChyousadan";
   final public static String strSUGKumaVote = "SUGKumaVote";
   final public static String strSUGGetPark = "SUGGetPark";
+  final public static String strSUGCMother = "SUGCMother";
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
@@ -211,6 +215,7 @@ public class Define {
   final public static String strCITPointResearch = "CITPointResearch";
   final public static String strCITGameParkEnk = "CITGameParkEnk";
   final public static String strCITKumaVote = "CITKumaVote";
+  final public static String strCITCMother = "CITCMother";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";

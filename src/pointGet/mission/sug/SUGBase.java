@@ -91,6 +91,9 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGGetPark: // ■ゲームパーク
           MisIns = new SUGGetPark(loggg, cProps);
           break;
+        case Define.strSUGCMother: // ■CM
+          MisIns = new SUGCMother(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {

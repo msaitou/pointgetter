@@ -95,6 +95,9 @@ public abstract class PTOBase extends Mission {
         case Define.strPTOFarmEnk: // ■ファーム
           MisIns = new PTOFarmEnk(loggg, cProps);
           break;
+        case Define.strPTOCMother: // ■CM
+          MisIns = new PTOCMother(loggg, cProps);
+          break;
 
         default:
       }
@@ -107,7 +110,8 @@ public abstract class PTOBase extends Mission {
           Define.strPTOPointResearch2,
           Define.strPTOChyousadan,
           Define.strPTOKumaVote,
-          Define.strPTOFarmEnk
+          Define.strPTOFarmEnk,
+          Define.strPTOCMother
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

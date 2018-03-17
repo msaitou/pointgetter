@@ -1,4 +1,4 @@
-package pointGet.mission.mop;
+package pointGet.mission.sug;
 
 import java.util.List;
 import java.util.Map;
@@ -18,8 +18,8 @@ import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerZukan;
 
-public class MOPCMother extends MOPBase {
-  final String url = "http://pc.moppy.jp/gamecontents/";
+public class SUGCMother extends SUGBase {
+  final String url = "http://www.sugutama.jp/game";
   WebDriver driver = null;
   AnswerPhotoEnk PhotoEnk = null;
   AnswerKansatu Kansatu = null;
@@ -31,7 +31,7 @@ public class MOPCMother extends MOPBase {
   /**
    * @param logg
    */
-  public MOPCMother(Logger logg, Map<String, String> cProps) {
+  public SUGCMother(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "CMその他");
     Cooking = new AnswerCooking(logg);
     PhotoEnk = new AnswerPhotoEnk(logg);
@@ -45,7 +45,7 @@ public class MOPCMother extends MOPBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "div.game_btn>div.icon>img[alt='CMくじ']";
+    selector = "dl.game-area>dt>a[href='/ssp/20']>img";
     String sele0 = "a.ui-btn.ui-btn-a" // アンケート一覧の回答するボタン
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "dl>dt>img[src*='kumakumasenkyo']", sele6 = "form>input.next_bt" // コラム用

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.mission.cit;
 
@@ -49,7 +49,7 @@ public abstract class CITBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param loggg
    * @param cProps
    * @param missions
@@ -60,7 +60,7 @@ public abstract class CITBase extends Mission {
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
         recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
-    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg) 
+    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
         && Utille.isExistEle(driver, recoSele, loggg)) {
       driver.findElement(By.cssSelector(recoSele)).click();
     }
@@ -93,6 +93,10 @@ public abstract class CITBase extends Mission {
         case Define.strCITPointResearch: // ■アンケート
           MisIns = new CITPointResearch(loggg, cProps);
           break;
+        case Define.strCITCMother: // ■CM
+          MisIns = new CITCMother(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strCITPriceChyosatai,
@@ -101,7 +105,8 @@ public abstract class CITBase extends Mission {
           Define.strCITClickBanner,
           Define.strCITGameParkEnk,
           Define.strCITKumaVote,
-          Define.strCITPointResearch
+          Define.strCITPointResearch,
+          Define.strCITCMother
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -112,7 +117,7 @@ public abstract class CITBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -130,7 +135,7 @@ public abstract class CITBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return

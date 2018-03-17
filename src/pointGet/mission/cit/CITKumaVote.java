@@ -30,7 +30,7 @@ public class CITKumaVote extends CITBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "a[href*='http://www.chance.com/pjump.srv']>img[alt='CMくじ　毎日運試しでポイントゲット！']";
+    selector = "a[href*='https://www.chance.com/pjump.srv'] img[alt*='CMくじ']";
     String sele0 = "a.start__button" //
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
     , preSele = "dl>dt>img[src*='kumakumasenkyo']";
