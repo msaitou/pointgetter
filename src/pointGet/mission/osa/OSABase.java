@@ -115,6 +115,9 @@ public abstract class OSABase extends Mission {
         case Define.strOSAKanji: // ■漢字テスト
           MisIns = new OSAKanji(loggg, cProps);
           break;
+        case Define.strOSAFarmEnkNoCap: // ■ファームアンケート
+          MisIns = new OSAFarmEnkNoCap(loggg, cProps);
+          break;
        default:
       }
       if (Arrays.asList(new String[] { Define.strOSAQuiz,

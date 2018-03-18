@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.mission.hap;
 
@@ -45,7 +45,7 @@ public abstract class HAPBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param loggg
    * @param cProps
    * @param missions
@@ -64,6 +64,9 @@ public abstract class HAPBase extends Mission {
         case Define.strHAPManga: // ■漫画
           MisIns = new HAPManga(loggg, cProps);
           break;
+        case Define.strHAPPointResearchNoCap: // ■アンケート
+          MisIns = new HAPPointResearchNoCap(loggg, cProps);
+          break;
         case Define.strHAPPointResearch: // ■アンケート
           MisIns = new HAPPointResearch(loggg, cProps);
           break;
@@ -74,6 +77,7 @@ public abstract class HAPBase extends Mission {
       }
       if (Arrays.asList(new String[] { Define.strHAPManga,
           Define.strHAPPointResearch,
+          Define.strHAPPointResearchNoCap,
           Define.strHAPChyousadan }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -84,7 +88,7 @@ public abstract class HAPBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -102,7 +106,7 @@ public abstract class HAPBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return

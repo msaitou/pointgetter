@@ -95,6 +95,9 @@ public abstract class PICBase extends Mission {
         case Define.strPICFarmEnk: // ■ポイントファーム
           MisIns = new PICFarmEnk(loggg, cProps);
           break;
+        case Define.strPICFarmEnkNoCap: // ■ポイントファーム
+          MisIns = new PICFarmEnkNoCap(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strPICClickBanner,
@@ -106,7 +109,8 @@ public abstract class PICBase extends Mission {
           Define.strPICKumaVote,
           Define.strPICInterview,
           Define.strPICMedalMool,
-          Define.strPICFarmEnk
+          Define.strPICFarmEnk,
+          Define.strPICFarmEnkNoCap
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

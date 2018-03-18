@@ -93,6 +93,9 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMFarmEnk: // ■ファームアンケ―と
           MisIns = new LFMFarmEnk(loggg, cProps);
           break;
+        case Define.strLFMFarmEnkNoCap: // ■ファームアンケ―と
+          MisIns = new LFMFarmEnkNoCap(loggg, cProps);
+          break;
         case Define.strLFMChyousadan: // ■調査団
           MisIns = new LFMChyousadan(loggg, cProps);
           break;
@@ -118,6 +121,7 @@ public abstract class LFMBase extends Mission {
           , Define.strLFMKumaVote
           , Define.strLFMGameParkEnk
           , Define.strLFMKenkou
+          ,Define.strLFMFarmEnkNoCap
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

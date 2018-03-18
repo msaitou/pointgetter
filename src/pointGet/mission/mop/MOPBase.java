@@ -107,6 +107,9 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPMiniGameEnk: // ■ポイントリサーチ２
           MisIns = new MOPMiniGameEnk(loggg, cProps);
           break;
+        case Define.strMOPMiniGameEnkNoCap: // ■ポイントリサーチ２
+          MisIns = new MOPMiniGameEnkNoCap(loggg, cProps);
+          break;
         case Define.strMOPChyousadan: // ■調査団
           MisIns = new MOPChyousadan(loggg, cProps);
           break;
@@ -122,7 +125,6 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPCMother: // ■CMサイトその他
           MisIns = new MOPCMother(loggg, cProps);
           break;
-
         default:
       }
       if (Arrays.asList(new String[] { Define.strMOPQuiz,
