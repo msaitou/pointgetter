@@ -19,6 +19,7 @@ import pointGet.mission.parts.AnswerTasuuketu;
 
 public class SUGGetPark extends SUGBase {
   final String url = "http://www.sugutama.jp/game";
+  boolean skipCapFlag = false;
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;
@@ -69,7 +70,7 @@ public class SUGGetPark extends SUGBase {
 
         Utille.sleep(3000);
         selector = "div.enqueteBox a[href]>dl";
-        int skip = 1;
+        int skip = 1, beforeSize = 0;
         String sele1_ = "iframe.question_frame", //
             sele1 = "form>input[type='submit']", //
             sele3 = "form>input[type='submit']", //
@@ -84,6 +85,9 @@ public class SUGGetPark extends SUGBase {
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
           int size = eleList.size(), targetIndex = size - skip;
+          if (beforeSize == size) {
+            skip++;
+          }
           if (size > targetIndex &&
               targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
@@ -95,7 +99,6 @@ public class SUGGetPark extends SUGBase {
             logg.info("cUrl[" + cUrl + "]");
             if (isExistEle(driver, sele9)) {
               Tasuuketu.answer(driver, sele9, wid);
-              skip++;
             }
             else if (cUrl.indexOf("ad/enq/") >= 0
                 && isExistEle(driver, sele1_)) {
@@ -107,10 +110,9 @@ public class SUGGetPark extends SUGBase {
               driver.close();
               driver.switchTo().window(wid);
             }
-            else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+            else if (!skipCapFlag && (cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
                 && isExistEle(driver, sele4)) {
               Shindan.answer(driver, sele4, wid);
-              skip++;
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
@@ -118,7 +120,6 @@ public class SUGGetPark extends SUGBase {
                 || cUrl.indexOf("dgss/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
-              skip++;
             }
             else if ((cUrl.indexOf("http://pittango.net/") >= 0
             //                || cUrl.indexOf("beautynail-design.com") >= 0
@@ -128,10 +129,10 @@ public class SUGGetPark extends SUGBase {
               Pittango.answer(driver, sele3, wid);
             }
             else {
-              skip++;
               driver.close();
               driver.switchTo().window(wid);
             }
+            beforeSize = size;
             Utille.refresh(driver, logg);
             Utille.sleep(5000);
           }

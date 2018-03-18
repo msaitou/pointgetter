@@ -115,6 +115,9 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOHyakkey: // ■百景
             MisIns = new GPOHyakkey(loggg, cProps);
             break;
+        case Define.strGPOFarmEnkNoCap: // ■ポイントファーム
+          MisIns = new GPOFarmEnkNoCap(loggg, cProps);
+          break;
 
         default:
       }
@@ -132,7 +135,8 @@ public abstract class GPOBase extends Mission {
           Define.strGPOPointResearch2,
           Define.strGPOAnzan,
           Define.strGPOKansatu,
-          Define.strGPOHyakkey
+          Define.strGPOHyakkey,
+          Define.strGPOFarmEnkNoCap
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

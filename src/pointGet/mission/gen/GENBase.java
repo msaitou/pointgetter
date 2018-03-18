@@ -94,9 +94,6 @@ public abstract class GENBase extends Mission {
         case Define.strGENGameParkEnk: // ■GameParkアンケート
           MisIns = new GENGameParkEnk(loggg, cProps);
           break;
-        case Define.strGENMorikoreEnk: // ■モリコレアンケート
-          MisIns = new GENMorikoreEnk(loggg, cProps);
-          break;
         case Define.strGENChyousadan: // ■調査団
           MisIns = new GENChyousadan(loggg, cProps);
           break;
@@ -105,6 +102,12 @@ public abstract class GENBase extends Mission {
           break;
         case Define.strGENCMother: // ■CM
           MisIns = new GENCMother(loggg, cProps);
+          break;
+        case Define.strGENMorikoreEnk: // ■モリコレアンケート
+          MisIns = new GENMorikoreEnk(loggg, cProps);
+          break;
+        case Define.strGENMorikoreEnkNoCap: // ■モリコレアンケート
+          MisIns = new GENMorikoreEnkNoCap(loggg, cProps);
           break;
 
         default:
@@ -121,7 +124,8 @@ public abstract class GENBase extends Mission {
           Define.strGENMorikoreEnk,
           Define.strGENChyousadan,
           Define.strGENKumaVote,
-          Define.strGENCMother
+          Define.strGENCMother,
+          Define.strGENMorikoreEnkNoCap
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

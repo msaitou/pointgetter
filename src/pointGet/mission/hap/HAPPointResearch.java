@@ -23,6 +23,7 @@ import pointGet.mission.parts.AnswerZukan;
 
 public class HAPPointResearch extends HAPBase {
   final String url = "http://hapitas.jp/enquete/";
+  boolean skipCapFlag = false;
   WebDriver driver = null;
   AnswerSurveyEnk SurveyEnk = null;
   AnswerKotsuta Kotsuta = null;
@@ -63,7 +64,7 @@ public class HAPPointResearch extends HAPBase {
     driver = driverAtom;
     driver.get(url);
     selector = "tbody#easyenquete td>a>img";
-    int skip = 1;
+    int skip = 1, beforeSize = 0;
     String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
     sele4 = "div>input[type='submit']", //
@@ -81,6 +82,9 @@ public class HAPPointResearch extends HAPBase {
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size = eleList.size(), targetIndex = size - skip;
+      if (beforeSize == size) {
+        skip++;
+      }
       if (targetIndex > -1 && size > targetIndex
           && isExistEle(eleList, targetIndex)) { // 古い順にやる
         // メール参照の場合スキップ
@@ -103,7 +107,7 @@ public class HAPPointResearch extends HAPBase {
         else if (isExistEle(driver, sele3)) {
           SurveyEnk.answer(driver, sele3, wid);
         }
-        else if (isExistEle(driver, sele5)) {
+        else if (!skipCapFlag && isExistEle(driver, sele5)) {
           Shindan.answer(driver, sele5, wid);
         }
         else if ((cUrl.indexOf("question-hiroba") >= 0
@@ -159,10 +163,10 @@ public class HAPPointResearch extends HAPBase {
           Tasuuketu.answer(driver, sele9, wid);
         }
         else {
-          skip++;
           driver.close();
           driver.switchTo().window(wid);
         }
+        beforeSize = size;
         Utille.refresh(driver, logg);
         Utille.sleep(5000);
       }

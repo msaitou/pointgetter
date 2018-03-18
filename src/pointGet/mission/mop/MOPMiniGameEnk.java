@@ -23,6 +23,7 @@ import pointGet.mission.parts.AnswerZukan;
 
 public class MOPMiniGameEnk extends MOPBase {
   final String url = "http://pc.moppy.jp/gamecontents/";
+  boolean skipCapFlag = false;
   WebDriver driver = null;
   /* アンケートクラス　多数決 */
   AnswerTasuuketu Tasuuketu = null;
@@ -84,7 +85,7 @@ public class MOPMiniGameEnk extends MOPBase {
         Utille.sleep(6000);
         selector = "div.enqueteBox a[href]>dl";
 //        selector = "div.enquete_box a[href]>dl";
-        int skip = 1;
+        int skip = 1, beforeSize = 0;
         String sele1_ = "iframe.question_frame", //
             sele1 = "form>input[type='submit']", //
             sele3 = "form>input[type='submit']", //
@@ -100,6 +101,9 @@ public class MOPMiniGameEnk extends MOPBase {
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
           int size = eleList.size(), targetIndex = size - skip;
+          if (beforeSize == size) {
+            skip++;
+          }
           if (size > targetIndex &&
               targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
@@ -111,7 +115,6 @@ public class MOPMiniGameEnk extends MOPBase {
             logg.info("cUrl[" + cUrl + "]");
             if (isExistEle(driver, sele9)) {
               Tasuuketu.answer(driver, sele9, wid);
-              skip++;
             }
             else if (cUrl.indexOf("ad/enq/") >= 0
                 && isExistEle(driver, sele1_)) {
@@ -120,17 +123,15 @@ public class MOPMiniGameEnk extends MOPBase {
                 break;
               }
             }
-            else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+            else if (!skipCapFlag && (cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
                 && isExistEle(driver, sele4)) {
               Shindan.answer(driver, sele4, wid);
-              skip++;
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
                 || cUrl.indexOf("enquetter.com/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
-              skip++;
             }
             else if ((cUrl.indexOf("http://pittango.net/") >= 0
             //                || cUrl.indexOf("beautynail-design.com") >= 0
@@ -180,10 +181,10 @@ public class MOPMiniGameEnk extends MOPBase {
               Colum.answer(driver, sele6, wid);
             }
             else {
-              skip++;
               driver.close();
               driver.switchTo().window(wid);
             }
+            beforeSize = size;
             Utille.refresh(driver, logg);
             Utille.sleep(5000);
           }

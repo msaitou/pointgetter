@@ -91,6 +91,7 @@ public class PILGameParkEnk extends PILBase {
               driver.close();
               driver.switchTo().window(wid);
             }
+            beforeSize = size;
             Utille.refresh(driver, logg);
             Utille.sleep(5000);
           }

@@ -23,6 +23,7 @@ import pointGet.mission.parts.AnswerZukan;
 
 public class GENMorikoreEnk extends GENBase {
   final String url = "http://www.gendama.jp/";
+  boolean skipCapFlag = false;
   WebDriver driver = null;
   /* アンケートクラス　多数決 */
   AnswerTasuuketu Tasuuketu = null;
@@ -62,7 +63,7 @@ public class GENMorikoreEnk extends GENBase {
     driver.get(url);
     selector = "section#ftrlink li>a[href*='/cl/?id=134610&u=6167192']";
     String enkLinkSele = "a>img[alt='モリモリ診断']", //
-    a = "";
+        a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 10000); // 遷移
       changeCloseWindow(driver);
@@ -91,13 +92,13 @@ public class GENMorikoreEnk extends GENBase {
 
           Utille.sleep(3000);
           selector = "div.enquete_box a[href]>dl";
-          int skip = 1;
+          int skip = 1, beforeSize = 0;
           String sele1_ = "iframe.question_frame", //
-          sele1 = "form>input[type='submit']", //
-          sele3 = "form>input[type='submit']", //
-          sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-          sele6 = "form>input.next_bt", // コラム用
-          sele4 = "a.submit-btn", b = "";
+              sele1 = "form>input[type='submit']", //
+              sele3 = "form>input[type='submit']", //
+              sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+              sele6 = "form>input.next_bt", // コラム用
+              sele4 = "a.submit-btn", b = "";
           while (true) {
             checkOverlay(driver, overlaySele, false);
             if (!isExistEle(driver, selector)) {
@@ -105,6 +106,9 @@ public class GENMorikoreEnk extends GENBase {
             }
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
             int size = eleList.size(), targetIndex = size - skip;
+            if (beforeSize == size) {
+              skip++;
+            }
             if (size > targetIndex &&
                 targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
               String wid = driver.getWindowHandle();
@@ -114,58 +118,54 @@ public class GENMorikoreEnk extends GENBase {
               Utille.sleep(3000);
               String cUrl = driver.getCurrentUrl();
               logg.info("cUrl[" + cUrl + "]");
-              String isShindanText ="",isShindanSele = "h3.start__title";
+              String isShindanText = "", isShindanSele = "h3.start__title";
               if (isExistEle(driver, isShindanSele)) {
                 isShindanText = driver.findElement(By.cssSelector(isShindanSele)).getText();
               }
-              
+
               if (isExistEle(driver, sele9)) {
                 Tasuuketu.answer(driver, sele9, wid);
-                skip++;
               }
               else if ("この診断について".equals(isShindanText)
                   && isExistEle(driver, sele3)) {
                 AdShindan.answer(driver, sele3, wid);
-                skip++;
               }
               else if ((cUrl.indexOf("ad/enq/") >= 0
                   || cUrl.indexOf("beautypress.tokyo") >= 0
-                  || cUrl.indexOf("credit-card.link") >= 0
-                  )
+                  || cUrl.indexOf("credit-card.link") >= 0)
 
                   && isExistEle(driver, sele1_)) {
                 // $('iframe').contents().find("div>input[type='submit']")
                 if (!AdEnq.answer(driver, sele1, wid)) {
                   break;
                 }
-                skip++;
               }
-              else if ((cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+              else if (!skipCapFlag &&
+                  (cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
                   && isExistEle(driver, sele4)) {
                 Shindan.answer(driver, sele4, wid);
-                skip++;
               }
               else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
-                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                  )
+              //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              )
                   && isExistEle(driver, sele6)) {
                 Zukan.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
-                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                  )
+              //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              )
                   && isExistEle(driver, sele6)) {
                 Kansatu.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("cosmelife.com/map") >= 0
-                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                  )
+              //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              )
                   && isExistEle(driver, sele6)) {
                 Hyakkey.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
-                  //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                  )
+              //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+              )
                   && isExistEle(driver, sele6)) {
                 Cooking.answer(driver, sele6, wid);
               }
@@ -186,17 +186,17 @@ public class GENMorikoreEnk extends GENBase {
                 Colum.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("http://pittango.net/") >= 0
-                  //                || cUrl.indexOf("beautynail-design.com") >= 0
-                  //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
-                  )
+              //                || cUrl.indexOf("beautynail-design.com") >= 0
+              //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+              )
                   && isExistEle(driver, sele3)) {
                 Pittango.answer(driver, sele3, wid);
               }
               else {
-                skip++;
                 driver.close();
                 driver.switchTo().window(wid);
               }
+              beforeSize = size;
               Utille.refresh(driver, logg);
               Utille.sleep(5000);
             }

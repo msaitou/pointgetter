@@ -66,7 +66,7 @@ public class GPOGameParkEnk extends GPOBase {
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
           int size = eleList.size(), targetIndex = skip;
 //        int skip = 0, beforeSize = 0;
-        if (beforeSize == size) {skip++;} 
+        if (beforeSize == size) {skip++;}
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
@@ -87,6 +87,7 @@ public class GPOGameParkEnk extends GPOBase {
               driver.close();
               driver.switchTo().window(wid);
             }
+            beforeSize = size;
             Utille.refresh(driver, logg);
             Utille.sleep(5000);
           }
