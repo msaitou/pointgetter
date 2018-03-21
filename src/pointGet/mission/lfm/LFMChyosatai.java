@@ -30,14 +30,15 @@ public class LFMChyosatai extends LFMBase {
     driver.get(url);
     String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
     String footBnrSelector = "div.foot-bnr a.close>span", //
-        footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
+        footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span",
+        sele = "div>a>img[alt='トキメキ調査隊']";
     //    if (isExistEle(driver, selector)) {
     //      clickSleepSelector(driver, selector, 4000); // 遷移
     //      changeCloseWindow(driver);
     for (int j = 0; j < 6; j++) {
       driver.get(url);
       //        selector = "p.tokimeki";
-      String selector = "div>a>img[alt='トキメキ調査隊']";
+      String selector = sele;
       if (isExistEle(driver, selector, false)) {
         clickSleepSelector(driver, selector, 4000); // 遷移
         changeCloseWindow(driver);
@@ -116,13 +117,17 @@ public class LFMChyosatai extends LFMBase {
     }
     String exchangeSele = "span.btn-exchange>a", //
         exchageListSele = "select[name='point']",
-        doExchangeSele = "div.btn-area>button[type='submit']",
-        sele = "div.game_btn>div.icon>img[alt='トキメキ調査隊']";
+        doExchangeSele = "div.btn-area>button[type='submit']";
     ;
     driver.get(url);
     if (isExistEle(driver, sele)) {
       clickSleepSelector(driver, sele, 4000); // 遷移
       changeCloseWindow(driver);
+      checkOverlay(driver, overlaySelector);
+      if (isExistEle(driver, footBnrSelector)
+          && !isExistEle(driver, footBnrNoneSele, false)) {
+        checkOverlay(driver, footBnrSelector);
+      }
       if (isExistEle(driver, exchangeSele)) {
         clickSleepSelector(driver, exchangeSele, 6000);
         if (isExistEle(driver, exchageListSele)) {

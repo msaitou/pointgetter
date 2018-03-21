@@ -122,6 +122,7 @@ public abstract class LFMBase extends Mission {
           , Define.strLFMGameParkEnk
           , Define.strLFMKenkou
           ,Define.strLFMFarmEnkNoCap
+          ,Define.strLFMPriceChyosatai
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

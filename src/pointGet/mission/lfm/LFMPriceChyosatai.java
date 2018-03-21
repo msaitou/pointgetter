@@ -29,12 +29,12 @@ public class LFMPriceChyosatai extends LFMBase {
 
   @Override
   public void privateMission(WebDriver driver) {
+    String sele = "div>a>img[alt='プライス調査隊']";
+    String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
       driver.get(url);
-      String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
-      String selector = "div>a>img[alt='プライス調査隊']";
-      if (isExistEle(driver, selector)) {
-        clickSleepSelector(driver, selector, 4000); // 遷移
+      if (isExistEle(driver, sele)) {
+        clickSleepSelector(driver, sele, 4000); // 遷移
         changeCloseWindow(driver);
         Utille.sleep(4000);
         checkOverlay(driver, overlaySelector);
@@ -53,7 +53,7 @@ public class LFMPriceChyosatai extends LFMBase {
             checkOverlay(driver, footBnrSelector);
           }
 
-          selector = "div.thumb-start div.btn>a";
+          String selector = "div.thumb-start div.btn>a";
           if (isExistEle(driver, selector)) {
             clickSleepSelector(driver, selector, 4000); // 遷移
             checkOverlay(driver, overlaySelector);
@@ -83,13 +83,19 @@ public class LFMPriceChyosatai extends LFMBase {
     }
     String exchangeSele = "span.btn-exchange>a", //
         exchageListSele = "select[name='point']",
-        doExchangeSele = "div.btn-area>button[type='submit']",
-        sele = "dd>a>img[alt='プライス調査隊']";
+        doExchangeSele = "div.btn-area>button[type='submit']"
+//        ,sele = "dd>a>img[alt='プライス調査隊']"
+        ;
     ;
     driver.get(url);
     if (isExistEle(driver, sele)) {
       clickSleepSelector(driver, sele, 6000); // 遷移
       changeCloseWindow(driver);
+      checkOverlay(driver, overlaySelector);
+      if (isExistEle(driver, footBnrSelector)
+          && !isExistEle(driver, overlayNone, false)) {
+        checkOverlay(driver, footBnrSelector);
+      }
       if (isExistEle(driver, exchangeSele)) {
         clickSleepSelector(driver, exchangeSele, 6000);
         if (isExistEle(driver, exchageListSele)) {

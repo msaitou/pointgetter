@@ -40,7 +40,8 @@ public class GMYPriceChyosatai extends GMYBase {
       driver.get(url);
       selector = "li a[href='https://dietnavi.com/pc/game/price/play.php']";
       if (isExistEle(driver, selector)) {
-        driver.get("http://dietnavi.com/pc/game/price/play.php");
+//        clickSleepSelector(driver, selector, 3000); // 遷移
+        Utille.url(driver, "https://dietnavi.com/pc/game/price/play.php", logg);
         Utille.sleep(2000);
         checkOverlay(driver, overlaySelector);
         if (isExistEle(driver, footBnrSelector)
@@ -86,13 +87,17 @@ public class GMYPriceChyosatai extends GMYBase {
         }
       }
     }
-
-    driver.get("http://dietnavi.com/pc/game/price/play.php");
-
+    Utille.url(driver, "https://dietnavi.com/pc/game/price/play.php", logg);
+    Utille.sleep(7000);
     String exchangeSele = "span.btn-exchange>a", //
         exchageListSele = "select[name='point']",
         doExchangeSele = "div.btn-area>button[type='submit']";
     if (isExistEle(driver, exchangeSele)) {
+      checkOverlay(driver, overlaySelector);
+      if (isExistEle(driver, footBnrSelector)
+          && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+        checkOverlay(driver, footBnrSelector);
+      }
       clickSleepSelector(driver, exchangeSele, 6000);
       if (isExistEle(driver, exchageListSele)) {
         int size = getSelectorSize(driver, exchageListSele + ">option");

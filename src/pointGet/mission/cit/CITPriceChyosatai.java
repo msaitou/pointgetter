@@ -29,9 +29,10 @@ public class CITPriceChyosatai extends CITBase {
 
   @Override
   public void privateMission(WebDriver driver) {
+    String sele = "a[href='https://www.chance.com/game/price/play.jsp'] img[alt='プライス調査隊']";
     for (int j = 0; j < 6; j++) {
       driver.get(url);
-      selector = "a[href='https://www.chance.com/game/price/play.jsp'] img[alt='プライス調査隊']";
+      selector = sele;
       String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
       if (isExistEle(driver, selector)) {
         clickSleepSelector(driver, selector, 4000); // 遷移
@@ -84,13 +85,20 @@ public class CITPriceChyosatai extends CITBase {
 
     String exchangeSele = "span.btn-exchange>a", //
         exchageListSele = "select[name='point']",
-        doExchangeSele = "div.btn-area>button[type='submit']",
-        sele = "a[href='http://www.chance.com/game/price/play.jsp']>img[alt='プライス調査隊']";
+        doExchangeSele = "div.btn-area>button[type='submit']";
     ;
-    driver.get(url);
+    Utille.url(driver, url, logg);
+    Utille.sleep(2000);
+    String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     if (isExistEle(driver, sele)) {
       clickSleepSelector(driver, sele, 4000); // 遷移
       changeCloseWindow(driver);
+      Utille.sleep(1000);
+      checkOverlay(driver, overlaySelector);
+      if (isExistEle(driver, footBnrSelector)
+          && !isExistEle(driver, overlayNone, false)) {
+        checkOverlay(driver, footBnrSelector);
+      }
       if (isExistEle(driver, exchangeSele)) {
         clickSleepSelector(driver, exchangeSele, 6000);
         if (isExistEle(driver, exchageListSele)) {
