@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -86,6 +87,9 @@ public abstract class PILBase extends Mission {
           break;
         case Define.strPILKumaVote: // ■くま投票
           MisIns = new PILKumaVote(loggg, cProps);
+          break;
+        case Define.strPILMail:
+          MailClicker.main(new String[] {sCode});
           break;
         default:
       }

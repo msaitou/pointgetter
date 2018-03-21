@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -71,6 +72,9 @@ public abstract class I2IBase extends Mission {
           break;
         case Define.strI2IKenkou: // ■サラサラ健康コラム
           MisIns = new I2IKenkou(loggg, cProps);
+          break;
+        case Define.strI2IMail:
+          MailClicker.main(new String[] {sCode});
           break;
         default:
       }

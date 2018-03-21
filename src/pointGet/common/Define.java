@@ -45,6 +45,7 @@ public class Define {
   final public static String strECNTellmeWhich = "ECNTellmeWhich";
   final public static String strECNWebSearche = "ECNWebSearche";
   final public static String strECNPointResearch = "ECNPointResearch";
+  final public static String strECNMail = "ECNMail";
 
   // ■■■■■げん玉■■■■■
   final public static String strGENClickBanner = "GENClickBanner";
@@ -62,6 +63,7 @@ public class Define {
   final public static String strGENCMother = "GENCMother";
   final public static String strGENMorikoreEnk = "GENMorikoreEnk";
   final public static String strGENMorikoreEnkNoCap = "GENMorikoreEnkNoCap";
+  final public static String strGENMail = "GENMail";
 
    // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
@@ -73,6 +75,7 @@ public class Define {
   final public static String strGMYGameParkEnk = "GMYGameParkEnk";
   final public static String strGMYKumaVote = "GMYKumaVote";
   final public static String strGMYCMother = "GMYCMother";
+  final public static String strGMYMail = "GMYMail";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
@@ -81,6 +84,7 @@ public class Define {
   final public static String strI2IPhoto = "I2IPhoto";
   final public static String strI2INews = "I2INews";
   final public static String strI2IKenkou = "I2IKenkou";
+  final public static String strI2IMail = "I2IMail";
 
   // ■■■■■moppy■■■■■
   final public static String strMOPChyosatai = "MOPChyosatai";
@@ -103,6 +107,7 @@ public class Define {
   final public static String strMOPCMother = "MOPCMother";
   final public static String strMOPMiniGameEnk = "MOPMiniGameEnk";
   final public static String strMOPMiniGameEnkNoCap = "MOPMiniGameEnkNoCap";
+  final public static String strMOPMail = "MOPMail";
 
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
@@ -122,6 +127,7 @@ public class Define {
   final public static String strOSAKanji = "OSAKanji";
   final public static String strOSAFarmEnk = "OSAFarmEnk";
   final public static String strOSAFarmEnkNoCap = "OSAFarmEnkNoCap";
+  final public static String strOSAMail = "OSAMail";
 
   // ■■■■■PEX■■■■■
   final public static String strPEX4quiz = "PEX4quiz";
@@ -133,10 +139,12 @@ public class Define {
   final public static String strPEXNews = "PEXNews";
   final public static String strPEXPectan = "PEXPectan";
   final public static String strPEXSearch = "PEXSearch";
+  final public static String strPEXMail = "PEXMail";
 
   // ■■■■■rakuten■■■■■
   final public static String strRINClickBanner = "RINClickBanner";
-
+  final public static String strRINMail = "RINMail";
+  
   // ■■■■■PointTown■■■■■
   final public static String strPTOClickCorner = "PTOClickCorner";
   final public static String strPTOKuji = "PTOKuji";
@@ -150,6 +158,7 @@ public class Define {
   final public static String strPTOCMother = "PTOCMother";
   final public static String strPTOFarmEnk = "PTOFarmEnk";
   final public static String strPTOFarmEnkNoCap = "PTOFarmEnkNoCap";
+  final public static String strPTOMail = "PTOMail";
 
   // ■■■■■Mobatoku■■■■■
   final public static String strMOBAnzan = "MOBAnzan";
@@ -162,6 +171,7 @@ public class Define {
   final public static String strMOBPointResearch = "MOBPointResearch";
   final public static String strMOBTokkuTimer = "MOBTokkuTimer";
   final public static String strMOBKanji = "MOBKanji";
+  final public static String strMOBMail = "MOBMail";
 
   // ■■■■■PointInCome■■■■■
   final public static String strPICUranai = "PICUranai";
@@ -175,6 +185,7 @@ public class Define {
   final public static String strPICMedalMool = "PICMedalMool";
   final public static String strPICFarmEnk = "PICFarmEnk";
   final public static String strPICFarmEnkNoCap = "PICFarmEnkNoCap";
+  final public static String strPICMail = "PICMail";
 
 
   // ■■■■■SUGUTAMA■■■■■
@@ -191,6 +202,7 @@ public class Define {
   final public static String strSUGCMother = "SUGCMother";
   final public static String strSUGGetPark = "SUGGetPark";
   final public static String strSUGGetParkNoCap = "SUGGetParkNoCap";
+  final public static String strSUGMail = "SUGMail";
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
@@ -201,6 +213,7 @@ public class Define {
   final public static String strPSTChyousadan = "PSTChyousadan";
   final public static String strPSTKumaVote = "PSTKumaVote";
   final public static String strPSTClickBanner = "PSTClickBanner";
+  final public static String strPSTMail = "PSTMail";
 
   // ■■■■■pointisland■■■■■
   final public static String strPILUranai = "PILUranai";
@@ -211,6 +224,7 @@ public class Define {
   final public static String strPILGameParkEnk = "PILGameParkEnk";
   final public static String strPILChyousadan = "PILChyousadan";
   final public static String strPILKumaVote = "PILKumaVote";
+  final public static String strPILMail = "PILMail";
 
   // ■■■■■chanceIt■■■■■
   final public static String strCITPriceChyosatai = "CITPriceChyosatai";
@@ -222,10 +236,12 @@ public class Define {
   final public static String strCITGameParkEnk = "CITGameParkEnk";
   final public static String strCITKumaVote = "CITKumaVote";
   final public static String strCITCMother = "CITCMother";
+  final public static String strCITMail = "CITMail";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";
   final public static String strPMOGameParkEnk = "PMOGameParkEnk";
+  final public static String strPMOMail = "PMOMail";
 
   // ■■■■■ちょびリッチ■■■■■
   final public static String strCRIAnk = "CRIAnk";
@@ -235,15 +251,18 @@ public class Define {
   final public static String strCRIGameParkEnk = "CRIGameParkEnk";
   final public static String strCRIChyousadan = "CRIChyousadan";
   final public static String strCRIKumaVote = "CRIKumaVote";
+  final public static String strCRIMail = "CRIMail";
   // ■■■■■ハピタス■■■■■
   final public static String strHAPManga = "HAPManga";
   final public static String strHAPChyousadan = "HAPChyousadan";
   final public static String strHAPPointResearch = "HAPPointResearch";
   final public static String strHAPPointResearchNoCap = "HAPPointResearchNoCap";
+  final public static String strHAPMail = "HAPMail";
   // ■■■■■ワラウ■■■■■
   final public static String strWARDailyCheck = "WARDailyCheck";
   final public static String strWARPointResearch = "WARPointResearch";
   final public static String strWARGameParkEnk = "WARGameParkEnk";
+  final public static String strWARMail = "WARMail";
 
   // ■■■■■dotmaney■■■■■
   final public static String strDMYChirachi = "DMYChirachi";
@@ -252,6 +271,7 @@ public class Define {
   final public static String strDMYScrachi = "DMYScrachi";
   final public static String strDMYChyousadan = "DMYChyousadan";
   final public static String strDMYKumaVote = "DMYKumaVote";
+  final public static String strDMYMail = "DMYMail";
 
   // ■■■■■LIFE MEDIA■■■■■
   final public static String strLFMChyosatai = "LFMChyosatai";
@@ -268,6 +288,7 @@ public class Define {
   final public static String strLFMRecipiChyosatai = "LFMRecipiChyosatai";
   final public static String strLFMFarmEnk = "LFMFarmEnk";
   final public static String strLFMFarmEnkNoCap = "LFMFarmEnkNoCap";
+  final public static String strLFMMail = "LFMMail";
 
   // ■■■■■Gpoint■■■■■
   final public static String strGPOUranai = "GPOUranai";
@@ -285,6 +306,7 @@ public class Define {
   final public static String strGPOGameParkEnk = "GPOGameParkEnk";
   final public static String strGPOFarmEnk = "GPOFarmEnk";
   final public static String strGPOFarmEnkNoCap = "GPOFarmEnkNoCap";
+  final public static String strGPOMail = "GPOMail";
 
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";

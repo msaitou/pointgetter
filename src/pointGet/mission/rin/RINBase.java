@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -57,6 +58,10 @@ public abstract class RINBase extends Mission {
       switch (mission) {
         case Define.strRINClickBanner: // ■クリックバナー(楽天)
           MisIns = new RINClickBanner(loggg, cProps);
+          break;
+        case Define.strRINMail:
+          MailClicker.main(new String[] {sCode});
+          MailClicker.main(new String[] {"r01"});
           break;
         default:
       }

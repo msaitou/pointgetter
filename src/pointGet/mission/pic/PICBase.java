@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -97,6 +98,9 @@ public abstract class PICBase extends Mission {
           break;
         case Define.strPICFarmEnkNoCap: // ■ポイントファーム
           MisIns = new PICFarmEnkNoCap(loggg, cProps);
+          break;
+        case Define.strPICMail:
+          MailClicker.main(new String[] {sCode});
           break;
         default:
       }

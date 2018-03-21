@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -94,6 +95,9 @@ public abstract class GMYBase extends Mission {
           break;
         case Define.strGMYCMother: // ■CMその他
           MisIns = new GMYCMother(loggg, cProps);
+          break;
+        case Define.strGMYMail:
+          MailClicker.main(new String[] {sCode});
           break;
         default:
       }

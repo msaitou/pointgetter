@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -66,6 +67,9 @@ public abstract class PMOBase extends Mission {
           break;
         case Define.strPMOGameParkEnk: // ■GameParkアンケート
           MisIns = new PMOGameParkEnk(loggg, cProps);
+          break;
+        case Define.strPMOMail:
+          MailClicker.main(new String[] {sCode});
           break;
         default:
       }

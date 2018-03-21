@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -117,6 +118,9 @@ public abstract class OSABase extends Mission {
           break;
         case Define.strOSAFarmEnkNoCap: // ■ファームアンケート
           MisIns = new OSAFarmEnkNoCap(loggg, cProps);
+          break;
+        case Define.strOSAMail:
+          MailClicker.main(new String[] {sCode});
           break;
        default:
       }

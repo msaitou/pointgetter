@@ -132,6 +132,20 @@ public class MailClicker extends PointGet {
       logg.info("targetSites: " + targetSites.toString());
       return;
     }
+    Map<String, HashMap<String, String>> tmpTargetSites = new HashMap<String, HashMap<String, String>>();
+    // site直指定の場合
+    if (args.length > 0 && !args[0].isEmpty()) {
+      logg.info("■■-target sitecode is "+args[0]);
+      
+      for (Map.Entry<String, HashMap<String, String>> e : targetSites.entrySet()) {
+        if (args[0].equals(e.getKey())) {
+          tmpTargetSites.put(e.getKey(), e.getValue());
+          break;
+        }
+      }
+      targetSites = tmpTargetSites;
+    }
+    
     Properties props = new Properties();
     Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
     props.put("mail.imap.starttls.enable", "true");

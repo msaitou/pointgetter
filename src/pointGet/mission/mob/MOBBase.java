@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -89,6 +90,9 @@ public abstract class MOBBase extends Mission {
           break;
         case Define.strMOBKanji: // ■漢字テスト
           MisIns = new MOBKanji(loggg, cProps);
+          break;
+        case Define.strMOBMail:
+          MailClicker.main(new String[] {sCode});
           break;
         default:
       }

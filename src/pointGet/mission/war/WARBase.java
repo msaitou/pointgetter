@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -73,6 +74,9 @@ public abstract class WARBase extends Mission {
           break;
         case Define.strWARPointResearch: // ■ガチョウアンケート
           MisIns = new WARPointResearch(loggg, cProps);
+          break;
+        case Define.strWARMail:
+          MailClicker.main(new String[] {sCode});
           break;
 
         default:

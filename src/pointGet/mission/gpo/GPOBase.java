@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -56,15 +57,15 @@ public abstract class GPOBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    String sel = "li.status-point",
-        laySel = "div.layer_board a.btnclose_top.btn_close>img";
+    String sel = "li.status-point", laySel = "div.layer_board a.btnclose_top.btn_close>img";
     driver.get("http://www.gpoint.co.jp/");
     if (!Utille.isExistEle(driver, sel, false, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
       LoginSite.login(sCode, driver, loggg);
     }
     // オーバーレイがあれば消す
-    if (!Utille.isExistEle(driver, "div.layer_board[style*='display: none'] a.btnclose_top.btn_close>img", false, loggg)
+    if (!Utille
+        .isExistEle(driver, "div.layer_board[style*='display: none'] a.btnclose_top.btn_close>img", false, loggg)
         && Utille.isExistEle(driver, laySel, loggg)) {
       driver.findElement(By.cssSelector(laySel)).click();
       Utille.sleep(3000);
@@ -110,13 +111,16 @@ public abstract class GPOBase extends Mission {
           MisIns = new GPOPointResearch2(loggg, cProps);
           break;
         case Define.strGPOKansatu: // ■観察
-            MisIns = new GPOKansatu(loggg, cProps);
-            break;
+          MisIns = new GPOKansatu(loggg, cProps);
+          break;
         case Define.strGPOHyakkey: // ■百景
-            MisIns = new GPOHyakkey(loggg, cProps);
-            break;
+          MisIns = new GPOHyakkey(loggg, cProps);
+          break;
         case Define.strGPOFarmEnkNoCap: // ■ポイントファーム
           MisIns = new GPOFarmEnkNoCap(loggg, cProps);
+          break;
+        case Define.strGPOMail:
+          MailClicker.main(new String[] { sCode });
           break;
 
         default:
@@ -156,11 +160,11 @@ public abstract class GPOBase extends Mission {
       };
       PC.putPointsData(pMap);
     } catch (Throwable e) {
-      loggg.error("["+sCode+"");
+      loggg.error("[" + sCode + "");
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
       driver.quit();
-//      driver.close();
+      //      driver.close();
     }
   }
 

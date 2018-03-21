@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -95,6 +96,9 @@ public abstract class CITBase extends Mission {
           break;
         case Define.strCITCMother: // ■CM
           MisIns = new CITCMother(loggg, cProps);
+          break;
+        case Define.strCITMail:
+          MailClicker.main(new String[] {"cit"});
           break;
 
         default:

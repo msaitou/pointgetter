@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -72,6 +73,9 @@ public abstract class HAPBase extends Mission {
           break;
         case Define.strHAPChyousadan: // ■調査団
           MisIns = new HAPChyousadan(loggg, cProps);
+          break;
+        case Define.strHAPMail:
+          MailClicker.main(new String[] {sCode});
           break;
         default:
       }

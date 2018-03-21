@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -104,6 +105,9 @@ public abstract class LFMBase extends Mission {
           break;
         case Define.strLFMKenkou: // ■サラサラ健康コラム
           MisIns = new LFMKenkou(loggg, cProps);
+          break;
+        case Define.strLFMMail:
+          MailClicker.main(new String[] {sCode});
           break;
 
         default:

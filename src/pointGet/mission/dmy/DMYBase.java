@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import pointGet.LoginSite;
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -79,6 +80,10 @@ public abstract class DMYBase extends Mission {
 //        case Define.strDMYKumaVote: // ■総選挙
 //        MisIns = new DMYKumaVote(loggg, cProps);
 //        break;
+        case Define.strDMYMail:
+          MailClicker.main(new String[] {"dmy"});
+          break;
+
         default:
       }
 

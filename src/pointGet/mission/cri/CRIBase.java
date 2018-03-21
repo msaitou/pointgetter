@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -73,6 +74,9 @@ public abstract class CRIBase extends Mission {
           break;
         case Define.strCRIKumaVote: // ■くま投票
           MisIns = new CRIKumaVote(loggg, cProps);
+          break;
+        case Define.strCRIMail:
+          MailClicker.main(new String[] {"cri"});
           break;
         default:
       }

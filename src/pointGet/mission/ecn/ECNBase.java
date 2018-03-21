@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -89,6 +90,9 @@ public abstract class ECNBase extends Mission {
           break;
         case Define.strECNPointResearch: // ■アンケート
           MisIns = new ECNPointResearch(loggg, cProps);
+          break;
+        case Define.strECNMail:
+          MailClicker.main(new String[] {"ecn"});
           break;
         default:
       }

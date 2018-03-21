@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.MailClicker;
 import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.db.Dbase;
@@ -81,6 +82,9 @@ public abstract class PSTBase extends Mission {
           break;
         case Define.strPSTClickBanner: // ■クリックバナー
           MisIns = new PSTClickBanner(loggg, cProps);
+          break;
+        case Define.strPSTMail:
+          MailClicker.main(new String[] {sCode});
           break;
         default:
       }
