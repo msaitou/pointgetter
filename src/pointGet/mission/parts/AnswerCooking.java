@@ -28,7 +28,7 @@ public class AnswerCooking extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
-    
+
     String seleNextb2 = "form>input[type='image']", //
             seleNextb3 = "form>input[alt='next']", //
             seleNextb4 = "form>input[alt='進む']", //
@@ -104,49 +104,51 @@ public class AnswerCooking extends MissCommon {
             break;
           }
         }
+//        for (int ii = 0; ii < 2; ii++) {
+//          checkOverlay(driver, overLay, false);
+//          Utille.clickRecaptha(driver, logg);
+//
+//          if (isExistEle(driver, seleNextb2)) {
+//            clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
+//          }
+//        }
         for (int ii = 0; ii < 2; ii++) {
           checkOverlay(driver, overLay, false);
           Utille.clickRecaptha(driver, logg);
 
           if (isExistEle(driver, seleNextb2)) {
+              String wid2 = driver.getWindowHandle();
+              boolean winNotClosed = false;
             clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
+            java.util.Set<String> widSet = driver.getWindowHandles();
+            for (String id : widSet) {
+              if (id.equals(wid2)) {
+                winNotClosed = true;
+              }
+            }
+            if (winNotClosed) {
+              logg.info("alert消そう");
+              // アラートをけして
+              checkAndAcceptAlert(driver);
+            }
+            // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
+            if (null == wid) {
+              logg.info("close0");
+            }
+            else {
+              logg.info("close1");
+//              String wid2 = driver.getWindowHandle();
+                logg.info("close2");
+                if (winNotClosed && !wid2.equals(wid)) {
+                  logg.info("close3");
+                  driver.close();
+                  logg.info("close4");
+                }
+              logg.info("close6");
+              driver.switchTo().window(wid);
+              logg.info("close7");
+            }
           }
         }
-        driver.switchTo().window(wid);
-//
-//        checkOverlay(driver, overLay, false);
-//        String wid2 = driver.getWindowHandle();
-//        boolean winNotClosed = false;
-//        if (isExistEle(driver, finishSele)) {
-//          clickSleepSelector(driver, finishSele, 5000); // 遷移
-//          java.util.Set<String> widSet = driver.getWindowHandles();
-//          for (String id : widSet) {
-//            if (id.equals(wid2)) {
-//              winNotClosed = true;
-//            }
-//          }
-//          if (winNotClosed) {
-//            logg.info("alert消そう");
-//            // アラートをけして
-//            checkAndAcceptAlert(driver);
-//          }
-//        }
-//          // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
-//          if (null == wid) {
-//            logg.info("close0");
-//          }
-//          else {
-//            logg.info("close1");
-////            String wid2 = driver.getWindowHandle();
-//              logg.info("close2");
-//              if (winNotClosed) {
-//                logg.info("close3");
-//                driver.close();
-//                logg.info("close4");
-//              }
-//            logg.info("close6");
-//            driver.switchTo().window(wid);
-//            logg.info("close7");
-//          }
   }
 }
