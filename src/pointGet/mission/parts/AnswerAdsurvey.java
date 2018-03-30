@@ -39,6 +39,19 @@ public class AnswerAdsurvey extends MissCommon {
         //    closeSele = "div.question_btn>input[name='submit']", //
         a = "";
     driver.switchTo().frame(0);
+    String baseFrameSele = "iframe.question_frame";
+    if (Utille.clickRecaptha(driver, logg, baseFrameSele)) {
+      String preStartSele = "div.btn_next>input[type='submit']";
+      if (isExistEle(driver, preStartSele)) {
+        clickSleepSelector(driver, preStartSele, 5000);
+      }
+    }
+    if (Utille.clickRecaptha(driver, logg, baseFrameSele)) {
+      String preStartSele = "div.btn_next>input[type='submit']";
+      if (isExistEle(driver, preStartSele)) {
+        clickSleepSelector(driver, preStartSele, 5000);
+      }
+    }
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 4000);
     }
