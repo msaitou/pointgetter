@@ -35,7 +35,7 @@ public class GENChyousadan extends GENBase {
     // div#dropmenu01
     driver.get(url);
     selector = "div#dropmenu01";
-    String seleFirst = "dl>dt>img[src*='kumakumachosa']";
+    String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector, false)) {
       int size0 = getSelectorSize(driver, selector);
       for (int i = 0; i < size0; i++) {

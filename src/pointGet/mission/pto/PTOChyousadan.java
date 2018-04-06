@@ -30,7 +30,7 @@ public class PTOChyousadan extends PTOBase {
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
     selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
-    String seleFirst = "dl>dt>img[src*='kumakumachosa']";
+    String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);

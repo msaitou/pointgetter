@@ -46,7 +46,7 @@ public class GENCMother extends GENBase {
     driver = driverAtom;
     driver.get(url);
     selector = "div#dropmenu01";
-    String seleFirst = "dl>dt>img[src*='kumakumachosa']";
+    String seleFirst = "img[src*='bn_chosa']";
     String sele0 = "a.ui-btn.ui-btn-a" // アンケート一覧の回答するボタン
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "dl>dt>img[src*='kumakumasenkyo']", sele6 = "form>input.next_bt" // コラム用

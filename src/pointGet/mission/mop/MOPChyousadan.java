@@ -34,7 +34,7 @@ public class MOPChyousadan extends MOPBase {
   public void privateMission(WebDriver driver) {
     driver.get(url);
     selector = "div.game_btn>div.icon>img[alt='CMくじ']";
-    String seleFirst = "dl>dt>img[src*='kumakumachosa']";
+    String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 8000); // 遷移
       changeCloseWindow(driver);
