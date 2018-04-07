@@ -45,7 +45,7 @@ System.out.println(pointMap);
         String selector = "", outPut = "", point = "", secondPoint = "";
         switch (siteCode) {
           case Define.PSITE_CODE_GMY:
-            if (!pointMap.containsKey(Define.PSITE_CODE_GMY)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_GMY)) {
               break;
             }
             selector = "span.user_point";
@@ -56,7 +56,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_GEN:
-            if (!pointMap.containsKey(Define.PSITE_CODE_GEN)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_GEN)) {
               break;
             }
             selector = "li#user_point01>a>span";
@@ -67,7 +67,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_ECN:
-            if (!pointMap.containsKey(Define.PSITE_CODE_ECN)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_ECN)) {
               break;
             }
             selector = "p.user_point_txt>strong";
@@ -78,7 +78,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_MOP:
-            if (!pointMap.containsKey(Define.PSITE_CODE_MOP)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_MOP)) {
               break;
             }
             driver.get("http://pc.moppy.jp/");
@@ -100,7 +100,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_PEX:
-            if (!pointMap.containsKey(Define.PSITE_CODE_PEX)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_PEX)) {
               break;
             }
             selector = "dd.user_pt.fw_b>span.fw_b";
@@ -115,7 +115,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_OSA:
-            if (!pointMap.containsKey(Define.PSITE_CODE_OSA)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_OSA)) {
               break;
             }
             selector = "ul.userinfo";
@@ -137,11 +137,11 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_PTO:
-            if (!pointMap.containsKey(Define.PSITE_CODE_PTO)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_PTO)) {
               break;
             }
-            selector = "li.point>a>strong";
-            driver.get("https://www.pointtown.com/ptu/index.do");
+            selector = "p.pt-user-nav__ttl--point";
+            driver.get("https://www.pointtown.com/ptu/top");
             if (!isExistEle(driver, selector)) {
               // login!!
               LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
@@ -155,7 +155,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_I2I:
-            if (!pointMap.containsKey(Define.PSITE_CODE_I2I)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_I2I)) {
               break;
             }
             selector = "td.ad_point>span.limited";
@@ -166,7 +166,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_PIL:
-            if (!pointMap.containsKey(Define.PSITE_CODE_PIL)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_PIL)) {
               break;
             }
             // login!!
@@ -182,7 +182,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_PIC:
-            if (!pointMap.containsKey(Define.PSITE_CODE_PIC)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_PIC)) {
               break;
             }
             selector = "p.text.point";
@@ -198,7 +198,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_HAP:
-            if (!pointMap.containsKey(Define.PSITE_CODE_HAP)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_HAP)) {
               break;
             }
             // login!!
@@ -211,7 +211,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_MOB:
-            if (!pointMap.containsKey(Define.PSITE_CODE_MOB)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_MOB)) {
               break;
             }
             // login!!
@@ -227,7 +227,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_CRI:
-            if (!pointMap.containsKey(Define.PSITE_CODE_CRI)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_CRI)) {
               break;
             }
             // login!!
@@ -240,7 +240,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_PNY:
-            if (!pointMap.containsKey(Define.PSITE_CODE_PNY)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_PNY)) {
               break;
             }
             // login!!
@@ -253,7 +253,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_SUG:
-            if (!pointMap.containsKey(Define.PSITE_CODE_SUG)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_SUG)) {
               break;
             }
             // login!!
@@ -267,7 +267,7 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_WAR:
-            if (!pointMap.containsKey(Define.PSITE_CODE_WAR)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_WAR)) {
               break;
             }
             selector = "span.item>span.PT3.marginRight5";
@@ -283,7 +283,7 @@ System.out.println(pointMap);
 
             break;
           case Define.PSITE_CODE_CIT:
-            if (!pointMap.containsKey(Define.PSITE_CODE_CIT)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_CIT)) {
               break;
             }
             selector = "li.user>a>span.user_pt";
@@ -294,7 +294,10 @@ System.out.println(pointMap);
             }
             break;
           case Define.PSITE_CODE_PMO:
-            selector = "span#ygps>span.pointEmphasis";
+            if (pointMap.containsKey(Define.PSITE_CODE_PMO)) {
+              break;
+            }
+            selector = "div.point span.F5";
             driver.get("http://poimon.jp/");
             if (!isExistEle(driver, selector)) {
               // login!!
@@ -307,7 +310,7 @@ System.out.println(pointMap);
             break;
           // pointstadium
           case Define.PSITE_CODE_PST:
-            if (!pointMap.containsKey(Define.PSITE_CODE_PST)) {
+            if (pointMap.containsKey(Define.PSITE_CODE_PST)) {
               break;
             }
             selector = "div.login>p.point>strong";

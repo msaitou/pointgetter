@@ -31,7 +31,7 @@ public class PTOClickCorner extends PTOBase {
 				private static final long serialVersionUID = 1L;
 
 				{
-					put("url", "https://www.pointtown.com/ptu/index.do");
+					put("url", "https://www.pointtown.com/ptu/top");
 					put("sele", "a.ptpc-panel--click-corner__main-link>img");
 				}
 			});
@@ -69,7 +69,7 @@ public class PTOClickCorner extends PTOBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-    Utille.url(driver, "https://www.pointtown.com/ptu/index.do", logg);
+    Utille.url(driver, "https://www.pointtown.com/ptu/top", logg);
 		// 1．ログイン直後のTOP画面で
 		int c = 0;
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
