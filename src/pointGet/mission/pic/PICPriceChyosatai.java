@@ -32,7 +32,7 @@ public class PICPriceChyosatai extends PICBase {
     for (int j = 0; j < 6; j++) {
       driver.get(url);
       String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
-      selector = "a[href='//pointi.jp/api/prices.php']>img[alt='プライス調査隊']";
+      selector = "a>img[alt='プライス調査隊']";
       if (isExistEle(driver, selector)) {
         clickSleepSelector(driver, selector, 4000); // 遷移
         changeCloseWindow(driver);
@@ -84,7 +84,7 @@ public class PICPriceChyosatai extends PICBase {
     String exchangeSele = "span.btn-exchange>a", //
         exchageListSele = "select[name='point']",
         doExchangeSele = "div.btn-area>button[type='submit']",
-        sele = "a[href='//pointi.jp/api/prices.php']>img[alt='プライス調査隊']";
+        sele = "a>img[alt='プライス調査隊']";
     ;
     driver.get(url);
     if (isExistEle(driver, sele)) {
