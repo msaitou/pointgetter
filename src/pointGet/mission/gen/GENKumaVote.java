@@ -46,7 +46,7 @@ public class GENKumaVote extends GENBase {
           Utille.sleep(8000);
           String sele0 = "a.start__button" //
           , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
-          , preSele = "dl>dt>img[src*='kumakumasenkyo']";
+          , preSele = "img[src*='bn_chosa.png']";
           // ポイントに変換
           String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
               changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
