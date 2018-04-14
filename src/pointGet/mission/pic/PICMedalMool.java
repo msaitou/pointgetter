@@ -10,6 +10,9 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKenkou;
 import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerNews;
@@ -25,6 +28,9 @@ public class PICMedalMool extends PICBase {
   AnswerColum Colum = null;
   AnswerUranai Uranai = null;
   AnswerKenkou Kenkou = null;
+  AnswerKansatu Kansatu = null;
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
 
   AnswerNews News = null;
   /**
@@ -38,6 +44,9 @@ public class PICMedalMool extends PICBase {
     News = new AnswerNews(logg);
     Uranai = new AnswerUranai(logg);
     Kenkou = new AnswerKenkou(logg);
+    Cooking = new AnswerCooking(logg);
+    Hyakkey = new AnswerHyakkey(logg);
+    Kansatu = new AnswerKansatu(logg);
   }
 
   @Override
@@ -61,12 +70,15 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-          "a[href*='pc/uranai']",
-          "a[href*='cosmeticsstyle.com/pointi/list']",
-          "a[href*='fashion-cosmelife.com/pointi']",
-          "a[href*='comicEnquete']",
-          "a[href*='news']" ,
-          "a[href*='sarasara']" ,
+//          "a[href*='pc/uranai']",
+//          "a[href*='cosmeticsstyle.com/pointi/list']",
+//          "a[href*='fashion-cosmelife.com/pointi']",
+//          "a[href*='comicEnquete']",
+//          "a[href*='news']" ,
+//          "a[href*='sarasara']" ,
+          "a[href*='natural-cuisine.com/pointi']",  // 料理
+          "a[href*='eyemake-beauty.com/pointi']",  // 観察
+          "a[href*='beautyhair-fashion.com/pointi']",  // 百景
           };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
@@ -78,6 +90,98 @@ public class PICMedalMool extends PICBase {
           Uranai.answer(driver, "", wid);
           k++;
         }
+       // 料理
+        else if (preSele.equals("a[href*='natural-cuisine.com/pointi']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
+          Utille.sleep(5000);
+          String sele = "form>input.next_bt";
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            int size2 = eleList.size(), targetIndex = size2 - 1;
+            logg.info("size2:" + size2 + " target:" + targetIndex);
+            if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
+              clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
+              if (isExistEle(driver, sele)) {
+                PhotoEnk.answer(driver, sele, wid);
+              }
+              else {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
+        }
+        // 観察
+        else if (preSele.equals("a[href*='eyemake-beauty.com/pointi']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
+          Utille.sleep(5000);
+          String sele = "form>input.next_bt";
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            int size2 = eleList.size(), targetIndex = size2 - 1;
+            logg.info("size2:" + size2 + " target:" + targetIndex);
+            if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
+              clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
+              if (isExistEle(driver, sele)) {
+                PhotoEnk.answer(driver, sele, wid);
+              }
+              else {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
+        }
+        // 百景
+        else if (preSele.equals("a[href*='beautyhair-fashion.com/pointi']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
+          Utille.sleep(5000);
+          String sele = "form>input.next_bt";
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            int size2 = eleList.size(), targetIndex = size2 - 1;
+            logg.info("size2:" + size2 + " target:" + targetIndex);
+            if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
+              clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
+              if (isExistEle(driver, sele)) {
+                PhotoEnk.answer(driver, sele, wid);
+              }
+              else {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
+        }
+
+        
         else if (preSele.equals("a[href*='cosmeticsstyle.com/pointi/list']")) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
           String wid = driver.getWindowHandle();
@@ -224,6 +328,7 @@ public class PICMedalMool extends PICBase {
           //          }
         }
         Utille.sleep(5000);
+//        k++;
       }
     }
   }
