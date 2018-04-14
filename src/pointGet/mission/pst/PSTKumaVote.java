@@ -31,7 +31,7 @@ public class PSTKumaVote extends PSTBase {
     selector = "form[name='ItemList']>p>input[name='entry']";
     String sele0 = "a.start__button" //
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
-    , preSele = "img[src*='bn_chosa.png']";
+    , preSele = "img[src*='bn_sosenkyo.png']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);
