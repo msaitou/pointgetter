@@ -70,12 +70,12 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-          //          "a[href*='pc/uranai']",
-          //          "a[href*='cosmeticsstyle.com/pointi/list']",
-          //          "a[href*='fashion-cosmelife.com/pointi']",
-          //          "a[href*='comicEnquete']",
-          //          "a[href*='news']" ,
-          //          "a[href*='sarasara']" ,
+                    "a[href*='pc/uranai']",
+                    "a[href*='cosmeticsstyle.com/pointi/list']",
+                    "a[href*='fashion-cosmelife.com/pointi']",
+                    "a[href*='comicEnquete']",
+                    "a[href*='news']" ,
+                    "a[href*='sarasara']" ,
           "a[href*='natural-cuisine.com/pointi']", // 料理
           "a[href*='eyemake-beauty.com/pointi']", // 観察
           "a[href*='beautyhair-fashion.com/pointi']", // 百景
