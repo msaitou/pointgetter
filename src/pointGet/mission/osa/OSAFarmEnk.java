@@ -17,6 +17,7 @@ import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerGameParkEnk;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
+import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerShindan;
@@ -42,6 +43,7 @@ public class OSAFarmEnk extends OSABase {
   AnswerHyakkey Hyakkey = null;
   AnswerZukan Zukan = null;
   AnswerColum Colum = null;
+  AnswerManga Manga = null;
 
   /**
    * @param logg
@@ -61,6 +63,7 @@ public class OSAFarmEnk extends OSABase {
     PhotoEnk = new AnswerPhotoEnk(logg);
     Zukan = new AnswerZukan(logg);
     Colum = new AnswerColum(logg);
+    Manga = new AnswerManga (logg);
   }
 
   @Override
@@ -95,6 +98,7 @@ public class OSAFarmEnk extends OSABase {
             sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
             sele6 = "form>input.next_bt", // コラム用
             sele4 = "a.submit-btn",
+                sele10 = "form>input[type='image']", // 回答する 漫画用
             b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
@@ -181,6 +185,10 @@ public class OSAFarmEnk extends OSABase {
                 || cUrl.indexOf("fashion-cosmelife.com") >= 0)
                 && isExistEle(driver, sele6)) {
               Colum.answer(driver, sele6, wid);
+            }
+            // 漫画
+            else if (isExistEle(driver, sele10)) {
+              Manga.answer(driver, sele10, wid);
             }
             else {
               driver.close();
