@@ -15,6 +15,7 @@ import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
+import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerShindan;
@@ -37,6 +38,7 @@ public class MOPMiniGameEnk extends MOPBase {
   AnswerHyakkey Hyakkey = null;
   AnswerZukan Zukan = null;
   AnswerColum Colum = null;
+  AnswerManga Manga = null;
 
   /**
    * @param logg
@@ -54,6 +56,7 @@ public class MOPMiniGameEnk extends MOPBase {
     Kansatu = new AnswerKansatu(logg);
     Zukan = new AnswerZukan(logg);
     Colum = new AnswerColum(logg);
+    Manga = new AnswerManga(logg);
   }
 
   @Override
@@ -67,11 +70,11 @@ public class MOPMiniGameEnk extends MOPBase {
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-//      driver.get("http://minigamepark.moppy.jp/square/pittango");
-//      driver.get("http://minigamepark.moppy.jp/square/diagnoses");
+      //      driver.get("http://minigamepark.moppy.jp/square/pittango");
+      //      driver.get("http://minigamepark.moppy.jp/square/diagnoses");
       driver.get("http://minigamepark.moppy.jp/square/votes");
       for (int k = 0; k < 4; k++) {
-//      for (int k = 0; k < 1; k++) {
+        //      for (int k = 0; k < 1; k++) {
         if (k == 1) {
           driver.get("http://minigamepark.moppy.jp/square/diagnoses");
         }
@@ -84,7 +87,7 @@ public class MOPMiniGameEnk extends MOPBase {
 
         Utille.sleep(6000);
         selector = "div.enqueteBox a[href]>dl";
-//        selector = "div.enquete_box a[href]>dl";
+        //        selector = "div.enquete_box a[href]>dl";
         int skip = 1, beforeSize = 0;
         String sele1_ = "iframe.question_frame", //
             sele1 = "form>input[type='submit']", //
@@ -93,6 +96,7 @@ public class MOPMiniGameEnk extends MOPBase {
             overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
             sele6 = "form>input.next_bt", // コラム用
             sele4 = "a.submit-btn",
+            sele10 = "form>input[type='image']", // 回答する 漫画用
             b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
@@ -141,30 +145,31 @@ public class MOPMiniGameEnk extends MOPBase {
               Pittango.answer(driver, sele3, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
-                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                )
+                || cUrl.indexOf("/animal/") >= 0
+            //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            )
                 && isExistEle(driver, sele6)) {
               Zukan.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
-                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                )
+                || cUrl.indexOf("/observation/") >= 0
+            //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            )
                 && isExistEle(driver, sele6)) {
               Kansatu.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/map") >= 0
-                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                )
+                || cUrl.indexOf("/map/") >= 0)
                 && isExistEle(driver, sele6)) {
               Hyakkey.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
-                //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                )
+                || cUrl.indexOf("/cooking/") >= 0)
                 && isExistEle(driver, sele6)) {
               Cooking.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("photo-enquete") >= 0
+                || cUrl.indexOf("/photo/") >= 0
                 || cUrl.indexOf("cosmelife.com/photo") >= 0
                 || cUrl.indexOf("eyelashes-fashion.com") >= 0
                 || cUrl.indexOf("natural-vegetables.com") >= 0
@@ -173,12 +178,17 @@ public class MOPMiniGameEnk extends MOPBase {
               PhotoEnk.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("column-enquete") >= 0
+                || cUrl.indexOf("/column/") >= 0
                 || cUrl.indexOf("beautynail-design.com") >= 0
                 || cUrl.indexOf("style-cutehair.com") >= 0
                 || cUrl.indexOf("eyelashes-fashion.com") >= 0
                 || cUrl.indexOf("fashion-cosmelife.com") >= 0)
                 && isExistEle(driver, sele6)) {
               Colum.answer(driver, sele6, wid);
+            }
+            // 漫画
+            else if (isExistEle(driver, sele10)) {
+              Manga.answer(driver, sele10, wid);
             }
             else {
               driver.close();
