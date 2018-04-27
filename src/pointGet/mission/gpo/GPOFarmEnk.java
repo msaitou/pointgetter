@@ -17,6 +17,7 @@ import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerGameParkEnk;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
+import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerShindan;
@@ -42,6 +43,7 @@ public class GPOFarmEnk extends GPOBase {
   AnswerCooking Cooking = null;
   AnswerHyakkey Hyakkey = null;
   AnswerZukan Zukan = null;
+  AnswerManga Manga = null;
 
   /**
    * @param logg
@@ -61,6 +63,7 @@ public class GPOFarmEnk extends GPOBase {
     Hyakkey = new AnswerHyakkey(logg);
     Kansatu = new AnswerKansatu(logg);
     Zukan = new AnswerZukan(logg);
+    Manga = new AnswerManga(logg);
   }
 
   @Override
@@ -68,7 +71,7 @@ public class GPOFarmEnk extends GPOBase {
     driver = driverAtom;
     driver.get(url);
     String enkLinkSele = "div.bnr>[alt='勇者くんの栽培日記']", //
-        a = "";
+    a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
@@ -89,12 +92,12 @@ public class GPOFarmEnk extends GPOBase {
         selector = "div.enqueteBox a[href]>dl";
         int skip = 1, beforeSize = 0;
         String sele1_ = "iframe.question_frame", //
-            sele1 = "form>input[type='submit']", //
-            sele3 = "form>input[type='submit']", //
-            sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-            sele6 = "form>input.next_bt", // コラム用
-            sele4 = "a.submit-btn",
-            b = "";
+        sele1 = "form>input[type='submit']", //
+        sele3 = "form>input[type='submit']", //
+        sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+        sele6 = "form>input.next_bt", // コラム用
+        sele10 = "form>input[type='image']", // 回答する 漫画用
+        sele4 = "a.submit-btn", b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
           if (!isExistEle(driver, selector)) {
@@ -125,26 +128,26 @@ public class GPOFarmEnk extends GPOBase {
               }
             }
             else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
-            //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-            )
+                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                )
                 && isExistEle(driver, sele6)) {
               Zukan.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
-            //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-            )
+                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                )
                 && isExistEle(driver, sele6)) {
               Kansatu.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/map") >= 0
-            //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-            )
+                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                )
                 && isExistEle(driver, sele6)) {
               Hyakkey.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
-            //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
-            )
+                //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                )
                 && isExistEle(driver, sele6)) {
               Cooking.answer(driver, sele6, wid);
             }
@@ -176,11 +179,15 @@ public class GPOFarmEnk extends GPOBase {
               AdShindan.answer(driver, sele3, wid);
             }
             else if ((cUrl.indexOf("http://pittango.net/") >= 0
-            //                || cUrl.indexOf("beautynail-design.com") >= 0
-            //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
-            )
+                //                || cUrl.indexOf("beautynail-design.com") >= 0
+                //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                )
                 && isExistEle(driver, sele3)) {
               Pittango.answer(driver, sele3, wid);
+            }
+            // 漫画
+            else if (isExistEle(driver, sele10)) {
+              Manga.answer(driver, sele10, wid);
             }
             else {
               driver.close();

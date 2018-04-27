@@ -13,6 +13,7 @@ import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
+import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerPittango;
 import pointGet.mission.parts.AnswerShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
@@ -30,6 +31,7 @@ public class LFMFarmEnk extends LFMBase {
   AnswerAdShindan AdShindan = null;
   AnswerPittango Pittango = null;
   AnswerShindan Shindan = null;
+  AnswerManga Manga = null;
 
   /**
    * @param logg
@@ -43,6 +45,7 @@ public class LFMFarmEnk extends LFMBase {
     AdShindan = new AnswerAdShindan(logg);
     Pittango = new AnswerPittango(logg);
     Shindan = new AnswerShindan(logg);
+    Manga = new AnswerManga (logg);
   }
 
   @Override
@@ -74,6 +77,7 @@ public class LFMFarmEnk extends LFMBase {
         sele3 = "form>input[type='submit']", //
         sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
         sele6 = "form>input.next_bt", // コラム用
+        sele10 = "form>input[type='image']", // 回答する 漫画用
         sele4 = "a.submit-btn", b = "";
         while (true) {
           checkOverlay(driver, overlaySele, false);
@@ -120,6 +124,10 @@ public class LFMFarmEnk extends LFMBase {
                 )
                 && isExistEle(driver, sele3)) {
               Pittango.answer(driver, sele3, wid);
+            }
+            // 漫画
+            else if (isExistEle(driver, sele10)) {
+              Manga.answer(driver, sele10, wid);
             }
             else {
               driver.close();
