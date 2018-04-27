@@ -33,6 +33,7 @@ public class PICMedalMool extends PICBase {
   AnswerHyakkey Hyakkey = null;
 
   AnswerNews News = null;
+
   /**
    * @param logg
    */
@@ -58,8 +59,7 @@ public class PICMedalMool extends PICBase {
 
     String sele3 = "div.enq-submit>button[type='submit']", //
     sele8 = "div#buttonArea>input[name='next']", //
-    sele4 = "form>input[alt='進む']",
-    sele2 = "form>input[type='image']", // 回答する 漫画用
+    sele4 = "form>input[alt='進む']", sele2 = "form>input[type='image']", // 回答する 漫画用
     sele1 = "a>img[alt='次へ']";
 
     if (isExistEle(driver, selector)) {
@@ -70,16 +70,16 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-//          "a[href*='pc/uranai']",
-//          "a[href*='cosmeticsstyle.com/pointi/list']",
-//          "a[href*='fashion-cosmelife.com/pointi']",
-//          "a[href*='comicEnquete']",
-//          "a[href*='news']" ,
-//          "a[href*='sarasara']" ,
-          "a[href*='natural-cuisine.com/pointi']",  // 料理
-          "a[href*='eyemake-beauty.com/pointi']",  // 観察
-          "a[href*='beautyhair-fashion.com/pointi']",  // 百景
-          };
+          //          "a[href*='pc/uranai']",
+          //          "a[href*='cosmeticsstyle.com/pointi/list']",
+          //          "a[href*='fashion-cosmelife.com/pointi']",
+          //          "a[href*='comicEnquete']",
+          //          "a[href*='news']" ,
+          //          "a[href*='sarasara']" ,
+          "a[href*='natural-cuisine.com/pointi']", // 料理
+          "a[href*='eyemake-beauty.com/pointi']", // 観察
+          "a[href*='beautyhair-fashion.com/pointi']", // 百景
+      };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
         String preSele = preSeleList[k];
@@ -90,7 +90,7 @@ public class PICMedalMool extends PICBase {
           Uranai.answer(driver, "", wid);
           k++;
         }
-       // 料理
+        // 料理
         else if (preSele.equals("a[href*='natural-cuisine.com/pointi']")) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
           String wid = driver.getWindowHandle();
@@ -106,7 +106,7 @@ public class PICMedalMool extends PICBase {
               Utille.scrolledPage(driver, eleList.get(targetIndex));
               clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
               if (isExistEle(driver, sele)) {
-                PhotoEnk.answer(driver, sele, wid);
+                Cooking.answer(driver, sele, wid);
               }
               else {
                 driver.close();
@@ -136,7 +136,7 @@ public class PICMedalMool extends PICBase {
               Utille.scrolledPage(driver, eleList.get(targetIndex));
               clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
               if (isExistEle(driver, sele)) {
-                PhotoEnk.answer(driver, sele, wid);
+                Kansatu.answer(driver, sele, wid);
               }
               else {
                 driver.close();
@@ -166,7 +166,7 @@ public class PICMedalMool extends PICBase {
               Utille.scrolledPage(driver, eleList.get(targetIndex));
               clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
               if (isExistEle(driver, sele)) {
-                PhotoEnk.answer(driver, sele, wid);
+                Hyakkey.answer(driver, sele, wid);
               }
               else {
                 driver.close();
@@ -181,7 +181,6 @@ public class PICMedalMool extends PICBase {
           }
         }
 
-        
         else if (preSele.equals("a[href*='cosmeticsstyle.com/pointi/list']")) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
           String wid = driver.getWindowHandle();
@@ -212,8 +211,7 @@ public class PICMedalMool extends PICBase {
           }
         }
         else if (preSele.equals("a[href*='fashion-cosmelife.com/pointi']")
-            || preSele.equals("a[href*='style-cutehair.com']")
-            ) {
+            || preSele.equals("a[href*='style-cutehair.com']")) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);
@@ -328,7 +326,7 @@ public class PICMedalMool extends PICBase {
           //          }
         }
         Utille.sleep(5000);
-//        k++;
+        //        k++;
       }
     }
   }

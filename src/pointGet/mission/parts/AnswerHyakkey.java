@@ -105,6 +105,7 @@ public class AnswerHyakkey extends MissCommon {
             break;
           }
         }
+        String finish2 ="form>button>img";
         for (int ii = 0; ii < 2; ii++) {
           checkOverlay(driver, overLay, false);
           Utille.clickRecaptha(driver, logg);
@@ -141,6 +142,14 @@ public class AnswerHyakkey extends MissCommon {
               driver.switchTo().window(wid);
               logg.info("close7");
             }
+          }
+          else if (isExistEle(driver, finish2)) {
+            clickSleepSelector(driver, finish2, 4000); // 遷移　
+          }
+          else {
+            logg.info("エラーケース");
+            driver.close();
+            driver.switchTo().window(wid);
           }
         }
 //        driver.switchTo().window(wid);

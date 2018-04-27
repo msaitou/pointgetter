@@ -153,6 +153,11 @@ public class AnswerKansatu extends MissCommon {
         logg.info("close7");
       }
     }
+    else {
+      logg.info("エラーケース");
+      driver.close();
+      driver.switchTo().window(wid);
+    }
 //    driver.close();
 //    driver.switchTo().window(wid);
   }
