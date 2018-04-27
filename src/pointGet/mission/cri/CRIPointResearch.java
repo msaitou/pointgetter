@@ -134,8 +134,8 @@ public class CRIPointResearch extends CRIBase {
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
                 || cUrl.indexOf("eyelashes-fashion.com") >= 0
-//                    || cUrl.indexOf("eyemake-beauty.com") >= 0
             || cUrl.indexOf("style-cutehair.com") >= 0
             )
             && isExistEle(driver, sele6)) {
@@ -143,6 +143,7 @@ public class CRIPointResearch extends CRIBase {
           skip++;
         }
         else if ((cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/observation") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("healthy-cookinglife.com") >= 0
             )
@@ -152,6 +153,7 @@ public class CRIPointResearch extends CRIBase {
         else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("natural-vegetables.com") >= 0
                 || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                    || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
                 || cUrl.indexOf("eyemake-beauty.com") >= 0
             || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
@@ -160,6 +162,7 @@ public class CRIPointResearch extends CRIBase {
         else if ((cUrl.indexOf("cosme-beaute.com") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
+                || cUrl.indexOf("cmsite.fitness-health.work/animal") >= 0
             || cUrl.indexOf("eyemake-beauty.com") >= 0
             )
             && isExistEle(driver, sele8)) {
@@ -169,6 +172,7 @@ public class CRIPointResearch extends CRIBase {
 //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
 //                || cUrl.indexOf("haircare-choice.com") >= 0
 //                || cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/cooking") >= 0
                 )
                 && isExistEle(driver, sele8)) {
         	Cooking.answer(driver, sele8, wid);
@@ -177,6 +181,7 @@ public class CRIPointResearch extends CRIBase {
 //              || cUrl.indexOf("eyelashes-fashion.com") >= 0
 //              || cUrl.indexOf("haircare-choice.com") >= 0
 //              || cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/map") >= 0
               )
               && isExistEle(driver, sele8)) {
         	Hyakkey.answer(driver, sele8, wid);

@@ -117,6 +117,7 @@ public class GMYPointResearch extends GMYBase {
           Shopping.answer(driver, sele4, wid);
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
                 || cUrl.indexOf("eyelashes-fashion.com") >= 0
@@ -126,6 +127,7 @@ public class GMYPointResearch extends GMYBase {
           Colum.answer(driver, sele6, wid);
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
             || cUrl.indexOf("cosmetic-brand.com") >= 0
             || cUrl.indexOf("natural-vegetables.com") >= 0
                 || cUrl.indexOf("eyelashes-fashion.com") >= 0
@@ -134,6 +136,7 @@ public class GMYPointResearch extends GMYBase {
           PhotoEnk.answer(driver, sele8, wid);
         }
         else if ((cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/animal") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
             )
