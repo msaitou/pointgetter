@@ -37,6 +37,12 @@ public class AnswerAdEnq extends MissCommon {
         clickSleepSelector(driver, preStartSele, 5000);
       }
     }
+    if (Utille.clickRecaptha(driver, logg, baseFrameSele)) {
+      String preStartSele = "div.btn_next>input[type='submit']";
+      if (isExistEle(driver, preStartSele)) {
+        clickSleepSelector(driver, preStartSele, 5000);
+      }
+    }
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 3000);
       String

@@ -29,7 +29,7 @@ public class PTOChyousadan extends PTOBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
+    selector = "section.pt-section a[onclick*='CMくじ']>div>img[alt='CMくじ']";
     String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移

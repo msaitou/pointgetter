@@ -31,6 +31,7 @@ public class AnswerSouSenkyo extends MissCommon {
         voteSele = "input.button--answer", //
         nextSele = "a.button--next", //
         titleSele = "div.question>p", // close
+        getSele = "a.button--get",  //
         a = "";
     for (int k = 1; k <= 40; k++) {
       int choiceNum = 0;
@@ -59,6 +60,13 @@ public class AnswerSouSenkyo extends MissCommon {
               else if (isExistEle(driver, nextSele)) {
                 waitTilReady(driver);
                 clickSleepSelector(driver, nextSele, 6000);
+              }
+              else if (isExistEle(driver, getSele)) {
+                clickSleepSelector(driver, getSele, 6000);
+                if (isExistEle(driver, nextSele)) {
+                  waitTilReady(driver);
+                  clickSleepSelector(driver, nextSele, 6000);
+                }
               }
             }
           }

@@ -103,7 +103,7 @@ public class GMYPointResearch extends GMYBase {
         }
         else if ((cUrl.indexOf("question-hiroba") >= 0
             || cUrl.indexOf("medicine-good.com") >= 0
-                      || cUrl.indexOf("shigoto-hoken.com") >= 0
+            || cUrl.indexOf("shigoto-hoken.com") >= 0
             || cUrl.indexOf("kenko-gourmet.com") >= 0)
             && isExistEle(driver, sele7, false)) {
           Hiroba.answer(driver, sele7, wid);
@@ -119,8 +119,9 @@ public class GMYPointResearch extends GMYBase {
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
+            || cUrl.indexOf("column.flower-life.net/infoq") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
-                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("style-cutehair.com") >= 0
             )
             && isExistEle(driver, sele6)) {
@@ -130,7 +131,7 @@ public class GMYPointResearch extends GMYBase {
             || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
             || cUrl.indexOf("cosmetic-brand.com") >= 0
             || cUrl.indexOf("natural-vegetables.com") >= 0
-                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);

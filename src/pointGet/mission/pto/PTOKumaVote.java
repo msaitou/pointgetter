@@ -26,7 +26,7 @@ public class PTOKumaVote extends PTOBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
+    selector = "section.pt-section a[onclick*='CMくじ']>div>img[alt='CMくじ']";
     String sele0 = "a.start__button" //
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "img[src*='bn_sosenkyo.png']";

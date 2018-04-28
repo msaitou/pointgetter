@@ -21,7 +21,7 @@ public class PTOUranai extends PTOBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		driver.get(url);
-		selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
+    selector = "section.pt-section a[onclick*='CMくじ']>div>img[alt='CMくじ']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移
 			driver.switchTo().frame(0);
