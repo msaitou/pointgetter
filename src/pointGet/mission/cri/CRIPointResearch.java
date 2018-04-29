@@ -116,7 +116,7 @@ public class CRIPointResearch extends CRIBase {
           Shindan.answer(driver, sele5, wid);
         }
         else if ((cUrl.indexOf("question-hiroba") >= 0
-              || cUrl.indexOf("medicine-good.com") >= 0
+            || cUrl.indexOf("medicine-good.com") >= 0
             || cUrl.indexOf("kenko-gourmet.com") >= 0
             || cUrl.indexOf("shigoto-hoken.com") >= 0
             )
@@ -132,10 +132,11 @@ public class CRIPointResearch extends CRIBase {
           Shopping.answer(driver, sele4, wid);
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
+            || cUrl.indexOf("column.flower-life.net/") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
-                || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
-                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("style-cutehair.com") >= 0
             )
             && isExistEle(driver, sele6)) {
@@ -152,40 +153,41 @@ public class CRIPointResearch extends CRIBase {
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("natural-vegetables.com") >= 0
-                || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                    || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
-                || cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
+            || cUrl.indexOf("eyemake-beauty.com") >= 0
             || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
           PhotoEnk.answer(driver, sele8, wid);
         }
         else if ((cUrl.indexOf("cosme-beaute.com") >= 0
+            || cUrl.indexOf("animal.marriage-flower.net/") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
-                || cUrl.indexOf("cmsite.fitness-health.work/animal") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/animal") >= 0
             || cUrl.indexOf("eyemake-beauty.com") >= 0
             )
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
         }
         else if ((cUrl.indexOf("natural-cuisine.com") >= 0
-//                || cUrl.indexOf("eyelashes-fashion.com") >= 0
-//                || cUrl.indexOf("haircare-choice.com") >= 0
-//                || cUrl.indexOf("eyemake-beauty.com") >= 0
+            //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            //                || cUrl.indexOf("haircare-choice.com") >= 0
+            //                || cUrl.indexOf("eyemake-beauty.com") >= 0
             || cUrl.indexOf("cmsite.fitness-health.work/cooking") >= 0
-                )
-                && isExistEle(driver, sele8)) {
-        	Cooking.answer(driver, sele8, wid);
-            }
+            )
+            && isExistEle(driver, sele8)) {
+          Cooking.answer(driver, sele8, wid);
+        }
         else if ((cUrl.indexOf("beautyhair-fashion.com") >= 0
-//              || cUrl.indexOf("eyelashes-fashion.com") >= 0
-//              || cUrl.indexOf("haircare-choice.com") >= 0
-//              || cUrl.indexOf("eyemake-beauty.com") >= 0
+            //              || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            //              || cUrl.indexOf("haircare-choice.com") >= 0
+            //              || cUrl.indexOf("eyemake-beauty.com") >= 0
             || cUrl.indexOf("cmsite.fitness-health.work/map") >= 0
-              )
-              && isExistEle(driver, sele8)) {
-        	Hyakkey.answer(driver, sele8, wid);
-          }
+            )
+            && isExistEle(driver, sele8)) {
+          Hyakkey.answer(driver, sele8, wid);
+        }
         else if (isExistEle(driver, sele9)) {
           Tasuuketu.answer(driver, sele9, wid);
         }

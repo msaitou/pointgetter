@@ -252,6 +252,7 @@ public class Define {
   final public static String strCRIChyousadan = "CRIChyousadan";
   final public static String strCRIKumaVote = "CRIKumaVote";
   final public static String strCRIMail = "CRIMail";
+  final public static String strCRIChirachi = "CRIChirachi";
   // ■■■■■ハピタス■■■■■
   final public static String strHAPManga = "HAPManga";
   final public static String strHAPChyousadan = "HAPChyousadan";

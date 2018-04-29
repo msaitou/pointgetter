@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  * @author saitou
@@ -30,6 +31,19 @@ public class DMYChirachi extends DMYBase {
     selector = "img[src*='shufoo.png']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000);
+
+      String postInputSele = "form.zipform1_0--form>input[type='text']";
+      if (isExistEle(driver, postInputSele)) {
+        WebElement ele = driver.findElement(By.cssSelector(postInputSele));
+        ele.clear();
+        ele.sendKeys("1640002");
+        String registSele = "form.zipform1_0--form>input[type='submit']";
+        if (isExistEle(driver, registSele)) {
+          clickSleepSelector(driver, registSele, 3000);
+        }
+      }
+        
+      
       selector = "a.flyer1_0--link";
       if (isExistEle(driver, selector)) {
         int size = getSelectorSize(driver, selector);

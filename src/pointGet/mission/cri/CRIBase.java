@@ -78,13 +78,17 @@ public abstract class CRIBase extends Mission {
         case Define.strCRIMail:
           MailClicker.main(new String[] {"cri"});
           break;
+        case Define.strCRIChirachi:
+          MisIns = new CRIChirachi(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCRIAnk,
           Define.strCRIManga, Define.strCRIClickBananer,
           Define.strCRIPointResearch,
           Define.strCRIChyousadan,
-          Define.strCRIKumaVote
+          Define.strCRIKumaVote,
+          Define.strCRIChirachi
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

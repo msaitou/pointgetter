@@ -114,7 +114,7 @@ public class GENPointResearch2 extends GENBase {
         }
         else if ((cUrl.indexOf("question-hiroba") >= 0
             || cUrl.indexOf("medicine-good.com") >= 0
-             || cUrl.indexOf("shigoto-hoken.com") >= 0
+            || cUrl.indexOf("shigoto-hoken.com") >= 0
             || cUrl.indexOf("kenko-gourmet.com") >= 0)
             && isExistEle(driver, sele7, false)) {
           Hiroba.answer(driver, sele7, wid);
@@ -129,17 +129,18 @@ public class GENPointResearch2 extends GENBase {
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
-                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("style-cutehair.com") >= 0
-                || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
+            || cUrl.indexOf("column.flower-life.net/infoq") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0)
             && isExistEle(driver, sele6)) {
           Colum.answer(driver, sele6, wid);
         }
         else if ((cUrl.indexOf("photo-enquete") >= 0
             || cUrl.indexOf("cosmetic-brand.com") >= 0
-                || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                    || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
             || cUrl.indexOf("natural-vegetables.com") >= 0
             || cUrl.indexOf("cosmeticsstyle.com") >= 0)
             && isExistEle(driver, sele8)) {
@@ -166,7 +167,7 @@ public class GENPointResearch2 extends GENBase {
             skip++;
         }
         else if ((cUrl.indexOf("enq.nstk-4.com") >= 0
-        		|| cUrl.indexOf("enq.gourmet-syokusai.com") >= 0)
+            || cUrl.indexOf("enq.gourmet-syokusai.com") >= 0)
             && isExistEle(driver, sele10)) {
           EnqNstk.answer(driver, sele10, wid);
         }
