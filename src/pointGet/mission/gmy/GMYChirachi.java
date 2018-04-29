@@ -29,7 +29,7 @@ public class GMYChirachi extends GMYBase {
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
-    selector = "a[href='http://dietnavi.com/pc/chirashi/']>span";
+    selector = "ul.check_list1 a[href*='dietnavi.com/pc/chirashi/']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       selector = "p.thum>span>img";
