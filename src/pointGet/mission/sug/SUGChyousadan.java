@@ -17,7 +17,7 @@ import pointGet.mission.parts.AnswerShindan;
  * @author saitou
  */
 public class SUGChyousadan extends SUGBase {
-  final String url = "http://www.sugutama.jp/game";
+  final String url = "https://www.sugutama.jp/game";
   AnswerAdEnq AdEnq = null;
   AnswerShindan Shindan = null;
 
@@ -33,7 +33,7 @@ public class SUGChyousadan extends SUGBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "dl.game-area>dt>a[href='/ssp/20']>img";
+    selector = "dl.game_area>dt>a[href='/ssp/20']>img";
     String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
