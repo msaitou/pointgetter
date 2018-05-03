@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerComicNews;
 import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
@@ -33,6 +34,7 @@ public class PICMedalMool extends PICBase {
   AnswerHyakkey Hyakkey = null;
 
   AnswerNews News = null;
+  AnswerComicNews cNews = null;
 
   /**
    * @param logg
@@ -48,6 +50,7 @@ public class PICMedalMool extends PICBase {
     Cooking = new AnswerCooking(logg);
     Hyakkey = new AnswerHyakkey(logg);
     Kansatu = new AnswerKansatu(logg);
+    cNews = new AnswerComicNews(logg);
   }
 
   @Override
@@ -60,7 +63,8 @@ public class PICMedalMool extends PICBase {
     String sele3 = "div.enq-submit>button[type='submit']", //
     sele8 = "div#buttonArea>input[name='next']", //
     sele4 = "form>input[alt='進む']", sele2 = "form>input[type='image']", // 回答する 漫画用
-    sele1 = "a>img[alt='次へ']";
+    sele1 = "a>img[alt='次へ']",
+    sele5 = "img[alt='進む']";
 
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000); // 遷移
@@ -70,15 +74,17 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-                    "a[href*='pc/uranai']",
-                    "a[href*='cosmeticsstyle.com/pointi/list']",
-                    "a[href*='fashion-cosmelife.com/pointi']",
-                    "a[href*='comicEnquete']",
-                    "a[href*='news']" ,
-                    "a[href*='sarasara']" ,
+          "a[href*='/comicnews/']",
+          "a[href*='/comedynews/']",
+          "a[href*='sarasara']",
           "a[href*='natural-cuisine.com/pointi']", // 料理
           "a[href*='eyemake-beauty.com/pointi']", // 観察
           "a[href*='beautyhair-fashion.com/pointi']", // 百景
+          "a[href*='/news/'] p.thum>img",
+          "a[href*='cosmeticsstyle.com/pointi/list']",
+          "a[href*='fashion-cosmelife.com/pointi']",
+          "a[href*='comicEnquete']",
+          "a[href*='pc/uranai']",
       };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
@@ -270,7 +276,7 @@ public class PICMedalMool extends PICBase {
           //          }
         }
         // ニュース
-        else if (preSele.equals("a[href*='news']")) {
+        else if (preSele.equals("a[href*='/news/'] p.thum>img")) {
           clickSleepSelector(driver, preSele, 16000); // 遷移
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);
@@ -281,6 +287,56 @@ public class PICMedalMool extends PICBase {
               clickSleepSelector(driver, eleList, 0, 5000); // 遷移
               if (isExistEle(driver, sele1)) {
                 News.answer(driver, sele1, wid);
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+              else {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
+        }
+        // コミックニュース
+        else if (preSele.equals("a[href*='/comicnews/']")) {
+          clickSleepSelector(driver, preSele, 16000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          selector = "div.top-list__news td >a"; // 回答する
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            if (isExistEle(eleList, 0)) {
+              clickSleepSelector(driver, eleList, 0, 5000); // 遷移
+              if (isExistEle(driver, sele5)) {
+                cNews.answer(driver, sele5, wid);
+              }
+              driver.close();
+              driver.switchTo().window(wid);
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
+        }
+        // お笑いニュース
+        else if (preSele.equals("a[href*='/comedynews/']")) {
+          clickSleepSelector(driver, preSele, 16000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          selector = "div.top-list__news td >a"; // 回答する
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            if (isExistEle(eleList, 0)) {
+              clickSleepSelector(driver, eleList, 0, 5000); // 遷移
+              if (isExistEle(driver, sele5)) {
+                cNews.answer(driver, sele5, wid);
                 driver.close();
                 driver.switchTo().window(wid);
               }
