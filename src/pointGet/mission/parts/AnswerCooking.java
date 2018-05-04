@@ -157,8 +157,8 @@ public class AnswerCooking extends MissCommon {
       }
       else {
         logg.info("エラーケース");
-        driver.close();
-        driver.switchTo().window(wid);
+//        driver.close();
+//        driver.switchTo().window(wid);
       }
     }
   }

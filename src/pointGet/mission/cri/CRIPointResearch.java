@@ -175,7 +175,7 @@ public class CRIPointResearch extends CRIBase {
             //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
             //                || cUrl.indexOf("haircare-choice.com") >= 0
             //                || cUrl.indexOf("eyemake-beauty.com") >= 0
-            || cUrl.indexOf("cooking.petit-cosme.netg") >= 0
+            || cUrl.indexOf("cooking.petit-cosme.net") >= 0
             )
             && isExistEle(driver, sele8)) {
           Cooking.answer(driver, sele8, wid);

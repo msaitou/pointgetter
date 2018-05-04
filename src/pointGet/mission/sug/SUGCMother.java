@@ -77,9 +77,14 @@ public class SUGCMother extends SUGBase {
           }
         }
       }
-      String[] seles = { "a>img[src*='column_bn.png']", "a>img[src*='photo_bn.png']",
-          "a>img[src*='observation_bn.png']", "a>img[src*='zoo_bn.png']", "a>img[src*='japan_bn.png']",
-          "a>img[src*='food_bn.png']" };
+      String[] seles = { 
+          "a>img[src*='food_bn.png']" ,
+          "a>img[src*='japan_bn.png']",
+          "a>img[src*='column_bn.png']", 
+          "a>img[src*='photo_bn.png']",
+          "a>img[src*='observation_bn.png']", 
+          "a>img[src*='zoo_bn.png']", 
+          };
       for (int i = 0; i < seles.length; i++) {
         String currentSele = seles[i];
         if (isExistEle(driver, currentSele)) {
