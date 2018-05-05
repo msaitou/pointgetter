@@ -144,7 +144,7 @@ public class Define {
   // ■■■■■rakuten■■■■■
   final public static String strRINClickBanner = "RINClickBanner";
   final public static String strRINMail = "RINMail";
-  
+
   // ■■■■■PointTown■■■■■
   final public static String strPTOClickCorner = "PTOClickCorner";
   final public static String strPTOKuji = "PTOKuji";
@@ -307,6 +307,7 @@ public class Define {
   final public static String strGPOGameParkEnk = "GPOGameParkEnk";
   final public static String strGPOFarmEnk = "GPOFarmEnk";
   final public static String strGPOFarmEnkNoCap = "GPOFarmEnkNoCap";
+  final public static String strGPODokiShindan = "GPODokiShindan";
   final public static String strGPOMail = "GPOMail";
 
   // メールの内容の種類

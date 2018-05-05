@@ -119,6 +119,10 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOFarmEnkNoCap: // ■ポイントファーム
           MisIns = new GPOFarmEnkNoCap(loggg, cProps);
           break;
+        case Define.strGPODokiShindan: // ■ポイントファーム
+          MisIns = new GPODokiShindan(loggg, cProps);
+          break;
+
         case Define.strGPOMail:
           MailClicker.main(new String[] { sCode });
           break;
@@ -140,7 +144,8 @@ public abstract class GPOBase extends Mission {
           Define.strGPOAnzan,
           Define.strGPOKansatu,
           Define.strGPOHyakkey,
-          Define.strGPOFarmEnkNoCap
+          Define.strGPOFarmEnkNoCap,
+          Define.strGPODokiShindan
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
