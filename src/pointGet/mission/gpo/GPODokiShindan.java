@@ -79,7 +79,6 @@ public class GPODokiShindan extends GPOBase {
                 || cUrl.indexOf("diagnosis.media-ad.jp/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
-              skip++;
             }
             else {
               skip++;
