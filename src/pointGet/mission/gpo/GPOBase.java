@@ -119,10 +119,12 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOFarmEnkNoCap: // ■ポイントファーム
           MisIns = new GPOFarmEnkNoCap(loggg, cProps);
           break;
-        case Define.strGPODokiShindan: // ■ポイントファーム
+        case Define.strGPODokiShindan: // ■どきどき診断
           MisIns = new GPODokiShindan(loggg, cProps);
           break;
-
+        case Define.strGPOAnqueate: // ■アンケート
+          MisIns = new GPOAnqueate(loggg, cProps);
+          break;
         case Define.strGPOMail:
           MailClicker.main(new String[] { sCode });
           break;
