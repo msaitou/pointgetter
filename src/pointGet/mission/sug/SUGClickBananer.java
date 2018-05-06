@@ -13,14 +13,14 @@ public class SUGClickBananer extends SUGBase {
 	final String url = "http://www.sugutama.jp/#daily";
 	private static HashMap<String, HashMap<String, String>> clickMap = new HashMap<String, HashMap<String, String>>() {
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
 
 		{
 			put("topページ", new HashMap<String, String>() {
 				/**
-				 * 
+				 *
 				 */
 				private static final long serialVersionUID = 1L;
 
@@ -31,18 +31,18 @@ public class SUGClickBananer extends SUGBase {
 			});
       put("shoppingページ", new HashMap<String, String>() {
         /**
-         * 
+         *
          */
         private static final long serialVersionUID = 1L;
 
         {
-          put("url", "http://www.sugutama.jp/shop/#daily");
+          put("url", "https://www.sugutama.jp/shop/#daily");
           put("sele", "span.daily dd.ad-name");
         }
       });
       put("savingページ", new HashMap<String, String>() {
         /**
-         * 
+         *
          */
         private static final long serialVersionUID = 1L;
 

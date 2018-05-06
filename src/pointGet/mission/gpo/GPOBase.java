@@ -147,7 +147,8 @@ public abstract class GPOBase extends Mission {
           Define.strGPOKansatu,
           Define.strGPOHyakkey,
           Define.strGPOFarmEnkNoCap,
-          Define.strGPODokiShindan
+          Define.strGPODokiShindan,
+          Define.strGPOAnqueate
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

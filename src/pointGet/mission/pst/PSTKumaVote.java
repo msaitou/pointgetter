@@ -37,7 +37,7 @@ public class PSTKumaVote extends PSTBase {
       changeCloseWindow(driver);
       Utille.sleep(8000);
       // ポイントに変換
-      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", 
+      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em",
           changeSele = "#modal-open.btn",
           changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
       if (isExistEle(driver, coinSele) ) {
@@ -59,7 +59,7 @@ public class PSTKumaVote extends PSTBase {
       if (isExistEle(driver, preSele)) {
         clickSleepSelector(driver, preSele, 5000); // 遷移 全体へ
         changeCloseWindow(driver);
-        Utille.sleep(5000);
+        Utille.sleep(8000);
         if (isExistEle(driver, sele0)) {
           clickSleepSelector(driver, sele0, 5000); // 遷移 全体へ
           while (isExistEle(driver, sele1)) {

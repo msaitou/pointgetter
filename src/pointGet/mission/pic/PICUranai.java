@@ -45,7 +45,7 @@ public class PICUranai extends PICBase {
         }
       }
 
-      String uranaiSelector = "dl>dt>img[src*='kumakumaseiza_pc']";
+      String uranaiSelector = "a>img[src*='bn_seiza.png']";
       if (isExistEle(driver, uranaiSelector)) {
         clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
         changeCloseWindow(driver);

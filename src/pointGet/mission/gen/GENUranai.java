@@ -62,7 +62,7 @@ public class GENUranai extends Mission {
 		      }
 
 
-		      String uranaiSelector = "dl>dt>img[src*='kumakumaseiza_pc']";
+		      String uranaiSelector = "a>img[src*='bn_seiza.png']";
 					if (!isExistEle(driver, uranaiSelector)) {
 						break;
 					}
