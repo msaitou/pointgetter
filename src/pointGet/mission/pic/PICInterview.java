@@ -88,6 +88,7 @@ public class PICInterview extends PICBase {
               } while (!isSuccess);
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+                || cUrl.indexOf("salamander.site/dgss/question/") >= 0
                 || cUrl.indexOf("sheep.seikaku-checker.club") >= 0
                 || cUrl.indexOf("diagnosis.media-ad.jp/question") >= 0)
                 && isExistEle(driver, sele3)) {

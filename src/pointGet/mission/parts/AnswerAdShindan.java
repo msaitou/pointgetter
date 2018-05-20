@@ -32,11 +32,11 @@ public class AnswerAdShindan extends MissCommon {
     titleSele = "div.question", // close
     alreadyGetSele = "p.bonus__progress.settled", a = "";
     if (!isExistEle(driver, alreadyGetSele, false)) {// 既に獲得済みがなければ
-      clickSleepSelector(driver, startSele, 4000);
+      clickSleepSelector(driver, startSele, 5000);
       
       String agreeSele = "label[for=agree_checkbox]";
       if (isExistEle(driver, agreeSele)) {
-        clickSleepSelector(driver, agreeSele, 4000);
+        clickSleepSelector(driver, agreeSele, 5000);
         String seleSub = "input.button--start";
         if (isExistEle(driver, seleSub)) {
           clickSleepSelector(driver, seleSub, 3000);

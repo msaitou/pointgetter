@@ -94,8 +94,9 @@ public class DMYPointResearch extends DMYBase {
 //            break;
           }
         }
-        else if (cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
-            && isExistEle(driver, sele3)) {
+        else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+            || cUrl.indexOf("salamander.site/dgss/question/") >= 0
+            ) && isExistEle(driver, sele3)) {
           AdShindan.answer(driver, sele3, wid);
           skip++;
         }

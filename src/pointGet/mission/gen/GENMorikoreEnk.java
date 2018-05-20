@@ -136,6 +136,7 @@ public class GENMorikoreEnk extends GENBase {
               }
               else if ((cUrl.indexOf("ad/enq/") >= 0
                   || cUrl.indexOf("beautypress.tokyo") >= 0
+                      || cUrl.indexOf("flounder.work") >= 0
                   || cUrl.indexOf("credit-card.link") >= 0)
 
                   && isExistEle(driver, sele1_)) {

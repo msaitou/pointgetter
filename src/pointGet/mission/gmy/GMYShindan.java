@@ -40,7 +40,7 @@ public class GMYShindan extends GMYBase {
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
-    selector = "ul.check_list1 a[href='https://dietnavi.com/pc/game/shindan/play.php']";
+    selector = "ul>li.check a[href='https://dietnavi.com/pc/game/shindan/play.php']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);

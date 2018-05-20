@@ -36,7 +36,7 @@ public class CITShindan extends CITBase {
 //    int limit = 20; 
     int limit = 3; 
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 5000); // 遷移
+      clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);
       while (isExistEle(driver, sele0)) {
         List<WebElement> eleList = driver.findElements(By.cssSelector(sele0));
