@@ -44,7 +44,7 @@ public class AnswerAdShindan extends MissCommon {
       }
 
       // 12問?
-      for (int k = 1; k <= 20; k++) {
+      for (int k = 1; k <= 25; k++) {
         if (isExistEle(driver, titleSele)) {
           String qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
           logg.info(qTitle);
@@ -55,12 +55,12 @@ public class AnswerAdShindan extends MissCommon {
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
             if (isExistEle(eleList2, choiceNum)) {
               // 選択
-              clickSleepSelector(driver, eleList2.get(choiceNum), 3000);
+              clickSleepSelector(driver, eleList2.get(choiceNum), 5000);
             }
           }
           if (isExistEle(driver, seleNext)) {
             // 次へ
-            clickSleepSelector(driver, seleNext, 4500);
+            clickSleepSelector(driver, seleNext, 5500);
           }
         }
       }

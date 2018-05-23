@@ -106,6 +106,7 @@ public class CITCMother extends CITBase {
                 String cUrl = driver.getCurrentUrl();
 
                 if ((cUrl.indexOf("cosmelife.com/animal") >= 0
+                    || cUrl.indexOf("/animal/") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/animal") >= 0
                 //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
                 )
@@ -113,6 +114,7 @@ public class CITCMother extends CITBase {
                   Zukan.answer(driver, sele6, wid);
                 }
                 else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
+                      || cUrl.indexOf("cmsite.clutchbag.work/observation") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/observation") >= 0
                 //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
                 )
@@ -120,6 +122,7 @@ public class CITCMother extends CITBase {
                   Kansatu.answer(driver, sele6, wid);
                 }
                 else if ((cUrl.indexOf("cosmelife.com/map") >= 0
+                    || cUrl.indexOf("/map/") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/map") >= 0
                 //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
                 )
@@ -127,6 +130,7 @@ public class CITCMother extends CITBase {
                   Hyakkey.answer(driver, sele6, wid);
                 }
                 else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
+                    || cUrl.indexOf("/cooking/") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/cooking") >= 0
                 //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
                 )
@@ -135,6 +139,7 @@ public class CITCMother extends CITBase {
                 }
                 else if ((cUrl.indexOf("photo-enquete") >= 0
                     || cUrl.indexOf("cosmelife.com/photo") >= 0
+                        || cUrl.indexOf("cmsite.clutchbag.work/photo") >= 0
                         || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
                     || cUrl.indexOf("eyelashes-fashion.com") >= 0
                     || cUrl.indexOf("natural-vegetables.com") >= 0
@@ -145,6 +150,7 @@ public class CITCMother extends CITBase {
                 else if ((cUrl.indexOf("cosmelife.com/column") >= 0
                     || cUrl.indexOf("beautynail-design.com") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
+                        || cUrl.indexOf("cmsite.clutchbag.work/column/") >= 0
                     || cUrl.indexOf("style-cutehair.com") >= 0
                     || cUrl.indexOf("eyelashes-fashion.com") >= 0
                     || cUrl.indexOf("fashion-cosmelife.com") >= 0)

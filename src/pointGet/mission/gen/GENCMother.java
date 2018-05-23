@@ -146,6 +146,7 @@ public class GENCMother extends GENBase {
                     else if ((cUrl.indexOf("photo-enquete") >= 0
                         || cUrl.indexOf("cosmelife.com/photo") >= 0
                             || cUrl.indexOf("/photo/") >= 0
+                                || cUrl.indexOf("cmsite.clutchbag.work/photo") >= 0
                         || cUrl.indexOf("eyelashes-fashion.com") >= 0
                         || cUrl.indexOf("natural-vegetables.com") >= 0
                         || cUrl.indexOf("cosmeticsstyle.com") >= 0)
@@ -155,6 +156,7 @@ public class GENCMother extends GENBase {
                     else if ((cUrl.indexOf("cosmelife.com/column") >= 0
                         || cUrl.indexOf("beautynail-design.com") >= 0
                         || cUrl.indexOf("/column/") >= 0
+                            || cUrl.indexOf("cmsite.clutchbag.work/column/") >= 0
                         || cUrl.indexOf("style-cutehair.com") >= 0
                         || cUrl.indexOf("eyelashes-fashion.com") >= 0
                         || cUrl.indexOf("fashion-cosmelife.com") >= 0)
