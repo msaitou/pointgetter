@@ -129,6 +129,7 @@ public class SUGPointResearch2 extends SUGBase {
             PhotoEnk.answer(driver, sele6, wid);
           }
           else if ((cUrl2.indexOf("column-enquete") >= 0
+              || cUrl.indexOf("column.") >= 0
               || cUrl.indexOf("column.flower-life.net") >= 0
               || cUrl.indexOf("eyelashes-fashion.com") >= 0
                   || cUrl.indexOf("column.fingernail.work/netmile") >= 0

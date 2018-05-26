@@ -130,6 +130,7 @@ public class PTOFarmEnk extends PTOBase {
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
+                    || cUrl.indexOf("salamander.site/dgss/question") >= 0
                 || cUrl.indexOf("enquetter.com/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
@@ -179,6 +180,7 @@ public class PTOFarmEnk extends PTOBase {
               PhotoEnk.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("column-enquete") >= 0
+                || cUrl.indexOf("column.") >= 0
                 || cUrl.indexOf("/column/") >= 0
                 || cUrl.indexOf("beautynail-design.com") >= 0
                 || cUrl.indexOf("style-cutehair.com") >= 0
