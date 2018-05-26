@@ -132,7 +132,8 @@ public class CRIPointResearch extends CRIBase {
           Shopping.answer(driver, sele4, wid);
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
-            || cUrl.indexOf("column.flower-life.net/") >= 0
+            || cUrl.indexOf("column.") >= 0
+            || cUrl.indexOf("column.fingernail.work") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0
             || cUrl.indexOf("fashion-cosmelife.com") >= 0
             || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
@@ -144,6 +145,7 @@ public class CRIPointResearch extends CRIBase {
           skip++;
         }
         else if ((cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("observation.") >= 0
             || cUrl.indexOf("observation.trekking-mountain.net/") >= 0
             || cUrl.indexOf("cmsite.fitness-health.work/observation") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
@@ -162,6 +164,7 @@ public class CRIPointResearch extends CRIBase {
           PhotoEnk.answer(driver, sele8, wid);
         }
         else if ((cUrl.indexOf("cosme-beaute.com") >= 0
+            || cUrl.indexOf("animal.") >= 0
             || cUrl.indexOf("animal.marriage-flower.net/") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
@@ -175,6 +178,7 @@ public class CRIPointResearch extends CRIBase {
             //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
             //                || cUrl.indexOf("haircare-choice.com") >= 0
             //                || cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("cooking.") >= 0
             || cUrl.indexOf("cooking.petit-cosme.net") >= 0
             )
             && isExistEle(driver, sele8)) {
@@ -184,6 +188,7 @@ public class CRIPointResearch extends CRIBase {
             //              || cUrl.indexOf("eyelashes-fashion.com") >= 0
             //              || cUrl.indexOf("haircare-choice.com") >= 0
             //              || cUrl.indexOf("eyemake-beauty.com") >= 0
+            || cUrl.indexOf("map.") >= 0
             || cUrl.indexOf("map.wedding-church.net") >= 0
             )
             && isExistEle(driver, sele8)) {

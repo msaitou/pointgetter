@@ -131,6 +131,7 @@ public class SUGPointResearch2 extends SUGBase {
           else if ((cUrl2.indexOf("column-enquete") >= 0
               || cUrl.indexOf("column.flower-life.net") >= 0
               || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  || cUrl.indexOf("column.fingernail.work/netmile") >= 0
               || cUrl2.indexOf("beautynail-design.com") >= 0)
               && isExistEle(driver, sele6)) {
             Utille.sleep(4000);
