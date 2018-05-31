@@ -127,6 +127,14 @@ public class HAPPointResearch extends HAPBase {
             skip++;
           }
         }
+        else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
+            || cUrl.indexOf("/hirameki/") >= 0
+            )&& isExistEle(driver, sele6)) {
+          logg.info("cUrl[" + cUrl + "]は未対応です");
+          driver.close();
+          // 最後に格納したウインドウIDにスイッチ
+          driver.switchTo().window(wid);
+        }
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("column.") >= 0
             || cUrl.indexOf("column.flower-life.net") >= 0

@@ -97,6 +97,7 @@ public class SUGPointResearch2 extends SUGBase {
             Kotsuta.answer(driver, sele1, wid);
           }
           else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
+              || cUrl.indexOf("animal.") >= 0
               || cUrl.indexOf("animal.marriage-flower.net") >= 0
               )
               && isExistEle(driver, sele6)) {
@@ -149,6 +150,7 @@ public class SUGPointResearch2 extends SUGBase {
           }
         }
         else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
+            || cUrl.indexOf("animal.") >= 0
             || cUrl.indexOf("animal.marriage-flower.net") >= 0
             )
             && isExistEle(driver, sele6)) {
@@ -181,6 +183,7 @@ public class SUGPointResearch2 extends SUGBase {
           PhotoEnk.answer(driver, sele6, wid);
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
+            || cUrl.indexOf("column.") >= 0
             || cUrl.indexOf("column.flower-life.net") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("beautynail-design.com") >= 0)

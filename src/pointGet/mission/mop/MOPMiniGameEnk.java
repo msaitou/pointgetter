@@ -169,6 +169,14 @@ public class MOPMiniGameEnk extends MOPBase {
                 && isExistEle(driver, sele6)) {
               Cooking.answer(driver, sele6, wid);
             }
+            else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
+                || cUrl.indexOf("/hirameki/") >= 0
+                )&& isExistEle(driver, sele6)) {
+              logg.info("cUrl[" + cUrl + "]は未対応です");
+              driver.close();
+              // 最後に格納したウインドウIDにスイッチ
+              driver.switchTo().window(wid);
+            }
             else if ((cUrl.indexOf("photo-enquete") >= 0
                 || cUrl.indexOf("/photo/") >= 0
                 || cUrl.indexOf("cosmelife.com/photo") >= 0

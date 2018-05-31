@@ -153,6 +153,14 @@ public class OSAFarmEnk extends OSABase {
                 && isExistEle(driver, sele6)) {
               Zukan.answer(driver, sele6, wid);
             }
+            else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
+                || cUrl.indexOf("/hirameki/") >= 0
+                )&& isExistEle(driver, sele6)) {
+              logg.info("cUrl[" + cUrl + "]は未対応です");
+              driver.close();
+              // 最後に格納したウインドウIDにスイッチ
+              driver.switchTo().window(wid);
+            }
             else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
                 || cUrl.indexOf("/observation/") >= 0
             //            || cUrl.indexOf("eyelashes-fashion.com") >= 0

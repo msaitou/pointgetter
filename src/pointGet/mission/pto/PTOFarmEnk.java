@@ -142,6 +142,14 @@ public class PTOFarmEnk extends PTOBase {
                 && isExistEle(driver, sele3)) {
               Pittango.answer(driver, sele3, wid);
             }
+            else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
+                || cUrl.indexOf("/hirameki/") >= 0
+                )&& isExistEle(driver, sele6)) {
+              logg.info("cUrl[" + cUrl + "]は未対応です");
+              driver.close();
+              // 最後に格納したウインドウIDにスイッチ
+              driver.switchTo().window(wid);
+            }
             else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
                             || cUrl.indexOf("/animal/") >= 0
                 //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
