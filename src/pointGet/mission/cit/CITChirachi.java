@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
  *
  */
 public class CITChirachi extends CITBase {
-	final String url = "http://www.chance.com/";
+	final String url = "https://www.chance.com/";
 
 	/**
 	 * @param log

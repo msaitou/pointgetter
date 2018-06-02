@@ -15,7 +15,7 @@ import pointGet.common.Utille;
  *
  */
 public class CITClickBanner extends CITBase {
-  final String url = "http://www.chance.com/";
+  final String url = "https://www.chance.com/";
 
   /**
    * @param log
@@ -62,7 +62,7 @@ public class CITClickBanner extends CITBase {
       }
     }
     // 2つめ
-    driver.get("http://www.chance.com/click.jsp");
+    driver.get("https://www.chance.com/click.jsp");
     selector = "div.ad_banner>a>img";
     if (isExistEle(driver, selector)) {
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -76,7 +76,7 @@ public class CITClickBanner extends CITBase {
     }
 
     // 3つめ
-    driver.get("http://www.chance.com/present/");
+    driver.get("https://www.chance.com/present/");
     closeOtherWindow(driver);
     selector = "dl.clearfix>dt>a>img";
     if (isExistEle(driver, selector)) {
@@ -105,7 +105,7 @@ public class CITClickBanner extends CITBase {
     }
 
     // 4つめ
-    driver.get("http://www.chance.com/shopping/");
+    driver.get("https://www.chance.com/shopping/");
     selector = "dl.clearfix>dt>a>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000);
@@ -123,7 +123,7 @@ public class CITClickBanner extends CITBase {
       }
     }
     // 5つめ
-    driver.get("http://www.chance.com/point/");
+    driver.get("https://www.chance.com/point/");
     selector = "div#potitto-chance dt>a>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000);

@@ -16,7 +16,7 @@ import pointGet.common.Utille;
  * 4時更新
  */
 public class CITPriceChyosatai extends CITBase {
-  final String url = "http://www.chance.com/game/";
+  final String url = "https://www.chance.com/game/";
   private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
   private String footBnrSelector = "div.foot-bnr a.close>span";
 

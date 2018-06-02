@@ -13,7 +13,7 @@ import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 
 public class CITGameParkEnk extends CITBase {
-  final String url = "http://www.chance.com/research/";
+  final String url = "https://www.chance.com/research/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerGameParkEnk GameParkEnk = null;

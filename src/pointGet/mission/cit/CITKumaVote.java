@@ -16,7 +16,7 @@ import pointGet.mission.parts.AnswerSouSenkyo;
  *
  */
 public class CITKumaVote extends CITBase {
-  final String url = "http://www.chance.com/game/";
+  final String url = "https://www.chance.com/game/";
   AnswerSouSenkyo SouSenkyo = null;
 
   /**

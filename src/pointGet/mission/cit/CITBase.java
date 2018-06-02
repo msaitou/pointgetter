@@ -65,7 +65,7 @@ public abstract class CITBase extends Mission {
         && Utille.isExistEle(driver, recoSele, loggg)) {
       driver.findElement(By.cssSelector(recoSele)).click();
     }
-    String se = "li.user>a>span.user_pt";
+    String se = "li.user>span.user_pt";
     if (!Utille.isExistEle(driver, se, false, loggg)) {
       // login!!
       LoginSite.login(sCode, driver, loggg);
@@ -145,8 +145,8 @@ public abstract class CITBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "li.user>a>span.user_pt", point = "";
-    driver.get("http://www.chance.com/");
+    String selector = "li.user>span.user_pt", point = "";
+    driver.get("https://www.chance.com/");
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

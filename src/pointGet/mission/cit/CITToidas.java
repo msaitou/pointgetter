@@ -15,7 +15,7 @@ import pointGet.common.Utille;
  *
  */
 public class CITToidas extends CITBase {
-  final String url = "http://www.chance.com/game/";
+  final String url = "https://www.chance.com/game/";
 
   /**
    * @param logg

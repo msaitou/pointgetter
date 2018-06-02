@@ -80,7 +80,7 @@ public abstract class RINBase extends Mission {
 
   public static String getSitePoint(WebDriver driver, Logger logg) {
     String selector = "li.user>a>span.user_pt", point = "";
-    driver.get("http://www.chance.com/");
+    driver.get("https://www.chance.com/");
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
     }

@@ -19,7 +19,7 @@ import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerZukan;
 
 public class CITCMother extends CITBase {
-  final String url = "http://www.chance.com/game/";
+  final String url = "https://www.chance.com/game/";
   WebDriver driver = null;
   AnswerPhotoEnk PhotoEnk = null;
   AnswerKansatu Kansatu = null;

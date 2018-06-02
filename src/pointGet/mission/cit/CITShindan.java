@@ -15,7 +15,7 @@ import pointGet.mission.parts.AnswerShindan;
  *
  */
 public class CITShindan extends CITBase {
-  final String url = "http://www.chance.com/game/";
+  final String url = "https://www.chance.com/game/";
   AnswerShindan Shindan = null;
 
   /**

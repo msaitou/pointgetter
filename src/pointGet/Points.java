@@ -286,8 +286,8 @@ System.out.println(pointMap);
             if (pointMap.containsKey(Define.PSITE_CODE_CIT)) {
               break;
             }
-            selector = "li.user>a>span.user_pt";
-            driver.get("http://www.chance.com/");
+            selector = "li.user>span.user_pt";
+            driver.get("https://www.chance.com/");
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_CIT + ":" + Utille.getNumber(point) + "]";
