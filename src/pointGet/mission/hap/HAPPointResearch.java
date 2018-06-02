@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHiroba;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKotsuta;
@@ -39,6 +40,7 @@ public class HAPPointResearch extends HAPBase {
   AnswerTasuuketu Tasuuketu = null;
   AnswerMinnanosur Minnanosur = null;
   AnswerKansatu Kansatu = null;
+  AnswerHirameki Hirameki=null;
 
   /**
    * @param logg
@@ -57,6 +59,7 @@ public class HAPPointResearch extends HAPBase {
     Tasuuketu = new AnswerTasuuketu(logg);
     Minnanosur = new AnswerMinnanosur(logg);
     Kansatu = new AnswerKansatu(logg);
+    Hirameki=new AnswerHirameki(logg);
   }
 
   @Override
@@ -130,10 +133,7 @@ public class HAPPointResearch extends HAPBase {
         else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
             || cUrl.indexOf("/hirameki/") >= 0
             )&& isExistEle(driver, sele6)) {
-          logg.info("cUrl[" + cUrl + "]は未対応です");
-          driver.close();
-          // 最後に格納したウインドウIDにスイッチ
-          driver.switchTo().window(wid);
+          Hirameki.answer(driver, sele6, wid);
         }
         else if ((cUrl.indexOf("column-enquete") >= 0
             || cUrl.indexOf("column.") >= 0

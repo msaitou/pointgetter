@@ -13,6 +13,7 @@ import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerManga;
@@ -39,7 +40,7 @@ public class MOPMiniGameEnk extends MOPBase {
   AnswerZukan Zukan = null;
   AnswerColum Colum = null;
   AnswerManga Manga = null;
-
+  AnswerHirameki Hirameki=null;
   /**
    * @param logg
    */
@@ -58,6 +59,7 @@ public class MOPMiniGameEnk extends MOPBase {
     Zukan = new AnswerZukan(logg);
     Colum = new AnswerColum(logg);
     Manga = new AnswerManga(logg);
+    Hirameki=new AnswerHirameki(logg);
   }
 
   @Override
@@ -73,17 +75,17 @@ public class MOPMiniGameEnk extends MOPBase {
       changeCloseWindow(driver);
       //      driver.get("http://minigamepark.moppy.jp/square/pittango");
       //      driver.get("http://minigamepark.moppy.jp/square/diagnoses");
-      driver.get("http://minigamepark.moppy.jp/square/votes");
+      driver.get("http://minigamepark.moppy.jp/square/surveys");
       for (int k = 0; k < 4; k++) {
         //      for (int k = 0; k < 1; k++) {
         if (k == 1) {
-          driver.get("http://minigamepark.moppy.jp/square/diagnoses");
+          driver.get("http://minigamepark.moppy.jp/square/pittango");
         }
         else if (k == 2) {
-          driver.get("http://minigamepark.moppy.jp/square/surveys");
+          driver.get("http://minigamepark.moppy.jp/square/diagnoses");
         }
         else if (k == 3) {
-          driver.get("http://minigamepark.moppy.jp/square/pittango");
+          driver.get("http://minigamepark.moppy.jp/square/votes");
         }
 
         Utille.sleep(6000);
@@ -134,6 +136,7 @@ public class MOPMiniGameEnk extends MOPBase {
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
+                || cUrl.indexOf("salamander.site/dgss") >= 0
                 || cUrl.indexOf("enquetter.com/question") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
@@ -172,10 +175,7 @@ public class MOPMiniGameEnk extends MOPBase {
             else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
                 || cUrl.indexOf("/hirameki/") >= 0
                 )&& isExistEle(driver, sele6)) {
-              logg.info("cUrl[" + cUrl + "]は未対応です");
-              driver.close();
-              // 最後に格納したウインドウIDにスイッチ
-              driver.switchTo().window(wid);
+              Hirameki.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("photo-enquete") >= 0
                 || cUrl.indexOf("/photo/") >= 0

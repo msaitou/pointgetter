@@ -13,6 +13,7 @@ import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerManga;
@@ -40,6 +41,7 @@ public class GENMorikoreEnk extends GENBase {
   AnswerHyakkey Hyakkey = null;
   AnswerZukan Zukan = null;
   AnswerManga Manga = null;
+  AnswerHirameki Hirameki=null;
 
   /**
    * @param logg
@@ -58,6 +60,7 @@ public class GENMorikoreEnk extends GENBase {
     Kansatu = new AnswerKansatu(logg);
     Zukan = new AnswerZukan(logg);
     Manga = new AnswerManga (logg);
+    Hirameki=new AnswerHirameki(logg);
   }
 
   @Override
@@ -190,10 +193,7 @@ public class GENMorikoreEnk extends GENBase {
               else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
                   || cUrl.indexOf("/hirameki/") >= 0
                   )&& isExistEle(driver, sele6)) {
-                logg.info("cUrl[" + cUrl + "]は未対応です");
-                driver.close();
-                // 最後に格納したウインドウIDにスイッチ
-                driver.switchTo().window(wid);
+                Hirameki.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("column-enquete") >= 0
                   || cUrl.indexOf("/column/") >= 0

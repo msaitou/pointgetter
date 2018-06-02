@@ -15,6 +15,7 @@ import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerGameParkEnk;
+import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerPhotoEnk;
@@ -42,6 +43,7 @@ public class PTOFarmEnk extends PTOBase {
   AnswerHyakkey Hyakkey = null;
   AnswerZukan Zukan = null;
   AnswerColum Colum = null;
+  AnswerHirameki Hirameki=null;
 
   /**
    * @param logg
@@ -61,6 +63,7 @@ public class PTOFarmEnk extends PTOBase {
     Kansatu = new AnswerKansatu(logg);
     Zukan = new AnswerZukan(logg);
     Colum = new AnswerColum(logg);
+    Hirameki=new AnswerHirameki(logg);
   }
 
   @Override
@@ -145,10 +148,7 @@ public class PTOFarmEnk extends PTOBase {
             else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
                 || cUrl.indexOf("/hirameki/") >= 0
                 )&& isExistEle(driver, sele6)) {
-              logg.info("cUrl[" + cUrl + "]は未対応です");
-              driver.close();
-              // 最後に格納したウインドウIDにスイッチ
-              driver.switchTo().window(wid);
+              Hirameki.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
                             || cUrl.indexOf("/animal/") >= 0

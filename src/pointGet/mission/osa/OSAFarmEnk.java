@@ -15,6 +15,7 @@ import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerGameParkEnk;
+import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerManga;
@@ -44,6 +45,7 @@ public class OSAFarmEnk extends OSABase {
   AnswerZukan Zukan = null;
   AnswerColum Colum = null;
   AnswerManga Manga = null;
+  AnswerHirameki Hirameki=null;
 
   /**
    * @param logg
@@ -64,6 +66,7 @@ public class OSAFarmEnk extends OSABase {
     Zukan = new AnswerZukan(logg);
     Colum = new AnswerColum(logg);
     Manga = new AnswerManga (logg);
+    Hirameki=new AnswerHirameki(logg);
   }
 
   @Override
@@ -156,10 +159,7 @@ public class OSAFarmEnk extends OSABase {
             else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
                 || cUrl.indexOf("/hirameki/") >= 0
                 )&& isExistEle(driver, sele6)) {
-              logg.info("cUrl[" + cUrl + "]は未対応です");
-              driver.close();
-              // 最後に格納したウインドウIDにスイッチ
-              driver.switchTo().window(wid);
+              Hirameki.answer(driver, sele6, wid);
             }
             else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
                 || cUrl.indexOf("/observation/") >= 0
