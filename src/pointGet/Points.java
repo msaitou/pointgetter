@@ -270,7 +270,7 @@ System.out.println(pointMap);
             if (pointMap.containsKey(Define.PSITE_CODE_WAR)) {
               break;
             }
-            selector = "span.item>span.PT3.marginRight5";
+            selector = "span.top-UserPoint_Point";
             driver.get("http://www.warau.jp/");
             if (!isExistEle(driver, selector)) {
               // login!!

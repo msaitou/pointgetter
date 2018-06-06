@@ -99,6 +99,10 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYMail:
           MailClicker.main(new String[] {sCode});
           break;
+        case Define.strGMYColum: // ■CMその他
+          MisIns = new GMYColum(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -109,7 +113,8 @@ public abstract class GMYBase extends Mission {
           Define.strGMYPointResearch,
           Define.strGMYGameParkEnk,
           Define.strGMYKumaVote,
-          Define.strGMYCMother
+          Define.strGMYCMother,
+          Define.strGMYColum
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

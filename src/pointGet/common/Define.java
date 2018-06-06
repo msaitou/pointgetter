@@ -76,7 +76,9 @@ public class Define {
   final public static String strGMYKumaVote = "GMYKumaVote";
   final public static String strGMYCMother = "GMYCMother";
   final public static String strGMYMail = "GMYMail";
-
+  final public static String strGMYColum = "GMYColum";
+  final public static String strGMYManga = "GMYManga";
+  
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
   final public static String strI2IColum = "I2IColum";
@@ -237,6 +239,9 @@ public class Define {
   final public static String strCITKumaVote = "CITKumaVote";
   final public static String strCITCMother = "CITCMother";
   final public static String strCITMail = "CITMail";
+  final public static String strCITColum = "CITColum";
+  final public static String strCITManga = "CITManga";
+  final public static String strCITCook = "CITCook";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";
