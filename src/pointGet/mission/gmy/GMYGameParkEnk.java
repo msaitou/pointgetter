@@ -48,7 +48,7 @@ public class GMYGameParkEnk extends GMYBase {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 4000); // 遷移
+      clickSleepSelector(driver, selector, 8000); // 遷移
       changeCloseWindow(driver);
       if (!isExistEle(driver, pop1None, false)
           && isExistEle(driver, pop1)) {

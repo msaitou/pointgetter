@@ -32,7 +32,7 @@ public class PEXNews extends PEXBase {
 			driver.get(this.url);
 			// 未獲得印3つが確認できない場合ノルマ達成とみなしブレイク
 			selector = "li.pt.ungained";
-			if (!isExistEle(driver, selector)) {
+			if (!isExistEle(driver, selector,false)) {
 				break;
 			}
 			selector = "ul#news-list>li>figure>a";
