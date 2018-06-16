@@ -114,6 +114,7 @@ public class LFMFarmEnk extends LFMBase {
             }
             else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
                 || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
+                    || cUrl.indexOf("salamander.site/dgss") >= 0
                 || cUrl.indexOf("sheep.seikaku-checker.club/") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
