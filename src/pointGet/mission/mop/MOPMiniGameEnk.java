@@ -95,7 +95,7 @@ public class MOPMiniGameEnk extends MOPBase {
         String sele1_ = "iframe.question_frame", //
             sele1 = "form>input[type='submit']", //
             sele3 = "form>input[type='submit']", //
-            sele9 = "div>a>dl>dt", //
+            sele9 = "div>a.start__button", //
             overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
             sele6 = "form>input.next_bt", // コラム用
             sele4 = "a.submit-btn",
