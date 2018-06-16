@@ -340,7 +340,7 @@ public class LoginSite extends PointGet {
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_WAR).get("loginpass"));
       Utille.clickRecaptha(driver, logg);
 
-      driver.findElement(By.cssSelector("input.btn.btnlogin")).click();
+      driver.findElement(By.cssSelector("input.login-Btn_Login")).click();
       Utille.sleep(4000);
     }
   }

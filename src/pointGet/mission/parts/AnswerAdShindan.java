@@ -44,7 +44,7 @@ public class AnswerAdShindan extends MissCommon {
       }
 
       // 12問?
-      for (int k = 1; k <= 25; k++) {
+      for (int k = 1; k <= 40; k++) {
         if (isExistEle(driver, titleSele)) {
           String qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
           logg.info(qTitle);
