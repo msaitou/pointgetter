@@ -11,36 +11,35 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
-import pointGet.mission.parts.AnswerKenkou;
+import pointGet.mission.parts.AnswerManga;
 
 /**
  * @author saitou
  *
  */
-public class GMYColum extends GMYBase {
+public class GMYManga extends GMYBase {
   final String url = "https://dietnavi.com/pc/game/";
-  AnswerKenkou Kenkou = null;
+  AnswerManga Manga = null;
 
   /**
    * @param logg
    */
-  public GMYColum(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "コラム");
-    Kenkou = new AnswerKenkou(logg);
+  public GMYManga(Logger logg, Map<String, String> cProps) {
+    super(logg, cProps, "mannga");
+    Manga = new AnswerManga(logg);
   }
 
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
     Utille.sleep(3000);
-    String sele1 = "img[alt='さらさら健康コラム']", selector2 = "li.menu03>a";
+    String sele1 = "img[alt='漫画でアンケート']", selector2 = "li.menu03>a";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 4000);
       // アラートをけして
       checkAndAcceptAlert(driver);
       Utille.sleep(5000);
       changeCloseWindow(driver);
-      String wid0 = driver.getWindowHandle();
       selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
       String seleNextb2 = "form>input[type='image']";
       while (isExistEle(driver, selector)) {
@@ -59,15 +58,13 @@ public class GMYColum extends GMYBase {
             String wid = driver.getWindowHandle();
             changeWindow(driver, wid);
             if (isExistEle(driver, seleNextb2)) {
-              Kenkou.answer(driver, seleNextb2, wid);
+              Manga.answer(driver, seleNextb2, wid);
               Utille.refresh(driver, logg);
               Utille.sleep(5000);
             }
             else {
               break;
             }
-            driver.close();
-            driver.switchTo().window(wid0);
           }
         }
         else {

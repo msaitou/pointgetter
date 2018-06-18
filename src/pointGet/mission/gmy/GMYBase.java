@@ -99,8 +99,11 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYMail:
           MailClicker.main(new String[] {sCode});
           break;
-        case Define.strGMYColum: // ■CMその他
+        case Define.strGMYColum: // ■健康
           MisIns = new GMYColum(loggg, cProps);
+          break;
+        case Define.strGMYManga: // ■漫画
+          MisIns = new GMYManga(loggg, cProps);
           break;
           
         default:
@@ -115,6 +118,7 @@ public abstract class GMYBase extends Mission {
           Define.strGMYKumaVote,
           Define.strGMYCMother,
           Define.strGMYColum
+,          Define.strGMYManga
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
