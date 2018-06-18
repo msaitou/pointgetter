@@ -100,6 +100,9 @@ public abstract class CITBase extends Mission {
         case Define.strCITMail:
           MailClicker.main(new String[] {"cit"});
           break;
+        case Define.strCITKenkou: // ■健康
+          MisIns = new CITKenkou(loggg, cProps);
+          break;
 
         default:
       }
@@ -110,7 +113,11 @@ public abstract class CITBase extends Mission {
           Define.strCITGameParkEnk,
           Define.strCITKumaVote,
           Define.strCITPointResearch,
-          Define.strCITCMother
+          Define.strCITCMother,
+          Define.strCITKenkou,
+          Define.strCITManga,
+          Define.strCITCook
+
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
