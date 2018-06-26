@@ -103,6 +103,9 @@ public abstract class CITBase extends Mission {
         case Define.strCITKenkou: // ■健康
           MisIns = new CITKenkou(loggg, cProps);
           break;
+        case Define.strCITManga: // ■manga
+          MisIns = new CITManga(loggg, cProps);
+          break;
 
         default:
       }
