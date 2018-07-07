@@ -61,7 +61,7 @@ public abstract class GMYBase extends Mission {
 //        && Utille.isExistEle(driver, recoSele, loggg)) {
 //      driver.findElement(By.cssSelector(recoSele)).click();
 //    }
-    String se = "span.user_point";
+    String se = "li.user_poin>at";
     if (!Utille.isExistEle(driver, se, false, loggg)) {
       // login!!
       LoginSite.login(sCode, driver, loggg);
@@ -153,8 +153,8 @@ public abstract class GMYBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "span.user_point", point = "";
-    driver.get("http://dietnavi.com/pc");
+    String selector = "li.user_poin>at", point = "";
+    driver.get("https://dietnavi.com/pc");
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

@@ -43,6 +43,7 @@ public class AnswerAdEnq extends MissCommon {
         clickSleepSelector(driver, preStartSele, 5000);
       }
     }
+    boolean res = true;
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 3000);
       String
@@ -211,12 +212,16 @@ public class AnswerAdEnq extends MissCommon {
       logg.info("999992");
     }
     else {
-      return false;
+      String frameBody = "html>body div";
+      if (!isExistEle(driver, frameBody)) {
+        res = false;
+        return res;
+      }
     }
     logg.info("999991");
     driver.close();
     logg.info("999991");
     driver.switchTo().window(wid);
-    return true;
+    return res;
   }
 }
