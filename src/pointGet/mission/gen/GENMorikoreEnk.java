@@ -137,7 +137,7 @@ public class GENMorikoreEnk extends GENBase {
                   && isExistEle(driver, sele3)) {
                 AdShindan.answer(driver, sele3, wid);
               }
-              else if ((cUrl.indexOf("ad/enq/") >= 0
+              else if (!skipCapFlag &&(cUrl.indexOf("ad/enq/") >= 0
                   || cUrl.indexOf("beautypress.tokyo") >= 0
                       || cUrl.indexOf("flounder.work") >= 0
                   || cUrl.indexOf("credit-card.link") >= 0)

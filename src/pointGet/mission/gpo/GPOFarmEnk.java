@@ -123,7 +123,7 @@ public class GPOFarmEnk extends GPOBase {
             if (isExistEle(driver, sele9)) {
               Tasuuketu.answer(driver, sele9, wid);
             }
-            else if ((cUrl.indexOf("ad/enq/") >= 0)
+            else if (!skipCapFlag &&(cUrl.indexOf("ad/enq/") >= 0)
                 && isExistEle(driver, sele1_)) {
               // $('iframe').contents().find("div>input[type='submit']")
               if (!AdEnq.answer(driver, sele1, wid)) {
