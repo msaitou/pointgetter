@@ -63,14 +63,17 @@ public class CITKenkou extends GMYBase {
             changeWindow(driver, wid);
             if (isExistEle(driver, seleNextb2)) {
               Kenkou.answer(driver, seleNextb2, wid);
+            Utille.refresh(driver, logg);
+            Utille.sleep(5000);
             }
             else {
               break;
             }
-            driver.close();
-            Utille.refresh(driver, logg);
-            Utille.sleep(5000);
-            driver.switchTo().window(wid0);
+//            driver.switchTo().window(wid0);
+//            driver.close();
+//            driver.switchTo().window(wid);
+//            Utille.refresh(driver, logg);
+//            Utille.sleep(5000);
           }
         }
         else {

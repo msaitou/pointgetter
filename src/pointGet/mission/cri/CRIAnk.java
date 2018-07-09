@@ -27,6 +27,13 @@ public class CRIAnk extends CRIBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
+
+    String tab3 = "li.tab_03>a";
+    if (isExistEle(driver, tab3)) {
+      clickSleepSelector(driver, tab3, 4000); // 遷移
+      changeCloseWindow(driver);
+    }
+
     selector = "img[alt='お楽しみアンケート']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
