@@ -293,14 +293,14 @@ public class LoginSite extends PointGet {
   public static void loginPic(WebDriver driver, Logger logg) {
     driver.get("https://pointi.jp/entrance.php");
     Utille.sleep(2000);
-    if (Utille.isExistEle(driver, "input.entrance_input[name='email_address']", logg)) {
-      WebElement ele = driver.findElement(By.cssSelector("input.entrance_input[name='email_address']"));
+    if (Utille.isExistEle(driver, "input[name='email_address']", logg)) {
+      WebElement ele = driver.findElement(By.cssSelector("input[name='email_address']"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginid"));
-      ele = driver.findElement(By.cssSelector("input.entrance_input[name='password']"));
+      ele = driver.findElement(By.cssSelector("input[name='password']"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginpass"));
-      driver.findElement(By.cssSelector("div.btn_submit>input[name='Submit']")).click();
+      driver.findElement(By.cssSelector("div.entrance_left>input[name='Submit']")).click();
       Utille.sleep(5000);
     }
   }

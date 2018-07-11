@@ -14,7 +14,7 @@ import pointGet.common.Utille;
  * @author saitou
  */
 public class PICClickBanner extends PICBase {
-  final String url = "http://pointi.jp/daily.php";
+  final String url = "https://pointi.jp/daily.php";
 
   /**
    * @param log
@@ -27,7 +27,7 @@ public class PICClickBanner extends PICBase {
   public void privateMission(WebDriver driver) {
     driver.get(url);
     Utille.sleep(2000);
-    String selecter[] = { "li.goto_service>a>img[src='../img_daily/y_btn.png']" };
+    String selecter[] = { "div.click_btn" };
     for (int j = 0; j < selecter.length; j++) {
       logg.info("selector: start");
       String selector = selecter[j];

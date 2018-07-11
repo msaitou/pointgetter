@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import pointGet.common.Utille;
 
 public class PICUranai extends PICBase {
-  final String url = "http://pointi.jp/";
+  final String url = "https://pointi.jp/game/";
 
   /**
    * @param logg
@@ -21,7 +21,7 @@ public class PICUranai extends PICBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "dd.n9>a>span";
+    selector = "div.gamelist_wrap img[src*='visual/img16.png']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);

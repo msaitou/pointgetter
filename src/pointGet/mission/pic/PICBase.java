@@ -57,7 +57,7 @@ public abstract class PICBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    String sel = "ul.header_wrap.clearfix>li.right>span.name";
+    String sel = "div#prof_box div.prof_name";
     driver.get("http://pointi.jp/"); // http://pointi.jp/
     if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
@@ -149,12 +149,12 @@ public abstract class PICBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "p.text.point", point = "";
-    driver.get("http://pointi.jp/my/my_page.php"); // http://pointi.jp/
+    String selector = "dl.basis_data_box span.red.bold", point = "";
+    driver.get("https://pointi.jp/my/my_page.php"); // http://pointi.jp/
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);
-      driver.get("http://pointi.jp/my/my_page.php"); // http://pointi.jp/
+      driver.get("https://pointi.jp/my/my_page.php"); // http://pointi.jp/
     }
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();

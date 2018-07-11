@@ -16,7 +16,7 @@ import pointGet.mission.parts.AnswerShindan;
  *
  */
 public class PICShindan extends PICBase {
-  final String url = "http://pointi.jp/contents/research/";
+  final String url = "https://pointi.jp/contents/research/";
   AnswerShindan Shindan = null;
 
   /**
@@ -30,7 +30,7 @@ public class PICShindan extends PICBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "img[src='./web_diagnose/img/top.png']";
+    selector = "img[src='img/diagnose.png']";
     String sele0 = "div.entry", // 
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため
     sumiSelector = "img[src='/images/icons/sumi.png']";
