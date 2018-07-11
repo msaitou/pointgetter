@@ -75,7 +75,7 @@ public class CRIPointResearch extends CRIBase {
     driver = driverAtom;
     driver.get(url);
 
-    selector = "td>p.btn_answer>a";
+    selector = "div.research_box_03.research_box td>p.btn_answer>a";
     int skip = 1;
     String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
@@ -90,11 +90,11 @@ public class CRIPointResearch extends CRIBase {
     tab3 = "li.tab_03>a",
     sele1 = "form>input[type='image']", // 回答する 漫画用
     a = "";
-    if (isExistEle(driver, tab3)) {
-      clickSleepSelector(driver, tab3, 5000); // アンケートスタートページ
-    }
-    
+
     while (true) {
+      if (isExistEle(driver, tab3)) {
+        clickSleepSelector(driver, tab3, 5000); // アンケートスタートページ
+      }
       if (!isExistEle(driver, selector)) {
         // 対象がなくなったら終了
         break;
