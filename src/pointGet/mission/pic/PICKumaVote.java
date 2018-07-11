@@ -12,7 +12,7 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerSouSenkyo;
 
 public class PICKumaVote extends PICBase {
-  final String url = "http://pointi.jp/";
+  final String url = "https://pointi.jp/game/";
   WebDriver driver = null;
   AnswerSouSenkyo SouSenkyo = null;
 
@@ -27,7 +27,7 @@ public class PICKumaVote extends PICBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    selector = "dd.n9>a>span";
+    selector = "div.gamelist_wrap img[src*='visual/img16.png']";
     String sele0 = "a.start__button" //
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
     , preSele = "img[src*='bn_sosenkyo.png']";

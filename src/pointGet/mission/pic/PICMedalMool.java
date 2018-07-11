@@ -57,7 +57,7 @@ public class PICMedalMool extends PICBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "a[href='//pointi.jp/api/medal_mall.php']>span";
+    selector = "div.gamelist_wrap a>img[src*='visual/img17.png']";
     int skip = 0;
 
     String sele3 = "div.enq-submit>button[type='submit']", //

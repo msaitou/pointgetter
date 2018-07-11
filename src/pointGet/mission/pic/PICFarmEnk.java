@@ -73,7 +73,7 @@ public class PICFarmEnk extends PICBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    String enkLinkSele = "div>a>img[alt='スタンプランド']", //
+    String enkLinkSele = "div.gamelist_wrap a>img[src*='visual/img04.png']", //
         a = "";
 
     if (isExistEle(driver, enkLinkSele)) {

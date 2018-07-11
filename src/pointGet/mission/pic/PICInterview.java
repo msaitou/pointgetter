@@ -15,7 +15,7 @@ import pointGet.mission.parts.AnswerAdShindan;
 import pointGet.mission.parts.AnswerTasuuketu;
 
 public class PICInterview extends PICBase {
-  final String url = "http://pointi.jp/contents/research/";
+  final String url = "https://pointi.jp/contents/research/";
   WebDriver driver = null;
   /* アンケートクラス　多数決 */
   AnswerTasuuketu Tasuuketu = null;
@@ -36,7 +36,7 @@ public class PICInterview extends PICBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "img[src='./web_interview/img/top.png']";
+    selector = "img[src='img/interview.png']";
     String enkLinkSele = "a>dl>dd>strong", //
         a = "";
     if (isExistEle(driver, selector)) {

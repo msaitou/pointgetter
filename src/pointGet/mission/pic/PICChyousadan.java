@@ -13,7 +13,7 @@ import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerShindan;
 
 public class PICChyousadan extends PICBase {
-  final String url = "http://pointi.jp/";
+  final String url = "https://pointi.jp/game/";
   AnswerAdEnq AdEnq = null;
   AnswerShindan Shindan = null;
 
@@ -29,7 +29,7 @@ public class PICChyousadan extends PICBase {
   @Override
   public void privateMission(WebDriver driver) {
     driver.get(url);
-    selector = "dd.n9>a>span";
+    selector = "div.gamelist_wrap img[src*='visual/img16.png']";
     String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
