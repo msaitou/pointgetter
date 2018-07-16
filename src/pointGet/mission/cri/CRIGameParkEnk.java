@@ -79,7 +79,7 @@ public class CRIGameParkEnk extends CRIBase {
             String cUrl = driver.getCurrentUrl();
             logg.info("url[" + cUrl + "]");
 
-            if (cUrl.indexOf("getmoney.qpark.jp/enquete") >= 0) {
+            if (cUrl.indexOf("chobirich.qpark.jp/enquete") >= 0) {
               Utille.sleep(4000);
               GameParkEnk.answer(driver, sele1, wid);
             }

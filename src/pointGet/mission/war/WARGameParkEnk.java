@@ -81,7 +81,7 @@ public class WARGameParkEnk extends WARBase {
               GameParkEnk.answer(driver, sele1, wid);
             }
             else if ((cUrl.indexOf("adsurvey.media-ad.jp") >= 0
-                || cUrl.indexOf("credit-card.link/ad/enq") >= 0)
+                || cUrl.indexOf("/ad/enq") >= 0)
                 && isExistEle(driver, sele2_)) {
               // $('iframe').contents().find("div>input[type='submit']")
               Adsurvey.answer(driver, sele2, wid);
