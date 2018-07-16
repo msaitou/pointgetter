@@ -81,6 +81,11 @@ public abstract class CRIBase extends Mission {
         case Define.strCRIChirachi:
           MisIns = new CRIChirachi(loggg, cProps);
           break;
+        case Define.strCRIGameParkEnk:
+          MisIns = new CRIGameParkEnk(loggg, cProps);
+          break;
+          
+          
         default:
       }
       if (Arrays.asList(new String[] { Define.strCRIAnk,
@@ -88,7 +93,8 @@ public abstract class CRIBase extends Mission {
           Define.strCRIPointResearch,
           Define.strCRIChyousadan,
           Define.strCRIKumaVote,
-          Define.strCRIChirachi
+          Define.strCRIChirachi,
+          Define.strCRIGameParkEnk
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
