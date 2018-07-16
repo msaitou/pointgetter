@@ -74,7 +74,7 @@ public class GENChyousadan extends GENBase {
           clickSleepSelector(driver, seleFirst, 3000); // 遷移 全体へ
           changeCloseWindow(driver);
           Utille.sleep(10000);
-          int skip = 1;
+          int skip = 0;
           String sele1_ = "iframe.question_frame", //
               sele1 = "form>input[type='submit']", //
               sele4 = "a.submit-btn",
@@ -83,7 +83,7 @@ public class GENChyousadan extends GENBase {
           int cn = 0;
           while (isExistEle(driver, selector)) {
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-            int size = eleList.size(), targetIndex = size - skip;
+            int size = eleList.size(), targetIndex = skip;
             if (size > targetIndex && isExistEle(eleList, targetIndex)) {
               String wid = driver.getWindowHandle();
               Utille.scrolledPage(driver, eleList.get(targetIndex));

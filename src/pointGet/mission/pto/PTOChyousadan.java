@@ -59,16 +59,16 @@ public class PTOChyousadan extends PTOBase {
         changeCloseWindow(driver);
         Utille.sleep(8000);
 
-        int skip = 1;
+        int skip = 0;
         String sele1_ = "iframe.question_frame", //
             sele1 = "form>input[type='submit']", //
             sele4 = "a.submit-btn",
             b = "";
-        selector = "div.enquete_box>a";
+        selector = "div.enquete_box>a dd.title";
         int cn = 0;
         while (isExistEle(driver, selector)) {
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = size - skip;
+          int size = eleList.size(), targetIndex = skip;
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             Utille.scrolledPage(driver, eleList.get(targetIndex));

@@ -62,7 +62,7 @@ public class LFMChyousadan extends LFMBase {
         clickSleepSelector(driver, seleFirst, 3000); // 調査一覧へ
         changeCloseWindow(driver);
         Utille.sleep(3000);
-        int skip = 1;
+        int skip = 0;
         String sele1_ = "iframe.question_frame", //
             sele4 = "a.submit-btn",
             sele1 = "form>input[type='submit']", //
@@ -71,7 +71,7 @@ public class LFMChyousadan extends LFMBase {
         int cn = 0;
         while (isExistEle(driver, selector)) {
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = size - skip;
+          int size = eleList.size(), targetIndex = skip;
           if (size > targetIndex && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
             Utille.scrolledPage(driver, eleList.get(targetIndex));
