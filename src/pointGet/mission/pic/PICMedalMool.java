@@ -21,7 +21,7 @@ import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerUranai;
 
 public class PICMedalMool extends PICBase {
-  final String url = "https://pointi.jp/";
+  final String url = "https://pointi.jp/game/";
   WebDriver driver = null;
 
   AnswerManga Manga = null;
@@ -57,7 +57,7 @@ public class PICMedalMool extends PICBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     driver.get(url);
-    selector = "div.gamelist_wrap a>img[src*='visual/img17.png']";
+    selector = "img[alt='メダルモール']";
     int skip = 0;
 
     String sele3 = "div.enq-submit>button[type='submit']", //
@@ -68,6 +68,8 @@ public class PICMedalMool extends PICBase {
 
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000); // 遷移
+      String wid0 = driver.getWindowHandle();
+      changeWindow(driver, wid0);
       // 占い
       // 写真
       // コラム

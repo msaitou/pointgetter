@@ -43,7 +43,7 @@ public class PICInterview extends PICBase {
       clickSleepSelector(driver, selector, 4000); // 遷移
       changeCloseWindow(driver);
       if (isExistEle(driver, enkLinkSele)) {
-        clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
+//        clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         selector = "a>dl>dd>strong";
         int skip = 0; // tasuuketuyatte
         String sele1_ = "iframe.question_frame", //
