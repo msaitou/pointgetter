@@ -48,7 +48,7 @@ System.out.println(pointMap);
             if (pointMap.containsKey(Define.PSITE_CODE_GMY)) {
               break;
             }
-            selector = "span.user_point";
+            selector = "li.user_point>a";
             driver.get("http://dietnavi.com/pc");
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
@@ -286,7 +286,7 @@ System.out.println(pointMap);
             if (pointMap.containsKey(Define.PSITE_CODE_CIT)) {
               break;
             }
-            selector = "li.user>span.user_pt";
+            selector = "li.user_pt>a";
             driver.get("https://www.chance.com/");
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();

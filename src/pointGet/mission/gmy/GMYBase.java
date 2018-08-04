@@ -153,7 +153,7 @@ public abstract class GMYBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "li.user_poin>at", point = "";
+    String selector = "li.user_point>a", point = "";
     driver.get("https://dietnavi.com/pc");
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();

@@ -32,6 +32,8 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -43,8 +45,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import lombok.val;
 
 /**
  * @author saitou utillity class
@@ -593,7 +593,7 @@ public class Utille {
    */
   public static void clickRecaptha(WebDriver driver, Logger logg) {
     Utille.sleep(2000);
-    String reCaptchaCheck = "div.g-recaptcha iframe";
+    String reCaptchaCheck = "div.g-recaptcha div iframe";
     if (isExistEle(driver, reCaptchaCheck, false, logg)) {
       // キャプチャをクリック
       WebElement iframe = driver.findElement(By.cssSelector(reCaptchaCheck));
@@ -617,8 +617,13 @@ public class Utille {
   */
   public static boolean clickRecaptha(WebDriver driver, Logger logg, String baseFrameSele) {
     boolean res = false;
-    Utille.sleep(2000);
-    String reCaptchaCheck = "div.g-recaptcha iframe";
+    Utille.sleep(5000);
+    String test2 = "html>body div.g-recaptcha>div>div";
+    if (isExistEle(driver, test2, false, logg)) {
+      logg.info("bbbubububu");
+    }
+//    String reCaptchaCheck = "html>body div.g-recaptcha div iframe";
+    String reCaptchaCheck = "html>body div iframe";
     if (isExistEle(driver, reCaptchaCheck, false, logg)) {
       // キャプチャをクリック
       WebElement iframe = driver.findElement(By.cssSelector(reCaptchaCheck));

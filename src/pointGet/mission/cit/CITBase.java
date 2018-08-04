@@ -155,7 +155,7 @@ public abstract class CITBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "li.user>span.user_pt", point = "";
+    String selector = "li.user_pt>a", point = "";
     driver.get("https://www.chance.com/");
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
