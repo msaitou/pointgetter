@@ -60,7 +60,7 @@ public class CITKenkou extends GMYBase {
             Utille.sleep(5000);
 
             String wid = driver.getWindowHandle();
-            changeWindow(driver, wid);
+            changeCloseWindow(driver);
             if (isExistEle(driver, seleNextb2)) {
               Kenkou.answer(driver, seleNextb2, wid);
             Utille.refresh(driver, logg);
