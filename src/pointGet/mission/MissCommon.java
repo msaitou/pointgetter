@@ -7,10 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchWindowException;
@@ -19,7 +18,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import lombok.val;
 import pointGet.common.Eventually;
 import pointGet.common.Utille;
 
@@ -165,50 +166,58 @@ public abstract class MissCommon {
     clickSelector(driver, ele.findElement(By.cssSelector(selector)));
   }
 
-//  /**
-//   *
-//   * @param ele
-//   * @param selector
-//   */
-//  protected void clickSelector(WebElement ele) {
-//    int i = 0;
-//    while (i++ < 5) {
-//      try {
-//        ele.click();
-//        return;
-//      } catch (TimeoutException te) {
-//
-//      } catch (WebDriverException e) {
-//        logg.error("-clickSelector error-------------------");
-//        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50));
-//      }
-//    }
-//  }
+  //  /**
+  //   *
+  //   * @param ele
+  //   * @param selector
+  //   */
+  //  protected void clickSelector(WebElement ele) {
+  //    int i = 0;
+  //    while (i++ < 5) {
+  //      try {
+  //        ele.click();
+  //        return;
+  //      } catch (TimeoutException te) {
+  //
+  //      } catch (WebDriverException e) {
+  //        logg.error("-clickSelector error-------------------");
+  //        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50));
+  //      }
+  //    }
+  //  }
 
   /**
   *
   * @param ele
   * @param selector
   */
- protected void clickSelector(WebDriver driver, WebElement ele) {
-   Utille.scrolledPage(driver, ele);
-   int i = 0;
-   while (i++ < 5) {
-     try {
-//       ele.click();
-       Actions action = new Actions(driver);
-       action.moveToElement(ele).click().perform();
-       return;
-     } catch (TimeoutException te) {
-    	 Utille.refresh(driver, logg);
-     } catch (WebDriverException e) {
-       logg.error("-clickSelector error-------------------");
-       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 5000));
-     }
-   }
- }
+  protected void clickSelector(WebDriver driver, WebElement ele) {
+    Utille.scrolledPage(driver, ele);
+    int i = 0;
+    while (i++ < 5) {
+      try {
+        //ドライバのcapability情報を取得
+        Capabilities capabilities = ((RemoteWebDriver) driver).getCapabilities();
+        //取得したcapability情報からブラウザのバージョンを取得
+        System.out.println(capabilities.getVersion());
+        if (capabilities.getVersion() == "57.0.2") {
+          ele.click();
+        }
+        else {
+          Actions action = new Actions(driver);
+          action.moveToElement(ele).click().perform();
+        }
+        return;
+      } catch (TimeoutException te) {
+        Utille.refresh(driver, logg);
+      } catch (WebDriverException e) {
+        logg.error("-clickSelector error-------------------");
+        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 5000));
+      }
+    }
+  }
 
- /**
+  /**
    *
    * @param driver
    * @param selector
