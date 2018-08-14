@@ -12,6 +12,7 @@ import java.util.function.Function;
 
 import org.bson.Document;
 
+import pointGet.common.MailCommon;
 import pointGet.common.Utille;
 
 import com.mongodb.DBObject;
@@ -199,9 +200,11 @@ public class PointsCollection {
     }));
     //		保存
   }
-  public void sendMailAchievmentDayly() {
+  public void sendMailAchievmentDayly(Dbase Dbase) {
     Map<String, String> m = getAchievementData();
-    
+    String contents = "";
+    contents += "sum:"+m.get("total")+"("+m.get("diff")+")";
+    new MailCommon(Dbase).send(contents, "test");
   }
   private Map<String, String> getAchievementData() {
     // やっぱMongoCusrser使わないと取れないかも。

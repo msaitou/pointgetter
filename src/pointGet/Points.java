@@ -350,6 +350,7 @@ System.out.println(pointMap);
       PC.putPointsData(pMap);
     }
     PC.putAchievementData();
+    PC.sendMailAchievmentDayly(Dbase);
     logg.warn(total + sb.toString());
   }
 
