@@ -18,6 +18,7 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Eventually;
 import pointGet.common.Utille;
@@ -194,7 +195,9 @@ public abstract class MissCommon {
    int i = 0;
    while (i++ < 5) {
      try {
-       ele.click();
+//       ele.click();
+       Actions action = new Actions(driver);
+       action.moveToElement(ele).click().perform();
        return;
      } catch (TimeoutException te) {
     	 Utille.refresh(driver, logg);

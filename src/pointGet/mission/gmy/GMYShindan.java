@@ -45,6 +45,7 @@ public class GMYShindan extends GMYBase {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);
       while (isExistEle(driver, sele0)) {
+      Utille.sleep(8000);
         List<WebElement> eleList = driver.findElements(By.cssSelector(sele0));
         int size1 = eleList.size(), zumiCnt = 0;
         WebElement wEle = null;
@@ -67,9 +68,9 @@ public class GMYShindan extends GMYBase {
           break;
         }
         if (isExistEle(wEle, sele1)) {
-          clickSleepSelector(driver, wEle, sele1, 4000); // 遷移
-          waitTilReady(driver);
-          Utille.sleep(4000);
+          clickSleepSelector(driver, wEle, sele1, 8000); // 遷移
+//          waitTilReady(driver);
+//          Utille.sleep(4000);
           Shindan.answer(driver, "", null);
         }
         else {
