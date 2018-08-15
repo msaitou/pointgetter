@@ -200,7 +200,7 @@ public abstract class MissCommon {
         Capabilities capabilities = ((RemoteWebDriver) driver).getCapabilities();
         //取得したcapability情報からブラウザのバージョンを取得
         System.out.println(capabilities.getVersion());
-        if (capabilities.getVersion() == "57.0.2") {
+        if (capabilities.getVersion().equals("57.0.2")) {
           ele.click();
         }
         else {

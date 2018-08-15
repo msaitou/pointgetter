@@ -68,6 +68,8 @@ public class GPOAnqueate extends GPOBase {
         String okSele = "input[alt='OK']";
 
         if (isExistEle(driver, okSele)) {
+          WebElement okEle = driver.findElement(By.cssSelector(okSele));
+          Utille.sleep(3000);
           clickSleepSelector(driver, okSele, 5000); // 遷移
           int skip = 0, beforeSize = 0;
           selector = "div.enquete_box>div>a"; // アンケート一覧の回答するボタン
