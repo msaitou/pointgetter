@@ -48,7 +48,7 @@ public class SUGGetPark extends SUGBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     // ゲームイメージ
     selector = "dt>a>img[src='//static.sugutama.jp/ssp_site/63ab6c29b9d6af2aab742c593fc8c1c5.png']";
     String enkLinkSele = "dt>a>img[src='//static.sugutama.jp/ssp_site/63ab6c29b9d6af2aab742c593fc8c1c5.png']";
@@ -56,16 +56,16 @@ public class SUGGetPark extends SUGBase {
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      driver.get("http://park.netmile.co.jp/survey/");
+      Utille.url(driver, "http://park.netmile.co.jp/survey/", logg);
       for (int k = 0; k < 1; k++) {
         //        if (k == 1) {
-        //          driver.get("http://farm.osaifu.com/square/diagnoses");
+        //          Utille.url(driver, "http://farm.osaifu.com/square/diagnoses", logg);
         //        }
         //        else if (k == 2) {
-        //          driver.get("http://farm.osaifu.com/square/surveys");
+        //          Utille.url(driver, "http://farm.osaifu.com/square/surveys", logg);
         //        }
         //        else if (k == 3) {
-        //          driver.get("http://farm.osaifu.com/square/pittango");
+        //          Utille.url(driver, "http://farm.osaifu.com/square/pittango", logg);
         //        }
 
         Utille.sleep(3000);

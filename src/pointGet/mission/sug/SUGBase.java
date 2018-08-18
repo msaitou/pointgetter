@@ -145,7 +145,7 @@ public abstract class SUGBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "span#user-mile-status-earn", point = "";
-    driver.get("http://www.sugutama.jp/passbook");
+    Utille.url(driver, "http://www.sugutama.jp/passbook", logg);
     Utille.sleep(5000);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();

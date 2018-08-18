@@ -144,7 +144,7 @@ public abstract class ECNBase extends Mission {
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "p.user_point_txt>strong", point = "";
     while (point == "") {
-      driver.get("https://ecnavi.jp/mypage/point_history/");
+      Utille.url(driver, "https://ecnavi.jp/mypage/point_history/", logg);
       Utille.sleep(2000);
       if (Utille.isExistEle(driver, selector, logg)) {
         point = driver.findElement(By.cssSelector(selector)).getText();

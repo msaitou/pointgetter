@@ -31,7 +31,7 @@ public class CITGameParkEnk extends CITBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "a>img[alt='GamePark アンケート広場で毎日ポイントGET']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //

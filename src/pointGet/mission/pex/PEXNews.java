@@ -29,7 +29,7 @@ public class PEXNews extends PEXBase {
 		int pexNewsNum = 5;
 		int pexNewsClick = 0;
 		for (int i = 0; pexNewsClick < pexNewsNum; i++) {
-			driver.get(this.url);
+			Utille.url(driver, this.url, logg);
 			// 未獲得印3つが確認できない場合ノルマ達成とみなしブレイク
 			selector = "li.pt.ungained";
 			if (!isExistEle(driver, selector,false)) {
@@ -42,7 +42,7 @@ public class PEXNews extends PEXBase {
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 			String newsUrl = eleList.get(i).getAttribute("href");
 			logg.info("newsUrl:" + newsUrl);
-			driver.get(newsUrl);
+			Utille.url(driver, newsUrl, logg);
 			Utille.sleep(3000);
 
 			int ran = Utille.getIntRand(4);

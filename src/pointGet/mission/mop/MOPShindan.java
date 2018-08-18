@@ -26,7 +26,7 @@ public class MOPShindan extends MOPBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "div.game_btn>div.icon>img[alt='毎日診断']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移
@@ -96,7 +96,7 @@ public class MOPShindan extends MOPBase {
 													String returnUrl = driver.findElement(By.cssSelector(selector))
 															.getAttribute("href");
 													logg.info("returnUrl:" + returnUrl);
-													driver.get(returnUrl);
+													Utille.url(driver, returnUrl, logg);
 													Utille.sleep(3000);
 												}
 											}

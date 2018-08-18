@@ -31,8 +31,8 @@ public class GENGameParkEnk extends GENBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
-//    driver.get("http://gendama-plus.gamepark.net/");
+    Utille.url(driver, url, logg);
+//    Utille.url(driver, "http://gendama-plus.gamepark.net/", logg);
     String pop1 = "div#campaignDialog p.btnPdPlay", //
     pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
     pop2Cls = "div.campaignClose>img", //

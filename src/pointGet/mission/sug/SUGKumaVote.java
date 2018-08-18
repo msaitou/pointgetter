@@ -27,7 +27,7 @@ public class SUGKumaVote extends SUGBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "dl.game_area>dt>a[href='/ssp/20']>img";
     String sele0 = "a.start__button" //
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため

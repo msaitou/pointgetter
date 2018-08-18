@@ -29,7 +29,7 @@ public class GENMorimoriKakome extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		Utille.sleep(2000);
 		selector = "img[src='//img.gendama.jp/img/renew/top/ban_kakome.png']";
 		if (isExistEle(driver, selector)) {

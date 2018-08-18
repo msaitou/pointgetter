@@ -32,7 +32,7 @@ public class GMYGameParkEnk extends GMYBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     waitTilReady(driver);
     selector = "a[href*='gamepark']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //

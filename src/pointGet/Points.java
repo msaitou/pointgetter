@@ -49,7 +49,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "li.user_point>a";
-            driver.get("http://dietnavi.com/pc");
+            Utille.url(driver, "http://dietnavi.com/pc", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_GMY + ":" + Utille.getNumber(point) + "]";
@@ -60,7 +60,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "li#user_point01>a>span";
-            driver.get("http://www.gendama.jp/");
+            Utille.url(driver, "http://www.gendama.jp/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_GEN + ":" + Utille.getNumber(point) + "]";
@@ -71,7 +71,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "p.user_point_txt>strong";
-            driver.get("https://ecnavi.jp/mypage/point_history/");
+            Utille.url(driver, "https://ecnavi.jp/mypage/point_history/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_ECN + ":" + Utille.getNumber(point) + "]";
@@ -81,14 +81,14 @@ System.out.println(pointMap);
             if (pointMap.containsKey(Define.PSITE_CODE_MOP)) {
               break;
             }
-            driver.get("http://pc.moppy.jp/");
+            Utille.url(driver, "http://pc.moppy.jp/", logg);
             selector = "div#preface>ul.pre__login__inner";
             if (!isExistEle(driver, selector)) {
               // login!!
               LoginSite.login(Define.PSITE_CODE_MOP, driver, logg);
             }
             selector = "div#point_blinking strong";
-            driver.get("http://pc.moppy.jp/bankbook/");
+            Utille.url(driver, "http://pc.moppy.jp/bankbook/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_MOP + ":" + Utille.getNumber(point);
@@ -104,7 +104,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "dd.user_pt.fw_b>span.fw_b";
-            driver.get("https://pex.jp/user/point_passbook/all");
+            Utille.url(driver, "https://pex.jp/user/point_passbook/all", logg);
             if (!isExistEle(driver, selector)) {
               // login!!
               LoginSite.login(Define.PSITE_CODE_PEX, driver, logg);
@@ -119,13 +119,13 @@ System.out.println(pointMap);
               break;
             }
             selector = "ul.userinfo";
-            driver.get("http://osaifu.com/");
+            Utille.url(driver, "http://osaifu.com/", logg);
             if (!isExistEle(driver, selector)) {
               // login!!
               LoginSite.login(Define.PSITE_CODE_OSA, driver, logg);
             }
             selector = "dl.bankbook-total>dd.current.coin>span";
-            driver.get("https://osaifu.com/contents/bankbook/top/");
+            Utille.url(driver, "https://osaifu.com/contents/bankbook/top/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_OSA + ":" + Utille.getNumber(point);
@@ -141,7 +141,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "p.pt-user-nav__ttl--point";
-            driver.get("https://www.pointtown.com/ptu/top");
+            Utille.url(driver, "https://www.pointtown.com/ptu/top", logg);
             if (!isExistEle(driver, selector)) {
               // login!!
               LoginSite.login(Define.PSITE_CODE_PTO, driver, logg);
@@ -159,7 +159,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "td.ad_point>span.limited";
-            driver.get("https://point.i2i.jp/account/");
+            Utille.url(driver, "https://point.i2i.jp/account/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_I2I + ":" + Utille.getNumber(point) + "]";
@@ -172,7 +172,7 @@ System.out.println(pointMap);
             // login!!
             LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
             selector = "table.memberinfo tr>td>strong";
-            //					driver.get("http://www.point-island.com/");
+            //					Utille.url(driver, "http://www.point-island.com/", logg);
             if (isExistEle(driver, selector)) {
               List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
               if (isExistEle(eleList, 1)) {
@@ -186,11 +186,11 @@ System.out.println(pointMap);
               break;
             }
             selector = "p.text.point";
-            driver.get("http://pointi.jp/my/my_page.php"); // http://pointi.jp/
+            Utille.url(driver, "http://pointi.jp/my/my_page.php", logg); // http://pointi.jp/
             if (!isExistEle(driver, selector)) {
               // login!!
               LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
-              driver.get("http://pointi.jp/my/my_page.php"); // http://pointi.jp/
+              Utille.url(driver, "http://pointi.jp/my/my_page.php", logg); // http://pointi.jp/
             }
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
@@ -204,7 +204,7 @@ System.out.println(pointMap);
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "a.usernavi-point";
-            driver.get("http://hapitas.jp/");
+            Utille.url(driver, "http://hapitas.jp/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_HAP + ":" + Utille.getNumber(point) + "]";
@@ -217,7 +217,7 @@ System.out.println(pointMap);
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "div.bankbook_panel__point>em";
-            driver.get("http://pc.mtoku.jp/mypage/bankbook/");
+            Utille.url(driver, "http://pc.mtoku.jp/mypage/bankbook/", logg);
             if (isExistEle(driver, selector)) {
               List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
               if (isExistEle(eleList, 0)) {
@@ -233,7 +233,7 @@ System.out.println(pointMap);
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "li.p_menu.point>a";
-            driver.get("http://www.chobirich.com/");
+            Utille.url(driver, "http://www.chobirich.com/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_CRI + ":" + Utille.getNumber(point) + "]";
@@ -246,7 +246,7 @@ System.out.println(pointMap);
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "p#user_get_point>em";
-            driver.get("https://www.poney.jp/");
+            Utille.url(driver, "https://www.poney.jp/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_PNY + ":" + Utille.getNumber(point) + "]";
@@ -259,7 +259,7 @@ System.out.println(pointMap);
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
             selector = "span#user-mile-status-earn";
-            driver.get("http://www.sugutama.jp/passbook");
+            Utille.url(driver, "http://www.sugutama.jp/passbook", logg);
             Utille.sleep(5000);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
@@ -271,7 +271,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "span.top-UserPoint_Point";
-            driver.get("http://www.warau.jp/");
+            Utille.url(driver, "http://www.warau.jp/", logg);
             if (!isExistEle(driver, selector)) {
               // login!!
               LoginSite.login(Define.PSITE_CODE_WAR, driver, logg);
@@ -287,7 +287,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "li.user_pt>a";
-            driver.get("https://www.chance.com/");
+            Utille.url(driver, "https://www.chance.com/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_CIT + ":" + Utille.getNumber(point) + "]";
@@ -298,7 +298,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "div.point span.F5";
-            driver.get("http://poimon.jp/");
+            Utille.url(driver, "http://poimon.jp/", logg);
             if (!isExistEle(driver, selector)) {
               // login!!
               LoginSite.login(Define.PSITE_CODE_PMO, driver, logg);
@@ -314,7 +314,7 @@ System.out.println(pointMap);
               break;
             }
             selector = "div.login>p.point>strong";
-            driver.get("http://www.point-stadium.com/");
+            Utille.url(driver, "http://www.point-stadium.com/", logg);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_PST + ":" + Utille.getNumber(point) + "]";

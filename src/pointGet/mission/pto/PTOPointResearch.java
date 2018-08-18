@@ -36,7 +36,7 @@ public class PTOPointResearch extends PTOBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-//    driver.get(url);
+//    Utille.url(driver, url, logg);
     selector = "td>span.promo_enq_bt";
     Utille.sleep(3000);
     int skip = 1;

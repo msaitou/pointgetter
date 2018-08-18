@@ -130,7 +130,7 @@ public abstract class CRIBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "li.p_menu.point>a", point = "";
-    driver.get("http://www.chobirich.com/");
+    Utille.url(driver, "http://www.chobirich.com/", logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

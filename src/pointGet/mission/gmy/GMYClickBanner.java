@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -32,7 +34,7 @@ public class GMYClickBanner extends GMYBase {
         "http://dietnavi.com/pc/daily_click.php" };
 
     for (int j = 0; j < urls.length; j++) {
-      driver.get(urls[j]);
+      Utille.url(driver, urls[j], logg);
       String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
           recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
           ;

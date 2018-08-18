@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.common.Utille;
+
 public class CRIClickBananer extends CRIBase {
 	final String url = "http://www.chobirich.com/game/";
 	private static HashMap<String, HashMap<String, String>> clickMap = new HashMap<String, HashMap<String, String>>() {
@@ -52,10 +54,10 @@ public class CRIClickBananer extends CRIBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		//		driver.get(url);
+		//		Utille.url(driver, url, logg);
 		int c = 0;
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
-			driver.get(clMap.getValue().get("url"));
+			Utille.url(driver, clMap.getValue().get("url"), logg);
 			switch (clMap.getKey()) {
 				case "topページ":
 					if (isExistEle(driver, clMap.getValue().get("sele"))) {

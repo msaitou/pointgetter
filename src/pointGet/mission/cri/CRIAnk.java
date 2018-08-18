@@ -26,7 +26,7 @@ public class CRIAnk extends CRIBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
 
     String tab3 = "li.tab_03>a";
     if (isExistEle(driver, tab3)) {

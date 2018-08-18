@@ -66,7 +66,7 @@ public class GENMorikoreEnk extends GENBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "section#ftrlink li>a[href*='/cl/?id=134610&u=6167192']";
     String enkLinkSele = "a>img[alt='モリモリ診断']", //
         a = "";
@@ -77,23 +77,23 @@ public class GENMorikoreEnk extends GENBase {
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         changeCloseWindow(driver);
-        driver.get("http://mrga.service-navi.jp/square/diagnoses");
+        Utille.url(driver, "http://mrga.service-navi.jp/square/diagnoses", logg);
         for (int k = 0; k < 5; k++) {
           if (k == 1) {
-            driver.get("http://mrga.service-navi.jp/square/columns");
+            Utille.url(driver, "http://mrga.service-navi.jp/square/columns", logg);
           }
           else if (k == 2) {
-            driver.get("http://mrga.service-navi.jp/square/surveys");
-            //            driver.get("http://mrga.service-navi.jp/square/surveys");
+            Utille.url(driver, "http://mrga.service-navi.jp/square/surveys", logg);
+            //            Utille.url(driver, "http://mrga.service-navi.jp/square/surveys", logg);
             //            continue;
           }
           else if (k == 4) {
-            driver.get("http://mrga.service-navi.jp/square/pittango");
+            Utille.url(driver, "http://mrga.service-navi.jp/square/pittango", logg);
 
             //            continue;
           }
           else if (k == 3) {
-            driver.get("http://mrga.service-navi.jp/square/votes");
+            Utille.url(driver, "http://mrga.service-navi.jp/square/votes", logg);
           }
 
           Utille.sleep(3000);

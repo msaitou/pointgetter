@@ -65,7 +65,7 @@ public abstract class PNYBase extends Mission {
 
   public static String getSitePoint(WebDriver driver, Logger logg) {
     String selector = "li.user>a>span.user_pt", point = "";
-    driver.get("https://www.chance.com/");
+    Utille.url(driver, "https://www.chance.com/", logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
     }

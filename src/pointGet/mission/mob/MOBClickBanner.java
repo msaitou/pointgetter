@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -23,9 +25,9 @@ public class MOBClickBanner extends MOBBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		// TOPバナー
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "ul.p-daily_click__list>li>a>img";
-		driver.get("http://pc.mtoku.jp/contents/");
+		Utille.url(driver, "http://pc.mtoku.jp/contents/", logg);
 		if (isExistEle(driver, selector)) {
 			int size = getSelectorSize(driver, selector);
 			for (int i = 0; i < size; i++) {

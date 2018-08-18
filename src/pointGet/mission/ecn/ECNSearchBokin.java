@@ -31,7 +31,7 @@ public class ECNSearchBokin extends ECNBase {
 	public void privateMission(WebDriver driver) {
 		int ecnSearchBokinNum = 2;
 		for (int i = 0; i < ecnSearchBokinNum; i++) {
-			driver.get(this.url);
+			Utille.url(driver, this.url, logg);
 			selector = "input[name='Keywords']";
 			if (isExistEle(driver, selector)) {
 				WebElement ele = driver.findElement(By.cssSelector("input[name='Keywords']"));

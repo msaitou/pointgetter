@@ -5,6 +5,8 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -21,7 +23,7 @@ public class CITChirachi extends CITBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(this.url);
+		Utille.url(driver, this.url, logg);
 		selector = "div.top_attention a[href*='www.chance.com/chirashi/']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移

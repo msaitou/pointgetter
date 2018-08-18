@@ -58,7 +58,7 @@ public abstract class GPOBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     String sel = "li.status-point", laySel = "div.layer_board a.btnclose_top.btn_close>img";
-    driver.get("http://www.gpoint.co.jp/");
+    Utille.url(driver, "http://www.gpoint.co.jp/", loggg);
     if (!Utille.isExistEle(driver, sel, false, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
       LoginSite.login(sCode, driver, loggg);
@@ -184,11 +184,11 @@ public abstract class GPOBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "span#point", sel = "uli.status-point", point = "";
-    driver.get("https://www.gpoint.co.jp/scripts/direct/userinfo/MMMyPage.do");
+    Utille.url(driver, "https://www.gpoint.co.jp/scripts/direct/userinfo/MMMyPage.do", logg);
     if (!Utille.isExistEle(driver, sel, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);
-      driver.get("https://www.gpoint.co.jp/scripts/direct/userinfo/MMMyPage.do");
+      Utille.url(driver, "https://www.gpoint.co.jp/scripts/direct/userinfo/MMMyPage.do", logg);
     }
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();

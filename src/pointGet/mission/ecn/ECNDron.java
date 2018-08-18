@@ -26,7 +26,7 @@ public class ECNDron extends ECNBase {
     String[] dronUrlList = { "https://ecnavi.jp/travel/#doron", "http://ecnavi.jp/shopping/#doron" };
     selector = "div#doron a>p>img";
     for (int i = 0; i < dronUrlList.length; i++) {
-      driver.get(dronUrlList[i]);
+      Utille.url(driver, dronUrlList[i], logg);
       Utille.sleep(2000);
       if (isExistEle(driver, "div.js_anime.got")) {
         logg.warn(mName + i + "]獲得済み");

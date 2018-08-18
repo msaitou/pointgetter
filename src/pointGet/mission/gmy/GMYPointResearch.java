@@ -57,7 +57,7 @@ public class GMYPointResearch extends GMYBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
     recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;

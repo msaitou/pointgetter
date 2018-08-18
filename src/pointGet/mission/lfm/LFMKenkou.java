@@ -22,7 +22,7 @@ public class LFMKenkou extends LFMBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String uranaiSelector = "div>img[alt='さらさら健康コラム']";
     if (isExistEle(driver, uranaiSelector)) {
       clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ

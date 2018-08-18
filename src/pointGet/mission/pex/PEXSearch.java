@@ -37,7 +37,7 @@ public class PEXSearch extends PEXBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get("http://pex.jp");
+		Utille.url(driver, "http://pex.jp", logg);
 		String sel = "dd.user_pt.fw_b>span.fw_b";
 		if (!isExistEle(driver, sel)) {
 			// Login
@@ -45,7 +45,7 @@ public class PEXSearch extends PEXBase {
 		}
 		logg.info(this.mName + "]roop");
 		for (int i = this.cnt; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis()); i++) {
-			driver.get(url);
+			Utille.url(driver, url, logg);
 			String selector = "input#keyword";
 			if (isExistEle(driver, selector)) {
 				WebElement ele = driver.findElement(By.cssSelector(selector));

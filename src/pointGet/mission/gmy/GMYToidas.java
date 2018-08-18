@@ -27,7 +27,7 @@ public class GMYToidas extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     selector = "div.everyday_list1 ul>li>a[href='http://dietnavi.com/pc/ad_jump.php?id=42431']";
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
     recoNoneSele = "div#cxOverlayParent>a.recommend_close" // disabled recomend
     ;

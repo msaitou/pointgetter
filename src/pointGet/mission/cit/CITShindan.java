@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerShindan;
 
 /**
@@ -28,7 +29,7 @@ public class CITShindan extends CITBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "a[href='https://www.chance.com/research/shindan/play.jsp'] img[alt='診断テスト']";
     String sele0 = "div.entry", // 
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため

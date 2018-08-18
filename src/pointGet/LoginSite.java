@@ -185,7 +185,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginGpo(WebDriver driver, Logger logg) {
-    driver.get("https://www.gpoint.co.jp/scripts/auth/LoginEntry.do");
+    Utille.url(driver, "https://www.gpoint.co.jp/scripts/auth/LoginEntry.do", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input#userid", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input#userid"));
@@ -204,7 +204,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginDmy(WebDriver driver, Logger logg) {
-    //    driver.get("https://dauth.user.ameba.jp/login/ameba");
+    //    Utille.url(driver, "https://dauth.user.ameba.jp/login/ameba", logg);
     String loginBtnSele = "a.c-btn-login";
     String loginBtnSele2 = "input.btn_primary";
     if (Utille.isExistEle(driver, loginBtnSele, logg)) {
@@ -253,7 +253,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginOsa(WebDriver driver, Logger logg) {
-    driver.get("https://osaifu.com/login/");
+    Utille.url(driver, "https://osaifu.com/login/", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input[name='_username']", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input[name='_username']"));
@@ -272,7 +272,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginMop(WebDriver driver, Logger logg) {
-    driver.get("https://ssl.pc.moppy.jp/login/");
+    Utille.url(driver, "https://ssl.pc.moppy.jp/login/", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input[name='mail']", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input[name='mail']"));
@@ -291,7 +291,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginPic(WebDriver driver, Logger logg) {
-    driver.get("https://pointi.jp/entrance.php");
+    Utille.url(driver, "https://pointi.jp/entrance.php", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input[name='email_address']", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input[name='email_address']"));
@@ -310,7 +310,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginPmo(WebDriver driver, Logger logg) {
-    driver.get("https://ssl.poimon.jp/member/loginform/");
+    Utille.url(driver, "https://ssl.poimon.jp/member/loginform/", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input.mailForm", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input.mailForm"));
@@ -329,7 +329,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginWar(WebDriver driver, Logger logg) {
-    driver.get("https://ssl.warau.jp/login?loopbackURL=http%3A%2F%2Fwww.warau.jp%2F");
+    Utille.url(driver, "https://ssl.warau.jp/login?loopbackURL=http%3A%2F%2Fwww.warau.jp%2F", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input.mailForm", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input.mailForm"));
@@ -350,7 +350,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginPil(WebDriver driver, Logger logg) {
-    driver.get("http://www.point-island.com/");
+    Utille.url(driver, "http://www.point-island.com/", logg);
     if (Utille.isExistEle(driver, "input#mailadr", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input#mailadr"));
       ele.clear();
@@ -368,7 +368,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginRin(WebDriver driver, Logger logg) {
-    driver.get("https://www.rakuten-card.co.jp/e-navi/index.xhtml");
+    Utille.url(driver, "https://www.rakuten-card.co.jp/e-navi/index.xhtml", logg);
     selector = "li#loginId>input#u";
     // ログイン画面であれば
     if (Utille.isExistEle(driver, selector, logg)) {
@@ -394,7 +394,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginPex(WebDriver driver, Logger logg) {
-    driver.get("https://pex.jp/user/point_passbook/all");
+    Utille.url(driver, "https://pex.jp/user/point_passbook/all", logg);
     // ログイン画面
     String selector2 = "input#pex_user_login_email";
     if (Utille.isExistEle(driver, selector2, logg)) {
@@ -420,7 +420,7 @@ public class LoginSite extends PointGet {
    */
   public static void loginPto(WebDriver driver, Logger logg) {
     // ログイン画面
-    driver.get("https://www.pointtown.com/ptu/show_login.do?nextPath=%2Fptu%2Findex.do");
+    Utille.url(driver, "https://www.pointtown.com/ptu/show_login.do?nextPath=%2Fptu%2Findex.do", logg);
     String selector2 = "input.auth_input[name=uid]";
     if (isExistEle(driver, selector2)) {
       WebElement ele = driver.findElement(By.cssSelector(selector2));

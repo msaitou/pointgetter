@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -23,7 +25,7 @@ public class DMYChirachi extends DMYBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "i.c-dmoney_icon_21_reward";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000);

@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -22,7 +24,7 @@ public class OSAChirachi extends OSABase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "li>a>img[alt='お財布チラシ']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移

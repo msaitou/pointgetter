@@ -27,7 +27,7 @@ public class PEXClickBanner extends PEXBase {
   @Override
   public void privateMission(WebDriver driver) {
     selector = "div.clickpoint_innner li>a>p>span.title";
-    driver.get(url);
+    Utille.url(driver, url, logg);
     if (isExistEle(driver, selector)) {
       int size = getSelectorSize(driver, selector);
       // clipoバナー
@@ -39,7 +39,7 @@ public class PEXClickBanner extends PEXBase {
         List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
         if (isExistEle(eleList, i)) {
           clickSleepSelector(driver, eleList, i, 3000);// 選択
-          driver.get(url);
+          Utille.url(driver, url, logg);
           Utille.sleep(1000);
         }
       }

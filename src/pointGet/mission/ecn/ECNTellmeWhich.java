@@ -23,7 +23,7 @@ public class ECNTellmeWhich extends ECNBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(this.url);
+		Utille.url(driver, this.url, logg);
 		selector = "button";
 		// ランダムで1,2を選ぶ
 		int ran1 = Utille.getIntRand(2);

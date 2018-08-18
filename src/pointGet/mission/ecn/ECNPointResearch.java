@@ -55,7 +55,7 @@ public class ECNPointResearch extends ECNBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div#merchandise tr[style*='table-row']>td.reply>span.gn_orange>a";
     int skip = 2;
     String sele2 = "form.button_form>input[type='image']", //

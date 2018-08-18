@@ -36,9 +36,9 @@ public class GENShindan extends Mission {
   @Override
   public void privateMission(WebDriver driver) {
     selector = "section#game ul>li>a[href='/shindan_content/']>img";
-    driver.get(url);
+    Utille.url(driver, url, logg);
     if (isExistEle(driver, selector)) {
-      driver.get("http://www.gendama.jp/shindan_content/");
+      Utille.url(driver, "http://www.gendama.jp/shindan_content/", logg);
       //			clickSleepSelector(driver, selector, 4000); // 遷移
       changeCloseWindow(driver);
       while (true) {
@@ -120,7 +120,7 @@ public class GENShindan extends Mission {
                           String returnUrl = driver.findElement(By.cssSelector(selector))
                               .getAttribute("href");
                           logg.info("returnUrl:" + returnUrl);
-                          driver.get(returnUrl);
+                          Utille.url(driver, returnUrl, logg);
                           Utille.sleep(3000);
                         }
                       }

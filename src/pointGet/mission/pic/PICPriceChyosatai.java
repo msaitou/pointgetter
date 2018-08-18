@@ -30,7 +30,7 @@ public class PICPriceChyosatai extends PICBase {
   @Override
   public void privateMission(WebDriver driver) {
     for (int j = 0; j < 6; j++) {
-      driver.get(url);
+      Utille.url(driver, url, logg);
       String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
       selector = "a>img[alt='プライス調査隊']";
       if (isExistEle(driver, selector)) {
@@ -86,7 +86,7 @@ public class PICPriceChyosatai extends PICBase {
         doExchangeSele = "div.btn-area>button[type='submit']",
         sele = "a>img[alt='プライス調査隊']";
     ;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     if (isExistEle(driver, sele)) {
       clickSleepSelector(driver, sele, 6000); // 遷移
       changeCloseWindow(driver);

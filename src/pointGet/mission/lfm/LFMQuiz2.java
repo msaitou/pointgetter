@@ -27,7 +27,7 @@ public class LFMQuiz2 extends LFMBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div>img[alt='デイリークイズ']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000); // 遷移 全体へ

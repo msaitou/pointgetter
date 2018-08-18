@@ -25,7 +25,7 @@ public class RINClickBanner extends RINBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(4000);
     String selectorOverLay = "div.js-coreppo-notice-close";
     String selectorOverLayNone = "div#js-coreppo-notice[style*='display: none']>div.js-coreppo-notice-close";

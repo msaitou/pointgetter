@@ -29,7 +29,7 @@ public class OSANanyoubi extends OSABase {
   @Override
   public void privateMission(WebDriver driver) {
     selector = "li>a>img[alt='この日何曜日？']";
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(2000);
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 2000); // 遷移

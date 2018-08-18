@@ -58,7 +58,7 @@ public abstract class PEXBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions,
       ArrayList<Mission> missionList, String[] wordList, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    driver.get("http://pex.jp");
+    Utille.url(driver, "http://pex.jp", loggg);
     String sel = "dd.user_pt.fw_b>span.fw_b";
     if (!Utille.isExistEle(driver, sel, loggg)) {
       // Login
@@ -67,7 +67,7 @@ public abstract class PEXBase extends Mission {
     //		// 以下1日回
     //		if (!secondFlg && !thirdFlg) {
     //			mName = "■rakutenバナー";
-    //			driver.get("http://pex.jp");
+    //			Utille.url(driver, "http://pex.jp", logg);
     //			String selector = "div>div>div>a>img[src*='image.infoseek.rakuten.co.jp']";
     //			if (isExistEle(driver, selector)) {
     //				List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -159,7 +159,7 @@ public abstract class PEXBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "dd.user_pt.fw_b>span.fw_b", point = "";
-    driver.get("https://pex.jp/user/point_passbook/all");
+    Utille.url(driver, "https://pex.jp/user/point_passbook/all", logg);
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);

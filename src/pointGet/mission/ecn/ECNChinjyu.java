@@ -28,7 +28,7 @@ public class ECNChinjyu extends ECNBase {
 	public void privateMission(WebDriver driver) {
 		logg.info(this.mName+"]roop");
 		for (; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis());) {
-			driver.get(url);
+			Utille.url(driver, url, logg);
 			if (!isExistEle(driver, "div.button_area.clear_fix")) {
 				endFlag = true;
 				logg.info("break");
@@ -45,7 +45,7 @@ public class ECNChinjyu extends ECNBase {
 			}
 			if (isExistEle(driver, selector1)) {
 				String AnsUrl = driver.findElement(By.cssSelector(selector1)).getAttribute("href");
-				driver.get(AnsUrl);
+				Utille.url(driver, AnsUrl, logg);
 				logg.info("clicked!!");
 			}
 			this.cnt++;

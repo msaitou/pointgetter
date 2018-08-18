@@ -32,7 +32,7 @@ public class DMYPriceChyosatai extends DMYBase {
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
         Utille.url(driver, url, logg);
-//      driver.get(url);
+//      Utille.url(driver, url, logg);
       selector = "i.c-dmoney_icon_21_reward";
       if (isExistEle(driver, selector)) {
         clickSleepSelector(driver, selector, 3000);
@@ -89,7 +89,7 @@ public class DMYPriceChyosatai extends DMYBase {
     exchageListSele = "select[name='point']", //
     doExchangeSele = "div.btn-area>button[type='submit']", //
     sele = "li.js_tabPrice a.start-search";
-//    driver.get(url);
+//    Utille.url(driver, url, logg);
     Utille.url(driver, url, logg);
     selector = "i.c-dmoney_icon_21_reward";
     if (isExistEle(driver, selector)) {

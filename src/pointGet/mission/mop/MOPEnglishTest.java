@@ -27,7 +27,7 @@ public class MOPEnglishTest extends MOPBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "div.game_btn>div.icon>img[alt='英単語TEST']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移

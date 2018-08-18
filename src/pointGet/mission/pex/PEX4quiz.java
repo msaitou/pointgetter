@@ -26,7 +26,7 @@ public class PEX4quiz extends PEXBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(this.url);
+		Utille.url(driver, this.url, logg);
 		int ran1 = Utille.getIntRand(4);
 		selector = "ul.answer_select a";
 		if (isExistEle(driver, selector)) {

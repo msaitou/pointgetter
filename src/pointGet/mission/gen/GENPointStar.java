@@ -28,7 +28,7 @@ public class GENPointStar extends Mission {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		Utille.sleep(2000);
 		selector = "a img[src$='star.gif']";
 		if (isExistEle(driver, selector)) {

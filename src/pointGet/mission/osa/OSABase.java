@@ -60,7 +60,7 @@ public abstract class OSABase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     String se = "span.txt__username";
-    driver.get("http://osaifu.com/");
+    Utille.url(driver, "http://osaifu.com/", loggg);
     if (!Utille.isExistEle(driver, se, loggg)) {
       // login!!
       LoginSite.login(sCode, driver, loggg);
@@ -168,13 +168,13 @@ public abstract class OSABase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "span.txt__username", point = "", secondPoint = "";
-    driver.get("http://osaifu.com/");
+    Utille.url(driver, "http://osaifu.com/", logg);
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);
     }
     selector = "dd.a-txt__coin>em";
-    driver.get("https://osaifu.com/my-osaifu/");
+    Utille.url(driver, "https://osaifu.com/my-osaifu/", logg);
     List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 
     int targetIndex = 0;  // coin

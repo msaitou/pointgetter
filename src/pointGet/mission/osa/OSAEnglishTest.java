@@ -27,7 +27,7 @@ public class OSAEnglishTest extends OSABase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "li>a>img[alt='英単語TEST']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 2000); // 遷移

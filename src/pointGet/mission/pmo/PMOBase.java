@@ -54,7 +54,7 @@ public abstract class PMOBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     String sel = "div.point span.F5";
-    driver.get("http://poimon.jp/");
+    Utille.url(driver, "http://poimon.jp/", loggg);
     if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
       LoginSite.login(sCode, driver, loggg);
@@ -110,7 +110,7 @@ public abstract class PMOBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "div.point span.F5", point = "";
-    driver.get("http://poimon.jp/");
+    Utille.url(driver, "http://poimon.jp/", logg);
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);

@@ -65,7 +65,7 @@ public class MOPMiniGameEnk extends MOPBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[alt='miniゲームパーク']";
     String enkLinkSele = "img[alt='miniゲームパーク']", //
         a = "";
@@ -73,19 +73,19 @@ public class MOPMiniGameEnk extends MOPBase {
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      //      driver.get("http://minigamepark.moppy.jp/square/pittango");
-      //      driver.get("http://minigamepark.moppy.jp/square/diagnoses");
-      driver.get("http://minigamepark.moppy.jp/square/surveys");
+      //      Utille.url(driver, "http://minigamepark.moppy.jp/square/pittango", logg);
+      //      Utille.url(driver, "http://minigamepark.moppy.jp/square/diagnoses", logg);
+      Utille.url(driver, "http://minigamepark.moppy.jp/square/surveys", logg);
       for (int k = 0; k < 4; k++) {
         //      for (int k = 0; k < 1; k++) {
         if (k == 1) {
-          driver.get("http://minigamepark.moppy.jp/square/pittango");
+          Utille.url(driver, "http://minigamepark.moppy.jp/square/pittango", logg);
         }
         else if (k == 2) {
-          driver.get("http://minigamepark.moppy.jp/square/diagnoses");
+          Utille.url(driver, "http://minigamepark.moppy.jp/square/diagnoses", logg);
         }
         else if (k == 3) {
-          driver.get("http://minigamepark.moppy.jp/square/votes");
+          Utille.url(driver, "http://minigamepark.moppy.jp/square/votes", logg);
         }
 
         Utille.sleep(6000);

@@ -33,7 +33,7 @@ public class PSTShindanAnk extends PSTBase {
   @Override
   public void privateMission(WebDriver driver) {
     selector = "form[name='frmEnq']>div.box_blue3 div.fr>input";
-    driver.get(url);
+    Utille.url(driver, url, logg);
     if (isExistEle(driver, selector)) {
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       int size1 = eleList.size();
@@ -99,7 +99,7 @@ public class PSTShindanAnk extends PSTBase {
                             String returnUrl = driver.findElement(By.cssSelector(selector))
                                 .getAttribute("href");
                             logg.info("returnUrl:" + returnUrl);
-                            driver.get(returnUrl);
+                            Utille.url(driver, returnUrl, logg);
                             Utille.sleep(3000);
                           }
                         }

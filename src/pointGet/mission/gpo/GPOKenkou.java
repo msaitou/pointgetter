@@ -26,7 +26,7 @@ public class GPOKenkou extends GPOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(3000);
     selector = "div.bnr>[alt='さらさら健康コラム']";
     String selector2 = "div.bnr>[alt='さらさら健康コラム']";

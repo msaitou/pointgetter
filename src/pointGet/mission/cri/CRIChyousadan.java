@@ -25,7 +25,7 @@ public class CRIChyousadan extends CRIBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "li>a>img[alt='CMくじ']";
     String seleFirst = "a>img[alt='reado']";
     if (isExistEle(driver, selector)) {

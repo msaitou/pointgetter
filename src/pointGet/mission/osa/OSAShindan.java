@@ -30,7 +30,7 @@ public class OSAShindan extends OSABase {
   @Override
   public void privateMission(WebDriver driver) {
     selector = "li>a>img[alt='毎日診断']";
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String sele0 = "div.entry", //
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため
     sumiSelector = "img[src='/images/icons/sumi.png']";

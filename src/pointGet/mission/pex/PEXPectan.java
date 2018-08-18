@@ -27,7 +27,7 @@ public class PEXPectan extends PEXBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get("http://pex.jp");
+		Utille.url(driver, "http://pex.jp", logg);
 		String sel = "nav span.g-icon_point";
 		if (!isExistEle(driver, sel)) {
 			// Login
@@ -35,7 +35,7 @@ public class PEXPectan extends PEXBase {
 		}
 		logg.info(this.mName + "]roop");
 		for (; lastDoneTime == 0 || (lastDoneTime + 306000 <= System.currentTimeMillis());) {
-			driver.get(url);
+			Utille.url(driver, url, logg);
 			// div.clear_box があったらクリア！
 			selector = "div.clear_box";
 			if (isExistEle(driver, selector)) {

@@ -19,7 +19,7 @@ public class GPOUranai extends GPOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div.bnr>[alt='今日の12星座占い']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移

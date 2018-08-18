@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -22,7 +24,7 @@ public class GMYChirachi extends GMYBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
     recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;

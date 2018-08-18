@@ -30,7 +30,7 @@ public class ECNNews extends ECNBase {
     int ecnNewsClick = 0;
     for (int i = 0; ecnNewsClick < ecnNewsClickNorma
         && i < 20; i++) {
-      driver.get(this.url);
+      Utille.url(driver, this.url, logg);
       selector = "div.article_list li>a";
       if (!isExistEle(driver, selector)) {
         break;

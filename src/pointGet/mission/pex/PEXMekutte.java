@@ -24,7 +24,7 @@ public class PEXMekutte extends PEXBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "section#mekutte_seal>a.game_btn img";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000);

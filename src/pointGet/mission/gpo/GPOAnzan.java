@@ -25,7 +25,7 @@ public class GPOAnzan extends GPOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div.bnr>[alt='ANZAN']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 2000); // 遷移

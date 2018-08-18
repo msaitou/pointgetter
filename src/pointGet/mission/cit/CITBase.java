@@ -57,7 +57,7 @@ public abstract class CITBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    driver.get("https://www.chance.com/");
+    Utille.url(driver, "https://www.chance.com/", loggg);
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
         recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
@@ -156,7 +156,7 @@ public abstract class CITBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "li.user_pt>a", point = "";
-    driver.get("https://www.chance.com/");
+    Utille.url(driver, "https://www.chance.com/", logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

@@ -31,7 +31,7 @@ public class GENClickBanner extends Mission {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(2000);
     String selecter[] = { "a.itx-listitem-link div", "img[src='http://img.gendama.jp/img/forest/bt_day1.gif']",
         "img[src='//img.gendama.jp/img/neo/index/click_pt.png']",
@@ -65,7 +65,7 @@ public class GENClickBanner extends Mission {
       logg.info("selector: end");
     }
 
-    driver.get("http://www.gendama.jp/mypage/");
+    Utille.url(driver, "http://www.gendama.jp/mypage/", logg);
     selector = "img[src='http://img.gendama.jp/img/forest/forest_bt1.gif']";
     List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
     int size = eleList.size();

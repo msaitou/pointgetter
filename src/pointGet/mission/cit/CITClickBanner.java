@@ -27,7 +27,7 @@ public class CITClickBanner extends CITBase {
   @Override
   public void privateMission(WebDriver driver) {
     // TOP
-    driver.get(url);
+    Utille.url(driver, url, logg);
     // 1つめ
     for (String selector1 : new String[] { "div.top_newest div.condition",
         "div.top_recommend li div.condition", "div.top_mypage_side div.right_box>div.condition" }) {
@@ -53,7 +53,7 @@ public class CITClickBanner extends CITBase {
             }
             if (doneFlag) {
               // TOP
-              driver.get(url);
+              Utille.url(driver, url, logg);
               Utille.sleep(3000);
               break;
             }
@@ -62,7 +62,7 @@ public class CITClickBanner extends CITBase {
       }
     }
     // 2つめ
-    driver.get("https://www.chance.com/click.jsp");
+    Utille.url(driver, "https://www.chance.com/click.jsp", logg);
     selector = "div.ad_banner>a>img";
     if (isExistEle(driver, selector)) {
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
@@ -76,7 +76,7 @@ public class CITClickBanner extends CITBase {
     }
 
     // 3つめ
-    driver.get("https://www.chance.com/present/");
+    Utille.url(driver, "https://www.chance.com/present/", logg);
     closeOtherWindow(driver);
     selector = "dl.clearfix>dt>a>img";
     if (isExistEle(driver, selector)) {
@@ -105,7 +105,7 @@ public class CITClickBanner extends CITBase {
     }
 
     // 4つめ
-    driver.get("https://www.chance.com/shopping/");
+    Utille.url(driver, "https://www.chance.com/shopping/", logg);
     selector = "dl.clearfix>dt>a>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000);
@@ -123,7 +123,7 @@ public class CITClickBanner extends CITBase {
       }
     }
     // 5つめ
-    driver.get("https://www.chance.com/point/");
+    Utille.url(driver, "https://www.chance.com/point/", logg);
     selector = "div#potitto-chance dt>a>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000);

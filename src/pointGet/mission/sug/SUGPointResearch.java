@@ -28,7 +28,7 @@ public class SUGPointResearch extends SUGBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[src='//static.sugutama.jp/ssp_site/6ca17fd4762eff9519a468ab781852d4.png']";
     int skip = 1;
     String sele1 = "div.ui-control.type-fixed>a.ui-button";

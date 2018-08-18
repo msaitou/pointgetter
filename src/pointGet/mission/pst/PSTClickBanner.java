@@ -25,7 +25,7 @@ public class PSTClickBanner extends PSTBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(2000);
     String selecter[] = { "td>a>img" };
     for (int j = 0; j < selecter.length; j++) {

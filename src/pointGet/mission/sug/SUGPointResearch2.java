@@ -56,7 +56,7 @@ public class SUGPointResearch2 extends SUGBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div.tab_content2 dd>span>a";
     int skip = 1;
     String

@@ -175,13 +175,13 @@ public abstract class MOPBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "div#preface>ul.pre__login__inner", point = "0", secondPoint = "0";
-    driver.get("http://pc.moppy.jp/");
+    Utille.url(driver, "http://pc.moppy.jp/", logg);
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(Define.PSITE_CODE_MOP, driver, logg);
     }
     selector = "div#point_blinking strong";
-    driver.get("http://pc.moppy.jp/bankbook/");
+    Utille.url(driver, "http://pc.moppy.jp/bankbook/", logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

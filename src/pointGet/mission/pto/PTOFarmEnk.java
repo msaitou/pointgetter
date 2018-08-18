@@ -69,23 +69,23 @@ public class PTOFarmEnk extends PTOBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String enkLinkSele = "a[onclick*='ポイント農場']", //
     a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       //      changeCloseWindow(driver);
-      driver.get("http://farm.pointtown.com/square/diagnoses");
+      Utille.url(driver, "http://farm.pointtown.com/square/diagnoses", logg);
       for (int k = 0; k < 4; k++) {
         if (k == 1) {
-          driver.get("http://farm.pointtown.com/square/surveys");
+          Utille.url(driver, "http://farm.pointtown.com/square/surveys", logg);
         }
         else if (k == 2) {
-          driver.get("http://farm.pointtown.com/square/pittango");
+          Utille.url(driver, "http://farm.pointtown.com/square/pittango", logg);
         }
         else if (k == 3) {
-          driver.get("http://farm.pointtown.com/square/diagnoses");
+          Utille.url(driver, "http://farm.pointtown.com/square/diagnoses", logg);
         }
 
         Utille.sleep(3000);

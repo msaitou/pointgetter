@@ -24,7 +24,7 @@ public class PEXAnswer extends PEXBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(this.url);
+		Utille.url(driver, this.url, logg);
 		// ランダムで1,2を選ぶ
 		int ran = Utille.getIntRand(2);
 		selector = "section.question_area input[type='submit']";

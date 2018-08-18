@@ -24,7 +24,7 @@ public class HAPManga extends HAPBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		Utille.sleep(5000);
 		selector = "img[alt='ハピタス動画']";
 		if (isExistEle(driver, selector)) {

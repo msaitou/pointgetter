@@ -28,7 +28,7 @@ public class GENUranai extends Mission {
 	@Override
 	public void privateMission(WebDriver driver) {
 		// div#dropmenu01
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "div#dropmenu01";
 		if (isExistEle(driver, selector, false)) {
 			int size = getSelectorSize(driver, selector);
@@ -40,7 +40,7 @@ public class GENUranai extends Mission {
 						break;
 					}
 					String cmPageUrl = e.findElement(By.cssSelector(selector2)).getAttribute("href");
-					driver.get(cmPageUrl); // CMpage
+					Utille.url(driver, cmPageUrl, logg); // CMpage
 					Utille.sleep(8000);
 		      // ポイントに変換
 		      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",

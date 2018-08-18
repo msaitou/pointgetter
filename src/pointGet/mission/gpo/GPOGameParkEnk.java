@@ -31,7 +31,7 @@ public class GPOGameParkEnk extends GPOBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div.bnr>[alt='GamePark']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //

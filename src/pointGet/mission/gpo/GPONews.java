@@ -26,7 +26,7 @@ public class GPONews extends GPOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(3000);
     String selector2 = "div.bnr>[alt='今日の気になるニュース']";
     if (isExistEle(driver, selector2)) {

@@ -24,7 +24,7 @@ public class MOBAnzan extends MOBBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 //		selector = "a>p>img[src='https://pc-assets.mtoku.jp/common/img/contents/item_anzan.png']";
 
 		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_anzan.png']";

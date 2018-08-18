@@ -34,7 +34,7 @@ public class MOBPointResearch extends MOBBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "table.researchlist_table td>a";
     int skip = 1;
     String sele1 = "div.ui-control.type-fixed>a.ui-button";// pointResearch用

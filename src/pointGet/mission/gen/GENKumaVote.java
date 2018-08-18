@@ -30,7 +30,7 @@ public class GENKumaVote extends GENBase {
   @Override
   public void privateMission(WebDriver driver) {
     // div#dropmenu01
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div#dropmenu01";
     if (isExistEle(driver, selector, false)) {
       int size = getSelectorSize(driver, selector);
@@ -42,7 +42,7 @@ public class GENKumaVote extends GENBase {
             break;
           }
           String cmPageUrl = e.findElement(By.cssSelector(selector2)).getAttribute("href");
-          driver.get(cmPageUrl); // CMpage
+          Utille.url(driver, cmPageUrl, logg); // CMpage
           Utille.sleep(8000);
           String sele0 = "a.start__button" //
           , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため

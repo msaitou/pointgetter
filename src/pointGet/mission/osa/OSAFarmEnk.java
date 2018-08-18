@@ -72,7 +72,7 @@ public class OSAFarmEnk extends OSABase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "li>a>img[alt='お財布ファーム']";
     String enkLinkSele = "li>a>img[alt='お財布ファーム']", //
         a = "";
@@ -81,15 +81,15 @@ public class OSAFarmEnk extends OSABase {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
       for (int k = 0; k < 4; k++) {
-        driver.get("http://farm.osaifu.com/square/diagnoses");
+        Utille.url(driver, "http://farm.osaifu.com/square/diagnoses", logg);
         if (k == 1) {
-          driver.get("http://farm.osaifu.com/square/surveys");
+          Utille.url(driver, "http://farm.osaifu.com/square/surveys", logg);
         }
         else if (k == 2) {
-          driver.get("http://farm.osaifu.com/square/pittango");
+          Utille.url(driver, "http://farm.osaifu.com/square/pittango", logg);
         }
         else if (k == 3) {
-          driver.get("http://farm.osaifu.com/square/votes");
+          Utille.url(driver, "http://farm.osaifu.com/square/votes", logg);
         }
 
         Utille.sleep(3000);

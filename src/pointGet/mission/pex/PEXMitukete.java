@@ -86,7 +86,7 @@ public class PEXMitukete extends PEXBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "section#mitsukete_seal>a.game_btn img";
 		if (this.isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000);// move
@@ -97,7 +97,7 @@ public class PEXMitukete extends PEXBase {
 				// 解析
 				HashMap<String, String> hint = this.getHint(text);
 				if (hint.size() > 0) {
-					driver.get("http://pex.jp/point_actions/list/free_register");
+					Utille.url(driver, "http://pex.jp/point_actions/list/free_register", logg);
 
 					// その他の時に、どうしようTODO
 					selector = "section.vertical-menu.box-deco_orange a:contains('" + hint.get("condition") + "')";

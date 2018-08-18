@@ -75,7 +75,7 @@ public class GENPointResearch2 extends GENBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "a dd.survey_answer";
     int skip = 1;
     String

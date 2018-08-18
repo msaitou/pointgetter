@@ -128,7 +128,7 @@ public abstract class PSTBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "div.login>p.point>strong", point = "";
-    driver.get("http://www.point-stadium.com/");
+    Utille.url(driver, "http://www.point-stadium.com/", logg);
     Utille.sleep(5000);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();

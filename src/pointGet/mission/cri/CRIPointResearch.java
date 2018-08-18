@@ -73,7 +73,7 @@ public class CRIPointResearch extends CRIBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
 
     int skip = 1;
     String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用

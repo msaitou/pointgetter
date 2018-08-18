@@ -25,7 +25,7 @@ public class GENChirachi extends GENBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div#dropmenu01";
     if (isExistEle(driver, selector, false)) {
       int size0 = getSelectorSize(driver, selector);
@@ -37,7 +37,7 @@ public class GENChirachi extends GENBase {
             break;
           }
           String chirashiUrl = e.findElement(By.cssSelector(selector2)).getAttribute("href");
-          driver.get(chirashiUrl);
+          Utille.url(driver, chirashiUrl, logg);
           Utille.sleep(4000);
           selector = "li>a>img";
           int size = getSelectorSize(driver, selector);

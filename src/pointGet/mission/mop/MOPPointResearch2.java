@@ -36,7 +36,7 @@ public class MOPPointResearch2 extends MOPBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div.research td>a>span";
     int skip = 1;
     String

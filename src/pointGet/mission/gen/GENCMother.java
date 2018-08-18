@@ -44,7 +44,7 @@ public class GENCMother extends GENBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div#dropmenu01";
     String sele0 = "a.ui-btn.ui-btn-a" // アンケート一覧の回答するボタン
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
@@ -62,7 +62,7 @@ public class GENCMother extends GENBase {
             break;
           }
           String cmPageUrl = e.findElement(By.cssSelector(selector2)).getAttribute("href");
-          driver.get(cmPageUrl); // CMpage
+          Utille.url(driver, cmPageUrl, logg); // CMpage
           Utille.sleep(8000);
           // ポイントに変換
           String bankSele = "li.icon_h_bank>a",

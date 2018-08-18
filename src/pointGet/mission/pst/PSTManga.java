@@ -23,7 +23,7 @@ public class PSTManga extends PSTBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "form[name='ItemList']>p>input[name='entry']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移

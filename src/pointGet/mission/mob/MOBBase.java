@@ -140,7 +140,7 @@ public abstract class MOBBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "div.bankbook_panel__point>em", point = "";
-    driver.get("http://pc.mtoku.jp/mypage/bankbook/");
+    Utille.url(driver, "http://pc.mtoku.jp/mypage/bankbook/", logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
       if (Utille.isExistEle(eleList, 0, logg)) {

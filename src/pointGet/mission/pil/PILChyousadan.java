@@ -28,7 +28,7 @@ public class PILChyousadan extends PILBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "form#wcmpoint>input.style8";
     String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector)) {

@@ -76,7 +76,7 @@ public class AnswerShindan3 extends MissCommon {
                     String returnUrl = driver.findElement(By.cssSelector(listUrlSele))
                         .getAttribute("href");
                     logg.info("returnUrl:" + returnUrl);
-                    driver.get(returnUrl);
+                    Utille.url(driver, returnUrl, logg);
                     Utille.sleep(3000);
                   }
                   else {

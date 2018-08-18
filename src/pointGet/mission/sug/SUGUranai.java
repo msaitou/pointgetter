@@ -20,7 +20,7 @@ public class SUGUranai extends SUGBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "dl.game_area>dt>a[href='/ssp/20']>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移

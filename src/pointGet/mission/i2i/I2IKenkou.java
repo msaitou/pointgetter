@@ -28,7 +28,7 @@ public class I2IKenkou extends I2IBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(3000);
     selector = "li.pointfreeList_item";
     if (isExistEle(driver, selector)) {

@@ -32,7 +32,7 @@ public class GPOHyakkey extends GPOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
         selector2 = "li.menu06>a";
     if (isExistEle(driver, sele1)) {

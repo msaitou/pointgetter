@@ -296,7 +296,7 @@ public class MailClicker extends PointGet {
               String uriString = url; // 開くURL
               String logMess = "■request url[" + uriString + "] START";
               try {
-                driver.get(uriString);
+                Utille.url(driver, uriString, logg);
                 Utille.sleep(1000);
                 if (e.getKey().equals(Define.PSITE_CODE_I2I)) {
                   String sele = "div.detail_btn>a";

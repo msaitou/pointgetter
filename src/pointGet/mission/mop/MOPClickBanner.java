@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -23,13 +25,13 @@ public class MOPClickBanner extends MOPBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		// TOPバナー
-		driver.get("http://pc.moppy.jp/");
+		Utille.url(driver, "http://pc.moppy.jp/", logg);
 		selector = "div#site-jack a img";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000);
 		}
 
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "p.click>a.cc-btn";
 		if (isExistEle(driver, selector)) {
 			int size = getSelectorSize(driver, selector);

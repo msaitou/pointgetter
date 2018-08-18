@@ -30,7 +30,7 @@ public class ECNWebSearche extends ECNBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		// propertiesファイルから単語リストを抽出して、ランダムで5つ（数は指定可能）
-		driver.get(this.url);
+		Utille.url(driver, this.url, logg);
 		int ecnSearchNum = 4;
 		for (int i = 0; i < ecnSearchNum; i++) {
 			String selector = "input[name='Keywords']";

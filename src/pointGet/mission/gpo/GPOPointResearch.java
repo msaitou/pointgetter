@@ -28,7 +28,7 @@ public class GPOPointResearch extends GPOBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String sele = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
         selector2 = "li.menu05>a";
     String sele1 = "div.ui-control.type-fixed>a.ui-button";

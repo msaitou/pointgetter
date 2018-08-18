@@ -57,7 +57,7 @@ public class CITPointResearch extends CITBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "a>p.btn";
     int skip = 0;
     String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用

@@ -44,7 +44,7 @@ public class MOPCMother extends MOPBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div.game_btn>div.icon>img[alt='CMくじ']";
     String sele0 = "a.ui-btn.ui-btn-a" // アンケート一覧の回答するボタン
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため

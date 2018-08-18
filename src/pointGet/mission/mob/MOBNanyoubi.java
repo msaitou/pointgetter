@@ -26,7 +26,7 @@ public class MOBNanyoubi extends MOBBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 	//	src="https://pc-assets.mtoku.jp/common/img/contents/item_calendar.png"
 		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_calendar.png']";
 		if (isExistEle(driver, selector)) {

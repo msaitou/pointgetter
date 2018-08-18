@@ -29,7 +29,7 @@ public class PICShindan extends PICBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[src='img/diagnose.png']";
     String sele0 = "div.entry", // 
     sele1 = "div[class='thumbnail'] h3.entrytitle>a", // クラスを完全一致にするのは済の場合クラスが追加されるため

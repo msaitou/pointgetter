@@ -32,7 +32,7 @@ public class PSTGameParkEnk extends PSTBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "input[name='gamep']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
     pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //

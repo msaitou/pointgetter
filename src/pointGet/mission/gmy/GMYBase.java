@@ -53,7 +53,7 @@ public abstract class GMYBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    driver.get("https://dietnavi.com/pc/");
+    Utille.url(driver, "https://dietnavi.com/pc/", loggg);
 //    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
 //        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
 //    ;
@@ -154,7 +154,7 @@ public abstract class GMYBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "li.user_point>a", point = "";
-    driver.get("https://dietnavi.com/pc");
+    Utille.url(driver, "https://dietnavi.com/pc", logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

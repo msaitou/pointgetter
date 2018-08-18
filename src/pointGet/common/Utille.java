@@ -622,7 +622,7 @@ public class Utille {
     if (isExistEle(driver, test2, false, logg)) {
       logg.info("bbbubububu");
     }
-//    String reCaptchaCheck = "html>body div.g-recaptcha div iframe";
+    //    String reCaptchaCheck = "html>body div.g-recaptcha div iframe";
     String reCaptchaCheck = "html>body div iframe";
     if (isExistEle(driver, reCaptchaCheck, false, logg)) {
       // キャプチャをクリック
@@ -699,36 +699,47 @@ public class Utille {
       //	     logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
       logg.info("タイムアウトしましたよ?");
     }
-    try {
-      logg.info("refresh前ーー");
-      driver.navigate().refresh();
-      logg.info("refresh後ーー");
-    } catch (Exception e) {
-		logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50000));
-      logg.info("タイムアウトしましたよ");
-    }
-    finally {
-    	checkAndAcceptAlertUtille(driver, logg);
-      driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
+    int retry = 0;
+    boolean exceptionFlag = false;
+    while (retry++ <= 3) {
+      logg.info(retry + "回目のrefresh");
+      try {
+        exceptionFlag = false;
+        logg.info("refresh前ーー");
+        driver.navigate().refresh();
+        logg.info("refresh後ーー");
+        break;
+      } catch (Exception re) {
+        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(re), 30000));
+        logg.info(retry + "回目のRefreshでタイムアウトしましたよ");
+        exceptionFlag = true;
+      } finally {
+        if (!exceptionFlag) {
+          // exception未発生の場合に実施
+          checkAndAcceptAlertUtille(driver, logg);
+          driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
+        }
+      }
     }
   }
+
   /**
   *
   * @param driver
   */
   static public void checkAndAcceptAlertUtille(WebDriver driver, Logger logg) {
-   try {
-     // アラートをけして
-     val alert = driver.switchTo().alert();
-     alert.accept();
-     Utille.sleep(3000);
-   } catch (NoAlertPresentException ae) {
-     logg.error("##NOT EXIST Alert##################");
-   } catch (NoSuchWindowException e) {
-     logg.error("##NOT EXIST Alert2##################");
-     Utille.sleep(2000);
-   }
- }
+    try {
+      // アラートをけして
+      val alert = driver.switchTo().alert();
+      alert.accept();
+      Utille.sleep(3000);
+    } catch (NoAlertPresentException ae) {
+      logg.error("##NOT EXIST Alert##################");
+    } catch (NoSuchWindowException e) {
+      logg.error("##NOT EXIST Alert2##################");
+      Utille.sleep(2000);
+    }
+  }
 
   static public boolean url(WebDriver driver, String url, Logger logg) {
     return url(driver, url, logg, 60000);
@@ -752,7 +763,7 @@ public class Utille {
     }
     try {
       logg.info("url前ーー");
-      driver.get(url);
+      Utille.url(driver, url, logg);
       logg.info("url後ーー");
       res = true;
     } catch (Exception e) {
@@ -760,19 +771,17 @@ public class Utille {
       logg.info("タイムアウトしましたよ");
       int retry = 0;
       while (retry++ <= 3) {
-        logg.info(retry+"回目のリトライ");
+        logg.info(retry + "回目のリトライ");
         try {
           refresh(driver, logg, 60000);
-        }
-        catch (Exception re) {
-          logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 30000));
-          logg.info(retry+"回目のリトライretryRefreshでタイムアウトしましたよ");
+        } catch (Exception re) {
+          logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(re), 30000));
+          logg.info(retry + "回目のリトライretryRefreshでタイムアウトしましたよ");
         }
       }
-//      driver.close();
-//      driver.quit();
-    }
-    finally {
+      //      driver.close();
+      //      driver.quit();
+    } finally {
       driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
     }
     return res;

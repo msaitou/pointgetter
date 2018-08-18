@@ -58,7 +58,7 @@ public abstract class LFMBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     String sel = "div.point span.F5";
-    driver.get("http://lifemedia.jp/");
+    Utille.url(driver, "http://lifemedia.jp/", loggg);
     String sele = "em#mempoint";
     if (!Utille.isExistEle(driver, sele, loggg)) {
       // login!!
@@ -165,7 +165,7 @@ public abstract class LFMBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "em#mempoint", point = "";
-    driver.get("http://lifemedia.jp/");
+    Utille.url(driver, "http://lifemedia.jp/", logg);
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);

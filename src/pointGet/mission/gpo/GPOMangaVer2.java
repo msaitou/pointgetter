@@ -27,7 +27,7 @@ public class GPOMangaVer2 extends GPOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "li.pointfreeList_item";
     if (isExistEle(driver, selector)) {
       int size = getSelectorSize(driver, selector);

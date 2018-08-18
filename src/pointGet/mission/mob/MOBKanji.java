@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
 import pointGet.mission.parts.PlayKanji;
 
 /**
@@ -27,7 +28,7 @@ public class MOBKanji extends MOBBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_kanji.png']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 2000); // 遷移

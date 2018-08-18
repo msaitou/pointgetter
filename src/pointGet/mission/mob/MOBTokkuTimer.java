@@ -20,7 +20,7 @@ public class MOBTokkuTimer extends MOBBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_tokku_timer.png']";
     String overlaySele = "div#colorbox button#cboxClose", //
     overlayNoneSele = "div#colorbox[style*='display: none;'] button#cboxClose";

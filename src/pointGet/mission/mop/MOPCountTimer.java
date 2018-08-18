@@ -20,7 +20,7 @@ public class MOPCountTimer extends MOPBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		String wrapSele = "div.modal__wrap[style*='display: block;'] a.modal__closebtn";
 		String overlaySele = "div.overlay-popup a.button-close",
 				overlayNoneSele = "div.overlay-popup[style*='display: none;'] a.button-close";

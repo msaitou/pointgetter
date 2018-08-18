@@ -56,7 +56,7 @@ public class PICMedalMool extends PICBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[alt='メダルモール']";
     int skip = 0;
 

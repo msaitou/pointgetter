@@ -72,23 +72,23 @@ public class PICFarmEnk extends PICBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String enkLinkSele = "div.gamelist_wrap a>img[src*='visual/img04.png']", //
         a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      driver.get("http://land.pointi.jp/square/surveys");
+      Utille.url(driver, "http://land.pointi.jp/square/surveys", logg);
       for (int k = 0; k < 4; k++) {
         if (k == 1) {
-          driver.get("http://land.pointi.jp/square/diagnoses");
+          Utille.url(driver, "http://land.pointi.jp/square/diagnoses", logg);
         }
         else if (k == 2) {
-          driver.get("http://land.pointi.jp/square/votes");
+          Utille.url(driver, "http://land.pointi.jp/square/votes", logg);
         }
         else if (k == 3) {
-          driver.get("http://land.pointi.jp/square/pittango");
+          Utille.url(driver, "http://land.pointi.jp/square/pittango", logg);
         }
 
         Utille.sleep(3000);

@@ -66,7 +66,7 @@ public class PTOPointResearch2 extends PTOBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     int skip = 0;
     String sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
     sele1 = "div>input.btn_submit", //

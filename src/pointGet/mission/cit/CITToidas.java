@@ -27,7 +27,7 @@ public class CITToidas extends CITBase {
   @Override
   public void privateMission(WebDriver driver) {
     selector = "img[src='/img/game/game_toidasu.png']";
-    driver.get(url);
+    Utille.url(driver, url, logg);
     int cntt = 0;
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5500); // 遷移

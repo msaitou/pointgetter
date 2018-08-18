@@ -54,7 +54,7 @@ public abstract class DMYBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     String sel = "div.p-dotmoney_meta";
-    driver.get("https://d-money.jp/mall");
+    Utille.url(driver, "https://d-money.jp/mall", loggg);
     if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
       LoginSite.login(sCode, driver, loggg);
@@ -131,7 +131,7 @@ public abstract class DMYBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "span.p-dmoney-header-small__amount__balance.u-ff-dmoney", point = "";
-    driver.get("https://d-money.jp/mall");
+    Utille.url(driver, "https://d-money.jp/mall", logg);
     if (!Utille.isExistEle(driver, selector, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);

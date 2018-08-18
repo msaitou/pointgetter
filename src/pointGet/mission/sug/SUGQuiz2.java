@@ -27,7 +27,7 @@ public class SUGQuiz2 extends SUGBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[src='//static.sugutama.jp/ssp_site/1e2c5d3792330effd7af561c3d83408b.png']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000); // 遷移 全体へ

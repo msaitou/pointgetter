@@ -25,7 +25,7 @@ public class PICClickBanner extends PICBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(2000);
     String selecter[] = { "div.click_btn" };
     for (int j = 0; j < selecter.length; j++) {

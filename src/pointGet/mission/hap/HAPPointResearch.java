@@ -65,7 +65,7 @@ public class HAPPointResearch extends HAPBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "tbody#easyenquete td>a>img";
     int skip = 1, beforeSize = 0;
     String sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用

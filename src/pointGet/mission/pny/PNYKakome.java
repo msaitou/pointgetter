@@ -25,7 +25,7 @@ public class PNYKakome extends PNYBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "span#catch_the_pig";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 5000);// 囲めスタート前

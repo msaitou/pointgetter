@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -22,7 +24,7 @@ public class PEXChirachi extends PEXBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(this.url);
+		Utille.url(driver, this.url, logg);
 		selector = "section.list li figure>a";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000);

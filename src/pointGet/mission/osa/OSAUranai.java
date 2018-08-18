@@ -20,7 +20,7 @@ public class OSAUranai extends OSABase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		selector = "li>a>img[alt='お財布Watch']";
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 8000); // 遷移
 			changeCloseWindow(driver);

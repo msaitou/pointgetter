@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -22,7 +24,7 @@ public class CRIChirachi extends CRIBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
 
     selector = "div.shufoo_main a[href*='contents/shufoo']";
     if (isExistEle(driver, selector)) {

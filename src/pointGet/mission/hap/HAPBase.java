@@ -53,7 +53,7 @@ public abstract class HAPBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    driver.get("http://hapitas.jp/");
+    Utille.url(driver, "http://hapitas.jp/", loggg);
     String se = "li.user>a>span.user_pt";
     if (!Utille.isExistEle(driver, se, false, loggg)) {
       // login!!
@@ -117,7 +117,7 @@ public abstract class HAPBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "a.usernavi-point", point = "";
-    driver.get("http://hapitas.jp/");
+    Utille.url(driver, "http://hapitas.jp/", logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
       point = Utille.getNumber(point);

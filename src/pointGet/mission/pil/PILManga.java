@@ -23,7 +23,7 @@ public class PILManga extends PILBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "form#wcmpoint>input.style8";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移

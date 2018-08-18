@@ -28,7 +28,7 @@ public class PICChyousadan extends PICBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div.gamelist_wrap img[src*='visual/img16.png']";
     String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector)) {

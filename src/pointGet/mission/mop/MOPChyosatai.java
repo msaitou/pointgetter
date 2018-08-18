@@ -29,7 +29,7 @@ public class MOPChyosatai extends MOPBase {
     String footBnrSelector = "div.foot-bnr a.close>span",
         footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
-      driver.get(url);
+      Utille.url(driver, url, logg);
       selector = "div.game_btn>div.icon>img[alt='トキメキ調査隊']";
       if (isExistEle(driver, selector)) {
         clickSleepSelector(driver, selector, 4000); // 遷移
@@ -113,7 +113,7 @@ public class MOPChyosatai extends MOPBase {
         doExchangeSele = "div.btn-area>button[type='submit']",
         sele = "div.game_btn>div.icon>img[alt='トキメキ調査隊']";
     ;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     if (isExistEle(driver, sele)) {
       clickSleepSelector(driver, sele, 4000); // 遷移
       changeCloseWindow(driver);

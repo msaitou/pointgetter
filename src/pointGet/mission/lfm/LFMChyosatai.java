@@ -27,7 +27,7 @@ public class LFMChyosatai extends LFMBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
     String footBnrSelector = "div.foot-bnr a.close>span", //
         footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span",
@@ -36,7 +36,7 @@ public class LFMChyosatai extends LFMBase {
     //      clickSleepSelector(driver, selector, 4000); // 遷移
     //      changeCloseWindow(driver);
     for (int j = 0; j < 6; j++) {
-      driver.get(url);
+      Utille.url(driver, url, logg);
       //        selector = "p.tokimeki";
       String selector = sele;
       if (isExistEle(driver, selector, false)) {
@@ -119,7 +119,7 @@ public class LFMChyosatai extends LFMBase {
         exchageListSele = "select[name='point']",
         doExchangeSele = "div.btn-area>button[type='submit']";
     ;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     if (isExistEle(driver, sele)) {
       clickSleepSelector(driver, sele, 4000); // 遷移
       changeCloseWindow(driver);

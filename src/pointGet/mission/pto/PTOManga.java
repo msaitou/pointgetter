@@ -23,7 +23,7 @@ public class PTOManga extends PTOBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "section.ptpc-panel.ptpc-panel--cmkuji>a>img";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 6000); // 遷移

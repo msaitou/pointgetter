@@ -37,7 +37,7 @@ public class GMYPriceChyosatai extends GMYBase {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
     for (int j = 0; j < 6; j++) {
-      driver.get(url);
+      Utille.url(driver, url, logg);
       selector = "li a[href='https://dietnavi.com/pc/game/price/play.php']";
       if (isExistEle(driver, selector)) {
 //        clickSleepSelector(driver, selector, 3000); // 遷移

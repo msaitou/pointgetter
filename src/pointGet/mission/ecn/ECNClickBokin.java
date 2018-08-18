@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -24,7 +26,7 @@ public class ECNClickBokin extends ECNBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(this.url);
+		Utille.url(driver, this.url, logg);
 		selector = "div.bnr_box";
 		if (isExistEle(driver, selector)) {
 			List<WebElement> eleList1 = driver.findElements(By.cssSelector(selector));

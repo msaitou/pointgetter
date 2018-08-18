@@ -31,7 +31,7 @@ public class CITPriceChyosatai extends CITBase {
   public void privateMission(WebDriver driver) {
     String sele = "a[href='https://www.chance.com/game/price/play.jsp'] img[alt='プライス調査隊']";
     for (int j = 0; j < 6; j++) {
-      driver.get(url);
+      Utille.url(driver, url, logg);
       selector = sele;
       String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
       if (isExistEle(driver, selector)) {

@@ -23,7 +23,7 @@ public class GENManga extends GENBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div#dropmenu01";
     if (isExistEle(driver, selector, false)) {
       int size = getSelectorSize(driver, selector);
@@ -35,7 +35,7 @@ public class GENManga extends GENBase {
             break;
           }
           String cmPageUrl = e.findElement(By.cssSelector(selector2)).getAttribute("href");
-          driver.get(cmPageUrl); // CMpage
+          Utille.url(driver, cmPageUrl, logg); // CMpage
           Utille.sleep(3000);
           String uranaiSelector = "a>img[alt='up_current']";
           if (!isExistEle(driver, uranaiSelector)) {

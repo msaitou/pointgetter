@@ -34,7 +34,7 @@ public class CITKenkou extends GMYBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(3000);
     String sele1 = "img[alt='さらさら健康コラム']", selector2 = "li.menu03>a";
     if (isExistEle(driver, sele1)) {

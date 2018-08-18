@@ -119,7 +119,7 @@ public abstract class I2IBase extends Mission {
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "td.ad_point>span.limited", point = "";
-    driver.get("https://point.i2i.jp/account/");
+    Utille.url(driver, "https://point.i2i.jp/account/", logg);
     Utille.sleep(5000);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();

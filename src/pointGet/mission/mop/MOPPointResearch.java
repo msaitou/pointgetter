@@ -32,7 +32,7 @@ public class MOPPointResearch extends MOPBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String researchSele = "h3.game__title";
     if (isExistEle(driver, researchSele)) {
       List<WebElement> eles = driver.findElements(By.cssSelector(researchSele));

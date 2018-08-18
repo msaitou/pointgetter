@@ -28,7 +28,7 @@ public class PMOChyosatai extends PMOBase {
     String footBnrSelector = "div.foot-bnr a.close>span", //
     footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
-      driver.get(url);
+      Utille.url(driver, url, logg);
       selector = "p.tokimeki";
       if (isExistEle(driver, selector, false)) {
         clickSleepSelector(driver, selector, 4000); // 遷移

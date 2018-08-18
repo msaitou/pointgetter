@@ -47,7 +47,7 @@ public class WARPointResearch extends WARBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
 
     if (!isExistEle(driver, "div#js_modalContents[style*='display: none;'] img.modalClose", false)) {
       if (isExistEle(driver, "div#js_modalContents img.modalClose")) {

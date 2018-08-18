@@ -23,7 +23,7 @@ public class OSACountTimer extends OSABase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "li>a>img[alt='Count Timer']";
     String overlaySele = "div.overlay-popup a.button-close", // 
         overlayNoneSele = "div.overlay-popup[style*='display: none;'] a.button-close";

@@ -40,7 +40,7 @@ public class GPOPointResearch2 extends GPOBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "td>a.ui-button";
     int skip = 0;
     String sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用

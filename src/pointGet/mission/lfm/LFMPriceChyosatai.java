@@ -32,7 +32,7 @@ public class LFMPriceChyosatai extends LFMBase {
     String sele = "div>a>img[alt='プライス調査隊']";
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int j = 0; j < 6; j++) {
-      driver.get(url);
+      Utille.url(driver, url, logg);
       if (isExistEle(driver, sele)) {
         clickSleepSelector(driver, sele, 4000); // 遷移
         changeCloseWindow(driver);
@@ -87,7 +87,7 @@ public class LFMPriceChyosatai extends LFMBase {
 //        ,sele = "dd>a>img[alt='プライス調査隊']"
         ;
     ;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     if (isExistEle(driver, sele)) {
       clickSleepSelector(driver, sele, 6000); // 遷移
       changeCloseWindow(driver);

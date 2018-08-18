@@ -53,7 +53,7 @@ public class GPOAnqueate extends GPOBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     Utille.sleep(3000);
     String sele2 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon", selector2 = "li.menu08>a";
     if (isExistEle(driver, sele2)) {

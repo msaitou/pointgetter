@@ -24,7 +24,7 @@ public class MOBEnglishTest extends MOBBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_eitango.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 2000); // 遷移

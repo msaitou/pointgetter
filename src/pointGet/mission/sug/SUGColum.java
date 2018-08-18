@@ -27,7 +27,7 @@ public class SUGColum extends SUGBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "img[src='//static.sugutama.jp/ssp_site/55cfb319280a6c7f99f8d21fa632c1e5.png']";
 		if (isExistEle(driver, selector)) {
 			clickSleepSelector(driver, selector, 3000); // 遷移 全体へ

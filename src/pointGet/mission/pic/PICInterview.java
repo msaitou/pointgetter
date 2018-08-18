@@ -35,7 +35,7 @@ public class PICInterview extends PICBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[src='img/interview.png']";
     String enkLinkSele = "a>dl>dd>strong", //
         a = "";

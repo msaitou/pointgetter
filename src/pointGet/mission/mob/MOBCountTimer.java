@@ -20,7 +20,7 @@ public class MOBCountTimer extends MOBBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "img[src='https://pc-assets.mtoku.jp/common/img/contents/item_timer.png']";
     String overlaySele = "div.overlay-popup a.button-close", //
         overlayNoneSele = "div.overlay-popup[style*='display: none;'] a.button-close";

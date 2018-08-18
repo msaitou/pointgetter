@@ -44,7 +44,7 @@ public class GMYCMother extends GMYBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
         recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend

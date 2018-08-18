@@ -24,7 +24,7 @@ public class OSAClickBanner extends OSABase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get(url);
+		Utille.url(driver, url, logg);
 		selector = "section[data-block-title='クリックで貯める'] div>img";
 		if (isExistEle(driver, selector)) {
 			int size = getSelectorSize(driver, selector);;
@@ -32,7 +32,7 @@ public class OSAClickBanner extends OSABase {
 				if (isExistEle(driver, selector)) {
 					driver.findElements(By.cssSelector(selector)).get(i).click();
 					Utille.sleep(2000);
-					driver.get(url);
+					Utille.url(driver, url, logg);
 					Utille.sleep(2000);
 				}
 			}

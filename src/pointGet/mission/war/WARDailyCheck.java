@@ -8,6 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pointGet.common.Utille;
+
 /**
  * @author saitou
  *
@@ -45,7 +47,7 @@ public class WARDailyCheck extends WARBase {
 
 	@Override
 	public void privateMission(WebDriver driver) {
-		driver.get("http://www.warau.jp/");
+		Utille.url(driver, "http://www.warau.jp/", logg);
 		// 1．ログイン直後のTOP画面で
 		int c = 0;
 		String sele = "div.topDailyCheck>a>div>span.copyColor";
@@ -63,13 +65,13 @@ public class WARDailyCheck extends WARBase {
 		}
 		++c;
 		selector = "a#dailyClickPt div.btnAction";
-		driver.get("http://www.warau.jp/contents/point/ranking/");
+		Utille.url(driver, "http://www.warau.jp/contents/point/ranking/", logg);
 		if (isExistEle(driver, selector)) {
 			logg.info(mName + " " + c + "　ポイント情報ランキング! ");
 			clickSleepSelector(driver, selector, 5000);
 			closeOtherWindow(driver);
 		}
-		driver.get("http://shop.warau.jp/#dailyClick");
+		Utille.url(driver, "http://shop.warau.jp/#dailyClick", logg);
 		selector = "div.itemBox a>img";
 		if (isExistEle(driver, selector)) {
 			List<WebElement> eleList = driver.findElements(By.cssSelector(selector));

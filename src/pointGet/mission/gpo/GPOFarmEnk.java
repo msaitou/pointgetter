@@ -72,23 +72,23 @@ public class GPOFarmEnk extends GPOBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
-    driver.get(url);
+    Utille.url(driver, url, logg);
     String enkLinkSele = "div.bnr>[alt='勇者くんの栽培日記']", //
     a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      driver.get("http://farm-gpoint.media-ad.jp/square/surveys");
+      Utille.url(driver, "http://farm-gpoint.media-ad.jp/square/surveys", logg);
       for (int k = 0; k < 4; k++) {
         if (k == 1) {
-          driver.get("http://farm-gpoint.media-ad.jp/square/diagnoses");
+          Utille.url(driver, "http://farm-gpoint.media-ad.jp/square/diagnoses", logg);
         }
         else if (k == 2) {
-          driver.get("http://farm-gpoint.media-ad.jp/square/votes");
+          Utille.url(driver, "http://farm-gpoint.media-ad.jp/square/votes", logg);
         }
         else if (k == 3) {
-          driver.get("http://farm-gpoint.media-ad.jp/square/pittango");
+          Utille.url(driver, "http://farm-gpoint.media-ad.jp/square/pittango", logg);
         }
 
         Utille.sleep(3000);
