@@ -32,6 +32,8 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -43,8 +45,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import lombok.val;
 
 /**
  * @author saitou utillity class
@@ -763,6 +763,15 @@ public class Utille {
     }
     try {
       logg.info("url前ーー");
+//      checkAndAcceptAlertUtille(driver, logg);
+      try {
+        // アラートをけして
+        val alert = driver.switchTo().alert();
+        alert.accept();
+        Utille.sleep(3000);
+      } catch (NoAlertPresentException ae) {
+      } catch (NoSuchWindowException e) {
+      }
       driver.get(url);
       logg.info("url後ーー");
       res = true;

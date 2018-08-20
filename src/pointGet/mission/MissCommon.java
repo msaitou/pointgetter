@@ -20,6 +20,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import pointGet.common.Eventually;
@@ -205,8 +206,16 @@ public abstract class MissCommon {
           ele.click();
         }
         else {
-          Actions action = new Actions(driver);
-          action.moveToElement(ele).click().perform();
+          try {
+            Actions action = new Actions(driver);
+            action.moveToElement(ele).click().perform();
+          }
+          catch(MoveTargetOutOfBoundsException me) {
+            logg.error("-actionでmoveできない-------------------");
+            logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(me), 5000));
+            // 例外発生したらやっぱり元のやり方で実行
+            ele.click();
+          }
         }
         return;
       } catch (TimeoutException te) {
