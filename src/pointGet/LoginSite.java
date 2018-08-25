@@ -281,7 +281,7 @@ public class LoginSite extends PointGet {
       ele = driver.findElement(By.cssSelector("input[name='pass']"));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_MOP).get("loginpass"));
-      driver.findElement(By.cssSelector("div.login-btn>button")).click();
+      driver.findElement(By.cssSelector("div.ga-login-btn>button")).click();
       Utille.sleep(5000);
     }
   }

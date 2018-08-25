@@ -39,6 +39,9 @@ public class AnswerColum extends MissCommon {
         closeSele = "input.btn_close_en"; // 閉じるボタンセレクター
     clickSleepSelector(driver, startSele, 4000); // 遷移　問開始
     for (int g = 0; g < 2; g++) {
+      if (isExistEle(driver, "div#set_up",false)) {
+        clickSleepSelector(driver, "div#set_up", 2000); // 遷移sinai
+      }
       if (isExistEle(driver, seleNextb2)) {
         clickSleepSelector(driver, seleNextb2, 4000); // 遷移　問開始するよ
       }
@@ -126,7 +129,7 @@ public class AnswerColum extends MissCommon {
         checkAndAcceptAlert(driver);
       }
     }
-    
+
 //    if (isExistEle(driver, closeSele)) {
 //      clickSleepSelector(driver, closeSele, 4000);
 //    }
