@@ -113,6 +113,12 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOKansatu: // ■観察
           MisIns = new GPOKansatu(loggg, cProps);
           break;
+        case Define.strGPOHirameki: // ■ひらめき
+          MisIns = new GPOHirameki(loggg, cProps);
+          break;
+        case Define.strGPOCook: // ■料理
+          MisIns = new GPOCook(loggg, cProps);
+          break;
         case Define.strGPOHyakkey: // ■百景
           MisIns = new GPOHyakkey(loggg, cProps);
           break;
@@ -148,7 +154,9 @@ public abstract class GPOBase extends Mission {
           Define.strGPOHyakkey,
           Define.strGPOFarmEnkNoCap,
           Define.strGPODokiShindan,
-          Define.strGPOAnqueate
+          Define.strGPOAnqueate,
+          Define.strGPOHirameki,
+          Define.strGPOCook
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
