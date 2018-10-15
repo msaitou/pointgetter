@@ -5,10 +5,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerKenkou;
@@ -49,15 +47,17 @@ public class GMYColum extends GMYBase {
           int size2 = eleList.size(), targetIndex = size2 - 1;
           logg.info("size2:" + size2 + " target:" + targetIndex);
           if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
-            Utille.scrolledPage(driver, driver.findElements(By.cssSelector(selector)).get(targetIndex));
-            Actions actions = new Actions(driver);
-            actions.keyDown(Keys.CONTROL);
-            actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
-            actions.perform();
+//            Utille.scrolledPage(driver, driver.findElements(By.cssSelector(selector)).get(targetIndex));
+//            Actions actions = new Actions(driver);
+//            actions.keyDown(Keys.CONTROL);
+//            actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
+//            actions.perform();
             Utille.sleep(5000);
 
             String wid = driver.getWindowHandle();
-            changeCloseWindow(driver);
+//            changeCloseWindow(driver);
+            clickSleepSelector(driver, eleList, targetIndex, 3000);
+
             if (isExistEle(driver, seleNextb2)) {
               Kenkou.answer(driver, seleNextb2, wid);
               Utille.refresh(driver, logg);

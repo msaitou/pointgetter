@@ -1,7 +1,10 @@
 package pointGet.mission.parts;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
 import pointGet.mission.MissCommon;
@@ -31,9 +34,17 @@ public class AnswerKenkou extends MissCommon {
     seleNext2 = "div>input.column_nextbt[value='次へ']", //　次へセレクター
     a = "";
 
-    for (int g = 0; g < 2; g++) {
+    for (int g = 0; g < 4; g++) {
+      Actions action = new Actions(driver);
+      String hoverSele = "iframe[name='aswift_0']";
+      WebElement mouseOver = driver.findElement(By.cssSelector(hoverSele));
+      action.moveToElement(mouseOver);
+      Utille.sleep(3000);
       if (isExistEle(driver, seleEnd)) {
         clickSleepSelector(driver, seleEnd, 3000);
+      }
+      else {
+        driver.navigate().back();
       }
     }
     for (int g = 0; g < 10; g++) {
