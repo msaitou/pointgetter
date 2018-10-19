@@ -343,14 +343,12 @@ System.out.println(pointMap);
 //      driver.close();
       driver.quit();
     }
-    //		pMap.put("mop", 582.9);
-    //		pMap.put("osa", 183.0);
     PointsCollection PC = new PointsCollection(Dbase);
     if (!pMap.isEmpty()) {
       PC.putPointsData(pMap);
     }
     PC.putAchievementData();
-    PC.sendMailAchievmentDayly(Dbase);
+    PC.sendMailAchievmentDayly(Dbase, pointSitelist);
     logg.warn(total + sb.toString());
   }
 

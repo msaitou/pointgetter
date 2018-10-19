@@ -12,12 +12,12 @@ import java.util.function.Function;
 
 import org.bson.Document;
 
+import pointGet.common.MailCommon;
+import pointGet.common.Utille;
+
 import com.mongodb.DBObject;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.util.JSON;
-
-import pointGet.common.MailCommon;
-import pointGet.common.Utille;
 
 /**
  * @author saitou
@@ -204,30 +204,33 @@ public class PointsCollection {
     //		保存
   }
 
-  public void sendMailAchievmentDayly(Dbase Dbase) {
+  public void sendMailAchievmentDayly(Dbase Dbase, String[] pointSitelist) {
     Map<String, String> md = getAchievementData();
     String contents = "";
     String ls = "\n";
-    contents += "sum:" + md.get("total") + "(" + md.get("diff") + ")" + ls;
+    contents += "sum:" + md.get("total") + "(" + md.get("diff") + ")" + ls+ls;
 
-    for (Map.Entry<String, String> m : md.entrySet()) {
-      String k = m.getKey();
-      System.out.println("key [" + k);
-      if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
-        if (k.indexOf(":now") < 0) {
-          // :nowが含まれていないkの場合（その3レターサイトの今日の差分の値が入ってる）
-          for (Map.Entry<String, String> md2 : md.entrySet()) {
-            String k2 = md2.getKey();
-            System.out.println("key2 [" + k2);
-            if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
-              if (k2.equals(k + ":now")) {
-                contents += k + ":" + md2.getValue() + "(" + m.getValue() + ")" + ls;
-                break;
-              }
+    for (String baseSite : pointSitelist) {
+      for (Map.Entry<String, String> m : md.entrySet()) {
+        String k = m.getKey();
+        System.out.println("key [" + k);
+        if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
+          if (k.indexOf(":now") < 0) {
+            // :nowが含まれていないkの場合（その3レターサイトの今日の差分の値が入ってる）
+            for (Map.Entry<String, String> md2 : md.entrySet()) {
+              String k2 = md2.getKey();
+              System.out.println("key2 [" + k2);
+//              if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
+                if (k2.equals(k + ":now")) {
+                  contents += k + ":" + md2.getValue() + "(" + m.getValue() + ")" + ls;
+                  break;
+                }
+//              }
             }
           }
         }
       }
+      
     }
     new MailCommon(Dbase).send(contents, strDate + "分の稼ぎ");
   }
