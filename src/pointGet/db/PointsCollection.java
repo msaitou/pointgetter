@@ -208,67 +208,44 @@ public class PointsCollection {
     Map<String, String> md = getAchievementData();
     String contents = "";
     String ls = "\n";
-    contents += "sum:" + md.get("total") + "(" + md.get("diff") + ")" + ls+ls;
+    contents += "sum:" + md.get("total") + "(" + md.get("diff") + ")" + ls + ls;
 
-<<<<<<< HEAD
-//    for (String baseSite : pointSitelist) {
-      for (Map.Entry<String, String> m : md.entrySet()) {
-        String k = m.getKey();
-        System.out.println("key [" + k);
-        if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
-          if (k.indexOf(":now") < 0) {
-            // :nowが含まれていないkの場合（その3レターサイトの今日の差分の値が入ってる）
-            for (Map.Entry<String, String> md2 : md.entrySet()) {
-              String k2 = md2.getKey();
-              System.out.println("key2 [" + k2);
-              if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
-                if (k2.equals(k + ":now")) {
-                  contents += k + ":" + md2.getValue() + "(" + m.getValue() + ")" + ls;
-                  break;
-                }
-              }
-=======
-    for (String baseSite : pointSitelist) {
-      for (Map.Entry<String, String> m : md.entrySet()) {
-        String k = m.getKey();
-        System.out.println("key [" + k);
-        if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
-          if (k.indexOf(":now") < 0) {
-            // :nowが含まれていないkの場合（その3レターサイトの今日の差分の値が入ってる）
-            for (Map.Entry<String, String> md2 : md.entrySet()) {
-              String k2 = md2.getKey();
-              System.out.println("key2 [" + k2);
-//              if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
-                if (k2.equals(k + ":now")) {
-                  contents += k + ":" + md2.getValue() + "(" + m.getValue() + ")" + ls;
-                  break;
-                }
-//              }
->>>>>>> branch 'master' of https://github.com/msaitou/pointgetter.git
-            }
-          }
-          else {
-            for (Map.Entry<String, String> md2 : md.entrySet()) {
-              String k2 = md2.getKey();
-              System.out.println("key22 [" + k2);
-              if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
-                if (k2.equals(k + ":now")) {
-                  contents += k + ":" + md2.getValue() + "(0)" + ls;
-                  break;
-                }
-              }
-            }
+    // [] をリスト型に変換 ログインできなかったりしたやつもメールで確認したくなったので
+    List<String> plist = new ArrayList<String>(Arrays.asList(pointSitelist));
 
+    //    plist.remove("c");
+    //    String[] temp = (String[]) plist.toArray(new String[plist.size()]);
+    //    for (String str : temp) {
+    //      System.out.println(str);
+    //    }
+
+    for (Map.Entry<String, String> m : md.entrySet()) {
+      String k = m.getKey();
+      System.out.println("key [" + k);
+      if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
+        if (k.indexOf(":now") < 0) {
+
+          // :nowが含まれていないkの場合（その3レターサイトの今日の差分の値が入ってる）
+          for (Map.Entry<String, String> md2 : md.entrySet()) {
+            String k2 = md2.getKey();
+            System.out.println("key2 [" + k2);
+            //              if (!Arrays.asList(new String[] { "total", "diff" }).contains(k)) {
+            if (k2.equals(k + ":now")) {
+              contents += k + ":" + md2.getValue() + "(" + m.getValue() + ")" + ls;
+              plist.remove(k);
+              break;
+            }
+            //              }
           }
         }
       }
-<<<<<<< HEAD
-
-//    }
-=======
-      
     }
->>>>>>> branch 'master' of https://github.com/msaitou/pointgetter.git
+    if (plist.size() > 0) {
+      contents += ls + ls;
+      for (String notFoundSite : plist) {
+        contents += notFoundSite + ": is not Found! " + ls;
+      }
+    }
     new MailCommon(Dbase).send(contents, strDate + "分の稼ぎ");
   }
 
