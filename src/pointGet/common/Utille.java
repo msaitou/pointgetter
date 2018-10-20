@@ -32,8 +32,11 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchWindowException;
@@ -43,8 +46,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import lombok.val;
 
 /**
  * @author saitou utillity class
@@ -245,6 +246,25 @@ public class Utille {
     JavascriptExecutor js = (JavascriptExecutor) driver;
     //scrollIntoView(true)だけだとスクロールしすぎるので、少し戻す
     js.executeScript("javascript:window.scrollBy(0,-620)");
+  }
+
+  /**
+  *
+  * @param driver
+  * @param seleNe
+  */
+  public static void mouseOverByScript(WebDriver driver, String sele, Logger logg) {
+    try {
+      String script = "function triggerEvent(element, event) {var evt = document.createEvent('HTMLEvents'); evt.initEvent(event, true, true); return element.dispatchEvent(evt);}"
+          + "triggerEvent(document.querySelector(\""+sele+"\"), 'mouseover');";
+      ((JavascriptExecutor) driver).executeScript(script);
+      Utille.sleep(1000);
+    }
+    catch (JavascriptException je) {
+      logg.info("------------------------negreckt");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(je), 1000));
+      logg.info("------------------------negreckt");
+    }
   }
 
   /**
@@ -763,7 +783,7 @@ public class Utille {
     }
     try {
       logg.info("url前ーー");
-//      checkAndAcceptAlertUtille(driver, logg);
+      //      checkAndAcceptAlertUtille(driver, logg);
       try {
         // アラートをけして
         val alert = driver.switchTo().alert();

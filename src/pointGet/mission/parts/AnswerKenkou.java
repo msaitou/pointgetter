@@ -1,10 +1,7 @@
 package pointGet.mission.parts;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
 import pointGet.mission.MissCommon;
@@ -26,6 +23,7 @@ public class AnswerKenkou extends MissCommon {
    */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
+    Utille.mouseOverByScript(driver, startSele, logg);
     clickSleepSelector(driver, startSele, 3000);
 
     String readEndSele = "p.end_reading>input", //
@@ -35,12 +33,13 @@ public class AnswerKenkou extends MissCommon {
     a = "";
 
     for (int g = 0; g < 4; g++) {
-      Actions action = new Actions(driver);
-      String hoverSele = "iframe[name='aswift_0']";
-      WebElement mouseOver = driver.findElement(By.cssSelector(hoverSele));
-      action.moveToElement(mouseOver);
-      Utille.sleep(3000);
+//      Actions action = new Actions(driver);
+//      String hoverSele = "iframe[name='aswift_0']";
+//      WebElement mouseOver = driver.findElement(By.cssSelector(hoverSele));
+//      action.moveToElement(mouseOver);
+//      Utille.sleep(3000);
       if (isExistEle(driver, seleEnd)) {
+        Utille.mouseOverByScript(driver, seleEnd, logg);
         clickSleepSelector(driver, seleEnd, 3000);
       }
       else {

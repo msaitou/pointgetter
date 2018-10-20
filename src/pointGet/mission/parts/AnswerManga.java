@@ -35,25 +35,49 @@ public class AnswerManga extends MissCommon {
     seleNext2 = "div>input.enquete_nextbt", //　次へセレクター
     seleNext3 = "div>input.enquete_nextbt_2", //　次へセレクター2
     seleSele = "form.menu>select", // プルダウンセレクター
-            finishSele = "div#again_bt>a>img", // 終了ボタンセレクター
+    finishSele = "div#again_bt>a>img", // 終了ボタンセレクター
     //        closeSele = "input.btn_close_en", // 閉じるボタンセレクター
     a = "";
 
-//    for (int g = 0; g < 9; g++) {
-//      if (isExistEle(driver, startSele)) {
-//        checkOverlay(driver, overLay);
-//        clickSleepSelector(driver, startSele, 4000); // 遷移
-//      }
-//    }
+    //    for (int g = 0; g < 9; g++) {
+    //      if (isExistEle(driver, startSele)) {
+    //        checkOverlay(driver, overLay);
+    //        clickSleepSelector(driver, startSele, 4000); // 遷移
+    //      }
+    //    }
     String seleNext = "form>input[type='image']";
     String seleNexttugi = seleNext + "[src='common/image/9999/manga_next_bt.png']";
+    String seleMouseOver = "div#ad1";
     for (int g = 0; g < 8;) {
       checkOverlay(driver, overLay, false);
+      //      if (isExistEle(driver, seleMouseOver)) {
+      //        // マウスオーバー
+      //        WebElement mouseTarget = driver.findElement(By.cssSelector(seleMouseOver));
+      //        Actions builder = new Actions(driver);
+      // チェインするとTypeError: action.inputStateMap is undefined　って怒られる
+      //        builder.moveToElement(mouseTarget).build().perform();
+      //        builder.moveToElement(mouseTarget);
+      //        builder.build();
+      //        builder.perform();
+
+      //        Utille.sleep(5000);
+      //      }
       if (isExistEle(driver, seleNexttugi)) {
         clickSleepSelector(driver, seleNexttugi, 5000); // 遷移
         g++;
       }
       else if (isExistEle(driver, seleNext)) {
+        //      WebElement mouseTarget = driver.findElement(By.cssSelector(seleNext));
+        //        actions.moveToElement(mouseTarget)
+        //        .build();
+        //        .perform();
+        Utille.mouseOverByScript(driver, seleMouseOver, logg);
+        //        Actions actions = new Actions(driver);
+        //        actions.keyDown(Keys.CONTROL);
+        //        actions.click(driver.findElement(By.cssSelector(seleNext)));
+        //        actions.perform();
+        Utille.sleep(2000); // 
+
         clickSleepSelector(driver, seleNext, 4000); // 遷移
         g++;
       }
@@ -118,13 +142,13 @@ public class AnswerManga extends MissCommon {
     }
     checkOverlay(driver, overLay);
     Utille.clickRecaptha(driver, logg);
-//    if (isExistEle(driver, finishSele)) {
-//      clickSleepSelector(driver, finishSele, 3000); // 遷移
-//      // タブが閉じる?
-//    }
-//    else {
-      driver.close();
-//    }
+    //    if (isExistEle(driver, finishSele)) {
+    //      clickSleepSelector(driver, finishSele, 3000); // 遷移
+    //      // タブが閉じる?
+    //    }
+    //    else {
+    driver.close();
+    //    }
     driver.switchTo().window(wid);
   }
 }

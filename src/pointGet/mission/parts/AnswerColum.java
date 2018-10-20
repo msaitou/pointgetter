@@ -40,9 +40,11 @@ public class AnswerColum extends MissCommon {
     clickSleepSelector(driver, startSele, 4000); // 遷移　問開始
     for (int g = 0; g < 2; g++) {
       if (isExistEle(driver, "div#set_up",false)) {
+        Utille.mouseOverByScript(driver, "div#set_up", logg);
         clickSleepSelector(driver, "div#set_up", 2000); // 遷移sinai
       }
       if (isExistEle(driver, seleNextb2)) {
+        Utille.mouseOverByScript(driver, seleNextb2, logg);
         clickSleepSelector(driver, seleNextb2, 4000); // 遷移　問開始するよ
       }
     }
