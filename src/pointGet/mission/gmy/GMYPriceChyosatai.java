@@ -20,6 +20,7 @@ public class GMYPriceChyosatai extends GMYBase {
   private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
   private String footBnrSelector = "div.foot-bnr a.close>span";
   private String footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
+  private String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
 
   /**
    * @param log
@@ -30,10 +31,9 @@ public class GMYPriceChyosatai extends GMYBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close", // disabled recomend
-        firstEntrySele = "img[alt='調査隊パーク']";
+    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close", // disabled recomend
+    firstEntrySele = "img[alt='調査隊パーク']";
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
@@ -43,14 +43,15 @@ public class GMYPriceChyosatai extends GMYBase {
       clickSleepSelector(driver, firstEntrySele, 4000); // 遷移
       changeCloseWindow(driver);
       String[] chousaSeles = {
-          //          "a[href='/go/price'] strong", // プライス
-          "a[href='/go/tokimeki'] strong", // ときめき
+                    "a[href='/go/tokimeki'] strong", // ときめき
           "a[href='/go/recipe'] strong", // レシピ
+          "a[href='/go/price'] strong", // プライス
       };
       for (int i = 0; i < chousaSeles.length; i++) {
         clickSleepSelector(driver, chousaSeles[i], 4000); // 遷移
         if (chousaSeles[i].equals("a[href='/go/price'] strong")) {
           logg.info("■□■□■□[price]■□■□■□");
+          String toTop = "div.back-top>a[href='/']";
 
           for (int j = 0; j < 6; j++) {
             Utille.sleep(2000);
@@ -75,12 +76,17 @@ public class GMYPriceChyosatai extends GMYBase {
                 clickSleepSelector(driver, selector, 4000); // 遷移
                 checkOverlay(driver, overlaySelector);
                 checkOverlay(driver, footBnrSelector);
-                String finshSele = "div.finish-area";
+                String finshSele = "div.result-area";
                 // otukare!
                 if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
                   break;
                 }
                 localRoop1(driver);
+                // 調査隊のトップへ戻る
+                if (isExistEle(driver, toTop)) {
+                  clickSleepSelector(driver, toTop, 4500);
+                }
+
               }
             }
             else if (isExistEle(driver, entrySele)) {
@@ -92,6 +98,10 @@ public class GMYPriceChyosatai extends GMYBase {
               }
               //          selector = "div.btn>a";
               localRoop1(driver);
+              // 調査隊のトップへ戻る
+              if (isExistEle(driver, toTop)) {
+                clickSleepSelector(driver, toTop, 4500);
+              }
             }
             else {
               j = 6;
@@ -103,6 +113,7 @@ public class GMYPriceChyosatai extends GMYBase {
           String noEntrySele = "div.thumbnail span.icon-noentry";
           String entrySele = "div.thumbnail span.icon-entry";
           String finshSele = "div.finish-area";
+          String toTop = "span>a[href='/']";
           for (int j = 0; j < 6; j++) {
 
             if (isExistEle(driver, noEntrySele)) {
@@ -121,7 +132,7 @@ public class GMYPriceChyosatai extends GMYBase {
                 checkOverlay(driver, overlaySelector);
                 checkOverlay(driver, footBnrSelector);
                 selector = "span.icon-arrow";
-                for (int ii = 0; ii < 11; ii++) {
+                for (int ii = 0; ii < 10; ii++) {
                   int ran = Utille.getIntRand(2);
                   if (isExistEle(driver.findElements(By.cssSelector(selector)), ran)) {
                     // otukare!
@@ -140,6 +151,10 @@ public class GMYPriceChyosatai extends GMYBase {
                   }
                 }
               }
+              // 調査隊のトップへ戻る
+              if (isExistEle(driver, toTop)) {
+                clickSleepSelector(driver, toTop, 4500);
+              }
             }
             else if (isExistEle(driver, entrySele)) {
               checkOverlay(driver, overlaySelector);
@@ -155,7 +170,7 @@ public class GMYPriceChyosatai extends GMYBase {
               }
               //          selector = "div.btn>a";
               selector = "span.icon-arrow";
-              for (int ii = 0; ii < 11; ii++) {
+              for (int ii = 0; ii < 10; ii++) {
                 // otukare!
                 if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
                   if (isExistEle(driver, selector)) {
@@ -175,6 +190,10 @@ public class GMYPriceChyosatai extends GMYBase {
                   }
                 }
               }
+              // 調査隊のトップへ戻る
+              if (isExistEle(driver, toTop)) {
+                clickSleepSelector(driver, toTop, 4500);
+              }
             }
             else {
               j = 6;
@@ -185,7 +204,8 @@ public class GMYPriceChyosatai extends GMYBase {
           logg.info("■□■□■□[recipe]■□■□■□");
           String noEntrySele = "div.thumbnail span.icon-noentry";
           String entrySele = "div.thumbnail span.icon-entry";
-          String finshSele = "div.finish-area";
+          String finshSele = "div.result-area";
+          String toTop = "div.back-top>a[href='/']";
           for (int j = 0; j < 6; j++) {
             if (isExistEle(driver, noEntrySele)) {
               checkOverlay(driver, overlaySelector);
@@ -228,8 +248,9 @@ public class GMYPriceChyosatai extends GMYBase {
                     }
                   }
                 }
-                if (isExistEle(driver.findElements(By.cssSelector(selector)))) {
-                  clickSleepSelector(driver, selector, 3000);
+                // 調査隊のトップへ戻る
+                if (isExistEle(driver, toTop)) {
+                  clickSleepSelector(driver, toTop, 4500);
                 }
               }
             }
@@ -248,7 +269,7 @@ public class GMYPriceChyosatai extends GMYBase {
                 checkOverlay(driver, overlaySelector);
                 checkOverlay(driver, footBnrSelector);
                 selector = "span.icon-arrow";
-                for (int ii = 0; ii < 7; ii++) {
+                for (int ii = 0; ii < 6; ii++) {
                   // otukare!
                   if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
                     if (isExistEle(driver, selector)) {
@@ -274,8 +295,9 @@ public class GMYPriceChyosatai extends GMYBase {
                     }
                   }
                 }
-                if (isExistEle(driver.findElements(By.cssSelector(selector)))) {
-                  clickSleepSelector(driver, selector, 3000);
+                // 調査隊のトップへ戻る
+                if (isExistEle(driver, toTop)) {
+                  clickSleepSelector(driver, toTop, 4500);
                 }
               }
             }
@@ -292,8 +314,7 @@ public class GMYPriceChyosatai extends GMYBase {
         //      Utille.url(driver, "https://dietnavi.com/pc/game/price/play.php", logg);
         Utille.sleep(7000);
         String exchangeSele = "span.btn-exchange>a", //
-            exchageListSele = "select[name='point']",
-            doExchangeSele = "div.btn-area>button[type='submit']";
+        exchageListSele = "select[name='point']", doExchangeSele = "div.btn-area>button[type='submit']";
         if (isExistEle(driver, exchangeSele)) {
           checkOverlay(driver, overlaySelector);
           if (isExistEle(driver, footBnrSelector)
@@ -326,7 +347,7 @@ public class GMYPriceChyosatai extends GMYBase {
     String sele2bot = " div.btn.mrg-t5.mrg-b5>a";
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
     for (int i = 0; i < 6; i++) {
-      String finshSele = "div.finish-area";
+      String finshSele = "div.result-area";
       // otukare!
       if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
         if (isExistEle(driver, selector)) {
