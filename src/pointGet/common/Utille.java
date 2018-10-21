@@ -256,12 +256,28 @@ public class Utille {
   public static void mouseOverByScript(WebDriver driver, String sele, Logger logg) {
     try {
       String script = "function triggerEvent(element, event) {var evt = document.createEvent('HTMLEvents'); evt.initEvent(event, true, true); return element.dispatchEvent(evt);}"
-          + "triggerEvent(document.querySelector(\""+sele+"\"), 'mouseover');";
+          + "triggerEvent(document.querySelector(\"" + sele + "\"), 'mouseover');";
       ((JavascriptExecutor) driver).executeScript(script);
       Utille.sleep(1000);
+    } catch (JavascriptException je) {
+      logg.info("------------------------mouseOver Error negreckt");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(je), 500));
+      logg.info("------------------------mouseOver Error negreckt");
+    }
+  }
+
+  /**
+  *
+  * @param driver
+  * @param seleNe
+  */
+  public static void clickByScript(WebDriver driver, String sele, Logger logg) {
+    try {
+      String script = "document.querySelector(\""+sele+"\").click();";
+      ((JavascriptExecutor) driver).executeScript(script);
     }
     catch (JavascriptException je) {
-      logg.info("------------------------negreckt");
+      logg.info("------------------------negreckt click");
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(je), 1000));
       logg.info("------------------------negreckt");
     }

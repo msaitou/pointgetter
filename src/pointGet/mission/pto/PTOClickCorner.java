@@ -99,7 +99,8 @@ public class PTOClickCorner extends PTOBase {
           //							driver.switchTo().window(id);
           //						}
           //					}
-          String sele2 = "div.service-btn a";
+//          String sele2 = "div.service-btn a";
+          String sele2 = "p.pt-btn-action>a";
           if (isExistEle(driver, sele2)) {
             logg.info(mName + " " + c + ".サービスページ下! " + i + " click!!");
             clickSleepSelector(driver, sele2, 4000);

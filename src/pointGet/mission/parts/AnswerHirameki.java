@@ -51,7 +51,15 @@ public class AnswerHirameki extends MissCommon {
     for (int g = 0; g < 4; g++) {
       if (isExistEle(driver, seleNextb4)) {
         checkOverlay(driver, overLay, false);
-        clickSleepSelector(driver, seleNextb4, 13000); // 遷移　問開始するよ
+        int sleepMil = 5000;
+        if (g == 2) {
+          Utille.sleep(15000);
+          Utille.clickByScript(driver, seleNextb4, logg);
+          Utille.sleep(5000);
+        }
+        else {
+          clickSleepSelector(driver, seleNextb4, sleepMil); // 遷移　問開始するよ
+        }
       }
     }
     checkOverlay(driver, overLay, false);

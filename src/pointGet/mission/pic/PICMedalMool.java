@@ -12,6 +12,7 @@ import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerComicNews;
 import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKenkou;
@@ -35,6 +36,7 @@ public class PICMedalMool extends PICBase {
 
   AnswerNews News = null;
   AnswerComicNews cNews = null;
+  AnswerHirameki Hirameki = null;
 
   /**
    * @param logg
@@ -51,6 +53,7 @@ public class PICMedalMool extends PICBase {
     Hyakkey = new AnswerHyakkey(logg);
     Kansatu = new AnswerKansatu(logg);
     cNews = new AnswerComicNews(logg);
+    Hirameki = new AnswerHirameki(logg);
   }
 
   @Override
@@ -76,6 +79,7 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
+          "img[src='common/images/contents/main_hirameki.png']",
           "a[href*='/comicnews/']",
           "a[href*='/comedynews/']",
           "a[href*='sarasara']",
@@ -84,7 +88,7 @@ public class PICMedalMool extends PICBase {
           "a[href*='beautyhair-fashion.com/pointi']", // 百景
           "a[href*='/news/'] p.thum>img",
           "a[href*='cosmeticsstyle.com/pointi/list']",
-          "a[href*='fashion-cosmelife.com/pointi']",
+          "img[src='common/images/contents/main_column.png']",
           "a[href*='comicEnquete']",
           "a[href*='pc/uranai']",
       };
@@ -97,6 +101,36 @@ public class PICMedalMool extends PICBase {
           changeWindow(driver, wid);
           Uranai.answer(driver, "", wid);
           k++;
+        }
+        // ひらめき
+        else if (preSele.equals("img[src='common/images/contents/main_hirameki.png']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
+          Utille.sleep(5000);
+          String sele = "form>input.next_bt";
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            int size2 = eleList.size(), targetIndex = size2 - 1;
+            logg.info("size2:" + size2 + " target:" + targetIndex);
+            if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
+              clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
+              if (isExistEle(driver, sele)) {
+                Hirameki.answer(driver, sele, wid);
+              }
+              else {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
         }
         // 料理
         else if (preSele.equals("a[href*='natural-cuisine.com/pointi']")) {
@@ -218,7 +252,7 @@ public class PICMedalMool extends PICBase {
             k++;
           }
         }
-        else if (preSele.equals("a[href*='fashion-cosmelife.com/pointi']")
+        else if (preSele.equals("img[src='common/images/contents/main_column.png']")
             || preSele.equals("a[href*='style-cutehair.com']")) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
           String wid = driver.getWindowHandle();
