@@ -305,34 +305,34 @@ public class GMYPriceChyosatai extends GMYBase {
               j = 6;
             }
           }
-          String toParkSele = "a[href='https://www.chosatai-park.net/']";
-          if (isExistEle(driver, toParkSele)) {
-            clickSleepSelector(driver, toParkSele, 6000);
-          }
         }
+        String toParkSele = "a[href='https://www.chosatai-park.net/']";
+        if (isExistEle(driver, toParkSele)) {
+          clickSleepSelector(driver, toParkSele, 6000);
+        }
+      }
 
-        //      Utille.url(driver, "https://dietnavi.com/pc/game/price/play.php", logg);
-        Utille.sleep(7000);
-        String exchangeSele = "span.btn-exchange>a", //
-        exchageListSele = "select[name='point']", doExchangeSele = "div.btn-area>button[type='submit']";
-        if (isExistEle(driver, exchangeSele)) {
-          checkOverlay(driver, overlaySelector);
-          if (isExistEle(driver, footBnrSelector)
-              && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
-            checkOverlay(driver, footBnrSelector);
-          }
-          clickSleepSelector(driver, exchangeSele, 6000);
-          if (isExistEle(driver, exchageListSele)) {
-            int size = getSelectorSize(driver, exchageListSele + ">option");
-            String value = driver.findElements(By.cssSelector(exchageListSele + ">option"))
-                .get(size - 1).getAttribute("value");
-            Select selectList = new Select(driver.findElement(By.cssSelector(exchageListSele)));
-            selectList.selectByValue(value); // 交換ポイントを選択
-            Utille.sleep(3000);
-            for (int k = 0; k < 2; k++) {
-              if (isExistEle(driver, doExchangeSele)) {
-                clickSleepSelector(driver, doExchangeSele, 6000); // i=1 交換する　i=2 本当に
-              }
+      //      Utille.url(driver, "https://dietnavi.com/pc/game/price/play.php", logg);
+      Utille.sleep(7000);
+      String exchangeSele = "a[href='/game/changepoint']", //
+      exchageListSele = "select[name='point']", doExchangeSele = "div.btn-area>button[type='submit']";
+      if (isExistEle(driver, exchangeSele)) {
+        checkOverlay(driver, overlaySelector);
+        if (isExistEle(driver, footBnrSelector)
+            && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+          checkOverlay(driver, footBnrSelector);
+        }
+        clickSleepSelector(driver, exchangeSele, 6000);
+        if (isExistEle(driver, exchageListSele)) {
+          int size = getSelectorSize(driver, exchageListSele + ">option");
+          String value = driver.findElements(By.cssSelector(exchageListSele + ">option"))
+              .get(size - 1).getAttribute("value");
+          Select selectList = new Select(driver.findElement(By.cssSelector(exchageListSele)));
+          selectList.selectByValue(value); // 交換ポイントを選択
+          Utille.sleep(3000);
+          for (int k = 0; k < 2; k++) {
+            if (isExistEle(driver, doExchangeSele)) {
+              clickSleepSelector(driver, doExchangeSele, 6000); // i=1 交換する　i=2 本当に
             }
           }
         }
