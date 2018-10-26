@@ -13,7 +13,7 @@ import pointGet.common.Utille;
  *
  */
 public class ECNChinjyu extends ECNBase {
-	final String url = "http://ecnavi.jp/research/chinju_lesson/";
+	final String url = "https://ecnavi.jp/research/chinju_lesson/";
 	private boolean endFlag = false;
 
 	/**

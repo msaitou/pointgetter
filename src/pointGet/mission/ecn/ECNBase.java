@@ -142,15 +142,15 @@ public abstract class ECNBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "p.user_point_txt>strong", point = "";
-    while (point == "") {
+    String selector = "p.user_point_txt>span.c_point", point = "";
+//    while (point == "") {
       Utille.url(driver, "https://ecnavi.jp/mypage/point_history/", logg);
       Utille.sleep(2000);
       if (Utille.isExistEle(driver, selector, logg)) {
         point = driver.findElement(By.cssSelector(selector)).getText();
         point = Utille.getNumber(point);
       }
-    }
+//    }
     Double sTotal = Utille.sumTotal(sCode, point, 0.0);
     return sTotal;
   }

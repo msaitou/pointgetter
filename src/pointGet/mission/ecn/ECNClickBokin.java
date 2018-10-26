@@ -15,7 +15,7 @@ import pointGet.common.Utille;
  *
  */
 public class ECNClickBokin extends ECNBase {
-	final String url = "http://point.ecnavi.jp/fund/bc/";
+	final String url = "https://ecnavi.jp/smile_project/click_fund/";
 
 	/**
 	 * @param log
