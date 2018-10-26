@@ -71,6 +71,9 @@ public class LoginSite extends PointGet {
       case Define.PSITE_CODE_LFM:
         loginLfm(driver, logg);
         break;
+      case Define.PSITE_CODE_CMS:
+        loginCms(driver, logg);
+        break;
       case Define.PSITE_CODE_ECN:
       case Define.PSITE_CODE_I2I:
       case Define.PSITE_CODE_MOB:
@@ -81,6 +84,29 @@ public class LoginSite extends PointGet {
       case Define.PSITE_CODE_SUG:
       default:
         return;
+    }
+  }
+  
+  /**
+   * @param driver
+   * @param logg
+   */
+  public static void loginCms(WebDriver driver, Logger logg) {
+    String seleLogin = "ul#GuestMenu>li>a.thickbox";
+    if (Utille.isExistEle(driver, seleLogin, logg)) {
+      driver.findElement(By.cssSelector(seleLogin)).click();
+      Utille.sleep(4000);
+      if (Utille.isExistEle(driver, "input#usermei", logg)) {
+        WebElement ele = driver.findElement(By.cssSelector("input#usermei"));
+        ele.clear();
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CMS).get("loginid"));
+        ele = driver.findElement(By.cssSelector("input[type='password']"));
+        ele.clear();
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CMS).get("loginpass"));
+//        Utille.clickRecaptha(driver, logg);
+        driver.findElement(By.cssSelector("input#btn_send")).click();
+        Utille.sleep(5000);
+      }
     }
   }
 

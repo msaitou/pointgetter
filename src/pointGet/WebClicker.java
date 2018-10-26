@@ -11,6 +11,7 @@ import pointGet.common.Define;
 import pointGet.common.Utille;
 import pointGet.mission.Mission;
 import pointGet.mission.cit.CITBase;
+import pointGet.mission.cms.CMSBase;
 import pointGet.mission.cri.CRIBase;
 import pointGet.mission.dmy.DMYBase;
 import pointGet.mission.ecn.ECNBase;
@@ -71,6 +72,7 @@ public class WebClicker extends PointGet {
       Define.PSITE_CODE_DMY, // ドットマネー
       Define.PSITE_CODE_LFM, // ライフメディア
       Define.PSITE_CODE_GPO, // Gポイント
+      Define.PSITE_CODE_CMS, // CMサイト
   };
 
   protected static void init(String[] args) {
@@ -283,6 +285,9 @@ public class WebClicker extends PointGet {
           break;
         case Define.PSITE_CODE_GPO:
           GPOBase.goToClick(logg, commonProps, missionArr, Dbase);
+          break;
+        case Define.PSITE_CODE_CMS:
+          CMSBase.goToClick(logg, commonProps, missionArr, Dbase);
           break;
         default:
       }
