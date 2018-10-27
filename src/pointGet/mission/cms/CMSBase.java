@@ -132,7 +132,7 @@ public abstract class CMSBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "li.p_menu.point>a", point = "";
+    String selector = "p.menbertxt>span", point = "";
     Utille.url(driver, topUrl, logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();

@@ -19,7 +19,9 @@ import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerZukan;
 
 public class CMSCMother extends CMSBase {
-  final String url = "http://dietnavi.com/pc/";
+  final String url = "http://www.cmsite.co.jp/top/cm/";
+  final String url2 = "https://cmsite.cmnw.jp/game/";
+  
   WebDriver driver = null;
   AnswerPhotoEnk PhotoEnk = null;
   AnswerKansatu Kansatu = null;
@@ -45,6 +47,8 @@ public class CMSCMother extends CMSBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
+    Utille.url(driver, url2, logg);
+    
     selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
         recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
@@ -56,10 +60,10 @@ public class CMSCMother extends CMSBase {
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
-    if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 5000); // 遷移
-      changeCloseWindow(driver);
-      Utille.sleep(8000);
+//    if (isExistEle(driver, selector)) {
+//      clickSleepSelector(driver, selector, 5000); // 遷移
+//      changeCloseWindow(driver);
+//      Utille.sleep(8000);
       // ポイントに変換
       String bankSele = "li.icon_h_bank>a",
           coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
@@ -83,9 +87,9 @@ public class CMSCMother extends CMSBase {
           }
         }
       }
-      String[] seles = { "a>img[src*='column_bn.png']", "a>img[src*='photo_bn.png']",
-          "a>img[src*='observation_bn.png']", "a>img[src*='zoo_bn.png']", "a>img[src*='japan_bn.png']",
-          "a>img[src*='food_bn.png']" };
+      String[] seles = { "p>img[src*='column_pc_']", "p>img[src*='photo_pc_']",
+          "p>img[src*='observation_pc_']", "p>img[src*='zoo_pc_']", "p>img[src*='japan_pc_']",
+          "p>img[src*='food_pc_']" };
       for (int i = 0; i < seles.length; i++) {
         String currentSele = seles[i];
         if (isExistEle(driver, currentSele)) {
@@ -177,10 +181,14 @@ public class CMSCMother extends CMSBase {
               driver.switchTo().window(wid0);
               break;
             }
+// test
+//            driver.close();
+//            driver.switchTo().window(wid0);
+//            break;
           }
         }
       }
 
-    }
+//    }
   }
 }

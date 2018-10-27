@@ -21,7 +21,7 @@ public class CMSAnk extends CMSBase {
    * @param log
    */
   public CMSAnk(Logger log, Map<String, String> cProps) {
-    super(log, cProps, "アンケート");
+    super(log, cProps, "トリプルアンケート");
   }
 
   @Override
@@ -34,7 +34,7 @@ public class CMSAnk extends CMSBase {
       changeCloseWindow(driver);
     }
 
-    selector = "img[alt='お楽しみアンケート']";
+    selector = "img[src='img/q_07.png']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移
       changeCloseWindow(driver);
@@ -46,7 +46,7 @@ public class CMSAnk extends CMSBase {
         selector = "div.tab_cont";
         int cnt = 0;
         while (true) {
-          if (isExistEle(driver.findElements(By.cssSelector(seleCate + goryId[p])))) {
+          if (isExistEle(driver, seleCate + goryId[p])) {
             logg.info("2");
             clickSleepSelector(driver, seleCate + goryId[p], 2000);
             logg.info("3");
@@ -64,20 +64,20 @@ public class CMSAnk extends CMSBase {
                   logg.info("6");
                   clickSleepSelector(driver, webEle, webEle.size() - 1, 4000);
 
-                  String seleNext = "form[name='form1']>input.btn";
+                  String seleNext = "form[name='form1'] input.btn";
                   if (isExistEle(driver, seleNext)) {
                     clickSleepSelector(driver, seleNext, 4000);
 
                     // 以下より10問
                     String choiceSele = "label.adchange";
-                    String nextSele2 = "p.btm>input.btn";
+                    String nextSele2 = "p.top>input.btn";
                     for (int i = 0; i < 10; i++) {
                       List<WebElement> eleChoice = driver
                           .findElements(By.cssSelector(choiceSele));
                       int choiceies = eleChoice.size();
                       //											int choiceies = getSelectorSize(driver, choiceSele);
                       int choiceNum = Utille.getIntRand(choiceies);
-                      if (isExistEle(eleChoice, choiceNum)) {
+                      if (isExistEle(driver, choiceSele) && isExistEle(eleChoice, choiceNum)) {
                         clickSleepSelector(driver, eleChoice, choiceNum, 3000); // 選択肢を選択
                         if (isExistEle(driver, nextSele2)) {
                           clickSleepSelector(driver, nextSele2, 3000);
