@@ -34,7 +34,7 @@ public class Define {
   final public static String PSITE_CODE_LFM = "lfm";
   final public static String PSITE_CODE_GPO = "gpo";
   final public static String PSITE_CODE_CMS = "cms";
-  
+
   // ■■■■■ECnavi■■■■■
   final public static String strECNChinjyu = "ECNChinjyu";
   final public static String strECNChirachi = "ECNChirachi";
@@ -79,6 +79,7 @@ public class Define {
   final public static String strGMYMail = "GMYMail";
   final public static String strGMYColum = "GMYColum";
   final public static String strGMYManga = "GMYManga";
+  final public static String strGMYEasyAnk = "GMYEasyAnk";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
@@ -243,6 +244,7 @@ public class Define {
   final public static String strCITKenkou = "CITKenkou";
   final public static String strCITManga = "CITManga";
   final public static String strCITCook = "CITCook";
+  final public static String strCITEasyAnk = "CITEasyAnk";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";
@@ -331,7 +333,7 @@ public class Define {
   final public static String strCMSAnk = "CMSAnk";
   final public static String strCMSPointResearch = "CMSPointResearch";
   final public static String strCMSKumaVote = "CMSKumaVote";
-  
+
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";
   final public static String CONTENT_TYPE_HTML = "text/html";

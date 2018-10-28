@@ -54,13 +54,13 @@ public abstract class GMYBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     Utille.url(driver, "https://dietnavi.com/pc/", loggg);
-//    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-//        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
-//    ;
-//    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
-//        && Utille.isExistEle(driver, recoSele, loggg)) {
-//      driver.findElement(By.cssSelector(recoSele)).click();
-//    }
+    //    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    //        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+    //    ;
+    //    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
+    //        && Utille.isExistEle(driver, recoSele, loggg)) {
+    //      driver.findElement(By.cssSelector(recoSele)).click();
+    //    }
     String se = "li.user_poin>at";
     if (!Utille.isExistEle(driver, se, false, loggg)) {
       // login!!
@@ -97,7 +97,7 @@ public abstract class GMYBase extends Mission {
           MisIns = new GMYCMother(loggg, cProps);
           break;
         case Define.strGMYMail:
-          MailClicker.main(new String[] {sCode});
+          MailClicker.main(new String[] { sCode });
           break;
         case Define.strGMYColum: // ■健康
           MisIns = new GMYColum(loggg, cProps);
@@ -105,7 +105,9 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYManga: // ■漫画
           MisIns = new GMYManga(loggg, cProps);
           break;
-          
+        case Define.strGMYEasyAnk: // ■簡単アンケート
+          MisIns = new GMYEasyAnk(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -117,8 +119,8 @@ public abstract class GMYBase extends Mission {
           Define.strGMYGameParkEnk,
           Define.strGMYKumaVote,
           Define.strGMYCMother,
-          Define.strGMYColum
-,          Define.strGMYManga
+          Define.strGMYColum, Define.strGMYManga,
+          Define.strGMYEasyAnk
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -138,11 +140,11 @@ public abstract class GMYBase extends Mission {
       };
       PC.putPointsData(pMap);
     } catch (Throwable e) {
-      loggg.error("["+sCode+"");
+      loggg.error("[" + sCode + "");
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
       driver.quit();
-//      driver.close();
+      //      driver.close();
     }
   }
 

@@ -109,6 +109,9 @@ public abstract class CITBase extends Mission {
         case Define.strCITCook: // ■料理
           MisIns = new CITCook(loggg, cProps);
           break;
+        case Define.strCITEasyAnk: // ■簡単アンケート
+          MisIns = new CITEasyAnk(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCITPriceChyosatai,
@@ -121,7 +124,8 @@ public abstract class CITBase extends Mission {
           Define.strCITCMother,
           Define.strCITKenkou,
           Define.strCITManga,
-          Define.strCITCook
+          Define.strCITCook,
+          Define.strCITEasyAnk
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
