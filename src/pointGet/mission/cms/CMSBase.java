@@ -89,6 +89,10 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSAnqueate: // ■アンケート
           MisIns = new CMSAnqueate(loggg, cProps);
           break;
+        case Define.strCMSKumaVote: // ■くまアンケート
+          MisIns = new CMSKumaVote(loggg, cProps);
+          break;
+                    
         default:
       }
       if (Arrays.asList(new String[] { Define.strCMSAnqueate,
@@ -97,7 +101,7 @@ public abstract class CMSBase extends Mission {
           Define.strCMSQuiz,
           Define.strCMSGameParkEnk,
           Define.strCMSAnk,
-          Define.strCMSPointResearch
+          Define.strCMSPointResearch,Define.strCMSKumaVote
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

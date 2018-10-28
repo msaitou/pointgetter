@@ -228,9 +228,23 @@ public class Utille {
         WebDriverWait wait = new WebDriverWait(driver, 45);//待ち時間を指定
         wait.until(ExpectedConditions.visibilityOfElementLocated(register));
       } catch (Throwable e) {
-        is = false;
         logg.info("---------------------------dont wanna wait!");
         logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
+        is = false;
+//        int cnt = 0;
+//        while (cnt++ < 3) {
+//          try {
+//            // ElementNotInteractableException が発生することがある。これはnotVisibleのスーパークラス
+//            WebDriverWait wait = new WebDriverWait(driver, 45);//待ち時間を指定
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(register));
+//          } catch (Throwable ee) {
+//            logg.info("---------------------------dont wanna wait!");
+//            logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(ee), 1000));
+//          }
+//        }
+//        if (cnt > 3) {
+//          is = false;
+//        }
       }
     }
     return is;

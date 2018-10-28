@@ -64,7 +64,7 @@ public class CMSAnqueate extends CMSBase {
       Utille.sleep(5000);
       changeCloseWindow(driver);
       int skip = 0, beforeSize = 0;
-      selector = "div.enquete_box>div>a"; // アンケート一覧の回答するボタン
+      selector = "div.enquete_box>a"; // アンケート一覧の回答するボタン
       String seleNextb2 = "form>input[type='image']";
       String sele1_ = "iframe.question_frame", //
       sele6 = "form>input.next_bt", // コラム用

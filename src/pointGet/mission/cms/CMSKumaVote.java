@@ -63,6 +63,7 @@ public class CMSKumaVote extends CMSBase {
             if (isExistEle(driver, topSele)) {
               clickSleepSelector(driver, topSele, 4000);
             }
+            Utille.url(driver, url2, logg);
           }
         }
       }

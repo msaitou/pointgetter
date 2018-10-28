@@ -41,7 +41,9 @@ public class CMSAnk extends CMSBase {
       logg.info("1");
       // クイズ→テキスト→写真の順にやる（デフォは写真だけど）
       String seleCate = "ul.tab_index>li#";
-      String goryId[] = { "tab_quiz", "tab_text", "tab_photo" };
+      String goryId[] = { "tab_quiz",
+                    "tab_text", "tab_photo" 
+      };
       for (int p = 0; p < goryId.length; p++) {
         selector = "div.tab_cont";
         int cnt = 0;
@@ -70,7 +72,8 @@ public class CMSAnk extends CMSBase {
 
                     // 以下より10問
                     String choiceSele = "label.adchange";
-                    String nextSele2 = "p.top>input.btn";
+                    String nextSele2 = "p.btm>input.btn";
+                    String nextSele3 = "p.top>input.btn";
                     for (int i = 0; i < 10; i++) {
                       List<WebElement> eleChoice = driver
                           .findElements(By.cssSelector(choiceSele));
@@ -78,12 +81,43 @@ public class CMSAnk extends CMSBase {
                       //											int choiceies = getSelectorSize(driver, choiceSele);
                       int choiceNum = Utille.getIntRand(choiceies);
                       if (isExistEle(driver, choiceSele) && isExistEle(eleChoice, choiceNum)) {
-                        clickSleepSelector(driver, eleChoice, choiceNum, 3000); // 選択肢を選択
-                        if (isExistEle(driver, nextSele2)) {
-                          clickSleepSelector(driver, nextSele2, 3000);
-                          Utille.clickRecaptha(driver, logg);
-                          if (isExistEle(driver, nextSele2)) { // 答え合わせ
-                            clickSleepSelector(driver, nextSele2, 4000); // 次の問題
+                        clickSleepSelector(driver, eleChoice, choiceNum, 4000); // 選択肢を選択
+                        boolean a = driver.findElement(By.cssSelector(nextSele2))
+                            .isDisplayed();
+                        if (a) {
+                          if (isExistEle(driver, nextSele2)) {
+                            clickSleepSelector(driver, nextSele2, 4000);
+                            //                            Utille.clickRecaptha(driver, logg);
+                            a = driver.findElement(By.cssSelector(nextSele2))
+                                .isDisplayed();
+                            if (a) {
+                              if (isExistEle(driver, nextSele2)) { // 答え合わせ
+                                clickSleepSelector(driver, nextSele2, 4000); // 次の問題
+                              }
+                            }
+                            else {
+                              if (isExistEle(driver, nextSele3)) { // 答え合わせ
+                                clickSleepSelector(driver, nextSele3, 4000); // 次の問題
+                              }
+                            }
+                          }
+                        }
+                        else {
+                          if (isExistEle(driver, nextSele3)) {
+                            clickSleepSelector(driver, nextSele3, 4000);
+                            //                            Utille.clickRecaptha(driver, logg);
+                            a = driver.findElement(By.cssSelector(nextSele2))
+                                .isDisplayed();
+                            if (a) {
+                              if (isExistEle(driver, nextSele2)) { // 答え合わせ
+                                clickSleepSelector(driver, nextSele2, 4000); // 次の問題
+                              }
+                            }
+                            else {
+                              if (isExistEle(driver, nextSele3)) { // 答え合わせ
+                                clickSleepSelector(driver, nextSele3, 4000); // 次の問題
+                              }
+                            }
                           }
                         }
                       }
@@ -94,6 +128,10 @@ public class CMSAnk extends CMSBase {
                     checkOverlay(driver, overLaySele);
                     if (isExistEle(driver, seleNext)) {
                       clickSleepSelector(driver, seleNext, 4000);
+                      String toList = "p.btn>a";
+                      if (isExistEle(driver, toList)) {
+                        clickSleepSelector(driver, toList, 4000);
+                      }
                     }
                   }
                 }

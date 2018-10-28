@@ -330,7 +330,8 @@ public class Define {
   final public static String strCMSGameParkEnk = "CMSGameParkEnk";
   final public static String strCMSAnk = "CMSAnk";
   final public static String strCMSPointResearch = "CMSPointResearch";
-
+  final public static String strCMSKumaVote = "CMSKumaVote";
+  
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";
   final public static String CONTENT_TYPE_HTML = "text/html";
