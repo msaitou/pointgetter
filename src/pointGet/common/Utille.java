@@ -594,6 +594,7 @@ public class Utille {
         break;
       case Define.PSITE_CODE_CRI:
       case Define.PSITE_CODE_SUG:
+      case Define.PSITE_CODE_CMS:
         tot += current / 2;
         break;
       case Define.PSITE_CODE_GMY:

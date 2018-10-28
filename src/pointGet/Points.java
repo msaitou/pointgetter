@@ -320,6 +320,23 @@ System.out.println(pointMap);
               outPut = "[" + Define.PSITE_CODE_PST + ":" + Utille.getNumber(point) + "]";
             }
             break;
+            // cms
+            case Define.PSITE_CODE_CMS:
+              if (pointMap.containsKey(siteCode)) {
+                break;
+              }
+              selector = "p.menbertxt>span";
+              Utille.url(driver, "http://www.cmsite.co.jp/top/home/", logg);
+              if (!Utille.isExistEle(driver, selector, logg)) {
+                // login!!
+                LoginSite.login(siteCode, driver, logg);
+              }
+              Utille.url(driver, "http://www.cmsite.co.jp/top/home/", logg);
+              if (Utille.isExistEle(driver, selector, logg)) {
+                point = driver.findElement(By.cssSelector(selector)).getText();
+                outPut = "[" + siteCode+ ":" + Utille.getNumber(point) + "]";
+              }
+              break;
           default:
         }
         if (outPut.length() > 0) {
