@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
+import pointGet.mission.parts.AnswerEasyAnk;
 import pointGet.mission.parts.AnswerEnkShopQP;
 import pointGet.mission.parts.AnswerEnqNstk;
 import pointGet.mission.parts.AnswerEnqY2at;
@@ -21,6 +22,7 @@ public class PICPointResearch extends PICBase {
   AnswerSurveyEnk SurveyEnk = null;
   AnswerEnqY2at EnqY2at = null;
   AnswerEnqNstk EnqNstk = null;
+  AnswerEasyAnk EasyAnk = null;
 
   /**
    * @param logg
@@ -31,6 +33,7 @@ public class PICPointResearch extends PICBase {
     SurveyEnk = new AnswerSurveyEnk(logg);
     EnqY2at = new AnswerEnqY2at(logg);
     EnqNstk = new AnswerEnqNstk(logg);
+    EasyAnk = new AnswerEasyAnk(logg);
   }
 
   @Override
@@ -40,7 +43,8 @@ public class PICPointResearch extends PICBase {
     selector = "li>a.answer_btn";
     int skip = 0;
     String sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
-    sele8 = "div#buttonArea>input[name='next']"; // enq.shop-qp.com,enq.y2at.com用
+    sele8 = "div#buttonArea>input[name='next']", // enq.shop-qp.com,enq.y2at.com用
+    seleNextb2 = "form>p>input.btn";
     while (true) {
       Utille.sleep(5000);
       if (isExistEle(driver, selector)) {
@@ -58,11 +62,17 @@ public class PICPointResearch extends PICBase {
           if (isExistEle(driver, sele3)) {
             // http://mini.surveyenquete.net
             SurveyEnk.answer(driver, sele3, wid);
-//            skip++;
+            //            skip++;
           }
           else if (cUrl.indexOf("enq.shop-qp.com") >= 0
               && isExistEle(driver, sele8)) {
             EnkShopQP.answer(driver, sele8, wid);
+          }
+          else if (isExistEle(driver, seleNextb2)) {
+            EasyAnk.answer(driver, seleNextb2, wid);
+            driver.switchTo().window(wid);
+//            Utille.refresh(driver, logg);
+//            Utille.sleep(5000);
           }
           else if ((cUrl.indexOf("enq.y2at.com") >= 0
               || cUrl.indexOf("enq.torixchu.com") >= 0)
@@ -70,7 +80,7 @@ public class PICPointResearch extends PICBase {
             EnqY2at.answer(driver, sele8, wid);
           }
           else if ((cUrl.indexOf("enq.nstk-4.com") >= 0
-          		|| cUrl.indexOf("enq.gourmet-syokusai.com") >= 0)
+              || cUrl.indexOf("enq.gourmet-syokusai.com") >= 0)
               && isExistEle(driver, sele8)) {
             EnqNstk.answer(driver, sele8, wid);
           }

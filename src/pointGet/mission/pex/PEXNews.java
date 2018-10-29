@@ -32,7 +32,7 @@ public class PEXNews extends PEXBase {
       Utille.url(driver, this.url, logg);
       // 未獲得印3つが確認できない場合ノルマ達成とみなしブレイク
       selector = "ul#point-action-5[style='']";
-      if (!isExistEle(driver, selector, false)) {
+      if (isExistEle(driver, selector, false)) {
         break;
       }
       selector = "ul#news-list>li>figure>a";
