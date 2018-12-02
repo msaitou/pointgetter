@@ -112,6 +112,7 @@ public class Define {
   final public static String strMOPMiniGameEnk = "MOPMiniGameEnk";
   final public static String strMOPMiniGameEnkNoCap = "MOPMiniGameEnkNoCap";
   final public static String strMOPMail = "MOPMail";
+  final public static String strMOPAnkPark = "MOPAnkPark";
 
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
@@ -132,6 +133,7 @@ public class Define {
   final public static String strOSAFarmEnk = "OSAFarmEnk";
   final public static String strOSAFarmEnkNoCap = "OSAFarmEnkNoCap";
   final public static String strOSAMail = "OSAMail";
+  final public static String strOSAAnkPark = "OSAAnkPark";
 
   // ■■■■■PEX■■■■■
   final public static String strPEX4quiz = "PEX4quiz";

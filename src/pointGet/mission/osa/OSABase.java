@@ -119,6 +119,10 @@ public abstract class OSABase extends Mission {
         case Define.strOSAFarmEnkNoCap: // ■ファームアンケート
           MisIns = new OSAFarmEnkNoCap(loggg, cProps);
           break;
+        case Define.strOSAAnkPark: // ■アンケートパーク
+          MisIns = new OSAAnkPark(loggg, cProps);
+          break;
+          
         case Define.strOSAMail:
           MailClicker.main(new String[] {sCode});
           break;

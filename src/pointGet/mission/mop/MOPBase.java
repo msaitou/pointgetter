@@ -126,6 +126,10 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPCMother: // ■CMサイトその他
           MisIns = new MOPCMother(loggg, cProps);
           break;
+        case Define.strMOPAnkPark: // ■アンケートパーク
+          MisIns = new MOPAnkPark(loggg, cProps);
+          break;
+          
         case Define.strMOPMail:
           MailClicker.main(new String[] {sCode});
           break;
