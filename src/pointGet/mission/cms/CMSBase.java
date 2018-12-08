@@ -86,11 +86,8 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSFarmEnk: // ■ファーム
           MisIns = new CMSFarmEnk(loggg, cProps);
           break;
-        case Define.strCMSAnqueate: // ■アンケート
-          MisIns = new CMSAnqueate(loggg, cProps);
-          break;
-        case Define.strCMSKumaVote: // ■くまアンケート
-          MisIns = new CMSKumaVote(loggg, cProps);
+        case Define.strCMSPochi: // ■ぽちっと調査隊
+          MisIns = new CMSPochi(loggg, cProps);
           break;
                     
         default:
@@ -101,6 +98,7 @@ public abstract class CMSBase extends Mission {
           Define.strCMSQuiz,
           Define.strCMSGameParkEnk,
           Define.strCMSAnk,
+          Define.strCMSPochi,
           Define.strCMSPointResearch,Define.strCMSKumaVote
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);

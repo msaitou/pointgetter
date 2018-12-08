@@ -34,7 +34,7 @@ public class GPOCook extends GPOBase {
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
     String sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
-        selector2 = "li.menu05>a";
+        selector2 = "a[onclick*='ryori']";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 4000);
       if (isExistEle(driver, selector2)) {

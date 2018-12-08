@@ -34,7 +34,7 @@ public class GPOColum extends GPOBase {
     Utille.url(driver, url, logg);
     Utille.sleep(3000);
     String sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
-        selector2 = "li.menu07>a";
+        selector2 = "a[onclick*='column']";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 4000);
       if (isExistEle(driver, selector2)) {
