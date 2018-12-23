@@ -105,6 +105,9 @@ public abstract class PTOBase extends Mission {
         case Define.strPTOMail:
           MailClicker.main(new String[] {sCode});
           break;
+        case Define.strPTOAnkPark:
+          MisIns = new PTOAnkPark(loggg, cProps);
+          break;
 
         default:
       }
@@ -119,7 +122,8 @@ public abstract class PTOBase extends Mission {
           Define.strPTOKumaVote,
           Define.strPTOFarmEnk,
           Define.strPTOFarmEnkNoCap,
-          Define.strPTOCMother
+          Define.strPTOCMother,
+          Define.strPTOAnkPark
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

@@ -165,6 +165,7 @@ public class Define {
   final public static String strPTOFarmEnk = "PTOFarmEnk";
   final public static String strPTOFarmEnkNoCap = "PTOFarmEnkNoCap";
   final public static String strPTOMail = "PTOMail";
+  final public static String strPTOAnkPark = "PTOAnkPark";
 
   // ■■■■■Mobatoku■■■■■
   final public static String strMOBAnzan = "MOBAnzan";
