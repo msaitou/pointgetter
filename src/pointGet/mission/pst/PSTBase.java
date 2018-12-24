@@ -83,6 +83,9 @@ public abstract class PSTBase extends Mission {
         case Define.strPSTClickBanner: // ■クリックバナー
           MisIns = new PSTClickBanner(loggg, cProps);
           break;
+        case Define.strPSTAnqueate: // ■PStアンケート
+          MisIns = new PSTAnqueate(loggg, cProps);
+          break;
         case Define.strPSTMail:
           MailClicker.main(new String[] {sCode});
           break;

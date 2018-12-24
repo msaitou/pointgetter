@@ -65,6 +65,7 @@ public class Define {
   final public static String strGENMorikoreEnk = "GENMorikoreEnk";
   final public static String strGENMorikoreEnkNoCap = "GENMorikoreEnkNoCap";
   final public static String strGENMail = "GENMail";
+  final public static String strGENHitosara = "GENHitosara";
 
    // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
@@ -221,6 +222,7 @@ public class Define {
   final public static String strPSTKumaVote = "PSTKumaVote";
   final public static String strPSTClickBanner = "PSTClickBanner";
   final public static String strPSTMail = "PSTMail";
+  final public static String strPSTAnqueate = "PSTAnqueate";
 
   // ■■■■■pointisland■■■■■
   final public static String strPILUranai = "PILUranai";
@@ -232,6 +234,7 @@ public class Define {
   final public static String strPILChyousadan = "PILChyousadan";
   final public static String strPILKumaVote = "PILKumaVote";
   final public static String strPILMail = "PILMail";
+  final public static String strPILAnqueate = "PILAnqueate";
 
   // ■■■■■chanceIt■■■■■
   final public static String strCITPriceChyosatai = "CITPriceChyosatai";

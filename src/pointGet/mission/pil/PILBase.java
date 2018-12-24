@@ -91,6 +91,10 @@ public abstract class PILBase extends Mission {
         case Define.strPILMail:
           MailClicker.main(new String[] {sCode});
           break;
+        case Define.strPILAnqueate: // ■PILアンケート
+          MisIns = new PILAnqueate(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] { Define.strPILQuiz,
