@@ -98,6 +98,9 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGCMother: // ■CM
           MisIns = new SUGCMother(loggg, cProps);
           break;
+        case Define.strSUGAnkPark: // ■アンケートパーク
+          MisIns = new SUGAnkPark(loggg, cProps);
+          break;
         case Define.strSUGMail:
           MailClicker.main(new String[] {sCode});
           break;

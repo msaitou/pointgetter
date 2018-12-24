@@ -89,7 +89,9 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSPochi: // ■ぽちっと調査隊
           MisIns = new CMSPochi(loggg, cProps);
           break;
-                    
+        case Define.strCMSAnqueate: // ■ぽちっと調査隊
+          MisIns = new CMSAnqueate(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCMSAnqueate,

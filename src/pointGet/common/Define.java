@@ -211,6 +211,8 @@ public class Define {
   final public static String strSUGGetPark = "SUGGetPark";
   final public static String strSUGGetParkNoCap = "SUGGetParkNoCap";
   final public static String strSUGMail = "SUGMail";
+  final public static String strSUGAnkPark = "SUGAnkPark";
+  
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";

@@ -33,7 +33,7 @@ public class LFMChyousadan extends LFMBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "dd>a>img[alt='CMくじ']";
+    selector = "img[alt='CMじゃんけん']";
     String seleFirst = "img[src*='bn_chosa']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移

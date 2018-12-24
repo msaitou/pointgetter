@@ -16,7 +16,7 @@ import pointGet.common.Utille;
  * @author saitou
  */
 public class SUGQuiz2 extends SUGBase {
-  final String url = "http://www.sugutama.jp/survey";
+  final String url = "https://www.sugutama.jp/survey";
 
   /**
    * @param logg
