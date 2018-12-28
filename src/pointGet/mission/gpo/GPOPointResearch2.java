@@ -5,8 +5,10 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerEnkShopQP;
@@ -41,30 +43,43 @@ public class GPOPointResearch2 extends GPOBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    selector = "td>a.ui-button";
-    int skip = 0;
-    String sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
-        sele8 = "div#buttonArea>input[name='next']"; // enq.shop-qp.com,enq.y2at.com用
-    String sele1_ = "div.ui-control.type-fixed>a.ui-button",
-        sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon",
-        selector2 = "li.menu04>a";
+    String sele1 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon", //
+    selector2 = "a[onclick*='otokuenquete']";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 4000);
       if (isExistEle(driver, selector2)) {
         clickSleepSelector(driver, selector2, 5000);
+        // アラートをけして
+        checkAndAcceptAlert(driver);
+        Utille.sleep(2000);
         changeCloseWindow(driver);
-
+        selector = "td.status>a.ui-button"; // アンケート一覧の回答するボタン
+        Utille.sleep(5000);
+        String sele8 = "form>input.next_bt";
+        int skip = 0;
+        String
+        //    sele1 = "div.ui-control.type-fixed>a.ui-button",
+        sele6 = "form>input.next_bt", // コラム用
+        sele2 = "form>input[alt='進む']", // 回答する 漫画用
+        sele1_ = "input[type='button']", //
+        sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
+        sele4 = "div#buttonArea>input[name='next']", // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+        sele7 = "div.btn>button[type='submit']", //
+        a = "";
         while (true) {
-          Utille.sleep(5000);
           if (isExistEle(driver, selector)) {
             List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-            int size = eleList.size();
-            int targetIndex = size - 1 - skip; // 順番はサイト毎に変更可能だが、変数を使う
-            logg.info("size:" + size + " targetIndex:" + targetIndex + " skip:" + skip);
-            if (targetIndex > -1 && size > targetIndex
-                && isExistEle(eleList, targetIndex)) {
+            int size2 = eleList.size(), targetIndex = 0 + skip;
+            logg.info("size2:" + size2 + " target:" + targetIndex);
+            if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+              Utille.scrolledPage(driver, driver.findElements(By.cssSelector(selector)).get(targetIndex));
+              Actions actions = new Actions(driver);
+              actions.keyDown(Keys.CONTROL);
+              actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
+              actions.perform();
+              Utille.sleep(5000);
+
               String wid = driver.getWindowHandle();
-              clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
               changeWindow(driver, wid);
               String cUrl = driver.getCurrentUrl();
               logg.info("url[" + cUrl + "]");
@@ -97,9 +112,6 @@ public class GPOPointResearch2 extends GPOBase {
               }
               Utille.refresh(driver, logg);
               Utille.sleep(5000);
-            }
-            else {
-              break;
             }
           }
           else {
