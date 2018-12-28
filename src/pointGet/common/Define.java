@@ -320,16 +320,16 @@ public class Define {
   final public static String strGPOPointResearch2 = "GPOPointResearch2";
   final public static String strGPOKansatu = "GPOKansatu";
   final public static String strGPOHyakkey = "GPOHyakkey";
-
   final public static String strGPOHirameki = "GPOHirameki";
   final public static String strGPOCook = "GPOCook";
-
   final public static String strGPOGameParkEnk = "GPOGameParkEnk";
   final public static String strGPOFarmEnk = "GPOFarmEnk";
   final public static String strGPOFarmEnkNoCap = "GPOFarmEnkNoCap";
   final public static String strGPODokiShindan = "GPODokiShindan";
   final public static String strGPOAnqueate = "GPOAnqueate";
   final public static String strGPOMail = "GPOMail";
+  final public static String strGPOAnimal = "GPOAnimal";
+  
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";

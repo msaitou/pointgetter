@@ -134,7 +134,9 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOMail:
           MailClicker.main(new String[] { sCode });
           break;
-
+        case Define.strGPOAnimal: // ■動物アンケート
+          MisIns = new GPOAnimal(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
@@ -156,7 +158,8 @@ public abstract class GPOBase extends Mission {
           Define.strGPODokiShindan,
           Define.strGPOAnqueate,
           Define.strGPOHirameki,
-          Define.strGPOCook
+          Define.strGPOCook,
+          Define.strGPOAnimal
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
