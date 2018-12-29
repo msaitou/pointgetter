@@ -113,6 +113,9 @@ public class GPOPointResearch2 extends GPOBase {
               Utille.refresh(driver, logg);
               Utille.sleep(5000);
             }
+            else {
+              break;
+            }
           }
           else {
             break;

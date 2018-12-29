@@ -67,7 +67,7 @@ public class Define {
   final public static String strGENMail = "GENMail";
   final public static String strGENHitosara = "GENHitosara";
 
-   // ■■■■■げっとま■■■■■
+  // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
   final public static String strGMYClickBanner = "GMYClickBanner";
   final public static String strGMYShindan = "GMYShindan";
@@ -195,7 +195,6 @@ public class Define {
   final public static String strPICFarmEnkNoCap = "PICFarmEnkNoCap";
   final public static String strPICMail = "PICMail";
 
-
   // ■■■■■SUGUTAMA■■■■■
   final public static String strSUGUranai = "SUGUranai";
   final public static String strSUGQuiz = "SUGQuiz";
@@ -212,7 +211,6 @@ public class Define {
   final public static String strSUGGetParkNoCap = "SUGGetParkNoCap";
   final public static String strSUGMail = "SUGMail";
   final public static String strSUGAnkPark = "SUGAnkPark";
-  
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
@@ -329,7 +327,7 @@ public class Define {
   final public static String strGPOAnqueate = "GPOAnqueate";
   final public static String strGPOMail = "GPOMail";
   final public static String strGPOAnimal = "GPOAnimal";
-  
+  final public static String strGPOIjin = "GPOIjin";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";

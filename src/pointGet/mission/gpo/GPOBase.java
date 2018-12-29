@@ -137,6 +137,9 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOAnimal: // ■動物アンケート
           MisIns = new GPOAnimal(loggg, cProps);
           break;
+        case Define.strGPOIjin: // ■動物アンケート
+          MisIns = new GPOIjin(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
@@ -159,6 +162,7 @@ public abstract class GPOBase extends Mission {
           Define.strGPOAnqueate,
           Define.strGPOHirameki,
           Define.strGPOCook,
+          Define.strGPOIjin,
           Define.strGPOAnimal
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
@@ -194,9 +198,9 @@ public abstract class GPOBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "span#point", sel = "uli.status-point", point = "";
+    String selector = "span#point", sel = "ul>li.status-point", point = "";
     Utille.url(driver, "https://www.gpoint.co.jp/scripts/direct/userinfo/MMMyPage.do", logg);
-    if (!Utille.isExistEle(driver, sel, logg)) {
+    if (!Utille.isExistEle(driver, sel, false, logg)) {
       // login!!
       LoginSite.login(sCode, driver, logg);
       Utille.url(driver, "https://www.gpoint.co.jp/scripts/direct/userinfo/MMMyPage.do", logg);
