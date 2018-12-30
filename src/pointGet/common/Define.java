@@ -328,6 +328,7 @@ public class Define {
   final public static String strGPOMail = "GPOMail";
   final public static String strGPOAnimal = "GPOAnimal";
   final public static String strGPOIjin = "GPOIjin";
+  final public static String strGPOMatome = "GPOMatome";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";

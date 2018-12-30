@@ -78,9 +78,9 @@ public class GENMorikoreEnk extends GENBase {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         changeCloseWindow(driver);
         Utille.url(driver, "http://mrga.service-navi.jp/square/diagnoses", logg);
-        for (int k = 0; k < 5; k++) {
+        for (int k = 0; k < 6; k++) {
           if (k == 1) {
-            Utille.url(driver, "http://mrga.service-navi.jp/square/columns", logg);
+            Utille.url(driver, "http://mrga.service-navi.jp/square/articles", logg);
           }
           else if (k == 2) {
             Utille.url(driver, "http://mrga.service-navi.jp/square/surveys", logg);
@@ -94,6 +94,9 @@ public class GENMorikoreEnk extends GENBase {
           }
           else if (k == 3) {
             Utille.url(driver, "http://mrga.service-navi.jp/square/votes", logg);
+          }
+          else if (k == 5) {
+            Utille.url(driver, "http://mrga.service-navi.jp/square/columns", logg);
           }
 
           Utille.sleep(3000);
@@ -130,7 +133,28 @@ public class GENMorikoreEnk extends GENBase {
                 isShindanText = driver.findElement(By.cssSelector(isShindanSele)).getText();
               }
 
-              if (isExistEle(driver, sele9)) {
+              if (cUrl.indexOf("http://gameapp.galaxymatome.com") >= 0) {
+                String close = "div.feature__button span.button--close", //
+                    mSele2 = "a[onclick*='entrance']",//
+                    mSele = "a.highlight";
+                if (isExistEle(driver, close, false)) {
+                  clickSleepSelector(driver, close, 2000); // 遷移
+                }
+                if (isExistEle(driver, mSele)) {
+                  clickSleepSelector(driver, mSele, 4000); // 遷移
+                  changeCloseWindow(driver);
+                  if (isExistEle(driver, close, false)) {
+                    clickSleepSelector(driver, close, 2000); // 遷移
+                  }
+                  if (isExistEle(driver, mSele2)) {
+                    clickSleepSelector(driver, mSele2, 3000); // 遷移
+                    skip++;
+                    driver.close();
+                    driver.switchTo().window(wid);
+                  }
+                }
+              }
+              else if (isExistEle(driver, sele9)) {
                 Tasuuketu.answer(driver, sele9, wid);
               }
               else if ("この診断について".equals(isShindanText)

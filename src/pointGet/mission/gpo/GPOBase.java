@@ -137,8 +137,11 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOAnimal: // ■動物アンケート
           MisIns = new GPOAnimal(loggg, cProps);
           break;
-        case Define.strGPOIjin: // ■動物アンケート
+        case Define.strGPOIjin: // ■偉人アンケート
           MisIns = new GPOIjin(loggg, cProps);
+          break;
+        case Define.strGPOMatome: // ■まとめ
+          MisIns = new GPOMatome(loggg, cProps);
           break;
         default:
       }
@@ -163,7 +166,8 @@ public abstract class GPOBase extends Mission {
           Define.strGPOHirameki,
           Define.strGPOCook,
           Define.strGPOIjin,
-          Define.strGPOAnimal
+          Define.strGPOAnimal,
+          Define.strGPOMatome
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
