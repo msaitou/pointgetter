@@ -149,12 +149,12 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOWhichCollectUsedCar: // ■どっちが正解中古車
           MisIns = new GPOWhichCollectUsedCar(loggg, cProps);
           break;
-//        case Define.strGPOWhichCollectTour: // ■どっちが正解ツアー
-//          MisIns = new GPOWhichCollectTour(loggg, cProps);
-//          break;
-//        case Define.strGPOWhichCollectGurume: // ■どっちが正解グルメ
-//          MisIns = new GPOWhichCollectGurume(loggg, cProps);
-//          break;
+        case Define.strGPOWhichCollectTour: // ■どっちが正解ツアー
+          MisIns = new GPOWhichCollectTour(loggg, cProps);
+          break;
+        case Define.strGPOWhichCollectGurume: // ■どっちが正解グルメ
+          MisIns = new GPOWhichCollectGurume(loggg, cProps);
+          break;
 
         default:
       }
