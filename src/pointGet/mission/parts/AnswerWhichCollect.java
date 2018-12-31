@@ -33,7 +33,7 @@ public class AnswerWhichCollect extends MissCommon {
         sele5 = "div.priceBox>button",
         sele6 = "button#resultDialogBtn>img",
         sele6None = "button#resultDialogBtn[style*='none']>img",
-        sele7 = "a.play",
+        sele7 = "a.play>img",
         sele8 = "a#btnEnd",
         goodSele = "img#titleGood",
         badSele = "img#titleBad",
@@ -51,7 +51,9 @@ public class AnswerWhichCollect extends MissCommon {
           clickSleepSelector(driver, sele2, 3000);
           for (int j = 0; j < 10;) {
             if (isExistEle(driver, sele3, false)) {
-              clickSleepSelector(driver, sele3, 3000);
+              if (isExistEle(driver, sele3)) {
+                clickSleepSelector(driver, sele3, 3000);
+              }
             }
             if (isExistEle(driver, sele4)) {
               clickSleepSelector(driver, sele4, 3000);
@@ -94,10 +96,15 @@ public class AnswerWhichCollect extends MissCommon {
                     j++; // カウントアップ
                     if (!isExistEle(driver, sele6None, false)
                         && isExistEle(driver, sele6)) {
-                      clickSleepSelector(driver, sele6, 3000);
+                      clickSleepSelector(driver, sele6, 4000);
                     }
                     else if (isExistEle(driver, sele8)) {
-                      clickSleepSelector(driver, sele8, 3000);
+                      clickSleepSelector(driver, sele8, 4000);
+                    }
+                  }
+                  else {
+                    if (isExistEle(driver, sele6)) {
+                      clickSleepSelector(driver, sele6, 3000);
                     }
                   }
                 }
