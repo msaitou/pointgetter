@@ -143,6 +143,19 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOMatome: // ■まとめ
           MisIns = new GPOMatome(loggg, cProps);
           break;
+        case Define.strGPOWhichCollectCar: // ■どっちが正解車
+          MisIns = new GPOWhichCollectCar(loggg, cProps);
+          break;
+        case Define.strGPOWhichCollectUsedCar: // ■どっちが正解中古車
+          MisIns = new GPOWhichCollectUsedCar(loggg, cProps);
+          break;
+//        case Define.strGPOWhichCollectTour: // ■どっちが正解ツアー
+//          MisIns = new GPOWhichCollectTour(loggg, cProps);
+//          break;
+//        case Define.strGPOWhichCollectGurume: // ■どっちが正解グルメ
+//          MisIns = new GPOWhichCollectGurume(loggg, cProps);
+//          break;
+
         default:
       }
       if (Arrays.asList(new String[] {
@@ -167,7 +180,11 @@ public abstract class GPOBase extends Mission {
           Define.strGPOCook,
           Define.strGPOIjin,
           Define.strGPOAnimal,
-          Define.strGPOMatome
+          Define.strGPOMatome,
+          Define.strGPOWhichCollectCar,
+          Define.strGPOWhichCollectUsedCar,
+          Define.strGPOWhichCollectTour,
+          Define.strGPOWhichCollectGurume,
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

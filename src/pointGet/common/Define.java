@@ -329,6 +329,10 @@ public class Define {
   final public static String strGPOAnimal = "GPOAnimal";
   final public static String strGPOIjin = "GPOIjin";
   final public static String strGPOMatome = "GPOMatome";
+  final public static String strGPOWhichCollectCar = "GPOWhichCollectCar";
+  final public static String strGPOWhichCollectUsedCar = "GPOWhichCollectUsedCar";
+  final public static String strGPOWhichCollectTour = "GPOWhichCollectTour";
+  final public static String strGPOWhichCollectGurume = "GPOWhichCollectGurume";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";
