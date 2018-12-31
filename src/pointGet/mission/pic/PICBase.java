@@ -57,7 +57,7 @@ public abstract class PICBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    String sel = "div#prof_box div.prof_name";
+    String sel = "ul a[href*='/exchange/pts_exchange_top.php']";
     Utille.url(driver, "http://pointi.jp/", loggg); // http://pointi.jp/
     if (!Utille.isExistEle(driver, sel, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
       // login!!
