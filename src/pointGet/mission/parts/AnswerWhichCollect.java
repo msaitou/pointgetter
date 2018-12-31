@@ -29,6 +29,7 @@ public class AnswerWhichCollect extends MissCommon {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String sele2 = "img[alt*='ゲームで遊ぶ']",
         sele3 = "button#missionDialogBtnStart>img",
+            sele3None = "div#missionDialog[style*='none'] button#missionDialogBtnStart",
         sele4 = "button#missionDialogBtnStart2>img",
         sele5 = "div.priceBox>button",
         sele6 = "button#resultDialogBtn>img",
@@ -50,10 +51,9 @@ public class AnswerWhichCollect extends MissCommon {
 
           clickSleepSelector(driver, sele2, 3000);
           for (int j = 0; j < 10;) {
-            if (isExistEle(driver, sele3, false)) {
-              if (isExistEle(driver, sele3)) {
-                clickSleepSelector(driver, sele3, 3000);
-              }
+            if (!isExistEle(driver, sele3None, false)
+                && isExistEle(driver, sele3)) {
+              clickSleepSelector(driver, sele3, 3000);
             }
             if (isExistEle(driver, sele4)) {
               clickSleepSelector(driver, sele4, 3000);
@@ -105,6 +105,7 @@ public class AnswerWhichCollect extends MissCommon {
                   else {
                     if (isExistEle(driver, sele6)) {
                       clickSleepSelector(driver, sele6, 3000);
+                      break;
                     }
                   }
                 }
