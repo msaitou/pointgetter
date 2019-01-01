@@ -156,7 +156,7 @@ public abstract class GPOBase extends Mission {
           MisIns = new GPOWhichCollectGurume(loggg, cProps);
           break;
         case Define.strGPOCMohter: // ■CMあざ―
-          MisIns = new GPOCMohter(loggg, cProps);
+          MisIns = new GPOCMother(loggg, cProps);
           break;
         case Define.strGPOWhichCollectHighLow: // ■High&Low
           MisIns = new GPOWhichCollectHighLow(loggg, cProps);
