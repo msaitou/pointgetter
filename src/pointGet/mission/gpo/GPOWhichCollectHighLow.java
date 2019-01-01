@@ -1,6 +1,7 @@
-package pointGet.mission.parts;
+package pointGet.mission.gpo;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -8,40 +9,44 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
-import pointGet.mission.MissCommon;
+import pointGet.mission.parts.AnswerWhichCollect;
 
-public class AnswerWhichCollect extends MissCommon {
+/**
+ * @author saitou
+ *
+ */
+public class GPOWhichCollectHighLow extends GPOBase {
+  final String url = "https://www.gpoint.co.jp/gpark/";
+  /* アンケートクラス　図鑑 */
+  AnswerWhichCollect WhichCollect = null;
+
   /**
-   * constracter
-   *
-   * @param log4j object
+   * @param logg
    */
-  public AnswerWhichCollect(Logger log) {
-    logg = log;
+  public GPOWhichCollectHighLow(Logger logg, Map<String, String> cProps) {
+    super(logg, cProps, "どっちが正解？High&LOw");
+    WhichCollect = new AnswerWhichCollect(logg);
   }
 
-  /**
-   *
-   * @param startSele
-   * @param wid
-   */
-  public void answer(WebDriver driver, String startSele, String wid) {
-    logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
+  @Override
+  public void privateMission(WebDriver driver) {
+    Utille.url(driver, url, logg);
+    String sele1 = "img[alt*='Quiz High & Low']";
     String sele2 = "img[alt*='ゲームで遊ぶ']",
-        sele3 = "button#missionDialogBtnStart>img",
-            sele3None = "div#missionDialog[style*='none'] button#missionDialogBtnStart",
-        sele4 = "button#missionDialogBtnStart2>img",
-        sele5 = "div.priceBox>button",
-        sele6 = "button#resultDialogBtn>img",
-        sele6None = "button#resultDialogBtn[style*='none']>img",
+        sele3 = "input#missionDialogBtnStart",
+        sele3None = "div#missionDialog[style*='none'] input#missionDialogBtnStart",
+        sele4 = "input#missionDialogBtnStart2",
+        sele5 = "div#gameBox>div.btnBox>input",
+        sele6 = "input#resultDialogBtn",
+        sele6None = "input#resultDialogBtn[style*='none']",
         sele7 = "a.play>img",
         sele8 = "a#btnEnd",
         goodSele = "img#titleGood",
         badSele = "img#titleBad",
         noneStyle = "[style*='display: none']",
         a = "";
-    if (isExistEle(driver, startSele)) {
-      clickSleepSelector(driver, startSele, 3000);
+    if (isExistEle(driver, sele1)) {
+      clickSleepSelector(driver, sele1, 3000);
       changeCloseWindow(driver);
       Utille.sleep(4000);
 
