@@ -53,7 +53,6 @@ public class GPOWhichCollectHighLow extends GPOBase {
       for (int m = 0; m < 6; m++) {
 
         if (isExistEle(driver, sele2)) {
-
           clickSleepSelector(driver, sele2, 3000);
           for (int j = 0; j < 10;) {
             if (!isExistEle(driver, sele3None, false)
@@ -120,10 +119,19 @@ public class GPOWhichCollectHighLow extends GPOBase {
                   }
                 }
                 else {
-                  if (isExistEle(driver, sele6)) {
-                    clickSleepSelector(driver, sele6, 3000);
-                    continue;
+                  String gameTop ="a>img[src*='logo_game.png']";
+                  if (isExistEle(driver, gameTop)) {
+                    clickSleepSelector(driver, gameTop, 3000);
+                    if (isExistEle(driver, sele2)) {
+                      clickSleepSelector(driver, sele2, 3000);
+                      break;
+                    }
                   }
+
+//                  if (isExistEle(driver, sele6)) {
+//                    clickSleepSelector(driver, sele6, 3000);
+//                    continue;
+//                  }
                 }
                 //                  if (isExistEle(driver, sele9)) {
                 //                    clickSleepSelector(driver, sele9, 3000);

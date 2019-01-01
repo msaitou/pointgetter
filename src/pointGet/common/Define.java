@@ -333,9 +333,10 @@ public class Define {
   final public static String strGPOWhichCollectUsedCar = "GPOWhichCollectUsedCar";
   final public static String strGPOWhichCollectTour = "GPOWhichCollectTour";
   final public static String strGPOWhichCollectGurume = "GPOWhichCollectGurume";
-
   final public static String strGPOWhichCollectHighLow = "GPOWhichCollectHighLow";
   final public static String strGPOCMother = "GPOCMother";
+  final public static String strGPOKumaVote = "GPOKumaVote";
+  final public static String strGPOChyousadan = "GPOChyousadan";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";

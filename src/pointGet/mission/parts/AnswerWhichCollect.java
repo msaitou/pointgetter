@@ -103,9 +103,13 @@ public class AnswerWhichCollect extends MissCommon {
                     }
                   }
                   else {
-                    if (isExistEle(driver, sele6)) {
-                      clickSleepSelector(driver, sele6, 3000);
-                      continue;
+                    String gameTop ="a>img[src*='logo_game.png']";
+                    if (isExistEle(driver, gameTop)) {
+                      clickSleepSelector(driver, gameTop, 3000);
+                      if (isExistEle(driver, sele2)) {
+                        clickSleepSelector(driver, sele2, 3000);
+                        break;
+                      }
                     }
                   }
                 }

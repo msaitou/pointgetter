@@ -161,6 +161,12 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOWhichCollectHighLow: // ■High&Low
           MisIns = new GPOWhichCollectHighLow(loggg, cProps);
           break;
+        case Define.strGPOKumaVote: // ■クマ熊投票
+          MisIns = new GPOKumaVote(loggg, cProps);
+          break;
+        case Define.strGPOChyousadan: // ■調査団
+          MisIns = new GPOChyousadan(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
@@ -189,10 +195,10 @@ public abstract class GPOBase extends Mission {
           Define.strGPOWhichCollectCar,
           Define.strGPOWhichCollectUsedCar,
           Define.strGPOWhichCollectTour,
-          
           Define.strGPOWhichCollectHighLow,
           Define.strGPOCMother,
-
+          Define.strGPOKumaVote,
+          Define.strGPOChyousadan,
           Define.strGPOWhichCollectGurume,
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
