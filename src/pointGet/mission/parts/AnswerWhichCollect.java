@@ -119,6 +119,7 @@ public class AnswerWhichCollect extends MissCommon {
             clickSleepSelector(driver, sele7, 3000);
           }
         }
+        Utille.refresh(driver, logg);
       }
     }
   }

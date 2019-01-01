@@ -32,19 +32,19 @@ public class GPOWhichCollectHighLow extends GPOBase {
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
     String sele1 = "img[alt*='Quiz High & Low']";
-    String sele2 = "img[alt*='ゲームで遊ぶ']",
-        sele3 = "input#missionDialogBtnStart",
-        sele3None = "div#missionDialog[style*='none'] input#missionDialogBtnStart",
-        sele4 = "input#missionDialogBtnStart2",
-        sele5 = "div#gameBox>div.btnBox>input",
-        sele6 = "input#resultDialogBtn",
-        sele6None = "input#resultDialogBtn[style*='none']",
-        sele7 = "a.play>img",
-        sele8 = "a#btnEnd",
-        goodSele = "img#titleGood",
-        badSele = "img#titleBad",
-        noneStyle = "[style*='display: none']",
-        a = "";
+    String sele2 = "img[alt*='ゲームで遊ぶ']", //
+    sele3 = "input#missionDialogBtnStart", //
+    sele3None = "div#missionDialog[style*='none'] input#missionDialogBtnStart", sele4 = "input#missionDialogBtnStart2", //
+    sele4None = "div#missionDialog2[style*='none'] input#missionDialogBtnStart2", //
+    sele5 = "div#gameBox>div.btnBox>input", //
+    sele6 = "input#resultDialogBtn", //
+    sele6None = "input#resultDialogBtn[style*='none']", //
+    sele7 = "a.play>img", //
+    sele8 = "a#btnEnd", //
+    sele9 = "input#btnNext", //
+    goodSele = "img#titleGood", //
+    badSele = "img#titleBad", //
+    noneStyle = "[style*='display: none']", a = "";
     if (isExistEle(driver, sele1)) {
       clickSleepSelector(driver, sele1, 3000);
       changeCloseWindow(driver);
@@ -60,60 +60,74 @@ public class GPOWhichCollectHighLow extends GPOBase {
                 && isExistEle(driver, sele3)) {
               clickSleepSelector(driver, sele3, 3000);
             }
-            if (isExistEle(driver, sele4)) {
+            if (!isExistEle(driver, sele4None, false)
+                && isExistEle(driver, sele4)) {
               clickSleepSelector(driver, sele4, 3000);
+            }
 
-              if (isExistEle(driver, sele5)) {
-                List<WebElement> eleList = driver.findElements(By.cssSelector(sele5));
-                int selectSize = eleList.size();
-                int ran = Utille.getIntRand(selectSize);
+            if (isExistEle(driver, sele5)) {
+              List<WebElement> eleList = driver.findElements(By.cssSelector(sele5));
+              int selectSize = eleList.size();
+              int ran = Utille.getIntRand(selectSize);
 
-                //                Integer array[] = new Integer[selectSize];
-                //                for (int k = 0; k < selectSize; k++) {
-                //                  array[k] = k; // 選択肢の分の数字の配列を作ってランダムに
-                //                }
-                //                // 配列からListへ変換します。
-                //                List<Integer> list = Arrays.asList(array);
-                //                // リストの並びをシャッフルします。
-                //                Collections.shuffle(list);
-                //                // listから配列へ戻します。
-                //                Integer[] array2 = (Integer[]) list.toArray(new Integer[list.size()]);
-                //
-                //                for (int k = 0; k < array2.length; k++) {
-                //                  if (isExistEle(eleList, array2[k])) {
-                //                    clickSleepSelector(driver, eleList.get(array2[k]), 3000);
-                //                    if (isExistEle(driver, sele6)) {
-                //                      clickSleepSelector(driver, sele6, 3000);
-                //                    }
-                //                  }
-                //                }
+              //                Integer array[] = new Integer[selectSize];
+              //                for (int k = 0; k < selectSize; k++) {
+              //                  array[k] = k; // 選択肢の分の数字の配列を作ってランダムに
+              //                }
+              //                // 配列からListへ変換します。
+              //                List<Integer> list = Arrays.asList(array);
+              //                // リストの並びをシャッフルします。
+              //                Collections.shuffle(list);
+              //                // listから配列へ戻します。
+              //                Integer[] array2 = (Integer[]) list.toArray(new Integer[list.size()]);
+              //
+              //                for (int k = 0; k < array2.length; k++) {
+              //                  if (isExistEle(eleList, array2[k])) {
+              //                    clickSleepSelector(driver, eleList.get(array2[k]), 3000);
+              //                    if (isExistEle(driver, sele6)) {
+              //                      clickSleepSelector(driver, sele6, 3000);
+              //                    }
+              //                  }
+              //                }
 
-                if (isExistEle(eleList, ran)) {
-                  clickSleepSelector(driver, eleList.get(ran), 3000);
-                  if (!isExistEle(driver, badSele + noneStyle, false)
-                      && isExistEle(driver, badSele)) {
-                    if (isExistEle(driver, sele6)) {
-                      clickSleepSelector(driver, sele6, 3000);
+              if (isExistEle(eleList, ran)) {
+                clickSleepSelector(driver, eleList.get(ran), 3000);
+                if (!isExistEle(driver, badSele + noneStyle, false)
+                    && isExistEle(driver, badSele)) {
+                  if (isExistEle(driver, sele6)) {
+                    clickSleepSelector(driver, sele6, 3000);
+                    if (isExistEle(driver, sele9)) {
+                      clickSleepSelector(driver, sele9, 3000);
                     }
                   }
-                  else if (!isExistEle(driver, goodSele + noneStyle, false)
-                      && isExistEle(driver, goodSele)) {
-                    j++; // カウントアップ
-                    if (!isExistEle(driver, sele6None, false)
-                        && isExistEle(driver, sele6)) {
-                      clickSleepSelector(driver, sele6, 4000);
+                }
+                else if (!isExistEle(driver, goodSele + noneStyle, false)
+                    && isExistEle(driver, goodSele)) {
+                  j++; // カウントアップ
+                  if (!isExistEle(driver, sele6None, false)
+                      && isExistEle(driver, sele6)) {
+                    clickSleepSelector(driver, sele6, 4000);
+                    if (!isExistEle(driver, sele9 + noneStyle, false)
+                        && isExistEle(driver, sele9)) {
+                      clickSleepSelector(driver, sele9, 3000);
                     }
                     else if (isExistEle(driver, sele8)) {
                       clickSleepSelector(driver, sele8, 4000);
                     }
                   }
-                  else {
-                    if (isExistEle(driver, sele6)) {
-                      clickSleepSelector(driver, sele6, 3000);
-                      continue;
-                    }
+                  else if (isExistEle(driver, sele8)) {
+                    clickSleepSelector(driver, sele8, 4000);
                   }
                 }
+                else {
+                  if (isExistEle(driver, sele6)) {
+                    clickSleepSelector(driver, sele6, 3000);
+                    continue;
+                  }
+                }
+                //                  if (isExistEle(driver, sele9)) {
+                //                    clickSleepSelector(driver, sele9, 3000);
+                //                  }
               }
             }
             else {
@@ -124,6 +138,7 @@ public class GPOWhichCollectHighLow extends GPOBase {
             clickSleepSelector(driver, sele7, 3000);
           }
         }
+        Utille.refresh(driver, logg);
       }
     }
   }

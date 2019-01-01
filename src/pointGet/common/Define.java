@@ -335,7 +335,7 @@ public class Define {
   final public static String strGPOWhichCollectGurume = "GPOWhichCollectGurume";
 
   final public static String strGPOWhichCollectHighLow = "GPOWhichCollectHighLow";
-  final public static String strGPOCMohter = "GPOCMohter";
+  final public static String strGPOCMother = "GPOCMother";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";

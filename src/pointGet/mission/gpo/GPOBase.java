@@ -155,7 +155,7 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOWhichCollectGurume: // ■どっちが正解グルメ
           MisIns = new GPOWhichCollectGurume(loggg, cProps);
           break;
-        case Define.strGPOCMohter: // ■CMあざ―
+        case Define.strGPOCMother: // ■CMあざ―
           MisIns = new GPOCMother(loggg, cProps);
           break;
         case Define.strGPOWhichCollectHighLow: // ■High&Low
@@ -191,7 +191,7 @@ public abstract class GPOBase extends Mission {
           Define.strGPOWhichCollectTour,
           
           Define.strGPOWhichCollectHighLow,
-          Define.strGPOCMohter,
+          Define.strGPOCMother,
 
           Define.strGPOWhichCollectGurume,
       }).contains(mission)) {
