@@ -25,7 +25,7 @@ public class GPOKumaVote extends GPOBase {
   }
 
   @Override
-  public void privateMission(WebDriver driverAtom) {
+  public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
     selector = "img[alt='CMくじ']";
 

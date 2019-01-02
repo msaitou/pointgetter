@@ -103,14 +103,22 @@ public class AnswerWhichCollect extends MissCommon {
                     }
                   }
                   else {
-                    String gameTop ="a>img[src*='logo_game.png']";
-                    if (isExistEle(driver, gameTop)) {
-                      clickSleepSelector(driver, gameTop, 3000);
-                      if (isExistEle(driver, sele2)) {
-                        clickSleepSelector(driver, sele2, 3000);
-                        break;
+                    String url = "https://www.gpoint.co.jp/gpark/";
+//                    String gameTop ="a>img[src*='logo_game.png']";
+//                    if (isExistEle(driver, gameTop)) {
+//                      clickSleepSelector(driver, gameTop, 3000);
+                      Utille.url(driver, url, logg);
+
+                      if (isExistEle(driver, startSele)) {
+                        clickSleepSelector(driver, startSele, 3000);
+                        changeCloseWindow(driver);
+                        Utille.sleep(4000);
+                        if (isExistEle(driver, sele2)) {
+                          clickSleepSelector(driver, sele2, 3000);
+                          break;
+                        }
                       }
-                    }
+//                    }
                   }
                 }
               }
