@@ -104,6 +104,10 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGMail:
           MailClicker.main(new String[] {sCode});
           break;
+        case Define.strSUGQuizKentei: // ■クイズ検定
+          MisIns = new SUGQuizKentei(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] {
