@@ -211,6 +211,7 @@ public class Define {
   final public static String strSUGGetParkNoCap = "SUGGetParkNoCap";
   final public static String strSUGMail = "SUGMail";
   final public static String strSUGAnkPark = "SUGAnkPark";
+  final public static String strSUGQuizKentei = "SUGQuizKentei";
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
@@ -337,6 +338,7 @@ public class Define {
   final public static String strGPOCMother = "GPOCMother";
   final public static String strGPOKumaVote = "GPOKumaVote";
   final public static String strGPOChyousadan = "GPOChyousadan";
+  final public static String strGPOMedalMool = "GPOMedalMool";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";
