@@ -146,13 +146,14 @@ public class GENMorikoreEnk extends GENBase {
                   if (isExistEle(driver, close, false)) {
                     clickSleepSelector(driver, close, 2000); // 遷移
                   }
+                  Utille.sleep(3000);
                   if (isExistEle(driver, mSele2)) {
                     clickSleepSelector(driver, mSele2, 3000); // 遷移
-                    skip++;
-                    driver.close();
-                    driver.switchTo().window(wid);
                   }
                 }
+                skip++;
+                driver.close();
+                driver.switchTo().window(wid);
               }
               else if (isExistEle(driver, sele9)) {
                 Tasuuketu.answer(driver, sele9, wid);
