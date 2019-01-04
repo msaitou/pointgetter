@@ -1,12 +1,17 @@
 package pointGet.mission.sug;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
+import pointGet.mission.parts.AnswerQuiz;
 
 /**
  *
@@ -14,90 +19,73 @@ import pointGet.common.Utille;
  * 0時、8時、16時開催
  */
 public class SUGQuizKentei extends SUGBase {
-  final String url = "http://www.sugutama.jp/game";
+  final String url = "https://www.sugutama.jp/survey";
+  AnswerQuiz Quiz = null;
 
   /**
    * @param logg
    */
   public SUGQuizKentei(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "クイズ");
+    super(logg, cProps, "クイズ検定");
+    Quiz = new AnswerQuiz(logg);
   }
 
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "dl.game-area>dt>a[href='/ssp/20']>img";
+    selector = "div.subpr_box>a[href='/ssp/31']>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);
       Utille.sleep(9000);
-      String uranaiSelector = "a>img[alt='ceres']";
-      if (isExistEle(driver, uranaiSelector)) {
-        clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
-        changeCloseWindow(driver);
-        checkOverlay(driver, "div.overlay-popup a.button-close");
-        // finish condition
-        String finishSelector = "p.ui-timer";
-        if (isExistEle(driver, finishSelector)) {
-          finsishFlag = true;
-          return;
-        }
-        String noSele = "div.ui-item-no", titleSele = "h2.ui-item-title";
-        selector = "form>input[name='submit']";
-        Utille.sleep(4000);
+      //    String wid = wid0;
+
+      selector = "td.status>a"; // アンケート一覧の回答するボタン
+      Utille.sleep(5000);
+      String sele = "a>img.next_bt";
+      String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
+      checkOverlay(driver, overLay, false);
+      int skip = 0, beforeSize = 0;
+
+      while (true) {
         if (isExistEle(driver, selector)) {
-          clickSelector(driver, selector);
-          selector = "ul.ui-item-body";
-          for (int i = 0; i < 8; i++) {
-            Utille.sleep(4000);
-            if (isExistEle(driver, noSele)) {
-              String qNo = driver.findElement(By.cssSelector(noSele)).getText();
-              String qTitle = driver.findElement(By.cssSelector(titleSele)).getText();
-              logg.info(qNo + " " + qTitle);
-              if (isExistEle(driver, selector)) {
-                int ran = Utille.getIntRand(4);
-                String selectId = "label[for='radio-";
-                if (ran == 0) {
-                  selectId += "1']";
-                }
-                else if (ran == 1) {
-                  selectId += "2']";
-                }
-                else if (ran == 2) {
-                  selectId += "3']";
-                }
-                else {
-                  selectId += "4']";
-                }
-                // 8kai roop
-                String selector2 = "input[name='submit']";
-                if (isExistEle(driver, selectId)) {
-                  clickSleepSelector(driver, selectId, 4000); // 遷移
-                  int ranSleep = Utille.getIntRand(9);
-                  Utille.sleep(ranSleep * 1000);
-                  //								waitTilReady(driver);
-                  if (isExistEle(driver, selector2)) {
-                    //									waitTilReady(driver);
-                    clickSleepSelector(driver, selector2, 4000); // 遷移
-                    checkOverlay(driver, "div.overlay-popup a.button-close");
-                    if (isExistEle(driver, selector2)) {
-                      clickSleepSelector(driver, selector2, 3000); // 遷移
-                      checkOverlay(driver, "div.overlay-popup a.button-close");
-                    }
-                  }
-                }
-              }
+          List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+          int size = eleList.size(), targetIndex = skip;
+          if (beforeSize == size) {
+            skip++;
+          }
+
+          logg.info("size:" + size + " target:" + targetIndex);
+          if (size > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+            Utille.scrolledPage(driver, eleList.get(targetIndex));
+            //            clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
+            Actions actions = new Actions(driver);
+            actions.keyDown(Keys.CONTROL);
+            actions.click(eleList.get(targetIndex));
+            actions.perform();
+            Utille.sleep(3000);
+
+            String wid = driver.getWindowHandle();
+            changeWindow(driver, wid);
+
+            if (isExistEle(driver, sele)) {
+              Quiz.answer(driver, sele, wid);
+              driver.close();
+              driver.switchTo().window(wid);
+            }
+            else {
+              driver.close();
+              driver.switchTo().window(wid);
             }
           }
-          logg.info(this.mName + "]kuria?");
-          selector = "input[name='submit']";
-          if (isExistEle(driver, selector)) {
-            clickSleepSelector(driver, selector, 3000);
-            //						waitTilReady(driver);
+          else {
+            break;
           }
+          beforeSize = size;
+          Utille.refresh(driver, logg);
         }
         else {
-          logg.warn(this.mName + "]獲得済み");
+          break;
         }
       }
     }

@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
+import pointGet.mission.parts.AnswerAbEnk;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerComicNews;
 import pointGet.mission.parts.AnswerCooking;
@@ -41,6 +42,7 @@ public class PICMedalMool extends PICBase {
   AnswerHirameki Hirameki = null;
   AnswerIjin Ijin = null;
   AnswerQuiz Quiz = null;
+  AnswerAbEnk AbEnk = null;
 
   /**
    * @param logg
@@ -60,6 +62,7 @@ public class PICMedalMool extends PICBase {
     Hirameki = new AnswerHirameki(logg);
     Ijin = new AnswerIjin(logg);
     Quiz = new AnswerQuiz(logg);
+    AbEnk = new AnswerAbEnk(logg);
   }
 
   @Override
@@ -87,6 +90,7 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
+          "img[src*='main_ab_new']", // 2卓アンケート
           "img[src*='main_quiz05']", // 食べ物クイズ
           "img[src*='main_quiz04']", // 動物クイズ
           "img[src*='main_quiz03']", // 書籍クイズ
@@ -473,6 +477,38 @@ public class PICMedalMool extends PICBase {
               if (isExistEle(driver, sele)) {
                 Quiz.answer(driver, sele, wid);
                 driver.switchTo().window(wid);
+              }
+              else {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+            }
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid);
+            k++;
+          }
+        }
+        // ABアンケート
+        else if (preSele.equals("img[src*='main_ab_new']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
+          Utille.sleep(3000);
+          String sele = "form>input.next_bt";
+          String overLay = "div#interstitial[style*='display: block']>div>div#inter-close";
+          checkOverlay(driver, overLay, false);
+          if (isExistEle(driver, selector)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            int size2 = eleList.size(), targetIndex = size2 - 1;
+            logg.info("size2:" + size2 + " target:" + targetIndex);
+            if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
+              clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
+              if (isExistEle(driver, sele)) {
+                AbEnk.answer(driver, sele, wid);
               }
               else {
                 driver.close();
