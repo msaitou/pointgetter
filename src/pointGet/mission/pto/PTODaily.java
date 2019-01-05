@@ -30,7 +30,7 @@ public class PTODaily extends PTOBase {
          */
         private static final long serialVersionUID = 1L;
         {
-          put("url", "http://www.pointtown.com/ptu/competition/entry.do");
+          put("url", "https://www.pointtown.com/ptu/competition/entry.do");
           put("sele", "a.btn-green");
         }
       });
@@ -40,7 +40,7 @@ public class PTODaily extends PTOBase {
          */
         private static final long serialVersionUID = 1L;
         {
-          put("url", "http://www.pointtown.com/ptu/vote/entry.do");
+          put("url", "https://www.pointtown.com/ptu/vote/entry.do");
           put("sele", "input[name='user_choice']");
         }
       });
@@ -50,7 +50,7 @@ public class PTODaily extends PTOBase {
          */
         private static final long serialVersionUID = 1L;
         {
-          put("url", "http://www.pointtown.com/ptu/collection/index.do");
+          put("url", "https://www.pointtown.com/ptu/collection/index.do");
           put("sele", "div.bnArea dt>a>img");
         }
       });
@@ -60,7 +60,7 @@ public class PTODaily extends PTOBase {
          */
         private static final long serialVersionUID = 1L;
         {
-          put("url", "http://www.pointtown.com/ptu/quiz/input.do");
+          put("url", "https://www.pointtown.com/ptu/quiz/input.do");
           put("sele", "input#answer");
         }
       });
@@ -70,20 +70,20 @@ public class PTODaily extends PTOBase {
          */
         private static final long serialVersionUID = 1L;
         {
-          put("url", "http://www.pointtown.com/ptu/monitor/top.do#pointChance");
+          put("url", "https://www.pointtown.com/ptu/monitor/top.do#pointChance");
           put("sele", "li.pointchanceItem>a>img");
         }
       });
-      put("チラシ", new HashMap<String, String>() {
-        /**
-         *
-         */
-        private static final long serialVersionUID = 1L;
-        {
-          put("url", "http://www.pointtown.com/ptu/shufoo/index.do");
-          put("sele", "span.shufoo-content__list__btn>img");
-        }
-      });
+//      put("チラシ", new HashMap<String, String>() {
+//        /**
+//         *
+//         */
+//        private static final long serialVersionUID = 1L;
+//        {
+//          put("url", "http://www.pointtown.com/ptu/shufoo/index.do");
+//          put("sele", "span.shufoo-content__list__btn>img");
+//        }
+//      });
     }
   };
 
