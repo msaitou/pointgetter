@@ -343,6 +343,7 @@ public class Define {
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";
   final public static String strCMSFarmEnk = "CMSFarmEnk";
+  final public static String strCMSFarmEnkNoCap = "CMSFarmEnkNoCap";
   final public static String strCMSUranai = "CMSUranai";
   final public static String strCMSCMother = "CMSCMother";
   final public static String strCMSQuiz = "CMSQuiz";

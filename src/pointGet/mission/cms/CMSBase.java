@@ -86,6 +86,9 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSFarmEnk: // ■ファーム
           MisIns = new CMSFarmEnk(loggg, cProps);
           break;
+        case Define.strCMSFarmEnkNoCap: // ■ファームnocap
+          MisIns = new CMSFarmEnkNoCap(loggg, cProps);
+          break;
         case Define.strCMSPochi: // ■ぽちっと調査隊
           MisIns = new CMSPochi(loggg, cProps);
           break;
