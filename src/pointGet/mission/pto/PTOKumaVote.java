@@ -31,13 +31,14 @@ public class PTOKumaVote extends PTOBase {
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "img[src*='bn_sosenkyo.png']";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 6000); // 遷移
-      driver.switchTo().frame(0);
+      clickSleepSelector(driver, selector, 5000); // 遷移
+      changeCloseWindow(driver);
       Utille.sleep(8000);
       // ポイントに変換
-      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
+      String bankSele = "li.icon_h_bank>a",
+          coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
           changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
-      if (isExistEle(driver, coinSele) ) {
+      if (isExistEle(driver, coinSele)) {
         String coins = driver.findElement(By.cssSelector(coinSele)).getText();
         int icoins = Integer.parseInt(Utille.getNumber(coins));
         if (icoins >= 100) {
@@ -48,6 +49,10 @@ public class PTOKumaVote extends PTOBase {
               if (isExistEle(driver, changeBtnSele)) {
                 clickSleepSelector(driver, changeBtnSele, 5000);
               }
+            }
+            String topSele = "a>img[src*='icon_top_off.png']";
+            if (isExistEle(driver, topSele)) {
+              clickSleepSelector(driver, topSele, 4000);
             }
           }
         }
