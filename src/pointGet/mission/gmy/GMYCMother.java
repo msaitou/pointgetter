@@ -19,7 +19,7 @@ import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerZukan;
 
 public class GMYCMother extends GMYBase {
-  final String url = "http://dietnavi.com/pc/";
+  final String url = "https://dietnavi.com/pc/";
   WebDriver driver = null;
   AnswerPhotoEnk PhotoEnk = null;
   AnswerKansatu Kansatu = null;
@@ -61,6 +61,7 @@ public class GMYCMother extends GMYBase {
       changeCloseWindow(driver);
       Utille.sleep(8000);
       // ポイントに変換
+      String topSele = "a>img[src*='icon_game_off.png']";
       String bankSele = "li.icon_h_bank>a",
           coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
           changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
@@ -76,12 +77,12 @@ public class GMYCMother extends GMYBase {
                 clickSleepSelector(driver, changeBtnSele, 5000);
               }
             }
-            String topSele = "a>img[src*='icon_top_off.png']";
-            if (isExistEle(driver, topSele)) {
-              clickSleepSelector(driver, topSele, 4000);
-            }
           }
         }
+      }
+      if (isExistEle(driver, topSele)) {
+        // 遊んで貯めるに移動
+        clickSleepSelector(driver, topSele, 4000);
       }
       String[] seles = { "a>img[src*='column_bn.png']", "a>img[src*='photo_bn.png']",
           "a>img[src*='observation_bn.png']", "a>img[src*='zoo_bn.png']", "a>img[src*='japan_bn.png']",

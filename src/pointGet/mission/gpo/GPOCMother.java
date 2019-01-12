@@ -54,6 +54,7 @@ public class GPOCMother extends GPOBase {
       clickSleepSelector(driver, selector, 5000); // 遷移
       Utille.sleep(5000);
       // ポイントに変換
+      String topSele = "a>img[src*='icon_game_off.png']";
       String bankSele = "li.icon_h_bank>a",
           coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
           changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
@@ -69,12 +70,12 @@ public class GPOCMother extends GPOBase {
                 clickSleepSelector(driver, changeBtnSele, 5000);
               }
             }
-            String topSele = "a>img[src*='icon_top_off.png']";
-            if (isExistEle(driver, topSele)) {
-              clickSleepSelector(driver, topSele, 4000);
-            }
           }
         }
+      }
+      if (isExistEle(driver, topSele)) {
+        // 遊んで貯めるに移動
+        clickSleepSelector(driver, topSele, 4000);
       }
       String[] seles = { 
 //          "a>img[src*='column_bn.png']", 

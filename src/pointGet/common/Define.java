@@ -81,6 +81,8 @@ public class Define {
   final public static String strGMYColum = "GMYColum";
   final public static String strGMYManga = "GMYManga";
   final public static String strGMYEasyAnk = "GMYEasyAnk";
+  final public static String strGMYNaruhodo = "GMYNaruhodo";
+//  final public static String strGMYDotti = "GMYDotti";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";

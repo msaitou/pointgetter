@@ -108,6 +108,9 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYEasyAnk: // ■簡単アンケート
           MisIns = new GMYEasyAnk(loggg, cProps);
           break;
+        case Define.strGMYNaruhodo: // ■なるほど検定
+          MisIns = new GMYNaruhodo(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -120,7 +123,8 @@ public abstract class GMYBase extends Mission {
           Define.strGMYKumaVote,
           Define.strGMYCMother,
           Define.strGMYColum, Define.strGMYManga,
-          Define.strGMYEasyAnk
+          Define.strGMYEasyAnk,
+          Define.strGMYNaruhodo
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
