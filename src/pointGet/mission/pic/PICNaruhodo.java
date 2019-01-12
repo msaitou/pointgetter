@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.pic;
 
 import java.util.Map;
 
@@ -13,14 +13,14 @@ import pointGet.mission.parts.AnswerNaruhodo;
  * @author saitou
  *
  */
-public class GMYNaruhodo extends GMYBase {
-  final String url = "http://dietnavi.com/pc/";
+public class PICNaruhodo extends PICBase {
+  final String url = "https://pointi.jp/game/";
   AnswerNaruhodo Naruhodo = null;
 
   /**
    * @param logg
    */
-  public GMYNaruhodo(Logger logg, Map<String, String> cProps) {
+  public PICNaruhodo(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "なるほど検定");
     Naruhodo = new AnswerNaruhodo(logg);
   }
@@ -28,15 +28,9 @@ public class GMYNaruhodo extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
-    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
-    ;
-    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
-      clickSleepSelector(driver, recoSele, 2000); // 遷移
-    }
+    selector = "div.gamelist_wrap img[src*='visual/img16.png']";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 5000); // 遷移
+      clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);
       Utille.sleep(8000);
       // ポイントに変換

@@ -35,14 +35,17 @@ public class AnswerNaruhodo extends MissCommon {
 
     radioSele = "div#answer-select img", //
     resultSele = "div#result",//
-    
+
     voteSele = "input.button--answer", //
     nextSele = "a.button--next", //
     getSele = "a.button--get", //
     a = "";
     // 最初
     for (int i = 0; i < 2; i++) {
-      checkOverlay(driver, closeSele, false);
+      if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+        logg.info("div#popup-ad :"+driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed());
+        checkOverlay(driver, closeSele, false);
+      }
       if (isExistEle(driver, startSele)) {
         clickSleepSelector(driver, startSele, 4000);
       }
@@ -50,7 +53,10 @@ public class AnswerNaruhodo extends MissCommon {
 
     // 問題
     for (int i = 0; i < 20; i++) {
-      checkOverlay(driver, closeSele, false);
+      if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+        logg.info("div#popup-ad :"+driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed());
+        checkOverlay(driver, closeSele, false);
+      }
       if (isExistEle(driver, resultSele)) {
         if (isExistEle(driver, startSele)) {
           clickSleepSelector(driver, startSele, 4000);
@@ -65,7 +71,11 @@ public class AnswerNaruhodo extends MissCommon {
           if (isExistEle(eleList, choiceNum)) { // 選択
             clickSleepSelector(driver, eleList.get(choiceNum), 3000);
             if (isExistEle(driver, startSele)) {  // 応える
-              clickSleepSelector(driver, startSele, 3000);
+              clickSleepSelector(driver, startSele, 5000);
+              if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+                logg.info("div#popup-ad :"+driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed());
+                checkOverlay(driver, closeSele, false);
+              }
               if (isExistEle(driver, startSele)) {  // 結果
                 clickSleepSelector(driver, startSele, 6000);
               }
@@ -76,7 +86,10 @@ public class AnswerNaruhodo extends MissCommon {
     }
 
     for (int i = 0; i < 3; i++) {
-      checkOverlay(driver, closeSele, false);
+      if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+        logg.info("div#popup-ad :"+driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed());
+        checkOverlay(driver, closeSele, false);
+      }
       if (isExistEle(driver, startSele)) {
         clickSleepSelector(driver, startSele, 4000);
       }

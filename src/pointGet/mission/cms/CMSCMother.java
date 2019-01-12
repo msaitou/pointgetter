@@ -21,7 +21,7 @@ import pointGet.mission.parts.AnswerZukan;
 public class CMSCMother extends CMSBase {
   final String url = "http://www.cmsite.co.jp/top/cm/";
   final String url2 = "https://cmsite.cmnw.jp/game/";
-  
+
   WebDriver driver = null;
   AnswerPhotoEnk PhotoEnk = null;
   AnswerKansatu Kansatu = null;
@@ -48,7 +48,7 @@ public class CMSCMother extends CMSBase {
     driver = driverAtom;
     Utille.url(driver, url, logg);
     Utille.url(driver, url2, logg);
-    
+
     selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
         recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend

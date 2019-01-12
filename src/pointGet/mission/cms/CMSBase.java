@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.mission.cms;
 
@@ -30,7 +30,7 @@ public abstract class CMSBase extends Mission {
   public static String topUrl = "http://www.cmsite.co.jp/top/home/";
 
   /**
-   * 
+   *
    * @param log
    * @param cProps
    * @param name
@@ -49,7 +49,7 @@ public abstract class CMSBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param loggg
    * @param cProps
    * @param missions
@@ -95,6 +95,9 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSAnqueate: // ■ぽちっと調査隊
           MisIns = new CMSAnqueate(loggg, cProps);
           break;
+        case Define.strCMSNaruhodo: // ■なるほど検定
+          MisIns = new CMSNaruhodo(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCMSAnqueate,
@@ -104,7 +107,8 @@ public abstract class CMSBase extends Mission {
           Define.strCMSGameParkEnk,
           Define.strCMSAnk,
           Define.strCMSPochi,
-          Define.strCMSPointResearch,Define.strCMSKumaVote
+          Define.strCMSPointResearch,Define.strCMSKumaVote,
+          Define.strCMSNaruhodo
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -115,7 +119,7 @@ public abstract class CMSBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -133,7 +137,7 @@ public abstract class CMSBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return

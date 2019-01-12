@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.cit;
 
 import java.util.Map;
 
@@ -13,14 +13,14 @@ import pointGet.mission.parts.AnswerNaruhodo;
  * @author saitou
  *
  */
-public class GMYNaruhodo extends GMYBase {
-  final String url = "http://dietnavi.com/pc/";
+public class CITNaruhodo extends CITBase {
+  final String url = "https://www.chance.com/game/";
   AnswerNaruhodo Naruhodo = null;
 
   /**
    * @param logg
    */
-  public GMYNaruhodo(Logger logg, Map<String, String> cProps) {
+  public CITNaruhodo(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "なるほど検定");
     Naruhodo = new AnswerNaruhodo(logg);
   }
@@ -28,13 +28,7 @@ public class GMYNaruhodo extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
-    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
-    ;
-    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
-      clickSleepSelector(driver, recoSele, 2000); // 遷移
-    }
+    selector = "a[href*='https://www.chance.com/pjump.srv'] img[alt*='CMくじ']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);
@@ -63,6 +57,8 @@ public class GMYNaruhodo extends GMYBase {
       }
 
       String selePreStart = "a p>img[src*='gotochi']", //
+      closeSele = "div#popup-ad button.popup-close", //
+      closeSeleNone = "div#popup-ad[style*='display: none;'] button.popup-close", //
       startSele = "div#bottom-button img",//
       a = "";
 

@@ -109,6 +109,9 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMMail:
           MailClicker.main(new String[] {sCode});
           break;
+        case Define.strLFMNaruhodo: // ■なるほど検定
+          MisIns = new LFMNaruhodo(loggg, cProps);
+          break;
 
         default:
       }
@@ -127,6 +130,7 @@ public abstract class LFMBase extends Mission {
           , Define.strLFMKenkou
           ,Define.strLFMFarmEnkNoCap
           ,Define.strLFMPriceChyosatai
+          ,Define.strLFMNaruhodo
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

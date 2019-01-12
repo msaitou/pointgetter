@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.lfm;
 
 import java.util.Map;
 
@@ -13,32 +13,26 @@ import pointGet.mission.parts.AnswerNaruhodo;
  * @author saitou
  *
  */
-public class GMYNaruhodo extends GMYBase {
-  final String url = "http://dietnavi.com/pc/";
+public class LFMNaruhodo extends LFMBase {
+  final String url = "http://lifemedia.jp/game/";
   AnswerNaruhodo Naruhodo = null;
 
   /**
    * @param logg
    */
-  public GMYNaruhodo(Logger logg, Map<String, String> cProps) {
+  public LFMNaruhodo(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "なるほど検定");
     Naruhodo = new AnswerNaruhodo(logg);
   }
 
   @Override
   public void privateMission(WebDriver driver) {
-    Utille.url(driver, url, logg);
-    selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
-    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
-    ;
-    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
-      clickSleepSelector(driver, recoSele, 2000); // 遷移
-    }
+    Utille.url(driver, url, logg);// a>img[alt='CMを見るだけでポイントGET！']
+    selector = "img[alt='CMじゃんけん']";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 5000); // 遷移
+      clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);
-      Utille.sleep(8000);
+      Utille.sleep(5000);
       // ポイントに変換
       String topSele = "a>img[src*='icon_game_off.png']";
       String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn", changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";

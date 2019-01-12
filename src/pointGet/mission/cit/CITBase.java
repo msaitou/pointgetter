@@ -112,7 +112,11 @@ public abstract class CITBase extends Mission {
         case Define.strCITEasyAnk: // ■簡単アンケート
           MisIns = new CITEasyAnk(loggg, cProps);
           break;
-        default:
+        case Define.strCITNaruhodo: // ■なるほど検定
+          MisIns = new CITNaruhodo(loggg, cProps);
+          break;
+
+          default:
       }
       if (Arrays.asList(new String[] { Define.strCITPriceChyosatai,
           Define.strCITShindan,
@@ -125,7 +129,8 @@ public abstract class CITBase extends Mission {
           Define.strCITKenkou,
           Define.strCITManga,
           Define.strCITCook,
-          Define.strCITEasyAnk
+          Define.strCITEasyAnk,
+          Define.strCITNaruhodo
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

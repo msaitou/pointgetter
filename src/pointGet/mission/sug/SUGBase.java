@@ -107,6 +107,9 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGQuizKentei: // ■クイズ検定
           MisIns = new SUGQuizKentei(loggg, cProps);
           break;
+        case Define.strSUGNaruhodo: // ■なるほど検定
+          MisIns = new SUGNaruhodo(loggg, cProps);
+          break;
 
         default:
       }

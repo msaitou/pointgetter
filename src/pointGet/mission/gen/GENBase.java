@@ -113,9 +113,12 @@ public abstract class GENBase extends Mission {
         case Define.strGENHitosara: // ■一皿
           MisIns = new GENHitosara(loggg, cProps);
           break;
-          
+
         case Define.strGENMail:
           MailClicker.main(new String[] {sCode});
+          break;
+        case Define.strGENNaruhodo: // ■なるほど検定
+          MisIns = new GENNaruhodo(loggg, cProps);
           break;
 
         default:
@@ -134,7 +137,8 @@ public abstract class GENBase extends Mission {
           Define.strGENKumaVote,
           Define.strGENCMother,
           Define.strGENMorikoreEnkNoCap,
-          Define.strGENHitosara
+          Define.strGENHitosara,
+          Define.strGENNaruhodo
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

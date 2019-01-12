@@ -102,6 +102,9 @@ public abstract class PICBase extends Mission {
         case Define.strPICMail:
           MailClicker.main(new String[] {sCode});
           break;
+        case Define.strPICNaruhodo: // ■なるほど検定
+          MisIns = new PICNaruhodo(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strPICClickBanner,
@@ -114,7 +117,8 @@ public abstract class PICBase extends Mission {
           Define.strPICInterview,
           Define.strPICMedalMool,
           Define.strPICFarmEnk,
-          Define.strPICFarmEnkNoCap
+          Define.strPICFarmEnkNoCap,
+          Define.strPICNaruhodo
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

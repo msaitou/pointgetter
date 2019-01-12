@@ -170,6 +170,9 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOMedalMool: // ■メダルモール
           MisIns = new GPOMedalMool(loggg, cProps);
           break;
+        case Define.strGPONaruhodo: // ■なるほど検定
+          MisIns = new GPONaruhodo(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
@@ -204,6 +207,7 @@ public abstract class GPOBase extends Mission {
           Define.strGPOChyousadan,
           Define.strGPOMedalMool,
           Define.strGPOWhichCollectGurume,
+          Define.strGPONaruhodo
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

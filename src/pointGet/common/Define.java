@@ -66,6 +66,7 @@ public class Define {
   final public static String strGENMorikoreEnkNoCap = "GENMorikoreEnkNoCap";
   final public static String strGENMail = "GENMail";
   final public static String strGENHitosara = "GENHitosara";
+  final public static String strGENNaruhodo = "GENNaruhodo";
 
   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
@@ -169,6 +170,7 @@ public class Define {
   final public static String strPTOFarmEnkNoCap = "PTOFarmEnkNoCap";
   final public static String strPTOMail = "PTOMail";
   final public static String strPTOAnkPark = "PTOAnkPark";
+  final public static String strPTONaruhodo = "PTONaruhodo";
 
   // ■■■■■Mobatoku■■■■■
   final public static String strMOBAnzan = "MOBAnzan";
@@ -196,6 +198,7 @@ public class Define {
   final public static String strPICFarmEnk = "PICFarmEnk";
   final public static String strPICFarmEnkNoCap = "PICFarmEnkNoCap";
   final public static String strPICMail = "PICMail";
+  final public static String strPICNaruhodo = "PICNaruhodo";
 
   // ■■■■■SUGUTAMA■■■■■
   final public static String strSUGUranai = "SUGUranai";
@@ -214,6 +217,7 @@ public class Define {
   final public static String strSUGMail = "SUGMail";
   final public static String strSUGAnkPark = "SUGAnkPark";
   final public static String strSUGQuizKentei = "SUGQuizKentei";
+  final public static String strSUGNaruhodo = "SUGNaruhodo";
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
@@ -254,6 +258,7 @@ public class Define {
   final public static String strCITManga = "CITManga";
   final public static String strCITCook = "CITCook";
   final public static String strCITEasyAnk = "CITEasyAnk";
+  final public static String strCITNaruhodo = "CITNaruhodo";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";
@@ -307,6 +312,7 @@ public class Define {
   final public static String strLFMFarmEnk = "LFMFarmEnk";
   final public static String strLFMFarmEnkNoCap = "LFMFarmEnkNoCap";
   final public static String strLFMMail = "LFMMail";
+  final public static String strLFMNaruhodo = "LFMNaruhodo";
 
   // ■■■■■Gpoint■■■■■
   final public static String strGPOUranai = "GPOUranai";
@@ -341,6 +347,7 @@ public class Define {
   final public static String strGPOKumaVote = "GPOKumaVote";
   final public static String strGPOChyousadan = "GPOChyousadan";
   final public static String strGPOMedalMool = "GPOMedalMool";
+  final public static String strGPONaruhodo = "GPONaruhodo";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";
@@ -354,6 +361,7 @@ public class Define {
   final public static String strCMSPointResearch = "CMSPointResearch";
   final public static String strCMSKumaVote = "CMSKumaVote";
   final public static String strCMSPochi = "CMSPochi";
+  final public static String strCMSNaruhodo = "CMSNaruhodo";
 
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";
