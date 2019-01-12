@@ -120,9 +120,9 @@ public class AnswerPointResearch extends MissCommon {
         // 閉じる
         clickSleepSelector(driver, closeSele, 5000);
       }
-      driver.close();
-      // 最後に格納したウインドウIDにスイッチ
-      driver.switchTo().window(wid);
     }
+    driver.close();
+    // 最後に格納したウインドウIDにスイッチ
+    driver.switchTo().window(wid);
   }
 }
