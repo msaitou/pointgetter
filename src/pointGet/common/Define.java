@@ -313,6 +313,7 @@ public class Define {
   final public static String strLFMFarmEnkNoCap = "LFMFarmEnkNoCap";
   final public static String strLFMMail = "LFMMail";
   final public static String strLFMNaruhodo = "LFMNaruhodo";
+  final public static String strLFMCMother = "LFMCMother";
 
   // ■■■■■Gpoint■■■■■
   final public static String strGPOUranai = "GPOUranai";

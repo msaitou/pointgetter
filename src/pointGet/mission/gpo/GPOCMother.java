@@ -13,6 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerDotti;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerPhotoEnk;
@@ -27,6 +28,7 @@ public class GPOCMother extends GPOBase {
   AnswerHyakkey Hyakkey = null;
   AnswerZukan Zukan = null;
   AnswerColum Colum = null;
+  AnswerDotti Dotti = null;
 
   /**
    * @param logg
@@ -39,6 +41,7 @@ public class GPOCMother extends GPOBase {
     Kansatu = new AnswerKansatu(logg);
     Zukan = new AnswerZukan(logg);
     Colum = new AnswerColum(logg);
+    Dotti = new AnswerDotti(logg);
   }
 
   @Override
@@ -55,9 +58,7 @@ public class GPOCMother extends GPOBase {
       Utille.sleep(5000);
       // ポイントに変換
       String topSele = "a>img[src*='icon_game_off.png']";
-      String bankSele = "li.icon_h_bank>a",
-          coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
-          changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
+      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn", changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
       if (isExistEle(driver, coinSele)) {
         String coins = driver.findElement(By.cssSelector(coinSele)).getText();
         int icoins = Integer.parseInt(Utille.getNumber(coins));
@@ -77,14 +78,13 @@ public class GPOCMother extends GPOBase {
         // 遊んで貯めるに移動
         clickSleepSelector(driver, topSele, 4000);
       }
-      String[] seles = { 
-//          "a>img[src*='column_bn.png']", 
-//          "a>img[src*='photo_bn.png']",
-//          "a>img[src*='observation_bn.png']",
-          "a>img[src*='zoo_bn.png']", 
-//          "a>img[src*='japan_bn.png']",
-          "a>img[src*='food_bn.png']"
-          };
+      String[] seles = { "p>img[src*='dotti2']",//
+//          "p>img[src*='column_']",//
+//          "p>img[src*='photo_']",//
+//          "p>img[src*='observation_']", //
+          "p>img[src*='zoo_']", //
+//          "p>img[src*='japan_']",//
+          "p>img[src*='food']" };
       for (int i = 0; i < seles.length; i++) {
         String currentSele = seles[i];
         if (isExistEle(driver, currentSele)) {
@@ -92,6 +92,7 @@ public class GPOCMother extends GPOBase {
           String wid0 = driver.getWindowHandle();
           changeWindow(driver, wid0);
           Utille.sleep(5000);
+          String cUrl0 = driver.getCurrentUrl();
           while (true) {
             if (isExistEle(driver, sele0)) {
               List<WebElement> eleList = driver.findElements(By.cssSelector(sele0));
@@ -166,6 +167,10 @@ public class GPOCMother extends GPOBase {
                 Utille.refresh(driver, logg);
                 Utille.sleep(7000);
               }
+            }
+            else if ((cUrl0.indexOf("dotti2") >= 0)) {
+              Dotti.answer(driver, "", wid0);
+              break;
             }
             else {
               driver.close();

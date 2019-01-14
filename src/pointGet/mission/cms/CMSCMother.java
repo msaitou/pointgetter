@@ -13,6 +13,7 @@ import org.openqa.selenium.interactions.Actions;
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerDotti;
 import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerPhotoEnk;
@@ -29,6 +30,7 @@ public class CMSCMother extends CMSBase {
   AnswerHyakkey Hyakkey = null;
   AnswerZukan Zukan = null;
   AnswerColum Colum = null;
+  AnswerDotti Dotti = null;
 
   /**
    * @param logg
@@ -41,6 +43,7 @@ public class CMSCMother extends CMSBase {
     Kansatu = new AnswerKansatu(logg);
     Zukan = new AnswerZukan(logg);
     Colum = new AnswerColum(logg);
+    Dotti = new AnswerDotti(logg);
   }
 
   @Override
@@ -51,145 +54,149 @@ public class CMSCMother extends CMSBase {
 
     selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
     String sele0 = "a.ui-btn.ui-btn-a" // アンケート一覧の回答するボタン
-        , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
-        , preSele = "img[src*='bn_sosenkyo.png']", sele6 = "form>input.next_bt" // コラム用
+    , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
+    , preSele = "img[src*='bn_sosenkyo.png']", sele6 = "form>input.next_bt" // コラム用
     ;
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
-//    if (isExistEle(driver, selector)) {
-//      clickSleepSelector(driver, selector, 5000); // 遷移
-//      changeCloseWindow(driver);
-//      Utille.sleep(8000);
-      // ポイントに変換
-      String bankSele = "li.icon_h_bank>a",
-          coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
-          changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
-      if (isExistEle(driver, coinSele)) {
-        String coins = driver.findElement(By.cssSelector(coinSele)).getText();
-        int icoins = Integer.parseInt(Utille.getNumber(coins));
-        if (icoins >= 100) {
-          if (isExistEle(driver, bankSele)) {
-            clickSleepSelector(driver, bankSele, 5000); // 遷移
-            if (isExistEle(driver, changeSele)) {
-              clickSleepSelector(driver, changeSele, 5000);
-              if (isExistEle(driver, changeBtnSele)) {
-                clickSleepSelector(driver, changeBtnSele, 5000);
-              }
+    // ポイントに変換
+    String topSele = "a>img[src*='icon_game_off.png']";
+    String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn", changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
+    if (isExistEle(driver, coinSele)) {
+      String coins = driver.findElement(By.cssSelector(coinSele)).getText();
+      int icoins = Integer.parseInt(Utille.getNumber(coins));
+      if (icoins >= 100) {
+        if (isExistEle(driver, bankSele)) {
+          clickSleepSelector(driver, bankSele, 5000); // 遷移
+          if (isExistEle(driver, changeSele)) {
+            clickSleepSelector(driver, changeSele, 5000);
+            if (isExistEle(driver, changeBtnSele)) {
+              clickSleepSelector(driver, changeBtnSele, 5000);
             }
-            String topSele = "a>img[src*='icon_top_off.png']";
-            if (isExistEle(driver, topSele)) {
-              clickSleepSelector(driver, topSele, 4000);
-            }
-            Utille.url(driver, url2, logg);
           }
         }
       }
-      String[] seles = { "p>img[src*='column_pc_']", "p>img[src*='photo_pc_']",
-          "p>img[src*='observation_pc_']", "p>img[src*='zoo_pc_']", "p>img[src*='japan_pc_']",
-          "p>img[src*='food_pc_']" };
-      for (int i = 0; i < seles.length; i++) {
-        String currentSele = seles[i];
-        if (isExistEle(driver, currentSele)) {
-          clickSleepSelector(driver, currentSele, 5000); // 遷移 全体へ
-          String wid0 = driver.getWindowHandle();
-          changeWindow(driver, wid0);
-          Utille.sleep(5000);
-          while (true) {
-            if (isExistEle(driver, sele0)) {
-              List<WebElement> eleList = driver.findElements(By.cssSelector(sele0));
-              int size1 = eleList.size(), zumiCnt = 0, targetIndex = size1 - 1;
-              if (size1 > targetIndex && isExistEle(eleList, targetIndex)) {
-                String wid = driver.getWindowHandle();
-                Utille.scrolledPage(driver, eleList.get(targetIndex));
-                Utille.sleep(1000);
-                Actions actions = new Actions(driver);
-                actions.keyDown(Keys.CONTROL);
-                actions.click(eleList.get(targetIndex));
-                actions.perform();
-                Utille.sleep(5000);
-                //                clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
-                changeWindow(driver, wid);
-                Utille.sleep(3000);
-                String cUrl = driver.getCurrentUrl();
+    }
+    if (isExistEle(driver, topSele)) {
+      // 遊んで貯めるに移動
+      clickSleepSelector(driver, topSele, 4000);
+    }
+    String[] seles = { "p>img[src*='dotti2']",//
+        "p>img[src*='column_']",//
+        "p>img[src*='photo_']",//
+        "p>img[src*='observation_']", //
+        "p>img[src*='zoo_']", //
+        "p>img[src*='japan_']",//
+        "p>img[src*='food']" };
+    for (int i = 0; i < seles.length; i++) {
+      String currentSele = seles[i];
+      if (isExistEle(driver, currentSele)) {
+        clickSleepSelector(driver, currentSele, 5000); // 遷移 全体へ
+        String wid0 = driver.getWindowHandle();
+        changeWindow(driver, wid0);
+        Utille.sleep(5000);
+        String cUrl0 = driver.getCurrentUrl();
 
-                if ((cUrl.indexOf("cosmelife.com/animal") >= 0
-                    || cUrl.indexOf("/animal/") >= 0
-                    || cUrl.indexOf("cmsite.fitness-health.work/animal") >= 0
-                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                )
-                    && isExistEle(driver, sele6)) {
-                  Zukan.answer(driver, sele6, wid);
-                }
-                else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
-                    || cUrl.indexOf("cmsite.clutchbag.work/observation") >= 0
-                    || cUrl.indexOf("cmsite.fitness-health.work/observation") >= 0
-                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                )
-                    && isExistEle(driver, sele6)) {
-                  Kansatu.answer(driver, sele6, wid);
-                }
-                else if ((cUrl.indexOf("cosmelife.com/map") >= 0
-                    || cUrl.indexOf("/map/") >= 0
-                    || cUrl.indexOf("cmsite.fitness-health.work/map") >= 0
-                //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                )
-                    && isExistEle(driver, sele6)) {
-                  Hyakkey.answer(driver, sele6, wid);
-                }
-                else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
-                    || cUrl.indexOf("/cooking/") >= 0
-                    || cUrl.indexOf("cmsite.fitness-health.work/cooking") >= 0
-                //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                )
-                    && isExistEle(driver, sele6)) {
-                  Cooking.answer(driver, sele6, wid);
-                }
-                else if ((cUrl.indexOf("photo-enquete") >= 0
-                    || cUrl.indexOf("cosmelife.com/photo") >= 0
-                        || cUrl.indexOf("cmsite.clutchbag.work/photo") >= 0
-                        || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
-                    || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                    || cUrl.indexOf("natural-vegetables.com") >= 0
-                    || cUrl.indexOf("cosmeticsstyle.com") >= 0)
-                    && isExistEle(driver, sele6)) {
-                  PhotoEnk.answer(driver, sele6, wid);
-                }
-                else if ((cUrl.indexOf("cosmelife.com/column") >= 0
-                    || cUrl.indexOf("beautynail-design.com") >= 0
-                    || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
-                        || cUrl.indexOf("cmsite.clutchbag.work/column/") >= 0
-                    || cUrl.indexOf("style-cutehair.com") >= 0
-                    || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                    || cUrl.indexOf("fashion-cosmelife.com") >= 0)
-                    && isExistEle(driver, sele6)) {
-                  Colum.answer(driver, sele6, wid);
-                }
-                else {
-                  //                  skip++;
-                  driver.close();
-                  driver.switchTo().window(wid);
-                }
-                Utille.refresh(driver, logg);
-                Utille.sleep(7000);
+        while (true) {
+          if (isExistEle(driver, sele0)) {
+            List<WebElement> eleList = driver.findElements(By.cssSelector(sele0));
+            int size1 = eleList.size(), zumiCnt = 0, targetIndex = size1 - 1;
+            if (size1 > targetIndex && isExistEle(eleList, targetIndex)) {
+              String wid = driver.getWindowHandle();
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
+              Utille.sleep(1000);
+              Actions actions = new Actions(driver);
+              actions.keyDown(Keys.CONTROL);
+              actions.click(eleList.get(targetIndex));
+              actions.perform();
+              Utille.sleep(5000);
+              //                clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
+              changeWindow(driver, wid);
+              Utille.sleep(3000);
+              String cUrl = driver.getCurrentUrl();
+
+              if ((cUrl.indexOf("cosmelife.com/animal") >= 0
+                  || cUrl.indexOf("/animal/") >= 0
+                  || cUrl.indexOf("cmsite.fitness-health.work/animal") >= 0
+                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  )
+                  && isExistEle(driver, sele6)) {
+                Zukan.answer(driver, sele6, wid);
               }
+              else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
+                  || cUrl.indexOf("cmsite.clutchbag.work/observation") >= 0
+                  || cUrl.indexOf("cmsite.fitness-health.work/observation") >= 0
+                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  )
+                  && isExistEle(driver, sele6)) {
+                Kansatu.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("cosmelife.com/map") >= 0
+                  || cUrl.indexOf("/map/") >= 0
+                  || cUrl.indexOf("cmsite.fitness-health.work/map") >= 0
+                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  )
+                  && isExistEle(driver, sele6)) {
+                Hyakkey.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
+                  || cUrl.indexOf("/cooking/") >= 0
+                  || cUrl.indexOf("cmsite.fitness-health.work/cooking") >= 0
+                  //                || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  )
+                  && isExistEle(driver, sele6)) {
+                Cooking.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("photo-enquete") >= 0
+                  || cUrl.indexOf("cosmelife.com/photo") >= 0
+                  || cUrl.indexOf("cmsite.clutchbag.work/photo") >= 0
+                  || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
+                  || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  || cUrl.indexOf("natural-vegetables.com") >= 0
+                  || cUrl.indexOf("cosmeticsstyle.com") >= 0)
+                  && isExistEle(driver, sele6)) {
+                PhotoEnk.answer(driver, sele6, wid);
+              }
+              else if ((cUrl.indexOf("cosmelife.com/column") >= 0
+                  || cUrl.indexOf("beautynail-design.com") >= 0
+                  || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
+                  || cUrl.indexOf("cmsite.clutchbag.work/column/") >= 0
+                  || cUrl.indexOf("style-cutehair.com") >= 0
+                  || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  || cUrl.indexOf("fashion-cosmelife.com") >= 0)
+                  && isExistEle(driver, sele6)) {
+                Colum.answer(driver, sele6, wid);
+              }
+              else {
+                //                  skip++;
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+              Utille.refresh(driver, logg);
+              Utille.sleep(7000);
             }
-            else {
-              driver.close();
-              driver.switchTo().window(wid0);
-              break;
-            }
-// test
-//            driver.close();
-//            driver.switchTo().window(wid0);
-//            break;
           }
+          else if ((cUrl0.indexOf("dotti2") >= 0)) {
+            Dotti.answer(driver, "", wid0);
+            break;
+          }
+          else {
+            driver.close();
+            driver.switchTo().window(wid0);
+            break;
+          }
+          // test
+          //            driver.close();
+          //            driver.switchTo().window(wid0);
+          //            break;
         }
       }
+    }
 
-//    }
+    //    }
   }
 }

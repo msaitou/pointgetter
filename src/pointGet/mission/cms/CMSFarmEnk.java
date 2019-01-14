@@ -51,7 +51,7 @@ public class CMSFarmEnk extends CMSBase {
    * @param logg
    */
   public CMSFarmEnk(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "お財布ファームアンケート");
+    super(logg, cProps, "CMファームアンケート");
     Tasuuketu = new AnswerTasuuketu(logg);
     GameParkEnk = new AnswerGameParkEnk(logg);
     Adsurvey = new AnswerAdsurvey(logg);

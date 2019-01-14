@@ -112,7 +112,10 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMNaruhodo: // ■なるほど検定
           MisIns = new LFMNaruhodo(loggg, cProps);
           break;
-
+        case Define.strLFMCMother: // ■その他アンケート等
+          MisIns = new LFMCMother(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] {
@@ -131,6 +134,7 @@ public abstract class LFMBase extends Mission {
           ,Define.strLFMFarmEnkNoCap
           ,Define.strLFMPriceChyosatai
           ,Define.strLFMNaruhodo
+          ,Define.strLFMCMother
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
