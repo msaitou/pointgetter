@@ -45,7 +45,7 @@ public class AnswerDotti extends MissCommon {
     a = "";
     boolean endFlag = false;
     if (isExistEle(driver, startsele)) {
-      for (int i = 0; i < 3 && !endFlag; i++) {
+      for (int i = 0; i < 3 || !endFlag; i++) {
         List<WebElement> eleList = driver.findElements(By.cssSelector(startsele));
         clickSleepSelector(driver, eleList.get(i), 4000);
 
@@ -62,7 +62,7 @@ public class AnswerDotti extends MissCommon {
           }
         }
 
-        for (int j = 0; j < 15 && !endFlag; j++) {
+        for (int j = 0; j < 20 || !endFlag; j++) {
           // 質問の選択一覧
           if (isExistEle(driver, closeSele)) {
             //       if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
