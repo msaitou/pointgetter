@@ -38,10 +38,10 @@ public class LFMChyousadan extends LFMBase {
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);
-      Utille.sleep(8000);
+      Utille.sleep(10000);
       // ポイントに変換
-      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
-          changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
+      String topSele = "a>img[src*='icon_game_off.png']";
+      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn", changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
       if (isExistEle(driver, coinSele)) {
         String coins = driver.findElement(By.cssSelector(coinSele)).getText();
         int icoins = Integer.parseInt(Utille.getNumber(coins));
@@ -56,6 +56,10 @@ public class LFMChyousadan extends LFMBase {
             }
           }
         }
+      }
+      if (isExistEle(driver, topSele)) {
+        // 遊んで貯めるに移動
+        clickSleepSelector(driver, topSele, 4000);
       }
 
       if (isExistEle(driver, seleFirst)) {

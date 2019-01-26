@@ -134,14 +134,15 @@ public class AnswerDotti extends MissCommon {
           }
           else {
             i++;
-            j = 0;
             if (isExistEle(driver, seeYouSele)) {
               //              clickSleepSelector(driver, seeYouSele, 3000);
+              j = 0;
               endFlag = true;
               break;
             }
             // 次のレベルに移動
             else if (isExistEle(driver, nextLevel)) {
+              j = 0;
               // 質問の選択一覧に行くはず
               clickSleepSelector(driver, nextLevel, 3000);
             }

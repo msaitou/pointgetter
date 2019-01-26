@@ -92,6 +92,9 @@ public class GPOMatome extends GPOBase {
             Utille.refresh(driver, logg);
             Utille.sleep(5000);
           }
+          else {
+            break;
+          }
         }
       }
 

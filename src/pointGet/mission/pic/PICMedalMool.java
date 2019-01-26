@@ -83,7 +83,7 @@ public class PICMedalMool extends PICBase {
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000); // 遷移
       String wid0 = driver.getWindowHandle();
-      changeWindow(driver, wid0);
+      changeCloseWindow(driver);
       // 占い
       // 写真
       // コラム
