@@ -46,7 +46,7 @@ public class AnswerWhichCollect extends MissCommon {
       Utille.sleep(4000);
 
       for (int m = 0; m < 6; m++) {
-
+        boolean iregularFlag = false;
         if (isExistEle(driver, sele2)) {
 
           clickSleepSelector(driver, sele2, 3000);
@@ -114,6 +114,7 @@ public class AnswerWhichCollect extends MissCommon {
                         changeCloseWindow(driver);
                         Utille.sleep(4000);
                         if (isExistEle(driver, sele2)) {
+                          iregularFlag = true;
                           clickSleepSelector(driver, sele2, 3000);
                           break;
                         }
@@ -127,7 +128,7 @@ public class AnswerWhichCollect extends MissCommon {
               break;
             }
           }
-          if (isExistEle(driver, sele7)) {
+          if (!iregularFlag && isExistEle(driver, sele7)) {
             clickSleepSelector(driver, sele7, 3000);
           }
         }

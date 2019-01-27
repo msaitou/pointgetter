@@ -51,6 +51,7 @@ public class GPOWhichCollectHighLow extends GPOBase {
       Utille.sleep(4000);
 
       for (int m = 0; m < 6; m++) {
+        boolean iregularFlag = false;
 
         if (isExistEle(driver, sele2)) {
           clickSleepSelector(driver, sele2, 3000);
@@ -119,12 +120,20 @@ public class GPOWhichCollectHighLow extends GPOBase {
                   }
                 }
                 else {
-                  String gameTop ="a>img[src*='logo_game.png']";
-                  if (isExistEle(driver, gameTop)) {
-                    clickSleepSelector(driver, gameTop, 3000);
+                  String url = "https://www.gpoint.co.jp/gpark/";
+//                String gameTop ="a>img[src*='logo_game.png']";
+//                if (isExistEle(driver, gameTop)) {
+//                  clickSleepSelector(driver, gameTop, 3000);
+                  Utille.url(driver, url, logg);
+
+                  if (isExistEle(driver, sele1)) {
+                    clickSleepSelector(driver, sele1, 3000);
+                    changeCloseWindow(driver);
+                    Utille.sleep(4000);
                     if (isExistEle(driver, sele2)) {
+                      iregularFlag = true;
                       clickSleepSelector(driver, sele2, 3000);
-                      break;
+//                      break;
                     }
                   }
 
@@ -142,7 +151,7 @@ public class GPOWhichCollectHighLow extends GPOBase {
               break;
             }
           }
-          if (isExistEle(driver, sele7)) {
+          if (!iregularFlag &&isExistEle(driver, sele7)) {
             clickSleepSelector(driver, sele7, 3000);
           }
         }
