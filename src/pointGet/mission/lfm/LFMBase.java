@@ -115,6 +115,9 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMCMother: // ■その他アンケート等
           MisIns = new LFMCMother(loggg, cProps);
           break;
+        case Define.strLFMQuizKentei: // ■クイズ検定
+          MisIns = new LFMQuizKentei(loggg, cProps);
+          break;
           
         default:
       }
@@ -135,6 +138,7 @@ public abstract class LFMBase extends Mission {
           ,Define.strLFMPriceChyosatai
           ,Define.strLFMNaruhodo
           ,Define.strLFMCMother
+          ,Define.strLFMQuizKentei
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

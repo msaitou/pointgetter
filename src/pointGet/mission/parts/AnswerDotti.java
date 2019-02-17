@@ -146,6 +146,10 @@ public class AnswerDotti extends MissCommon {
               // 質問の選択一覧に行くはず
               clickSleepSelector(driver, nextLevel, 3000);
             }
+            else {
+              endFlag = true;
+              break;
+            }
           }
         }
 

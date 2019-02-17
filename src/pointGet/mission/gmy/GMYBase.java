@@ -111,6 +111,9 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYNaruhodo: // ■なるほど検定
           MisIns = new GMYNaruhodo(loggg, cProps);
           break;
+        case Define.strGMYAnkPark: // ■アンケートパーク
+          MisIns = new GMYAnkPark(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -124,7 +127,8 @@ public abstract class GMYBase extends Mission {
           Define.strGMYCMother,
           Define.strGMYColum, Define.strGMYManga,
           Define.strGMYEasyAnk,
-          Define.strGMYNaruhodo
+          Define.strGMYNaruhodo,
+          Define.strGMYAnkPark
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

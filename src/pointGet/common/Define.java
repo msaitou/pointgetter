@@ -83,7 +83,7 @@ public class Define {
   final public static String strGMYManga = "GMYManga";
   final public static String strGMYEasyAnk = "GMYEasyAnk";
   final public static String strGMYNaruhodo = "GMYNaruhodo";
-//  final public static String strGMYDotti = "GMYDotti";
+  final public static String strGMYAnkPark = "GMYAnkPark";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
@@ -259,6 +259,7 @@ public class Define {
   final public static String strCITCook = "CITCook";
   final public static String strCITEasyAnk = "CITEasyAnk";
   final public static String strCITNaruhodo = "CITNaruhodo";
+  final public static String strCITAnkPark = "CITAnkPark";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";
@@ -314,6 +315,7 @@ public class Define {
   final public static String strLFMMail = "LFMMail";
   final public static String strLFMNaruhodo = "LFMNaruhodo";
   final public static String strLFMCMother = "LFMCMother";
+  final public static String strLFMQuizKentei = "LFMQuizKentei";
 
   // ■■■■■Gpoint■■■■■
   final public static String strGPOUranai = "GPOUranai";
