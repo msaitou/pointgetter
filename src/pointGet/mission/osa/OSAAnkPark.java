@@ -15,6 +15,7 @@ import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerIjin;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerMix;
@@ -34,6 +35,7 @@ public class OSAAnkPark extends OSABase {
   AnswerManga Manga = null;
   AnswerHirameki Hirameki = null;
   AnswerMix Mix = null;
+  AnswerIjin Ijin = null;
 
   /**
    * @param logg
@@ -49,6 +51,7 @@ public class OSAAnkPark extends OSABase {
     Manga = new AnswerManga(logg);
     Hirameki = new AnswerHirameki(logg);
     Mix = new AnswerMix(logg);
+    Ijin = new AnswerIjin(logg);
   }
 
   @Override
@@ -159,6 +162,11 @@ public class OSAAnkPark extends OSABase {
               (cUrl.indexOf("/manga/") >= 0)
               && isExistEle(driver, sele10)) {
             Manga.answer(driver, sele10, wid);
+          }
+          // 偉人
+          else if ((cUrl.indexOf("/ijin/") >= 0)
+              && isExistEle(driver, sele6)) {
+            Ijin.answer(driver, sele6, wid);
           }
           // MIX
           else if (

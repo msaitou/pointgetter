@@ -43,13 +43,73 @@ public class GMYPriceChyosatai extends GMYBase {
       clickSleepSelector(driver, firstEntrySele, 4000); // 遷移
       changeCloseWindow(driver);
       String[] chousaSeles = {
-                    "a[href='/go/tokimeki'] strong", // ときめき
+          "a[href='/go/sweets'] strong",  // スイーツ
+          "a[href='/go/tokimeki'] strong", // ときめき
           "a[href='/go/recipe'] strong", // レシピ
           "a[href='/go/price'] strong", // プライス
       };
       for (int i = 0; i < chousaSeles.length; i++) {
         clickSleepSelector(driver, chousaSeles[i], 4000); // 遷移
-        if (chousaSeles[i].equals("a[href='/go/price'] strong")) {
+        if (chousaSeles[i].equals("a[href='/go/sweets'] strong")) {
+          logg.info("■□■□■□[sweets]■□■□■□");
+          String toTop = "div.back-top>a[href='/']";
+
+          for (int j = 0; j < 6; j++) {
+            Utille.sleep(2000);
+            checkOverlay(driver, overlaySelector);
+            if (isExistEle(driver, footBnrSelector)
+                && !isExistEle(driver, "div.foot-bnr[style*='display :none'] a.close>span")) {
+              checkOverlay(driver, footBnrSelector);
+            }
+
+            String noEntrySele = "div.thumbnail span.icon-noentry";
+            String entrySele = "div.thumbnail span.icon-entry";
+            if (isExistEle(driver, noEntrySele)) {
+              clickSleepSelector(driver, noEntrySele, 4000); // 遷移
+              checkOverlay(driver, overlaySelector);
+              if (isExistEle(driver, footBnrSelector)
+                  && !isExistEle(driver, overlayNone, false)) {
+                checkOverlay(driver, footBnrSelector);
+              }
+
+              selector = "div.thumb-start div.btn>a";
+              if (isExistEle(driver, selector)) {
+                clickSleepSelector(driver, selector, 4000); // 遷移
+                checkOverlay(driver, overlaySelector);
+                checkOverlay(driver, footBnrSelector);
+                String finshSele = "div.result-area";
+                // otukare!
+                if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
+                  break;
+                }
+                localRoop1(driver);
+                // 調査隊のトップへ戻る
+                if (isExistEle(driver, toTop)) {
+                  clickSleepSelector(driver, toTop, 4500);
+                }
+
+              }
+            }
+            else if (isExistEle(driver, entrySele)) {
+              clickSleepSelector(driver, entrySele, 4000); // 遷移
+              checkOverlay(driver, overlaySelector);
+              if (isExistEle(driver, footBnrSelector)
+                  && !isExistEle(driver, overlayNone, false)) {
+                checkOverlay(driver, footBnrSelector);
+              }
+              //          selector = "div.btn>a";
+              localRoop1(driver);
+              // 調査隊のトップへ戻る
+              if (isExistEle(driver, toTop)) {
+                clickSleepSelector(driver, toTop, 4500);
+              }
+            }
+            else {
+              j = 6;
+            }
+          }
+        }
+        else if (chousaSeles[i].equals("a[href='/go/price'] strong")) {
           logg.info("■□■□■□[price]■□■□■□");
           String toTop = "div.back-top>a[href='/']";
 

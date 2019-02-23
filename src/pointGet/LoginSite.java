@@ -188,7 +188,7 @@ public class LoginSite extends PointGet {
    * @param logg
    */
   public static void loginGmy(WebDriver driver, Logger logg) {
-    String seleLogin = "li.btn_login>a>span";
+    String seleLogin = "li.btn_login>a";
     if (Utille.isExistEle(driver, seleLogin, logg)) {
       driver.findElement(By.cssSelector(seleLogin)).click();
       Utille.sleep(4000);

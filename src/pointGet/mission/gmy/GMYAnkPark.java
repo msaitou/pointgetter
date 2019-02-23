@@ -15,6 +15,7 @@ import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerIjin;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerMix;
@@ -34,6 +35,7 @@ public class GMYAnkPark extends GMYBase {
   AnswerManga Manga = null;
   AnswerHirameki Hirameki = null;
   AnswerMix Mix = null;
+  AnswerIjin Ijin = null;
 
   /**
    * @param logg
@@ -49,6 +51,7 @@ public class GMYAnkPark extends GMYBase {
     Manga = new AnswerManga(logg);
     Hirameki = new AnswerHirameki(logg);
     Mix = new AnswerMix(logg);
+    Ijin = new AnswerIjin(logg);
   }
 
   @Override
@@ -73,17 +76,16 @@ public class GMYAnkPark extends GMYBase {
       overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
       sele6 = "form>input.next_bt", // コラム用
       sele4 = "a.submit-btn", sele10 = "form>input[type='image']", // 回答する 漫画用
-          sele11 = "input.enquete_nextbt.next_bt",
-      b = "";
+      sele11 = "input.enquete_nextbt.next_bt", b = "";
       while (true) {
         checkOverlay(driver, overlaySele, false);
         if (!isExistEle(driver, selector)) {
           break;
         }
         List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-        int size = eleList.size(), 
-//            targetIndex = size - skip;
-            targetIndex = skip;
+        int size = eleList.size(),
+        //            targetIndex = size - skip;
+        targetIndex = skip;
         if (beforeSize == size) {
           skip++;
           targetIndex = skip;
@@ -91,7 +93,7 @@ public class GMYAnkPark extends GMYBase {
         if (size > targetIndex &&
             targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
           String wid = driver.getWindowHandle();
-//          Utille.mouseOverByScript(driver, seleMouseOver, logg);
+          //          Utille.mouseOverByScript(driver, seleMouseOver, logg);
           Utille.scrolledPage(driver, eleList.get(targetIndex));
           Utille.sleep(2000);
           Actions actions = new Actions(driver);
@@ -101,8 +103,8 @@ public class GMYAnkPark extends GMYBase {
           Utille.sleep(5000);
 
           changeWindow(driver, wid);
-//          clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
-//          changeWindow(driver, wid);
+          //          clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
+          //          changeWindow(driver, wid);
           String cUrl = driver.getCurrentUrl();
           logg.info("cUrl[" + cUrl + "]");
           if (isExistEle(driver, sele9)) {
@@ -155,14 +157,17 @@ public class GMYAnkPark extends GMYBase {
             Colum.answer(driver, sele6, wid);
           }
           // 漫画
-          else if (
-              (cUrl.indexOf("/manga/") >= 0)
+          else if ((cUrl.indexOf("/manga/") >= 0)
               && isExistEle(driver, sele10)) {
             Manga.answer(driver, sele10, wid);
           }
+          // 偉人
+          else if ((cUrl.indexOf("/ijin/") >= 0)
+              && isExistEle(driver, sele6)) {
+            Ijin.answer(driver, sele6, wid);
+          }
           // MIX
-          else if (
-              (cUrl.indexOf("/mix/") >= 0)
+          else if ((cUrl.indexOf("/mix/") >= 0)
               && isExistEle(driver, sele11)) {
             Mix.answer(driver, sele11, wid);
           }
