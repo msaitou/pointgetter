@@ -47,83 +47,84 @@ public class AnswerDotti extends MissCommon {
     if (isExistEle(driver, startsele)) {
       for (int i = 0; i < 3 || !endFlag; i++) {
         List<WebElement> eleList = driver.findElements(By.cssSelector(startsele));
-        clickSleepSelector(driver, eleList.get(i), 4000);
-
-        if (isExistEle(driver, septSele1)) {
-          // インターセプト
-          clickSleepSelector(driver, septSele1, 4000);
-        }
-        else if (isExistEle(driver, septSele2)) {
-          // インターセプト
-          clickSleepSelector(driver, septSele2, 4000);
-          if (isExistEle(driver, sele4)) {
-            // 一覧へ
-            clickSleepSelector(driver, sele4, 4000);
+        if (eleList.size() >= i) {
+          clickSleepSelector(driver, eleList.get(i), 4000);
+          if (isExistEle(driver, septSele1)) {
+            // インターセプト
+            clickSleepSelector(driver, septSele1, 4000);
           }
-        }
-
-        for (int j = 0; j < 20 || !endFlag; j++) {
-          // 質問の選択一覧
-          if (isExistEle(driver, closeSele)) {
-            //       if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
-            checkOverlay(driver, closeSele, false);
+          else if (isExistEle(driver, septSele2)) {
+            // インターセプト
+            clickSleepSelector(driver, septSele2, 4000);
+            if (isExistEle(driver, sele4)) {
+              // 一覧へ
+              clickSleepSelector(driver, sele4, 4000);
+            }
           }
-          if (isExistEle(driver, choiceSele)) {
-            // 質問の選択
-            List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
-            if (eleList2.size() == 0) {
-              break;
-            }
-            clickSleepSelector(driver, eleList2.get(eleList2.size() - 1), 4000);
 
-            String aaaSele = seleAaa + " " + sele1, //
-            bbbSele = seleBbb + " " + sele1//
-            , aaaSeleA = seleAaa + " a" //
-            , bbbSeleA = seleBbb + " a" //
-            , nextSele1 = ""//
-            , nextSele2 = ""//
-            , nextSele3 = ""//
-            ;
-            if (driver.findElement(By.cssSelector(seleAaa)).isDisplayed() && isExistEle(driver, aaaSele)) {
-              nextSele1 = aaaSele;
+          for (int j = 0; j < 20 || !endFlag; j++) {
+            // 質問の選択一覧
+            if (isExistEle(driver, closeSele)) {
+              //       if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+              checkOverlay(driver, closeSele, false);
             }
-            else {
-              nextSele1 = bbbSele;
-            }
-            if (isExistEle(driver, nextSele1)) {
-              clickSleepSelector(driver, nextSele1, 4000);
+            if (isExistEle(driver, choiceSele)) {
+              // 質問の選択
+              List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
+              if (eleList2.size() == 0) {
+                break;
+              }
+              clickSleepSelector(driver, eleList2.get(eleList2.size() - 1), 4000);
 
-              if (isExistEle(driver, choiceSele2)) {
-                List<WebElement> eleList3 = driver.findElements(By.cssSelector(choiceSele2));
-                int choiceNum = Utille.getIntRand(eleList3.size());
-                clickSleepSelector(driver, eleList3.get(choiceNum), 3000);
-                if (driver.findElement(By.cssSelector(seleAaa)).isDisplayed() && isExistEle(driver, aaaSeleA)) {
-                  nextSele2 = aaaSeleA;
-                }
-                else {
-                  nextSele2 = bbbSeleA;
-                }
-                if (isExistEle(driver, nextSele2)) {
-                  clickSleepSelector(driver, nextSele2, 7000);
+              String aaaSele = seleAaa + " " + sele1, //
+              bbbSele = seleBbb + " " + sele1//
+              , aaaSeleA = seleAaa + " a" //
+              , bbbSeleA = seleBbb + " a" //
+              , nextSele1 = ""//
+              , nextSele2 = ""//
+              , nextSele3 = ""//
+              ;
+              if (driver.findElement(By.cssSelector(seleAaa)).isDisplayed() && isExistEle(driver, aaaSele)) {
+                nextSele1 = aaaSele;
+              }
+              else {
+                nextSele1 = bbbSele;
+              }
+              if (isExistEle(driver, nextSele1)) {
+                clickSleepSelector(driver, nextSele1, 4000);
 
+                if (isExistEle(driver, choiceSele2)) {
+                  List<WebElement> eleList3 = driver.findElements(By.cssSelector(choiceSele2));
+                  int choiceNum = Utille.getIntRand(eleList3.size());
+                  clickSleepSelector(driver, eleList3.get(choiceNum), 3000);
                   if (driver.findElement(By.cssSelector(seleAaa)).isDisplayed() && isExistEle(driver, aaaSeleA)) {
-                    nextSele3 = aaaSeleA;
+                    nextSele2 = aaaSeleA;
                   }
                   else {
-                    nextSele3 = bbbSeleA;
+                    nextSele2 = bbbSeleA;
                   }
+                  if (isExistEle(driver, nextSele2)) {
+                    clickSleepSelector(driver, nextSele2, 7000);
 
-                  if (isExistEle(driver, nextSele3)) {
-                    clickSleepSelector(driver, nextSele3, 3000);
-                    if (isExistEle(driver, sele4)) {
-                      // 質問の選択一覧に行くはず
-                      clickSleepSelector(driver, sele4, 3000);
-                      if (isExistEle(driver, septSele1)) {
-                        // インターセプト
-                        clickSleepSelector(driver, septSele1, 4000);
-                        if (isExistEle(driver, sele4)) {
-                          // 質問の選択一覧に行くはず
-                          clickSleepSelector(driver, sele4, 3000);
+                    if (driver.findElement(By.cssSelector(seleAaa)).isDisplayed() && isExistEle(driver, aaaSeleA)) {
+                      nextSele3 = aaaSeleA;
+                    }
+                    else {
+                      nextSele3 = bbbSeleA;
+                    }
+
+                    if (isExistEle(driver, nextSele3)) {
+                      clickSleepSelector(driver, nextSele3, 3000);
+                      if (isExistEle(driver, sele4)) {
+                        // 質問の選択一覧に行くはず
+                        clickSleepSelector(driver, sele4, 3000);
+                        if (isExistEle(driver, septSele1)) {
+                          // インターセプト
+                          clickSleepSelector(driver, septSele1, 4000);
+                          if (isExistEle(driver, sele4)) {
+                            // 質問の選択一覧に行くはず
+                            clickSleepSelector(driver, sele4, 3000);
+                          }
                         }
                       }
                     }
@@ -131,28 +132,27 @@ public class AnswerDotti extends MissCommon {
                 }
               }
             }
-          }
-          else {
-            i++;
-            if (isExistEle(driver, seeYouSele)) {
-              //              clickSleepSelector(driver, seeYouSele, 3000);
-              j = 0;
-              endFlag = true;
-              break;
-            }
-            // 次のレベルに移動
-            else if (isExistEle(driver, nextLevel)) {
-              j = 0;
-              // 質問の選択一覧に行くはず
-              clickSleepSelector(driver, nextLevel, 3000);
-            }
             else {
-              endFlag = true;
-              break;
+              i++;
+              if (isExistEle(driver, seeYouSele)) {
+                //              clickSleepSelector(driver, seeYouSele, 3000);
+                j = 0;
+                endFlag = true;
+                break;
+              }
+              // 次のレベルに移動
+              else if (isExistEle(driver, nextLevel)) {
+                j = 0;
+                // 質問の選択一覧に行くはず
+                clickSleepSelector(driver, nextLevel, 3000);
+              }
+              else {
+                endFlag = true;
+                break;
+              }
             }
           }
         }
-
       }
     }
 

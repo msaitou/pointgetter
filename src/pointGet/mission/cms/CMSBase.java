@@ -98,6 +98,9 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSNaruhodo: // ■なるほど検定
           MisIns = new CMSNaruhodo(loggg, cProps);
           break;
+        case Define.strCMSKumaVote: // ■クマ投票
+          MisIns = new CMSKumaVote(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCMSAnqueate,
