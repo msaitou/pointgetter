@@ -85,6 +85,10 @@ public class GMYPriceChyosatai extends GMYBase {
                 localRoop1(driver);
                 // 調査隊のトップへ戻る
                 if (isExistEle(driver, toTop)) {
+                  if (isExistEle(driver, footBnrSelector)
+                      && !isExistEle(driver, overlayNone, false)) {
+                    checkOverlay(driver, footBnrSelector);
+                  }
                   clickSleepSelector(driver, toTop, 4500);
                 }
 
@@ -101,6 +105,10 @@ public class GMYPriceChyosatai extends GMYBase {
               localRoop1(driver);
               // 調査隊のトップへ戻る
               if (isExistEle(driver, toTop)) {
+                if (isExistEle(driver, footBnrSelector)
+                    && !isExistEle(driver, overlayNone, false)) {
+                  checkOverlay(driver, footBnrSelector);
+                }
                 clickSleepSelector(driver, toTop, 4500);
               }
             }
@@ -406,7 +414,7 @@ public class GMYPriceChyosatai extends GMYBase {
     String sele2none = "[style*='display:none;']";
     String sele2bot = " div.btn.mrg-t5.mrg-b5>a";
     String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 10; i++) {
       String finshSele = "div.result-area";
       // otukare!
       if (isExistEle(driver.findElements(By.cssSelector(finshSele)))) {
