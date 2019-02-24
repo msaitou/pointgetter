@@ -47,11 +47,11 @@ public class GPOMedalMool extends GPOBase {
 
       String[] preSeleList = {
           "img[src*='main_ab_new']", // 2卓アンケート
-          "img[src*='main_quiz05']", // 食べ物クイズ
-          "img[src*='main_quiz04']", // 動物クイズ
-          "img[src*='main_quiz03']", // 書籍クイズ
-          "img[src*='main_quiz02']", // 海外クイズ
-          "img[src*='main_quiz01']", // 漢字クイズ
+//          "img[src*='main_quiz05']", // 食べ物クイズ
+//          "img[src*='main_quiz04']", // 動物クイズ
+//          "img[src*='main_quiz03']", // 書籍クイズ
+//          "img[src*='main_quiz02']", // 海外クイズ
+//          "img[src*='main_quiz01']", // 漢字クイズ
           //          "a[href*='pc/uranai']",
       };
       int cnt = 0;
