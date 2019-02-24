@@ -46,7 +46,7 @@ public class GPOMedalMool extends GPOBase {
       changeWindow(driver, wid0);
 
       String[] preSeleList = {
-          "img[src*='main_ab_new']", // 2卓アンケート
+          "img[src*='main_ab']", // 2卓アンケート
 //          "img[src*='main_quiz05']", // 食べ物クイズ
 //          "img[src*='main_quiz04']", // 動物クイズ
 //          "img[src*='main_quiz03']", // 書籍クイズ
@@ -106,7 +106,7 @@ public class GPOMedalMool extends GPOBase {
           }
         }
         // ABアンケート
-        else if (preSele.equals("img[src*='main_ab_new']")) {
+        else if (preSele.equals("img[src*='main_ab']")) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);

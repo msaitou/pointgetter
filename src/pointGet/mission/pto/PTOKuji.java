@@ -32,7 +32,7 @@ public class PTOKuji extends PTOBase {
 
         {
           put("url", "https://www.pointtown.com/ptu/shopping");
-          put("sele", "a#red_kuji>img");
+          put("sele", "a[onclick*='赤']");
         }
       });
       put("くじ黄", new HashMap<String, String>() {
@@ -43,7 +43,7 @@ public class PTOKuji extends PTOBase {
 
         {
           put("url", "https://www.pointtown.com/ptu/service");
-          put("sele", "a#yellow_kuji");
+          put("sele", "a[onclick*='黄']");
           // div.ptpc-search-box__hotword>a ０番目
         }
       });
@@ -55,7 +55,7 @@ public class PTOKuji extends PTOBase {
 
         {
           put("url", "https://www.pointtown.com/ptu/creditcard/index.do");
-          put("sele", "a>img[alt='三角くじ 紫']");
+          put("sele", "a[onclick*='紫']");
         }
       });
       put("くじ桃", new HashMap<String, String>() {
@@ -66,7 +66,7 @@ public class PTOKuji extends PTOBase {
 
         {
           put("url", "https://www.pointtown.com/ptu/coupon/top.do");
-          put("sele", "a>img[alt='三角くじ 桃']");
+          put("sele", "a[onclick*='桃']");
         }
       });
       put("くじ青", new HashMap<String, String>() {
@@ -77,7 +77,7 @@ public class PTOKuji extends PTOBase {
 
         {
           put("url", "https://www.pointtown.com/ptu/top");
-          put("sele", "a>img[alt='三角くじ 青']");
+          put("sele", "a[onclick*='青']");
         }
       });
       put("くじ緑", new HashMap<String, String>() {
@@ -88,7 +88,7 @@ public class PTOKuji extends PTOBase {
 
         {
           put("url", "https://www.pointtown.com/ptu/forum/index");
-          put("sele", "a>img[alt='三角くじ 緑']");
+          put("sele", "a[onclick*='緑']");
         }
       });
       put("うさくじ", new HashMap<String, String>() {
@@ -99,7 +99,7 @@ public class PTOKuji extends PTOBase {
 
         {
           put("url", "https://www.pointtown.com/ptu/travel");
-          put("sele", "a#red_kuji>img");
+          put("sele", "a[onclick*='うさぽくじ']");
         }
       });
     }
