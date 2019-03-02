@@ -76,16 +76,13 @@ public class PTOFarmEnk extends PTOBase {
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       //      changeCloseWindow(driver);
-      Utille.url(driver, "http://farm.pointtown.com/square/diagnoses", logg);
-      for (int k = 0; k < 4; k++) {
+      Utille.url(driver, "http://p-town.agri-hatake.fun/square/pittango", logg);
+      for (int k = 0; k < 3; k++) {
         if (k == 1) {
-          Utille.url(driver, "http://farm.pointtown.com/square/surveys", logg);
+          Utille.url(driver, "http://p-town.agri-hatake.fun/square/surveys", logg);
         }
         else if (k == 2) {
-          Utille.url(driver, "http://farm.pointtown.com/square/pittango", logg);
-        }
-        else if (k == 3) {
-          Utille.url(driver, "http://farm.pointtown.com/square/diagnoses", logg);
+          Utille.url(driver, "http://p-town.agri-hatake.fun/square/diagnoses", logg);
         }
 
         Utille.sleep(3000);
@@ -104,10 +101,11 @@ public class PTOFarmEnk extends PTOBase {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = size - skip;
+          int size = eleList.size();
           if (beforeSize == size) {
             skip++;
           }
+          int targetIndex = size - skip;
           if (size > targetIndex &&
               targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();

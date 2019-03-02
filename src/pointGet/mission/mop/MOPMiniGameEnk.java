@@ -75,17 +75,17 @@ public class MOPMiniGameEnk extends MOPBase {
       changeCloseWindow(driver);
       //      Utille.url(driver, "http://minigamepark.moppy.jp/square/pittango", logg);
       //      Utille.url(driver, "http://minigamepark.moppy.jp/square/diagnoses", logg);
-      Utille.url(driver, "http://minigamepark.moppy.jp/square/surveys", logg);
+      Utille.url(driver, "http://moppy.agri-hatake.fun/square/surveys", logg);
       for (int k = 0; k < 4; k++) {
         //      for (int k = 0; k < 1; k++) {
         if (k == 1) {
-          Utille.url(driver, "http://minigamepark.moppy.jp/square/pittango", logg);
+          Utille.url(driver, "http://moppy.agri-hatake.fun/square/pittango", logg);
         }
         else if (k == 2) {
-          Utille.url(driver, "http://minigamepark.moppy.jp/square/diagnoses", logg);
+          Utille.url(driver, "http://moppy.agri-hatake.fun/square/diagnoses", logg);
         }
         else if (k == 3) {
-          Utille.url(driver, "http://minigamepark.moppy.jp/square/votes", logg);
+          Utille.url(driver, "http://moppy.agri-hatake.fun/square/votes", logg);
         }
 
         Utille.sleep(6000);
@@ -107,10 +107,11 @@ public class MOPMiniGameEnk extends MOPBase {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = size - skip;
+          int size = eleList.size();
           if (beforeSize == size) {
             skip++;
           }
+          int targetIndex = size - skip;
           if (size > targetIndex &&
               targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();

@@ -57,13 +57,13 @@ public class LFMFarmEnk extends LFMBase {
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      Utille.url(driver, "http://garden.lifemedia.jp/square/votes", logg);
+      Utille.url(driver, "http://lm.agri-hatake.fun/square/votes", logg);
       for (int k = 0; k < 3; k++) {
         if (k == 1) {
-          Utille.url(driver, "http://garden.lifemedia.jp/square/diagnoses", logg);
+          Utille.url(driver, "http://lm.agri-hatake.fun/square/diagnoses", logg);
         }
         else if (k == 2) {
-          Utille.url(driver, "http://garden.lifemedia.jp/square/surveys", logg);
+          Utille.url(driver, "http://lm.agri-hatake.fun/square/surveys", logg);
         }
         //        else if (k == 3) {
         //          Utille.url(driver, "http://farm.osaifu.com/square/pittango", logg);
@@ -85,10 +85,11 @@ public class LFMFarmEnk extends LFMBase {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = size - skip;
+          int size = eleList.size();
           if (beforeSize == size) {
             skip++;
           }
+          int targetIndex = size - skip;
           if (size > targetIndex &&
               targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();

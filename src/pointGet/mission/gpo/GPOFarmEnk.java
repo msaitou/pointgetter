@@ -79,16 +79,16 @@ public class GPOFarmEnk extends GPOBase {
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      Utille.url(driver, "http://farm-gpoint.media-ad.jp/square/surveys", logg);
+      Utille.url(driver, "http://gp.agri-hatake.fun/square/surveys", logg);
       for (int k = 0; k < 4; k++) {
         if (k == 1) {
-          Utille.url(driver, "http://farm-gpoint.media-ad.jp/square/diagnoses", logg);
+          Utille.url(driver, "http://gp.agri-hatake.fun/square/diagnoses", logg);
         }
         else if (k == 2) {
-          Utille.url(driver, "http://farm-gpoint.media-ad.jp/square/votes", logg);
+          Utille.url(driver, "http://gp.agri-hatake.fun/square/votes", logg);
         }
         else if (k == 3) {
-          Utille.url(driver, "http://farm-gpoint.media-ad.jp/square/pittango", logg);
+          Utille.url(driver, "http://gp.agri-hatake.fun/square/pittango", logg);
         }
 
         Utille.sleep(3000);
@@ -107,10 +107,11 @@ public class GPOFarmEnk extends GPOBase {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = size - skip;
+          int size = eleList.size();
           if (beforeSize == size) {
             skip++;
           }
+          int targetIndex = size - skip;
           if (size > targetIndex &&
               targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();

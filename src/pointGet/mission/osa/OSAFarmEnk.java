@@ -81,15 +81,15 @@ public class OSAFarmEnk extends OSABase {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
       for (int k = 0; k < 4; k++) {
-        Utille.url(driver, "http://farm.osaifu.com/square/diagnoses", logg);
+        Utille.url(driver, "http://osaifu.agri-hatake.fun/square/diagnoses", logg);
         if (k == 1) {
-          Utille.url(driver, "http://farm.osaifu.com/square/surveys", logg);
+          Utille.url(driver, "http://osaifu.agri-hatake.fun/square/surveys", logg);
         }
         else if (k == 2) {
-          Utille.url(driver, "http://farm.osaifu.com/square/pittango", logg);
+          Utille.url(driver, "http://osaifu.agri-hatake.fun/square/pittango", logg);
         }
         else if (k == 3) {
-          Utille.url(driver, "http://farm.osaifu.com/square/votes", logg);
+          Utille.url(driver, "http://osaifu.agri-hatake.fun/square/votes", logg);
         }
 
         Utille.sleep(3000);
@@ -109,10 +109,11 @@ public class OSAFarmEnk extends OSABase {
             break;
           }
           List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = size - skip;
+          int size = eleList.size();
           if (beforeSize == size) {
             skip++;
           }
+          int targetIndex = size - skip;
           if (size > targetIndex &&
               targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
             String wid = driver.getWindowHandle();
