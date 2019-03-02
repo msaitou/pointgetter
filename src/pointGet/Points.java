@@ -258,8 +258,8 @@ System.out.println(pointMap);
             }
             // login!!
             //					LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
-            selector = "span#user-mile-status-earn";
-            Utille.url(driver, "http://www.sugutama.jp/passbook", logg);
+            selector = "dd.js-user_point";
+            Utille.url(driver, "https://www.sugutama.jp/mypage", logg);
             Utille.sleep(5000);
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
