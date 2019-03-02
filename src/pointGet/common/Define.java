@@ -130,6 +130,7 @@ public class Define {
   final public static String strOSAManga = "OSAManga";
   final public static String strOSACountTimer = "OSACountTimer";
   final public static String strOSAPointResearch = "OSAPointResearch";
+  final public static String strOSAPointResearch2 = "OSAPointResearch2";
   final public static String strOSAGameParkEnk = "OSAGameParkEnk";
   final public static String strOSAChyousadan = "OSAChyousadan";
   final public static String strOSAKumaVote = "OSAKumaVote";

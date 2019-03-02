@@ -101,6 +101,9 @@ public abstract class OSABase extends Mission {
         case Define.strOSAPointResearch: // ■ポイントリサーチ
           MisIns = new OSAPointResearch(loggg, cProps);
           break;
+        case Define.strOSAPointResearch2: // ■ポイントリサーチ2(だけ)
+          MisIns = new OSAPointResearch2(loggg, cProps);
+          break;
         case Define.strOSAGameParkEnk: // ■ゲームパークアンケート
           MisIns = new OSAGameParkEnk(loggg, cProps);
           break;
@@ -122,7 +125,7 @@ public abstract class OSABase extends Mission {
         case Define.strOSAAnkPark: // ■アンケートパーク
           MisIns = new OSAAnkPark(loggg, cProps);
           break;
-          
+
         case Define.strOSAMail:
           MailClicker.main(new String[] {sCode});
           break;

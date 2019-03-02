@@ -17,7 +17,7 @@ import pointGet.mission.parts.AnswerPointResearch;
 import pointGet.mission.parts.AnswerSurveyEnk;
 
 public class OSAPointResearch extends OSABase {
-  final String url = "http://osaifu.com/enquete/";
+  final String url = "https://osaifu.com/enquete/";
   WebDriver driver = null;
   /* アンケートクラス　ポイントサーチ */
   AnswerPointResearch PointResearch = null;
@@ -59,7 +59,7 @@ public class OSAPointResearch extends OSABase {
       int size = eleList.size(), targetIndex = size - skip;
       if (targetIndex > -1 && size > targetIndex
           && isExistEle(eleList, targetIndex)) { // 古い順にやる
-        String sikibetuSele = "td.no";
+        String sikibetuSele = "td.enquete__cell__num";
         if (isExistEle(driver, sikibetuSele)) {
           String ankNo = driver.findElements(By.cssSelector(sikibetuSele)).get(targetIndex).getText();
           logg.info("ankNo： " + ankNo);
