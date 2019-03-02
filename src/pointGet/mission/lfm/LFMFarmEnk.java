@@ -52,11 +52,17 @@ public class LFMFarmEnk extends LFMBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    String enkLinkSele = "div>img[alt='ＬＭゲームガーデン']";
+    String enkLinkSele = "div>img[alt='ＬＭゲームガーデン']",
+        enkConfirmSele = "a.about_btn_nosession";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
+      if (isExistEle(driver, enkConfirmSele)) {
+        clickSleepSelector(driver, enkConfirmSele, 4000); // 遷移
+      }
+      
+      
       Utille.url(driver, "http://lm.agri-hatake.fun/square/votes", logg);
       for (int k = 0; k < 3; k++) {
         if (k == 1) {
