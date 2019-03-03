@@ -176,6 +176,10 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOQuizKentei: // ■クイズ検定
           MisIns = new GPOQuizKentei(loggg, cProps);
           break;
+        case Define.strGPOMotAnk: // ■もっと答えて
+          MisIns = new GPOMotAnk(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] {
@@ -211,7 +215,8 @@ public abstract class GPOBase extends Mission {
           Define.strGPOMedalMool,
           Define.strGPOWhichCollectGurume,
           Define.strGPONaruhodo,
-          Define.strGPOQuizKentei
+          Define.strGPOQuizKentei,
+          Define.strGPOMotAnk
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

@@ -353,6 +353,7 @@ public class Define {
   final public static String strGPOMedalMool = "GPOMedalMool";
   final public static String strGPONaruhodo = "GPONaruhodo";
   final public static String strGPOQuizKentei = "GPOQuizKentei";
+  final public static String strGPOMotAnk = "GPOMotAnk";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";
