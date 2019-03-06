@@ -105,7 +105,9 @@ public class GPOMotAnk extends GPOBase {
             }
           }
         }
-
+        else {
+          break;
+        }
       }
     }
   }
