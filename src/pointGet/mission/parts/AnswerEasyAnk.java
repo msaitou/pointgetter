@@ -30,9 +30,10 @@ public class AnswerEasyAnk extends MissCommon {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String questionSele = "div.panel-heading>strong",
         choiceSele = "div.radio>label", // ラジオセレクター
+        choiceSele2 = "div.checkbox>label",//
         seleNext = startSele,
         seleSele = "div>select", // プルダウンセレクター
-
+        
         seleNextb2 = "form>input[type='image']", //
         seleNextb3 = "form>input[alt='next']", //
         overLay = "div#interstitial[style*='display: block']>div>div#inter-close", //
@@ -57,9 +58,13 @@ public class AnswerEasyAnk extends MissCommon {
       else if (isExistEle(driver, seleSele)) { // セレクトボックス
         targetSele = seleSele;
       }
+      else if (isExistEle(driver, choiceSele2)) { // チェックボックス
+        targetSele = choiceSele2;
+      }
 
-      if (choiceSele.equals(targetSele)) {
-        int choiceies = getSelectorSize(driver, choiceSele);
+      if (choiceSele.equals(targetSele)
+          || choiceSele2.equals(targetSele)) {
+        int choiceies = getSelectorSize(driver, targetSele);
         if (questStr.indexOf("あなたの性別") >= 0
         //            || questStr.indexOf("あなたの職業") >= 0
         ) {
@@ -72,7 +77,7 @@ public class AnswerEasyAnk extends MissCommon {
         else {
           choiceNum = Utille.getIntRand(choiceies);
         }
-        List<WebElement> eleList = driver.findElements(By.cssSelector(choiceSele));
+        List<WebElement> eleList = driver.findElements(By.cssSelector(targetSele));
         if (isExistEle(eleList, choiceNum)) {
           clickSleepSelector(driver, eleList, choiceNum, 4000);
           if (isExistEle(driver, seleNext)) {
