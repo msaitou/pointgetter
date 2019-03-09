@@ -42,7 +42,7 @@ public class AnswerNaruhodo extends MissCommon {
     a = "";
     // 最初
     for (int i = 0; i < 2; i++) {
-      if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+      if (isExistEle(driver, "div#popup-ad", false) && driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
         logg.info("div#popup-ad :"+driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed());
         checkOverlay(driver, closeSele, false);
       }
@@ -53,7 +53,7 @@ public class AnswerNaruhodo extends MissCommon {
 
     // 問題
     for (int i = 0; i < 20; i++) {
-      if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+      if (isExistEle(driver, "div#popup-ad", false) && driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
         logg.info("div#popup-ad :"+driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed());
         checkOverlay(driver, closeSele, false);
       }
@@ -72,7 +72,7 @@ public class AnswerNaruhodo extends MissCommon {
             clickSleepSelector(driver, eleList.get(choiceNum), 3000);
             if (isExistEle(driver, startSele)) {  // 応える
               clickSleepSelector(driver, startSele, 5000);
-              if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+              if (isExistEle(driver, "div#popup-ad", false) && driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
                 logg.info("div#popup-ad :"+driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed());
                 checkOverlay(driver, closeSele, false);
               }
@@ -86,7 +86,7 @@ public class AnswerNaruhodo extends MissCommon {
     }
 
     for (int i = 0; i < 3; i++) {
-      if (driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
+      if (isExistEle(driver, "div#popup-ad", false) && driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed() && isExistEle(driver, closeSele)) {
         logg.info("div#popup-ad :"+driver.findElement(By.cssSelector("div#popup-ad")).isDisplayed());
         checkOverlay(driver, closeSele, false);
       }

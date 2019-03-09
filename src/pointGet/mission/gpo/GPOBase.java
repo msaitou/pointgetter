@@ -179,7 +179,10 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOMotAnk: // ■もっと答えて
           MisIns = new GPOMotAnk(loggg, cProps);
           break;
-          
+        case Define.strGPOCMPochi: // ■ぽち
+          MisIns = new GPOCMPochi(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] {
@@ -216,7 +219,7 @@ public abstract class GPOBase extends Mission {
           Define.strGPOWhichCollectGurume,
           Define.strGPONaruhodo,
           Define.strGPOQuizKentei,
-          Define.strGPOMotAnk
+          Define.strGPOMotAnk,Define.strGPOCMPochi
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

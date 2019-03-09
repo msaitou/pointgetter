@@ -67,6 +67,7 @@ public class Define {
   final public static String strGENMail = "GENMail";
   final public static String strGENHitosara = "GENHitosara";
   final public static String strGENNaruhodo = "GENNaruhodo";
+  final public static String strGENCMPochi = "GENCMPochi";
 
   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
@@ -84,6 +85,7 @@ public class Define {
   final public static String strGMYEasyAnk = "GMYEasyAnk";
   final public static String strGMYNaruhodo = "GMYNaruhodo";
   final public static String strGMYAnkPark = "GMYAnkPark";
+  final public static String strGMYCMPochi = "GMYCMPochi";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
@@ -117,6 +119,7 @@ public class Define {
   final public static String strMOPMiniGameEnkNoCap = "MOPMiniGameEnkNoCap";
   final public static String strMOPMail = "MOPMail";
   final public static String strMOPAnkPark = "MOPAnkPark";
+  final public static String strMOPCMPochi = "MOPCMPochi";
 
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
@@ -172,6 +175,7 @@ public class Define {
   final public static String strPTOMail = "PTOMail";
   final public static String strPTOAnkPark = "PTOAnkPark";
   final public static String strPTONaruhodo = "PTONaruhodo";
+  final public static String strPTOCMPochi = "PTOCMPochi";
 
   // ■■■■■Mobatoku■■■■■
   final public static String strMOBAnzan = "MOBAnzan";
@@ -219,6 +223,7 @@ public class Define {
   final public static String strSUGAnkPark = "SUGAnkPark";
   final public static String strSUGQuizKentei = "SUGQuizKentei";
   final public static String strSUGNaruhodo = "SUGNaruhodo";
+  final public static String strSUGCMPochi = "SUGCMPochi";
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
@@ -261,6 +266,7 @@ public class Define {
   final public static String strCITEasyAnk = "CITEasyAnk";
   final public static String strCITNaruhodo = "CITNaruhodo";
   final public static String strCITAnkPark = "CITAnkPark";
+  final public static String strCITCMPochi = "CITCMPochi";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";
@@ -354,6 +360,7 @@ public class Define {
   final public static String strGPONaruhodo = "GPONaruhodo";
   final public static String strGPOQuizKentei = "GPOQuizKentei";
   final public static String strGPOMotAnk = "GPOMotAnk";
+  final public static String strGPOCMPochi = "GPOCMPochi";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";
@@ -368,6 +375,7 @@ public class Define {
   final public static String strCMSKumaVote = "CMSKumaVote";
   final public static String strCMSPochi = "CMSPochi";
   final public static String strCMSNaruhodo = "CMSNaruhodo";
+  final public static String strCMSCMPochi = "CMSCMPochi";
 
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";

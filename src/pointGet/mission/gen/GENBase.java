@@ -120,6 +120,9 @@ public abstract class GENBase extends Mission {
         case Define.strGENNaruhodo: // ■なるほど検定
           MisIns = new GENNaruhodo(loggg, cProps);
           break;
+        case Define.strGENCMPochi: // ■ぽち
+          MisIns = new GENCMPochi(loggg, cProps);
+          break;
 
         default:
       }
@@ -138,7 +141,7 @@ public abstract class GENBase extends Mission {
           Define.strGENCMother,
           Define.strGENMorikoreEnkNoCap,
           Define.strGENHitosara,
-          Define.strGENNaruhodo
+          Define.strGENNaruhodo,Define.strGENCMPochi
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

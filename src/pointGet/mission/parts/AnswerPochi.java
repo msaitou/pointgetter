@@ -73,12 +73,13 @@ public class AnswerPochi extends MissCommon {
         }
         List<WebElement> eleList2 = driver.findElements(By.cssSelector(choiceSele));
         if (isExistEle(eleList2, choiceNum)) {
-          if (isExistEle(driver, startSele)) {
+          clickSleepSelector(driver, eleList2.get(choiceNum), 3000);
+//          if (isExistEle(driver, startSele)) {
             //            div.btn_send>a>p
-            String aaa1 = "div.btn_send#aaa1";
-            String aaa2 = "div.btn_send#aaa2";
-            String addSele = ">a>p";
-            if (isExistEle(driver, aaa1) && !isExistEle(driver, aaa1 + "[style*='display:none;']", false)) {
+            String aaa1 = "div#aaa1";
+            String aaa2 = "div#aaa2";
+            String addSele = ">div.btn_send>a>p";
+            if (isExistEle(driver, aaa1, false) && !isExistEle(driver, aaa1 + "[style*='display:none;']", false)) {
               if (isExistEle(driver, aaa1 + addSele)) {
                 clickSleepSelector(driver, aaa1 + addSele, 3500);
               }
@@ -88,7 +89,7 @@ public class AnswerPochi extends MissCommon {
                 clickSleepSelector(driver, aaa2 + addSele, 3500);
               }
             }
-          }
+//          }
         }
       }
       else if (isExistEle(driver, seleSele)) {
@@ -113,7 +114,7 @@ public class AnswerPochi extends MissCommon {
       }
     }
 
-    for (int g = 0; g < 2; g++) {
+    for (int g = 0; g < 3; g++) {
       checkOverlay(driver, overLay, false);
       if (isExistEle(driver, startSele)) {
         // 次へ

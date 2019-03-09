@@ -17,7 +17,7 @@ import pointGet.mission.parts.AnswerPochi;
  */
 public class CMSPochi extends CMSBase {
   final String url = "http://www.cmsite.co.jp/top/enq/";
-   
+
   AnswerPochi Pochi = null;
 
   /**
@@ -42,7 +42,7 @@ public class CMSPochi extends CMSBase {
       int skip = 0, beforeSize = -1;
       selector = "dl#question>dd>a>p"; // アンケート一覧の回答するボタン
       String seleNextb2 = "form>input[type='image']";
-      String sele6 = "div.btn_send>a>p", // 
+      String sele6 = "div.btn_send>a>p", //
       b;
 
       while (isExistEle(driver, selector)) {

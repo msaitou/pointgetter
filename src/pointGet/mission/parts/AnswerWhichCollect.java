@@ -45,7 +45,7 @@ public class AnswerWhichCollect extends MissCommon {
       changeCloseWindow(driver);
       Utille.sleep(4000);
 
-      for (int m = 0; m < 6; m++) {
+      for (int m = 0; m < 10; m++) {
         boolean iregularFlag = false;
         if (isExistEle(driver, sele2)) {
 

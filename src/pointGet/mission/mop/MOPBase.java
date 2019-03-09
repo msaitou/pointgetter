@@ -129,7 +129,10 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPAnkPark: // ■アンケートパーク
           MisIns = new MOPAnkPark(loggg, cProps);
           break;
-          
+        case Define.strMOPCMPochi: // ■ぽち
+          MisIns = new MOPCMPochi(loggg, cProps);
+          break;
+
         case Define.strMOPMail:
           MailClicker.main(new String[] {sCode});
           break;

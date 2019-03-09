@@ -110,6 +110,9 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGNaruhodo: // ■なるほど検定
           MisIns = new SUGNaruhodo(loggg, cProps);
           break;
+        case Define.strSUGCMPochi: // ■ぽち
+          MisIns = new SUGCMPochi(loggg, cProps);
+          break;
 
         default:
       }

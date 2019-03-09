@@ -6,8 +6,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import lombok.val;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -15,6 +14,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchWindowException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -23,6 +23,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import lombok.val;
 import pointGet.common.Eventually;
 import pointGet.common.Utille;
 
@@ -203,14 +204,14 @@ public abstract class MissCommon {
         //取得したcapability情報からブラウザのバージョンを取得
         System.out.println(capabilities.getVersion());
         if (capabilities.getVersion().equals("57.0.2")) {
+          driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
           ele.click();
         }
         else {
           try {
             Actions action = new Actions(driver);
             action.moveToElement(ele).click().perform();
-          }
-          catch(MoveTargetOutOfBoundsException me) {
+          } catch (MoveTargetOutOfBoundsException me) {
             logg.error("-actionでmoveできない-------------------");
             logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(me), 5000));
             // 例外発生したらやっぱり元のやり方で実行
@@ -218,6 +219,10 @@ public abstract class MissCommon {
           }
         }
         return;
+      } catch (StaleElementReferenceException se) {
+        // リフレッシュしてみる
+        Utille.refresh(driver, logg, 20000);
+        driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
       } catch (TimeoutException te) {
         logg.info("##--click timeout--##");
         Utille.refresh(driver, logg);

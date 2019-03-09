@@ -92,7 +92,7 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSPochi: // ■ぽちっと調査隊
           MisIns = new CMSPochi(loggg, cProps);
           break;
-        case Define.strCMSAnqueate: // ■ぽちっと調査隊
+        case Define.strCMSAnqueate: // ■
           MisIns = new CMSAnqueate(loggg, cProps);
           break;
         case Define.strCMSNaruhodo: // ■なるほど検定
@@ -101,6 +101,10 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSKumaVote: // ■クマ投票
           MisIns = new CMSKumaVote(loggg, cProps);
           break;
+        case Define.strCMSCMPochi: // ■CM内ぽちっと調査隊
+          MisIns = new CMSCMPochi(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strCMSAnqueate,
@@ -110,6 +114,7 @@ public abstract class CMSBase extends Mission {
           Define.strCMSGameParkEnk,
           Define.strCMSAnk,
           Define.strCMSPochi,
+          Define.strCMSCMPochi,
           Define.strCMSPointResearch,Define.strCMSKumaVote,
           Define.strCMSNaruhodo
       }).contains(mission)) {

@@ -54,13 +54,13 @@ public abstract class GMYBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     Utille.url(driver, "https://dietnavi.com/pc/", loggg);
-        String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-            recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
-        ;
-        if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
-            && Utille.isExistEle(driver, recoSele, loggg)) {
-          driver.findElement(By.cssSelector(recoSele)).click();
-        }
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+    ;
+    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
+        && Utille.isExistEle(driver, recoSele, loggg)) {
+      driver.findElement(By.cssSelector(recoSele)).click();
+    }
     String se = "li.user_point>at";
     if (!Utille.isExistEle(driver, se, false, loggg)) {
       // login!!
@@ -114,6 +114,10 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYAnkPark: // ■アンケートパーク
           MisIns = new GMYAnkPark(loggg, cProps);
           break;
+        case Define.strGMYCMPochi: // ■ぽちっと
+          MisIns = new GMYCMPochi(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -128,7 +132,7 @@ public abstract class GMYBase extends Mission {
           Define.strGMYColum, Define.strGMYManga,
           Define.strGMYEasyAnk,
           Define.strGMYNaruhodo,
-          Define.strGMYAnkPark
+          Define.strGMYAnkPark, Define.strGMYCMPochi
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

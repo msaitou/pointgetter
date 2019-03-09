@@ -118,6 +118,9 @@ public abstract class CITBase extends Mission {
         case Define.strCITAnkPark: // ■アンケートパーク
           MisIns = new CITAnkPark(loggg, cProps);
           break;
+        case Define.strCITCMPochi: // ■ぽち
+          MisIns = new CITCMPochi(loggg, cProps);
+          break;
 
           default:
       }
@@ -134,7 +137,7 @@ public abstract class CITBase extends Mission {
           Define.strCITCook,
           Define.strCITEasyAnk,
           Define.strCITNaruhodo,
-          Define.strCITAnkPark
+          Define.strCITAnkPark,Define.strCITCMPochi
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
