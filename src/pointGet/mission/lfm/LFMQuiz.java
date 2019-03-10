@@ -31,12 +31,12 @@ public class LFMQuiz extends LFMBase {
     Utille.url(driver, url, logg);
     selector = "dd>a>img[alt='CMくじ']";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 6000); // 遷移
+      clickSleepSelectorNoRefre(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);
       Utille.sleep(3000);
       String uranaiSelector = "a>img[alt='ceres']";
       if (isExistEle(driver, uranaiSelector)) {
-        clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
+        clickSleepSelectorNoRefre(driver, uranaiSelector, 3000); // 遷移 全体へ
         changeCloseWindow(driver);
         checkOverlay(driver, "div.overlay-popup a.button-close");
         String exchangeSele = "a.stamp__btn", //
@@ -51,7 +51,7 @@ public class LFMQuiz extends LFMBase {
             if (isExistEle(elems, ii)) {
               Utille.scrolledPage(driver, elems.get(ii));
               if ("スタンプ交換".equals(elems.get(ii).getText())) {
-                clickSleepSelector(driver, elems, ii, 3000); // 遷移
+                clickSleepSelectorNoRefre(driver, elems, ii, 3000); // 遷移
 
                 if (isExistEle(driver, exchangeListSele)) {
                   int size = getSelectorSize(driver, exchangeListSele + ">option");
@@ -61,12 +61,12 @@ public class LFMQuiz extends LFMBase {
                   selectList.selectByValue(value); // 交換ポイントを選択
                   Utille.sleep(3000);
                   if (isExistEle(driver, doExchangeSele)) {
-                    clickSleepSelector(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
+                    clickSleepSelectorNoRefre(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
                   }
                 }
                 // Topへ戻る
                 if (isExistEle(driver, returnTopSele)) {
-                  clickSleepSelector(driver, returnTopSele, 4000);
+                  clickSleepSelectorNoRefre(driver, returnTopSele, 4000);
                 }
                 break;
               }
@@ -83,7 +83,7 @@ public class LFMQuiz extends LFMBase {
         selector = "form>input[name='submit']";
         Utille.sleep(4000);
         if (isExistEle(driver, selector)) {
-          clickSelector(driver, selector);
+          clickSelectorNoRefre(driver, selector);
           selector = "ul.ui-item-body";
           for (int i = 0; i < 8; i++) {
             Utille.sleep(4000);
@@ -109,16 +109,16 @@ public class LFMQuiz extends LFMBase {
                 // 8kai roop
                 String selector2 = "input[name='submit']";
                 if (isExistEle(driver, selectId)) {
-                  clickSleepSelector(driver, selectId, 4000); // 遷移
+                  clickSleepSelectorNoRefre(driver, selectId, 4000); // 遷移
                   int ranSleep = Utille.getIntRand(9);
                   Utille.sleep(ranSleep * 1000);
                   //								waitTilReady(driver);
                   if (isExistEle(driver, selector2)) {
                     //									waitTilReady(driver);
-                    clickSleepSelector(driver, selector2, 4000); // 遷移
+                    clickSleepSelectorNoRefre(driver, selector2, 4000); // 遷移
                     checkOverlay(driver, "div.overlay-popup a.button-close");
                     if (isExistEle(driver, selector2)) {
-                      clickSleepSelector(driver, selector2, 3000); // 遷移
+                      clickSleepSelectorNoRefre(driver, selector2, 3000); // 遷移
                       checkOverlay(driver, "div.overlay-popup a.button-close");
                     }
                   }
@@ -129,7 +129,7 @@ public class LFMQuiz extends LFMBase {
           logg.info(this.mName + "]kuria?");
           selector = "input[name='submit']";
           if (isExistEle(driver, selector)) {
-            clickSleepSelector(driver, selector, 3000);
+            clickSleepSelectorNoRefre(driver, selector, 3000);
             //						waitTilReady(driver);
           }
         }

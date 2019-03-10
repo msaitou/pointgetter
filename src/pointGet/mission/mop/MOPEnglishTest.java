@@ -30,7 +30,7 @@ public class MOPEnglishTest extends MOPBase {
 		Utille.url(driver, url, logg);
 		selector = "div.game_btn>div.icon>img[alt='英単語TEST']";
 		if (isExistEle(driver, selector)) {
-			clickSleepSelector(driver, selector, 2000); // 遷移
+			clickSleepSelectorNoRefre(driver, selector, 2000); // 遷移
 			changeCloseWindow(driver);
 			checkOverlay(driver, "div.overlay-popup a.button-close");
       String exchangeSele = "a.stamp__btn", //
@@ -45,7 +45,7 @@ public class MOPEnglishTest extends MOPBase {
           if (isExistEle(elems, ii)) {
             Utille.scrolledPage(driver, elems.get(ii));
             if ("スタンプ交換".equals(elems.get(ii).getText())) {
-              clickSleepSelector(driver, elems, ii, 3000); // 遷移
+              clickSleepSelectorNoRefre(driver, elems, ii, 3000); // 遷移
 
               if (isExistEle(driver, exchangeListSele)) {
                 int size = getSelectorSize(driver, exchangeListSele + ">option");
@@ -55,12 +55,12 @@ public class MOPEnglishTest extends MOPBase {
                 selectList.selectByValue(value); // 交換ポイントを選択
                 Utille.sleep(3000);
                 if (isExistEle(driver, doExchangeSele)) {
-                  clickSleepSelector(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
+                  clickSleepSelectorNoRefre(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
                 }
               }
               // Topへ戻る
               if (isExistEle(driver, returnTopSele)) {
-                clickSleepSelector(driver, returnTopSele, 4000);
+                clickSleepSelectorNoRefre(driver, returnTopSele, 4000);
               }
               break;
             }
@@ -77,7 +77,7 @@ public class MOPEnglishTest extends MOPBase {
 			String noSele = "div.ui-item-no", titleSele = "h2.ui-item-title";
 			Utille.sleep(4000);
 			if (isExistEle(driver, selector)) {
-				clickSelector(driver, selector);
+				clickSelectorNoRefre(driver, selector);
 				for (int i = 0; i < 8; i++) {
 					Utille.sleep(4000);
 					String selectYoubi = "";
@@ -111,21 +111,21 @@ public class MOPEnglishTest extends MOPBase {
 						String selectId = "label.ui-label-radio[for='radio-" + selectYoubi + "']";
 						String selector2 = "input[name='submit'].ui-button.ui-button-b.ui-button-answer.quake";
 						if (isExistEle(driver, selectId)) {
-							clickSleepSelector(driver, selectId, 4000); // 遷移
+							clickSleepSelectorNoRefre(driver, selectId, 4000); // 遷移
 							int ranSleep = Utille.getIntRand(9);
 							Utille.sleep(ranSleep * 1000);
 //							waitTilReady(driver);
 							if (isExistEle(driver, selector2)) {
 //								waitTilReady(driver);
-								clickSleepSelector(driver, selector2, 4000); // 遷移
+								clickSleepSelectorNoRefre(driver, selector2, 4000); // 遷移
 								checkOverlay(driver, "div.overlay-popup a.button-close");
 								String selector3 = "input[name='submit'].ui-button.ui-button-b.ui-button-result.quake";
 								String selector4 = "input[name='submit'].ui-button.ui-button-b.ui-button-end.quake";
 								if (isExistEle(driver, selector3)) {
-									clickSleepSelector(driver, selector3, 5000); // 遷移
+									clickSleepSelectorNoRefre(driver, selector3, 5000); // 遷移
 									checkOverlay(driver, "div.overlay-popup a.button-close");
 									if (isExistEle(driver, selector4)) {
-										clickSleepSelector(driver, selector4, 5000); // 遷移
+										clickSleepSelectorNoRefre(driver, selector4, 5000); // 遷移
 										checkOverlay(driver, "div.overlay-popup a.button-close");
 									}
 								}
@@ -136,7 +136,7 @@ public class MOPEnglishTest extends MOPBase {
 				logg.info(this.mName + "]kuria?");
 				selector = "div.fx-control>a.ui-button.ui-button-a.ui-button-close.quake";
 				if (isExistEle(driver, selector)) {
-					clickSleepSelector(driver, selector, 3000);
+					clickSleepSelectorNoRefre(driver, selector, 3000);
 					waitTilReady(driver);
 				}
 			}

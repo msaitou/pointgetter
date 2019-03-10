@@ -30,7 +30,7 @@ public class OSAQuiz extends OSABase {
     Utille.url(driver, url, logg);
     Utille.sleep(2000);
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 2000); // 遷移
+      clickSleepSelectorNoRefre(driver, selector, 2000); // 遷移
       changeCloseWindow(driver);
       String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
       checkOverlay(driver, overlaySelector);
@@ -46,7 +46,7 @@ public class OSAQuiz extends OSABase {
           if (isExistEle(elems, ii)) {
             Utille.scrolledPage(driver, elems.get(ii));
             if ("スタンプ交換".equals(elems.get(ii).getText())) {
-              clickSleepSelector(driver, elems, ii, 3000); // 遷移
+              clickSleepSelectorNoRefre(driver, elems, ii, 3000); // 遷移
 
               if (isExistEle(driver, exchangeListSele)) {
                 int size = getSelectorSize(driver, exchangeListSele + ">option");
@@ -56,12 +56,12 @@ public class OSAQuiz extends OSABase {
                 selectList.selectByValue(value); // 交換ポイントを選択
                 Utille.sleep(3000);
                 if (isExistEle(driver, doExchangeSele)) {
-                  clickSleepSelector(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
+                  clickSleepSelectorNoRefre(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
                 }
               }
               // Topへ戻る
               if (isExistEle(driver, returnTopSele)) {
-                clickSleepSelector(driver, returnTopSele, 4000);
+                clickSleepSelectorNoRefre(driver, returnTopSele, 4000);
               }
               break;
             }
@@ -78,7 +78,7 @@ public class OSAQuiz extends OSABase {
       String noSele = "div.ui-item-no", titleSele = "h2.ui-item-title";
       Utille.sleep(5000);
       if (isExistEle(driver, selector)) {
-        clickSelector(driver, selector);
+        clickSelectorNoRefre(driver, selector);
         selector = "ul.ui-item-body";
         for (int i = 0; i < 8; i++) {
           // driver.navigate().refresh();
@@ -106,13 +106,13 @@ public class OSAQuiz extends OSABase {
               // 8kai roop
               String selector2 = "input[name='submit']";
               if (isExistEle(driver, selectId)) {
-                clickSleepSelector(driver, selectId, 4000); // 選択
+                clickSleepSelectorNoRefre(driver, selectId, 4000); // 選択
                 //							waitTilReady(driver);
                 if (isExistEle(driver, selector2)) {
-                  clickSleepSelector(driver, selector2, 4000); // 遷移
+                  clickSleepSelectorNoRefre(driver, selector2, 4000); // 遷移
                   checkOverlay(driver, overlaySelector);
                   if (isExistEle(driver, selector2)) {
-                    clickSleepSelector(driver, selector2, 3000); // 遷移
+                    clickSleepSelectorNoRefre(driver, selector2, 3000); // 遷移
                     checkOverlay(driver, overlaySelector);
                   }
                 }
@@ -124,7 +124,7 @@ public class OSAQuiz extends OSABase {
         selector = "input[name='submit']";
         if (isExistEle(driver, selector)) {
           checkOverlay(driver, overlaySelector);
-          clickSleepSelector(driver, selector, 3000); // 遷移
+          clickSleepSelectorNoRefre(driver, selector, 3000); // 遷移
         }
       }
     }

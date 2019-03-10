@@ -28,7 +28,7 @@ public class MOPAnzan extends MOPBase {
     Utille.url(driver, url, logg);
     selector = "div.game_btn>div.icon>img[alt='ANZANmental arithmetic']";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 2000); // 遷移
+      clickSleepSelectorNoRefre(driver, selector, 2000); // 遷移
       changeCloseWindow(driver);
       checkOverlay(driver, "div.overlay-popup a.button-close");
       String exchangeSele = "a.stamp__btn", //
@@ -43,7 +43,7 @@ public class MOPAnzan extends MOPBase {
           if (isExistEle(elems, ii)) {
             Utille.scrolledPage(driver, elems.get(ii));
             if ("スタンプ交換".equals(elems.get(ii).getText())) {
-              clickSleepSelector(driver, elems, ii, 3000); // 遷移
+              clickSleepSelectorNoRefre(driver, elems, ii, 3000); // 遷移
 
               if (isExistEle(driver, exchangeListSele)) {
                 int size = getSelectorSize(driver, exchangeListSele + ">option");
@@ -53,12 +53,12 @@ public class MOPAnzan extends MOPBase {
                 selectList.selectByValue(value); // 交換ポイントを選択
                 Utille.sleep(3000);
                 if (isExistEle(driver, doExchangeSele)) {
-                  clickSleepSelector(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
+                  clickSleepSelectorNoRefre(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
                 }
               }
               // Topへ戻る
               if (isExistEle(driver, returnTopSele)) {
-                clickSleepSelector(driver, returnTopSele, 4000);
+                clickSleepSelectorNoRefre(driver, returnTopSele, 4000);
               }
               break;
             }
@@ -75,7 +75,7 @@ public class MOPAnzan extends MOPBase {
       while (true) { // 最大２回
         Utille.sleep(4000);
         if (isExistEle(driver, selector)) {
-          clickSelector(driver, selector);
+          clickSelectorNoRefre(driver, selector);
           for (int i = 0; i < 10; i++) {
             Utille.sleep(4000);
             if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)) {
@@ -97,10 +97,10 @@ public class MOPAnzan extends MOPBase {
                 selectAns = ans;
               }
             }
-            else {
-              logg.info("not get after days");
-              return;
-            }
+//            else {
+//              logg.info("not get after days");
+//              return;
+//            }
             if (isExistEle(driver, "ul.ui-item-body")) { // 答え要素全体
               // label.ui-label-radio.ui-circle-button[for='radio-1']
               String selectId = "label.ui-label-radio";
@@ -112,22 +112,22 @@ public class MOPAnzan extends MOPBase {
                   String choice = eleList.get(j).getText();
                   if (Utille.numEqual(selectAns, choice)) {
                     // if (selectAns.equals(choice)) {
-                    clickSleepSelector(driver, eleList, j, 3000);// 選択
+                    clickSleepSelectorNoRefre(driver, eleList, j, 3000);// 選択
                     int ranSleep = Utille.getIntRand(9);
                     Utille.sleep(ranSleep * 1000);
                     waitTilReady(driver);
                     if (isExistEle(driver, selector2)) {
                       waitTilReady(driver);
-                      clickSleepSelector(driver, selector2, 5500); // 遷移
+                      clickSleepSelectorNoRefre(driver, selector2, 5500); // 遷移
                       String selector3 = "div.fx-control>input[name='submit']";
                       String selector4 = "form.fx-control>input[name='submit']";
                       checkOverlay(driver, "div.overlay-popup a.button-close");
                       if (isExistEle(driver, selector3)) {
-                        clickSleepSelector(driver, selector3, 3000); // 遷移
+                        clickSleepSelectorNoRefre(driver, selector3, 3000); // 遷移
                         checkOverlay(driver, "div.overlay-popup a.button-close");
                       }
                       else if (isExistEle(driver, selector4)) {
-                        clickSleepSelector(driver, selector4, 5000); // 遷移
+                        clickSleepSelectorNoRefre(driver, selector4, 5000); // 遷移
                         checkOverlay(driver, "div.overlay-popup a.button-close");
                       }
                     }
@@ -143,7 +143,7 @@ public class MOPAnzan extends MOPBase {
         else {
           String endSelector = "input[name='submit']";
           if (isExistEle(driver, endSelector)) {
-            clickSleepSelector(driver, endSelector, 3000);
+            clickSleepSelectorNoRefre(driver, endSelector, 3000);
             waitTilReady(driver);
           }
           logg.warn(this.mName + "]獲得済み");

@@ -28,7 +28,7 @@ public class OSAAnzan extends OSABase {
 		Utille.url(driver, url, logg);
 		Utille.sleep(2000);
 		if (isExistEle(driver, selector)) {
-			clickSleepSelector(driver, selector, 2000); // 遷移
+			clickSleepSelectorNoRefre(driver, selector, 2000); // 遷移
       changeCloseWindow(driver);
 			String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
 			checkOverlay(driver, overlaySelector);
@@ -42,7 +42,7 @@ public class OSAAnzan extends OSABase {
 			while (true) { // 最大２回
 				Utille.sleep(4000);
 				if (isExistEle(driver, selector)) {
-					clickSelector(driver, selector);
+					clickSelectorNoRefre(driver, selector);
 					for (int i = 0; i < 10; i++) {
 						Utille.sleep(4000);
 						if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)) {
@@ -63,10 +63,11 @@ public class OSAAnzan extends OSABase {
 								logg.info("答え [" + ans + "]");
 								selectAns = ans;
 							}
-						} else {
-							logg.info("not get after days");
-							return;
 						}
+//						else {
+//							logg.info("not get after days");
+//							return;
+//						}
 						if (isExistEle(driver, "ul.ui-item-body")) { // 答え要素全体
 							// label.ui-label-radio.ui-circle-button[for='radio-1']
 							String selectId = "label.ui-label-radio";
@@ -77,21 +78,21 @@ public class OSAAnzan extends OSABase {
 								if (isExistEle(eleList, j)) {
 									String choice = eleList.get(j).getText();
 									if (Utille.numEqual(selectAns, choice)) {
-										clickSleepSelector(driver, eleList, j, 3000);// 選択
+										clickSleepSelectorNoRefre(driver, eleList, j, 3000);// 選択
 										int ranSleep = Utille.getIntRand(9);
 										Utille.sleep(ranSleep * 1000);
 										waitTilReady(driver);
 										if (isExistEle(driver, selector2)) {
 											waitTilReady(driver);
-											clickSleepSelector(driver, selector2, 5000); // 遷移
+											clickSleepSelectorNoRefre(driver, selector2, 5000); // 遷移
 											String selector3 = "div.fx-control>input[name='submit']";
 											String selector4 = "form.fx-control>input[name='submit']";
 											checkOverlay(driver, "div.overlay-popup a.button-close");
 											if (isExistEle(driver, selector3)) {
-												clickSleepSelector(driver, selector3, 3000); // 遷移
+												clickSleepSelectorNoRefre(driver, selector3, 3000); // 遷移
 												checkOverlay(driver, "div.overlay-popup a.button-close");
 											} else if (isExistEle(driver, selector4)) {
-												clickSleepSelector(driver, selector4, 5000); // 遷移
+												clickSleepSelectorNoRefre(driver, selector4, 5000); // 遷移
 												checkOverlay(driver, "div.overlay-popup a.button-close");
 											}
 										}
@@ -106,7 +107,7 @@ public class OSAAnzan extends OSABase {
 				} else {
 					String endSelector = "input[name='submit']";
 					if (isExistEle(driver, endSelector)) {
-						clickSleepSelector(driver, endSelector, 3000);
+						clickSleepSelectorNoRefre(driver, endSelector, 3000);
 						waitTilReady(driver);
 					}
 					logg.warn(this.mName + "]獲得済み");

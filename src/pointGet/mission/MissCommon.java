@@ -168,33 +168,45 @@ public abstract class MissCommon {
   protected void clickSelector(WebDriver driver, WebElement ele, String selector) {
     clickSelector(driver, ele.findElement(By.cssSelector(selector)));
   }
+  // noRefresh wrapper
+  protected void clickSelector(WebDriver driver, WebElement ele) {
+    clickSelector(driver, ele, false);
+  }
 
-  //  /**
-  //   *
-  //   * @param ele
-  //   * @param selector
-  //   */
-  //  protected void clickSelector(WebElement ele) {
-  //    int i = 0;
-  //    while (i++ < 5) {
-  //      try {
-  //        ele.click();
-  //        return;
-  //      } catch (TimeoutException te) {
-  //
-  //      } catch (WebDriverException e) {
-  //        logg.error("-clickSelector error-------------------");
-  //        logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 50));
-  //      }
-  //    }
-  //  }
+  /**
+  *
+  * @param driver
+  * @param selector
+  */
+ protected void clickSelectorNoRefre(WebDriver driver, String selector) {
+   WebElement ele = driver.findElement(By.cssSelector(selector));
+   clickSelector(driver, ele, true);
+ }
+
+ /**
+  *
+  * @param eleList
+  * @param index
+  */
+ protected void clickSelectorNoRefre(WebDriver driver, List<WebElement> eleList, int index) {
+   clickSelector(driver, eleList.get(index), true);
+ }
+
+ /**
+  *
+  * @param ele
+  * @param selector
+  */
+ protected void clickSelectorNoRefre(WebDriver driver, WebElement ele, String selector) {
+   clickSelector(driver, ele.findElement(By.cssSelector(selector)), true);
+ }
 
   /**
   *
   * @param ele
   * @param selector
   */
-  protected void clickSelector(WebDriver driver, WebElement ele) {
+  protected void clickSelector(WebDriver driver, WebElement ele, boolean noRefresh) {
     Utille.scrolledPage(driver, ele);
     int i = 0;
     while (i++ < 5) {
@@ -220,9 +232,12 @@ public abstract class MissCommon {
         }
         return;
       } catch (StaleElementReferenceException se) {
-        // リフレッシュしてみる
-        Utille.refresh(driver, logg, 20000);
-        driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
+        logg.info("##--click timeout2--## "+ noRefresh);
+        if (!noRefresh) {
+          // リフレッシュしてみる
+          Utille.refresh(driver, logg, 20000);
+          driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
+        }
       } catch (TimeoutException te) {
         logg.info("##--click timeout--##");
         Utille.refresh(driver, logg);
@@ -279,6 +294,48 @@ public abstract class MissCommon {
   *
   * @param driver
   * @param selector
+  * @param milliSeconds
+  */
+ protected void clickSleepSelectorNoRefre(WebDriver driver, String selector, int milliSeconds) {
+   WebElement ele = driver.findElement(By.cssSelector(selector));
+   clickSleepSelectorNoRefre(driver, ele, milliSeconds);
+ }
+
+ /**
+  *
+  * @param eleList
+  * @param index
+  * @param milliSeconds
+  */
+ protected void clickSleepSelectorNoRefre(WebDriver driver, List<WebElement> eleList, int index, int milliSeconds) {
+   clickSleepSelectorNoRefre(driver, eleList.get(index), milliSeconds);
+ }
+
+ /**
+  *
+  * @param ele
+  * @param selector
+  * @param milliSeconds
+  */
+ protected void clickSleepSelectorNoRefre(WebDriver driver, WebElement ele, String selector, int milliSeconds) {
+   clickSleepSelectorNoRefre(driver, ele.findElement(By.cssSelector(selector)), milliSeconds);
+ }
+
+ /**
+  *
+  * @param ele
+  * @param selector
+  * @param milliSeconds
+  */
+ protected void clickSleepSelectorNoRefre(WebDriver driver, WebElement ele, int milliSeconds) {
+   clickSelector(driver, ele, true);
+   Utille.sleep(milliSeconds);
+ }
+
+  /**
+  *
+  * @param driver
+  * @param selector
   * @param waitFlag
   */
   protected void checkOverlay(WebDriver driver, String selector, boolean isWait) {
@@ -296,7 +353,9 @@ public abstract class MissCommon {
       } catch (Throwable e) {
         logg.error("広告消えない[" + ++i + "回目]");
         e.printStackTrace();
-        Utille.sleep(2000);
+        // リフレッシュしてみる
+        Utille.refresh(driver, logg, 20000);
+//        Utille.sleep(2000);
         continue;
       }
       // logg.info("check roop[" + i + "]");

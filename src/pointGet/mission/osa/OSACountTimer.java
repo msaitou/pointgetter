@@ -25,10 +25,10 @@ public class OSACountTimer extends OSABase {
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
     selector = "li>a>img[alt='Count Timer']";
-    String overlaySele = "div.overlay-popup a.button-close", // 
+    String overlaySele = "div.overlay-popup a.button-close", //
         overlayNoneSele = "div.overlay-popup[style*='display: none;'] a.button-close";
     if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 2000); // 遷移
+      clickSleepSelectorNoRefre(driver, selector, 2000); // 遷移
       changeCloseWindow(driver);
       String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
       checkOverlay(driver, overlaySelector);
@@ -44,7 +44,7 @@ public class OSACountTimer extends OSABase {
           if (isExistEle(elems, ii)) {
             Utille.scrolledPage(driver, elems.get(ii));
             if ("スタンプ交換".equals(elems.get(ii).getText())) {
-              clickSleepSelector(driver, elems, ii, 3000); // 遷移
+              clickSleepSelectorNoRefre(driver, elems, ii, 3000); // 遷移
 
               if (isExistEle(driver, exchangeListSele)) {
                 int size = getSelectorSize(driver, exchangeListSele + ">option");
@@ -54,12 +54,12 @@ public class OSACountTimer extends OSABase {
                 selectList.selectByValue(value); // 交換ポイントを選択
                 Utille.sleep(3000);
                 if (isExistEle(driver, doExchangeSele)) {
-                  clickSleepSelector(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
+                  clickSleepSelectorNoRefre(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
                 }
               }
               // Topへ戻る
               if (isExistEle(driver, returnTopSele)) {
-                clickSleepSelector(driver, returnTopSele, 4000);
+                clickSleepSelectorNoRefre(driver, returnTopSele, 4000);
               }
               break;
             }
@@ -69,7 +69,7 @@ public class OSACountTimer extends OSABase {
       selector = "form.fx-control>input[name='submit']";
       Utille.sleep(4000);
       if (isExistEle(driver, selector)) {
-        clickSelector(driver, selector);
+        clickSelectorNoRefre(driver, selector);
         for (int i = 0; i < 5; i++) {
           Utille.sleep(6000);
           if (!isExistEle(driver, overlayNoneSele, false)) {
@@ -91,23 +91,23 @@ public class OSACountTimer extends OSABase {
           String selectStop = "div.fx-control>input#js-timer_btn_stop";
           String selectRes = "input#timer_btn_stop";
           if (isExistEle(driver, selectId)) {
-            clickSleepSelector(driver, selectId, 0); // START!!
+            clickSleepSelectorNoRefre(driver, selectId, 0); // START!!
             long s = System.currentTimeMillis();
             Utille.sleep(waitTime);
             long e = System.currentTimeMillis();
             System.out.println("sleep " + (s - e));
             if (isExistEle(driver, selectStop)) {
-              clickSleepSelector(driver, selectStop, 1000); // END
+              clickSleepSelectorNoRefre(driver, selectStop, 1000); // END
               if (isExistEle(driver, selectRes)) {
-                clickSleepSelector(driver, selectRes, 3000); // 結果
+                clickSleepSelectorNoRefre(driver, selectRes, 3000); // 結果
                 // クリアなら次のボタンが表示
                 String next = "input.ui-button.ui-button-b.ui-button-result.quake";
                 String reset = "input.ui-button.ui-button-a.ui-button-reset";
                 if (isExistEle(driver, next)) {
-                  clickSleepSelector(driver, next, 3000); // 次
+                  clickSleepSelectorNoRefre(driver, next, 3000); // 次
                 }
                 else {
-                  clickSleepSelector(driver, reset, 3000); // 最初から
+                  clickSleepSelectorNoRefre(driver, reset, 3000); // 最初から
                   i = -1;
                 }
               }
@@ -120,7 +120,7 @@ public class OSACountTimer extends OSABase {
         }
         String selectorEnd = "input.ui-button.ui-button-b.ui-button-end.quake";
         if (isExistEle(driver, selectorEnd)) {
-          clickSleepSelector(driver, selectorEnd, 3000); // 次
+          clickSleepSelectorNoRefre(driver, selectorEnd, 3000); // 次
         }
         if (!isExistEle(driver, overlayNoneSele, false)) {
           checkOverlay(driver, overlaySele);
@@ -129,7 +129,7 @@ public class OSACountTimer extends OSABase {
         String bounusGo = "input.ui-button.ui-button-b.ui-button-start";
         selector = "div.fx-control>a.ui-button.ui-button-a.ui-button-close.quake";
         if (isExistEle(driver, bounusGo)) {
-          clickSleepSelector(driver, bounusGo, 5000); // 次
+          clickSleepSelectorNoRefre(driver, bounusGo, 5000); // 次
           if (!isExistEle(driver, overlayNoneSele, false)) {
             checkOverlay(driver, overlaySele);
           }
@@ -150,22 +150,22 @@ public class OSACountTimer extends OSABase {
           String selectStop = "div.fx-control>input#js-timer_btn_stop";
           String selectRes = "input#timer_btn_stop";
           if (isExistEle(driver, selectId)) {
-            clickSleepSelector(driver, selectId, 0); // START!!
+            clickSleepSelectorNoRefre(driver, selectId, 0); // START!!
             long s = System.currentTimeMillis();
             Utille.sleep(waitTime);
             long e = System.currentTimeMillis();
             System.out.println("sleep " + (s - e));
             if (isExistEle(driver, selectStop)) {
-              clickSleepSelector(driver, selectStop, 1000); // END
+              clickSleepSelectorNoRefre(driver, selectStop, 1000); // END
               if (isExistEle(driver, selectRes)) {
-                clickSleepSelector(driver, selectRes, 3000); // 結果
+                clickSleepSelectorNoRefre(driver, selectRes, 3000); // 結果
                 // クリアなら次のボタンが表示
                 String next = "input.ui-button.ui-button-b.ui-button-result.quake";
                 if (isExistEle(driver, next)) {
-                  clickSleepSelector(driver, next, 3000); // 次
+                  clickSleepSelectorNoRefre(driver, next, 3000); // 次
                 }
                 else {
-                  clickSleepSelector(driver, selector, 3000); // 終了
+                  clickSleepSelectorNoRefre(driver, selector, 3000); // 終了
                 }
               }
             }
@@ -175,7 +175,7 @@ public class OSACountTimer extends OSABase {
           checkOverlay(driver, overlaySele);
         }
         if (isExistEle(driver, selectorEnd)) {
-          clickSleepSelector(driver, selectorEnd, 3000); // 終了
+          clickSleepSelectorNoRefre(driver, selectorEnd, 3000); // 終了
         }
         logg.info(this.mName + "]kuria?");
         finsishFlag = true;
@@ -183,7 +183,7 @@ public class OSACountTimer extends OSABase {
       else {
         String endSelector = "input[name='submit']";
         if (isExistEle(driver, endSelector)) {
-          clickSleepSelector(driver, endSelector, 3000);
+          clickSleepSelectorNoRefre(driver, endSelector, 3000);
           waitTilReady(driver);
         }
         logg.warn(this.mName + "]獲得済み");
