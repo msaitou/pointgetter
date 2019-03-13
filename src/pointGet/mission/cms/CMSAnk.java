@@ -145,6 +145,9 @@ public class CMSAnk extends CMSBase {
               //							}
             }
           }
+          else {
+            break;
+          }
         }
       }
     }

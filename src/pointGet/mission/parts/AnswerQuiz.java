@@ -120,6 +120,9 @@ public class AnswerQuiz extends MissCommon {
             }
           }
         }
+        else {
+          break;
+        }
         if (collectFlag) {
           break;
         }

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import lombok.val;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
@@ -23,7 +25,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import lombok.val;
 import pointGet.common.Eventually;
 import pointGet.common.Utille;
 
@@ -235,7 +236,7 @@ public abstract class MissCommon {
         logg.info("##--click timeout2--## "+ noRefresh);
         if (!noRefresh) {
           // リフレッシュしてみる
-          Utille.refresh(driver, logg, 20000);
+          Utille.refresh(driver, logg, 30000);
           driver.manage().timeouts().pageLoadTimeout(180, TimeUnit.SECONDS);
         }
       } catch (TimeoutException te) {
