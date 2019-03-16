@@ -68,6 +68,7 @@ public class Define {
   final public static String strGENHitosara = "GENHitosara";
   final public static String strGENNaruhodo = "GENNaruhodo";
   final public static String strGENCMPochi = "GENCMPochi";
+  final public static String strGENAnkPark = "GENAnkPark";
 
   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";

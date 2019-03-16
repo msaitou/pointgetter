@@ -106,13 +106,15 @@ public class AnswerHyakkey extends MissCommon {
           }
         }
         String finish2 ="form>button>img";
+        boolean winNotClosed = false;
+        String wid2 = "";
         for (int ii = 0; ii < 2; ii++) {
           checkOverlay(driver, overLay, false);
           Utille.clickRecaptha(driver, logg);
 
           if (isExistEle(driver, seleNextb2)) {
-              String wid2 = driver.getWindowHandle();
-              boolean winNotClosed = false;
+              wid2 = driver.getWindowHandle();
+              winNotClosed = false;
             clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
             java.util.Set<String> widSet = driver.getWindowHandles();
             for (String id : widSet) {
@@ -151,6 +153,23 @@ public class AnswerHyakkey extends MissCommon {
 //            driver.close();
 //            driver.switchTo().window(wid);
           }
+        }
+        // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
+        if (null == wid) {
+          logg.info("close0");
+        }
+        else {
+          logg.info("close1");
+//          String wid2 = driver.getWindowHandle();
+            logg.info("close2");
+            if (winNotClosed && !wid2.equals(wid)) {
+              logg.info("close3");
+              driver.close();
+              logg.info("close4");
+            }
+          logg.info("close6");
+          driver.switchTo().window(wid);
+          logg.info("close7");
         }
 //        driver.switchTo().window(wid);
   }

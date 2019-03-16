@@ -129,23 +129,23 @@ public class AnswerIjin extends MissCommon {
         // アラートをけして
         checkAndAcceptAlert(driver);
       }
-      // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
-      if (null == wid) {
-        logg.info("close0");
-      }
-      else {
-        logg.info("close1");
-//        String wid2 = driver.getWindowHandle();
-          logg.info("close2");
-          if (winNotClosed) {
-            logg.info("close3");
-            driver.close();
-            logg.info("close4");
-          }
-        logg.info("close6");
-        driver.switchTo().window(wid);
-        logg.info("close7");
-      }
+    }
+    // このウィンドウが新しく開かれていれば閉じるし、一覧から同じウィンドウなら閉じない
+    if (null == wid) {
+      logg.info("close0");
+    }
+    else {
+      logg.info("close1");
+//      String wid2 = driver.getWindowHandle();
+        logg.info("close2");
+        if (winNotClosed) {
+          logg.info("close3");
+          driver.close();
+          logg.info("close4");
+        }
+      logg.info("close6");
+      driver.switchTo().window(wid);
+      logg.info("close7");
     }
     
     

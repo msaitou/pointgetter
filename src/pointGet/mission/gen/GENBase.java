@@ -113,9 +113,8 @@ public abstract class GENBase extends Mission {
         case Define.strGENHitosara: // ■一皿
           MisIns = new GENHitosara(loggg, cProps);
           break;
-
         case Define.strGENMail:
-          MailClicker.main(new String[] {sCode});
+          MailClicker.main(new String[] { sCode });
           break;
         case Define.strGENNaruhodo: // ■なるほど検定
           MisIns = new GENNaruhodo(loggg, cProps);
@@ -123,16 +122,17 @@ public abstract class GENBase extends Mission {
         case Define.strGENCMPochi: // ■ぽち
           MisIns = new GENCMPochi(loggg, cProps);
           break;
+        case Define.strGENAnkPark: // ■アンケートパーク
+          MisIns = new GENAnkPark(loggg, cProps);
+          break;
 
         default:
       }
       if (Arrays.asList(new String[] { Define.strGENPointStar,
           Define.strGENClickBanner,
-          Define.strGENShindan,
-          Define.strGENUranai,
+          Define.strGENShindan, Define.strGENUranai,
           Define.strGENChirachi,
-          Define.strGENManga,
-          Define.strGENPointResearch,
+          Define.strGENManga, Define.strGENPointResearch,
           Define.strGENPointResearch2,
           Define.strGENGameParkEnk,
           Define.strGENMorikoreEnk,
@@ -141,7 +141,7 @@ public abstract class GENBase extends Mission {
           Define.strGENCMother,
           Define.strGENMorikoreEnkNoCap,
           Define.strGENHitosara,
-          Define.strGENNaruhodo,Define.strGENCMPochi
+          Define.strGENNaruhodo, Define.strGENCMPochi, Define.strGENAnkPark
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -161,11 +161,11 @@ public abstract class GENBase extends Mission {
       };
       PC.putPointsData(pMap);
     } catch (Throwable e) {
-      loggg.error("["+sCode+"");
+      loggg.error("[" + sCode + "");
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
       driver.quit();
-//      driver.close();
+      //      driver.close();
     }
   }
 
