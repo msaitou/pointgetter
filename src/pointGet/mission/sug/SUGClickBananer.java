@@ -27,8 +27,8 @@ public class SUGClickBananer extends SUGBase {
 				private static final long serialVersionUID = 1L;
 
 				{
-					put("url", "http://www.sugutama.jp/#daily");
-					put("sele", "span.daily dd.ad-name");
+					put("url", "https://www.sugutama.jp/#daily");
+					put("sele", "ul.listadItem>li>span.daily>div");
 				}
 			});
       put("shoppingページ", new HashMap<String, String>() {
@@ -39,7 +39,7 @@ public class SUGClickBananer extends SUGBase {
 
         {
           put("url", "https://www.sugutama.jp/shop/#daily");
-          put("sele", "span.daily dd.ad-name");
+          put("sele", "ul.box_4card.listadItem>li>span.daily>div");
         }
       });
       put("savingページ", new HashMap<String, String>() {
@@ -49,7 +49,7 @@ public class SUGClickBananer extends SUGBase {
         private static final long serialVersionUID = 1L;
 
         {
-          put("url", "http://www.sugutama.jp/savings/#daily");
+          put("url", "https://www.sugutama.jp/savings/#daily");
           put("sele", "span.daily dd.ad-name");
         }
       });
@@ -69,6 +69,7 @@ public class SUGClickBananer extends SUGBase {
 		int c = 0;
 		for (Map.Entry<String, HashMap<String, String>> clMap : clickMap.entrySet()) {
 			Utille.url(driver, clMap.getValue().get("url"), logg);
+			Utille.sleep(5000);
 			switch (clMap.getKey()) {
 //				case "topページ":
 //					if (isExistEle(driver, clMap.getValue().get("sele"))) {
@@ -84,6 +85,14 @@ public class SUGClickBananer extends SUGBase {
             for (int i = 0; i < stampNum; i++) {
               if (isExistEle(eleList, i)) {
                 logg.info(mName + " " + i + "." + clMap.getKey() + "!");
+//                Actions action = new Actions(driver);
+//                //ガイドをマウスオーバー
+//                WebElement mouseOver = eleList.get(i);
+//                action.moveToElement(mouseOver);
+////                action.click();
+//                //performで実際に動作する
+//                action.perform();
+
                 clickSleepSelector(driver, eleList, i, 9000);
                 closeOtherWindow(driver);
               }
@@ -111,8 +120,17 @@ public class SUGClickBananer extends SUGBase {
 						for (int i = 0; i < stampNum; i++) {
 							if (isExistEle(eleList, i)) {
 								logg.info(mName + " " + i + "." + clMap.getKey() + "!");
-								clickSleepSelector(driver, eleList, i, 9000);
+//								Actions action = new Actions(driver);
+//  							//ガイドをマウスオーバー
+//  							WebElement mouseOver = eleList.get(i);
+//  							action.moveToElement(mouseOver);
+////  							action.click();
+//  							//performで実際に動作する
+//  							action.perform();
+//							
+								clickSleepSelector(driver, eleList, i, 7000);
 								closeOtherWindow(driver);
+//								Utille.refresh(driver, logg);
 							}
 						}
 					}
