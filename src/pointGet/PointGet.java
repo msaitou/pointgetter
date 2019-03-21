@@ -68,6 +68,16 @@ public abstract class PointGet {
   }
 
   /**
+  *
+  * @param driver
+  * @param selector
+  * @return
+  */
+  protected static boolean isExistEle(WebDriver driver, String selector, boolean showFlag) {
+    return Utille.isExistEle(driver, selector, showFlag, logg);
+  }
+
+  /**
    *
    * @param ele
    * @return

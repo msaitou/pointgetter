@@ -57,13 +57,8 @@ public abstract class LFMBase extends Mission {
    */
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
-    String sel = "div.point span.F5";
     Utille.url(driver, "http://lifemedia.jp/", loggg);
-    String sele = "em#mempoint";
-    if (!Utille.isExistEle(driver, sele, loggg)) {
-      // login!!
-      LoginSite.login(sCode, driver, loggg);
-    }
+    LoginSite.login(sCode, driver, loggg);
     for (String mission : missions) {
       Mission MisIns = null;
       switch (mission) {
@@ -118,7 +113,7 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMQuizKentei: // ■クイズ検定
           MisIns = new LFMQuizKentei(loggg, cProps);
           break;
-          
+
         default:
       }
       if (Arrays.asList(new String[] {

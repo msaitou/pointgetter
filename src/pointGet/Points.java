@@ -40,7 +40,7 @@ public class Points extends PointGet {
       PointsCollection PC = new PointsCollection(Dbase);
       List<HashMap<String, Object>> pList = PC.getPointList();
       HashMap<String, Object> pointMap = pList.get(0);
-System.out.println(pointMap);
+      System.out.println(pointMap);
       for (String siteCode : pointSitelist) {
         String selector = "", outPut = "", point = "", secondPoint = "";
         switch (siteCode) {
@@ -185,13 +185,9 @@ System.out.println(pointMap);
             if (pointMap.containsKey(Define.PSITE_CODE_PIC)) {
               break;
             }
-            selector = "p.text.point";
-            Utille.url(driver, "http://pointi.jp/my/my_page.php", logg); // http://pointi.jp/
-            if (!isExistEle(driver, selector)) {
-              // login!!
-              LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
-              Utille.url(driver, "http://pointi.jp/my/my_page.php", logg); // http://pointi.jp/
-            }
+            selector = "dl.basis_data_box span.red.bold";
+            LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+            Utille.url(driver, "https://pointi.jp/my/my_page.php", logg); // http://pointi.jp/
             if (isExistEle(driver, selector)) {
               point = driver.findElement(By.cssSelector(selector)).getText();
               outPut = "[" + Define.PSITE_CODE_PIC + ":" + Utille.getNumber(point) + "]";
@@ -320,23 +316,53 @@ System.out.println(pointMap);
               outPut = "[" + Define.PSITE_CODE_PST + ":" + Utille.getNumber(point) + "]";
             }
             break;
-            // cms
-            case Define.PSITE_CODE_CMS:
-              if (pointMap.containsKey(siteCode)) {
-                break;
-              }
-              selector = "p.menbertxt>span";
-              Utille.url(driver, "http://www.cmsite.co.jp/top/home/", logg);
-              if (!Utille.isExistEle(driver, selector, logg)) {
-                // login!!
-                LoginSite.login(siteCode, driver, logg);
-              }
-              Utille.url(driver, "http://www.cmsite.co.jp/top/home/", logg);
-              if (Utille.isExistEle(driver, selector, logg)) {
-                point = driver.findElement(By.cssSelector(selector)).getText();
-                outPut = "[" + siteCode+ ":" + Utille.getNumber(point) + "]";
-              }
+          // cms
+          case Define.PSITE_CODE_CMS:
+            if (pointMap.containsKey(siteCode)) {
               break;
+            }
+            selector = "p.menbertxt>span";
+            Utille.url(driver, "http://www.cmsite.co.jp/top/home/", logg);
+            if (!Utille.isExistEle(driver, selector, logg)) {
+              // login!!
+              LoginSite.login(siteCode, driver, logg);
+            }
+            Utille.url(driver, "http://www.cmsite.co.jp/top/home/", logg);
+            if (Utille.isExistEle(driver, selector, logg)) {
+              point = driver.findElement(By.cssSelector(selector)).getText();
+              outPut = "[" + siteCode + ":" + Utille.getNumber(point) + "]";
+            }
+            break;
+          // LFM
+          case Define.PSITE_CODE_LFM:
+            if (pointMap.containsKey(siteCode)) {
+              break;
+            }
+            selector = "em#mempoint";
+            Utille.url(driver, "http://lifemedia.jp/", logg);
+            LoginSite.login(siteCode, driver, logg);
+            if (Utille.isExistEle(driver, selector, logg)) {
+              point = driver.findElement(By.cssSelector(selector)).getText();
+              outPut = "[" + siteCode + ":" + Utille.getNumber(point) + "]";
+            }
+            break;
+          // GPO
+          case Define.PSITE_CODE_GPO:
+            if (pointMap.containsKey(siteCode)) {
+              break;
+            }
+            selector = "span#point";
+            String sel = "ul>li.status-point";
+            Utille.url(driver, "https://www.gpoint.co.jp/scripts/direct/userinfo/MMMyPage.do", logg);
+            if (!Utille.isExistEle(driver, sel, false, logg)) {
+              LoginSite.login(siteCode, driver, logg);
+              Utille.url(driver, "https://www.gpoint.co.jp/scripts/direct/userinfo/MMMyPage.do", logg);
+            }
+            if (Utille.isExistEle(driver, selector, logg)) {
+              point = driver.findElement(By.cssSelector(selector)).getText();
+              outPut = "[" + siteCode + ":" + Utille.getNumber(point) + "]";
+            }
+            break;
           default:
         }
         if (outPut.length() > 0) {
@@ -357,7 +383,7 @@ System.out.println(pointMap);
     } catch (Throwable e) {
       e.printStackTrace();
     } finally {
-//      driver.close();
+      //      driver.close();
       driver.quit();
     }
     PointsCollection PC = new PointsCollection(Dbase);

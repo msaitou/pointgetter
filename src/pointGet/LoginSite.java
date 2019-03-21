@@ -86,12 +86,12 @@ public class LoginSite extends PointGet {
         return;
     }
   }
-  
+
   /**
    * @param driver
    * @param logg
    */
-  public static void loginCms(WebDriver driver, Logger logg) {
+  private static void loginCms(WebDriver driver, Logger logg) {
     String seleLogin = "ul#GuestMenu>li>a.thickbox";
     if (Utille.isExistEle(driver, seleLogin, logg)) {
       driver.findElement(By.cssSelector(seleLogin)).click();
@@ -103,7 +103,7 @@ public class LoginSite extends PointGet {
         ele = driver.findElement(By.cssSelector("input[type='password']"));
         ele.clear();
         ele.sendKeys(pGetProps.get(Define.PSITE_CODE_CMS).get("loginpass"));
-//        Utille.clickRecaptha(driver, logg);
+        //        Utille.clickRecaptha(driver, logg);
         driver.findElement(By.cssSelector("input#btn_send")).click();
         Utille.sleep(5000);
       }
@@ -114,21 +114,23 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginLfm(WebDriver driver, Logger logg) {
-    String seleLogin = "li.log>a>span";
-    if (Utille.isExistEle(driver, seleLogin, logg)) {
-      driver.findElement(By.cssSelector(seleLogin)).click();
-      Utille.sleep(4000);
-      if (Utille.isExistEle(driver, "input[name='login[cfid]']", logg)) {
-        WebElement ele = driver.findElement(By.cssSelector("input[name='login[cfid]']"));
-        ele.clear();
-        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_LFM).get("loginid"));
-        ele = driver.findElement(By.cssSelector("input[name='login[passwd]']"));
-        ele.clear();
-        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_LFM).get("loginpass"));
-//        Utille.clickRecaptha(driver, logg);
-        driver.findElement(By.cssSelector("div>input.next")).click();
-        Utille.sleep(5000);
+  private static void loginLfm(WebDriver driver, Logger logg) {
+    if (!isLongin(Define.PSITE_CODE_LFM, driver, logg)) {
+      String seleLogin = "li.log>a>span";
+      if (Utille.isExistEle(driver, seleLogin, logg)) {
+        driver.findElement(By.cssSelector(seleLogin)).click();
+        Utille.sleep(4000);
+        if (Utille.isExistEle(driver, "input[name='login[cfid]']", logg)) {
+          WebElement ele = driver.findElement(By.cssSelector("input[name='login[cfid]']"));
+          ele.clear();
+          ele.sendKeys(pGetProps.get(Define.PSITE_CODE_LFM).get("loginid"));
+          ele = driver.findElement(By.cssSelector("input[name='login[passwd]']"));
+          ele.clear();
+          ele.sendKeys(pGetProps.get(Define.PSITE_CODE_LFM).get("loginpass"));
+          //        Utille.clickRecaptha(driver, logg);
+          driver.findElement(By.cssSelector("div>input.next")).click();
+          Utille.sleep(5000);
+        }
       }
     }
   }
@@ -137,7 +139,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginHap(WebDriver driver, Logger logg) {
+  private static void loginHap(WebDriver driver, Logger logg) {
     String seleLogin = "a.usernavi-link-signin";
     if (Utille.isExistEle(driver, seleLogin, logg)) {
       driver.findElement(By.cssSelector(seleLogin)).click();
@@ -164,7 +166,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginCit(WebDriver driver, Logger logg) {
+  private static void loginCit(WebDriver driver, Logger logg) {
     String seleLogin = "li.login>a>span";
     if (Utille.isExistEle(driver, seleLogin, logg)) {
       driver.findElement(By.cssSelector(seleLogin)).click();
@@ -187,7 +189,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginGmy(WebDriver driver, Logger logg) {
+  private static void loginGmy(WebDriver driver, Logger logg) {
     String seleLogin = "li.btn_login>a";
     if (Utille.isExistEle(driver, seleLogin, logg)) {
       driver.findElement(By.cssSelector(seleLogin)).click();
@@ -210,7 +212,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginGpo(WebDriver driver, Logger logg) {
+  private static void loginGpo(WebDriver driver, Logger logg) {
     Utille.url(driver, "https://www.gpoint.co.jp/scripts/auth/LoginEntry.do", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input#userid", logg)) {
@@ -229,7 +231,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginDmy(WebDriver driver, Logger logg) {
+  private static void loginDmy(WebDriver driver, Logger logg) {
     //    Utille.url(driver, "https://dauth.user.ameba.jp/login/ameba", logg);
     String loginBtnSele = "a.c-btn-login";
     String loginBtnSele2 = "input.btn_primary";
@@ -257,9 +259,10 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginGen(WebDriver driver, Logger logg) {
+  private static void loginGen(WebDriver driver, Logger logg) {
     driver
-        .get("https://ssl.realworld.jp/auth/?site=gendama_jp&rid=&af=&frid=&token=&goto=http%3A%2F%2Fwww.gendama.jp%2F?p=start");
+        .get(
+            "https://ssl.realworld.jp/auth/?site=gendama_jp&rid=&af=&frid=&token=&goto=http%3A%2F%2Fwww.gendama.jp%2F?p=start");
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input[name='rwsid']", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input[name='rwsid']"));
@@ -278,7 +281,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginOsa(WebDriver driver, Logger logg) {
+  private static void loginOsa(WebDriver driver, Logger logg) {
     Utille.url(driver, "https://osaifu.com/login/", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input[name='_username']", logg)) {
@@ -297,7 +300,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginMop(WebDriver driver, Logger logg) {
+  private static void loginMop(WebDriver driver, Logger logg) {
     Utille.url(driver, "https://ssl.pc.moppy.jp/login/", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input[name='mail']", logg)) {
@@ -316,18 +319,20 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginPic(WebDriver driver, Logger logg) {
-    Utille.url(driver, "https://pointi.jp/entrance.php", logg);
-    Utille.sleep(2000);
-    if (Utille.isExistEle(driver, "input[name='email_address']", logg)) {
-      WebElement ele = driver.findElement(By.cssSelector("input[name='email_address']"));
-      ele.clear();
-      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginid"));
-      ele = driver.findElement(By.cssSelector("input[name='password']"));
-      ele.clear();
-      ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginpass"));
-      driver.findElement(By.cssSelector("div.entrance_left>input[name='Submit']")).click();
-      Utille.sleep(5000);
+  private static void loginPic(WebDriver driver, Logger logg) {
+    if (!isLongin(Define.PSITE_CODE_PIC, driver, logg)) {
+      Utille.url(driver, "https://pointi.jp/entrance.php", logg);
+      Utille.sleep(2000);
+      if (Utille.isExistEle(driver, "input[name='email_address']", logg)) {
+        WebElement ele = driver.findElement(By.cssSelector("input[name='email_address']"));
+        ele.clear();
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginid"));
+        ele = driver.findElement(By.cssSelector("input[name='password']"));
+        ele.clear();
+        ele.sendKeys(pGetProps.get(Define.PSITE_CODE_PIC).get("loginpass"));
+        driver.findElement(By.cssSelector("div.entrance_left>input[name='Submit']")).click();
+        Utille.sleep(5000);
+      }
     }
   }
 
@@ -335,7 +340,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginPmo(WebDriver driver, Logger logg) {
+  private static void loginPmo(WebDriver driver, Logger logg) {
     Utille.url(driver, "https://ssl.poimon.jp/member/loginform/", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input.mailForm", logg)) {
@@ -354,7 +359,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginWar(WebDriver driver, Logger logg) {
+  private static void loginWar(WebDriver driver, Logger logg) {
     Utille.url(driver, "https://ssl.warau.jp/login?loopbackURL=http%3A%2F%2Fwww.warau.jp%2F", logg);
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input.mailForm", logg)) {
@@ -375,7 +380,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginPil(WebDriver driver, Logger logg) {
+  private static void loginPil(WebDriver driver, Logger logg) {
     Utille.url(driver, "http://www.point-island.com/", logg);
     if (Utille.isExistEle(driver, "input#mailadr", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input#mailadr"));
@@ -393,7 +398,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginRin(WebDriver driver, Logger logg) {
+  private static void loginRin(WebDriver driver, Logger logg) {
     Utille.url(driver, "https://www.rakuten-card.co.jp/e-navi/index.xhtml", logg);
     selector = "li#loginId>input#u";
     // ログイン画面であれば
@@ -419,7 +424,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginPex(WebDriver driver, Logger logg) {
+  private static void loginPex(WebDriver driver, Logger logg) {
     Utille.url(driver, "https://pex.jp/user/point_passbook/all", logg);
     // ログイン画面
     String selector2 = "input#pex_user_login_email";
@@ -444,7 +449,7 @@ public class LoginSite extends PointGet {
    * @param driver
    * @param logg
    */
-  public static void loginPto(WebDriver driver, Logger logg) {
+  private static void loginPto(WebDriver driver, Logger logg) {
     // ログイン画面
     Utille.url(driver, "https://www.pointtown.com/ptu/show_login.do?nextPath=%2Fptu%2Findex.do", logg);
     String selector2 = "input.auth_input[name=uid]";
@@ -460,4 +465,51 @@ public class LoginSite extends PointGet {
       Utille.sleep(3000);
     }
   }
+
+  /**
+   * @param siteCode
+   * @param driver
+   * @param logg
+   */
+  public static boolean isLongin(String siteCode, WebDriver driver, Logger logg) {
+    String sel = "";
+    boolean res = false;
+    switch (siteCode) {
+      case Define.PSITE_CODE_RIN:
+      case Define.PSITE_CODE_PEX:
+      case Define.PSITE_CODE_PTO:
+      case Define.PSITE_CODE_PIL:
+      case Define.PSITE_CODE_WAR:
+      case Define.PSITE_CODE_PMO:
+      case Define.PSITE_CODE_PIC:
+        sel = "ul a[href*='/exchange/pts_exchange_top.php']";
+        res = isExistEle(driver, sel, false);
+        break;
+      case Define.PSITE_CODE_MOP:
+      case Define.PSITE_CODE_OSA:
+      case Define.PSITE_CODE_GEN:
+      case Define.PSITE_CODE_DMY:
+      case Define.PSITE_CODE_GPO:
+      case Define.PSITE_CODE_GMY:
+      case Define.PSITE_CODE_CIT:
+      case Define.PSITE_CODE_HAP:
+      case Define.PSITE_CODE_LFM:
+        sel = "em#mempoint";
+        res = isExistEle(driver, sel, false);
+        break;
+      case Define.PSITE_CODE_CMS:
+      case Define.PSITE_CODE_ECN:
+      case Define.PSITE_CODE_I2I:
+      case Define.PSITE_CODE_MOB:
+      case Define.PSITE_CODE_CRI:
+      case Define.PSITE_CODE_KOZ:
+      case Define.PSITE_CODE_NTM:
+      case Define.PSITE_CODE_PNY:
+      case Define.PSITE_CODE_SUG:
+      default:
+        logg.info("isLongin 知らんのが来た[" + siteCode + "]");
+    }
+    return res;
+  }
+
 }
