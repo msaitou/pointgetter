@@ -138,6 +138,12 @@ public class MOPAnzan extends MOPBase {
             }
           }
           logg.info(this.mName + "]kuria?");
+          if (isExistEle(driver, selector)) {
+            clickSelectorNoRefre(driver, selector);
+            if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)) {
+              checkOverlay(driver, "div.overlay-popup a.button-close");
+            }
+          }
           //	checkOverlay(driver, "div.overlay-popup a.button-close");
         }
         else {

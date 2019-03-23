@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import pointGet.common.Utille;
 
@@ -32,6 +33,40 @@ public class OSAAnzan extends OSABase {
       changeCloseWindow(driver);
 			String overlaySelector = "div.overlay.overlay-timer>div.overlay-item[style*='display: block'] a.button-close";
 			checkOverlay(driver, overlaySelector);
+      String exchangeSele = "a.stamp__btn", //
+          exchangeListSele = "select.exchange__selection",
+          doExchangeSele = "input.exchange__btn",
+          returnTopSele = "a.stamp__btn.stamp__btn-return";
+      Utille.sleep(2000);
+      // スタンプ変換
+      if (isExistEle(driver, exchangeSele)) {
+        List<WebElement> elems = driver.findElements(By.cssSelector(exchangeSele));
+        for (int ii = 0; ii < elems.size(); ii++) {
+          if (isExistEle(elems, ii)) {
+            Utille.scrolledPage(driver, elems.get(ii));
+            if ("スタンプ交換".equals(elems.get(ii).getText())) {
+              clickSleepSelectorNoRefre(driver, elems, ii, 3000); // 遷移
+
+              if (isExistEle(driver, exchangeListSele)) {
+                int size = getSelectorSize(driver, exchangeListSele + ">option");
+                String value = driver.findElements(By.cssSelector(exchangeListSele + ">option"))
+                    .get(size - 1).getAttribute("value");
+                Select selectList = new Select(driver.findElement(By.cssSelector(exchangeListSele)));
+                selectList.selectByValue(value); // 交換ポイントを選択
+                Utille.sleep(3000);
+                if (isExistEle(driver, doExchangeSele)) {
+                  clickSleepSelectorNoRefre(driver, doExchangeSele, 4000); // i=1 交換する　i=2 本当に
+                }
+              }
+              // Topへ戻る
+              if (isExistEle(driver, returnTopSele)) {
+                clickSleepSelectorNoRefre(driver, returnTopSele, 4000);
+              }
+              break;
+            }
+          }
+        }
+      }
 			// finish condition
 			String finishSelector = "p.ui-timer";
 			if (isExistEle(driver, finishSelector)) {
@@ -103,6 +138,12 @@ public class OSAAnzan extends OSABase {
 						}
 					}
 					logg.info(this.mName + "]kuria?");
+          if (isExistEle(driver, selector)) {
+            clickSelectorNoRefre(driver, selector);
+            if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)) {
+              checkOverlay(driver, "div.overlay-popup a.button-close");
+            }
+          }
 				//	checkOverlay(driver, "div.overlay-popup a.button-close");
 				} else {
 					String endSelector = "input[name='submit']";
