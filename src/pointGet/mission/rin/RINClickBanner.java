@@ -30,7 +30,9 @@ public class RINClickBanner extends RINBase {
     String selectorOverLay = "div.js-coreppo-notice-close";
     String selectorOverLayNone = "div#js-coreppo-notice[style*='display: none']>div.js-coreppo-notice-close";
     if (!isExistEle(driver, selectorOverLayNone, false)
-        && isExistEle(driver, selectorOverLay)) {
+        && driver.findElement(By.cssSelector(selectorOverLay)).isDisplayed()
+        && isExistEle(driver, selectorOverLay) 
+        ) {
       clickSleepSelector(driver, selectorOverLay, 3000); // 遷移
     }
     

@@ -58,6 +58,7 @@ public abstract class GMYBase extends Mission {
         recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
     if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
+        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
         && Utille.isExistEle(driver, recoSele, loggg)) {
       driver.findElement(By.cssSelector(recoSele)).click();
     }

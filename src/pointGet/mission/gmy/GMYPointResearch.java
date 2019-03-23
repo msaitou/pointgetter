@@ -61,7 +61,9 @@ public class GMYPointResearch extends GMYBase {
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
     recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
-    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+    if (!isExistEle(driver, recoNoneSele, false) 
+        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
+        && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
     selector = "div.survey td.s_status>a";

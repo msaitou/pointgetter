@@ -56,7 +56,9 @@ public class GMYCMother extends GMYBase {
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "img[src*='bn_sosenkyo.png']", sele6 = "form>input.next_bt" // コラム用
     ;
-    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
+    if (!isExistEle(driver, recoNoneSele, false) 
+        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
+        && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
     if (isExistEle(driver, selector)) {
