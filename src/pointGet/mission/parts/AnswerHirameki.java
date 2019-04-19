@@ -30,16 +30,16 @@ public class AnswerHirameki extends MissCommon {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
 
     String seleNextb2 = "form>input[type='image']", //
-    seleNextb3 = "form>input[alt='next']", //
-    seleNextb4 = "form>input[alt='進む']", //
-    overLay = "div#interstitial[style*='display: block']>div>div#close", //
-    //              choiceSele = "input[type='radio']", // ラジオセレクター
-    choiceSele = "label[for*='que']", // ラジオセレクター
-    seleNext2 = "div>input.enquete_nextbt", //　次へセレクター
-    seleNext3 = "div>input.enquete_nextbt_2", //　次へセレクター2
-    seleSele = "form.menu>select", // プルダウンセレクター
-    finishSele = "div#again_bt>a>img", // 終了ボタンセレクター
-    closeSele = "input.btn_close_en"; // 閉じるボタンセレクター
+        seleNextb3 = "form>input[alt='next']", //
+        seleNextb4 = "form>input[alt='進む']", //
+        overLay = "div#interstitial[style*='display: block']>div>div#close", //
+        //              choiceSele = "input[type='radio']", // ラジオセレクター
+        choiceSele = "label[for*='que']", // ラジオセレクター
+        seleNext2 = "div>input.enquete_nextbt", //　次へセレクター
+        seleNext3 = "div>input.enquete_nextbt_2", //　次へセレクター2
+        seleSele = "form.menu>select", // プルダウンセレクター
+        finishSele = "div#again_bt>a>img", // 終了ボタンセレクター
+        closeSele = "input.btn_close_en"; // 閉じるボタンセレクター
     clickSleepSelector(driver, startSele, 4000); // 遷移　問開始
     for (int g = 0; g < 2; g++) {
       if (isExistEle(driver, seleNextb2)) {
@@ -49,19 +49,22 @@ public class AnswerHirameki extends MissCommon {
     Utille.sleep(5000);
     // 4page
     for (int g = 0; g < 4; g++) {
-      if (isExistEle(driver, seleNextb4)) {
-        checkOverlay(driver, overLay, false);
-        int sleepMil = 5000;
-        if (g == 2) {
+      checkOverlay(driver, overLay, false);
+      int sleepMil = 5000;
+      if (g == 2 || g == 3) {
+        if (isExistEle(driver, seleNextb4, false)) {
           Utille.sleep(15000);
           Utille.clickByScript(driver, seleNextb4, logg);
           Utille.sleep(5000);
         }
-        else {
+      }
+      else {
+        if (isExistEle(driver, seleNextb4)) {
           clickSleepSelector(driver, seleNextb4, sleepMil); // 遷移　問開始するよ
         }
       }
     }
+
     checkOverlay(driver, overLay, false);
     if (isExistEle(driver, seleNextb2)) {
       clickSleepSelector(driver, seleNextb2, 5000); // 遷移　問開始するよ
@@ -124,7 +127,7 @@ public class AnswerHirameki extends MissCommon {
     //            clickSleepSelector(driver, seleNextb2, 4000); // 遷移　
     //          }
     //        }
-    String finish2 ="form>button>img";
+    String finish2 = "form>button>img";
     for (int ii = 0; ii < 2; ii++) {
       checkOverlay(driver, overLay, false);
       Utille.clickRecaptha(driver, logg);
@@ -167,8 +170,8 @@ public class AnswerHirameki extends MissCommon {
       }
       else {
         logg.info("エラーケース");
-//        driver.close();
-//        driver.switchTo().window(wid);
+        //        driver.close();
+        //        driver.switchTo().window(wid);
       }
     }
   }

@@ -32,8 +32,6 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import lombok.val;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptException;
@@ -46,6 +44,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import lombok.val;
 
 /**
  * @author saitou utillity class
@@ -231,20 +231,20 @@ public class Utille {
         logg.info("---------------------------dont wanna wait!");
         logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
         is = false;
-//        int cnt = 0;
-//        while (cnt++ < 3) {
-//          try {
-//            // ElementNotInteractableException が発生することがある。これはnotVisibleのスーパークラス
-//            WebDriverWait wait = new WebDriverWait(driver, 45);//待ち時間を指定
-//            wait.until(ExpectedConditions.visibilityOfElementLocated(register));
-//          } catch (Throwable ee) {
-//            logg.info("---------------------------dont wanna wait!");
-//            logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(ee), 1000));
-//          }
-//        }
-//        if (cnt > 3) {
-//          is = false;
-//        }
+        //        int cnt = 0;
+        //        while (cnt++ < 3) {
+        //          try {
+        //            // ElementNotInteractableException が発生することがある。これはnotVisibleのスーパークラス
+        //            WebDriverWait wait = new WebDriverWait(driver, 45);//待ち時間を指定
+        //            wait.until(ExpectedConditions.visibilityOfElementLocated(register));
+        //          } catch (Throwable ee) {
+        //            logg.info("---------------------------dont wanna wait!");
+        //            logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(ee), 1000));
+        //          }
+        //        }
+        //        if (cnt > 3) {
+        //          is = false;
+        //        }
       }
     }
     return is;
@@ -287,10 +287,27 @@ public class Utille {
   */
   public static void clickByScript(WebDriver driver, String sele, Logger logg) {
     try {
-      String script = "document.querySelector(\""+sele+"\").click();";
+      logg.info("------------------------e");
+      String script = "document.querySelector(\"" + sele + "\").click();";
       ((JavascriptExecutor) driver).executeScript(script);
+      logg.info("------------------------eeeeeeeeeeeeen");
+    } catch (JavascriptException je) {
+      logg.info("------------------------negreckt click");
+      logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(je), 1000));
+      logg.info("------------------------negreckt");
     }
-    catch (JavascriptException je) {
+  }
+
+  /**
+  *
+  * @param driver
+  * @param seleNe
+  */
+  public static void exeScript(WebDriver driver, String sele, String exeFunc, Logger logg) {
+    try {
+      String script = "document.querySelector(\"" + sele + "\")." + exeFunc + ";";
+      ((JavascriptExecutor) driver).executeScript(script);
+    } catch (JavascriptException je) {
       logg.info("------------------------negreckt click");
       logg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(je), 1000));
       logg.info("------------------------negreckt");
