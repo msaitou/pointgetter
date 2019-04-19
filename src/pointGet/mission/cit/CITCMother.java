@@ -120,7 +120,7 @@ public class CITCMother extends CITBase {
                     && isExistEle(driver, sele6)) {
                   Zukan.answer(driver, sele6, wid);
                 }
-                else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
+                else if ((cUrl.indexOf("/observation/") >= 0
                       || cUrl.indexOf("cmsite.clutchbag.work/observation") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/observation") >= 0
                 //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
@@ -145,7 +145,7 @@ public class CITCMother extends CITBase {
                   Cooking.answer(driver, sele6, wid);
                 }
                 else if ((cUrl.indexOf("photo-enquete") >= 0
-                    || cUrl.indexOf("cosmelife.com/photo") >= 0
+                    || cUrl.indexOf("/photo/") >= 0
                         || cUrl.indexOf("cmsite.clutchbag.work/photo") >= 0
                         || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
                     || cUrl.indexOf("eyelashes-fashion.com") >= 0
@@ -154,7 +154,7 @@ public class CITCMother extends CITBase {
                     && isExistEle(driver, sele6)) {
                   PhotoEnk.answer(driver, sele6, wid);
                 }
-                else if ((cUrl.indexOf("cosmelife.com/column") >= 0
+                else if ((cUrl.indexOf("/column/") >= 0
                     || cUrl.indexOf("beautynail-design.com") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
                         || cUrl.indexOf("cmsite.clutchbag.work/column/") >= 0

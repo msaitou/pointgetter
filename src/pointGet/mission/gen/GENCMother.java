@@ -129,7 +129,7 @@ public class GENCMother extends GENBase {
                         && isExistEle(driver, sele6)) {
                       Zukan.answer(driver, sele6, wid);
                     }
-                    else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
+                    else if ((cUrl.indexOf("/observation/") >= 0
                         || cUrl.indexOf("/observation/") >= 0
                     //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
                     )

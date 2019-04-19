@@ -56,7 +56,7 @@ public class GMYCMother extends GMYBase {
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "img[src*='bn_sosenkyo.png']", sele6 = "form>input.next_bt" // コラム用
     ;
-    if (!isExistEle(driver, recoNoneSele, false) 
+    if (!isExistEle(driver, recoNoneSele, false)
         && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
         && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
@@ -128,7 +128,7 @@ public class GMYCMother extends GMYBase {
                     && isExistEle(driver, sele6)) {
                   Zukan.answer(driver, sele6, wid);
                 }
-                else if ((cUrl.indexOf("cosmelife.com/observation") >= 0
+                else if ((cUrl.indexOf("/observation/") >= 0
                     || cUrl.indexOf("cmsite.clutchbag.work/observation") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/observation") >= 0
                 //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
@@ -153,7 +153,7 @@ public class GMYCMother extends GMYBase {
                   Cooking.answer(driver, sele6, wid);
                 }
                 else if ((cUrl.indexOf("photo-enquete") >= 0
-                    || cUrl.indexOf("cosmelife.com/photo") >= 0
+                    || cUrl.indexOf("/photo/") >= 0
                         || cUrl.indexOf("cmsite.clutchbag.work/photo") >= 0
                         || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
                     || cUrl.indexOf("eyelashes-fashion.com") >= 0
@@ -162,7 +162,7 @@ public class GMYCMother extends GMYBase {
                     && isExistEle(driver, sele6)) {
                   PhotoEnk.answer(driver, sele6, wid);
                 }
-                else if ((cUrl.indexOf("cosmelife.com/column") >= 0
+                else if ((cUrl.indexOf("/column/") >= 0
                     || cUrl.indexOf("beautynail-design.com") >= 0
                     || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
                         || cUrl.indexOf("cmsite.clutchbag.work/column/") >= 0
