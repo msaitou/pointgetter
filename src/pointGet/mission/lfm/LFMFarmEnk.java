@@ -61,8 +61,8 @@ public class LFMFarmEnk extends LFMBase {
       if (isExistEle(driver, enkConfirmSele)) {
         clickSleepSelector(driver, enkConfirmSele, 4000); // 遷移
       }
-      
-      
+
+
       Utille.url(driver, "http://lm.agri-hatake.fun/square/votes", logg);
       for (int k = 0; k < 3; k++) {
         if (k == 1) {
@@ -109,7 +109,8 @@ public class LFMFarmEnk extends LFMBase {
               Tasuuketu.answer(driver, sele9, wid);
             }
             else if (!skipCapFlag && cUrl.indexOf("ad/enq/") >= 0
-                && isExistEle(driver, sele1_)) {
+//                && isExistEle(driver, sele1_)
+                ) {
               // $('iframe').contents().find("div>input[type='submit']")
               if (!AdEnq.answer(driver, sele1, wid)) {
                 break;
@@ -119,7 +120,7 @@ public class LFMFarmEnk extends LFMBase {
                 && isExistEle(driver, sele4)) {
               Shindan.answer(driver, sele4, wid);
             }
-            else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+            else if ((cUrl.indexOf("/dgss/question/") >= 0
                 || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
                     || cUrl.indexOf("salamander.site/dgss") >= 0
                 || cUrl.indexOf("sheep.seikaku-checker.club/") >= 0)

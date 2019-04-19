@@ -85,7 +85,8 @@ public class DMYPointResearch extends DMYBase {
           skip++;
         }
         else if (cUrl.indexOf("ad/enq/") >= 0
-            && isExistEle(driver, sele1_)) {
+//            && isExistEle(driver, sele1_)
+            ) {
           // $('iframe').contents().find("div>input[type='submit']")
           if (!AdEnq.answer(driver, sele1, wid)) {
             skip++;
@@ -94,7 +95,7 @@ public class DMYPointResearch extends DMYBase {
 //            break;
           }
         }
-        else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+        else if ((cUrl.indexOf("/dgss/question/") >= 0
             || cUrl.indexOf("salamander.site/dgss/question/") >= 0
             ) && isExistEle(driver, sele3)) {
           AdShindan.answer(driver, sele3, wid);

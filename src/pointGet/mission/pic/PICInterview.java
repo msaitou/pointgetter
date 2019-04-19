@@ -44,8 +44,8 @@ public class PICInterview extends PICBase {
       changeCloseWindow(driver);
       if (isExistEle(driver, enkLinkSele)) {
         //        clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
-        String[] seleList = { 
-            "a>dl>dd>strong", 
+        String[] seleList = {
+            "a>dl>dd>strong",
             "div#article>ul>li>a" };
         int skip = 0; // tasuuketuyatte
         String sele1_ = "iframe.question_frame", //
@@ -95,7 +95,8 @@ public class PICInterview extends PICBase {
                 skip++;
               }
               else if (cUrl.indexOf("ad/enq/") >= 0
-                  && isExistEle(driver, sele1_)) {
+//                  && isExistEle(driver, sele1_)
+                  ) {
                 // $('iframe').contents().find("div>input[type='submit']")
                 boolean isSuccess = true;
                 do {
@@ -112,7 +113,7 @@ public class PICInterview extends PICBase {
                   }
                 } while (!isSuccess);
               }
-              else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+              else if ((cUrl.indexOf("/dgss/question/") >= 0
                   || cUrl.indexOf("salamander.site/dgss/question/") >= 0
                   || cUrl.indexOf("sheep.seikaku-checker.club") >= 0
                   || cUrl.indexOf("diagnosis.media-ad.jp/question") >= 0)

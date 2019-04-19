@@ -74,7 +74,7 @@ public class GPODokiShindan extends GPOBase {
             Utille.sleep(5000);
             String cUrl = driver.getCurrentUrl();
             logg.info("cUrl[" + cUrl + "]");
-            if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+            if ((cUrl.indexOf("/dgss/question/") >= 0
                 || cUrl.indexOf("sheep.seikaku-checker.club") >= 0
                 || cUrl.indexOf("salamander.site/dgss/question") >= 0
                 || cUrl.indexOf("diagnosis.media-ad.jp/question") >= 0)

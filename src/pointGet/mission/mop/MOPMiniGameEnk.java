@@ -125,7 +125,8 @@ public class MOPMiniGameEnk extends MOPBase {
               Tasuuketu.answer(driver, sele9, wid);
             }
             else if (!skipCapFlag &&cUrl.indexOf("ad/enq/") >= 0
-                && isExistEle(driver, sele1_)) {
+//                && isExistEle(driver, sele1_)
+                ) {
               // $('iframe').contents().find("div>input[type='submit']")
               if (!AdEnq.answer(driver, sele1, wid)) {
                 break;
@@ -135,7 +136,7 @@ public class MOPMiniGameEnk extends MOPBase {
                 && isExistEle(driver, sele4)) {
               Shindan.answer(driver, sele4, wid);
             }
-            else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+            else if ((cUrl.indexOf("/dgss/question/") >= 0
                 || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
                 || cUrl.indexOf("salamander.site/dgss") >= 0
                 || cUrl.indexOf("enquetter.com/question") >= 0)

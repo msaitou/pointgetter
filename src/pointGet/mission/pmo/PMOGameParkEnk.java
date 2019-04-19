@@ -83,7 +83,8 @@ public class PMOGameParkEnk extends PMOBase {
             }
             else if ((cUrl.indexOf("adsurvey.media-ad.jp") >= 0
                 || cUrl.indexOf("credit-card.link/ad/enq") >= 0)
-                && isExistEle(driver, sele2_)) {
+//                && isExistEle(driver, sele2_)
+                ) {
               // $('iframe').contents().find("div>input[type='submit']")
               Utille.sleep(4000);
               Adsurvey.answer(driver, sele2, wid);

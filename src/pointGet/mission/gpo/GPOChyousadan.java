@@ -90,7 +90,8 @@ public class GPOChyousadan extends GPOBase {
                 String cUrl = driver.getCurrentUrl();
                 logg.info("url[" + cUrl + "]");
                 if (cUrl.indexOf("ad/enq/") >= 0
-                    && isExistEle(driver, sele1_)) {
+//                    && isExistEle(driver, sele1_)
+                    ) {
                   // $('iframe').contents().find("div>input[type='submit']")
                   AdEnq.answer(driver, sele1, wid);
                 }

@@ -30,19 +30,22 @@ public class AnswerAdEnq extends MissCommon {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     Utille.sleep(3000);
     String baseFrameSele = "iframe.question_frame";
-    driver.switchTo().frame(0);
+    String preStartSele = "div.btn_next input[type='submit']";
     if (Utille.clickRecaptha(driver, logg, baseFrameSele)) {
-      String preStartSele = "div.btn_next>input[type='submit']";
       if (isExistEle(driver, preStartSele)) {
         clickSleepSelector(driver, preStartSele, 5000);
       }
     }
     if (Utille.clickRecaptha(driver, logg, baseFrameSele)) {
-      String preStartSele = "div.btn_next>input[type='submit']";
       if (isExistEle(driver, preStartSele)) {
         clickSleepSelector(driver, preStartSele, 5000);
       }
     }
+//    else {
+//      if (isExistEle(driver, preStartSele)) {
+//        clickSleepSelector(driver, preStartSele, 5000);
+//      }
+//    }
     boolean res = true;
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 3000);

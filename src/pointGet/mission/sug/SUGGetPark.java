@@ -101,7 +101,8 @@ public class SUGGetPark extends SUGBase {
               Tasuuketu.answer(driver, sele9, wid);
             }
             else if (!skipCapFlag &&cUrl.indexOf("ad/enq/") >= 0
-                && isExistEle(driver, sele1_)) {
+//                && isExistEle(driver, sele1_)
+                ) {
               // $('iframe').contents().find("div>input[type='submit']")
               if (!AdEnq.answer(driver, sele1, wid)) {
                 break;

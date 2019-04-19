@@ -105,7 +105,8 @@ public class GPOAnqueate extends GPOBase {
                 logg.info("url[" + cUrl + "]");
                 if ((cUrl.indexOf("ad/enq/") >= 0
                     || cUrl.indexOf("credit-card.link") >= 0)
-                    && isExistEle(driver, sele1_)) {
+//                    && isExistEle(driver, sele1_)
+                    ) {
                   // $('iframe').contents().find("div>input[type='submit']")
                   boolean isSuccess = true;
                   do {

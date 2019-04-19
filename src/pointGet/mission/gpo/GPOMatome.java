@@ -11,18 +11,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
-import pointGet.mission.parts.AnswerAdShindan;
 
 public class GPOMatome extends GPOBase {
   final String url = "http://www.gpoint.co.jp/gpark/";
 
-  AnswerAdShindan AdShindan = null;
   /**
    * @author saitou 0時、12時開催
    */
   public GPOMatome(Logger log, Map<String, String> cProps) {
     super(log, cProps, "まとめ");
-    AdShindan = new AnswerAdShindan(logg);
   }
 
   @Override

@@ -685,30 +685,33 @@ public class Utille {
   */
   public static boolean clickRecaptha(WebDriver driver, Logger logg, String baseFrameSele) {
     boolean res = false;
-    Utille.sleep(5000);
-    String test2 = "html>body div.g-recaptcha>div>div";
-    if (isExistEle(driver, test2, false, logg)) {
-      logg.info("bbbubububu");
-    }
-    //    String reCaptchaCheck = "html>body div.g-recaptcha div iframe";
-    String reCaptchaCheck = "html>body div iframe";
-    if (isExistEle(driver, reCaptchaCheck, false, logg)) {
-      // キャプチャをクリック
-      WebElement iframe = driver.findElement(By.cssSelector(reCaptchaCheck));
-      driver.switchTo().frame(iframe);
-      String reCaptcha = "span#recaptcha-anchor";
-      if (isExistEle(driver, reCaptcha, logg)) {
-        //        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
-        driver.findElement(By.cssSelector(reCaptcha)).click();
-        Utille.sleep(2000);
+    if (isExistEle(driver, baseFrameSele, false, logg)) {
+      driver.switchTo().frame(0);
+      Utille.sleep(5000);
+      String test2 = "html>body div.g-recaptcha>div>div";
+      if (isExistEle(driver, test2, false, logg)) {
+        logg.info("bbbubububu");
+      }
+      //    String reCaptchaCheck = "html>body div.g-recaptcha div iframe";
+      String reCaptchaCheck = "html>body div iframe";
+      if (isExistEle(driver, reCaptchaCheck, false, logg)) {
+        // キャプチャをクリック
+        WebElement iframe = driver.findElement(By.cssSelector(reCaptchaCheck));
+        driver.switchTo().frame(iframe);
+        String reCaptcha = "span#recaptcha-anchor";
+        if (isExistEle(driver, reCaptcha, logg)) {
+          //        Utille.scrolledPage(driver, driver.findElement(By.cssSelector(reCaptcha)));
+          driver.findElement(By.cssSelector(reCaptcha)).click();
+          Utille.sleep(2000);
+          driver.switchTo().defaultContent();
+          WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
+          driver.switchTo().frame(baseFrame);
+          res = clickRecapthaWaitting(driver, logg);
+        }
         driver.switchTo().defaultContent();
         WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
         driver.switchTo().frame(baseFrame);
-        res = clickRecapthaWaitting(driver, logg);
       }
-      driver.switchTo().defaultContent();
-      WebElement baseFrame = driver.findElement(By.cssSelector(baseFrameSele));
-      driver.switchTo().frame(baseFrame);
     }
     return res;
   }
