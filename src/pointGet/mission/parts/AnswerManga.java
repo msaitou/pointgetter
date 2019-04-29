@@ -48,7 +48,7 @@ public class AnswerManga extends MissCommon {
     String seleNext = "form>input[type='image']";
     String seleNexttugi = seleNext + "[src='common/image/9999/manga_next_bt.png']";
     String seleMouseOver = "div#ad1";
-    for (int g = 0; g < 8;) {
+    for (int g = 0, h = 0; g < 8;) {
       checkOverlay(driver, overLay, false);
       //      if (isExistEle(driver, seleMouseOver)) {
       //        // マウスオーバー
@@ -84,6 +84,9 @@ public class AnswerManga extends MissCommon {
       else {
         Utille.refresh(driver, logg);
         Utille.sleep(5000);
+        if (h++%2 == 1) {
+          g++;// 2回に1階加算
+        }
       }
     }
     Utille.sleep(4000);
