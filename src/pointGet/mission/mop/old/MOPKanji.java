@@ -5,7 +5,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import pointGet.common.Utille;
 import pointGet.mission.mop.MOPBase;
 import pointGet.mission.parts.PlayKanji;
 
@@ -28,13 +27,13 @@ public class MOPKanji extends MOPBase {
 
   @Override
   public void privateMission(WebDriver driverAtom) {
-    driver = driverAtom;
-    Utille.url(driver, url, logg);
-    selector = "div.game_btn>div.icon>img[alt='漢字テスト']";
-    if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 2000); // 遷移
-      changeCloseWindow(driver);
-      finsishFlag = Kanji.answer(driver, "", null);
-    }
+//    driver = driverAtom;
+//    Utille.url(driver, url, logg);
+//    selector = "div.game_btn>div.icon>img[alt='漢字テスト']";
+//    if (isExistEle(driver, selector)) {
+//      clickSleepSelector(driver, selector, 2000); // 遷移
+//      changeCloseWindow(driver);
+//      finsishFlag = Kanji.answer(driver, "", null);
+//    }
   }
 }
