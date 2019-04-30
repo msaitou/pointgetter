@@ -19,6 +19,12 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.mop.old.MOPChirachi;
+import pointGet.mission.mop.old.MOPChyosatai;
+import pointGet.mission.mop.old.MOPCountTimer;
+import pointGet.mission.mop.old.MOPKanji;
+import pointGet.mission.mop.old.MOPManga;
+import pointGet.mission.mop.old.MOPShindan;
 
 /**
  * @author saitou

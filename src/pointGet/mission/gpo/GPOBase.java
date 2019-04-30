@@ -19,6 +19,8 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.gpo.old.GPOAnzan;
+import pointGet.mission.gpo.old.GPOQuiz;
 
 /**
  * @author saitou

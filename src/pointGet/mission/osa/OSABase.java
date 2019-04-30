@@ -21,6 +21,12 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.osa.old.OSAChirachi;
+import pointGet.mission.osa.old.OSAChyousadan;
+import pointGet.mission.osa.old.OSAKanji;
+import pointGet.mission.osa.old.OSAKumaVote;
+import pointGet.mission.osa.old.OSAManga;
+import pointGet.mission.osa.old.OSAShindan;
 
 /**
  * @author saitou

@@ -19,6 +19,8 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.lfm.old.LFMChyosatai;
+import pointGet.mission.lfm.old.LFMQuiz;
 
 /**
  * @author saitou

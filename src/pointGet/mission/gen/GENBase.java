@@ -19,6 +19,9 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.gen.old.GENChirachi;
+import pointGet.mission.gen.old.GENManga;
+import pointGet.mission.gen.old.GENShindan;
 
 /**
  * @author saitou

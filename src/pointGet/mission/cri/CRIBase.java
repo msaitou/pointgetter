@@ -18,6 +18,10 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.cri.old.CRIChirachi;
+import pointGet.mission.cri.old.CRIChyousadan;
+import pointGet.mission.cri.old.CRIKumaVote;
+import pointGet.mission.cri.old.CRIManga;
 
 /**
  * @author saitou

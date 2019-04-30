@@ -19,6 +19,9 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.gmy.old.GMYChirachi;
+import pointGet.mission.gmy.old.GMYShindan;
+import pointGet.mission.gmy.old.GMYToidas;
 
 /**
  * @author saitou
