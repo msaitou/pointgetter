@@ -33,6 +33,7 @@ public class AnswerWhichCollect extends MissCommon {
         sele4 = "button#missionDialogBtnStart2>img",
         sele5 = "div.priceBox>button",
         sele6 = "button#resultDialogBtn>img",
+//            sele6_ = "a#btnEnd>img",
         sele6None = "button#resultDialogBtn[style*='none']>img",
         sele7 = "a.play>img",
         sele8 = "a#btnEnd",
@@ -40,6 +41,13 @@ public class AnswerWhichCollect extends MissCommon {
         badSele = "img#titleBad",
         noneStyle = "[style*='display: none']",
         a = "";
+    String cUrl = driver.getCurrentUrl();
+    logg.info("cUrl[" + cUrl + "]");
+
+//    if (cUrl.indexOf("pukumaro") > -1) {
+//      sele6 = "a#btnEnd>img"; // 最後のセレクタが異なる
+//      sele6None = "a#btnEnd[style*='none']>img";
+//    }
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 3000);
       changeCloseWindow(driver);
@@ -87,8 +95,12 @@ public class AnswerWhichCollect extends MissCommon {
                   clickSleepSelector(driver, eleList.get(ran), 3000);
                   if (!isExistEle(driver, badSele + noneStyle, false)
                       && isExistEle(driver, badSele)) {
-                    if (isExistEle(driver, sele6)) {
-                      clickSleepSelector(driver, sele6, 3000);
+                    if (!isExistEle(driver, sele6None, false)
+                        && isExistEle(driver, sele6)) {
+                      clickSleepSelector(driver, sele6, 4000);
+                    }
+                    else if (isExistEle(driver, sele8)) {
+                      clickSleepSelector(driver, sele8, 4000);
                     }
                   }
                   else if (!isExistEle(driver, goodSele + noneStyle, false)

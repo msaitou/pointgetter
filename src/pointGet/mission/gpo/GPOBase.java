@@ -184,6 +184,9 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOCMPochi: // ■ぽち
           MisIns = new GPOCMPochi(loggg, cProps);
           break;
+        case Define.strGPOWhichCollectPuku: // ■ぽち
+          MisIns = new GPOWhichCollectPuku(loggg, cProps);
+          break;
 
         default:
       }
@@ -221,7 +224,7 @@ public abstract class GPOBase extends Mission {
           Define.strGPOWhichCollectGurume,
           Define.strGPONaruhodo,
           Define.strGPOQuizKentei,
-          Define.strGPOMotAnk,Define.strGPOCMPochi
+          Define.strGPOMotAnk,Define.strGPOCMPochi,Define.strGPOWhichCollectPuku
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
