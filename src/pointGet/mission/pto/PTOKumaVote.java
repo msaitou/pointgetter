@@ -27,17 +27,17 @@ public class PTOKumaVote extends PTOBase {
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
     selector = "section.pt-section a[onclick*='CMくじ']>div>img[alt='CMくじ']";
-    String sele0 = "a.start__button" //
-        , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
-        , preSele = "img[src*='bn_sosenkyo.png']";
+    String sele0 = "a.start__button" // アンケート一覧の回答するボタン
+    , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
+    , preSele = "img[src*='kumakumasenkyo']", //
+    seleCMMap = "ul#nav>li>a[href*='game']>img" //
+    ;
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);
-      Utille.sleep(8000);
+      Utille.sleep(5000);
       // ポイントに変換
-      String bankSele = "li.icon_h_bank>a",
-          coinSele = "p.h_coin>em", changeSele = "#modal-open.btn",
-          changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
+      String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn", changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
       if (isExistEle(driver, coinSele)) {
         String coins = driver.findElement(By.cssSelector(coinSele)).getText();
         int icoins = Integer.parseInt(Utille.getNumber(coins));
@@ -58,22 +58,25 @@ public class PTOKumaVote extends PTOBase {
         }
       }
 
-      if (isExistEle(driver, preSele)) {
-        clickSleepSelector(driver, preSele, 5000); // 遷移 全体へ
-        changeCloseWindow(driver);
-        Utille.sleep(5000);
-        if (isExistEle(driver, sele0)) {
-          clickSleepSelector(driver, sele0, 5000); // 遷移 全体へ
-          while (isExistEle(driver, sele1)) {
-            List<WebElement> eleList = driver.findElements(By.cssSelector(sele1));
-            int size1 = eleList.size(), zumiCnt = 0, targetIndex = 0;
-            if (isExistEle(eleList, targetIndex)) {
-              Utille.scrolledPage(driver, eleList.get(targetIndex));
-              clickSleepSelector(driver, eleList, targetIndex, 4000); // 遷移
-              SouSenkyo.answer(driver, "", null);
-            }
-            else {
-              break;
+      if (isExistEle(driver, seleCMMap)) {
+        clickSleepSelector(driver, seleCMMap, 4000);
+        if (isExistEle(driver, preSele)) {
+          clickSleepSelector(driver, preSele, 5000); // 遷移 全体へ
+          changeCloseWindow(driver);
+          Utille.sleep(5000);
+          if (isExistEle(driver, sele0)) {
+            clickSleepSelector(driver, sele0, 5000); // 遷移 全体へ
+            while (isExistEle(driver, sele1)) {
+              List<WebElement> eleList = driver.findElements(By.cssSelector(sele1));
+              int size1 = eleList.size(), zumiCnt = 0, targetIndex = 0;
+              if (isExistEle(eleList, targetIndex)) {
+                Utille.scrolledPage(driver, eleList.get(targetIndex));
+                clickSleepSelector(driver, eleList, targetIndex, 4000); // 遷移
+                SouSenkyo.answer(driver, "", null);
+              }
+              else {
+                break;
+              }
             }
           }
         }

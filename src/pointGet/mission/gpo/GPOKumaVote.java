@@ -32,12 +32,10 @@ public class GPOKumaVote extends GPOBase {
     String sele0 = "a.start__button" // アンケート一覧の回答するボタン
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
     , preSele = "img[src*='kumakumasenkyo']", //
-    seleCMMap = "ul#nav>li>a[href*='game']>img", //
-
-    sele6 = "form>input.next_bt" // コラム用
-    ;
+    seleCMMap = "ul#nav>li>a[href*='game']>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
+      changeCloseWindow(driver);
       Utille.sleep(5000);
       // ポイントに変換
       String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn", changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";
@@ -83,9 +81,7 @@ public class GPOKumaVote extends GPOBase {
             }
           }
         }
-
       }
-
     }
   }
 }
