@@ -220,7 +220,7 @@ public class OSAFarmEnk extends OSABase {
           }
         }
       }
-      String stampSele = "a.suggest-surveys";
+      String stampSele = "div#pointFarmBox>a[href*='exchange/point']";
       if (isExistEle(driver, stampSele)) {
         clickSleepSelector(driver, stampSele, 4000); // 遷移
       }

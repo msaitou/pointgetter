@@ -98,9 +98,9 @@ public class SUGGetPark extends SUGBase {
                 if (!AdEnq.answer(driver, sele1, wid)) {
                   break;
                 }
-                changeWindow(driver, wid);
-                driver.close();
-                driver.switchTo().window(wid);
+//                changeWindow(driver, wid);
+//                driver.close();
+//                driver.switchTo().window(wid);
               }
               else if (!skipCapFlag && (cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
                   && isExistEle(driver, sele4)) {
