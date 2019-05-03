@@ -50,101 +50,93 @@ public class SUGGetPark extends SUGBase {
     driver = driverAtom;
     Utille.url(driver, url, logg);
     // ゲームイメージ
-    selector = "dt>a>img[src='//static.sugutama.jp/ssp_site/63ab6c29b9d6af2aab742c593fc8c1c5.png']";
     String enkLinkSele = "dt>a>img[src='//static.sugutama.jp/ssp_site/63ab6c29b9d6af2aab742c593fc8c1c5.png']";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      Utille.url(driver, "http://park.netmile.co.jp/survey/", logg);
-      for (int k = 0; k < 1; k++) {
-        //        if (k == 1) {
-        //          Utille.url(driver, "http://farm.osaifu.com/square/diagnoses", logg);
-        //        }
-        //        else if (k == 2) {
-        //          Utille.url(driver, "http://farm.osaifu.com/square/surveys", logg);
-        //        }
-        //        else if (k == 3) {
-        //          Utille.url(driver, "http://farm.osaifu.com/square/pittango", logg);
-        //        }
-
-        Utille.sleep(3000);
-        selector = "div.enqueteBox a[href]>dl";
-        int skip = 1, beforeSize = 0;
-        String sele1_ = "iframe.question_frame", //
-            sele1 = "form>input[type='submit']", //
-            sele3 = "form>input[type='submit']", //
-            sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-            sele6 = "form>input.next_bt", // コラム用
-            sele4 = "a.submit-btn",
-            b = "";
-        while (true) {
-          checkOverlay(driver, overlaySele, false);
-          if (!isExistEle(driver, selector)) {
-            break;
-          }
-          List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-          int size = eleList.size(), targetIndex = size - skip;
-          if (beforeSize == size) {
-            skip++;
-          }
-          if (size > targetIndex &&
-              targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
-            String wid = driver.getWindowHandle();
-            Utille.scrolledPage(driver, eleList.get(targetIndex));
-            clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
-            changeWindow(driver, wid);
-            Utille.sleep(3000);
-            String cUrl = driver.getCurrentUrl();
-            logg.info("cUrl[" + cUrl + "]");
-            if (isExistEle(driver, sele9)) {
-              Tasuuketu.answer(driver, sele9, wid);
+      //      Utille.url(driver, "http://park.netmile.co.jp/survey/", logg);
+      String toListSele = "li>a[onclick*='survey']";
+      if (isExistEle(driver, toListSele)) {
+        clickSleepSelector(driver, toListSele, 3000); // 遷移
+        for (int k = 0; k < 1; k++) {
+          Utille.sleep(3000);
+          selector = "div.enqueteBox a[href]>dl";
+          int skip = 1, beforeSize = 0;
+          String sele1_ = "iframe.question_frame", //
+          sele1 = "form>input[type='submit']", //
+          sele3 = "form>input[type='submit']", //
+          sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+          sele6 = "form>input.next_bt", // コラム用
+          sele4 = "a.submit-btn", b = "";
+          while (true) {
+            checkOverlay(driver, overlaySele, false);
+            if (!isExistEle(driver, selector)) {
+              break;
             }
-            else if (!skipCapFlag &&cUrl.indexOf("ad/enq/") >= 0
-//                && isExistEle(driver, sele1_)
-                ) {
-              // $('iframe').contents().find("div>input[type='submit']")
-              if (!AdEnq.answer(driver, sele1, wid)) {
-                break;
-              }
+            List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
+            int size = eleList.size(), targetIndex = size - skip;
+            if (beforeSize == size) {
+              skip++;
+            }
+            if (size > targetIndex &&
+                targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
+              String wid = driver.getWindowHandle();
+              Utille.scrolledPage(driver, eleList.get(targetIndex));
+              clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
               changeWindow(driver, wid);
-              driver.close();
-              driver.switchTo().window(wid);
-            }
-            else if (!skipCapFlag && (cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
-                && isExistEle(driver, sele4)) {
-              Shindan.answer(driver, sele4, wid);
-            }
-            else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
-                || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
-                || cUrl.indexOf("checker.club/question/") >= 0
-                || cUrl.indexOf("dgss/question") >= 0)
-                && isExistEle(driver, sele3)) {
-              AdShindan.answer(driver, sele3, wid);
-            }
-            else if ((cUrl.indexOf("http://pittango.net/") >= 0
-            //                || cUrl.indexOf("beautynail-design.com") >= 0
-            //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
-            )
-                && isExistEle(driver, sele3)) {
-              Pittango.answer(driver, sele3, wid);
+              Utille.sleep(3000);
+              String cUrl = driver.getCurrentUrl();
+              logg.info("cUrl[" + cUrl + "]");
+              if (isExistEle(driver, sele9)) {
+                Tasuuketu.answer(driver, sele9, wid);
+              }
+              else if (!skipCapFlag && cUrl.indexOf("ad/enq/") >= 0
+              //                  && isExistEle(driver, sele1_)
+              ) {
+                // $('iframe').contents().find("div>input[type='submit']")
+                if (!AdEnq.answer(driver, sele1, wid)) {
+                  break;
+                }
+                changeWindow(driver, wid);
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+              else if (!skipCapFlag && (cUrl.indexOf("syouhisya-kinyu.com/agw3") >= 0)
+                  && isExistEle(driver, sele4)) {
+                Shindan.answer(driver, sele4, wid);
+              }
+              else if ((cUrl.indexOf("diagnosis.media-ad.jp/") >= 0
+                  || cUrl.indexOf("lion.seikaku-checker.club/") >= 0
+                  || cUrl.indexOf("checker.club/question/") >= 0
+                  || cUrl.indexOf("dgss/question") >= 0)
+                  && isExistEle(driver, sele3)) {
+                AdShindan.answer(driver, sele3, wid);
+              }
+              else if ((cUrl.indexOf("http://pittango.net/") >= 0
+                  //                || cUrl.indexOf("beautynail-design.com") >= 0
+                  //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
+                  )
+                  && isExistEle(driver, sele3)) {
+                Pittango.answer(driver, sele3, wid);
+              }
+              else {
+                driver.close();
+                driver.switchTo().window(wid);
+              }
+              beforeSize = size;
+              Utille.refresh(driver, logg);
+              Utille.sleep(5000);
             }
             else {
-              driver.close();
-              driver.switchTo().window(wid);
+              break;
             }
-            beforeSize = size;
-            Utille.refresh(driver, logg);
-            Utille.sleep(5000);
-          }
-          else {
-            break;
           }
         }
-      }
-      String stampSele = "a[href='/exchange/mile']#btn";
-      if (isExistEle(driver, stampSele)) {
-        clickSleepSelector(driver, stampSele, 4000); // 遷移
+        String stampSele = "a[href='/exchange/mile']#btn";
+        if (isExistEle(driver, stampSele)) {
+          clickSleepSelector(driver, stampSele, 4000); // 遷移
+        }
       }
     }
   }

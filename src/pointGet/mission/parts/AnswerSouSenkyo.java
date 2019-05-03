@@ -28,11 +28,12 @@ public class AnswerSouSenkyo extends MissCommon {
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String radioSele = "label.radio>span", //
-        voteSele = "input.button--answer", //
-        nextSele = "a.button--next", //
-        titleSele = "div.question>p", // close
-        getSele = "a.button--get",  //
-        a = "";
+    voteSele = "input.button--answer", //
+    nextSele = "a.button--next", //
+    titleSele = "div.question>p", // close
+    getSele = "a.button--get", //
+    noQuestSele = "p.next__none", // 
+    a = "";
     for (int k = 1; k <= 40; k++) {
       int choiceNum = 0;
       String qTitle = "", choiceSele = "";
@@ -53,31 +54,39 @@ public class AnswerSouSenkyo extends MissCommon {
             clickSleepSelector(driver, eleList2.get(choiceNum), 3000);
             if (isExistEle(driver, voteSele)) {
               clickSleepSelector(driver, voteSele, 7000);
-              if (isExistEle(driver, voteSele)) {
+              if (isExistEle(driver, voteSele, false)) {
                 waitTilReady(driver);
                 clickSleepSelector(driver, voteSele, 6000);
               }
-              else if (isExistEle(driver, nextSele)) {
+              else if (isExistEle(driver, nextSele, false)) {
                 waitTilReady(driver);
                 clickSleepSelector(driver, nextSele, 6000);
               }
-              else if (isExistEle(driver, getSele)) {
+              else if (isExistEle(driver, getSele, false)) {
                 clickSleepSelector(driver, getSele, 6000);
                 if (isExistEle(driver, nextSele)) {
                   waitTilReady(driver);
                   clickSleepSelector(driver, nextSele, 6000);
                 }
               }
+              else {
+                if (isExistEle(driver, noQuestSele)) {
+                  break;
+                }
+              }
             }
           }
+        }
+        else if (isExistEle(driver, noQuestSele)) {
+          break;
         }
       }
       else {
         break;
       }
     }
-//    Utille.sleep(5000);
-//    driver.close();
-//    driver.switchTo().window(wid);
+    //    Utille.sleep(5000);
+    //    driver.close();
+    //    driver.switchTo().window(wid);
   }
 }
