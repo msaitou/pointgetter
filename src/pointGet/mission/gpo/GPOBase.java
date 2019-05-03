@@ -187,25 +187,24 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOWhichCollectPuku: // ■ぽち
           MisIns = new GPOWhichCollectPuku(loggg, cProps);
           break;
-
+        case Define.strGPOSeikatu: // ■生活指数
+          MisIns = new GPOSeikatu(loggg, cProps);
+          break;
+        case Define.strGPOTenki: // ■天気
+          MisIns = new GPOTenki(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
-          Define.strGPOUranai,
-          Define.strGPOFarmEnk,
-          Define.strGPONews,
-          Define.strGPOKenkou,
-          Define.strGPOGameParkEnk,
-          Define.strGPOMangaVer2,
-          Define.strGPOQuiz,
-          Define.strGPOColum,
-          Define.strGPOPhoto,
-          Define.strGPOPointResearch,
+          Define.strGPOUranai,Define.strGPOTenki,
+          Define.strGPOSeikatu,Define.strGPOFarmEnk,
+          Define.strGPONews,Define.strGPOKenkou,
+          Define.strGPOGameParkEnk,Define.strGPOMangaVer2,
+          Define.strGPOQuiz,Define.strGPOColum,
+          Define.strGPOPhoto,Define.strGPOPointResearch,
           Define.strGPOPointResearch2,
-          Define.strGPOAnzan,
-          Define.strGPOKansatu,
-          Define.strGPOHyakkey,
-          Define.strGPOFarmEnkNoCap,
+          Define.strGPOAnzan,Define.strGPOKansatu,
+          Define.strGPOHyakkey,Define.strGPOFarmEnkNoCap,
           Define.strGPODokiShindan,
           Define.strGPOAnqueate,
           Define.strGPOHirameki,
@@ -224,7 +223,7 @@ public abstract class GPOBase extends Mission {
           Define.strGPOWhichCollectGurume,
           Define.strGPONaruhodo,
           Define.strGPOQuizKentei,
-          Define.strGPOMotAnk,Define.strGPOCMPochi,Define.strGPOWhichCollectPuku
+          Define.strGPOMotAnk, Define.strGPOCMPochi, Define.strGPOWhichCollectPuku
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

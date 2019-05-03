@@ -23,6 +23,8 @@ import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerNews;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerQuiz;
+import pointGet.mission.parts.AnswerSeikatu;
+import pointGet.mission.parts.AnswerTenki;
 import pointGet.mission.parts.AnswerUranai;
 
 public class PICMedalMool extends PICBase {
@@ -45,6 +47,8 @@ public class PICMedalMool extends PICBase {
   AnswerQuiz Quiz = null;
   AnswerAbEnk AbEnk = null;
   AnswerKingyo Kingyo = null;
+  AnswerTenki Tenki = null;
+  AnswerSeikatu Seikatu = null;
 
   /**
    * @param logg
@@ -66,6 +70,8 @@ public class PICMedalMool extends PICBase {
     Quiz = new AnswerQuiz(logg);
     AbEnk = new AnswerAbEnk(logg);
     Kingyo = new AnswerKingyo(logg);
+    Tenki = new AnswerTenki(logg);
+    Seikatu = new AnswerSeikatu(logg);
   }
 
   @Override
@@ -76,12 +82,12 @@ public class PICMedalMool extends PICBase {
     int skip = 0;
 
     String sele3 = "div.enq-submit>button[type='submit']", //
-    sele8 = "div#buttonArea>input[name='next']", //
-    sele4 = "form>input[alt='進む']", sele2 = "form>input[type='image']", // 回答する 漫画用
-    sele1 = "a>img[alt='次へ']",
-    sele6 = "form>input.next_bt",
+        sele8 = "div#buttonArea>input[name='next']", //
+        sele4 = "form>input[alt='進む']", sele2 = "form>input[type='image']", // 回答する 漫画用
+        sele1 = "a>img[alt='次へ']",
+        sele6 = "form>input.next_bt",
 
-    sele5 = "img[alt='進む']";
+        sele5 = "img[alt='進む']";
 
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 3000); // 遷移
@@ -93,26 +99,28 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-          "p>img[src*='/kingyo']", // 金魚占い
-//          "img[src*='main_ab']", // 2卓アンケート
-//          "img[src*='main_quiz05']", // 食べ物クイズ
-//          "img[src*='main_quiz04']", // 動物クイズ
-//          "img[src*='main_quiz03']", // 書籍クイズ
-//          "img[src*='main_quiz02']", // 海外クイズ
-//          "img[src*='main_quiz01']", // 漢字クイズ
-//           "a[href*='ijin']",
-//          "img[src='common/images/contents/main_hirameki.png']",
-//          "a[href*='/comicnews/']",
-//          "a[href*='/comedynews/']",
-//          "a[href*='sarasara']",
-//          "a[href*='natural-cuisine.com/pointi']", // 料理
-//          "a[href*='eyemake-beauty.com/pointi']", // 観察
-//          "a[href*='beautyhair-fashion.com/pointi']", // 百景
-//          "a[href*='/news/'] p.thum>img",
-//          "a[href*='cosmeticsstyle.com/pointi/list']",
-//          "img[src='common/images/contents/main_column.png']",
-//          "a[href*='comicEnquete']",
-//          "a[href*='pc/uranai']",
+//          "p>img[src*='/kingyo']", // 金魚占い
+//          "p>img[src*='tenki']",
+          "p>img[src*='seikatsu']",
+                    "img[src*='main_ab']", // 2卓アンケート
+                    "img[src*='main_quiz05']", // 食べ物クイズ
+                    "img[src*='main_quiz04']", // 動物クイズ
+                    "img[src*='main_quiz03']", // 書籍クイズ
+                    "img[src*='main_quiz02']", // 海外クイズ
+                    "img[src*='main_quiz01']", // 漢字クイズ
+                     "a[href*='ijin']",
+                    "img[src='common/images/contents/main_hirameki.png']",
+                    "a[href*='/comicnews/']",
+//                    "a[href*='/comedynews/']",
+                    "a[href*='sarasara']",
+                    "a[href*='natural-cuisine.com/pointi']", // 料理
+                    "a[href*='eyemake-beauty.com/pointi']", // 観察
+                    "a[href*='beautyhair-fashion.com/pointi']", // 百景
+                    "a[href*='/news/'] p.thum>img",
+                    "a[href*='cosmeticsstyle.com/pointi/list']",
+                    "img[src='common/images/contents/main_column.png']",
+                    "a[href*='comicEnquete']",
+                    "a[href*='pc/uranai']",
       };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
@@ -439,8 +447,8 @@ public class PICMedalMool extends PICBase {
               clickSleepSelector(driver, eleList, 0, 5000); // 遷移
               if (isExistEle(driver, sele6)) {
                 Ijin.answer(driver, sele6, wid);
-//                driver.close();
-//                driver.switchTo().window(wid);
+                //                driver.close();
+                //                driver.switchTo().window(wid);
               }
               else {
               }
@@ -460,7 +468,7 @@ public class PICMedalMool extends PICBase {
         ) {
           clickSleepSelector(driver, preSele, 3000); // 遷移
 
-//          String wid = wid0;
+          //          String wid = wid0;
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);
           selector = "section#mainContent ul>li>a"; // アンケート一覧の回答するボタン
@@ -532,6 +540,22 @@ public class PICMedalMool extends PICBase {
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);
           Kingyo.answer(driver, null, wid);
+          k++;
+        }
+        // 生活指数
+        else if (preSele.equals("p>img[src*='seikatsu']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          Tenki.answer(driver, null, wid);
+          k++;
+        }
+        // 天気
+        else if (preSele.equals("p>img[src*='tenki']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          Tenki.answer(driver, null, wid);
           k++;
         }
 
