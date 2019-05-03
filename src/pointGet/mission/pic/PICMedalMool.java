@@ -99,8 +99,8 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-//          "p>img[src*='/kingyo']", // 金魚占い
-//          "p>img[src*='tenki']",
+          "p>img[src*='/kingyo']", // 金魚占い
+          "p>img[src*='tenki']",
           "p>img[src*='seikatsu']",
                     "img[src*='main_ab']", // 2卓アンケート
                     "img[src*='main_quiz05']", // 食べ物クイズ

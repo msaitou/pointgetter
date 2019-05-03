@@ -27,6 +27,7 @@ public class PICKumaVote extends PICBase {
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
+    Utille.url(driver, url, logg);
     selector = "div.gamelist_wrap img[src*='visual/img16.png']";
     String sele0 = "a.start__button" // アンケート一覧の回答するボタン
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
