@@ -18,6 +18,7 @@ import pointGet.mission.parts.AnswerHyakkey;
 import pointGet.mission.parts.AnswerIjin;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKenkou;
+import pointGet.mission.parts.AnswerKingyo;
 import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerNews;
 import pointGet.mission.parts.AnswerPhotoEnk;
@@ -43,6 +44,7 @@ public class PICMedalMool extends PICBase {
   AnswerIjin Ijin = null;
   AnswerQuiz Quiz = null;
   AnswerAbEnk AbEnk = null;
+  AnswerKingyo Kingyo = null;
 
   /**
    * @param logg
@@ -63,6 +65,7 @@ public class PICMedalMool extends PICBase {
     Ijin = new AnswerIjin(logg);
     Quiz = new AnswerQuiz(logg);
     AbEnk = new AnswerAbEnk(logg);
+    Kingyo = new AnswerKingyo(logg);
   }
 
   @Override
@@ -90,25 +93,26 @@ public class PICMedalMool extends PICBase {
       // 漫画
 
       String[] preSeleList = {
-          "img[src*='main_ab']", // 2卓アンケート
-          "img[src*='main_quiz05']", // 食べ物クイズ
-          "img[src*='main_quiz04']", // 動物クイズ
-          "img[src*='main_quiz03']", // 書籍クイズ
-          "img[src*='main_quiz02']", // 海外クイズ
-          "img[src*='main_quiz01']", // 漢字クイズ
-           "a[href*='ijin']",
-          "img[src='common/images/contents/main_hirameki.png']",
-          "a[href*='/comicnews/']",
-          "a[href*='/comedynews/']",
-          "a[href*='sarasara']",
-          "a[href*='natural-cuisine.com/pointi']", // 料理
-          "a[href*='eyemake-beauty.com/pointi']", // 観察
-          "a[href*='beautyhair-fashion.com/pointi']", // 百景
-          "a[href*='/news/'] p.thum>img",
-          "a[href*='cosmeticsstyle.com/pointi/list']",
-          "img[src='common/images/contents/main_column.png']",
-          "a[href*='comicEnquete']",
-          "a[href*='pc/uranai']",
+          "p>img[src*='/kingyo']", // 金魚占い
+//          "img[src*='main_ab']", // 2卓アンケート
+//          "img[src*='main_quiz05']", // 食べ物クイズ
+//          "img[src*='main_quiz04']", // 動物クイズ
+//          "img[src*='main_quiz03']", // 書籍クイズ
+//          "img[src*='main_quiz02']", // 海外クイズ
+//          "img[src*='main_quiz01']", // 漢字クイズ
+//           "a[href*='ijin']",
+//          "img[src='common/images/contents/main_hirameki.png']",
+//          "a[href*='/comicnews/']",
+//          "a[href*='/comedynews/']",
+//          "a[href*='sarasara']",
+//          "a[href*='natural-cuisine.com/pointi']", // 料理
+//          "a[href*='eyemake-beauty.com/pointi']", // 観察
+//          "a[href*='beautyhair-fashion.com/pointi']", // 百景
+//          "a[href*='/news/'] p.thum>img",
+//          "a[href*='cosmeticsstyle.com/pointi/list']",
+//          "img[src='common/images/contents/main_column.png']",
+//          "a[href*='comicEnquete']",
+//          "a[href*='pc/uranai']",
       };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
@@ -521,6 +525,14 @@ public class PICMedalMool extends PICBase {
             driver.switchTo().window(wid);
             k++;
           }
+        }
+        // 金魚占い
+        else if (preSele.equals("p>img[src*='/kingyo']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          Kingyo.answer(driver, null, wid);
+          k++;
         }
 
         Utille.sleep(5000);

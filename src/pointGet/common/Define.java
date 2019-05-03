@@ -364,6 +364,7 @@ public class Define {
   final public static String strGPOQuizKentei = "GPOQuizKentei";
   final public static String strGPOMotAnk = "GPOMotAnk";
   final public static String strGPOCMPochi = "GPOCMPochi";
+  final public static String strGPOKingyo = "GPOKingyo";
 
   // ■■■■■CMさいと■■■■■
   final public static String strCMSAnqueate = "CMSAnqueate";

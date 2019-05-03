@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAbEnk;
+import pointGet.mission.parts.AnswerKingyo;
 import pointGet.mission.parts.AnswerQuiz;
 import pointGet.mission.parts.AnswerUranai;
 
@@ -20,6 +21,7 @@ public class GPOMedalMool extends GPOBase {
   AnswerUranai Uranai = null;
   AnswerQuiz Quiz = null;
   AnswerAbEnk AbEnk = null;
+  AnswerKingyo Kingyo = null;
 
   /**
    * @param logg
@@ -29,6 +31,7 @@ public class GPOMedalMool extends GPOBase {
     Uranai = new AnswerUranai(logg);
     Quiz = new AnswerQuiz(logg);
     AbEnk = new AnswerAbEnk(logg);
+    Kingyo = new AnswerKingyo(logg);
   }
 
   @Override
@@ -37,7 +40,7 @@ public class GPOMedalMool extends GPOBase {
     Utille.url(driver, url, logg);
 
     String enkLinkSele = "div.bnr>[alt='メダルモール']", //
-    a = "";
+        a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
@@ -47,18 +50,19 @@ public class GPOMedalMool extends GPOBase {
 
       String[] preSeleList = {
           "img[src*='main_ab']", // 2卓アンケート
-//          "img[src*='main_quiz05']", // 食べ物クイズ
-//          "img[src*='main_quiz04']", // 動物クイズ
-//          "img[src*='main_quiz03']", // 書籍クイズ
-//          "img[src*='main_quiz02']", // 海外クイズ
-//          "img[src*='main_quiz01']", // 漢字クイズ
+          "p>img[src*='/kingyouranai']", // 金魚占い
+          //          "img[src*='main_quiz05']", // 食べ物クイズ
+          //          "img[src*='main_quiz04']", // 動物クイズ
+          //          "img[src*='main_quiz03']", // 書籍クイズ
+          //          "img[src*='main_quiz02']", // 海外クイズ
+          //          "img[src*='main_quiz01']", // 漢字クイズ
           //          "a[href*='pc/uranai']",
       };
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
         String preSele = preSeleList[k];
         if (preSele.equals("a[href*='pc/uranai']")) {
-        clickSleepSelector(driver, preSele, 7000); // 遷移
+          clickSleepSelector(driver, preSele, 7000); // 遷移
           String wid = driver.getWindowHandle();
           changeWindow(driver, wid);
           Uranai.answer(driver, "", wid);
@@ -136,6 +140,14 @@ public class GPOMedalMool extends GPOBase {
             driver.switchTo().window(wid);
             k++;
           }
+        }
+        // 金魚占い
+        else if (preSele.equals("p>img[src*='/kingyouranai']")) {
+          clickSleepSelector(driver, preSele, 3000); // 遷移
+          String wid = driver.getWindowHandle();
+          changeWindow(driver, wid);
+          Kingyo.answer(driver, null, wid);
+          k++;
         }
         Utille.sleep(5000);
       }
