@@ -38,6 +38,7 @@ public class GameBears extends MissCommon {
 
     String lifeSele = "img[src*='life_on']";
     int loopCnt = 0;
+    boolean opendParty = false;
     while (loopCnt < 10) {
       // ライフがある限りループ
       clearFootOverlay(driver);
@@ -66,6 +67,15 @@ public class GameBears extends MissCommon {
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(selePlayPlace));
             int choiceies = eleList2.size();
             int choiceNum = Utille.getIntRand(choiceies);
+            if (choiceNum == 3) {
+              if (!opendParty) {
+                opendParty = true;
+              }
+              else {
+                choiceNum = 0;
+              }
+            }
+
             if (isExistEle(eleList2, choiceNum)) {
               clickSleepSelector(driver, eleList2, choiceNum, 5000);
               clearFootOverlay(driver);
@@ -101,25 +111,26 @@ public class GameBears extends MissCommon {
                     if (isExistEle(driver, toNextSele, false)) {
                       logg.info("友達発見？！！");
                       // 友達発見
-                      for (int i = 0; i < 2;) {
+                      // choiceNum  1の時亀でその時に対応できていないポイ
+                      for (int i = 0; i < 10;i++) {
                         if (isExistEle(driver, toNextSele, false)) {
                           clickSleepSelector(driver, toNextSele, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
-                          i++;
+//                          i++;
                         }
                         else if (isExistEle(driver, toNextSele2, false)) {
                           clickSleepSelector(driver, toNextSele2, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
-                          i++;
+//                          i++;
                         }
 
                         if (isExistEle(driver, nextPage, false)) {
                           clickSleepSelector(driver, nextPage, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
-                          i--;
+//                          i--;
                         }
                       }
                       //                      if (isExistEle(driver, nextPage)) {
