@@ -29,11 +29,10 @@ public class GameDinosaur extends MissCommon {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String aBtnStart = "a.btn_start>img";
     String selectBait = "div#dinosaur_contents>ul>li>a";
-    String releasePoints ="div#horihori_location_3>a>img";
-    String selectTool ="div.game_content>a>img";
+    String releasePoints = "div#horihori_location_3>a>img";
+    String selectTool = "div.game_content>a>img";
 
     String fightSele = "div#fish_under_battle>a>img";
-
 
     String toNextSele = "a.btn_next>img";
     String battleSele = "a.btn_battle>img";
@@ -70,67 +69,66 @@ public class GameDinosaur extends MissCommon {
             clearFootOverlay(driver);
             clearOverlay(driver);
 
-            if (isExistEle(driver, releasePoints)) {
-              List<WebElement> eleList3 = driver.findElements(By.cssSelector(releasePoints));
-              int choiceNum2 = Utille.getIntRand(eleList3.size());  // リリースポイントの選択
-              if (isExistEle(eleList3, choiceNum2)) {
-                clickSleepSelector(driver, eleList3, choiceNum2, 7000);
-                clearFootOverlay(driver);
-                clearOverlay(driver);
-                for (;;) {
-                  if (isExistEle(driver, selectTool)) {
-                    List<WebElement> eleList4 = driver.findElements(By.cssSelector(selectTool));
-                    int choiceNum3 = Utille.getIntRand(eleList4.size());
-                    if (isExistEle(eleList4, choiceNum3)) {
-                      clickSleepSelector(driver, eleList4, choiceNum3, 4000);
+            if (isExistEle(driver, selectTool)) {
+              //              List<WebElement> eleList3 = driver.findElements(By.cssSelector(releasePoints));
+              //              int choiceNum2 = Utille.getIntRand(eleList3.size());  // リリースポイントの選択
+              //              if (isExistEle(eleList3, choiceNum2)) {
+              //                clickSleepSelector(driver, eleList3, choiceNum2, 7000);
+              //                clearFootOverlay(driver);
+              //                clearOverlay(driver);
+              for (;;) {
+                if (isExistEle(driver, selectTool)) {
+                  List<WebElement> eleList4 = driver.findElements(By.cssSelector(selectTool));
+                  int choiceNum3 = Utille.getIntRand(eleList4.size());
+                  if (isExistEle(eleList4, choiceNum3)) {
+                    clickSleepSelector(driver, eleList4, choiceNum3, 4000);
+                    clearFootOverlay(driver);
+                    clearOverlay(driver);
+                    if (isExistEle(driver, toNextSele, false)) {
+                      clickSleepSelector(driver, toNextSele, 4000);
                       clearFootOverlay(driver);
                       clearOverlay(driver);
-                      if (isExistEle(driver, toNextSele, false)) {
-                        clickSleepSelector(driver, toNextSele, 4000);
-                        clearFootOverlay(driver);
-                        clearOverlay(driver);
-                      }
-                      else if (isExistEle(driver, battleSele)) {
-                        clickSleepSelector(driver, battleSele, 4000);
-                        clearFootOverlay(driver);
-                        clearOverlay(driver);
-                        break;
-                      }
+                    }
+                    else if (isExistEle(driver, battleSele)) {
+                      clickSleepSelector(driver, battleSele, 4000);
+                      clearFootOverlay(driver);
+                      clearOverlay(driver);
+                      break;
                     }
                   }
                 }
-                if (isExistEle(driver, selectTool)) {
-                  for (;;) {
-                    List<WebElement> eleList4 = driver.findElements(By.cssSelector(selectTool));
-                    int choiceNum3 = Utille.getIntRand(eleList4.size());
-                    if (isExistEle(eleList4, choiceNum3)) {
-                      clickSleepSelector(driver, eleList4, choiceNum3, 5000);
+              }
+              if (isExistEle(driver, selectTool)) {
+                for (;;) {
+                  List<WebElement> eleList4 = driver.findElements(By.cssSelector(selectTool));
+                  int choiceNum3 = Utille.getIntRand(eleList4.size());
+                  if (isExistEle(eleList4, choiceNum3)) {
+                    clickSleepSelector(driver, eleList4, choiceNum3, 5000);
+                    clearFootOverlay(driver);
+                    clearOverlay(driver);
+                    clearAfterOverlay(driver);
+                    if (isExistEle(driver, toNextSele, false)) {
+                      clickSleepSelector(driver, toNextSele, 4000);
                       clearFootOverlay(driver);
                       clearOverlay(driver);
-                      clearAfterOverlay(driver);
+                    }
+                    else if (isExistEle(driver, getSele)) {
+                      clickSleepSelector(driver, getSele, 5000);
+                      clearFootOverlay(driver);
+                      clearOverlay(driver);
                       if (isExistEle(driver, toNextSele, false)) {
                         clickSleepSelector(driver, toNextSele, 4000);
                         clearFootOverlay(driver);
                         clearOverlay(driver);
-                      }
-                      else if (isExistEle(driver, getSele)) {
-                        clickSleepSelector(driver, getSele, 5000);
-                        clearFootOverlay(driver);
-                        clearOverlay(driver);
-                        if (isExistEle(driver, toNextSele, false)) {
-                          clickSleepSelector(driver, toNextSele, 4000);
+                        if (isExistEle(driver, toTopSele)) {
+                          clickSleepSelector(driver, toTopSele, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
-                          if (isExistEle(driver, toTopSele)) {
-                            clickSleepSelector(driver, toTopSele, 4000);
-                            clearFootOverlay(driver);
-                            clearOverlay(driver);
-                            break;
-                          }
+                          break;
                         }
                       }
-                      // TODO 壊れたとき
                     }
+                    // TODO 壊れたとき
                   }
                 }
               }
@@ -138,6 +136,7 @@ public class GameDinosaur extends MissCommon {
           }
         }
       }
+      //      }
     }
     // この画面にほかのゲームのリンクがあるのでそっから遷移するためにウィンドウを消さない
     //    driver.close();

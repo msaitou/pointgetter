@@ -69,6 +69,7 @@ public class Define {
   final public static String strGENNaruhodo = "GENNaruhodo";
   final public static String strGENCMPochi = "GENCMPochi";
   final public static String strGENAnkPark = "GENAnkPark";
+  final public static String strGENGameRarry = "GENGameRarry";
 
   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";
@@ -87,6 +88,7 @@ public class Define {
   final public static String strGMYNaruhodo = "GMYNaruhodo";
   final public static String strGMYAnkPark = "GMYAnkPark";
   final public static String strGMYCMPochi = "GMYCMPochi";
+  final public static String strGMYGameRarry = "GMYGameRarry";
 
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
@@ -207,6 +209,7 @@ public class Define {
   final public static String strPICFarmEnkNoCap = "PICFarmEnkNoCap";
   final public static String strPICMail = "PICMail";
   final public static String strPICNaruhodo = "PICNaruhodo";
+  final public static String strPICGameRarry = "PICGameRarry";
 
   // ■■■■■SUGUTAMA■■■■■
   final public static String strSUGUranai = "SUGUranai";
@@ -227,6 +230,7 @@ public class Define {
   final public static String strSUGQuizKentei = "SUGQuizKentei";
   final public static String strSUGNaruhodo = "SUGNaruhodo";
   final public static String strSUGCMPochi = "SUGCMPochi";
+  final public static String strSUGGameRarry = "SUGGameRarry";
 
   // ■■■■■pointStadium■■■■■
   final public static String strPSTUranai = "PSTUranai";
@@ -270,6 +274,7 @@ public class Define {
   final public static String strCITNaruhodo = "CITNaruhodo";
   final public static String strCITAnkPark = "CITAnkPark";
   final public static String strCITCMPochi = "CITCMPochi";
+  final public static String strCITGameRarry = "CITGameRarry";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";
@@ -357,6 +362,7 @@ public class Define {
   final public static String strGPOWhichCollectGurume = "GPOWhichCollectGurume";
   final public static String strGPOWhichCollectHighLow = "GPOWhichCollectHighLow";
   final public static String strGPOWhichCollectPuku = "GPOWhichCollectPuku";
+  final public static String strGPOGameRarry = "GPOGameRarry";
 
   final public static String strGPOCMother = "GPOCMother";
   final public static String strGPOKumaVote = "GPOKumaVote";

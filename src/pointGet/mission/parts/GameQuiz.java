@@ -36,10 +36,14 @@ public class GameQuiz extends MissCommon {
     String answerSele = "a[class*='so-quiz-answer-";
 
     String toTopSele = "div>a[href='/quiz']";
-
+    String waitStartSele = "span.so-quiz-btn-off";
     clearFootOverlay(driver);
     clearOverlay(driver);
 
+    if (isExistEle(driver, waitStartSele, false)) {
+      logg.info("しばらくお待ち下さい");
+      return;
+    }
     if (isExistEle(driver, aBtnStart, false)) {
       clickSleepSelector(driver, aBtnStart, 4000);
       clearFootOverlay(driver);
@@ -52,7 +56,7 @@ public class GameQuiz extends MissCommon {
           clickSleepSelector(driver, aBtnStart3, 4000);
           clearFootOverlay(driver);
           clearOverlay(driver);
-          for (;;) {
+          for (int i = 0; i < 10; i++) {
             if (isExistEle(driver, qOpenSele)) {
               clickSleepSelector(driver, qOpenSele, 4000);
               clearFootOverlay(driver);

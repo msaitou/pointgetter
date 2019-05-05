@@ -61,7 +61,7 @@ public abstract class CITBase extends Mission {
     WebDriver driver = getWebDriver(cProps);
     Utille.url(driver, "https://www.chance.com/", loggg);
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
     ;
     if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
         && Utille.isExistEle(driver, recoSele, loggg)) {
@@ -100,7 +100,7 @@ public abstract class CITBase extends Mission {
           MisIns = new CITCMother(loggg, cProps);
           break;
         case Define.strCITMail:
-          MailClicker.main(new String[] {"cit"});
+          MailClicker.main(new String[] { "cit" });
           break;
         case Define.strCITKenkou: // ■健康
           MisIns = new CITKenkou(loggg, cProps);
@@ -123,8 +123,11 @@ public abstract class CITBase extends Mission {
         case Define.strCITCMPochi: // ■ぽち
           MisIns = new CITCMPochi(loggg, cProps);
           break;
+        case Define.strCITGameRarry: // ■ゲームラリー
+          MisIns = new CITGameRarry(loggg, cProps);
+          break;
 
-          default:
+        default:
       }
       if (Arrays.asList(new String[] { Define.strCITPriceChyosatai,
           Define.strCITShindan,
@@ -139,7 +142,9 @@ public abstract class CITBase extends Mission {
           Define.strCITCook,
           Define.strCITEasyAnk,
           Define.strCITNaruhodo,
-          Define.strCITAnkPark,Define.strCITCMPochi
+          Define.strCITAnkPark,
+          Define.strCITCMPochi,
+          Define.strCITGameRarry
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -159,10 +164,10 @@ public abstract class CITBase extends Mission {
       };
       PC.putPointsData(pMap);
     } catch (Throwable e) {
-      loggg.error("["+sCode+"");
+      loggg.error("[" + sCode + "");
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
-//      driver.close();
+      //      driver.close();
       driver.quit();
     }
   }

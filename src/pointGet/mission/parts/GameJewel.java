@@ -64,8 +64,14 @@ public class GameJewel extends MissCommon {
           if (isExistEle(driver, seleCourse)) {
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(seleCourse));
             int choiceies = eleList2.size();
+            
+            // TODO data-course　1 上　3 左　2　下　4 右
+            //  driver.findElement(By.id("sample").getAttribute(attr1)
             int choiceNum = Utille.getIntRand(choiceies);
             clickSleepSelector(driver, eleList2, choiceNum, 5000);
+            
+            
+            
             // event発生
             if (isExistEle(driver, seleActionSele, false)) {
               clickSleepSelector(driver, seleActionSele, 5000);
