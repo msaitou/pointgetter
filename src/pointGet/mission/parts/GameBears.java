@@ -51,11 +51,11 @@ public class GameBears extends MissCommon {
       if (isExistEle(driver, aBtnStart)) {
         for (int i = 0; i < 2; i++) {
           // スタート 2回
-          clearFootOverlay(driver);
-          clearOverlay(driver);
           if (isExistEle(driver, aBtnStart)) {
-            Utille.scrolledPage(driver, driver.findElement(By.cssSelector(aBtnStart)));
             clickSleepSelector(driver, aBtnStart, 4000);
+            clearFootOverlay(driver);
+            clearOverlay(driver);
+            clearAfterOverlay(driver);
           }
         }
 
@@ -63,6 +63,7 @@ public class GameBears extends MissCommon {
           clickSleepSelector(driver, nextPage, 4000);
           clearFootOverlay(driver);
           clearOverlay(driver);
+          clearAfterOverlay(driver);
           if (isExistEle(driver, selePlayPlace)) {
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(selePlayPlace));
             int choiceies = eleList2.size();
@@ -89,6 +90,7 @@ public class GameBears extends MissCommon {
                   clickSleepSelector(driver, nextPage, 4000);
                   clearFootOverlay(driver);
                   clearOverlay(driver);
+                  clearAfterOverlay(driver);
 
                   if (isExistEle(driver, nextPage, false)) {
                     for (int i = 0; i < 2;) {
@@ -117,12 +119,14 @@ public class GameBears extends MissCommon {
                           clickSleepSelector(driver, toNextSele, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearAfterOverlay(driver);
 //                          i++;
                         }
                         else if (isExistEle(driver, toNextSele2, false)) {
                           clickSleepSelector(driver, toNextSele2, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearAfterOverlay(driver);
 //                          i++;
                         }
 
@@ -130,6 +134,7 @@ public class GameBears extends MissCommon {
                           clickSleepSelector(driver, nextPage, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearAfterOverlay(driver);
 //                          i--;
                         }
                       }

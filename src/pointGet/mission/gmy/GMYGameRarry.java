@@ -75,8 +75,8 @@ public class GMYGameRarry extends GMYBase {
     };
 
     for (int i = 0; i < gameList.length; i++) {
-      if (i < 2)
-        continue;
+//      if (i < 2)
+//        continue;
       if (isExistEle(driver, gameList[i])) {
 
         // jewel
@@ -95,7 +95,6 @@ public class GMYGameRarry extends GMYBase {
           Utille.sleep(4000);
           Jewel.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // otenba
         else if (gameList[i].equals(gameList[1])) {
@@ -105,7 +104,6 @@ public class GMYGameRarry extends GMYBase {
           Utille.sleep(4000);
           Otenba.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // bears
         else if (gameList[i].equals(gameList[2])) {
@@ -115,7 +113,6 @@ public class GMYGameRarry extends GMYBase {
           Utille.sleep(4000);
           Bears.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // fish
         else if (gameList[i].equals(gameList[3])) {
@@ -125,7 +122,6 @@ public class GMYGameRarry extends GMYBase {
           Utille.sleep(4000);
           Fish.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // quiz
         else if (gameList[i].equals(gameList[4])) {
@@ -135,7 +131,6 @@ public class GMYGameRarry extends GMYBase {
           Utille.sleep(4000);
           Quiz.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // dinosaur
         else if (gameList[i].equals(gameList[5])) {
@@ -145,7 +140,6 @@ public class GMYGameRarry extends GMYBase {
           Utille.sleep(4000);
           Dinosaur.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // Race
         else if (gameList[i].equals(gameList[6])) {
@@ -155,7 +149,6 @@ public class GMYGameRarry extends GMYBase {
           Utille.sleep(4000);
           Race.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
       }
     }

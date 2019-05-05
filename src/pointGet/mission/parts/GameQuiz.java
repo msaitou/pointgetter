@@ -48,19 +48,23 @@ public class GameQuiz extends MissCommon {
       clickSleepSelector(driver, aBtnStart, 4000);
       clearFootOverlay(driver);
       clearOverlay(driver);
+      clearAfterOverlay(driver);
       if (isExistEle(driver, aBtnStart2)) {
         clickSleepSelector(driver, aBtnStart2, 4000);
         clearFootOverlay(driver);
         clearOverlay(driver);
+        clearAfterOverlay(driver);
         if (isExistEle(driver, aBtnStart3)) {
           clickSleepSelector(driver, aBtnStart3, 4000);
           clearFootOverlay(driver);
           clearOverlay(driver);
+          clearAfterOverlay(driver);
           for (int i = 0; i < 10; i++) {
             if (isExistEle(driver, qOpenSele)) {
               clickSleepSelector(driver, qOpenSele, 4000);
               clearFootOverlay(driver);
               clearOverlay(driver);
+              clearAfterOverlay(driver);
               if (isExistEle(driver, answerSele)) {
                 // 選択問題
                 List<WebElement> eleList2 = driver.findElements(By.cssSelector(answerSele));
@@ -70,6 +74,7 @@ public class GameQuiz extends MissCommon {
                   clickSleepSelector(driver, eleList2, choiceNum, 3000);
                   clearFootOverlay(driver);
                   clearOverlay(driver);
+                  clearAfterOverlay(driver);
                 }
               }
               // 次の問題
@@ -77,6 +82,7 @@ public class GameQuiz extends MissCommon {
                 clickSleepSelector(driver, aBtnStart3, 4000);
                 clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearAfterOverlay(driver);
               }
               // TODO 抜けるタイミング
               // TODO　レベルアップ時

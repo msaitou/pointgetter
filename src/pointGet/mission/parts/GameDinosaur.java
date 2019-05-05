@@ -103,7 +103,7 @@ public class GameDinosaur extends MissCommon {
                   List<WebElement> eleList4 = driver.findElements(By.cssSelector(selectTool));
                   int choiceNum3 = Utille.getIntRand(eleList4.size());
                   if (isExistEle(eleList4, choiceNum3)) {
-                    clickSleepSelector(driver, eleList4, choiceNum3, 5000);
+                    clickSleepSelector(driver, eleList4, choiceNum3, 6000);
                     clearFootOverlay(driver);
                     clearOverlay(driver);
                     clearAfterOverlay(driver);
@@ -116,14 +116,17 @@ public class GameDinosaur extends MissCommon {
                       clickSleepSelector(driver, getSele, 5000);
                       clearFootOverlay(driver);
                       clearOverlay(driver);
+                      clearAfterOverlay(driver);
                       if (isExistEle(driver, toNextSele, false)) {
                         clickSleepSelector(driver, toNextSele, 4000);
                         clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearAfterOverlay(driver);
                         if (isExistEle(driver, toTopSele)) {
                           clickSleepSelector(driver, toTopSele, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearAfterOverlay(driver);
                           break;
                         }
                       }

@@ -44,11 +44,13 @@ public class GameRace extends MissCommon {
       clickSleepSelector(driver, aBtnStart, 4000);
       clearFootOverlay(driver);
       clearOverlay(driver);
+      clearAfterOverlay(driver);
       for (int i = 0; i < 3; i++) {
         if (isExistEle(driver, aBtnNext)) {
           clickSleepSelector(driver, aBtnNext, 4000);
           clearFootOverlay(driver);
           clearOverlay(driver);
+          clearAfterOverlay(driver);
         }
       }
 
@@ -61,15 +63,18 @@ public class GameRace extends MissCommon {
           clickSleepSelector(driver, eleList2, choiceNum, 5000);
           clearFootOverlay(driver);
           clearOverlay(driver);
+          clearAfterOverlay(driver);
           if (isExistEle(driver, aBtnStart)) {
             clickSleepSelector(driver, aBtnStart, 15000);
             clearFootOverlay(driver);
             clearOverlay(driver);
+            clearAfterOverlay(driver);
             for (int i = 0; i < 5; i++) {
               if (isExistEle(driver, aBtnNext)) {
                 clickSleepSelector(driver, aBtnNext, 15000);
                 clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearAfterOverlay(driver);
               }
             }
             clearAfterOverlay(driver);
@@ -77,11 +82,13 @@ public class GameRace extends MissCommon {
               clickSleepSelector(driver, aBtnNext, 4000);
               clearFootOverlay(driver);
               clearOverlay(driver);
+              clearAfterOverlay(driver);
             }
             if (isExistEle(driver, exchangeSele, false)) {
               clickSleepSelector(driver, exchangeSele, 4000);
               clearFootOverlay(driver);
               clearOverlay(driver);
+              clearAfterOverlay(driver);
             }
 
           }

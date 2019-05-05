@@ -52,11 +52,11 @@ public class GameFish extends MissCommon {
       if (isExistEle(driver, aBtnStart)) {
         for (int i = 0; i < 2; i++) {
           // スタート 2回
-          clearFootOverlay(driver);
-          clearOverlay(driver);
           if (isExistEle(driver, aBtnStart)) {
-            Utille.scrolledPage(driver, driver.findElement(By.cssSelector(aBtnStart)));
             clickSleepSelector(driver, aBtnStart, 4000);
+            clearFootOverlay(driver);
+            clearOverlay(driver);
+            clearAfterOverlay(driver);
           }
         }
 
@@ -67,6 +67,7 @@ public class GameFish extends MissCommon {
             clickSleepSelector(driver, eleList2, choiceNum, 5000);
             clearFootOverlay(driver);
             clearOverlay(driver);
+            clearAfterOverlay(driver);
 
             if (isExistEle(driver, releasePoints)) {
               List<WebElement> eleList3 = driver.findElements(By.cssSelector(releasePoints));
@@ -75,6 +76,7 @@ public class GameFish extends MissCommon {
                 clickSleepSelector(driver, eleList3, choiceNum2, 7000);
                 clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearAfterOverlay(driver);
                 for (;;) {
                   if (isExistEle(driver, releasePoints)) {
                     List<WebElement> eleList4 = driver.findElements(By.cssSelector(releasePoints));
@@ -83,15 +85,18 @@ public class GameFish extends MissCommon {
                       clickSleepSelector(driver, eleList4, choiceNum3, 4000);
                       clearFootOverlay(driver);
                       clearOverlay(driver);
+                      clearAfterOverlay(driver);
                       if (isExistEle(driver, toNextSele, false)) {
                         clickSleepSelector(driver, toNextSele, 4000);
                         clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearAfterOverlay(driver);
                       }
                       else if (isExistEle(driver, battleSele)) {
                         clickSleepSelector(driver, battleSele, 4000);
                         clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearAfterOverlay(driver);
                         break;
                       }
                     }
@@ -110,15 +115,18 @@ public class GameFish extends MissCommon {
                         clickSleepSelector(driver, toNextSele, 4000);
                         clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearAfterOverlay(driver);
                       }
                       else if (isExistEle(driver, getSele)) {
                         clickSleepSelector(driver, getSele, 5000);
                         clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearAfterOverlay(driver);
                         if (isExistEle(driver, toTopSele)) {
                           clickSleepSelector(driver, toTopSele, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearAfterOverlay(driver);
                           break;
                         }
                       }
