@@ -177,6 +177,8 @@ public class Define {
   final public static String strPTOAnkPark = "PTOAnkPark";
   final public static String strPTONaruhodo = "PTONaruhodo";
   final public static String strPTOCMPochi = "PTOCMPochi";
+  final public static String strPTOGameRarry = "PTOGameRarry";
+
 
   // ■■■■■Mobatoku■■■■■
   final public static String strMOBAnzan = "MOBAnzan";

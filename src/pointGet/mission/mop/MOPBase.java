@@ -25,6 +25,7 @@ import pointGet.mission.mop.old.MOPCountTimer;
 import pointGet.mission.mop.old.MOPKanji;
 import pointGet.mission.mop.old.MOPManga;
 import pointGet.mission.mop.old.MOPShindan;
+import pointGet.mission.pto.PTOGameRarry;
 
 /**
  * @author saitou
@@ -124,7 +125,7 @@ public abstract class MOPBase extends Mission {
           MisIns = new MOPKumaVote(loggg, cProps);
           break;
         case Define.strMOPGaingame: // ■リーグジュエル
-          MisIns = new MOPGaingame(loggg, cProps);
+          MisIns = new PTOGameRarry(loggg, cProps);
           break;
         case Define.strMOPKanji: // ■漢字テスト
           MisIns = new MOPKanji(loggg, cProps);

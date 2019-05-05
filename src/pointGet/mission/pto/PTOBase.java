@@ -114,6 +114,9 @@ public abstract class PTOBase extends Mission {
         case Define.strPTOCMPochi: // ■ぽち
           MisIns = new PTOCMPochi(loggg, cProps);
           break;
+        case Define.strPTOGameRarry: // ■ぽち
+          MisIns = new PTOGameRarry(loggg, cProps);
+          break;
 
         default:
       }
@@ -130,7 +133,7 @@ public abstract class PTOBase extends Mission {
           Define.strPTOFarmEnkNoCap,
           Define.strPTOCMother,
           Define.strPTOAnkPark,
-          Define.strPTONaruhodo,Define.strPTOCMPochi
+          Define.strPTONaruhodo,Define.strPTOCMPochi,Define.strPTOGameRarry
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
