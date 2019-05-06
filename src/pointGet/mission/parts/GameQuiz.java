@@ -28,17 +28,32 @@ public class GameQuiz extends MissCommon {
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
 
-    String aBtnStart = "a.so-quiz-btn";
+    String aBtnStart = "a.so-quiz-btn[href='/quiz/check']";
     String aBtnStart2 = "p>a.btn_text";
     String aBtnStart3 = "div>a.so-quiz-btn";
-
     String qOpenSele = "div>a#quiz_start.so-quiz-btn";
     String answerSele = "a[class*='so-quiz-answer-";
-
     String toTopSele = "div>a[href='/quiz']";
     String waitStartSele = "span.so-quiz-btn-off";
+
+    String existGetPointSele = "span.so-quiz-badge";
+    String confirmPointSele = "\"a#trigger_reward_detail_title";
+    String getPointSele = "a#btn_recieve";
+    String pointConfirmClose = "button#cboxClose";
+
     clearFootOverlay(driver);
     clearOverlay(driver);
+    if (isExistEle(driver, existGetPointSele, false)) {
+      if (isExistEle(driver, confirmPointSele)) {
+        clickSleepSelector(driver, confirmPointSele, 2000);
+        if (isExistEle(driver, getPointSele)) {
+          clickSleepSelector(driver, getPointSele, 2000);
+        }
+        if (isExistEle(driver, pointConfirmClose)) {
+          clickSleepSelector(driver, pointConfirmClose, 2000);
+        }
+      }
+    }
 
     if (isExistEle(driver, waitStartSele, false)) {
       logg.info("しばらくお待ち下さい");

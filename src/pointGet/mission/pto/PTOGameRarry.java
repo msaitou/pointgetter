@@ -71,7 +71,7 @@ public class PTOGameRarry extends PTOBase {
     };
 
     for (int i = 0; i < gameList.length; i++) {
-//      if (i < 3)
+//      if (i < 6)
 //        continue;
       if (isExistEle(driver, gameList[i])) {
 
@@ -85,13 +85,12 @@ public class PTOGameRarry extends PTOBase {
           actions.click(driver.findElement(By.cssSelector(gameList[i])));
           actions.perform();
           Utille.sleep(5000);
-          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           //          Utille.sleep(3000);
           //          clickSleepSelector(driver, gameList[i], 2000); // 遷移
           Utille.sleep(4000);
           Jewel.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // otenba
         else if (gameList[i].equals(gameList[1])) {
@@ -101,7 +100,6 @@ public class PTOGameRarry extends PTOBase {
           Utille.sleep(4000);
           Otenba.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // bears
         else if (gameList[i].equals(gameList[2])) {
@@ -111,7 +109,6 @@ public class PTOGameRarry extends PTOBase {
           Utille.sleep(4000);
           Bears.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // fish
         else if (gameList[i].equals(gameList[3])) {
@@ -121,7 +118,6 @@ public class PTOGameRarry extends PTOBase {
           Utille.sleep(4000);
           Fish.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // quiz
         else if (gameList[i].equals(gameList[4])) {
@@ -131,7 +127,6 @@ public class PTOGameRarry extends PTOBase {
           Utille.sleep(4000);
           Quiz.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // dinosaur
         else if (gameList[i].equals(gameList[5])) {
@@ -141,7 +136,6 @@ public class PTOGameRarry extends PTOBase {
           Utille.sleep(4000);
           Dinosaur.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
         // Race
         else if (gameList[i].equals(gameList[6])) {
@@ -151,7 +145,6 @@ public class PTOGameRarry extends PTOBase {
           Utille.sleep(4000);
           Race.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
-          i++;
         }
       }
     }
