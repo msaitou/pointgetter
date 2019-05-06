@@ -37,7 +37,7 @@ public class GameQuiz extends MissCommon {
     String waitStartSele = "span.so-quiz-btn-off";
 
     String existGetPointSele = "span.so-quiz-badge";
-    String confirmPointSele = "\"a#trigger_reward_detail_title";
+    String confirmPointSele = "a#trigger_reward_detail_title";
     String getPointSele = "a#btn_recieve";
     String pointConfirmClose = "button#cboxClose";
 

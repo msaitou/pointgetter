@@ -113,7 +113,9 @@ public abstract class SUGBase extends Mission {
         case Define.strSUGCMPochi: // ■ぽち
           MisIns = new SUGCMPochi(loggg, cProps);
           break;
-
+        case Define.strSUGGameRarry: // ■ゲームラリー
+          MisIns = new SUGGameRarry(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {

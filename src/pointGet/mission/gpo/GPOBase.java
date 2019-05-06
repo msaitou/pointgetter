@@ -193,6 +193,9 @@ public abstract class GPOBase extends Mission {
         case Define.strGPOTenki: // ■天気
           MisIns = new GPOTenki(loggg, cProps);
           break;
+        case Define.strGPOGameRarry: // ■ゲームラリー
+          MisIns = new GPOGameRarry(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] {
@@ -223,7 +226,10 @@ public abstract class GPOBase extends Mission {
           Define.strGPOWhichCollectGurume,
           Define.strGPONaruhodo,
           Define.strGPOQuizKentei,
-          Define.strGPOMotAnk, Define.strGPOCMPochi, Define.strGPOWhichCollectPuku
+          Define.strGPOMotAnk, 
+          Define.strGPOCMPochi, 
+          Define.strGPOWhichCollectPuku,
+          Define.strGPOGameRarry
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
