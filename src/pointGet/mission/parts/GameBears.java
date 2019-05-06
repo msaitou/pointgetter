@@ -35,8 +35,21 @@ public class GameBears extends MissCommon {
 
     String nextPage = "p.bearsNext";
     String selePlayPlace = "div#bearsMap>div>dl>a>dt";
-
     String lifeSele = "img[src*='life_on']";
+
+    String existGetPointSele = "a#trigger_reward>img[alt*='報酬を受け取る']";
+    String getPointSele = "a#btn_recieve>img[alt*='報酬を受け取る']";
+    String pointConfirmClose = "div#cboxClose";
+    if (isExistEle(driver, existGetPointSele, false)) {
+        clickSleepSelector(driver, existGetPointSele, 2000);
+        if (isExistEle(driver, getPointSele)) {
+          clickSleepSelector(driver, getPointSele, 2000);
+        }
+        if (isExistEle(driver, pointConfirmClose)) {
+          clickSleepSelector(driver, pointConfirmClose, 2000);
+        }
+    }
+
     int loopCnt = 0;
     boolean opendParty = false;
     while (loopCnt < 10) {

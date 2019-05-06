@@ -30,17 +30,29 @@ public class GameDinosaur extends MissCommon {
 //    String aBtnStart = "a.btn_start>img";
     String aBtnStart = "a[href='/dinosaur/check']>img";
     String selectBait = "div#dinosaur_contents>ul>li>a";
-    String releasePoints = "div#horihori_location_3>a>img";
     String selectTool = "div.game_content>a>img";
-
-    String fightSele = "div#fish_under_battle>a>img";
 
     String toNextSele = "a.btn_next>img";
     String battleSele = "a.btn_battle>img";
     String getSele = "a.btn_get>img";
     String toTopSele = "a>img[alt='ボタン トップへ']";
-
     String lifeSele = "img[src*='dinosaur_life_on']";
+
+    String existGetPointSele = "div.notify_yesterday_reward";
+    String confirmPointSele = "a#trigger_reward_detail>img[alt*='報酬を受け取る']";
+    String getPointSele = "a#btn_recieve>img[alt*='報酬を受け取る']";
+    String pointConfirmClose = "button#cboxClose";
+    if (isExistEle(driver, existGetPointSele, false)) {
+      if (isExistEle(driver, confirmPointSele)) {
+        clickSleepSelector(driver, confirmPointSele, 2000);
+        if (isExistEle(driver, getPointSele)) {
+          clickSleepSelector(driver, getPointSele, 2000);
+        }
+        if (isExistEle(driver, pointConfirmClose)) {
+          clickSleepSelector(driver, pointConfirmClose, 2000);
+        }
+      }
+    }
 
     int loopCnt = 0;
     while (loopCnt < 10) {
