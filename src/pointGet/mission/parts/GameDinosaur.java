@@ -42,6 +42,9 @@ public class GameDinosaur extends MissCommon {
     String confirmPointSele = "a#trigger_reward_detail>img[alt*='報酬を受け取る']";
     String getPointSele = "a#btn_recieve>img[alt*='報酬を受け取る']";
     String pointConfirmClose = "button#cboxClose";
+    // ライフがある限りループ
+    clearOverlay(driver);
+    clearFootOverlay(driver);
     if (isExistEle(driver, existGetPointSele, false)) {
       if (isExistEle(driver, confirmPointSele)) {
         clickSleepSelector(driver, confirmPointSele, 2000);

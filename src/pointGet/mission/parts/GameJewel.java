@@ -50,6 +50,9 @@ public class GameJewel extends MissCommon {
     String confirmPointSele = "img[alt*='報酬を確認']";
     String getPointSele = "img[alt*='報酬を受け取る']";
     String pointConfirmClose = "button#cboxClose";
+    // ライフがある限りループ
+    clearOverlay(driver);
+    clearFootOverlay(driver);
     if (isExistEle(driver, existGetPointSele, false)) {
       if (isExistEle(driver, confirmPointSele)) {
         clickSleepSelector(driver, confirmPointSele, 2000);

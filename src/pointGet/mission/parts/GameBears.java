@@ -40,6 +40,9 @@ public class GameBears extends MissCommon {
     String existGetPointSele = "a#trigger_reward>img[alt*='報酬を受け取る']";
     String getPointSele = "a#btn_recieve>img[alt*='報酬を受け取る']";
     String pointConfirmClose = "div#cboxClose";
+    // ライフがある限りループ
+    clearOverlay(driver);
+    clearFootOverlay(driver);
     if (isExistEle(driver, existGetPointSele, false)) {
         clickSleepSelector(driver, existGetPointSele, 2000);
         if (isExistEle(driver, getPointSele)) {
