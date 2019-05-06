@@ -41,8 +41,8 @@ public class GameBears extends MissCommon {
     boolean opendParty = false;
     while (loopCnt < 10) {
       // ライフがある限りループ
-      clearFootOverlay(driver);
       clearOverlay(driver);
+      clearFootOverlay(driver);
       if (!isExistEle(driver, lifeSele, false)) {
         logg.info("no life ...");
         break;
@@ -53,16 +53,16 @@ public class GameBears extends MissCommon {
           // スタート 2回
           if (isExistEle(driver, aBtnStart)) {
             clickSleepSelector(driver, aBtnStart, 4000);
-            clearFootOverlay(driver);
             clearOverlay(driver);
+            clearFootOverlay(driver);
             clearAfterOverlay(driver);
           }
         }
 
         if (isExistEle(driver, nextPage)) {
           clickSleepSelector(driver, nextPage, 4000);
-          clearFootOverlay(driver);
           clearOverlay(driver);
+          clearFootOverlay(driver);
           clearAfterOverlay(driver);
           if (isExistEle(driver, selePlayPlace)) {
             List<WebElement> eleList2 = driver.findElements(By.cssSelector(selePlayPlace));
@@ -79,17 +79,17 @@ public class GameBears extends MissCommon {
 
             if (isExistEle(eleList2, choiceNum)) {
               clickSleepSelector(driver, eleList2, choiceNum, 5000);
-              clearFootOverlay(driver);
               clearOverlay(driver);
+              clearFootOverlay(driver);
               if (isExistEle(driver, goToPlay)) {
                 clickSleepSelector(driver, goToPlay, 4000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 clearAfterOverlay(driver);
                 if (isExistEle(driver, nextPage)) {
                   clickSleepSelector(driver, nextPage, 4000);
-                  clearFootOverlay(driver);
                   clearOverlay(driver);
+                  clearFootOverlay(driver);
                   clearAfterOverlay(driver);
 
                   if (isExistEle(driver, nextPage, false)) {
@@ -97,13 +97,13 @@ public class GameBears extends MissCommon {
                       // 多分パーティ
                       if (isExistEle(driver, nextPage, false)) {
                         clickSleepSelector(driver, nextPage, 4000);
-                        clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearFootOverlay(driver);
                       }
                       if (isExistEle(driver, toNextSele, false)) {
                         clickSleepSelector(driver, toNextSele, 4000);
-                        clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearFootOverlay(driver);
                         i++; // 2回で多分終わりなはず
                         logg.info("パーティ" + i);
                       }
@@ -117,23 +117,23 @@ public class GameBears extends MissCommon {
                       for (int i = 0; i < 10;i++) {
                         if (isExistEle(driver, toNextSele, false)) {
                           clickSleepSelector(driver, toNextSele, 4000);
-                          clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearFootOverlay(driver);
                           clearAfterOverlay(driver);
 //                          i++;
                         }
                         else if (isExistEle(driver, toNextSele2, false)) {
                           clickSleepSelector(driver, toNextSele2, 4000);
-                          clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearFootOverlay(driver);
                           clearAfterOverlay(driver);
 //                          i++;
                         }
 
                         if (isExistEle(driver, nextPage, false)) {
                           clickSleepSelector(driver, nextPage, 4000);
-                          clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearFootOverlay(driver);
                           clearAfterOverlay(driver);
 //                          i--;
                         }
@@ -154,8 +154,8 @@ public class GameBears extends MissCommon {
                     logg.info("TOPへ！！");
                     // TOPへ戻る
                     clickSleepSelector(driver, toTopSele, 4000);
-                    clearFootOverlay(driver);
                     clearOverlay(driver);
+                    clearFootOverlay(driver);
                   }
                 }
               }

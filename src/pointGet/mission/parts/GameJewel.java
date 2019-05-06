@@ -64,8 +64,8 @@ public class GameJewel extends MissCommon {
 
     while (true) {
       // ライフがある限りループ
-      clearFootOverlay(driver);
       clearOverlay(driver);
+      clearFootOverlay(driver);
       if (!isExistEle(driver, lifeSele, false)) {
         logg.info("no life ...");
         break;
@@ -92,34 +92,36 @@ public class GameJewel extends MissCommon {
             // event発生
             if (isExistEle(driver, seleActionSele, false)) {
               clickSleepSelector(driver, seleActionSele, 5000);
-              clearFootOverlay(driver);
               clearOverlay(driver);
+              clearFootOverlay(driver);
               // 戦う
               if (isExistEle(driver, seleAttackSele)) {
                 clickSleepSelector(driver, seleAttackSele, 5000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 if (isExistEle(driver, seleActionSele, false)) {
                   clickSleepSelector(driver, seleActionSele, 7000);
-                  clearFootOverlay(driver);
                   clearOverlay(driver);
+                  clearFootOverlay(driver);
                   if (isExistEle(driver, seleEventClear2, false)) {
                     clickSleepSelector(driver, seleEventClear2, 6000);
-                    clearFootOverlay(driver);
                     clearOverlay(driver);
+                    clearFootOverlay(driver);
                     if (isExistEle(driver, seleEventClear, false)) {
-                      clearFootOverlay(driver);
-                      clearOverlay(driver);
                       clickSleepSelector(driver, seleEventClear, 10000);
+                      clearOverlay(driver);
+                      clearFootOverlay(driver);
                       //                      break;
                     }
                   }
                   else if (isExistEle(driver, seleEventFale, false)) {
                     clickSleepSelector(driver, seleEventFale, 4000);
-                    clearFootOverlay(driver);
                     clearOverlay(driver);
+                    clearFootOverlay(driver);
                     if (isExistEle(driver, seleGameOver, false)) {
                       clickSleepSelector(driver, seleGameOver, 8000);
+                      clearOverlay(driver);
+                      clearFootOverlay(driver);
                       break;
                     }
                   }
@@ -127,22 +129,24 @@ public class GameJewel extends MissCommon {
               }
               else if (isExistEle(driver, seleActionSele)) {
                 clickSleepSelector(driver, seleActionSele, 5000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 if (isExistEle(driver, seleEventClear)) {
                   clickSleepSelector(driver, seleEventClear, 5000);
                 }
               }
               else if (isExistEle(driver, seleEventHole)) {
                 clickSleepSelector(driver, seleEventHole, 5000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 if (isExistEle(driver, seleNext)) {
                   clickSleepSelector(driver, seleNext, 5000);
-                  clearFootOverlay(driver);
                   clearOverlay(driver);
+                  clearFootOverlay(driver);
                   if (isExistEle(driver, seleGameOver, false)) {
                     clickSleepSelector(driver, seleGameOver, 8000);
+                    clearOverlay(driver);
+                    clearFootOverlay(driver);
                     break;
                   }
                 }
@@ -150,6 +154,8 @@ public class GameJewel extends MissCommon {
             }
             else if (isExistEle(driver, seleCongratuRate)) {
               clickSleepSelector(driver, seleCongratuRate, 5000);
+              clearOverlay(driver);
+              clearFootOverlay(driver);
               break;
               //              if (isExistEle(driver, seleToTop)) {
               //                clickSleepSelector(driver, seleToTop, 5000);
@@ -157,12 +163,14 @@ public class GameJewel extends MissCommon {
             }
           }
         }
-        clearAfterOverlay(driver);
         clearFootOverlay(driver);
         clearOverlay(driver);
+        clearAfterOverlay(driver);
         if (isExistEle(driver, toTitleSele)) {
           // スタート画面に戻る
           clickSleepSelector(driver, toTitleSele, 5000);
+          clearOverlay(driver);
+          clearFootOverlay(driver);
         }
       }
     }

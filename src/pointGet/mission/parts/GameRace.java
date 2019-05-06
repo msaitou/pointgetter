@@ -33,23 +33,22 @@ public class GameRace extends MissCommon {
     String exchangeSele = "div.raceBtnArea>p>a>img[alt*='メダルを交換する']";
     String aBtnWaitStart = "div.raceBtnCoverTop";
 
-
-    clearFootOverlay(driver);
     clearOverlay(driver);
+    clearFootOverlay(driver);
     if (isExistEle(driver, aBtnWaitStart, false)) {
       logg.info("次までまて");
       return;
     }
     if (isExistEle(driver, aBtnStart)) {
       clickSleepSelector(driver, aBtnStart, 4000);
-      clearFootOverlay(driver);
       clearOverlay(driver);
+      clearFootOverlay(driver);
       clearAfterOverlay(driver);
       for (int i = 0; i < 3; i++) {
         if (isExistEle(driver, aBtnNext)) {
           clickSleepSelector(driver, aBtnNext, 4000);
-          clearFootOverlay(driver);
           clearOverlay(driver);
+          clearFootOverlay(driver);
           clearAfterOverlay(driver);
         }
       }
@@ -61,33 +60,33 @@ public class GameRace extends MissCommon {
         int choiceNum = Utille.getIntRand(choiceies);
         if (isExistEle(eleList2, choiceNum)) {
           clickSleepSelector(driver, eleList2, choiceNum, 5000);
-          clearFootOverlay(driver);
           clearOverlay(driver);
+          clearFootOverlay(driver);
           clearAfterOverlay(driver);
           if (isExistEle(driver, aBtnStart)) {
             clickSleepSelector(driver, aBtnStart, 15000);
-            clearFootOverlay(driver);
             clearOverlay(driver);
+            clearFootOverlay(driver);
             clearAfterOverlay(driver);
             for (int i = 0; i < 5; i++) {
               if (isExistEle(driver, aBtnNext)) {
                 clickSleepSelector(driver, aBtnNext, 15000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 clearAfterOverlay(driver);
               }
             }
             clearAfterOverlay(driver);
             if (isExistEle(driver, aBtnNext)) {
               clickSleepSelector(driver, aBtnNext, 4000);
-              clearFootOverlay(driver);
               clearOverlay(driver);
+              clearFootOverlay(driver);
               clearAfterOverlay(driver);
             }
             if (isExistEle(driver, exchangeSele, false)) {
               clickSleepSelector(driver, exchangeSele, 4000);
-              clearFootOverlay(driver);
               clearOverlay(driver);
+              clearFootOverlay(driver);
               clearAfterOverlay(driver);
             }
 

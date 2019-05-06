@@ -33,8 +33,8 @@ public class GameOtenba extends MissCommon {
     String nextSele = "div.btn_next>a>img";
     String boxSele = "div.unlock_collected_box>ul>li>a";
 
-    clearFootOverlay(driver);
     clearOverlay(driver);
+    clearFootOverlay(driver);
     if (isExistEle(driver, aBtnWaitStart, false)) {
       logg.info("次までまて");
       return;
@@ -42,11 +42,10 @@ public class GameOtenba extends MissCommon {
     if (isExistEle(driver, aBtnStart)) {
       for (int i = 0; i < 2; i++) {
         // スタート 2回
-        clearFootOverlay(driver);
-        clearOverlay(driver);
         if (isExistEle(driver, aBtnStart)) {
-          Utille.scrolledPage(driver, driver.findElement(By.cssSelector(aBtnStart)));
           clickSleepSelector(driver, aBtnStart, 4000);
+          clearOverlay(driver);
+          clearFootOverlay(driver);
         }
       }
       if (isExistEle(driver, seleCourse)) {
@@ -57,19 +56,19 @@ public class GameOtenba extends MissCommon {
           int choiceNum = Utille.getIntRand(choiceies);
           if (isExistEle(eleList2, choiceNum)) {
             clickSleepSelector(driver, eleList2, choiceNum, 5000);
-            clearFootOverlay(driver);
             clearOverlay(driver);
+            clearFootOverlay(driver);
             if (isExistEle(driver, nextSele)) {
               // 何かみつかる?
               clickSleepSelector(driver, nextSele, 4000);
-              clearFootOverlay(driver);
               clearOverlay(driver);
+              clearFootOverlay(driver);
               if (isExistEle(driver, nextSele, false)) {
                 // 探索終了
                 roopEndFlag = true;
                 clickSleepSelector(driver, nextSele, 4000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
               }
             }
           }
@@ -84,19 +83,19 @@ public class GameOtenba extends MissCommon {
             int choiceNum = Utille.getIntRand(choiceies);
             if (isExistEle(eleList2, choiceNum)) {
               clickSleepSelector(driver, eleList2, choiceNum, 5000);
-              clearFootOverlay(driver);
               clearOverlay(driver);
+              clearFootOverlay(driver);
               if (isExistEle(driver, nextSele)) {
                 // 倒せる？
                 clickSleepSelector(driver, nextSele, 4000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 if (isExistEle(driver, nextSele, false)) {
                   // 探索終了
                   roopEndFlag = true;
                   clickSleepSelector(driver, nextSele, 4000);
-                  clearFootOverlay(driver);
                   clearOverlay(driver);
+                  clearFootOverlay(driver);
                 }
               }
             }
@@ -113,19 +112,19 @@ public class GameOtenba extends MissCommon {
               int choiceNum = Utille.getIntRand(choiceies);
               if (isExistEle(eleList2, choiceNum)) {
                 clickSleepSelector(driver, eleList2, choiceNum, 5000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 if (isExistEle(driver, nextSele)) {
                   // 空いた？
                   clickSleepSelector(driver, nextSele, 4000);
-                  clearFootOverlay(driver);
                   clearOverlay(driver);
+                  clearFootOverlay(driver);
                   if (isExistEle(driver, nextSele, false)) {
                     // 空いた結果
                     //                      roopEndFlag = true;
                     clickSleepSelector(driver, nextSele, 4000);
-                    clearFootOverlay(driver);
                     clearOverlay(driver);
+                    clearFootOverlay(driver);
                   }
                 }
               }

@@ -42,8 +42,8 @@ public class GameFish extends MissCommon {
     int loopCnt = 0;
     while (loopCnt < 10) {
       // ライフがある限りループ
-      clearFootOverlay(driver);
       clearOverlay(driver);
+      clearFootOverlay(driver);
       if (!isExistEle(driver, lifeSele, false)) {
         logg.info("no life ...");
         break;
@@ -54,8 +54,8 @@ public class GameFish extends MissCommon {
           // スタート 2回
           if (isExistEle(driver, aBtnStart)) {
             clickSleepSelector(driver, aBtnStart, 4000);
-            clearFootOverlay(driver);
             clearOverlay(driver);
+            clearFootOverlay(driver);
             clearAfterOverlay(driver);
           }
         }
@@ -65,8 +65,8 @@ public class GameFish extends MissCommon {
           int choiceNum = Utille.getIntRand(eleList2.size()); // 餌の選択
           if (isExistEle(eleList2, choiceNum)) {
             clickSleepSelector(driver, eleList2, choiceNum, 5000);
-            clearFootOverlay(driver);
             clearOverlay(driver);
+            clearFootOverlay(driver);
             clearAfterOverlay(driver);
 
             if (isExistEle(driver, releasePoints)) {
@@ -74,8 +74,8 @@ public class GameFish extends MissCommon {
               int choiceNum2 = Utille.getIntRand(eleList3.size());  // リリースポイントの選択
               if (isExistEle(eleList3, choiceNum2)) {
                 clickSleepSelector(driver, eleList3, choiceNum2, 7000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 clearAfterOverlay(driver);
                 for (;;) {
                   if (isExistEle(driver, releasePoints)) {
@@ -83,19 +83,19 @@ public class GameFish extends MissCommon {
                     int choiceNum3 = Utille.getIntRand(eleList4.size());
                     if (isExistEle(eleList4, choiceNum3)) {
                       clickSleepSelector(driver, eleList4, choiceNum3, 4000);
-                      clearFootOverlay(driver);
                       clearOverlay(driver);
+                      clearFootOverlay(driver);
                       clearAfterOverlay(driver);
                       if (isExistEle(driver, toNextSele, false)) {
                         clickSleepSelector(driver, toNextSele, 4000);
-                        clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearFootOverlay(driver);
                         clearAfterOverlay(driver);
                       }
                       else if (isExistEle(driver, battleSele)) {
                         clickSleepSelector(driver, battleSele, 4000);
-                        clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearFootOverlay(driver);
                         clearAfterOverlay(driver);
                         break;
                       }
@@ -108,24 +108,25 @@ public class GameFish extends MissCommon {
                     int choiceNum3 = Utille.getIntRand(eleList4.size());
                     if (isExistEle(eleList4, choiceNum3)) {
                       clickSleepSelector(driver, eleList4, choiceNum3, 5000);
-                      clearFootOverlay(driver);
                       clearOverlay(driver);
+                      clearFootOverlay(driver);
                       clearAfterOverlay(driver);
                       if (isExistEle(driver, toNextSele, false)) {
                         clickSleepSelector(driver, toNextSele, 4000);
-                        clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearFootOverlay(driver);
                         clearAfterOverlay(driver);
                       }
                       else if (isExistEle(driver, getSele)) {
                         clickSleepSelector(driver, getSele, 5000);
-                        clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearFootOverlay(driver);
                         clearAfterOverlay(driver);
                         if (isExistEle(driver, toTopSele)) {
                           clickSleepSelector(driver, toTopSele, 4000);
                           clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearFootOverlay(driver);
                           clearAfterOverlay(driver);
                           break;
                         }

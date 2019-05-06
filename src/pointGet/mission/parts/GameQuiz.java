@@ -41,8 +41,8 @@ public class GameQuiz extends MissCommon {
     String getPointSele = "a#btn_recieve";
     String pointConfirmClose = "button#cboxClose";
 
-    clearFootOverlay(driver);
     clearOverlay(driver);
+    clearFootOverlay(driver);
     if (isExistEle(driver, existGetPointSele, false)) {
       if (isExistEle(driver, confirmPointSele)) {
         clickSleepSelector(driver, confirmPointSele, 2000);
@@ -61,24 +61,24 @@ public class GameQuiz extends MissCommon {
     }
     if (isExistEle(driver, aBtnStart, false)) {
       clickSleepSelector(driver, aBtnStart, 4000);
-      clearFootOverlay(driver);
       clearOverlay(driver);
+      clearFootOverlay(driver);
       clearAfterOverlay(driver);
       if (isExistEle(driver, aBtnStart2)) {
         clickSleepSelector(driver, aBtnStart2, 4000);
-        clearFootOverlay(driver);
         clearOverlay(driver);
+        clearFootOverlay(driver);
         clearAfterOverlay(driver);
         if (isExistEle(driver, aBtnStart3)) {
           clickSleepSelector(driver, aBtnStart3, 4000);
-          clearFootOverlay(driver);
           clearOverlay(driver);
+          clearFootOverlay(driver);
           clearAfterOverlay(driver);
           for (int i = 0; i < 10; i++) {
             if (isExistEle(driver, qOpenSele)) {
               clickSleepSelector(driver, qOpenSele, 4000);
-              clearFootOverlay(driver);
               clearOverlay(driver);
+              clearFootOverlay(driver);
               clearAfterOverlay(driver);
               if (isExistEle(driver, answerSele)) {
                 // 選択問題
@@ -87,16 +87,16 @@ public class GameQuiz extends MissCommon {
                 int choiceNum = Utille.getIntRand(choiceies);
                 if (isExistEle(eleList2, choiceNum)) {
                   clickSleepSelector(driver, eleList2, choiceNum, 3000);
-                  clearFootOverlay(driver);
                   clearOverlay(driver);
+                  clearFootOverlay(driver);
                   clearAfterOverlay(driver);
                 }
               }
               // 次の問題
               if (isExistEle(driver, aBtnStart3)) {
                 clickSleepSelector(driver, aBtnStart3, 4000);
-                clearFootOverlay(driver);
                 clearOverlay(driver);
+                clearFootOverlay(driver);
                 clearAfterOverlay(driver);
               }
               // TODO 抜けるタイミング

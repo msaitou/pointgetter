@@ -45,8 +45,8 @@ public class GameDinosaur extends MissCommon {
     int loopCnt = 0;
     while (loopCnt < 10) {
       // ライフがある限りループ
-      clearFootOverlay(driver);
       clearOverlay(driver);
+      clearFootOverlay(driver);
       if (!isExistEle(driver, lifeSele, false)) {
         logg.info("no life ...");
         break;
@@ -55,10 +55,10 @@ public class GameDinosaur extends MissCommon {
       if (isExistEle(driver, aBtnStart)) {
         for (int i = 0; i < 2; i++) {
           // スタート 2回
-          clearFootOverlay(driver);
-          clearOverlay(driver);
           if (isExistEle(driver, aBtnStart)) {
             clickSleepSelector(driver, aBtnStart, 4000);
+            clearOverlay(driver);
+            clearFootOverlay(driver);
           }
         }
 
@@ -67,8 +67,8 @@ public class GameDinosaur extends MissCommon {
           int choiceNum = Utille.getIntRand(eleList2.size()); // 餌の選択
           if (isExistEle(eleList2, choiceNum)) {
             clickSleepSelector(driver, eleList2, choiceNum, 5000);
-            clearFootOverlay(driver);
             clearOverlay(driver);
+            clearFootOverlay(driver);
 
             if (isExistEle(driver, selectTool)) {
               //              List<WebElement> eleList3 = driver.findElements(By.cssSelector(releasePoints));
@@ -83,17 +83,17 @@ public class GameDinosaur extends MissCommon {
                   int choiceNum3 = Utille.getIntRand(eleList4.size());
                   if (isExistEle(eleList4, choiceNum3)) {
                     clickSleepSelector(driver, eleList4, choiceNum3, 4000);
-                    clearFootOverlay(driver);
                     clearOverlay(driver);
+                    clearFootOverlay(driver);
                     if (isExistEle(driver, toNextSele, false)) {
                       clickSleepSelector(driver, toNextSele, 4000);
-                      clearFootOverlay(driver);
                       clearOverlay(driver);
+                      clearFootOverlay(driver);
                     }
                     else if (isExistEle(driver, battleSele)) {
                       clickSleepSelector(driver, battleSele, 4000);
-                      clearFootOverlay(driver);
                       clearOverlay(driver);
+                      clearFootOverlay(driver);
                       break;
                     }
                   }
@@ -105,28 +105,29 @@ public class GameDinosaur extends MissCommon {
                   int choiceNum3 = Utille.getIntRand(eleList4.size());
                   if (isExistEle(eleList4, choiceNum3)) {
                     clickSleepSelector(driver, eleList4, choiceNum3, 6000);
-                    clearFootOverlay(driver);
                     clearOverlay(driver);
+                    clearFootOverlay(driver);
                     clearAfterOverlay(driver);
                     if (isExistEle(driver, toNextSele, false)) {
                       clickSleepSelector(driver, toNextSele, 4000);
-                      clearFootOverlay(driver);
                       clearOverlay(driver);
+                      clearFootOverlay(driver);
+                      clearAfterOverlay(driver);
                     }
                     else if (isExistEle(driver, getSele)) {
                       clickSleepSelector(driver, getSele, 5000);
-                      clearFootOverlay(driver);
                       clearOverlay(driver);
+                      clearFootOverlay(driver);
                       clearAfterOverlay(driver);
                       if (isExistEle(driver, toNextSele, false)) {
                         clickSleepSelector(driver, toNextSele, 4000);
-                        clearFootOverlay(driver);
                         clearOverlay(driver);
+                        clearFootOverlay(driver);
                         clearAfterOverlay(driver);
                         if (isExistEle(driver, toTopSele)) {
                           clickSleepSelector(driver, toTopSele, 4000);
-                          clearFootOverlay(driver);
                           clearOverlay(driver);
+                          clearFootOverlay(driver);
                           clearAfterOverlay(driver);
                           break;
                         }
