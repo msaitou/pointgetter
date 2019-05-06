@@ -154,16 +154,18 @@ public class GameBears extends MissCommon {
 //                          i--;
                         }
                       }
-                      //                      if (isExistEle(driver, nextPage)) {
-                      //                        clickSleepSelector(driver, nextPage, 4000);
-                      //                        clearFootOverlay(driver);
-                      //                        clearOverlay(driver);
-                      //                      if (isExistEle(driver, toNextSele, false)) {
-                      //                        clickSleepSelector(driver, toNextSele, 4000);
-                      //                        clearFootOverlay(driver);
-                      //                        clearOverlay(driver);
-                      //                      }
-                      //                      }
+                    }
+                    else if (isExistEle(driver, aBtnStart)) {
+                      clickSleepSelector(driver, aBtnStart, 4000);
+                      clearOverlay(driver);
+                      clearFootOverlay(driver);
+                      clearAfterOverlay(driver);
+                      if (isExistEle(driver, nextPage, false)) {
+                        clickSleepSelector(driver, nextPage, 4000);
+                        clearOverlay(driver);
+                        clearFootOverlay(driver);
+                        clearAfterOverlay(driver);
+                      }
                     }
                   }
                   if (isExistEle(driver, toTopSele)) {
