@@ -27,7 +27,7 @@ public class GameFish extends MissCommon {
   */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
-    String aBtnStart = "a.btn_start>img";
+    String aBtnStart = "a[href='/fish/check']>img";
     String selectBait = "div#fish_contents>ul>li>a";
     String releasePoints ="div#fish_contents>a>img";
     String fightSele = "div#fish_under_battle>a>img";

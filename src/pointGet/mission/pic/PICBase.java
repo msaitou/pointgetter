@@ -59,9 +59,9 @@ public abstract class PICBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     Utille.url(driver, baseUrl, loggg);
-//    if (!LoginSite.isLongin(sCode, driver, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
-//      LoginSite.login(sCode, driver, loggg);
-//    }
+    //    if (!LoginSite.isLongin(sCode, driver, loggg)) { // ログインフラグ持たせて、例外時リトライの際にログインもするようにした方がよさげ TODO
+    //      LoginSite.login(sCode, driver, loggg);
+    //    }
     LoginSite.login(sCode, driver, loggg);
     for (String mission : missions) {
       Mission MisIns = null;
@@ -100,11 +100,15 @@ public abstract class PICBase extends Mission {
           MisIns = new PICFarmEnkNoCap(loggg, cProps);
           break;
         case Define.strPICMail:
-          MailClicker.main(new String[] {sCode});
+          MailClicker.main(new String[] { sCode });
           break;
         case Define.strPICNaruhodo: // ■なるほど検定
           MisIns = new PICNaruhodo(loggg, cProps);
           break;
+        case Define.strPICGameRarry: // ■ゲームラリー
+          MisIns = new PICGameRarry(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strPICClickBanner,
@@ -118,7 +122,8 @@ public abstract class PICBase extends Mission {
           Define.strPICMedalMool,
           Define.strPICFarmEnk,
           Define.strPICFarmEnkNoCap,
-          Define.strPICNaruhodo
+          Define.strPICNaruhodo,
+          Define.strPICGameRarry
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -138,11 +143,11 @@ public abstract class PICBase extends Mission {
       };
       PC.putPointsData(pMap);
     } catch (Throwable e) {
-      loggg.error("["+sCode+"");
+      loggg.error("[" + sCode + "");
       loggg.error(Utille.truncateBytes(Utille.parseStringFromStackTrace(e), 1000));
     } finally {
       driver.quit();
-//      driver.close();
+      //      driver.close();
     }
   }
 
@@ -155,11 +160,11 @@ public abstract class PICBase extends Mission {
   public static Double getSitePoint(WebDriver driver, Logger logg) {
     String selector = "dl.basis_data_box span.red.bold", point = "";
     Utille.url(driver, "https://pointi.jp/my/my_page.php", logg);
-//    if (!Utille.isExistEle(driver, selector, logg)) {
-//      // login!!
-//      LoginSite.login(sCode, driver, logg);
-//      Utille.url(driver, "https://pointi.jp/my/my_page.php", logg); // http://pointi.jp/
-//    }
+    //    if (!Utille.isExistEle(driver, selector, logg)) {
+    //      // login!!
+    //      LoginSite.login(sCode, driver, logg);
+    //      Utille.url(driver, "https://pointi.jp/my/my_page.php", logg); // http://pointi.jp/
+    //    }
     LoginSite.login(sCode, driver, logg);
     Utille.url(driver, "https://pointi.jp/my/my_page.php", logg); // http://pointi.jp/
     if (Utille.isExistEle(driver, selector, logg)) {

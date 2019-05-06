@@ -1,4 +1,4 @@
-package pointGet.mission.cit;
+package pointGet.mission.gen;
 
 import java.util.Map;
 
@@ -21,8 +21,8 @@ import pointGet.mission.parts.GameRace;
  *
  * @author saitou
  */
-public class CITGameRarry extends CITBase {
-  final String url = "https://www.chance.com/game/";
+public class GENGameRarry extends GENBase {
+  final String url = "http://www.gendama.jp/";
   GameJewel Jewel = null;
   GameOtenba Otenba = null;
   GameBears Bears = null;
@@ -34,7 +34,7 @@ public class CITGameRarry extends CITBase {
   /**
    * @param logg
    */
-  public CITGameRarry(Logger logg, Map<String, String> cProps) {
+  public GENGameRarry(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "ゲームラリー");
     Jewel = new GameJewel(logg);
     Otenba = new GameOtenba(logg);
@@ -48,22 +48,17 @@ public class CITGameRarry extends CITBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "img[alt='かんたんゲームボックス']";
-    if (isExistEle(driver, selector)) {
-      clickSleepSelector(driver, selector, 8000); // 遷移
-      changeCloseWindow(driver);
-    }
 
     String[] gameList = {
-        "a[href*='jewel']>div>p>img", // jewel
-        "a[href*='otenba']>div>p>img", // otenba
-        "a[href*='bears']>div>p>img", // bears
-        "a[href*='fish']>div>p>img", // fish
-        "a[href*='quiz']>div>p>img", // quiz
-        "a[href*='dinosaur']>div>p>img", // dinosaur
-        "a[href*='race']>div>p>img",// race
+        "ul>li>a[onclick*='リーグオブジュエル']", // jewel
+        "ul>li>a[onclick*='姫のお宝さがし']", // otenba
+        "ul>li>a[onclick*='くまのがっこう']", // bears
+        "ul>li>a[onclick*='釣神']", // fish
+        "ul>li>a[onclick*='スクールオブクイズ']", // quiz
+        "ul>li>a[onclick*='ほりほりランド']", // dinosaur
+        "ul>li>a[onclick*='ベジモンレース']",// race
     };
-    
+
     String[] gameList2 = {
         "",
         "a>img[src*='otenba']", // otenba
@@ -75,14 +70,16 @@ public class CITGameRarry extends CITBase {
     };
 
     for (int i = 0; i < gameList.length; i++) {
-//      if (i < 1)
-//        continue;
+      //      if (i < 2)
+      //        continue;
       if (isExistEle(driver, gameList[i])) {
 
         // jewel
         if (gameList[i].equals(gameList[0])) {
+          Utille.exeScript(driver, "window.scrollTo(0, document.body.scrollHeight);", logg);
+
           String wid = driver.getWindowHandle();
-          Utille.scrolledPage(driver, driver.findElement(By.cssSelector(gameList[i])));
+          //          Utille.scrolledPage(driver, driver.findElement(By.cssSelector(gameList[i])));
           Utille.sleep(1000);
           Actions actions = new Actions(driver);
           actions.keyDown(Keys.CONTROL);
@@ -90,7 +87,6 @@ public class CITGameRarry extends CITBase {
           actions.perform();
           Utille.sleep(5000);
           changeCloseWindow(driver);
-//          changeWindow(driver, wid);
           //          Utille.sleep(3000);
           //          clickSleepSelector(driver, gameList[i], 2000); // 遷移
           Utille.sleep(4000);

@@ -1,4 +1,4 @@
-package pointGet.mission.cit;
+package pointGet.mission.pic;
 
 import java.util.Map;
 
@@ -21,8 +21,8 @@ import pointGet.mission.parts.GameRace;
  *
  * @author saitou
  */
-public class CITGameRarry extends CITBase {
-  final String url = "https://www.chance.com/game/";
+public class PICGameRarry extends PICBase {
+  final String url = "https://pointi.jp/game/";
   GameJewel Jewel = null;
   GameOtenba Otenba = null;
   GameBears Bears = null;
@@ -34,7 +34,7 @@ public class CITGameRarry extends CITBase {
   /**
    * @param logg
    */
-  public CITGameRarry(Logger logg, Map<String, String> cProps) {
+  public PICGameRarry(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "ゲームラリー");
     Jewel = new GameJewel(logg);
     Otenba = new GameOtenba(logg);
@@ -48,22 +48,22 @@ public class CITGameRarry extends CITBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "img[alt='かんたんゲームボックス']";
+    selector = "img[alt='ゲームボックス']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 8000); // 遷移
       changeCloseWindow(driver);
     }
 
     String[] gameList = {
-        "a[href*='jewel']>div>p>img", // jewel
-        "a[href*='otenba']>div>p>img", // otenba
-        "a[href*='bears']>div>p>img", // bears
-        "a[href*='fish']>div>p>img", // fish
-        "a[href*='quiz']>div>p>img", // quiz
-        "a[href*='dinosaur']>div>p>img", // dinosaur
-        "a[href*='race']>div>p>img",// race
+        "a>img[alt='リーグオブジュエル']", // jewel
+        "a>img[alt='戦国!姫のお宝さがし']", // otenba
+        "a>img[alt='']", // bears
+        "a>img[alt='釣神']", // fish
+        "a>img[alt='スクールオブクイズ']", // quiz
+        "a>img[alt='']", // dinosaur
+        "a>img[alt='ベジモンレース']",// race
     };
-    
+
     String[] gameList2 = {
         "",
         "a>img[src*='otenba']", // otenba
@@ -75,8 +75,8 @@ public class CITGameRarry extends CITBase {
     };
 
     for (int i = 0; i < gameList.length; i++) {
-//      if (i < 1)
-//        continue;
+      if (i == 2 || i == 5)
+        continue;
       if (isExistEle(driver, gameList[i])) {
 
         // jewel
@@ -89,8 +89,8 @@ public class CITGameRarry extends CITBase {
           actions.click(driver.findElement(By.cssSelector(gameList[i])));
           actions.perform();
           Utille.sleep(5000);
+          //          changeWindow(driver, wid);
           changeCloseWindow(driver);
-//          changeWindow(driver, wid);
           //          Utille.sleep(3000);
           //          clickSleepSelector(driver, gameList[i], 2000); // 遷移
           Utille.sleep(4000);

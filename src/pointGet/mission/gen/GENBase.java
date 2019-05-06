@@ -128,6 +128,9 @@ public abstract class GENBase extends Mission {
         case Define.strGENAnkPark: // ■アンケートパーク
           MisIns = new GENAnkPark(loggg, cProps);
           break;
+        case Define.strGENGameRarry: // ■ゲームラリー
+          MisIns = new GENGameRarry(loggg, cProps);
+          break;
 
         default:
       }
@@ -144,7 +147,8 @@ public abstract class GENBase extends Mission {
           Define.strGENCMother,
           Define.strGENMorikoreEnkNoCap,
           Define.strGENHitosara,
-          Define.strGENNaruhodo, Define.strGENCMPochi, Define.strGENAnkPark
+          Define.strGENNaruhodo, Define.strGENCMPochi,
+          Define.strGENAnkPark, Define.strGENGameRarry
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

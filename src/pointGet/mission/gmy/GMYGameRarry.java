@@ -89,7 +89,8 @@ public class GMYGameRarry extends GMYBase {
           actions.click(driver.findElement(By.cssSelector(gameList[i])));
           actions.perform();
           Utille.sleep(5000);
-          changeWindow(driver, wid);
+//          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           //          Utille.sleep(3000);
           //          clickSleepSelector(driver, gameList[i], 2000); // 遷移
           Utille.sleep(4000);
@@ -100,7 +101,7 @@ public class GMYGameRarry extends GMYBase {
         else if (gameList[i].equals(gameList[1])) {
           String wid = driver.getWindowHandle();
           clickSleepSelector(driver, gameList[i], 2000); // 遷移
-          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           Utille.sleep(4000);
           Otenba.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
@@ -109,7 +110,7 @@ public class GMYGameRarry extends GMYBase {
         else if (gameList[i].equals(gameList[2])) {
           String wid = driver.getWindowHandle();
           clickSleepSelector(driver, gameList[i], 2000); // 遷移
-          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           Utille.sleep(4000);
           Bears.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
@@ -118,7 +119,7 @@ public class GMYGameRarry extends GMYBase {
         else if (gameList[i].equals(gameList[3])) {
           String wid = driver.getWindowHandle();
           clickSleepSelector(driver, gameList[i], 2000); // 遷移
-          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           Utille.sleep(4000);
           Fish.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
@@ -127,7 +128,7 @@ public class GMYGameRarry extends GMYBase {
         else if (gameList[i].equals(gameList[4])) {
           String wid = driver.getWindowHandle();
           clickSleepSelector(driver, gameList[i], 2000); // 遷移
-          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           Utille.sleep(4000);
           Quiz.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
@@ -136,7 +137,7 @@ public class GMYGameRarry extends GMYBase {
         else if (gameList[i].equals(gameList[5])) {
           String wid = driver.getWindowHandle();
           clickSleepSelector(driver, gameList[i], 2000); // 遷移
-          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           Utille.sleep(4000);
           Dinosaur.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える
@@ -145,7 +146,7 @@ public class GMYGameRarry extends GMYBase {
         else if (gameList[i].equals(gameList[6])) {
           String wid = driver.getWindowHandle();
           clickSleepSelector(driver, gameList[i], 2000); // 遷移
-          changeWindow(driver, wid);
+          changeCloseWindow(driver);
           Utille.sleep(4000);
           Race.answer(driver, null, wid);
           gameList = gameList2; // 入れ替える

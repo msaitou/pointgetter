@@ -27,7 +27,8 @@ public class GameDinosaur extends MissCommon {
   */
   public void answer(WebDriver driver, String startSele, String wid) {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
-    String aBtnStart = "a.btn_start>img";
+//    String aBtnStart = "a.btn_start>img";
+    String aBtnStart = "a[href='/dinosaur/check']>img";
     String selectBait = "div#dinosaur_contents>ul>li>a";
     String releasePoints = "div#horihori_location_3>a>img";
     String selectTool = "div.game_content>a>img";
