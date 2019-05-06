@@ -22,7 +22,7 @@ import pointGet.mission.parts.GameRace;
  * @author saitou
  */
 public class GPOGameRarry extends GPOBase {
-  final String url = "https://www.sugutama.jp/game";
+  final String url = "http://www.gpoint.co.jp/gpark/";
   GameJewel Jewel = null;
   GameOtenba Otenba = null;
   GameBears Bears = null;
