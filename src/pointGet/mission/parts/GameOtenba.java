@@ -104,29 +104,43 @@ public class GameOtenba extends MissCommon {
           // 宝箱開ける
           if (isExistEle(driver, boxSele)) {
             for (boolean roopEndFlag = false; !roopEndFlag;) {
-              List<WebElement> eleList2 = driver.findElements(By.cssSelector(boxSele));
-              int choiceies = eleList2.size();
-              if (eleList2.size() == 0) {
-                break;
-              }
-              int choiceNum = Utille.getIntRand(choiceies);
-              if (isExistEle(eleList2, choiceNum)) {
-                clickSleepSelector(driver, eleList2, choiceNum, 5000);
-                clearOverlay(driver);
-                clearFootOverlay(driver);
-                if (isExistEle(driver, nextSele)) {
-                  // 空いた？
-                  clickSleepSelector(driver, nextSele, 4000);
+              if (isExistEle(driver, boxSele, false)) {
+                List<WebElement> eleList2 = driver.findElements(By.cssSelector(boxSele));
+                int choiceies = eleList2.size();
+                if (eleList2.size() == 0) {
+                  break;
+                }
+                int choiceNum = Utille.getIntRand(choiceies);
+                if (isExistEle(eleList2, choiceNum)) {
+                  clickSleepSelector(driver, eleList2, choiceNum, 5000);
                   clearOverlay(driver);
                   clearFootOverlay(driver);
+                  if (isExistEle(driver, nextSele)) {
+                    // 空いた？
+                    clickSleepSelector(driver, nextSele, 4000);
+                    clearOverlay(driver);
+                    clearFootOverlay(driver);
+                    if (isExistEle(driver, nextSele, false)) {
+                      // 空いた結果
+                      //                      roopEndFlag = true;
+                      clickSleepSelector(driver, nextSele, 4000);
+                      clearOverlay(driver);
+                      clearFootOverlay(driver);
+                    }
+                  }
+                }
+              }
+              else {
+                // たぶんALLはずれ
+                logg.info("全部はずれOneMore!");
+                for (int i =0;i<2;i++) {
                   if (isExistEle(driver, nextSele, false)) {
-                    // 空いた結果
-                    //                      roopEndFlag = true;
                     clickSleepSelector(driver, nextSele, 4000);
                     clearOverlay(driver);
                     clearFootOverlay(driver);
                   }
                 }
+                break;
               }
             }
             clearAfterOverlay(driver);

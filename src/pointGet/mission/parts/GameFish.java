@@ -125,6 +125,8 @@ public class GameFish extends MissCommon {
                 }
                 if (isExistEle(driver, fightSele)) {
                   for (;;) {
+                    String missSele = "img.fish_miss";
+                    String againSele = "";
                     List<WebElement> eleList4 = driver.findElements(By.cssSelector(fightSele));
                     int choiceNum3 = Utille.getIntRand(eleList4.size());
                     if (isExistEle(eleList4, choiceNum3)) {
@@ -152,7 +154,17 @@ public class GameFish extends MissCommon {
                           break;
                         }
                       }
-                      // TODO ばれたとき
+                      else if (isExistEle(driver, missSele)) {
+                        logg.info("ばれました。。。");
+                        if (isExistEle(driver, toTopSele)) {
+                          clickSleepSelector(driver, toTopSele, 4000);
+                          clearFootOverlay(driver);
+                          clearOverlay(driver);
+                          clearFootOverlay(driver);
+                          clearAfterOverlay(driver);
+                          break;
+                        }
+                      }
                     }
                   }
                 }
