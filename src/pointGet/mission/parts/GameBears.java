@@ -125,6 +125,13 @@ public class GameBears extends MissCommon {
                       }
                     }
                   }
+                  else if (isExistEle(driver, aBtnStart)) {
+                    logg.info("パーティやりすぎ");
+                    clickSleepSelector(driver, aBtnStart, 4000);
+                    clearOverlay(driver);
+                    clearFootOverlay(driver);
+                    clearAfterOverlay(driver);
+                  }
                   else {
                     if (isExistEle(driver, toNextSele, false)) {
                       logg.info("友達発見？！！");
