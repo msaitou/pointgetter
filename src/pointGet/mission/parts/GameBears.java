@@ -148,7 +148,6 @@ public class GameBears extends MissCommon {
                           clearOverlay(driver);
                           clearFootOverlay(driver);
                           clearAfterOverlay(driver);
-//                          i++;
                         }
 
                         if (isExistEle(driver, nextPage, false)) {
@@ -156,7 +155,6 @@ public class GameBears extends MissCommon {
                           clearOverlay(driver);
                           clearFootOverlay(driver);
                           clearAfterOverlay(driver);
-//                          i--;
                         }
                       }
                     }
@@ -173,14 +171,26 @@ public class GameBears extends MissCommon {
                       }
                     }
                   }
-                  if (isExistEle(driver, toTopSele)) {
-                    logg.info("TOPへ！！");
-                    // TOPへ戻る
-                    clickSleepSelector(driver, toTopSele, 4000);
+                }
+                else if (choiceNum != 3 && isExistEle(driver, aBtnStart)) {
+                  clickSleepSelector(driver, aBtnStart, 4000);
+                  clearOverlay(driver);
+                  clearFootOverlay(driver);
+                  clearAfterOverlay(driver);
+                  if (isExistEle(driver, nextPage, false)) {
+                    clickSleepSelector(driver, nextPage, 4000);
                     clearOverlay(driver);
                     clearFootOverlay(driver);
+                    clearAfterOverlay(driver);
                   }
                 }
+              }
+              if (isExistEle(driver, toTopSele)) {
+                logg.info("TOPへ！！");
+                // TOPへ戻る
+                clickSleepSelector(driver, toTopSele, 4000);
+                clearOverlay(driver);
+                clearFootOverlay(driver);
               }
             }
           }

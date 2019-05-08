@@ -71,8 +71,8 @@ public class PTOGameRarry extends PTOBase {
 
     for (int i = 0; i < gameList.length; i++) {
 //      if (i < 6)
-        if (i < 2 || i>2)
-        continue;
+//        if (i < 2 || i>2)
+//        continue;
       if (isExistEle(driver, gameList[i])) {
 
         // jewel
