@@ -159,12 +159,26 @@ public class GameBears extends MissCommon {
                       }
                     }
                     else if (isExistEle(driver, aBtnStart)) {
+                      // 農園系
                       clickSleepSelector(driver, aBtnStart, 4000);
                       clearOverlay(driver);
                       clearFootOverlay(driver);
                       clearAfterOverlay(driver);
                       if (isExistEle(driver, nextPage, false)) {
                         clickSleepSelector(driver, nextPage, 4000);
+                        clearOverlay(driver);
+                        clearFootOverlay(driver);
+                        clearAfterOverlay(driver);
+                      }
+                      else if (isExistEle(driver, toNextSele, false)) {
+                        clickSleepSelector(driver, toNextSele, 4000);
+                        clearOverlay(driver);
+                        clearFootOverlay(driver);
+                        clearAfterOverlay(driver);
+//                        i++;
+                      }
+                      else if (isExistEle(driver, toNextSele2, false)) {
+                        clickSleepSelector(driver, toNextSele2, 4000);
                         clearOverlay(driver);
                         clearFootOverlay(driver);
                         clearAfterOverlay(driver);
