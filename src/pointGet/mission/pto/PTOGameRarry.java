@@ -52,7 +52,6 @@ public class PTOGameRarry extends PTOBase {
 
     String[] gameList = {
         "a[href*='jewel']>div.pt-stamp__img>span", // jewel
-
         "a[href*='otenba']>div.pt-stamp__img>span", // otenba
         "a[href*='bears']>div.pt-stamp__img>span", // bears
         "a[href*='fish']>div.pt-stamp__img>span", // fish
@@ -72,7 +71,8 @@ public class PTOGameRarry extends PTOBase {
 
     for (int i = 0; i < gameList.length; i++) {
 //      if (i < 6)
-//        continue;
+        if (i < 2 || i>2)
+        continue;
       if (isExistEle(driver, gameList[i])) {
 
         // jewel

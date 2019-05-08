@@ -119,7 +119,7 @@ public class GameDinosaur extends MissCommon {
                   List<WebElement> eleList4 = driver.findElements(By.cssSelector(selectTool));
                   int choiceNum3 = Utille.getIntRand(eleList4.size());
                   if (isExistEle(eleList4, choiceNum3)) {
-                    clickSleepSelector(driver, eleList4, choiceNum3, 6000);
+                    clickSleepSelector(driver, eleList4, choiceNum3, 4000);
                     clearOverlay(driver);
                     clearFootOverlay(driver);
                     clearAfterOverlay(driver);

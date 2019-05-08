@@ -35,7 +35,7 @@ public class GameQuiz extends MissCommon {
     String answerSele = "a[class*='so-quiz-answer-";
     String toTopSele = "div>a[href='/quiz']";
     String waitStartSele = "span.so-quiz-btn-off";
-
+    String finishSele = "div>a.so-quiz-btn[href*='/quiz/result/']";
     String existGetPointSele = "span.so-quiz-badge";
     String confirmPointSele = "a#trigger_reward_detail_title";
     String getPointSele = "a#btn_recieve";
@@ -74,35 +74,66 @@ public class GameQuiz extends MissCommon {
           clearOverlay(driver);
           clearFootOverlay(driver);
           clearAfterOverlay(driver);
-          for (int i = 0; i < 10; i++) {
-            if (isExistEle(driver, qOpenSele)) {
-              clickSleepSelector(driver, qOpenSele, 4000);
-              clearOverlay(driver);
-              clearFootOverlay(driver);
-              clearAfterOverlay(driver);
-              if (isExistEle(driver, answerSele)) {
-                // 選択問題
-                List<WebElement> eleList2 = driver.findElements(By.cssSelector(answerSele));
-                int choiceies = eleList2.size();
-                int choiceNum = Utille.getIntRand(choiceies);
-                if (isExistEle(eleList2, choiceNum)) {
-                  clickSleepSelector(driver, eleList2, choiceNum, 3000);
+          while (true) {
+            for (int i = 0; i < 10; i++) {
+              if (isExistEle(driver, qOpenSele)) {
+                clickSleepSelector(driver, qOpenSele, 4000);
+                clearOverlay(driver);
+                clearFootOverlay(driver);
+                clearAfterOverlay(driver);
+                if (isExistEle(driver, answerSele)) {
+                  // 選択問題
+                  List<WebElement> eleList2 = driver.findElements(By.cssSelector(answerSele));
+                  int choiceies = eleList2.size();
+                  int choiceNum = Utille.getIntRand(choiceies);
+                  if (isExistEle(eleList2, choiceNum)) {
+                    clickSleepSelector(driver, eleList2, choiceNum, 3000);
+                    clearOverlay(driver);
+                    clearFootOverlay(driver);
+                    clearAfterOverlay(driver);
+                  }
+                }
+                // 次の問題
+                if (isExistEle(driver, aBtnStart3)) {
+                  clickSleepSelector(driver, aBtnStart3, 4000);
                   clearOverlay(driver);
                   clearFootOverlay(driver);
                   clearAfterOverlay(driver);
                 }
               }
-              // 次の問題
-              if (isExistEle(driver, aBtnStart3)) {
+            }
+            if (isExistEle(driver, finishSele, false)) {
+              clickSleepSelector(driver, finishSele, 4000);
+              clearOverlay(driver);
+              clearFootOverlay(driver);
+              clearAfterOverlay(driver);
+              if (isExistEle(driver, toTopSele)) {
+                clickSleepSelector(driver, toTopSele, 4000);
+                clearOverlay(driver);
+                clearFootOverlay(driver);
+                clearAfterOverlay(driver);
+              }
+              break;
+            }
+            else {
+              if (isExistEle(driver, toTopSele)) {
+                clickSleepSelector(driver, toTopSele, 4000);
+                clearOverlay(driver);
+                clearFootOverlay(driver);
+                clearAfterOverlay(driver);
+                break;
+              }
+              // TODO　レベルアップ時
+              else if (isExistEle(driver, aBtnStart3)) {
+                logg.info("ネクストステージ！！");
                 clickSleepSelector(driver, aBtnStart3, 4000);
                 clearOverlay(driver);
                 clearFootOverlay(driver);
                 clearAfterOverlay(driver);
               }
-              // TODO 抜けるタイミング
-              // TODO　レベルアップ時
             }
           }
+          
         }
       }
     }
