@@ -32,6 +32,7 @@ public class GameOtenba extends MissCommon {
     String seleCourse = "a.select_course_btn>img"; // 方向セレクタ
     String nextSele = "div.btn_next>a>img";
     String boxSele = "div.unlock_collected_box>ul>li>a";
+    String toTopSele ="p>a>img[alt='ボタン トップにもどる']";
 
     clearOverlay(driver);
     clearFootOverlay(driver);
@@ -144,6 +145,12 @@ public class GameOtenba extends MissCommon {
               }
             }
             clearAfterOverlay(driver);
+            if (isExistEle(driver, toTopSele)) {
+              clickSleepSelector(driver, toTopSele, 4000);
+              clearOverlay(driver);
+              clearFootOverlay(driver);
+            }
+
           }
         }
       }
