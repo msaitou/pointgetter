@@ -91,6 +91,8 @@ public class GameJewel extends MissCommon {
 
             int choiceNum = judgementWay(eleList2);
             clickSleepSelector(driver, eleList2, choiceNum, 5000);
+            clearOverlay(driver);
+            clearFootOverlay(driver);
 
             // event発生
             if (isExistEle(driver, seleActionSele, false)) {

@@ -64,68 +64,38 @@ public class GameQuiz extends MissCommon {
       clearOverlay(driver);
       clearFootOverlay(driver);
       clearAfterOverlay(driver);
-      if (isExistEle(driver, aBtnStart2)) {
+      if (isExistEle(driver, aBtnStart2, false)) {
         clickSleepSelector(driver, aBtnStart2, 4000);
         clearOverlay(driver);
         clearFootOverlay(driver);
         clearAfterOverlay(driver);
-        if (isExistEle(driver, aBtnStart3)) {
-          clickSleepSelector(driver, aBtnStart3, 4000);
-          clearOverlay(driver);
-          clearFootOverlay(driver);
-          clearAfterOverlay(driver);
-          while (true) {
-            for (int i = 0; i < 10; i++) {
-              if (isExistEle(driver, qOpenSele)) {
-                clickSleepSelector(driver, qOpenSele, 4000);
-                clearOverlay(driver);
-                clearFootOverlay(driver);
-                clearAfterOverlay(driver);
-                if (isExistEle(driver, answerSele)) {
-                  // 選択問題
-                  List<WebElement> eleList2 = driver.findElements(By.cssSelector(answerSele));
-                  int choiceies = eleList2.size();
-                  int choiceNum = Utille.getIntRand(choiceies);
-                  if (isExistEle(eleList2, choiceNum)) {
-                    clickSleepSelector(driver, eleList2, choiceNum, 3000);
-                    clearOverlay(driver);
-                    clearFootOverlay(driver);
-                    clearAfterOverlay(driver);
-                  }
-                }
-                // 次の問題
-                if (isExistEle(driver, aBtnStart3)) {
-                  clickSleepSelector(driver, aBtnStart3, 4000);
+      }
+      if (isExistEle(driver, aBtnStart3)) {
+        clickSleepSelector(driver, aBtnStart3, 4000);
+        clearOverlay(driver);
+        clearFootOverlay(driver);
+        clearAfterOverlay(driver);
+        while (true) {
+          for (int i = 0; i < 10; i++) {
+            if (isExistEle(driver, qOpenSele)) {
+              clickSleepSelector(driver, qOpenSele, 4000);
+              clearOverlay(driver);
+              clearFootOverlay(driver);
+              clearAfterOverlay(driver);
+              if (isExistEle(driver, answerSele)) {
+                // 選択問題
+                List<WebElement> eleList2 = driver.findElements(By.cssSelector(answerSele));
+                int choiceies = eleList2.size();
+                int choiceNum = Utille.getIntRand(choiceies);
+                if (isExistEle(eleList2, choiceNum)) {
+                  clickSleepSelector(driver, eleList2, choiceNum, 3000);
                   clearOverlay(driver);
                   clearFootOverlay(driver);
                   clearAfterOverlay(driver);
                 }
               }
-            }
-            if (isExistEle(driver, finishSele, false)) {
-              clickSleepSelector(driver, finishSele, 4000);
-              clearOverlay(driver);
-              clearFootOverlay(driver);
-              clearAfterOverlay(driver);
-              if (isExistEle(driver, toTopSele)) {
-                clickSleepSelector(driver, toTopSele, 4000);
-                clearOverlay(driver);
-                clearFootOverlay(driver);
-                clearAfterOverlay(driver);
-              }
-              break;
-            }
-            else {
-              if (isExistEle(driver, toTopSele)) {
-                clickSleepSelector(driver, toTopSele, 4000);
-                clearOverlay(driver);
-                clearFootOverlay(driver);
-                clearAfterOverlay(driver);
-                break;
-              }
-              // TODO　レベルアップ時
-              else if (isExistEle(driver, aBtnStart3)) {
-                logg.info("ネクストステージ！！");
+              // 次の問題
+              if (isExistEle(driver, aBtnStart3)) {
                 clickSleepSelector(driver, aBtnStart3, 4000);
                 clearOverlay(driver);
                 clearFootOverlay(driver);
@@ -133,8 +103,38 @@ public class GameQuiz extends MissCommon {
               }
             }
           }
-          
+          if (isExistEle(driver, finishSele, false)) {
+            clickSleepSelector(driver, finishSele, 4000);
+            clearOverlay(driver);
+            clearFootOverlay(driver);
+            clearAfterOverlay(driver);
+            if (isExistEle(driver, toTopSele)) {
+              clickSleepSelector(driver, toTopSele, 4000);
+              clearOverlay(driver);
+              clearFootOverlay(driver);
+              clearAfterOverlay(driver);
+            }
+            break;
+          }
+          else {
+            if (isExistEle(driver, toTopSele)) {
+              clickSleepSelector(driver, toTopSele, 4000);
+              clearOverlay(driver);
+              clearFootOverlay(driver);
+              clearAfterOverlay(driver);
+              break;
+            }
+            // TODO　レベルアップ時
+            else if (isExistEle(driver, aBtnStart3)) {
+              logg.info("ネクストステージ！！");
+              clickSleepSelector(driver, aBtnStart3, 4000);
+              clearOverlay(driver);
+              clearFootOverlay(driver);
+              clearAfterOverlay(driver);
+            }
+          }
         }
+
       }
     }
     // この画面にほかのゲームのリンクがあるのでそっから遷移するためにウィンドウを消さない
