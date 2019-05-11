@@ -135,7 +135,7 @@ public class GameBears extends MissCommon {
                       logg.info("友達発見？！！");
                       // 友達発見
                       // choiceNum  1の時亀でその時に対応できていないポイ
-                      for (int i = 0; i < 10;i++) {
+                      for (int i = 0; i < 20;i++) {
                         if (isExistEle(driver, toNextSele, false)) {
                           clickSleepSelector(driver, toNextSele, 4000);
                           clearOverlay(driver);

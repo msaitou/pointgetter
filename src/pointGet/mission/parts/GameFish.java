@@ -38,6 +38,7 @@ public class GameFish extends MissCommon {
     String toTopSele = "a>img[alt='ボタン トップへ']";
 
     String lifeSele = "img[src*='fish_life_on']";
+    String missSele = "img.fish_miss";
 
     String existGetPointSele = "div.notify_yesterday_reward";
     String confirmPointSele = "a#trigger_reward_detail>img[alt*='報酬を受け取る']";
@@ -120,11 +121,23 @@ public class GameFish extends MissCommon {
                         clearAfterOverlay(driver);
                         break;
                       }
+                      else if (isExistEle(driver, missSele)) {
+                        logg.info("ばれました。。。");
+                        if (isExistEle(driver, toTopSele)) {
+                          clickSleepSelector(driver, toTopSele, 4000);
+                          clearFootOverlay(driver);
+                          clearOverlay(driver);
+                          clearFootOverlay(driver);
+                          clearAfterOverlay(driver);
+                          break;
+                        }
+                      }
                     }
                   }
                   else {
                     // よくわからないけどここに来るポイ
                     if (isExistEle(driver, aBtnStart)) {
+                      logg.info("ここにほんとに来るか？");
                       clickSleepSelector(driver, aBtnStart, 4000);
                       clearOverlay(driver);
                       clearFootOverlay(driver);
@@ -134,7 +147,6 @@ public class GameFish extends MissCommon {
                 }
                 if (isExistEle(driver, fightSele)) {
                   for (;;) {
-                    String missSele = "img.fish_miss";
                     String againSele = "";
                     List<WebElement> eleList4 = driver.findElements(By.cssSelector(fightSele));
                     int choiceNum3 = Utille.getIntRand(eleList4.size());
@@ -178,6 +190,7 @@ public class GameFish extends MissCommon {
                     else {
                       // よくわからないけどここに来るポイ
                       if (isExistEle(driver, aBtnStart)) {
+                        logg.info("ここにほんとに来るか？");
                         clickSleepSelector(driver, aBtnStart, 4000);
                         clearOverlay(driver);
                         clearFootOverlay(driver);

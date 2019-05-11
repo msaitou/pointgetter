@@ -111,6 +111,17 @@ public class GameDinosaur extends MissCommon {
                       clearFootOverlay(driver);
                       break;
                     }
+                    else {
+                      logg.info("MISSりました。。。");
+                      if (isExistEle(driver, toTopSele)) {
+                        clickSleepSelector(driver, toTopSele, 4000);
+                        clearFootOverlay(driver);
+                        clearOverlay(driver);
+                        clearFootOverlay(driver);
+                        clearAfterOverlay(driver);
+                        break;
+                      }
+                    }
                   }
                 }
               }
