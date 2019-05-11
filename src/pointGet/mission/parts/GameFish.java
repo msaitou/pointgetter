@@ -122,6 +122,15 @@ public class GameFish extends MissCommon {
                       }
                     }
                   }
+                  else {
+                    // よくわからないけどここに来るポイ
+                    if (isExistEle(driver, aBtnStart)) {
+                      clickSleepSelector(driver, aBtnStart, 4000);
+                      clearOverlay(driver);
+                      clearFootOverlay(driver);
+                      clearAfterOverlay(driver);
+                    }
+                  }
                 }
                 if (isExistEle(driver, fightSele)) {
                   for (;;) {
@@ -164,6 +173,15 @@ public class GameFish extends MissCommon {
                           clearAfterOverlay(driver);
                           break;
                         }
+                      }
+                    }
+                    else {
+                      // よくわからないけどここに来るポイ
+                      if (isExistEle(driver, aBtnStart)) {
+                        clickSleepSelector(driver, aBtnStart, 4000);
+                        clearOverlay(driver);
+                        clearFootOverlay(driver);
+                        clearAfterOverlay(driver);
                       }
                     }
                   }
