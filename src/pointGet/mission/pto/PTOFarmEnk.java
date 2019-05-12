@@ -138,6 +138,7 @@ public class PTOFarmEnk extends PTOBase {
               AdShindan.answer(driver, sele3, wid);
             }
             else if ((cUrl.indexOf("http://pittango.net/") >= 0
+                || cUrl.indexOf("pittango.jp") >= 0
                 //                || cUrl.indexOf("beautynail-design.com") >= 0
                 //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
                 )
@@ -209,7 +210,7 @@ public class PTOFarmEnk extends PTOBase {
           }
         }
       }
-      String stampSele = "a.suggest-surveys";
+      String stampSele = "a[href='/exchange/point']#btn";
       if (isExistEle(driver, stampSele)) {
         clickSleepSelector(driver, stampSele, 4000); // 遷移
       }

@@ -41,7 +41,7 @@ public class GENMorikoreEnk extends GENBase {
   AnswerHyakkey Hyakkey = null;
   AnswerZukan Zukan = null;
   AnswerManga Manga = null;
-  AnswerHirameki Hirameki=null;
+  AnswerHirameki Hirameki = null;
 
   /**
    * @param logg
@@ -59,8 +59,8 @@ public class GENMorikoreEnk extends GENBase {
     Hyakkey = new AnswerHyakkey(logg);
     Kansatu = new AnswerKansatu(logg);
     Zukan = new AnswerZukan(logg);
-    Manga = new AnswerManga (logg);
-    Hirameki=new AnswerHirameki(logg);
+    Manga = new AnswerManga(logg);
+    Hirameki = new AnswerHirameki(logg);
   }
 
   @Override
@@ -230,6 +230,7 @@ public class GENMorikoreEnk extends GENBase {
                 Colum.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("http://pittango.net/") >= 0
+              || cUrl.indexOf("pittango.jp") >= 0
               //                || cUrl.indexOf("beautynail-design.com") >= 0
               //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
               )

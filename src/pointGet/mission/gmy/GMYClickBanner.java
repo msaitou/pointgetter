@@ -26,12 +26,12 @@ public class GMYClickBanner extends GMYBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    selector = "a span.clickpt";
+    selector = "a>div>p.point";
     String[] urls = {
         // ■clipoバナーtop
-        "http://dietnavi.com/pc/",
+//        "https://dietnavi.com/pc/",
         // clipoバナーページ
-        "http://dietnavi.com/pc/daily_click.php" };
+        "https://dietnavi.com/pc/daily_click.php" };
 
     for (int j = 0; j < urls.length; j++) {
       Utille.url(driver, urls[j], logg);

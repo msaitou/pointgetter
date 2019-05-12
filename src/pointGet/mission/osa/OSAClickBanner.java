@@ -13,30 +13,34 @@ import pointGet.common.Utille;
  * 1日1回
  */
 public class OSAClickBanner extends OSABase {
-	final String url = "https://osaifu.com/";
+  final String url = "https://osaifu.com/";
 
-	/**
-	 * @param logg
-	 */
-	public OSAClickBanner(Logger logg, Map<String, String> cProps) {
-		super(logg, cProps, "クリックゴールド");
-	}
+  /**
+   * @param logg
+   */
+  public OSAClickBanner(Logger logg, Map<String, String> cProps) {
+    super(logg, cProps, "クリックゴールド");
+  }
 
-	@Override
-	public void privateMission(WebDriver driver) {
-		Utille.url(driver, url, logg);
-		selector = "section[data-block-title='クリックで貯める'] div>img";
-		if (isExistEle(driver, selector)) {
-			int size = getSelectorSize(driver, selector);;
-			for (int i = 0; i < size; i++) {
-				if (isExistEle(driver, selector)) {
-					driver.findElements(By.cssSelector(selector)).get(i).click();
-					Utille.sleep(2000);
-					Utille.url(driver, url, logg);
-					Utille.sleep(2000);
-				}
-			}
-		}
-	}
+  @Override
+  public void privateMission(WebDriver driver) {
+    Utille.url(driver, url, logg);
+    selector = "section[data-block-title='クリックで貯める'] div>img";
+    String seleGetCoin = "div#detail_contents-inner div>a[href*='/jump']";
+    if (isExistEle(driver, selector)) {
+      int size = getSelectorSize(driver, selector);;
+      for (int i = 0; i < size; i++) {
+        if (isExistEle(driver, selector)) {
+          driver.findElements(By.cssSelector(selector)).get(i).click();
+          Utille.sleep(5000);
+          if (isExistEle(driver, seleGetCoin)) {
+            clickSleepSelector(driver, seleGetCoin, 4000);
+          }
+          Utille.url(driver, url, logg);
+          Utille.sleep(3000);
+        }
+      }
+    }
+  }
 
 }

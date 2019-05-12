@@ -143,6 +143,7 @@ public class PICFarmEnk extends PICBase {
               AdShindan.answer(driver, sele3, wid);
             }
             else if ((cUrl.indexOf("http://pittango.net/") >= 0
+                || cUrl.indexOf("pittango.jp") >= 0
             //                || cUrl.indexOf("beautynail-design.com") >= 0
             //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
             )

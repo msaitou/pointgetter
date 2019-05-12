@@ -194,7 +194,7 @@ public class GPOFarmEnk extends GPOBase {
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
             }
-            else if ((cUrl.indexOf("http://pittango.net/") >= 0
+            else if ((cUrl.indexOf("pittango.jp") >= 0
                 //                || cUrl.indexOf("beautynail-design.com") >= 0
                 //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
                 )

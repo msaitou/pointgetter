@@ -144,7 +144,7 @@ public class CMSFarmEnk extends CMSBase {
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
             }
-            else if ((cUrl.indexOf("http://pittango.net/") >= 0
+            else if ((cUrl.indexOf("pittango.jp") >= 0
             //                || cUrl.indexOf("beautynail-design.com") >= 0
             //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
             )
@@ -219,7 +219,7 @@ public class CMSFarmEnk extends CMSBase {
           }
         }
       }
-      String stampSele = "a.suggest-surveys";
+      String stampSele = "a[href='/exchange/point']#btn";
       if (isExistEle(driver, stampSele)) {
         clickSleepSelector(driver, stampSele, 4000); // 遷移
       }
