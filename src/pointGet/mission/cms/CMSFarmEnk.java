@@ -79,16 +79,16 @@ public class CMSFarmEnk extends CMSBase {
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      for (int k = 0; k < 4; k++) {
+      for (int k = 0; k < 0; k++) {
         Utille.url(driver, "http://cmsite.agri-hatake.fun/square/diagnoses", logg);
         if (k == 1) {
           Utille.url(driver, "http://cmsite.agri-hatake.fun/square/surveys", logg);
         }
         else if (k == 2) {
-          Utille.url(driver, "http://cmsite.agri-hatake.fun/square/pittango", logg);
+          Utille.url(driver, "http://cmsite.agri-hatake.fun/square/votes", logg);
         }
         else if (k == 3) {
-          Utille.url(driver, "http://cmsite.agri-hatake.fun/square/votes", logg);
+          Utille.url(driver, "http://cmsite.agri-hatake.fun/square/pittango", logg);
         }
 
         Utille.sleep(3000);
@@ -219,11 +219,12 @@ public class CMSFarmEnk extends CMSBase {
           }
         }
       }
-      String stampSele = "a[href='/exchange/point']#btn";
+      String stampSele = "div#pointFarmBox>a#btn";
       if (isExistEle(driver, stampSele)) {
         clickSleepSelector(driver, stampSele, 4000); // 遷移
+        driver.findElements(By.cssSelector(stampSele)).get(0).click();
+        Utille.refresh(driver, logg);
       }
     }
-
   }
 }
