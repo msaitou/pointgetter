@@ -42,6 +42,11 @@ public class GameDinosaur extends MissCommon {
     String confirmPointSele = "a#trigger_reward_detail>img[alt*='報酬を受け取る']";
     String getPointSele = "a#btn_recieve>img[alt*='報酬を受け取る']";
     String pointConfirmClose = "button#cboxClose";
+    String bounusSele = "div#notice_bonus a#trigger_bonus_notice";
+    String bounusNoneSele = "div#notice_bonus[style*='display: none'] a#trigger_bonus_notice";
+    String getBounusSele = "a#btn_recieve_bonus img[alt='ボタン 報酬を受け取る']";
+    String getBounusNoneSele = "a#btn_recieve_bonus[style*='display: none'] img[alt='ボタン 報酬を受け取る']";
+    String closeBounusSele = "div#cboxContent #cboxClose";
     // ライフがある限りループ
     clearOverlay(driver);
     clearFootOverlay(driver);
@@ -54,6 +59,17 @@ public class GameDinosaur extends MissCommon {
         if (isExistEle(driver, pointConfirmClose)) {
           clickSleepSelector(driver, pointConfirmClose, 2000);
         }
+      }
+    }
+    if (!isExistEle(driver, bounusNoneSele, false)
+        && isExistEle(driver, bounusSele)) {
+      clickSleepSelector(driver, bounusSele, 2000);
+      if (!isExistEle(driver, getBounusNoneSele, false)
+          && isExistEle(driver, getBounusSele)) {
+        clickSleepSelector(driver, getBounusSele, 2000);
+      }
+      if (isExistEle(driver, closeBounusSele)) {
+        clickSleepSelector(driver, closeBounusSele, 2000);
       }
     }
 
