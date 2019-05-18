@@ -10,14 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import pointGet.common.Utille;
-import pointGet.mission.parts.AnswerAdEnq;
-import pointGet.mission.parts.AnswerColum;
-import pointGet.mission.parts.AnswerCooking;
-import pointGet.mission.parts.AnswerHyakkey;
-import pointGet.mission.parts.AnswerKansatu;
-import pointGet.mission.parts.AnswerManga;
-import pointGet.mission.parts.AnswerPhotoEnk;
-import pointGet.mission.parts.AnswerZukan;
 
 /**
  * @author saitou
@@ -25,28 +17,12 @@ import pointGet.mission.parts.AnswerZukan;
  */
 public class GPOMotAnk extends GPOBase {
   final String url = "http://www.gpoint.co.jp/";
-  AnswerAdEnq AdEnq = null;
-  AnswerPhotoEnk PhotoEnk = null;
-  AnswerKansatu Kansatu = null;
-  AnswerCooking Cooking = null;
-  AnswerHyakkey Hyakkey = null;
-  AnswerZukan Zukan = null;
-  AnswerColum Colum = null;
-  AnswerManga Manga = null;
 
   /**
    * @param logg
    */
   public GPOMotAnk(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "もっと答えて");
-    AdEnq = new AnswerAdEnq(logg);
-    Cooking = new AnswerCooking(logg);
-    PhotoEnk = new AnswerPhotoEnk(logg);
-    Hyakkey = new AnswerHyakkey(logg);
-    Kansatu = new AnswerKansatu(logg);
-    Zukan = new AnswerZukan(logg);
-    Colum = new AnswerColum(logg);
-    Manga = new AnswerManga(logg);
   }
 
   @Override
@@ -116,6 +92,8 @@ public class GPOMotAnk extends GPOBase {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     Utille.sleep(4000);
     String seleLabel = "label.answertext", //
+        seleText = "p.question>input[type='text']", //
+            seleTextArea = "p.question>textarea", //
     qContentsSele = "div.question-text", //
     choiceSele, //
     seleSelect = "p.question>select", finishSele = "button#movesubmitbtn",
@@ -150,6 +128,9 @@ public class GPOMotAnk extends GPOBase {
         else {
           choiceNum = Utille.getIntRand(choiceies);
         }
+        if (choiceNum > choiceies-1) {
+          choiceNum = choiceies-1;
+        }
         if (isExistEle(choiceList, choiceNum)) {
           clickSleepSelector(driver, choiceList, choiceNum, 5000); // 選択
         }
@@ -171,6 +152,16 @@ public class GPOMotAnk extends GPOBase {
         selectList.selectByValue(value);
         Utille.sleep(3000);
         selectList.selectByValue(value);
+      }
+      else if (isExistEle(driver, seleText)) {
+        WebElement ele = driver.findElement(By.cssSelector(seleText));
+        ele.clear();
+        ele.sendKeys("なんとなく");
+      }
+      else if (isExistEle(driver, seleTextArea)) {
+        WebElement ele = driver.findElement(By.cssSelector(seleTextArea));
+        ele.clear();
+        ele.sendKeys("今はそんな気分");
       }
       else {
         choiceSele = "";
