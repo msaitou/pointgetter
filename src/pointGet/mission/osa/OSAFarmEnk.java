@@ -73,14 +73,13 @@ public class OSAFarmEnk extends OSABase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    selector = "li>a>img[alt='お財布ファーム']";
     String enkLinkSele = "li>a>img[alt='お財布ファーム']", //
         a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      for (int k = 0; k < 0; k++) {
+      for (int k = 0; k < 4; k++) {
         Utille.url(driver, "http://osaifu.agri-hatake.fun/square/diagnoses", logg);
         if (k == 1) {
           Utille.url(driver, "http://osaifu.agri-hatake.fun/square/surveys", logg);

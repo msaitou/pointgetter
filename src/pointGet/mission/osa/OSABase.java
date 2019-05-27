@@ -186,7 +186,7 @@ public abstract class OSABase extends Mission {
       // login!!
       LoginSite.login(sCode, driver, logg);
     }
-    selector = "dd.a-txt__coin>em";
+    selector = "dd.a-txt__coin>span>em";
     Utille.url(driver, "https://osaifu.com/my-osaifu/", logg);
     List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
 
@@ -196,7 +196,7 @@ public abstract class OSABase extends Mission {
       point = driver.findElements(By.cssSelector(selector)).get(targetIndex).getText();
       point = Utille.getNumber(point);
     }
-    targetIndex = 2;  // gold
+    targetIndex = 1;  // gold
     if (Utille.isExistEle(eleList, targetIndex, logg)) {
       Utille.scrolledPage(driver, eleList.get(targetIndex));
       secondPoint = driver.findElements(By.cssSelector(selector)).get(targetIndex).getText();
