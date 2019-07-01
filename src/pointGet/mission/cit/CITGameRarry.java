@@ -63,7 +63,7 @@ public class CITGameRarry extends CITBase {
         "a[href*='dinosaur']>div>p>img", // dinosaur
         "a[href*='race']>div>p>img",// race
     };
-    
+
     String[] gameList2 = {
         "",
         "a>img[src*='otenba']", // otenba
@@ -75,7 +75,7 @@ public class CITGameRarry extends CITBase {
     };
 
     for (int i = 0; i < gameList.length; i++) {
-//      if (i < 1)
+//      if (i == 2 || i == 3 || i == 5)
 //        continue;
       if (isExistEle(driver, gameList[i])) {
 
@@ -90,7 +90,7 @@ public class CITGameRarry extends CITBase {
           actions.perform();
           Utille.sleep(5000);
           changeCloseWindow(driver);
-//          changeWindow(driver, wid);
+          //          changeWindow(driver, wid);
           //          Utille.sleep(3000);
           //          clickSleepSelector(driver, gameList[i], 2000); // 遷移
           Utille.sleep(4000);

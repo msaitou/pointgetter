@@ -70,8 +70,8 @@ public class GENGameRarry extends GENBase {
     };
 
     for (int i = 0; i < gameList.length; i++) {
-      //      if (i < 2)
-      //        continue;
+//      if (i == 2 || i == 3 || i == 5)
+//        continue;
       if (isExistEle(driver, gameList[i])) {
 
         // jewel

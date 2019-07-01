@@ -75,7 +75,10 @@ public class PICGameRarry extends PICBase {
     };
 
     for (int i = 0; i < gameList.length; i++) {
-      if (i == 2 || i == 5)
+      if (i == 2 
+//          || i == 3 
+          || i == 5
+          )
         continue;
       if (isExistEle(driver, gameList[i])) {
 
