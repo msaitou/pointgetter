@@ -10,13 +10,19 @@ import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerEnkShopQP;
 import pointGet.mission.parts.AnswerEnqNstk;
 import pointGet.mission.parts.AnswerEnqY2at;
+import pointGet.mission.parts.AnswerHirameki;
 import pointGet.mission.parts.AnswerHiroba;
+import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerIjin;
 import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerKotsuta;
+import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerMinnanosur;
+import pointGet.mission.parts.AnswerMix;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerPointResearch;
 import pointGet.mission.parts.AnswerShindan;
@@ -49,6 +55,13 @@ public class GENPointResearch2 extends GENBase {
   AnswerEnqY2at EnqY2at = null;
   AnswerKansatu Kansatu = null;
 
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
+  AnswerManga Manga = null;
+  AnswerHirameki Hirameki = null;
+  AnswerMix Mix = null;
+  AnswerIjin Ijin = null;
+
   /**
    * @param logg
    */
@@ -70,6 +83,14 @@ public class GENPointResearch2 extends GENBase {
     EnqNstk = new AnswerEnqNstk(logg);
     EnqY2at = new AnswerEnqY2at(logg);
     Kansatu = new AnswerKansatu(logg);
+
+    Cooking = new AnswerCooking(logg);
+    Hyakkey = new AnswerHyakkey(logg);
+    Manga = new AnswerManga(logg);
+    Hirameki = new AnswerHirameki(logg);
+    Mix = new AnswerMix(logg);
+    Ijin = new AnswerIjin(logg);
+
   }
 
   @Override
@@ -88,6 +109,7 @@ public class GENPointResearch2 extends GENBase {
     sele6 = "form>input.next_bt", // コラム用
     sele7 = "div>button[type='submit']", //
     sele8 = "form>input.next_bt", sele9 = "a.start__button", sele10 = "div#buttonArea>input[name='next']", // shop-qp用(4択) // 回答する y2at用(〇×)// rsch用
+        sele11 = "input.enquete_nextbt.next_bt",
     a = "";
     while (true) {
       if (!isExistEle(driver, selector)) {
@@ -127,26 +149,26 @@ public class GENPointResearch2 extends GENBase {
           // $('iframe').contents().find("div>input[type='submit']")
           Shopping.answer(driver, sele4, wid);
         }
-        else if ((cUrl.indexOf("column-enquete") >= 0
-            || cUrl.indexOf("column.") >= 0
-            || cUrl.indexOf("beautynail-design.com") >= 0
-            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-            || cUrl.indexOf("style-cutehair.com") >= 0
-            || cUrl.indexOf("column.flower-life.net/infoq") >= 0
-            || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
-            || cUrl.indexOf("fashion-cosmelife.com") >= 0)
-            && isExistEle(driver, sele6)) {
-          Colum.answer(driver, sele6, wid);
-        }
-        else if ((cUrl.indexOf("photo-enquete") >= 0
-            || cUrl.indexOf("cosmetic-brand.com") >= 0
-            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-            || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
-            || cUrl.indexOf("natural-vegetables.com") >= 0
-            || cUrl.indexOf("cosmeticsstyle.com") >= 0)
-            && isExistEle(driver, sele8)) {
-          PhotoEnk.answer(driver, sele8, wid);
-        }
+//        else if ((cUrl.indexOf("column-enquete") >= 0
+//            || cUrl.indexOf("column.") >= 0
+//            || cUrl.indexOf("beautynail-design.com") >= 0
+//            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+//            || cUrl.indexOf("style-cutehair.com") >= 0
+//            || cUrl.indexOf("column.flower-life.net/infoq") >= 0
+//            || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
+//            || cUrl.indexOf("fashion-cosmelife.com") >= 0)
+//            && isExistEle(driver, sele6)) {
+//          Colum.answer(driver, sele6, wid);
+//        }
+//        else if ((cUrl.indexOf("photo-enquete") >= 0
+//            || cUrl.indexOf("cosmetic-brand.com") >= 0
+//            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+//            || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
+//            || cUrl.indexOf("natural-vegetables.com") >= 0
+//            || cUrl.indexOf("cosmeticsstyle.com") >= 0)
+//            && isExistEle(driver, sele8)) {
+//          PhotoEnk.answer(driver, sele8, wid);
+//        }
         else if ((cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
@@ -163,6 +185,59 @@ public class GENPointResearch2 extends GENBase {
             && isExistEle(driver, sele8)) {
           Kansatu.answer(driver, sele8, wid);
         }
+
+        else if ((cUrl.indexOf("cosmelife.com/cooking") >= 0
+            || cUrl.indexOf("/cooking/") >= 0)
+            && isExistEle(driver, sele6)) {
+          Cooking.answer(driver, sele6, wid);
+        }
+        else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
+            || cUrl.indexOf("/hirameki/") >= 0
+            ) && isExistEle(driver, sele6)) {
+          Hirameki.answer(driver, sele6, wid);
+        }
+        else if ((cUrl.indexOf("photo-enquete") >= 0
+            || cUrl.indexOf("/photo/") >= 0
+            || cUrl.indexOf("cosmelife.com/photo") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("natural-vegetables.com") >= 0
+            || cUrl.indexOf("cosmeticsstyle.com") >= 0)
+            && isExistEle(driver, sele6)) {
+          PhotoEnk.answer(driver, sele6, wid);
+        }
+        else if ((cUrl.indexOf("column-enquete") >= 0
+            || cUrl.indexOf("/column/") >= 0
+            || cUrl.indexOf("beautynail-design.com") >= 0
+            || cUrl.indexOf("style-cutehair.com") >= 0
+            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+            || cUrl.indexOf("fashion-cosmelife.com") >= 0)
+            && isExistEle(driver, sele6)) {
+          Colum.answer(driver, sele6, wid);
+        }
+        // 漫画
+        else if (
+            (cUrl.indexOf("/manga/") >= 0)
+            && isExistEle(driver, sele10)) {
+          Manga.answer(driver, sele10, wid);
+        }
+        // 偉人
+        else if ((cUrl.indexOf("/ijin/") >= 0)
+            && isExistEle(driver, sele6)) {
+          Ijin.answer(driver, sele6, wid);
+        }
+        // MIX
+        else if (
+            (cUrl.indexOf("/mix/") >= 0)
+            && isExistEle(driver, sele11)) {
+          Mix.answer(driver, sele11, wid);
+        }
+        else if ((cUrl.indexOf("cosmelife.com/map") >= 0
+            || cUrl.indexOf("/map/") >= 0)
+            && isExistEle(driver, sele6)) {
+          Hyakkey.answer(driver, sele6, wid);
+        }
+
+        
         else if (cUrl.indexOf("vote.media-ad.jp/") >= 0) {
           if (!Tasuuketu.answer(driver, sele9, wid))
             skip++;

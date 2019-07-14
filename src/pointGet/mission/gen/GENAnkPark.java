@@ -67,13 +67,11 @@ public class GENAnkPark extends GENBase {
       Utille.sleep(4000);
       selector = "div.enquete-list tr>td.status>a";
       int skip = 0, beforeSize = 0;
-      String sele1_ = "iframe.question_frame", //
-      sele1 = "form>input[type='submit']", //
-      sele3 = "form>input[type='submit']", //
+      String 
       sele9 = "div>a.start__button", //
       overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
       sele6 = "form>input.next_bt", // コラム用
-      sele4 = "a.submit-btn", sele10 = "form>input[type='image']", // 回答する 漫画用
+      sele10 = "form>input[type='image']", // 回答する 漫画用
           sele11 = "input.enquete_nextbt.next_bt",
       b = "";
       while (true) {
