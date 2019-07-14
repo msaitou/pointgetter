@@ -172,13 +172,13 @@ public class GENPointResearch2 extends GENBase {
         else if ((cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
-            || cUrl.indexOf("cmsite.fitness-health.work/animal") >= 0
+            || cUrl.indexOf("/animal") >= 0
             )
             && isExistEle(driver, sele8)) {
           Zukan.answer(driver, sele8, wid);
         }
         else if ((cUrl.indexOf("eyemake-beauty.com") >= 0
-            || cUrl.indexOf("cmsite.fitness-health.work/observation") >= 0
+            || cUrl.indexOf("/observation") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("healthy-cookinglife.com") >= 0
             )
@@ -261,6 +261,7 @@ public class GENPointResearch2 extends GENBase {
           driver.close();
           driver.switchTo().window(wid);
         }
+        Utille.url(driver, url, logg);
         Utille.refresh(driver, logg);
         Utille.sleep(5000);
       }
