@@ -97,10 +97,14 @@ public class GENPointResearch2 extends GENBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    selector = "a dd.survey_answer";
+//    selector = "a dd.survey_answer";
+    
+    String tabSele = "a[href='#tabBox2']";
+    selector = "span#mini_surveys tr>td>a>span";
     int skip = 1;
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
+    sele1 = "div.ui-control.type-fixed>a.ui-button",// pointResearch用
     sele2 = "div.page-content-button>input.button.btn-next", // 回答する 漫画用
     sele3 = "div.enq-submit>button[type='submit']", // 回答する surveyenk用
     sele4 = "div>input[type='submit']", //
@@ -112,6 +116,9 @@ public class GENPointResearch2 extends GENBase {
         sele11 = "input.enquete_nextbt.next_bt",
     a = "";
     while (true) {
+      if (isExistEle(driver, tabSele)) {
+        clickSleepSelector(driver, tabSele, 5000);
+      }
       if (!isExistEle(driver, selector)) {
         // 対象がなくなったら終了
         break;
@@ -124,7 +131,10 @@ public class GENPointResearch2 extends GENBase {
         changeWindow(driver, wid);
         String cUrl = driver.getCurrentUrl();
         logg.info("url[" + cUrl + "]");
-        if (isExistEle(driver, sele2)) {
+        if (isExistEle(driver, sele1)) {
+          PointResearch.answer(driver, sele1, wid);
+        }
+        else if (isExistEle(driver, sele2)) {
           Kotsuta.answer(driver, sele2, wid);
         }
         // surveyenk

@@ -262,7 +262,7 @@ public class LoginSite extends PointGet {
   private static void loginGen(WebDriver driver, Logger logg) {
     driver
         .get(
-            "https://ssl.realworld.jp/auth/?site=gendama_jp&rid=&af=&frid=&token=&goto=http%3A%2F%2Fwww.gendama.jp%2F?p=start");
+            "https://ssl.realworld.jp/auth/?site=gendama_jp&rid=&af=&frid=&token=&goto=http%3A%2F%2Fwww.gendama.jp%2Fwelcome&p=start");
     Utille.sleep(2000);
     if (Utille.isExistEle(driver, "input[name='rwsid']", logg)) {
       WebElement ele = driver.findElement(By.cssSelector("input[name='rwsid']"));

@@ -34,7 +34,7 @@ public class GENChyousadan extends GENBase {
   public void privateMission(WebDriver driver) {
     // div#dropmenu01
     Utille.url(driver, url, logg);
-    selector = "div#dropmenu01";
+    selector = "div#dropmenu02";
     if (isExistEle(driver, selector, false)) {
       int size0 = getSelectorSize(driver, selector);
       for (int i = 0; i < size0; i++) {

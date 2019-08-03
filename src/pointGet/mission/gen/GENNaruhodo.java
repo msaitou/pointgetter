@@ -29,7 +29,7 @@ public class GENNaruhodo extends GENBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "div#dropmenu01";
+    selector = "div#dropmenu02";
     String sele0 = "a.ui-btn.ui-btn-a" // アンケート一覧の回答するボタン
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "img[src*='bn_sosenkyo.png']", sele6 = "form>input.next_bt" // コラム用

@@ -62,7 +62,7 @@ public abstract class GENBase extends Mission {
     // if (testFlag) {
     // return;
     // }
-    String se = "li#user_point01";
+    String se = "p#account_pt";
     Utille.url(driver, "http://www.gendama.jp/", loggg);
     if (!Utille.isExistEle(driver, se, loggg)) {
       // login!!
@@ -183,7 +183,7 @@ public abstract class GENBase extends Mission {
    * @return
    */
   public static Double getSitePoint(WebDriver driver, Logger logg) {
-    String selector = "li#user_point01>a>span", point = "";
+    String selector = "p#account_pt>span", point = "";
     Utille.url(driver, "http://www.gendama.jp/", logg);
     if (Utille.isExistEle(driver, selector, logg)) {
       point = driver.findElement(By.cssSelector(selector)).getText();
