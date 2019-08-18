@@ -139,7 +139,9 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPCMPochi: // ■ぽち
           MisIns = new MOPCMPochi(loggg, cProps);
           break;
-
+        case Define.strMOPNaruhodo: // ■なるほど
+          MisIns = new MOPNaruhodo(loggg, cProps);
+          break;
         case Define.strMOPMail:
           MailClicker.main(new String[] {sCode});
           break;

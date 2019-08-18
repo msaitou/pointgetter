@@ -79,7 +79,7 @@ public class CMSFarmEnk extends CMSBase {
     if (isExistEle(driver, enkLinkSele)) {
       clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
       changeCloseWindow(driver);
-      for (int k = 0; k < 0; k++) {
+      for (int k = 0; k < 4; k++) {
         Utille.url(driver, "http://cmsite.agri-hatake.fun/square/diagnoses", logg);
         if (k == 1) {
           Utille.url(driver, "http://cmsite.agri-hatake.fun/square/surveys", logg);

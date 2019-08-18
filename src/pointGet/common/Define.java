@@ -123,6 +123,7 @@ public class Define {
   final public static String strMOPMail = "MOPMail";
   final public static String strMOPAnkPark = "MOPAnkPark";
   final public static String strMOPCMPochi = "MOPCMPochi";
+  final public static String strMOPNaruhodo = "MOPNaruhodo";
 
   // ■■■■■osaifu■■■■■
   final public static String strOSAClickBanner = "OSAClickBanner";
@@ -390,6 +391,7 @@ public class Define {
   final public static String strCMSPochi = "CMSPochi";
   final public static String strCMSNaruhodo = "CMSNaruhodo";
   final public static String strCMSCMPochi = "CMSCMPochi";
+  final public static String strCMSChyousadan = "CMSChyousadan";
 
   // メールの内容の種類
   final public static String CONTENT_TYPE_TEXT = "text/plain";

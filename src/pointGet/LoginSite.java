@@ -400,7 +400,7 @@ public class LoginSite extends PointGet {
    */
   private static void loginRin(WebDriver driver, Logger logg) {
     Utille.url(driver, "https://www.rakuten-card.co.jp/e-navi/index.xhtml", logg);
-    selector = "li#loginId>input#u";
+    selector = "div#loginId>input#u";
     // ログイン画面であれば
     if (Utille.isExistEle(driver, selector, logg)) {
       if (!pGetProps.containsKey(Define.PSITE_CODE_RIN)
@@ -411,7 +411,7 @@ public class LoginSite extends PointGet {
       WebElement ele = driver.findElement(By.cssSelector(selector));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_RIN).get("loginid"));
-      selector = "li#loginPw>input#p";
+      selector = "div#loginPw>input#p";
       ele = driver.findElement(By.cssSelector(selector));
       ele.clear();
       ele.sendKeys(pGetProps.get(Define.PSITE_CODE_RIN).get("loginpass"));

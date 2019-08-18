@@ -77,7 +77,7 @@ public class GPODokiShindan extends GPOBase {
             if ((cUrl.indexOf("/dgss/question/") >= 0
                 || cUrl.indexOf("sheep.seikaku-checker.club") >= 0
                 || cUrl.indexOf("salamander.site/dgss/question") >= 0
-                || cUrl.indexOf("diagnosis.media-ad.jp/question") >= 0)
+                || cUrl.indexOf("/question/") >= 0)
                 && isExistEle(driver, sele3)) {
               AdShindan.answer(driver, sele3, wid);
             }

@@ -104,7 +104,10 @@ public abstract class CMSBase extends Mission {
         case Define.strCMSCMPochi: // ■CM内ぽちっと調査隊
           MisIns = new CMSCMPochi(loggg, cProps);
           break;
-
+        case Define.strCMSChyousadan: // ■CM内ぽちっと調査隊
+          MisIns = new CMSChyousadan(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] { Define.strCMSAnqueate,
@@ -116,7 +119,8 @@ public abstract class CMSBase extends Mission {
           Define.strCMSPochi,
           Define.strCMSCMPochi,
           Define.strCMSPointResearch,Define.strCMSKumaVote,
-          Define.strCMSNaruhodo
+          Define.strCMSNaruhodo,
+          Define.strCMSChyousadan
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
