@@ -30,7 +30,9 @@ public class AnswerMix extends MissCommon {
     logg.info("■□■□■□[" + this.getClass().getName() + "]■□■□■□");
     String seleNextb2 = "input.enquete_nextbt.enqpage", //
         overLay = "div#interstitial[style*='display: block']>div>div#close", //
-        choiceSele = "input[type='radio']", // ラジオセレクター
+//        choiceSele = "input[type='radio']", // ラジオセレクター
+            choiceSele = "ul#enqueteUl>li>label", // ラジオセレクター
+
         seleNext3 = "div>input.enquete_nextbt_2", //　次へセレクター2
         seleSele = "form.menu>select", // プルダウンセレクター
         finishSele = "span.enquete_nextbt.next_bt", // 終了ボタンセレクター

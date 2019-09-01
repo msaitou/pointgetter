@@ -52,7 +52,7 @@ public class LFMFarmEnk extends LFMBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    String enkLinkSele = "div>img[alt='ＬＭゲームガーデン']",
+    String enkLinkSele = "p>img[alt='ＬＭゲームガーデン']",
         enkConfirmSele = "a.about_btn_nosession";
 
     if (isExistEle(driver, enkLinkSele)) {

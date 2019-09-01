@@ -32,7 +32,7 @@ public class LFMGameParkEnk extends LFMBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    selector = "div>img[alt='ポニーのGame Park']";
+    selector = "p>img[alt='ポニーのGame Park']";
     String pop1 = "div#campaignDialog p.btnPdPlay", //
         pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
         pop2Cls = "div.campaignClose>img", //

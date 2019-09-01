@@ -32,7 +32,7 @@ public class LFMQuizKentei extends LFMBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "div>img[alt='クイズ検定Q']";
+    selector = "p>img[alt='クイズ検定Q']";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);

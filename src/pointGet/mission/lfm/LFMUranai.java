@@ -23,7 +23,7 @@ public class LFMUranai extends LFMBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    String uranaiSelector = "div>img[alt='今日の12星座占い']";
+    String uranaiSelector = "p>img[alt='今日の12星座占い']";
     if (isExistEle(driver, uranaiSelector)) {
       clickSleepSelector(driver, uranaiSelector, 3000); // 遷移 全体へ
       String wid = driver.getWindowHandle();
