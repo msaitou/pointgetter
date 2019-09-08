@@ -5,8 +5,10 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerAdShindan;
@@ -62,13 +64,13 @@ public class GPODokiShindan extends GPOBase {
             String wid = driver.getWindowHandle();
             Utille.sleep(3000);
             // 選択
-            clickSleepSelector(driver, eleList.get(targetIndex), 5000);
+//            clickSleepSelector(driver, eleList.get(targetIndex), 5000);
 
-//            Utille.scrolledPage(driver, eleList.get(targetIndex));
-//            Actions actions = new Actions(driver);
-//            actions.keyDown(Keys.CONTROL);
-//            actions.click(eleList.get(targetIndex));
-//            actions.perform();
+            Utille.scrolledPage(driver, eleList.get(targetIndex));
+            Actions actions = new Actions(driver);
+            actions.keyDown(Keys.CONTROL);
+            actions.click(eleList.get(targetIndex));
+            actions.perform();
             Utille.sleep(5000);
             //                clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
             changeWindow(driver, wid);

@@ -5,10 +5,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerColum;
@@ -99,15 +97,11 @@ public class GPOCMother extends GPOBase {
               int size1 = eleList.size(), zumiCnt = 0, targetIndex = size1 - 1;
               if (size1 > targetIndex && isExistEle(eleList, targetIndex)) {
                 String wid = driver.getWindowHandle();
-                Utille.scrolledPage(driver, eleList.get(targetIndex));
-                Utille.sleep(1000);
-                Actions actions = new Actions(driver);
-                actions.keyDown(Keys.CONTROL);
-                actions.click(eleList.get(targetIndex));
-                actions.perform();
-                Utille.sleep(5000);
-                //                clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
+                String addUrl = eleList.get(targetIndex).getAttribute("href");
+                Utille.exeScript(driver,"window.open()",logg); // 別ウィンドウ開く
+                Utille.sleep(2000);
                 changeWindow(driver, wid);
+                Utille.url(driver, addUrl, logg);
                 Utille.sleep(3000);
                 String cUrl = driver.getCurrentUrl();
 
