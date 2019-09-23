@@ -334,7 +334,7 @@ public class Define {
   final public static String strLFMCMother = "LFMCMother";
   final public static String strLFMQuizKentei = "LFMQuizKentei";
   final public static String strLFMGameRarry = "LFMGameRarry";
-
+  final public static String strLFMAnkPark = "LFMAnkPark";
   // ■■■■■Gpoint■■■■■
   final public static String strGPOUranai = "GPOUranai";
   final public static String strGPONews = "GPONews";

@@ -12,7 +12,6 @@ import pointGet.mission.parts.AnswerDotti;
 public class LFMCMother extends LFMBase {
   final String url = "http://lifemedia.jp/game/";
   WebDriver driver = null;
-  AnswerDotti Dotti = null;
 
   /**
    * @param logg
@@ -62,7 +61,7 @@ public class LFMCMother extends LFMBase {
           //          "p>img[src*='observation_']", //
           //          "p>img[src*='zoo_']", //
           //          "p>img[src*='japan_']",//
-          //          "p>img[src*='food']" 
+          //          "p>img[src*='food']"
       };
       for (int i = 0; i < seles.length; i++) {
         String currentSele = seles[i];

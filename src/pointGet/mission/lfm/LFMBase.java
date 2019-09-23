@@ -21,6 +21,19 @@ import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 import pointGet.mission.lfm.old.LFMChyosatai;
 import pointGet.mission.lfm.old.LFMQuiz;
+import pointGet.mission.parts.AnswerAdEnq;
+import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerDotti;
+import pointGet.mission.parts.AnswerHirameki;
+import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerIjin;
+import pointGet.mission.parts.AnswerKansatu;
+import pointGet.mission.parts.AnswerManga;
+import pointGet.mission.parts.AnswerMix;
+import pointGet.mission.parts.AnswerPhotoEnk;
+import pointGet.mission.parts.AnswerShindan;
+import pointGet.mission.parts.AnswerZukan;
 
 /**
  * @author saitou
@@ -30,6 +43,20 @@ public abstract class LFMBase extends Mission {
   /* current site code */
   public final static String sCode = Define.PSITE_CODE_LFM;
   boolean finsishFlag = false;
+  WebDriver driver = null;
+  AnswerDotti Dotti = null;
+  AnswerPhotoEnk PhotoEnk = null;
+  AnswerKansatu Kansatu = null;
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
+  AnswerZukan Zukan = null;
+  AnswerColum Colum = null;
+  AnswerManga Manga = null;
+  AnswerHirameki Hirameki = null;
+  AnswerMix Mix = null;
+  AnswerIjin Ijin = null;
+  AnswerAdEnq AdEnq = null;
+  AnswerShindan Shindan = null;
 
   /**
    * @param log
@@ -118,7 +145,11 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMGameRarry: // ■ゲームラリー
           MisIns = new LFMGameRarry(loggg, cProps);
           break;
-          
+        case Define.strLFMAnkPark: // ■アンケートパーク
+          MisIns = new LFMAnkPark(loggg, cProps);
+          break;
+
+
 
         default:
       }
@@ -141,6 +172,7 @@ public abstract class LFMBase extends Mission {
           ,Define.strLFMCMother
           ,Define.strLFMQuizKentei
           ,Define.strLFMGameRarry
+          ,Define.strLFMAnkPark
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

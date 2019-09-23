@@ -18,8 +18,6 @@ import pointGet.mission.parts.AnswerShindan;
  */
 public class LFMChyousadan extends LFMBase {
   final String url = "http://lifemedia.jp/game/";
-  AnswerAdEnq AdEnq = null;
-  AnswerShindan Shindan = null;
 
   /**
    * @param logg
