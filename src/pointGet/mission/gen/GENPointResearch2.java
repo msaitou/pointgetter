@@ -101,7 +101,7 @@ public class GENPointResearch2 extends GENBase {
     
     String tabSele = "a[href='#tabBox2']";
     selector = "span#mini_surveys tr>td>a>span";
-    int skip = 1;
+    int skip = 1, beforeSize = 0;;
     String
     //    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
     sele1 = "div.ui-control.type-fixed>a.ui-button",// pointResearch用
@@ -124,7 +124,11 @@ public class GENPointResearch2 extends GENBase {
         break;
       }
       List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-      int size = eleList.size(), targetIndex = size - skip;
+      int size = eleList.size();
+      if (beforeSize == size) {
+        skip++;
+      }
+      int targetIndex = size - skip;
       if (targetIndex > -1 && size > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
         clickSleepSelector(driver, eleList, targetIndex, 5000); // アンケートスタートページ
         String wid = driver.getWindowHandle();
@@ -159,26 +163,6 @@ public class GENPointResearch2 extends GENBase {
           // $('iframe').contents().find("div>input[type='submit']")
           Shopping.answer(driver, sele4, wid);
         }
-//        else if ((cUrl.indexOf("column-enquete") >= 0
-//            || cUrl.indexOf("column.") >= 0
-//            || cUrl.indexOf("beautynail-design.com") >= 0
-//            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-//            || cUrl.indexOf("style-cutehair.com") >= 0
-//            || cUrl.indexOf("column.flower-life.net/infoq") >= 0
-//            || cUrl.indexOf("cmsite.fitness-health.work/column") >= 0
-//            || cUrl.indexOf("fashion-cosmelife.com") >= 0)
-//            && isExistEle(driver, sele6)) {
-//          Colum.answer(driver, sele6, wid);
-//        }
-//        else if ((cUrl.indexOf("photo-enquete") >= 0
-//            || cUrl.indexOf("cosmetic-brand.com") >= 0
-//            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-//            || cUrl.indexOf("cmsite.fitness-health.work/photo") >= 0
-//            || cUrl.indexOf("natural-vegetables.com") >= 0
-//            || cUrl.indexOf("cosmeticsstyle.com") >= 0)
-//            && isExistEle(driver, sele8)) {
-//          PhotoEnk.answer(driver, sele8, wid);
-//        }
         else if ((cUrl.indexOf("cosme-beaute.com/picturebook") >= 0
             || cUrl.indexOf("eyelashes-fashion.com") >= 0
             || cUrl.indexOf("haircare-choice.com") >= 0
@@ -271,6 +255,7 @@ public class GENPointResearch2 extends GENBase {
           driver.close();
           driver.switchTo().window(wid);
         }
+        beforeSize = size;
         Utille.url(driver, url, logg);
         Utille.refresh(driver, logg);
         Utille.sleep(5000);

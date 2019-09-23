@@ -77,7 +77,7 @@ public class GENMorikoreEnk extends GENBase {
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         changeCloseWindow(driver);
-        Utille.url(driver, "http://mrga.service-navi.jp/square/diagnoses", logg);
+        Utille.url(driver, "http://mrga.service-navi.jp/square/columns", logg);
         for (int k = 0; k < 6; k++) {
           if (k == 1) {
             Utille.url(driver, "http://mrga.service-navi.jp/square/articles", logg);
@@ -96,7 +96,7 @@ public class GENMorikoreEnk extends GENBase {
             Utille.url(driver, "http://mrga.service-navi.jp/square/votes", logg);
           }
           else if (k == 5) {
-            Utille.url(driver, "http://mrga.service-navi.jp/square/columns", logg);
+            Utille.url(driver, "http://mrga.service-navi.jp/square/diagnoses", logg);
           }
 
           Utille.sleep(3000);
@@ -164,7 +164,7 @@ public class GENMorikoreEnk extends GENBase {
               }
               else if (!skipCapFlag &&(cUrl.indexOf("ad/enq/") >= 0
                   || cUrl.indexOf("beautypress.tokyo") >= 0
-                      || cUrl.indexOf("flounder.work") >= 0
+                      || cUrl.indexOf("good-question.jp") >= 0
                   || cUrl.indexOf("credit-card.link") >= 0)
 
                   && isExistEle(driver, sele1_)) {

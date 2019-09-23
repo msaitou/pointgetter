@@ -131,7 +131,10 @@ public abstract class GENBase extends Mission {
         case Define.strGENGameRarry: // ■ゲームラリー
           MisIns = new GENGameRarry(loggg, cProps);
           break;
-
+        case Define.strGENKenkou: // ■健康
+          MisIns = new GENKenkou(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] { Define.strGENPointStar,
@@ -147,6 +150,7 @@ public abstract class GENBase extends Mission {
           Define.strGENCMother,
           Define.strGENMorikoreEnkNoCap,
           Define.strGENHitosara,
+          Define.strGENKenkou,
           Define.strGENNaruhodo, Define.strGENCMPochi,
           Define.strGENAnkPark, Define.strGENGameRarry
       }).contains(mission)) {
