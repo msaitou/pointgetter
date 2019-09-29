@@ -21,6 +21,19 @@ import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 import pointGet.mission.cit.old.CITShindan;
 import pointGet.mission.cit.old.CITToidas;
+import pointGet.mission.parts.AnswerColum;
+import pointGet.mission.parts.AnswerCooking;
+import pointGet.mission.parts.AnswerDotti;
+import pointGet.mission.parts.AnswerHirameki;
+import pointGet.mission.parts.AnswerHyakkey;
+import pointGet.mission.parts.AnswerIjin;
+import pointGet.mission.parts.AnswerKansatu;
+import pointGet.mission.parts.AnswerKenkou;
+import pointGet.mission.parts.AnswerManga;
+import pointGet.mission.parts.AnswerMix;
+import pointGet.mission.parts.AnswerPhotoEnk;
+import pointGet.mission.parts.AnswerPochi;
+import pointGet.mission.parts.AnswerZukan;
 
 /**
  * @author saitou
@@ -30,6 +43,19 @@ public abstract class CITBase extends Mission {
   /* current site code */
   public final static String sCode = Define.PSITE_CODE_CIT;
   boolean finsishFlag = false;
+  AnswerKenkou Kenkou = null;
+  AnswerPhotoEnk PhotoEnk = null;
+  AnswerKansatu Kansatu = null;
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
+  AnswerZukan Zukan = null;
+  AnswerColum Colum = null;
+  AnswerManga Manga = null;
+  AnswerHirameki Hirameki = null;
+  AnswerMix Mix = null;
+  AnswerIjin Ijin = null;
+  AnswerDotti Dotti = null;
+  AnswerPochi Pochi = null;
 
   /**
    * @param log
@@ -126,7 +152,10 @@ public abstract class CITBase extends Mission {
         case Define.strCITGameRarry: // ■ゲームラリー
           MisIns = new CITGameRarry(loggg, cProps);
           break;
-
+          
+        case Define.strCITSassokuRead: // ■さっそく読む
+          MisIns = new CITSassokuRead(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strCITPriceChyosatai,
@@ -145,6 +174,7 @@ public abstract class CITBase extends Mission {
           Define.strCITAnkPark,
           Define.strCITCMPochi,
           Define.strCITGameRarry
+          ,Define.strCITSassokuRead
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

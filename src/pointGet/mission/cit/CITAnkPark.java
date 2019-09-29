@@ -26,16 +26,6 @@ public class CITAnkPark extends CITBase {
   final String url = "https://www.chance.com/research/";
   boolean skipCapFlag = false;
   WebDriver driver = null;
-  AnswerPhotoEnk PhotoEnk = null;
-  AnswerKansatu Kansatu = null;
-  AnswerCooking Cooking = null;
-  AnswerHyakkey Hyakkey = null;
-  AnswerZukan Zukan = null;
-  AnswerColum Colum = null;
-  AnswerManga Manga = null;
-  AnswerHirameki Hirameki = null;
-  AnswerMix Mix = null;
-  AnswerIjin Ijin = null;
 
   /**
    * @param logg

@@ -277,6 +277,7 @@ public class Define {
   final public static String strCITAnkPark = "CITAnkPark";
   final public static String strCITCMPochi = "CITCMPochi";
   final public static String strCITGameRarry = "CITGameRarry";
+  final public static String strCITSassokuRead = "CITSassokuRead";
 
   // ■■■■■PointMonkey■■■■■
   final public static String strPMOChyosatai = "PMOChyosatai";

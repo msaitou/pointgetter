@@ -20,13 +20,6 @@ import pointGet.mission.parts.AnswerZukan;
 public class CITCMother extends CITBase {
   final String url = "https://www.chance.com/game/";
   WebDriver driver = null;
-  AnswerPhotoEnk PhotoEnk = null;
-  AnswerKansatu Kansatu = null;
-  AnswerCooking Cooking = null;
-  AnswerHyakkey Hyakkey = null;
-  AnswerZukan Zukan = null;
-  AnswerColum Colum = null;
-  AnswerDotti Dotti = null;
 
   /**
    * @param logg
