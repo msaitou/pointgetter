@@ -137,7 +137,10 @@ public abstract class OSABase extends Mission {
           break;
        default:
       }
-      if (Arrays.asList(new String[] { Define.strOSAQuiz,
+      if (Define.strOSAMail.equals(mission)) {
+        // skip
+      }
+      else       if (Arrays.asList(new String[] { Define.strOSAQuiz,
           Define.strOSANanyoubi,
           Define.strOSAAnzan,
           Define.strOSAEnglishTest,

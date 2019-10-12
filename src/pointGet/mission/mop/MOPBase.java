@@ -147,7 +147,10 @@ public abstract class MOPBase extends Mission {
           break;
         default:
       }
-      if (Arrays.asList(new String[] { Define.strMOPQuiz,
+      if (Define.strMOPMail.equals(mission)) {
+        // skip
+      }
+      else if (Arrays.asList(new String[] { Define.strMOPQuiz,
           Define.strMOPNanyoubi,
           Define.strMOPAnzan,
           Define.strMOPEnglishTest,

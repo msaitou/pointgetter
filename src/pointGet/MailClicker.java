@@ -289,6 +289,10 @@ public class MailClicker extends PointGet {
               LoginSite.login(Define.PSITE_CODE_WAR, driver, logg);
             } else if (Define.PSITE_CODE_PIL.equals(e.getKey())) {
               LoginSite.login(Define.PSITE_CODE_PIL, driver, logg);
+            } else if (Define.PSITE_CODE_PIC.equals(e.getKey())) {
+              LoginSite.login(Define.PSITE_CODE_PIC, driver, logg);
+            } else if (Define.PSITE_CODE_OSA.equals(e.getKey())) {
+              LoginSite.login(Define.PSITE_CODE_OSA, driver, logg);
             }
 
             for (String url : e.getValue()) {
@@ -355,7 +359,7 @@ public class MailClicker extends PointGet {
               }
               logg.info("request url[" + url + "]");
               //							logg.info("response[" + out.toString() + "]");
-              Utille.sleep(2000);
+              Utille.sleep(5000);
               reader.close();
             }
           }
@@ -540,7 +544,7 @@ public class MailClicker extends PointGet {
           case Define.PSITE_CODE_PIC: // PointInCome
             String url = "";
             if (Define.CONTENT_TYPE_HTML.equals(contentType)) {
-              String indexKey = "http://pointi.jp/al/click_special.php?site_no=";
+              String indexKey = "https://pointi.jp/al/click_special.php?site_no=";
               if (contentLow[i].indexOf(indexKey) >= 0) {
                 url = contentLow[i].substring(
                     contentLow[i].indexOf(indexKey),
@@ -548,7 +552,7 @@ public class MailClicker extends PointGet {
                         contentLow[i].indexOf(indexKey)));
               }
             } else {
-              String indexKey = "http://pointi.jp/al/click_mail_magazine.php?no=";
+              String indexKey = "https://pointi.jp/al/click_mail_magazine.php?no=";
               if (contentLow[i].indexOf(indexKey) >= 0) {
                 url = contentLow[i].substring(contentLow[i].indexOf("http"));
               }
