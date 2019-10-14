@@ -77,26 +77,22 @@ public class GENMorikoreEnk extends GENBase {
       if (isExistEle(driver, enkLinkSele)) {
         clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         changeCloseWindow(driver);
-        Utille.url(driver, "http://mrga.service-navi.jp/square/columns", logg);
-        for (int k = 0; k < 6; k++) {
+        Utille.url(driver, "http://gendama.agri-hatake.fun/square/columns", logg);
+        for (int k = 0; k < 5; k++) {
           if (k == 1) {
-            Utille.url(driver, "http://mrga.service-navi.jp/square/articles", logg);
+            Utille.url(driver, "http://gendama.agri-hatake.fun/square/pittango", logg);
           }
           else if (k == 2) {
-            Utille.url(driver, "http://mrga.service-navi.jp/square/surveys", logg);
-            //            Utille.url(driver, "http://mrga.service-navi.jp/square/surveys", logg);
-            //            continue;
+            Utille.url(driver, "http://gendama.agri-hatake.fun/square/surveys", logg);
+          }
+//          else if (k == 5) {
+//            Utille.url(driver, "http://gendama.agri-hatake.fun/square/pittango", logg);
+//          }
+          else if (k == 3) {
+            Utille.url(driver, "http://gendama.agri-hatake.fun/square/votes", logg);
           }
           else if (k == 4) {
-            Utille.url(driver, "http://mrga.service-navi.jp/square/pittango", logg);
-
-            //            continue;
-          }
-          else if (k == 3) {
-            Utille.url(driver, "http://mrga.service-navi.jp/square/votes", logg);
-          }
-          else if (k == 5) {
-            Utille.url(driver, "http://mrga.service-navi.jp/square/diagnoses", logg);
+            Utille.url(driver, "http://gendama.agri-hatake.fun/square/diagnoses", logg);
           }
 
           Utille.sleep(3000);
@@ -107,7 +103,7 @@ public class GENMorikoreEnk extends GENBase {
               sele3 = "form>input[type='submit']", //
               sele9 = "a.start__button", overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
               sele6 = "form>input.next_bt", // コラム用
-                  sele10 = "form>input[type='image']", // 回答する 漫画用
+              sele10 = "form>input[type='image']", // 回答する 漫画用
               sele4 = "a.submit-btn", b = "";
           while (true) {
             checkOverlay(driver, overlaySele, false);
@@ -135,7 +131,7 @@ public class GENMorikoreEnk extends GENBase {
 
               if (cUrl.indexOf("http://gameapp.galaxymatome.com") >= 0) {
                 String close = "div.feature__button span.button--close", //
-                    mSele2 = "a[onclick*='entrance']",//
+                    mSele2 = "a[onclick*='entrance']", //
                     mSele = "a.highlight";
                 if (isExistEle(driver, close, false)) {
                   clickSleepSelector(driver, close, 2000); // 遷移
@@ -162,12 +158,14 @@ public class GENMorikoreEnk extends GENBase {
                   && isExistEle(driver, sele3)) {
                 AdShindan.answer(driver, sele3, wid);
               }
-              else if (!skipCapFlag &&(cUrl.indexOf("ad/enq/") >= 0
+              else if (!skipCapFlag && (cUrl.indexOf("ad/enq/") >= 0
                   || cUrl.indexOf("beautypress.tokyo") >= 0
-                      || cUrl.indexOf("good-question.jp") >= 0
+                  || cUrl.indexOf("good-question.jp") >= 0
                   || cUrl.indexOf("credit-card.link") >= 0)
 
-                  && isExistEle(driver, sele1_)) {
+                  && true) {
+//                if (isExistEle(driver, sele1_)) {
+//                }
                 // $('iframe').contents().find("div>input[type='submit']")
                 if (!AdEnq.answer(driver, sele1, wid)) {
                   break;
@@ -179,9 +177,8 @@ public class GENMorikoreEnk extends GENBase {
                 Shindan.answer(driver, sele4, wid);
               }
               else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
-              //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
-                  || cUrl.indexOf("/animal/") >= 0
-              )
+                  //            || cUrl.indexOf("eyelashes-fashion.com") >= 0
+                  || cUrl.indexOf("/animal/") >= 0)
                   && isExistEle(driver, sele6)) {
                 Zukan.answer(driver, sele6, wid);
               }
@@ -216,8 +213,7 @@ public class GENMorikoreEnk extends GENBase {
                 PhotoEnk.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("XXXXXXXXXXXXXXX") >= 0
-                  || cUrl.indexOf("/hirameki/") >= 0
-                  )&& isExistEle(driver, sele6)) {
+                  || cUrl.indexOf("/hirameki/") >= 0) && isExistEle(driver, sele6)) {
                 Hirameki.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("column-enquete") >= 0
@@ -230,7 +226,7 @@ public class GENMorikoreEnk extends GENBase {
                 Colum.answer(driver, sele6, wid);
               }
               else if ((cUrl.indexOf("http://pittango.net/") >= 0
-              || cUrl.indexOf("pittango.jp") >= 0
+                  || cUrl.indexOf("pittango.jp") >= 0
               //                || cUrl.indexOf("beautynail-design.com") >= 0
               //                || cUrl.indexOf("fashion-cosmelife.com") >= 0
               )

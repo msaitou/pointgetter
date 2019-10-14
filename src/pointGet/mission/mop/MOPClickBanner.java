@@ -32,15 +32,18 @@ public class MOPClickBanner extends MOPBase {
 		}
 
 		Utille.url(driver, url, logg);
-		selector = "p.click>a.cc-btn";
-		if (isExistEle(driver, selector)) {
-			int size = getSelectorSize(driver, selector);
-			for (int i = 0; i < size; i++) {
-				if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
-					clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), i, 2000);
-					closeOtherWindow(driver);
-				}
-			}
+		String [] seleList = {"p.click>a.cc-btn", "div.ccAvt__link>a>img"};
+		for (String sele :seleList) {
+	    selector = sele;
+	    if (isExistEle(driver, selector)) {
+	      int size = getSelectorSize(driver, selector);
+	      for (int i = 0; i < size; i++) {
+	        if (isExistEle(driver.findElements(By.cssSelector(selector)), i)) {
+	          clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), i, 2000);
+	          closeOtherWindow(driver);
+	        }
+	      }
+	    }
 		}
 	}
 }
