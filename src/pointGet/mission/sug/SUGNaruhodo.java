@@ -28,7 +28,7 @@ public class SUGNaruhodo extends SUGBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "dl.game_area>dt>a[href='/ssp/20']>img";
+    selector = "dl.game_area>dt>a[href*='/ssp/20']>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);

@@ -33,7 +33,7 @@ public class SUGQuizKentei extends SUGBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "div.subpr_box>a[href='/ssp/31']>img";
+    selector = "div.subpr_box>a[href*='/ssp/31']>img";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 6000); // 遷移
       changeCloseWindow(driver);

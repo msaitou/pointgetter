@@ -30,7 +30,7 @@ public class SUGChyousadan extends SUGBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "dl.game_area>dt>a[href='/ssp/20']>img";
+    selector = "dl.game_area>dt>a[href*='/ssp/20']>img";
     String seleFirst = "img[src*='bn_chosa']";
     String sele0 = "a.ui-btn.ui-btn-a" // アンケート一覧の回答するボタン
     , sele1 = "form>input[type='submit']" //

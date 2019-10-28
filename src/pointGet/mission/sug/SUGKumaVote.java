@@ -28,7 +28,7 @@ public class SUGKumaVote extends SUGBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    selector = "dl.game_area>dt>a[href='/ssp/20']>img";
+    selector = "dl.game_area>dt>a[href*='/ssp/20']>img";
     String sele0 = "a.start__button" // アンケート一覧の回答するボタン
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
     , preSele = "img[src*='kumakumasenkyo']", //
