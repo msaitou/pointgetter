@@ -34,11 +34,11 @@ public class PSTGameParkEnk extends PSTBase {
     driver = driverAtom;
     Utille.url(driver, url, logg);
     selector = "input[name='gamep']";
-    String pop1 = "div#campaignDialog p.btnPdPlay", //
-    pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
-    pop2Cls = "div.campaignClose>img", //
-    pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
-    enkLinkSele = "li.survey>a>img", //
+    String pop1 = "div#campaignDialog div.btDialogBox", //
+        pop1None = "div#campaignDialog[style*='display: none;'] div.btDialogBox", //
+        pop2Cls = "div.campaignClose>img", //
+        pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
+        enkLinkSele = "div>a[href='/survey/summary/']>span", //
     a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移

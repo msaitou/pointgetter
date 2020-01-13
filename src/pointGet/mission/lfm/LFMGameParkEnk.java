@@ -33,11 +33,11 @@ public class LFMGameParkEnk extends LFMBase {
     driver = driverAtom;
     Utille.url(driver, url, logg);
     selector = "p>img[alt='ポニーのGame Park']";
-    String pop1 = "div#campaignDialog p.btnPdPlay", //
-        pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
+    String pop1 = "div#campaignDialog div.btDialogBox", //
+        pop1None = "div#campaignDialog[style*='display: none;'] div.btDialogBox", //
         pop2Cls = "div.campaignClose>img", //
         pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
-        enkLinkSele = "li.survey>a>img", //
+        enkLinkSele = "div>a[href='/survey/summary/']>span", //
         a = "";
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 4000); // 遷移

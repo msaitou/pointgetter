@@ -33,11 +33,11 @@ public class GENGameParkEnk extends GENBase {
     driver = driverAtom;
     Utille.url(driver, url, logg);
 //    Utille.url(driver, "http://gendama-plus.gamepark.net/", logg);
-    String pop1 = "div#campaignDialog p.btnPdPlay", //
-    pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
-    pop2Cls = "div.campaignClose>img", //
-    pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
-    enkLinkSele = "li.survey>a>img", //
+    String pop1 = "div#campaignDialog div.btDialogBox", //
+        pop1None = "div#campaignDialog[style*='display: none;'] div.btDialogBox", //
+        pop2Cls = "div.campaignClose>img", //
+        pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
+        enkLinkSele = "div>a[href='/survey/summary/']>span", //
     dispLink = "section#game dl.accordion>dt>span",
         linkSele = "dd.accordion_list img[alt='GamePark']",
     a = "";

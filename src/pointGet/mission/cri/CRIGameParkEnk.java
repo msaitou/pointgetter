@@ -35,11 +35,11 @@ public class CRIGameParkEnk extends CRIBase {
     Utille.url(driver, url, logg);
     waitTilReady(driver);
     selector = "img[alt*='ちょびんくんGamePark']";
-    String pop1 = "div#campaignDialog p.btnPdPlay", //
-        pop1None = "div#campaignDialog[style*='display: none;'] p.btnPdPlay", //
+    String pop1 = "div#campaignDialog div.btDialogBox", //
+        pop1None = "div#campaignDialog[style*='display: none;'] div.btDialogBox", //
         pop2Cls = "div.campaignClose>img", //
         pop2ClsNone = "div.campaignClose[style*='display: none;']>img", //
-        enkLinkSele = "li.survey>a>img", //
+        enkLinkSele = "div>a[href='/survey/summary/']>span", //
         a = "";
     String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
     recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
