@@ -128,7 +128,7 @@ public class LoginSite extends PointGet {
           ele.clear();
           ele.sendKeys(pGetProps.get(Define.PSITE_CODE_LFM).get("loginpass"));
           //        Utille.clickRecaptha(driver, logg);
-          driver.findElement(By.cssSelector("div>input.next")).click();
+          driver.findElement(By.cssSelector("form>input[value='ログイン']")).click();
           Utille.sleep(5000);
         }
       }
