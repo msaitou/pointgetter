@@ -248,7 +248,7 @@ public class LoginSite extends PointGet {
           ele = driver.findElement(By.cssSelector("input[name='password']"));
           ele.clear();
           ele.sendKeys(pGetProps.get(Define.PSITE_CODE_DMY).get("loginpass"));
-          driver.findElement(By.cssSelector("button[type='submit']")).click();
+          driver.findElement(By.cssSelector("input[type='submit']")).click();
           Utille.sleep(5000);
         }
       }

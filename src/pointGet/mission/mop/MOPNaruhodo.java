@@ -23,7 +23,7 @@ public class MOPNaruhodo extends MOPBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    selector = "div.game_btn>div.icon>img[alt='CMくじ']";
+    selector = "img[alt='CMくじ']";
     Utille.url(driver, url, logg);
 
     if (isExistEle(driver, selector)) {

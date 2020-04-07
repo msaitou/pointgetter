@@ -26,7 +26,7 @@ public class MOPAnzan extends MOPBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "div.game_btn>div.icon>img[alt='ANZANmental arithmetic']";
+    selector = "img[alt='ANZAN']";
     if (isExistEle(driver, selector)) {
       clickSleepSelectorNoRefre(driver, selector, 2000); // 遷移
       changeCloseWindow(driver);
