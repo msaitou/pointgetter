@@ -30,18 +30,19 @@ public class GPOMotAnk extends GPOBase {
     Utille.url(driver, url, logg);
     Utille.sleep(3000);
     String sele2 = "a[href='https://kotaete.gpoint.co.jp/']>span.navi-icon", //
-    selector2 = "td>a>img[src*=btn_answer01]";
+    selector2 = "div.button>a";
     if (isExistEle(driver, sele2)) {
       clickSleepSelector(driver, sele2, 4000);
 
       // 回答可能なアンケート数から古い方から攻める
-      String ableAnsNumSele = "h2.survey_title1_counts>span", //
+      String ableAnsNumSele = "div.surveyNumber>span", //
       sele1 = "button#movenextbtn";
       while (true) {
 
         int ableAnsNum = 0;
         if (isExistEle(driver, ableAnsNumSele)) {
-          String strAbleAnsNum = driver.findElement(By.cssSelector(ableAnsNumSele)).getText(), movePageSele = "li.page>a";
+          String strAbleAnsNum = driver.findElement(By.cssSelector(ableAnsNumSele)).getText(), 
+              movePageSele = "li.page>a";
           ableAnsNum = Integer.parseInt(strAbleAnsNum);
           if (ableAnsNum == 0) {
             break;
@@ -52,8 +53,8 @@ public class GPOMotAnk extends GPOBase {
           if (isExistEle(pageList, page - 1)) {
             logg.info("first Page:" + page);
             clickSleepSelector(driver, pageList, page - 1, 5000); // 最後のページに移動
-
-            int skip = 0, beforeSize = 0;
+            // 200425時点で、一番上に別の種類のアンケートがあるので、スキップ
+            int skip = 1, beforeSize = 0;
             if (isExistEle(driver, selector2)) {
               List<WebElement> eleList = driver.findElements(By.cssSelector(selector2));
               int size = eleList.size(), targetIndex = skip;
