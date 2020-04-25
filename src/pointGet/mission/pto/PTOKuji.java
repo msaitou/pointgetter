@@ -42,7 +42,7 @@ public class PTOKuji extends PTOBase {
         private static final long serialVersionUID = 1L;
 
         {
-          put("url", "https://www.pointtown.com/ptu/service");
+          put("url", "https://www.pointtown.com/ptu/campaign/event");
           put("sele", "a[onclick*='黄']");
           // div.ptpc-search-box__hotword>a ０番目
         }
@@ -65,7 +65,7 @@ public class PTOKuji extends PTOBase {
         private static final long serialVersionUID = 1L;
 
         {
-          put("url", "https://www.pointtown.com/ptu/coupon/top.do");
+          put("url", "https://www.pointtown.com/ptu/enquete/top");
           put("sele", "a[onclick*='桃']");
         }
       });
@@ -125,41 +125,44 @@ public class PTOKuji extends PTOBase {
         case "くじ紫":
         case "くじ赤":
         case "くじ青":
+        case "くじ黄":
+        case "くじ桃":
+//        case "くじ緑":
           if (isExistEle(driver, clMap.getValue().get("sele"))) {
             logg.info(mName + " " + ++c + "." + clMap.getKey() + "!");
             clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
             existFlag = true;
           }
           break;
-        case "くじ黄":
-        case "くじ桃":
-          if ("くじ桃".equals(clMap.getKey())) {
-            sele = "li.img>img";
-          }
-          else if ("くじ黄".equals(clMap.getKey())) {
-            sele = "div.pt-search__submit>button";
-          }
-          if (isExistEle(driver, sele)) {
-            for (int i = 0; i < 4; i++) {
-              List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
-              if (isExistEle(eleList, i)) { // 最初のリンクをクリック
-                logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
-                clickSleepSelector(driver, eleList, i, 4000);
-                if ("くじ桃".equals(clMap.getKey())) {
-                  closeOtherWindow(driver);
-                }
-                if (isExistEle(driver, clMap.getValue().get("sele"))) {
-                  logg.info(mName + " " + c + "." + clMap.getKey() + "!");
-                  clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
-                  existFlag = true;
-                  break;
-                }
-                Utille.url(driver, clMap.getValue().get("url"), logg);
-                Utille.sleep(4000);
-              }
-            }
-          }
-          break;
+//        case "くじ黄":
+//        case "くじ桃":
+//          if ("くじ桃".equals(clMap.getKey())) {
+//            sele = "li.img>img";
+//          }
+//          else if ("くじ黄".equals(clMap.getKey())) {
+//            sele = "div.pt-search__submit>button";
+//          }
+//          if (isExistEle(driver, sele)) {
+//            for (int i = 0; i < 4; i++) {
+//              List<WebElement> eleList = driver.findElements(By.cssSelector(sele));
+//              if (isExistEle(eleList, i)) { // 最初のリンクをクリック
+//                logg.info(mName + " " + ++c + "." + clMap.getKey() + "pre1!");
+//                clickSleepSelector(driver, eleList, i, 4000);
+//                if ("くじ桃".equals(clMap.getKey())) {
+//                  closeOtherWindow(driver);
+//                }
+//                if (isExistEle(driver, clMap.getValue().get("sele"))) {
+//                  logg.info(mName + " " + c + "." + clMap.getKey() + "!");
+//                  clickSleepSelector(driver, clMap.getValue().get("sele"), 4000);
+//                  existFlag = true;
+//                  break;
+//                }
+//                Utille.url(driver, clMap.getValue().get("url"), logg);
+//                Utille.sleep(4000);
+//              }
+//            }
+//          }
+//          break;
         case "くじ緑":
           sele = "ul.list li.tit_topic strong>a";
           if (isExistEle(driver, sele)) {
