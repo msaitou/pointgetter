@@ -125,6 +125,10 @@ public class PICMedalMool extends PICBase {
       int cnt = 0;
       for (int k = 0; k < preSeleList.length;) {
         String preSele = preSeleList[k];
+        if (!isExistEle(driver, preSele, false)) {
+          k++;
+          continue;
+        }
         if (preSele.equals("a[href*='pc/uranai']")) {
           clickSleepSelector(driver, preSele, 7000); // 遷移
           String wid = driver.getWindowHandle();
