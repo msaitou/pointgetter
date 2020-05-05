@@ -100,7 +100,7 @@ public class PICMedalMool extends PICBase {
 
       String[] preSeleList = {
           "p>img[src*='/kingyo']", // 金魚占い
-          "p>img[src*='tenki']",
+//          "p>img[src*='tenki']",
           "p>img[src*='seikatsu']",
                     "img[src*='main_ab']", // 2卓アンケート
                     "img[src*='main_quiz05']", // 食べ物クイズ
@@ -554,14 +554,14 @@ public class PICMedalMool extends PICBase {
           Tenki.answer(driver, null, wid);
           k++;
         }
-        // 天気
-        else if (preSele.equals("p>img[src*='tenki']")) {
-          clickSleepSelector(driver, preSele, 3000); // 遷移
-          String wid = driver.getWindowHandle();
-          changeWindow(driver, wid);
-          Tenki.answer(driver, null, wid);
-          k++;
-        }
+//        // 天気
+//        else if (preSele.equals("p>img[src*='tenki']")) {
+//          clickSleepSelector(driver, preSele, 3000); // 遷移
+//          String wid = driver.getWindowHandle();
+//          changeWindow(driver, wid);
+//          Tenki.answer(driver, null, wid);
+//          k++;
+//        }
 
         Utille.sleep(5000);
         //        k++;
