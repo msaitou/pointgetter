@@ -41,7 +41,7 @@ public class CRIAnk extends CRIBase {
       logg.info("1");
       // クイズ→テキスト→写真の順にやる（デフォは写真だけど）
       String seleCate = "ul.tab_index>li#";
-      String goryId[] = { "tab_quiz", "tab_text", "tab_photo" };
+      String goryId[] = { "tab_text", "tab_photo" };
       for (int p = 0; p < goryId.length; p++) {
         selector = "div.tab_cont";
         int cnt = 0;
