@@ -15,18 +15,20 @@ import pointGet.common.Utille;
  */
 public class RINClickBanner extends RINBase {
   final String url = "https://www.rakuten-card.co.jp/e-navi/members/point/click-point/index.xhtml?l-id=enavi_top_info-personal_click-point";
-//  (script = document.createElement('script')).src = 'https://code.jquery.com/jquery-latest.min.js';
-//  document.getElementsByTagName('head')[0].appendChild(script);
-//  setTimeout( function(){
-//  //読み込みを待つため、処理はここに書く
-//  var result = "";
-//  jQuery.each(jQuery("._iPk ._rl"), function(i,e){
-//      var name = $(e).text();
-//      result += name;
-//      result += "\n";
-//  });
-//  console.log(result);
-//  }, 200);
+/**
+  (script = document.createElement('script')).src = 'https://code.jquery.com/jquery-latest.min.js';
+  document.getElementsByTagName('head')[0].appendChild(script);
+  setTimeout( function(){
+  //読み込みを待つため、処理はここに書く
+  var result = "";
+  jQuery.each(jQuery("._iPk ._rl"), function(i,e){
+      var name = $(e).text();
+      result += name;
+      result += "\n";
+  });
+  console.log(result);
+  }, 200);
+  **/
   /**
    * @param log
    */

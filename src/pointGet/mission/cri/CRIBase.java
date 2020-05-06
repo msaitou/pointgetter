@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package pointGet.mission.cri;
 
@@ -32,7 +32,7 @@ public abstract class CRIBase extends Mission {
   public final static String sCode = Define.PSITE_CODE_CRI;
 
   /**
-   * 
+   *
    * @param log
    * @param cProps
    * @param name
@@ -51,7 +51,7 @@ public abstract class CRIBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param loggg
    * @param cProps
    * @param missions
@@ -88,8 +88,12 @@ public abstract class CRIBase extends Mission {
         case Define.strCRIGameParkEnk:
           MisIns = new CRIGameParkEnk(loggg, cProps);
           break;
-          
-          
+        case Define.strCRIAnkPark:
+          MisIns = new CRIAnkPark(loggg, cProps);
+          break;
+
+
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strCRIAnk,
@@ -98,7 +102,8 @@ public abstract class CRIBase extends Mission {
           Define.strCRIChyousadan,
           Define.strCRIKumaVote,
           Define.strCRIChirachi,
-          Define.strCRIGameParkEnk
+          Define.strCRIGameParkEnk,
+          Define.strCRIAnkPark
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
@@ -109,7 +114,7 @@ public abstract class CRIBase extends Mission {
       PointsCollection PC = new PointsCollection(Dbase);
       Map<String, Double> pMap = new HashMap<String, Double>() {
         /**
-        * 
+        *
         */
         private static final long serialVersionUID = 1L;
         {
@@ -127,7 +132,7 @@ public abstract class CRIBase extends Mission {
   }
 
   /**
-   * 
+   *
    * @param driver
    * @param logg
    * @return
