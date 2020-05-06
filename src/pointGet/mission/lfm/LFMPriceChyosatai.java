@@ -16,7 +16,7 @@ import pointGet.common.Utille;
  * 4時更新
  */
 public class LFMPriceChyosatai extends LFMBase {
-  final String url = "http://lifemedia.jp/enquete/";
+  final String url = "https://lifemedia.jp/enquete/";
   private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
   private String footBnrSelector = "div.foot-bnr a.close>span";
   private String footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
@@ -34,7 +34,7 @@ public class LFMPriceChyosatai extends LFMBase {
 
   @Override
   public void privateMission(WebDriver driver) {
-    String firstEntrySele = "img[src*='chousataipark']";
+    String firstEntrySele = "img[src*='chosatai']";
     if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }

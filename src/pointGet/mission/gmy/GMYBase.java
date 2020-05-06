@@ -124,6 +124,10 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYGameRarry: // ■ゲームラリー
           MisIns = new GMYGameRarry(loggg, cProps);
           break;
+        case Define.strGMYSassokuRead: // ■ゲームラリー
+          MisIns = new GMYSassokuRead(loggg, cProps);
+          break;
+          
         default:
       }
       if (Arrays.asList(new String[] { Define.strGMYShindan,
@@ -140,6 +144,7 @@ public abstract class GMYBase extends Mission {
           Define.strGMYNaruhodo,
           Define.strGMYAnkPark, Define.strGMYCMPochi
           ,Define.strGMYGameRarry
+          ,Define.strGMYSassokuRead
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }

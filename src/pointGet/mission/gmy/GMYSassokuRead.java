@@ -1,4 +1,4 @@
-package pointGet.mission.cit;
+package pointGet.mission.gmy;
 
 import java.util.List;
 import java.util.Map;
@@ -9,22 +9,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
-import pointGet.mission.gmy.GMYBase;
 
 /**
  * @author saitou
  *
  */
-public class CITSassokuRead extends GMYBase {
-  final String url = "https://www.chance.com/game/";
+public class GMYSassokuRead extends GMYBase {
+  final String url = "https://dietnavi.com/pc/game/";
   private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
   private String footBnrSelector = "div.foot-bnr a.close>span";
 
   /**
    * @param logg
    */
-  public CITSassokuRead(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "気持ちを読む");
+  public GMYSassokuRead(Logger logg, Map<String, String> cProps) {
+    super(logg, cProps, "GMY気持ちを読む");
     //    Kenkou = new AnswerKenkou(logg);
   }
 
@@ -32,15 +31,21 @@ public class CITSassokuRead extends GMYBase {
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
     Utille.sleep(3000);
-    String seleList[] = { "img[alt*='ねこのきもち']", "img[alt*='いぬのきもち']", "img[alt*='サンキュ！ニュース']" };
-    String seleStampGet = "input.get_stamp.btn", seleRetrunList = "a.read_more.btn", a, pageReturn = "div>a.page_back.btn";
+    String seleList[] = { 
+//        "img[alt*='ねこのきもち']", 
+        "img[alt*='いぬのきもち']", 
+//        "img[alt*='サンキュ！ニュース']" 
+        };
+    String seleStampGet = "input.getStamp.btn", //
+        seleRetrunList = "a.readMore.btn", //
+        a, pageReturn = "div>a.pageBack.btn";
     int pagetarget = 6;
     for (String sele : seleList) {
       if (isExistEle(driver, sele)) {
         clickSleepSelector(driver, sele, 4000);
         checkAndAcceptAlert(driver);// アラートをけして
         String pageLinkSele = "ol>li>a", contentSele = "ul.articleList>li", readSele = "a>img.articleImg"//
-        , zumiSele = "img.stamp", pageLinkSeleBack = "ol>li.back>a", pageLinkSeleNext = "ol>li.next>a"// 
+        , zumiSele = "a>img.stamp", pageLinkSeleBack = "ol>li.back>a", pageLinkSeleNext = "ol>li.next>a"// 
         , geted20Sele = "div.stampArea>h2>img[alt='20ptGETしました']";
         // どのページから始める？
         if (isExistEle(driver, pageLinkSele)) {
@@ -85,10 +90,10 @@ public class CITSassokuRead extends GMYBase {
                 }
                 else if (isExistEle(driver, pageReturn)) {
                   clickSleepSelector(driver, pageReturn, 3000);
-                  isFinishedFlag = true; // ここに来るのはすでに10スタンプ済み
-                  Utille.url(driver, url, logg);
-                  Utille.sleep(3000);
-                  break;
+//                  isFinishedFlag = true; // ここに来るのはすでに10スタンプ済み
+//                  Utille.url(driver, url, logg);
+//                  Utille.sleep(3000);
+//                  break;
                 }
               }
             }

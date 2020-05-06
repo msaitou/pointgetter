@@ -90,7 +90,8 @@ public class Define {
   final public static String strGMYAnkPark = "GMYAnkPark";
   final public static String strGMYCMPochi = "GMYCMPochi";
   final public static String strGMYGameRarry = "GMYGameRarry";
-
+  final public static String strGMYSassokuRead = "GMYSassokuRead";
+  
   // ■■■■■i2i■■■■■
   final public static String strI2ISeiza = "I2ISeiza";
   final public static String strI2IColum = "I2IColum";
