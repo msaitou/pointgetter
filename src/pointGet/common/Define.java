@@ -246,6 +246,7 @@ public class Define {
   final public static String strPSTClickBanner = "PSTClickBanner";
   final public static String strPSTMail = "PSTMail";
   final public static String strPSTAnqueate = "PSTAnqueate";
+  final public static String strPSTAnkPark = "PSTAnkPark";
 
   // ■■■■■pointisland■■■■■
   final public static String strPILUranai = "PILUranai";
@@ -258,6 +259,7 @@ public class Define {
   final public static String strPILKumaVote = "PILKumaVote";
   final public static String strPILMail = "PILMail";
   final public static String strPILAnqueate = "PILAnqueate";
+  final public static String strPILAnkPark = "PILAnkPark";
 
   // ■■■■■chanceIt■■■■■
   final public static String strCITPriceChyosatai = "CITPriceChyosatai";

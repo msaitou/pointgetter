@@ -94,7 +94,10 @@ public abstract class PILBase extends Mission {
         case Define.strPILAnqueate: // ■PILアンケート
           MisIns = new PILAnqueate(loggg, cProps);
           break;
-          
+        case Define.strPILAnkPark: // ■PILアンケートpark
+          MisIns = new PILAnkPark(loggg, cProps);
+          break;
+
         default:
       }
       if (Arrays.asList(new String[] { Define.strPILQuiz,

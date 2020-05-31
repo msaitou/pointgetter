@@ -89,6 +89,9 @@ public abstract class PSTBase extends Mission {
         case Define.strPSTMail:
           MailClicker.main(new String[] {sCode});
           break;
+        case Define.strPSTAnkPark: // ■PStアンケートpark
+          MisIns = new PSTAnkPark(loggg, cProps);
+          break;
         default:
       }
       if (Arrays.asList(new String[] { Define.strPSTQuiz,
