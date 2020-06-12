@@ -30,12 +30,12 @@ public class I2IKenkou extends I2IBase {
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
     Utille.sleep(3000);
-    selector = "li.pointfreeList_item";
+    selector = "div.tileItem a div.bnr";
     if (isExistEle(driver, selector)) {
       int size = getSelectorSize(driver, selector);
       for (int i = 0; i < size; i++) {
         WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-        String selector2 = "img[src='/img/special/freepoint/sarasara_340_120.png']";
+        String selector2 = "img[alt='さらさら健康コラム']";
         if (isExistEle(e, selector2)) {
           if (!isExistEle(e, selector2)) {
             break;

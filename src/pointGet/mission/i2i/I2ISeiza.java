@@ -26,12 +26,12 @@ public class I2ISeiza extends I2IBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "li.pointfreeList_item";
+    selector = "div.tileItem a div.bnr";
     if (isExistEle(driver, selector)) {
       int size = getSelectorSize(driver, selector);
       for (int i = 0; i < size; i++) {
         WebElement e = driver.findElements(By.cssSelector(selector)).get(i);
-        String selector2 = "img[src='/img/special/freepoint/horosco_340_120.png']";
+        String selector2 = "img[alt='今日の12星座占い']";
         if (isExistEle(e, selector2)) {
           if (!isExistEle(e, selector2)) {
             break;
