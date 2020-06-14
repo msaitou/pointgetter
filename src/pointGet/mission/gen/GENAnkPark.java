@@ -20,6 +20,7 @@ import pointGet.mission.parts.AnswerKansatu;
 import pointGet.mission.parts.AnswerManga;
 import pointGet.mission.parts.AnswerMix;
 import pointGet.mission.parts.AnswerPhotoEnk;
+import pointGet.mission.parts.AnswerPointResearch;
 import pointGet.mission.parts.AnswerZukan;
 
 public class GENAnkPark extends GENBase {
@@ -35,6 +36,8 @@ public class GENAnkPark extends GENBase {
   AnswerHirameki Hirameki = null;
   AnswerMix Mix = null;
   AnswerIjin Ijin = null;
+  /* アンケートクラス　ポイントサーチ */
+  AnswerPointResearch PointResearch = null;
 
   /**
    * @param logg
@@ -51,38 +54,54 @@ public class GENAnkPark extends GENBase {
     Hirameki = new AnswerHirameki(logg);
     Mix = new AnswerMix(logg);
     Ijin = new AnswerIjin(logg);
+    PointResearch = new AnswerPointResearch(logg);
   }
 
   @Override
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    String enkLinkSele = "img[alt='アンケートパーク']", //
+    String enkLinkSele = "li>a[onclick*='毎日']", //
     a = "";
+    Utille.sleep(4000);
 
-    if (isExistEle(driver, enkLinkSele)) {
-      clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
-      changeCloseWindow(driver);
+    selector = "span#mini_surveys tr>td>a>span";
+    int skip = 0, beforeSize = 0;
+    String sele9 = "div>a.start__button", //
+    overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+    sele6 = "form>input.next_bt", // コラム用
+    sele10 = "form>input[type='image']", // 回答する 漫画用
+    sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
 
-      Utille.sleep(4000);
-      selector = "div.enquete-list tr>td.status>a";
-      int skip = 0, beforeSize = 0;
-      String 
-      sele9 = "div>a.start__button", //
-      overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
-      sele6 = "form>input.next_bt", // コラム用
-      sele10 = "form>input[type='image']", // 回答する 漫画用
-          sele11 = "input.enquete_nextbt.next_bt",
-      b = "";
-      while (true) {
-        checkOverlay(driver, overlaySele, false);
+    sele11 = "input.enquete_nextbt.next_bt", b = "";
+    while (true) {
+      checkOverlay(driver, overlaySele, false);
+      if (isExistEle(driver, enkLinkSele)) {
+        clickSleepSelector(driver, enkLinkSele, 4000); // 遷移
         if (!isExistEle(driver, selector)) {
           break;
         }
+        //      changeCloseWindow(driver);
+
+        //      Utille.sleep(4000);
+        //      selector = "span#mini_surveys tr>td>a>span";
+        //      int skip = 0, beforeSize = 0;
+        //      String sele9 = "div>a.start__button", //
+        //      overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
+        //      sele6 = "form>input.next_bt", // コラム用
+        //      sele10 = "form>input[type='image']", // 回答する 漫画用
+        //      sele1 = "div.ui-control.type-fixed>a.ui-button", // pointResearch用
+        //
+        //      sele11 = "input.enquete_nextbt.next_bt", b = "";
+        //      while (true) {
+        //        checkOverlay(driver, overlaySele, false);
+        //        if (!isExistEle(driver, selector)) {
+        //          break;
+        //        }
         List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-        int size = eleList.size(), 
-//            targetIndex = size - skip;
-            targetIndex = skip;
+        int size = eleList.size(),
+        //            targetIndex = size - skip;
+        targetIndex = skip;
         if (beforeSize == size) {
           skip++;
           targetIndex = skip;
@@ -90,7 +109,7 @@ public class GENAnkPark extends GENBase {
         if (size > targetIndex &&
             targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
           String wid = driver.getWindowHandle();
-//          Utille.mouseOverByScript(driver, seleMouseOver, logg);
+          //          Utille.mouseOverByScript(driver, seleMouseOver, logg);
           Utille.scrolledPage(driver, eleList.get(targetIndex));
           Utille.sleep(2000);
           Actions actions = new Actions(driver);
@@ -100,11 +119,16 @@ public class GENAnkPark extends GENBase {
           Utille.sleep(5000);
 
           changeWindow(driver, wid);
-//          clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
-//          changeWindow(driver, wid);
+          //          clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
+          //          changeWindow(driver, wid);
           String cUrl = driver.getCurrentUrl();
           logg.info("cUrl[" + cUrl + "]");
           if (isExistEle(driver, sele9)) {
+          }
+          else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
+              || cUrl.indexOf("/research/") >= 0)
+              && isExistEle(driver, sele1)) {
+            PointResearch.answer(driver, sele1, wid);
           }
           else if ((cUrl.indexOf("cosmelife.com/animal") >= 0
               || cUrl.indexOf("/animal/") >= 0
@@ -154,8 +178,7 @@ public class GENAnkPark extends GENBase {
             Colum.answer(driver, sele6, wid);
           }
           // 漫画
-          else if (
-              (cUrl.indexOf("/manga/") >= 0)
+          else if ((cUrl.indexOf("/manga/") >= 0)
               && isExistEle(driver, sele10)) {
             Manga.answer(driver, sele10, wid);
           }
@@ -165,8 +188,7 @@ public class GENAnkPark extends GENBase {
             Ijin.answer(driver, sele6, wid);
           }
           // MIX
-          else if (
-              (cUrl.indexOf("/mix/") >= 0)
+          else if ((cUrl.indexOf("/mix/") >= 0)
               && isExistEle(driver, sele11)) {
             Mix.answer(driver, sele11, wid);
           }

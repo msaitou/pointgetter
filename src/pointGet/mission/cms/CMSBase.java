@@ -27,7 +27,7 @@ public abstract class CMSBase extends Mission {
   /* current site code */
   public final static String sCode = Define.PSITE_CODE_CMS;
   boolean finsishFlag = false;
-  public static String topUrl = "http://www.cmsite.co.jp/top/home/";
+  public static String topUrl = "http://www.cmsite.co.jp/top/cm/";
 
   /**
    *
