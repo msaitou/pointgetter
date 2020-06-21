@@ -40,6 +40,7 @@ public class AnswerWhichCollect extends MissCommon {
         goodSele = "img#titleGood",
         badSele = "img#titleBad",
         noneStyle = "[style*='display: none']",
+        tmpSele = "input[alt='OK']",
         a = "";
     String cUrl = driver.getCurrentUrl();
     logg.info("cUrl[" + cUrl + "]");
@@ -51,7 +52,10 @@ public class AnswerWhichCollect extends MissCommon {
     if (isExistEle(driver, startSele)) {
       clickSleepSelector(driver, startSele, 3000);
       changeCloseWindow(driver);
-      Utille.sleep(4000);
+      if (isExistEle(driver, tmpSele)) {
+        clickSleepSelector(driver, tmpSele, 4000);
+      }
+//      Utille.sleep(4000);
 
       for (int m = 0; m < 10; m++) {
         boolean iregularFlag = false;
