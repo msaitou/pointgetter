@@ -71,6 +71,8 @@ public class Define {
   final public static String strGENAnkPark = "GENAnkPark";
   final public static String strGENGameRarry = "GENGameRarry";
   final public static String strGENKenkou = "GENKenkou";
+  final public static String strGENQuizKentei = "GENQuizKentei";
+  
 
   // ■■■■■げっとま■■■■■
   final public static String strGMYChirachi = "GMYChirachi";

@@ -23,7 +23,7 @@ import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerZukan;
 
 public class GMYAnkPark extends GMYBase {
-  final String url = "https://dietnavi.com/pc/survey/";
+  final String url = "https://dietnavi.com/pc/game/";
   boolean skipCapFlag = false;
   WebDriver driver = null;
   AnswerPhotoEnk PhotoEnk = null;
@@ -59,7 +59,7 @@ public class GMYAnkPark extends GMYBase {
     driver = driverAtom;
     Utille.url(driver, url, logg);
     Utille.sleep(3000);
-    String enkLinkSele = "a>img[src*='enquetepark']", //
+    String enkLinkSele = "a img[src*='enquetepark']", //
     a = "";
 
     if (isExistEle(driver, enkLinkSele)) {

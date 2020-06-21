@@ -20,6 +20,7 @@ import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 import pointGet.mission.gen.old.GENChirachi;
+import pointGet.mission.gen.old.GENChyousadan;
 import pointGet.mission.gen.old.GENManga;
 import pointGet.mission.gen.old.GENShindan;
 
@@ -134,6 +135,9 @@ public abstract class GENBase extends Mission {
         case Define.strGENKenkou: // ■健康
           MisIns = new GENKenkou(loggg, cProps);
           break;
+        case Define.strGENQuizKentei: // ■クイズ検定
+          MisIns = new GENQuizKentei(loggg, cProps);
+          break;
           
         default:
       }
@@ -152,7 +156,8 @@ public abstract class GENBase extends Mission {
           Define.strGENHitosara,
           Define.strGENKenkou,
           Define.strGENNaruhodo, Define.strGENCMPochi,
-          Define.strGENAnkPark, Define.strGENGameRarry
+          Define.strGENAnkPark, Define.strGENGameRarry,
+          Define.strGENQuizKentei
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);
       }
