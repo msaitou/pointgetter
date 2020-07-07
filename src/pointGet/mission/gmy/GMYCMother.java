@@ -47,18 +47,18 @@ public class GMYCMother extends GMYBase {
     driver = driverAtom;
     Utille.url(driver, url, logg);
     selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
-    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
-    ;
+//    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+//        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+//    ;
     String sele0 = "a.ui-btn.ui-btn-a" // アンケート一覧の回答するボタン
         , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
         , preSele = "img[src*='bn_sosenkyo.png']", sele6 = "form>input.next_bt" // コラム用
     ;
-    if (!isExistEle(driver, recoNoneSele, false)
-        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
-        && isExistEle(driver, recoSele)) {
-      clickSleepSelector(driver, recoSele, 2000); // 遷移
-    }
+//    if (!isExistEle(driver, recoNoneSele, false)
+//        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
+//        && isExistEle(driver, recoSele)) {
+//      clickSleepSelector(driver, recoSele, 2000); // 遷移
+//    }
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);

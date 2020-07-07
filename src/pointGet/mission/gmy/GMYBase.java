@@ -57,14 +57,14 @@ public abstract class GMYBase extends Mission {
   public static void goToClick(Logger loggg, Map<String, String> cProps, ArrayList<String> missions, Dbase Dbase) {
     WebDriver driver = getWebDriver(cProps);
     Utille.url(driver, "https://dietnavi.com/pc/", loggg);
-    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
-    ;
-    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
-        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
-        && Utille.isExistEle(driver, recoSele, loggg)) {
-      driver.findElement(By.cssSelector(recoSele)).click();
-    }
+//    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+//        recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+//    ;
+//    if (!Utille.isExistEle(driver, recoNoneSele, false, loggg)
+//        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
+//        && Utille.isExistEle(driver, recoSele, loggg)) {
+//      driver.findElement(By.cssSelector(recoSele)).click();
+//    }
     String se = "li.user_point>at";
     if (!Utille.isExistEle(driver, se, false, loggg)) {
       // login!!
