@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.gmy.old;
 
 import java.util.Map;
 
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
+import pointGet.mission.gmy.GMYBase;
 import pointGet.mission.parts.GameBears;
 import pointGet.mission.parts.GameDinosaur;
 import pointGet.mission.parts.GameFish;

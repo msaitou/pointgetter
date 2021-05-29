@@ -1,4 +1,4 @@
-package pointGet.mission.cit;
+package pointGet.mission.mop.old;
 
 import java.util.List;
 import java.util.Map;
@@ -9,33 +9,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
+import pointGet.mission.mop.MOPBase;
 import pointGet.mission.parts.AnswerSouSenkyo;
 
-/**
- * @author saitou
- *
- */
-public class CITKumaVote extends CITBase {
-  final String url = "https://www.chance.com/game/";
+public class MOPKumaVote extends MOPBase {
+  final String url = "http://pc.moppy.jp/gamecontents/";
+  WebDriver driver = null;
   AnswerSouSenkyo SouSenkyo = null;
 
   /**
    * @param logg
    */
-  public CITKumaVote(Logger logg, Map<String, String> cProps) {
+  public MOPKumaVote(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "くま投票");
     SouSenkyo = new AnswerSouSenkyo(logg);
   }
 
   @Override
-  public void privateMission(WebDriver driver) {
+  public void privateMission(WebDriver driverAtom) {
+    driver = driverAtom;
     Utille.url(driver, url, logg);
-    selector = "a[href*='https://www.chance.com/pjump.srv'] img[alt*='CMくじ']";
+    selector = "div.game_btn>div.icon>img[alt='CMくじ']";
     String sele0 = "a.start__button" // アンケート一覧の回答するボタン
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
     , preSele = "img[src*='kumakumasenkyo']", //
-    seleCMMap = "ul#nav>li>a[href*='game']>img", //
-    sele6 = "form>input.next_bt" // コラム用
+    seleCMMap = "ul#nav>li>a[href*='game']>img" //
     ;
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移

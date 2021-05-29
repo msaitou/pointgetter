@@ -14,7 +14,7 @@ import pointGet.common.Utille;
  *
  */
 public class ECNWebSearche extends ECNBase {
-	final String url = "http://ecnavi.jp/search/web/?Keywords=";
+	final String url = "https://ecnavi.jp/contents/dictionary_search/";
 
 	private String[] wordSearchList = null;
 
@@ -39,7 +39,7 @@ public class ECNWebSearche extends ECNBase {
 				ele.clear();
 				logg.info("検索keyword[" + wordSearchList[i]);
 				ele.sendKeys(wordSearchList[i]);
-				clickSleepSelector(driver, "button[type='submit']", 3000);
+				clickSleepSelector(driver, "form#dictionary-search-form button[type='submit']", 3000);
 			}
 		}
 	}

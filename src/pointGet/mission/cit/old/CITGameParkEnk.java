@@ -1,4 +1,4 @@
-package pointGet.mission.cit;
+package pointGet.mission.cit.old;
 
 import java.util.List;
 import java.util.Map;
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
+import pointGet.mission.cit.CITBase;
 import pointGet.mission.parts.AnswerAdsurvey;
 import pointGet.mission.parts.AnswerGameParkEnk;
 

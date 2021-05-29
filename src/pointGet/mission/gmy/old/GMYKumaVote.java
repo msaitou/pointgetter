@@ -1,4 +1,4 @@
-package pointGet.mission.mop;
+package pointGet.mission.gmy.old;
 
 import java.util.List;
 import java.util.Map;
@@ -9,30 +9,43 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
+import pointGet.mission.gmy.GMYBase;
 import pointGet.mission.parts.AnswerSouSenkyo;
 
-public class MOPKumaVote extends MOPBase {
-  final String url = "http://pc.moppy.jp/gamecontents/";
-  WebDriver driver = null;
+/**
+ * @author saitou
+ *
+ */
+public class GMYKumaVote extends GMYBase {
+  final String url = "http://dietnavi.com/pc/";
   AnswerSouSenkyo SouSenkyo = null;
 
   /**
    * @param logg
    */
-  public MOPKumaVote(Logger logg, Map<String, String> cProps) {
+  public GMYKumaVote(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "くま投票");
     SouSenkyo = new AnswerSouSenkyo(logg);
   }
 
   @Override
-  public void privateMission(WebDriver driverAtom) {
-    driver = driverAtom;
+  public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "div.game_btn>div.icon>img[alt='CMくじ']";
+    selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
+    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
+    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
+    ;
+    if (!isExistEle(driver, recoNoneSele, false)
+        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
+        && isExistEle(driver, recoSele)) {
+      clickSleepSelector(driver, recoSele, 2000); // 遷移
+    }
+
     String sele0 = "a.start__button" // アンケート一覧の回答するボタン
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
     , preSele = "img[src*='kumakumasenkyo']", //
-    seleCMMap = "ul#nav>li>a[href*='game']>img" //
+    seleCMMap = "ul#nav>li>a[href*='game']>img", //
+    sele6 = "form>input.next_bt" // コラム用
     ;
     if (isExistEle(driver, selector)) {
       clickSleepSelector(driver, selector, 5000); // 遷移

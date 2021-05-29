@@ -1,4 +1,4 @@
-package pointGet.mission.mop;
+package pointGet.mission.gmy.old;
 
 import java.util.List;
 import java.util.Map;
@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
+import pointGet.mission.gmy.GMYBase;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerHirameki;
@@ -22,8 +23,8 @@ import pointGet.mission.parts.AnswerMix;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerZukan;
 
-public class MOPAnkPark extends MOPBase {
-  final String url = "http://pc.moppy.jp/research/";
+public class GMYAnkPark extends GMYBase {
+  final String url = "https://dietnavi.com/pc/game/";
   boolean skipCapFlag = false;
   WebDriver driver = null;
   AnswerPhotoEnk PhotoEnk = null;
@@ -40,8 +41,8 @@ public class MOPAnkPark extends MOPBase {
   /**
    * @param logg
    */
-  public MOPAnkPark(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "MOPアンケートパーク");
+  public GMYAnkPark(Logger logg, Map<String, String> cProps) {
+    super(logg, cProps, "GMYアンケートパーク");
     Cooking = new AnswerCooking(logg);
     PhotoEnk = new AnswerPhotoEnk(logg);
     Hyakkey = new AnswerHyakkey(logg);
@@ -58,7 +59,8 @@ public class MOPAnkPark extends MOPBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    String enkLinkSele = "a[href*='/enquete_wall']", //
+    Utille.sleep(3000);
+    String enkLinkSele = "a img[src*='enquetepark']", //
     a = "";
 
     if (isExistEle(driver, enkLinkSele)) {
@@ -75,17 +77,16 @@ public class MOPAnkPark extends MOPBase {
       overlaySele = "div#meerkat-wrap div#overlay img.ad_close", //
       sele6 = "form>input.next_bt", // コラム用
       sele4 = "a.submit-btn", sele10 = "form>input[type='image']", // 回答する 漫画用
-          sele11 = "input.enquete_nextbt.next_bt",
-      b = "";
+      sele11 = "input.enquete_nextbt.next_bt", b = "";
       while (true) {
         checkOverlay(driver, overlaySele, false);
         if (!isExistEle(driver, selector)) {
           break;
         }
         List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-        int size = eleList.size(), 
-//            targetIndex = size - skip;
-            targetIndex = skip;
+        int size = eleList.size(),
+        //            targetIndex = size - skip;
+        targetIndex = skip;
         if (beforeSize == size) {
           skip++;
           targetIndex = skip;
@@ -93,7 +94,7 @@ public class MOPAnkPark extends MOPBase {
         if (size > targetIndex &&
             targetIndex >= 0 && isExistEle(eleList, targetIndex)) {
           String wid = driver.getWindowHandle();
-//          Utille.mouseOverByScript(driver, seleMouseOver, logg);
+          //          Utille.mouseOverByScript(driver, seleMouseOver, logg);
           Utille.scrolledPage(driver, eleList.get(targetIndex));
           Utille.sleep(2000);
           Actions actions = new Actions(driver);
@@ -103,8 +104,8 @@ public class MOPAnkPark extends MOPBase {
           Utille.sleep(5000);
 
           changeWindow(driver, wid);
-//          clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
-//          changeWindow(driver, wid);
+          //          clickSleepSelector(driver, eleList, targetIndex, 3000); // アンケートスタートページ
+          //          changeWindow(driver, wid);
           String cUrl = driver.getCurrentUrl();
           logg.info("cUrl[" + cUrl + "]");
           if (isExistEle(driver, sele9)) {
@@ -157,8 +158,7 @@ public class MOPAnkPark extends MOPBase {
             Colum.answer(driver, sele6, wid);
           }
           // 漫画
-          else if (
-              (cUrl.indexOf("/manga/") >= 0)
+          else if ((cUrl.indexOf("/manga/") >= 0)
               && isExistEle(driver, sele10)) {
             Manga.answer(driver, sele10, wid);
           }
@@ -168,8 +168,7 @@ public class MOPAnkPark extends MOPBase {
             Ijin.answer(driver, sele6, wid);
           }
           // MIX
-          else if (
-              (cUrl.indexOf("/mix/") >= 0)
+          else if ((cUrl.indexOf("/mix/") >= 0)
               && isExistEle(driver, sele11)) {
             Mix.answer(driver, sele11, wid);
           }

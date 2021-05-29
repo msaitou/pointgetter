@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.cit.old;
 
 import java.util.List;
 import java.util.Map;
@@ -9,20 +9,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import pointGet.common.Utille;
+import pointGet.mission.cit.CITBase;
 import pointGet.mission.parts.AnswerSouSenkyo;
 
 /**
  * @author saitou
  *
  */
-public class GMYKumaVote extends GMYBase {
-  final String url = "http://dietnavi.com/pc/";
+public class CITKumaVote extends CITBase {
+  final String url = "https://www.chance.com/game/";
   AnswerSouSenkyo SouSenkyo = null;
 
   /**
    * @param logg
    */
-  public GMYKumaVote(Logger logg, Map<String, String> cProps) {
+  public CITKumaVote(Logger logg, Map<String, String> cProps) {
     super(logg, cProps, "くま投票");
     SouSenkyo = new AnswerSouSenkyo(logg);
   }
@@ -30,16 +31,7 @@ public class GMYKumaVote extends GMYBase {
   @Override
   public void privateMission(WebDriver driver) {
     Utille.url(driver, url, logg);
-    selector = "div.menu_list.everdaycheck ul a[href*='https://dietnavi.com/pc/ad_jump.php']";
-    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close" // disabled recomend
-    ;
-    if (!isExistEle(driver, recoNoneSele, false)
-        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
-        && isExistEle(driver, recoSele)) {
-      clickSleepSelector(driver, recoSele, 2000); // 遷移
-    }
-
+    selector = "a[href*='https://www.chance.com/pjump.srv'] img[alt*='CMくじ']";
     String sele0 = "a.start__button" // アンケート一覧の回答するボタン
     , sele1 = "ul.select__list>li>a" // クラスを完全一致にするのは済の場合クラスが追加されるため
     , preSele = "img[src*='kumakumasenkyo']", //

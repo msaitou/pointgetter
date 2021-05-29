@@ -19,9 +19,9 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
-import pointGet.mission.gmy.old.GMYChirachi;
-import pointGet.mission.gmy.old.GMYShindan;
-import pointGet.mission.gmy.old.GMYToidas;
+import pointGet.mission.gmy.old.GMYAnkPark;
+import pointGet.mission.gmy.old.GMYColum;
+import pointGet.mission.gmy.old.GMYManga;
 
 /**
  * @author saitou
@@ -73,29 +73,11 @@ public abstract class GMYBase extends Mission {
     for (String mission : missions) {
       Mission MisIns = null;
       switch (mission) {
-        case Define.strGMYShindan: // ■毎日診断
-          MisIns = new GMYShindan(loggg, cProps);
-          break;
         case Define.strGMYClickBanner: // ■clipoバナー
           MisIns = new GMYClickBanner(loggg, cProps);
           break;
-        case Define.strGMYChirachi: // ■チラシ
-          MisIns = new GMYChirachi(loggg, cProps);
-          break;
-        case Define.strGMYPriceChyosatai: // ■プライス調査隊
-          MisIns = new GMYPriceChyosatai(loggg, cProps);
-          break;
-        case Define.strGMYToidas: // ■GMYトイダス
-          MisIns = new GMYToidas(loggg, cProps);
-          break;
         case Define.strGMYPointResearch: // ■アンケート
           MisIns = new GMYPointResearch(loggg, cProps);
-          break;
-        case Define.strGMYGameParkEnk: // ■GameParkアンケート
-          MisIns = new GMYGameParkEnk(loggg, cProps);
-          break;
-        case Define.strGMYKumaVote: // ■くま投票
-          MisIns = new GMYKumaVote(loggg, cProps);
           break;
         case Define.strGMYCMother: // ■CMその他
           MisIns = new GMYCMother(loggg, cProps);
@@ -121,29 +103,20 @@ public abstract class GMYBase extends Mission {
         case Define.strGMYCMPochi: // ■ぽちっと
           MisIns = new GMYCMPochi(loggg, cProps);
           break;
-        case Define.strGMYGameRarry: // ■ゲームラリー
-          MisIns = new GMYGameRarry(loggg, cProps);
-          break;
         case Define.strGMYSassokuRead: // ■ゲームラリー
           MisIns = new GMYSassokuRead(loggg, cProps);
           break;
           
         default:
       }
-      if (Arrays.asList(new String[] { Define.strGMYShindan,
+      if (Arrays.asList(new String[] {
           Define.strGMYClickBanner,
-          Define.strGMYChirachi,
-          Define.strGMYPriceChyosatai,
-          Define.strGMYToidas,
           Define.strGMYPointResearch,
-          Define.strGMYGameParkEnk,
-          Define.strGMYKumaVote,
           Define.strGMYCMother,
           Define.strGMYColum, Define.strGMYManga,
           Define.strGMYEasyAnk,
           Define.strGMYNaruhodo,
-          Define.strGMYAnkPark, Define.strGMYCMPochi
-          ,Define.strGMYGameRarry
+          Define.strGMYCMPochi
           ,Define.strGMYSassokuRead
       }).contains(mission)) {
         driver = MisIns.exePrivateMission(driver);

@@ -19,13 +19,7 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
-import pointGet.mission.mop.old.MOPChirachi;
-import pointGet.mission.mop.old.MOPChyosatai;
-import pointGet.mission.mop.old.MOPCountTimer;
 import pointGet.mission.mop.old.MOPKanji;
-import pointGet.mission.mop.old.MOPManga;
-import pointGet.mission.mop.old.MOPShindan;
-import pointGet.mission.pto.PTOGameRarry;
 
 /**
  * @author saitou
@@ -85,56 +79,23 @@ public abstract class MOPBase extends Mission {
         case Define.strMOPEnglishTest: // ■英単語TEST
           MisIns = new MOPEnglishTest(loggg, cProps);
           break;
-        case Define.strMOPCountTimer: // ■CountTimer
-          MisIns = new MOPCountTimer(loggg, cProps);
-          break;
-        case Define.strMOPManga: // ■漫画
-          MisIns = new MOPManga(loggg, cProps);
-          break;
         case Define.strMOPPointResearch: // ■ポイントリサーチ
           MisIns = new MOPPointResearch(loggg, cProps);
           break;
         case Define.strMOPClickBanner: // ■クリックで貯める
           MisIns = new MOPClickBanner(loggg, cProps);
           break;
-        case Define.strMOPShindan: // ■毎日診断
-          MisIns = new MOPShindan(loggg, cProps);
-          break;
-        case Define.strMOPChyosatai: // ■トキメキ調査隊
-          MisIns = new MOPChyosatai(loggg, cProps);
-          break;
         case Define.strMOPUranai: // ■MOP星座
           MisIns = new MOPUranai(loggg, cProps);
           break;
-        case Define.strMOPChirachi: // ■MOPチラシ
-          MisIns = new MOPChirachi(loggg, cProps);
-          break;
         case Define.strMOPPointResearch2: // ■ポイントリサーチ２
           MisIns = new MOPPointResearch2(loggg, cProps);
-          break;
-        case Define.strMOPMiniGameEnk: // ■ポイントリサーチ２
-          MisIns = new MOPMiniGameEnk(loggg, cProps);
-          break;
-        case Define.strMOPMiniGameEnkNoCap: // ■ポイントリサーチ２
-          MisIns = new MOPMiniGameEnkNoCap(loggg, cProps);
-          break;
-        case Define.strMOPChyousadan: // ■調査団
-          MisIns = new MOPChyousadan(loggg, cProps);
-          break;
-        case Define.strMOPKumaVote: // ■くま投票
-          MisIns = new MOPKumaVote(loggg, cProps);
-          break;
-        case Define.strMOPGaingame: // ■リーグジュエル
-          MisIns = new PTOGameRarry(loggg, cProps);
           break;
         case Define.strMOPKanji: // ■漢字テスト
           MisIns = new MOPKanji(loggg, cProps);
           break;
         case Define.strMOPCMother: // ■CMサイトその他
           MisIns = new MOPCMother(loggg, cProps);
-          break;
-        case Define.strMOPAnkPark: // ■アンケートパーク
-          MisIns = new MOPAnkPark(loggg, cProps);
           break;
         case Define.strMOPCMPochi: // ■ぽち
           MisIns = new MOPCMPochi(loggg, cProps);

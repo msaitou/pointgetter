@@ -1,4 +1,4 @@
-package pointGet.mission.cit;
+package pointGet.mission.mop.old;
 
 import java.util.List;
 import java.util.Map;
@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import pointGet.common.Utille;
+import pointGet.mission.mop.MOPBase;
 import pointGet.mission.parts.AnswerColum;
 import pointGet.mission.parts.AnswerCooking;
 import pointGet.mission.parts.AnswerHirameki;
@@ -22,16 +23,26 @@ import pointGet.mission.parts.AnswerMix;
 import pointGet.mission.parts.AnswerPhotoEnk;
 import pointGet.mission.parts.AnswerZukan;
 
-public class CITAnkPark extends CITBase {
-  final String url = "https://www.chance.com/research/";
+public class MOPAnkPark extends MOPBase {
+  final String url = "http://pc.moppy.jp/research/";
   boolean skipCapFlag = false;
   WebDriver driver = null;
+  AnswerPhotoEnk PhotoEnk = null;
+  AnswerKansatu Kansatu = null;
+  AnswerCooking Cooking = null;
+  AnswerHyakkey Hyakkey = null;
+  AnswerZukan Zukan = null;
+  AnswerColum Colum = null;
+  AnswerManga Manga = null;
+  AnswerHirameki Hirameki = null;
+  AnswerMix Mix = null;
+  AnswerIjin Ijin = null;
 
   /**
    * @param logg
    */
-  public CITAnkPark(Logger logg, Map<String, String> cProps) {
-    super(logg, cProps, "CITアンケートパーク");
+  public MOPAnkPark(Logger logg, Map<String, String> cProps) {
+    super(logg, cProps, "MOPアンケートパーク");
     Cooking = new AnswerCooking(logg);
     PhotoEnk = new AnswerPhotoEnk(logg);
     Hyakkey = new AnswerHyakkey(logg);
@@ -48,8 +59,7 @@ public class CITAnkPark extends CITBase {
   public void privateMission(WebDriver driverAtom) {
     driver = driverAtom;
     Utille.url(driver, url, logg);
-    Utille.sleep(3000);
-    String enkLinkSele = "a>img[src*='enquetepark']", //
+    String enkLinkSele = "a[href*='/enquete_wall']", //
     a = "";
 
     if (isExistEle(driver, enkLinkSele)) {

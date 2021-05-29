@@ -1,4 +1,4 @@
-package pointGet.mission.gmy;
+package pointGet.mission.cit.old;
 
 import java.util.List;
 import java.util.Map;
@@ -10,33 +10,32 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import pointGet.common.Utille;
+import pointGet.mission.cit.CITBase;
 
 /**
  * @author saitou
  * 4時更新
  */
-public class GMYPriceChyosatai extends GMYBase {
-  final String url = "https://dietnavi.com/pc/game/";
+public class CITPriceChyosatai extends CITBase {
+  final String url = "https://www.chance.com/game/";
   private String overlaySelector = "div#popup[style*='display: block'] a.modal_close";
   private String footBnrSelector = "div.foot-bnr a.close>span";
   private String footBnrNoneSele = "div.foot-bnr[style*='display :none'] a.close>span";
   private String overlayNone = "div.foot-bnr[style*='display :none'] a.close>span";
+  private String recoSele = "div#cxOverlayParent>a.recommend_close"; // recomend
+  private String recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close"; // disabled recomend
 
   /**
    * @param log
    */
-  public GMYPriceChyosatai(Logger log, Map<String, String> cProps) {
-    super(log, cProps, "調査隊いろいろ");
+  public CITPriceChyosatai(Logger log, Map<String, String> cProps) {
+    super(log, cProps, "調査隊パーク");
   }
 
   @Override
   public void privateMission(WebDriver driver) {
-    String recoSele = "div#cxOverlayParent>a.recommend_close", // recomend
-    recoNoneSele = "#cxOverlayParent[style*='display: none']>a.recommend_close", // disabled recomend
-    firstEntrySele = "img[alt='調査隊パーク']";
-    if (!isExistEle(driver, recoNoneSele, false) 
-        && driver.findElement(By.cssSelector(recoSele)).isDisplayed()
-        && isExistEle(driver, recoSele)) {
+    String firstEntrySele = "img[alt='調査隊パーク']";
+    if (!isExistEle(driver, recoNoneSele, false) && isExistEle(driver, recoSele)) {
       clickSleepSelector(driver, recoSele, 2000); // 遷移
     }
     Utille.url(driver, url, logg);
@@ -460,3 +459,4 @@ public class GMYPriceChyosatai extends GMYBase {
     }
   }
 }
+

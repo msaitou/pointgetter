@@ -14,7 +14,7 @@ import pointGet.common.Utille;
  *
  */
 public class ECNSearchBokin extends ECNBase {
-	final String url = "http://ecnavi.jp/smile_project/search_fund/";
+	final String url = "https://ecnavi.jp/smile_project/search_fund/";
 
 	private String[] wordSearchList = null;
 
@@ -38,7 +38,7 @@ public class ECNSearchBokin extends ECNBase {
 				ele.clear();
 				logg.info("検索keyword[" + wordSearchList[i]);
 				ele.sendKeys(this.wordSearchList[i]);
-				selector = "button[type='submit']";
+				selector = "form[name='fund_search_form'] button[type='submit']";
 				clickSleepSelector(driver, selector, 3000);
 				closeOtherWindow(driver);
 			}

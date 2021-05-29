@@ -13,7 +13,7 @@ import pointGet.common.Utille;
  *
  */
 public class MOPClickBanner extends MOPBase {
-  final String url = "https://pc.moppy.jp/";
+  final String url = "https://pc.moppy.jp/gamecontents/";
 
   /**
    * @param log
@@ -32,7 +32,7 @@ public class MOPClickBanner extends MOPBase {
     }
 
     Utille.url(driver, "https://pc.moppy.jp/gamecontents/", logg);
-    String[] seleList = { "div[data-block-title='クリックで貯める']>ul>li>a" };
+    String[] seleList = { "section#cc div[data-ga-action*='クリックで貯める']>ul>li>a" };
     String cushionSele = "div.modal__content>div#modal_detail div>a[rel*='noopener']", //
     cushionNoSele = "div.modal__content[style*='display: none']>div#modal_detail";
     for (String sele : seleList) {

@@ -27,7 +27,7 @@ public class ECNClickBokin extends ECNBase {
 	@Override
 	public void privateMission(WebDriver driver) {
 		Utille.url(driver, this.url, logg);
-		selector = "div.bnr_box";
+		selector = "div.click-fund-ground li";
 		if (isExistEle(driver, selector)) {
 			List<WebElement> eleList1 = driver.findElements(By.cssSelector(selector));
 			for (WebElement ele : eleList1) {
