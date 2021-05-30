@@ -21,6 +21,9 @@ import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 import pointGet.mission.gen.old.GENChirachi;
 import pointGet.mission.gen.old.GENChyousadan;
+import pointGet.mission.gen.old.GENGameParkEnk;
+import pointGet.mission.gen.old.GENGameRarry;
+import pointGet.mission.gen.old.GENKumaVote;
 import pointGet.mission.gen.old.GENManga;
 import pointGet.mission.gen.old.GENShindan;
 

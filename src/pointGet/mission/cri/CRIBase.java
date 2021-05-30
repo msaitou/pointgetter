@@ -20,6 +20,7 @@ import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 import pointGet.mission.cri.old.CRIChirachi;
 import pointGet.mission.cri.old.CRIChyousadan;
+import pointGet.mission.cri.old.CRIGameParkEnk;
 import pointGet.mission.cri.old.CRIKumaVote;
 import pointGet.mission.cri.old.CRIManga;
 

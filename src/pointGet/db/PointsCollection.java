@@ -75,7 +75,7 @@ public class PointsCollection {
     Function<MongoCursor<Document>, Double> f = (cursor) -> {
       Double total = 0.0;
       while (cursor.hasNext()) {
-        Document doc = (Document) cursor.next();
+        Document doc = cursor.next();
         for (String k : doc.keySet()) {
           System.out.println("key [" + k);
           if (!k.equals("_id")) {
@@ -88,7 +88,7 @@ public class PointsCollection {
     //    Double total = (Double) Dbase.accessDb("find", COLLECTION_NAME_POINTS, f);
     // 検索情報設定
     Map<String, Object> cParams = new HashMap<String, Object>();
-    cParams.put("sort", (DBObject) JSON.parse("{'time':-1}"));
+    cParams.put("sort", JSON.parse("{'time':-1}"));
     cParams.put("limit", 2);
 
     @SuppressWarnings("unchecked")
@@ -100,7 +100,7 @@ public class PointsCollection {
   public void putPointsData(Map<String, Double> m) {
     // 検索情報設定
     Map<String, Object> cParams = new HashMap<String, Object>();
-    cParams.put("cond", (DBObject) JSON.parse("{'Date':'" + strDate + "'}"));
+    cParams.put("cond", JSON.parse("{'Date':'" + strDate + "'}"));
     cParams.put("limit", 2);
     //		Dbase.accessDb("update", COLLECTION_NAME_POINTS, ((a) -> {
     Dbase.accessDb("update", COLLECTION_NAME_POINTS, cParams, ((a) -> {
@@ -256,7 +256,7 @@ public class PointsCollection {
     Function<MongoCursor<Document>, Double> f = (cursor) -> {
       Double total = 0.0;
       while (cursor.hasNext()) {
-        Document doc = (Document) cursor.next();
+        Document doc = cursor.next();
         for (String k : doc.keySet()) {
           System.out.println("key [" + k);
           if (!k.equals("_id")) {
@@ -269,7 +269,7 @@ public class PointsCollection {
     //    Double total = (Double) Dbase.accessDb("find", COLLECTION_NAME_POINTS, f);
     // 検索情報設定
     Map<String, Object> cParams = new HashMap<String, Object>();
-    cParams.put("sort", (DBObject) JSON.parse("{'time':-1}"));
+    cParams.put("sort", JSON.parse("{'time':-1}"));
     cParams.put("limit", 2);
 
     @SuppressWarnings("unchecked")

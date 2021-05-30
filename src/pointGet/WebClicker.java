@@ -18,21 +18,17 @@ import pointGet.mission.ecn.ECNBase;
 import pointGet.mission.gen.GENBase;
 import pointGet.mission.gmy.GMYBase;
 import pointGet.mission.gpo.GPOBase;
-import pointGet.mission.hap.HAPBase;
 import pointGet.mission.i2i.I2IBase;
 import pointGet.mission.lfm.LFMBase;
 import pointGet.mission.mob.MOBBase;
 import pointGet.mission.mop.MOPBase;
-import pointGet.mission.osa.OSABase;
 import pointGet.mission.pex.PEXBase;
 import pointGet.mission.pic.PICBase;
 import pointGet.mission.pil.PILBase;
-import pointGet.mission.pmo.PMOBase;
 import pointGet.mission.pst.PSTBase;
 import pointGet.mission.pto.PTOBase;
 import pointGet.mission.rin.RINBase;
 import pointGet.mission.sug.SUGBase;
-import pointGet.mission.war.WARBase;
 
 /**
  * get point from the point site
@@ -235,9 +231,6 @@ public class WebClicker extends PointGet {
         case Define.PSITE_CODE_PEX:
           PEXBase.goToClick(logg, commonProps, missionArr, missionList, wordList, Dbase);
           break;
-        case Define.PSITE_CODE_OSA:
-          OSABase.goToClick(logg, commonProps, missionArr, Dbase);
-          break;
         case Define.PSITE_CODE_RIN:
           RINBase.goToClick(logg, commonProps, missionArr, Dbase);
           break;
@@ -265,17 +258,8 @@ public class WebClicker extends PointGet {
         case Define.PSITE_CODE_CIT:
           CITBase.goToClick(logg, commonProps, missionArr, Dbase);
           break;
-        case Define.PSITE_CODE_PMO:
-          PMOBase.goToClick(logg, commonProps, missionArr, Dbase);
-          break;
         case Define.PSITE_CODE_CRI:
           CRIBase.goToClick(logg, commonProps, missionArr, Dbase);
-          break;
-        case Define.PSITE_CODE_HAP:
-          HAPBase.goToClick(logg, commonProps, missionArr, Dbase);
-          break;
-        case Define.PSITE_CODE_WAR:
-          WARBase.goToClick(logg, commonProps, missionArr, Dbase);
           break;
         case Define.PSITE_CODE_DMY:
           DMYBase.goToClick(logg, commonProps, missionArr, Dbase);

@@ -18,6 +18,12 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.sug.old.SUGAnkPark;
+import pointGet.mission.sug.old.SUGChyousadan;
+import pointGet.mission.sug.old.SUGGameRarry;
+import pointGet.mission.sug.old.SUGGetPark;
+import pointGet.mission.sug.old.SUGGetParkNoCap;
+import pointGet.mission.sug.old.SUGKumaVote;
 
 /**
  * @author saitou

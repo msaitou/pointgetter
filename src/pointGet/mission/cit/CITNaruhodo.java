@@ -5,6 +5,8 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import pointGet.common.Utille;
 import pointGet.mission.parts.AnswerNaruhodo;
@@ -33,6 +35,28 @@ public class CITNaruhodo extends CITBase {
       clickSleepSelector(driver, selector, 5000); // 遷移
       changeCloseWindow(driver);
       Utille.sleep(8000);
+      // オーバーレイアンケート
+      String seleOverAnk = "div#modal-content[style*='display: block']";
+      if (isExistEle(driver, seleOverAnk)) {
+        WebElement seleOverEle = driver.findElement(By.cssSelector(seleOverAnk));
+        String sexSele = "label[for='radio01']", ageSele = "select[name='age']", //
+            prefSele = "select[name='pref']", marrigeSele = "label[for='radio04']", 
+            childSele = "label[for='radio06']", ansSele = "button[type='submit']",//
+        // 
+        a;
+        clickSleepSelector(driver, seleOverEle, sexSele, 1000); // 性別：男性
+        Select selectList = new Select(driver.findElement(By.cssSelector(ageSele)));
+        selectList.selectByValue("36"); // 年齢：36歳
+        selectList = new Select(driver.findElement(By.cssSelector(prefSele)));
+        selectList.selectByValue("13"); // 都道府県：東京と
+        clickSleepSelector(driver, seleOverEle, marrigeSele, 1000); // 結婚：無
+        clickSleepSelector(driver, seleOverEle, childSele, 1000); // 子供：無
+
+        if (isExistEle(driver, ansSele)) {
+          // 次へ
+          clickSleepSelector(driver, seleOverEle, ansSele, 4000);
+        }
+      }
       // ポイントに変換
       String topSele = "a>img[src*='icon_game_off.png']";
       String bankSele = "li.icon_h_bank>a", coinSele = "p.h_coin>em", changeSele = "#modal-open.btn", changeBtnSele = "#modal-content2[style*='display: block;']>a.btn";

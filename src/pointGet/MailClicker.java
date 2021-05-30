@@ -58,7 +58,7 @@ public class MailClicker extends PointGet {
 
     Map<String, HashMap<String, String>> targetSitesTmp = new HashMap<String, HashMap<String, String>>();
     Map<String, Object> cParams = new HashMap<String, Object>();
-    cParams.put("cond", (DBObject) JSON.parse("{'type':'mail'}"));
+    cParams.put("cond", JSON.parse("{'type':'mail'}"));
     // DBから設定を読み込む
     @SuppressWarnings("unchecked")
     List<HashMap<String, Object>> rec = (List<HashMap<String, Object>>) Dbase.accessDb("find",

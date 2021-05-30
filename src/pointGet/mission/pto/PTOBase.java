@@ -19,6 +19,12 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.pto.old.PTOAnkPark;
+import pointGet.mission.pto.old.PTOChyousadan;
+import pointGet.mission.pto.old.PTOFarmEnk;
+import pointGet.mission.pto.old.PTOFarmEnkNoCap;
+import pointGet.mission.pto.old.PTOGameRarry;
+import pointGet.mission.pto.old.PTOKumaVote;
 
 /**
  * @author saitou

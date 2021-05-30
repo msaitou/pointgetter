@@ -19,6 +19,12 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.pic.old.PICChyousadan;
+import pointGet.mission.pic.old.PICFarmEnk;
+import pointGet.mission.pic.old.PICFarmEnkNoCap;
+import pointGet.mission.pic.old.PICGameRarry;
+import pointGet.mission.pic.old.PICKumaVote;
+import pointGet.mission.pic.old.PICShindan;
 
 /**
  * @author saitou

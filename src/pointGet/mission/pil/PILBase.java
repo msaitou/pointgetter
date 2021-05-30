@@ -21,6 +21,9 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
+import pointGet.mission.pil.old.PILChyousadan;
+import pointGet.mission.pil.old.PILGameParkEnk;
+import pointGet.mission.pil.old.PILKumaVote;
 
 /**
  * @author saitou

@@ -20,6 +20,9 @@ import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
 import pointGet.mission.gpo.old.GPOAnzan;
+import pointGet.mission.gpo.old.GPOGameParkEnk;
+import pointGet.mission.gpo.old.GPOGameRarry;
+import pointGet.mission.gpo.old.GPOKumaVote;
 import pointGet.mission.gpo.old.GPOQuiz;
 
 /**

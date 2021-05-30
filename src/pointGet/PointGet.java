@@ -130,7 +130,7 @@ public abstract class PointGet {
     }
     Map<String, Object> cParams = new HashMap<String, Object>();
     cParams.put("cond",
-        (DBObject) JSON.parse("{'type':'client', 'client':'" + commonProps.get("clientCode") + "'}"));
+        JSON.parse("{'type':'client', 'client':'" + commonProps.get("clientCode") + "'}"));
     @SuppressWarnings("unchecked")
     List<HashMap<String, Object>> rec = (List<HashMap<String, Object>>) Dbase.accessDb("find",
         "configs", cParams, null);
@@ -162,7 +162,7 @@ public abstract class PointGet {
       }
     }
     cParams = new HashMap<String, Object>();
-    cParams.put("cond", (DBObject) JSON.parse("{'type':'login'}"));
+    cParams.put("cond", JSON.parse("{'type':'login'}"));
     @SuppressWarnings("unchecked")
     List<HashMap<String, Object>> rec1 = (List<HashMap<String, Object>>) Dbase.accessDb("find",
         "configs", cParams, null);

@@ -43,7 +43,7 @@ public class MailCommon {
   public MailCommon(Dbase Dbase) {
 //    Map<String, HashMap<String, String>> targetSitesTmp = new HashMap<String, HashMap<String, String>>();
     Map<String, Object> cParams = new HashMap<String, Object>();
-    cParams.put("cond", (DBObject) JSON.parse("{'type':'mail_send'}"));
+    cParams.put("cond", JSON.parse("{'type':'mail_send'}"));
     // DBから設定を読み込む
     @SuppressWarnings("unchecked")
     List<HashMap<String, Object>> rec = (List<HashMap<String, Object>>) Dbase.accessDb("find",
@@ -144,6 +144,7 @@ public class MailCommon {
 
     //propsに設定した情報を使用して、sessionの作成
     final Session session = Session.getInstance(props, new Authenticator() {
+      @Override
       protected PasswordAuthentication getPasswordAuthentication() {
         return new PasswordAuthentication(mailConf.get("user"), mailConf.get("password"));
       }

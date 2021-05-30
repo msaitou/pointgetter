@@ -19,7 +19,6 @@ import pointGet.common.Utille;
 import pointGet.db.Dbase;
 import pointGet.db.PointsCollection;
 import pointGet.mission.Mission;
-import pointGet.mission.lfm.old.LFMChyosatai;
 import pointGet.mission.lfm.old.LFMQuiz;
 import pointGet.mission.parts.AnswerAdEnq;
 import pointGet.mission.parts.AnswerColum;
@@ -91,15 +90,6 @@ public abstract class LFMBase extends Mission {
     for (String mission : missions) {
       Mission MisIns = null;
       switch (mission) {
-        case Define.strLFMChyosatai: // ■調査隊
-          MisIns = new LFMChyosatai(loggg, cProps);
-          break;
-        case Define.strLFMGameParkEnk: // ■GameParkアンケート
-          MisIns = new LFMGameParkEnk(loggg, cProps);
-          break;
-        case Define.strLFMPriceChyosatai: // ■プライス調査隊
-          MisIns = new LFMPriceChyosatai(loggg, cProps);
-          break;
         case Define.strLFMQuiz: // ■クイズ
           MisIns = new LFMQuiz(loggg, cProps);
           break;
@@ -121,12 +111,6 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMFarmEnkNoCap: // ■ファームアンケ―と
           MisIns = new LFMFarmEnkNoCap(loggg, cProps);
           break;
-        case Define.strLFMChyousadan: // ■調査団
-          MisIns = new LFMChyousadan(loggg, cProps);
-          break;
-        case Define.strLFMKumaVote: // ■総選挙
-          MisIns = new LFMKumaVote(loggg, cProps);
-          break;
         case Define.strLFMKenkou: // ■サラサラ健康コラム
           MisIns = new LFMKenkou(loggg, cProps);
           break;
@@ -142,13 +126,6 @@ public abstract class LFMBase extends Mission {
         case Define.strLFMQuizKentei: // ■クイズ検定
           MisIns = new LFMQuizKentei(loggg, cProps);
           break;
-        case Define.strLFMGameRarry: // ■ゲームラリー
-          MisIns = new LFMGameRarry(loggg, cProps);
-          break;
-        case Define.strLFMAnkPark: // ■アンケートパーク
-          MisIns = new LFMAnkPark(loggg, cProps);
-          break;
-
 
 
         default:
