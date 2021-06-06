@@ -51,29 +51,37 @@ public class I2IPhoto extends I2IBase {
           selector = "td.status>a.ui-btn.ui-btn-a"; // アンケート一覧の回答するボタン
           Utille.sleep(5000);
           String sele8 = "form>input.next_bt";
+          int skipIndex = 0;
           while (true) {
             if (isExistEle(driver, selector)) {
               List<WebElement> eleList = driver.findElements(By.cssSelector(selector));
-              int size2 = eleList.size(), targetIndex = size2 - 1;
+              int size2 = eleList.size(), targetIndex = size2 - 1 - skipIndex;
               logg.info("size2:" + size2 + " target:" + targetIndex);
               if (size2 > targetIndex && isExistEle(eleList, targetIndex)) { // 古い順にやる
-//                try {
-//                  new Robot().keyPress(KeyEvent.VK_CONTROL);
-//                  new Actions(driver).click(eleList.get(targetIndex)).build().perform();
-//                  new Robot().keyRelease(KeyEvent.VK_CONTROL);
-//              } catch (AWTException ee) {
-//                  throw new IllegalStateException(ee);
-//              }
+                //                try {
+                //                  new Robot().keyPress(KeyEvent.VK_CONTROL);
+                //                  new Actions(driver).click(eleList.get(targetIndex)).build().perform();
+                //                  new Robot().keyRelease(KeyEvent.VK_CONTROL);
+                //              } catch (AWTException ee) {
+                //                  throw new IllegalStateException(ee);
+                //              }
                 Utille.scrolledPage(driver, driver.findElements(By.cssSelector(selector)).get(targetIndex));
+                //                clickSleepSelector(driver, driver.findElements(By.cssSelector(selector)), targetIndex, 7000);
                 Actions actions = new Actions(driver);
                 actions.keyDown(Keys.CONTROL);
                 actions.click(driver.findElements(By.cssSelector(selector)).get(targetIndex));
                 actions.perform();
                 Utille.sleep(5000);
-//                                              clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
+                //                                              clickSleepSelector(eleList, targetIndex, 3000); // アンケートスタートページ
                 String wid = driver.getWindowHandle();
                 changeWindow(driver, wid);
-                if (isExistEle(driver, sele8)) {
+                String errSele = "img[alt='エラー発生']";
+                if (isExistEle(driver, errSele, true)) {
+                  skipIndex++;
+                  driver.close();
+                  driver.switchTo().window(wid);
+                }
+                else if (isExistEle(driver, sele8)) {
                   PhotoEnk.answer(driver, sele8, wid);
                   Utille.refresh(driver, logg);
                   Utille.sleep(5000);
