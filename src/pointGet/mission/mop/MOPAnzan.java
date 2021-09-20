@@ -142,6 +142,9 @@ public class MOPAnzan extends MOPBase {
             clickSelectorNoRefre(driver, selector);
             if (!isExistEle(driver, "div.overlay-popup[style*='display: none;'] a.button-close", false)) {
               checkOverlay(driver, "div.overlay-popup a.button-close");
+              if (!isExistEle(driver, "div.gamecontents__migratory[style*='display: none;'] span.js-migratory_close", false)) {
+                checkOverlay(driver, "div.gamecontents__migratory span.js-migratory_close");
+              }
             }
           }
           //	checkOverlay(driver, "div.overlay-popup a.button-close");

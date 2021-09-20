@@ -130,6 +130,9 @@ public class MOPNanyoubi extends MOPBase {
 				if (isExistEle(driver, selector)) {
 					clickSleepSelectorNoRefre(driver, selector, 3000);
 					waitTilReady(driver);
+          if (!isExistEle(driver, "div.gamecontents__migratory[style*='display: none;'] span.js-migratory_close", false)) {
+            checkOverlay(driver, "div.gamecontents__migratory span.js-migratory_close");
+          }
 				}
 			} else {
 				logg.warn(this.mName + "]獲得済み");
